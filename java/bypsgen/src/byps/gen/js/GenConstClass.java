@@ -2,6 +2,7 @@ package byps.gen.js;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -17,8 +18,6 @@ import byps.gen.api.MemberInfo;
 import byps.gen.api.SerialInfo;
 import byps.gen.api.TypeInfo;
 import byps.gen.utils.CodePrinter;
-
-import com.sun.org.apache.xml.internal.security.utils.Base64;
 
 class GenConstClass {
 	
@@ -163,7 +162,7 @@ class GenConstClass {
 			for (int i = 0; i < js.size(); i++) {
 				binaryData[i] = js.getByte(i);
 			}
-			String s = Base64.encode(binaryData);
+			String s = Base64.getEncoder().encodeToString(binaryData);
 			sbuf.append("\"").append(s).append("\"");
 		}
 		else {

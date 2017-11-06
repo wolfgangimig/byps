@@ -12,3 +12,7 @@ x64\Release
 *.suo
 *.opensdf
 lib
+.classpath
+.project
+.gradle
+.settings
