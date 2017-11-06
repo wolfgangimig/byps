@@ -7,6 +7,10 @@ import java.net.HttpCookie;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -124,12 +128,37 @@ public abstract class JcnnRequest implements HHttpRequest {
     if (c != null) {
       try {
         URI uri = new URI(req.url);
-        cookieManager.put(uri, c.getHeaderFields());
+        
+        // CookieManager.put writes a SEVERE log output if server sends an empty cookie.
+        // To circumvent this log entry, skip all empty cookies.
+        Map<String, List<String>> responseCookies = extractCookieHeaders(c);
+        
+        cookieManager.put(uri, responseCookies);
       }
       catch (Exception e) {
         req.ex = new BException(BExceptionC.IOERROR, "Cannot set session cookie.", e);
       }
     }
+  }
+
+  private Map<String, List<String>> extractCookieHeaders(HttpURLConnection c) {
+    Map<String, List<String>> responseHeaders = c.getHeaderFields();
+    Map<String, List<String>> responseCookies = new HashMap<String, List<String>>(responseHeaders.size());
+    for (String headerKey : responseHeaders.keySet()) {
+      if (headerKey == null) continue;
+      if (headerKey.equalsIgnoreCase("Set-Cookie2") || headerKey.equalsIgnoreCase("Set-Cookie")) {
+        List<String> cookies = new ArrayList<String>();
+        for (String headerValue : responseHeaders.get(headerKey)) {
+          if (!headerValue.isEmpty()) {
+            cookies.add(headerValue);
+          }
+        }
+        if (!cookies.isEmpty()) {
+          responseCookies.put(headerKey, cookies);
+        }
+      }
+    }
+    return responseCookies;
   }
   
   /**

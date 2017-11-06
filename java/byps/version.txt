@@ -1,0 +1,4 @@
+BYPS Version History
+
+- Filter empty cookies before calling CookieManager.put to prevent SEVERE log entry.
+
