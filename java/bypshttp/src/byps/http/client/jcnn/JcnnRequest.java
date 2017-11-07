@@ -118,6 +118,7 @@ public abstract class JcnnRequest implements HHttpRequest {
       CookieStore cookies = cookieManager.getCookieStore();
       for (HttpCookie cookie : cookies.getCookies()) {
         c.setRequestProperty("Cookie", cookie.toString());
+        if (log.isDebugEnabled()) log.debug("request cookie=" + cookie.toString());
       }
     }
   }
@@ -132,7 +133,7 @@ public abstract class JcnnRequest implements HHttpRequest {
         // CookieManager.put writes a SEVERE log output if server sends an empty cookie.
         // To circumvent this log entry, skip all empty cookies.
         Map<String, List<String>> responseCookies = extractCookieHeaders(c);
-        
+        if (log.isDebugEnabled()) log.debug("responseCookies=" + responseCookies);
         cookieManager.put(uri, responseCookies);
       }
       catch (Exception e) {
@@ -149,6 +150,7 @@ public abstract class JcnnRequest implements HHttpRequest {
       if (headerKey.equalsIgnoreCase("Set-Cookie2") || headerKey.equalsIgnoreCase("Set-Cookie")) {
         List<String> cookies = new ArrayList<String>();
         for (String headerValue : responseHeaders.get(headerKey)) {
+          if (log.isDebugEnabled()) log.debug("response cookie=" + headerValue);
           if (!headerValue.isEmpty()) {
             cookies.add(headerValue);
           }
