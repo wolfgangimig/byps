@@ -50,7 +50,7 @@ public class Keywords {
 			+ "default	interface	sealed	volatile "
 			+ "delegate	internal	short	void " + "do	is	sizeof	while "
 			+ "double	lock	stackalloc " + "else	long	static "
-			+ "enum	namespace	string ";
+			+ "enum	namespace	string params";
 	
 	private final static String CPP_KEYWORDS = ""
 			+ "alignas	alignof	and	and_eq	asm	auto "
