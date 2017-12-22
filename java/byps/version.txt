@@ -1,0 +1,6 @@
+BYPS version history
+
+5.13
+
+- Do not retry requests on SocketTimeoutException
+

@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 
 sourceCompatibility = 1.8
-version = '5.12'
+version = '5.13'
 
 sourceSets {
     main {
