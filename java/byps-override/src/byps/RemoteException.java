@@ -18,4 +18,16 @@ public class RemoteException extends IOException {
 		super(arg0);
 	}
 
+	public String toString() {
+		String ret = getMessage();
+		Throwable ex = this.getCause();
+		if (ex != null) {
+			String s = ex.getMessage();
+			if (s == null || s.isEmpty()) {
+				s = ex.toString();
+			}
+			ret += " " + s;
+		}
+		return ret;
+	}
 }
