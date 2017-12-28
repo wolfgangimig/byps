@@ -1,3 +1,4 @@
 byps.sdf
 byps.opensdf
 .vs
+**/log/
