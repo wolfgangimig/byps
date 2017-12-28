@@ -1,6 +1,17 @@
 BYPS version history
 
+5.14 2017-12-28
+
+- Fix empty method results in JSON API when re-login and executed synchronously.
+
+- BAuthentication in JSON API has to return method results via asyncResult object even 
+  if executed synchronously.
+
 5.13
 
 - Do not retry requests on SocketTimeoutException
 
+
+5.10 2017-02-21
+
+ - HTTP connection and read timeout values were not applied. 
