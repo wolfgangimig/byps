@@ -6,6 +6,8 @@ BYPS version history
 
 - BAuthentication in JSON API has to return method results via asyncResult object even 
   if executed synchronously.
+ 
+- C# uses .NET Framework 4.5
 
 5.13
 

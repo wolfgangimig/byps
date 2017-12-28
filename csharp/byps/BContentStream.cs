@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Net;
 
 namespace byps
 {
@@ -96,6 +97,39 @@ namespace byps
             }
         }
 
+        private String encodeUrl(String s, String charset)
+        {
+            String r = "";
+            if (charset == "UTF-8")
+            {
+                r = WebUtility.UrlEncode(s);
+            }
+            else
+            {
+                byte[] buf = System.Text.Encoding.ASCII.GetBytes(s);
+                byte[] bufE = WebUtility.UrlEncodeToBytes(buf, 0, buf.Length);
+                r = System.Text.Encoding.ASCII.GetString(bufE, 0, bufE.Length);
+            }
+            r = r.Replace("+", "%20");
+            return r;
+        }
+
+        private String decodeUrl(String s, String charset)
+        {
+            String r = "";
+            if (charset == "UTF-8" || charset == "utf-8")
+            {
+                r = WebUtility.UrlDecode(s);
+            }
+            else
+            {
+                byte[] buf = System.Text.Encoding.ASCII.GetBytes(s);
+                byte[] bufE = WebUtility.UrlDecodeToBytes(buf, 0, buf.Length);
+                r = System.Text.Encoding.ASCII.GetString(bufE, 0, bufE.Length);
+            }
+            return r;
+        }
+
         public virtual String ContentDisposition
         {
             get
@@ -104,11 +138,13 @@ namespace byps
                 sbuf.Append( AttachmentCode == ATTACHMENT ? "attachment;" : "inline;" );
                 String fileName = FileName;
                 if (fileName != null && fileName.Length != 0) {
-                  sbuf.Append(" filename=");
-                  bool q = fileName.IndexOf(' ') >= 0;
-                  if (q) sbuf.Append("\"");
-                  sbuf.Append(fileName);
-                  if (q) sbuf.Append("\"");
+                    sbuf.Append(" filename=");
+                    String fileNameA = encodeUrl(fileName, "ISO-8859-1");
+                    sbuf.Append(fileNameA);
+
+                    sbuf.Append("; filename*=UTF-8''");
+                    String fileNameU = encodeUrl(fileName, "UTF-8");
+                    sbuf.Append(fileNameU);
                 }
                 return sbuf.ToString();
             }
@@ -121,18 +157,45 @@ namespace byps
                 {
                     value = value.Trim();
                     attcode = value.IndexOf("attachment;") >= 0 ? ATTACHMENT : INLINE;
-                    int p = value.IndexOf("filename=");
+
+                    int p = value.IndexOf("filename*=");
                     if (p >= 0)
                     {
-                        fileName = value.Substring(p + "filename=".Length).Trim();
-                        if (fileName.StartsWith("\""))
+                        int b = p + 10;
+                        int e = value.IndexOf('\'', b);
+                        if (e != -1)
                         {
-                            fileName = fileName.Substring(1);
-                            if (fileName.EndsWith("\""))
+                            String charSet = value.Substring(b, e - b);
+                            b = e;
+                            e = value.IndexOf('\'', b + 1);
+                            if (e != -1)
                             {
-                                fileName = fileName.Substring(0, fileName.Length - 1);
+                                //String lang = value.substring(b, e); ignored
+                                b = e + 1;
+                                e = value.IndexOf(';', b);
+                                if (e == -1) e = value.Length;
+                                fileName = value.Substring(b, e - b);
+                                fileName = fileName.Trim();
+                                if (fileName.StartsWith("\"") && fileName.EndsWith("\"")) fileName = fileName.Substring(1, fileName.Length - 2);
+                                fileName = decodeUrl(fileName, charSet);
                             }
                         }
+                    }
+
+                    if (fileName == "")
+                    {
+                        p = value.IndexOf("filename=");
+                        if (p >= 0)
+                        {
+                            int b = p + 9;
+                            int e = value.IndexOf(';', b);
+                            if (e == -1) e = value.Length;
+                            fileName = value.Substring(b, e - b);
+                            fileName = fileName.Trim();
+                            if (fileName.StartsWith("\"") && fileName.EndsWith("\"")) fileName = fileName.Substring(1, fileName.Length - 2);
+                            fileName = decodeUrl(fileName, "ISO-8859-1");
+                        }
+
                     }
                 }
                 attachmentCodeVal = attcode;

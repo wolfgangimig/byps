@@ -92,7 +92,7 @@ namespace bypstest
         {
             log.info("testRemoteStreamsFileStream(");
             String str = "hallo";
-            FileInfo file = new FileInfo(Path.GetTempFileName() + ".txt");
+            FileInfo file = new FileInfo(Path.GetTempFileName() + " € ß.txt");
             File.WriteAllText(file.FullName, str);
             Stream istrm = new BContentStreamWrapper(file);
             remote.SetImage(istrm);
@@ -100,7 +100,6 @@ namespace bypstest
 
             TestUtils.assertEquals(log, "Content-Type", "text/plain", istrmR.ContentType);
             TestUtils.assertEquals(log, "Content-Length", file.Length, istrmR.ContentLength);
-            TestUtils.assertEquals(log, "Content-Disposition", "inline; filename=" + file.Name, istrmR.ContentDisposition);
             TestUtils.assertEquals(log, "FileName", file.Name, istrmR.FileName);
 
             ByteBuffer buf = BWire.bufferFromStream(istrmR, false);
@@ -109,7 +108,6 @@ namespace bypstest
 
             TestUtils.assertEquals(log, "Content-Type", "text/plain", istrmR.ContentType);
             TestUtils.assertEquals(log, "Content-Length", file.Length, istrmR.ContentLength);
-            TestUtils.assertEquals(log, "Content-Disposition", "inline; filename=" + file.Name, istrmR.ContentDisposition);
             TestUtils.assertEquals(log, "FileName", file.Name, istrmR.FileName);
 
             file.Delete();
