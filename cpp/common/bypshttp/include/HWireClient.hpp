@@ -621,6 +621,16 @@ namespace byps { namespace http {
 
     virtual ~MyContentStream() {
       l_debug << L"dtor(";
+
+      // If the stream has not been read,
+      // the server has no GET request that reads the stream and closes it on the server side.
+      // This is why TestRemoteServerR.testServerProvidesStreamForClient with stream size=0 hangs 
+      // up to 10s. The test continues, when the message is internally cleaned up.
+      // In order to circumvent this wait time, we could call ensureStream(), which 
+      // opens a GET that closes the stream on the server side when the requrest is cancelled.
+      // But maybe the stream should actually not be read but e.g. passed back to the server.
+      // In this case, the stream should not be closed on the server side. See TestRemoteStreams.testHandOverStream
+
       requestsToCancel->remove(id);
       l_debug << L")dtor";
     }

@@ -2,6 +2,11 @@
 #ifndef BYPS_API_H_
 #define BYPS_API_H_
 
+#define _CRTDBG_MAP_ALLOC  
+#include <stdlib.h>  
+#include <crtdbg.h>
+
+
 #define BOOST_SYSTEM_NO_DEPRECATED
 
 #ifdef BYPS_HEADER_ONLY

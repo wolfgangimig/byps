@@ -28,7 +28,12 @@ inline BTYPEID BHash(const char* s, int bias) {
 
 BINLINE string toUtf8(const wstring& str);
 BINLINE wstring fromUtf8(const string& str);
-
+BINLINE wstring encodeUrl(const wstring& s, const wstring& charset);
+BINLINE wstring decodeUrl(const wstring& s, const wstring& charset);
+BINLINE wstring trim(const wstring& s, function<bool (wchar_t)> test);
+BINLINE wstring trim(const wstring& s, const wstring& charsToTrim = wstring());
+BINLINE bool startsWith(const wstring& s, const wstring& f);
+BINLINE bool endsWith(const wstring& s, const wstring& f);
 }
 
 

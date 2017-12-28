@@ -94,7 +94,7 @@ class BThreadPoolImpl : public BThreadPool, public byps_enable_shared_from_this<
 	void joinThreads(std::vector<PThread>& stoppedThreads) {
 		for (unsigned i = 0; i < stoppedThreads.size(); i++) {
 			PThread t = stoppedThreads[i];
-			if (t && t->joinable()) {
+			if (t && t->get_id() != this_thread::get_id() && t->joinable()) {
 				t->join();
 			}
 			stoppedThreads[i] = PThread();
