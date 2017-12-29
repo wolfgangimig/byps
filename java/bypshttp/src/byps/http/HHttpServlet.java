@@ -1261,6 +1261,8 @@ public abstract class HHttpServlet extends HttpServlet implements
               File[] files = getConfig().getTempDir().listFiles();
               StringBuilder wr = new StringBuilder();
               for (File file : files) {
+                // Skip e.g. .DS_Store file created by Mac Finder
+                if (file.getName().startsWith(".")) continue;
                 wr.append(file.getName()).append("\r\n");
               }
               ret.put("return", wr.toString());

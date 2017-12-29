@@ -91,7 +91,7 @@ public class TestRemoteStreams {
   public void testRemoteStreamsFileStream() throws InterruptedException, IOException {
     log.info("testRemoteStreamsFileStream(");
     
-    File file = File.createTempFile("byps", ".txt");
+    File file = File.createTempFile("byps ä € ß", ".txt");
     String str = "hello";
     
     FileOutputStream fos = null;

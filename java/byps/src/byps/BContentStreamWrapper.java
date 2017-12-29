@@ -7,6 +7,7 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.channels.FileChannel;
@@ -28,6 +29,11 @@ public class BContentStreamWrapper extends BContentStream {
 	 * Wrapped stream.
 	 */
 	protected volatile InputStream innerStream;
+	
+	static
+	{
+	  ensureMimeTypesOnMacOS();
+	}
 	
 	/**
 	 * Default constructor.
@@ -72,11 +78,38 @@ public class BContentStreamWrapper extends BContentStream {
     Path fpath = Paths.get(file.getAbsolutePath());
     try {
       contentType = Files.probeContentType(fpath);
+      
     } catch (IOException ignored) {
     }
     return contentType;
 	}
 	
+	/**
+	 * Make sure that .mime.types file does exist in the user's home directory on MacOS.
+	 * probeContentType does only work on Mac OS, if .mime.types is available in the home dir.
+	 * @see http://ddmad.com/2016/04/03/Java-Bug-on-MacOS/
+	 */
+  private static void ensureMimeTypesOnMacOS() {
+    String os = System.getProperty("os.name");
+    if (os != null && os.toLowerCase().indexOf("mac") >= 0) {
+      File userHomeDir = new File(System.getProperty("user.home"));
+      File mimeTypesFile = new File(userHomeDir, ".mime.types");
+      if (!mimeTypesFile.exists()) {
+        try (InputStream istream = BContentStream.class.getResourceAsStream("_dot_mime.types");
+            FileOutputStream ostream = new FileOutputStream(mimeTypesFile)) {
+          byte[] buf = new byte[10000];
+          int len = 0;
+          while ((len = istream.read(buf, 0, buf.length)) != -1) {
+            ostream.write(buf, 0, len);
+          }
+        }
+        catch (Exception ignored) {
+          System.out.println(ignored);
+        }
+      }
+    }
+  }
+  
   protected BContentStream setAsyncCallback(BContentStreamAsyncCallback cb) throws IOException {
     super.setAsyncCallback(cb);
     ensureStream();
