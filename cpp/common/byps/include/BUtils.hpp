@@ -149,7 +149,7 @@ namespace byps {
   BINLINE wstring decodeUrl(const wstring& s, const wstring& charset) {
     stringstream ss;
     for (auto it = s.begin(); it != s.end(); it++) {
-      char c = ((wchar_t)(*it)) & 0xFF;
+      char c = ((char)(*it)) & 0xFF;
       if (c == '%') {
         if (++it != s.end()) {
           char buf[3] = { 0 };
