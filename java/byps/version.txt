@@ -2,6 +2,8 @@ BYPS version history
 
 5.14 2017-12-28
 
+- Allow to send additional request headers.
+
 - On MacOS, ensure that mime types are found for file extensions.
 
 - Fix empty method results in JSON API when re-login and executed synchronously.

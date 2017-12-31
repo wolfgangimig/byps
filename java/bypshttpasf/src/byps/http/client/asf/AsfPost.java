@@ -41,7 +41,8 @@ public class AsfPost extends AsfRequest {
     
     request = new HttpPost(url);
     applyTimeout();
-    
+    applyRequestProperties();
+   
     CloseableHttpResponse response = null; 
     InputStream is = null;
     ByteBuffer returnBuffer = null;
