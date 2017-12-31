@@ -1,4 +1,4 @@
-﻿#include "Testser-impl.h"
+#include "Testser-impl.h"
 using namespace ::std;
 using namespace ::byps;
 
@@ -44,9 +44,7 @@ BClient_Testser::BClient_Testser(PTransport transport)
 	{
 	initStubs(transport);
 }
-BINLINE byps::test::api::comp::PIncompatibleChangeIF BClient_Testser::getIncompatibleChangeIF() {
-	return incompatibleChangeIF;
-}
+
 BINLINE byps::test::api::inherit::PBioFruitServiceAuth BClient_Testser::getBioFruitService() {
 	return bioFruitService;
 }
@@ -114,7 +112,6 @@ BINLINE byps::test::api::ver::PEvolveIF BClient_Testser::getEvolveIF() {
 	return evolveIF;
 }
 PRemote BClient_Testser::getStub(int remoteId) {
-	if (remoteId == 88979576) return incompatibleChangeIF;
 	if (remoteId == 363642571) return bioFruitService;
 	if (remoteId == 474058508) return bioLemonService;
 	if (remoteId == 715959905) return fruitService;
@@ -140,7 +137,6 @@ PRemote BClient_Testser::getStub(int remoteId) {
 	return PRemote();
 }
 BINLINE void BClient_Testser::initStubs(PTransport transport) {
-	incompatibleChangeIF = byps::test::api::comp::PIncompatibleChangeIF(new byps::test::api::comp::BStub_IncompatibleChangeIF(transport));
 	bioFruitService = byps::test::api::inherit::PBioFruitServiceAuth(new byps::test::api::inherit::BStub_BioFruitService(transport));
 	bioLemonService = byps::test::api::inherit::PBioLemonServiceAuth(new byps::test::api::inherit::BStub_BioLemonService(transport));
 	fruitService = byps::test::api::inherit::PFruitServiceAuth(new byps::test::api::inherit::BStub_FruitService(transport));
