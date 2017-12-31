@@ -45,7 +45,7 @@ class PrintContext {
 		prApiAllH.print("#ifndef __{0}__", apiName + "_api_H"); prApiAllH.println();
 		prApiAllH.print("#define __{0}__", apiName + "_api_H"); prApiAllH.println();
 		prApiAllH.println();
-		prApiAllH.println("#include <byps.h>");
+		prApiAllH.println("#include \"Byps.h\"");
 		prApiAllH.println("#pragma pack(push, 8)");
 		
 		File fileImplAllH = new File(dirImplH, apiName + "-impl.h");

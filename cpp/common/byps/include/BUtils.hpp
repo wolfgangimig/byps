@@ -157,7 +157,7 @@ namespace byps {
           if (++it != s.end()) {
             buf[1] = (*it) & 0xFF;
             int n = 0;
-            sscanf_s(buf, "%x", &n);
+            sscanf(buf, "%x", &n);
             ss << (char)(n & 0xFF);
           }
         }
