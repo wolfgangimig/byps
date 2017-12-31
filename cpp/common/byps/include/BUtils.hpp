@@ -156,8 +156,7 @@ namespace byps {
           buf[0] = (*it) & 0xFF;
           if (++it != s.end()) {
             buf[1] = (*it) & 0xFF;
-            int n = 0;
-            sscanf(buf, "%x", &n);
+            int n = (int)strtol(buf, nullptr, 16);
             ss << (char)(n & 0xFF);
           }
         }
