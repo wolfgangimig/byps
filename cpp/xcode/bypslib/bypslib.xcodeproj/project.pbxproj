@@ -27,6 +27,7 @@
 		C0BB11A51FF80B3000E0C231 /* Testser-impl-014.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0BB11641FF807C700E0C231 /* Testser-impl-014.cpp */; };
 		C0BB11A61FF80B3000E0C231 /* Testser-impl-008.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0BB11651FF807C700E0C231 /* Testser-impl-008.cpp */; };
 		C0BB11A71FF80B3000E0C231 /* Testser-impl-009.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0BB11661FF807C700E0C231 /* Testser-impl-009.cpp */; };
+		C0EFFED51FFA32C600775768 /* SwiftHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFED41FFA32C600775768 /* SwiftHttpClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -192,6 +193,9 @@
 		C0BB11931FF807C800E0C231 /* HWireClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HWireClient.h; sourceTree = "<group>"; };
 		C0BB11951FF80AA800E0C231 /* MacHttpClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MacHttpClient.hpp; sourceTree = "<group>"; };
 		C0BB11961FF80AA800E0C231 /* MacHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacHttpClient.h; sourceTree = "<group>"; };
+		C0EFFED41FFA32C600775768 /* SwiftHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftHttpClient.swift; sourceTree = "<group>"; };
+		C0EFFED61FFA332E00775768 /* SwiftHttpClient-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftHttpClient-Bridging-Header.h"; sourceTree = "<group>"; };
+		C0EFFEEA1FFA35DC00775768 /* AllTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AllTests-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +232,7 @@
 				C0BB10DA1FF8069E00E0C231 /* bypslib.hpp */,
 				C0BB10DC1FF8069E00E0C231 /* bypslibPriv.hpp */,
 				C0BB10DE1FF8069E00E0C231 /* bypslib.cpp */,
+				C0EFFEEA1FFA35DC00775768 /* AllTests-Bridging-Header.h */,
 			);
 			path = bypslib;
 			sourceTree = "<group>";
@@ -546,6 +551,8 @@
 			children = (
 				C0BB11951FF80AA800E0C231 /* MacHttpClient.hpp */,
 				C0BB11961FF80AA800E0C231 /* MacHttpClient.h */,
+				C0EFFED41FFA32C600775768 /* SwiftHttpClient.swift */,
+				C0EFFED61FFA332E00775768 /* SwiftHttpClient-Bridging-Header.h */,
 			);
 			path = mac;
 			sourceTree = "<group>";
@@ -593,6 +600,7 @@
 				TargetAttributes = {
 					C0BB10D61FF8069E00E0C231 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -627,6 +635,7 @@
 				C0BB119C1FF80B3000E0C231 /* Testser-impl-007.cpp in Sources */,
 				C0BB119D1FF80B3000E0C231 /* Testser-impl-006.cpp in Sources */,
 				C0BB119E1FF80B3000E0C231 /* Testser-impl-012.cpp in Sources */,
+				C0EFFED51FFA32C600775768 /* SwiftHttpClient.swift in Sources */,
 				C0BB119F1FF80B3000E0C231 /* Testser-impl-016.cpp in Sources */,
 				C0BB11A01FF80B3000E0C231 /* Testser-impl-002.cpp in Sources */,
 				C0BB11A11FF80B3000E0C231 /* Testser-impl-003.cpp in Sources */,
@@ -749,24 +758,33 @@
 		C0BB10E31FF8069E00E0C231 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				HEADER_SEARCH_PATHS = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "../../common/bypshttp/include/platform/mac/SwiftHttpClient-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		C0BB10E41FF8069E00E0C231 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				HEADER_SEARCH_PATHS = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "../../common/bypshttp/include/platform/mac/SwiftHttpClient-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

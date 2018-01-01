@@ -7,6 +7,7 @@
 //
 
 #include "Bypshttp.hpp"
+#include "AllTests.h"
 
 #include <iostream>
 #include "bypslib.hpp"
@@ -25,3 +26,9 @@ void bypslibPriv::HelloWorldPriv(const char * s)
     std::cout << s << std::endl;
 };
 
+extern "C" {
+
+void execAllTests() {
+    //AllTests_run(nullptr);
+}
+}

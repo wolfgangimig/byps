@@ -6,12 +6,13 @@
 #include "Byps.h"
 #include "Bypshttp.h"
 
+
+
 namespace byps { namespace http {
     
     PHttpClient HttpClient_create(void* app);
     
 }}
-
 
 
 #endif
