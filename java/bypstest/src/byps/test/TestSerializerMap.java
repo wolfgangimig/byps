@@ -1,4 +1,5 @@
 package byps.test;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.nio.ByteBuffer;
 import java.util.HashMap;
@@ -88,7 +89,7 @@ public class TestSerializerMap {
 		obj.byte1 = new HashMap<Double,Byte>(new MyMap<Double,Byte>().add(1.0, (byte)-1).add(2.0, (byte)-2));
 		obj.char1 = new MyMap<Float, Character>().add(-1.0f, 'a').add(1.0e-1f, 'b');
 		obj.double1 = new MyMap<Byte, Double>().add((byte)3, -1.0e12);
-		obj.float1 = new MyMap<Character, Float>().add('A', 1.0f).add('¶', 2.0f).add('€', -1.2468e-3f);
+		obj.float1 = new MyMap<Character, Float>().add('A', 1.0f).add('Â¶', 2.0f).add('â‚¬', -1.2468e-3f);
 		obj.int1 = new MyMap<Integer, Integer>().add(1,2).add(2, 3);
 		obj.long1 = new MyMap<Short, Long>().add((short)99, 33L).add((short)-99, -33L);
 		obj.primitiveTypes1 = new MyMap<Integer, PrimitiveTypes>().add(1, TestUtils.createObjectPrimitiveTypes()).add(2, TestUtils.createObjectPrimitiveTypes());
@@ -109,7 +110,7 @@ public class TestSerializerMap {
 	@Test
 	public void testMapBoolean() throws BException {
 		log.info("testListBoolean(");
-		internalTestMapBoolean(new MyMap<String,Boolean>().add("aa", true).add("¶a", false).add("€a", true).add("\ta", false));
+		internalTestMapBoolean(new MyMap<String,Boolean>().add("aa", true).add("Â¶a", false).add("â‚¬a", true).add("\ta", false));
 		internalTestMapBoolean(new MyMap<String,Boolean>().add("'", true).add("\"", false).add("", true));
 		log.info(")testListBoolean");
 	}
@@ -155,7 +156,7 @@ public class TestSerializerMap {
 	@Test
 	public void testMapChar() throws BException {
 		log.info("testListChar(");
-		internalTestMapCharacter(new MyMap<Float, Character>().add(0.1f, 'a').add(0.2f, '¶').add(0.4f, '€'));
+		internalTestMapCharacter(new MyMap<Float, Character>().add(0.1f, 'a').add(0.2f, 'Â¶').add(0.4f, 'â‚¬'));
 		internalTestMapCharacter(new MyMap<Float, Character>().add(-0.1f, '\"').add(1.02f, '\"'));
 		log.info(")testListCharacter");
 	}
@@ -248,7 +249,7 @@ public class TestSerializerMap {
 	@Test
 	public void testMapFloat() throws BException {
 		log.info("testListFloat(");
-		internalTestMapFloat(new MyMap<Character,Float>().add('a', 1.2f).add('¶', 2.3f).add('€', 3.4f));
+		internalTestMapFloat(new MyMap<Character,Float>().add('a', 1.2f).add('Â¶', 2.3f).add('â‚¬', 3.4f));
 		internalTestMapFloat(new MyMap<Character,Float>().add('\n', 1.2f).add('\"', 2.3f).add('\'', 3.4f));
 		log.info(")testListFloat");
 	}
@@ -293,7 +294,7 @@ public class TestSerializerMap {
 	@Test
 	public void testMapString() throws BException {
 		log.info("testListString(");
-		internalTestMapString(new MyMap<String, String>().add("a", "bc").add("def", "€").add("€a", "a€").add("a€b", "¶").add("¶a", "a¶"));
+		internalTestMapString(new MyMap<String, String>().add("a", "bc").add("def", "â‚¬").add("â‚¬a", "aâ‚¬").add("aâ‚¬b", "Â¶").add("Â¶a", "aÂ¶"));
 		internalTestMapString(new MyMap<String, String>().add("", "empty").add("\r", "\\r").add("\t", "\\t"));
 		log.info(")testListString");
 	}

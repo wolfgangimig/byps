@@ -1,4 +1,5 @@
 package byps.test;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.Date;
 
@@ -56,8 +57,8 @@ public class TestRemotePrimitiveTypes {
 		TestUtils.assertEquals(log, "bool", false, remote.getBool());
 		remote.setByte((byte)11);
 		TestUtils.assertEquals(log, "byte", (byte)11, remote.getByte());
-		remote.setChar('€');
-		TestUtils.assertEquals(log, "char", '€', remote.getChar());
+		remote.setChar('â‚¬');
+		TestUtils.assertEquals(log, "char", 'â‚¬', remote.getChar());
 		remote.setShort((short)1234);
 		TestUtils.assertEquals(log, "short", (short)1234, remote.getShort());
 		remote.setInt(5678);

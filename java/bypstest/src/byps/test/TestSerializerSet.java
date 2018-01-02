@@ -1,4 +1,5 @@
 package byps.test;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.nio.ByteBuffer;
 import java.util.Arrays;
@@ -167,11 +168,11 @@ public class TestSerializerSet {
 	@Test
 	public void testSetChar() throws BException {
 		log.info("testSetChar(");
-		internaltestSetCharacter(new Character[] {'a', '¶', '€' });
+		internaltestSetCharacter(new Character[] {'a', 'Â¶', 'â‚¬' });
 		internaltestSetCharacter(new Character[] {});
 		internaltestSetCharacter(new Character[] {'a'});
-		internaltestSetCharacter(new Character[] {'¶'});
-		internaltestSetCharacter(new Character[] {'€'});
+		internaltestSetCharacter(new Character[] {'Â¶'});
+		internaltestSetCharacter(new Character[] {'â‚¬'});
 		log.info(")testSetCharacter");
 	}
 
@@ -264,11 +265,11 @@ public class TestSerializerSet {
 	@Test
 	public void testSetString() throws BException {
 		log.info("testSetString(");
-		internaltestSetString(new String[] {"a", "bc", "def", "€", "€a", "a€", "a€b", "¶", "¶a", "a¶", "a¶b" });
+		internaltestSetString(new String[] {"a", "bc", "def", "â‚¬", "â‚¬a", "aâ‚¬", "aâ‚¬b", "Â¶", "Â¶a", "aÂ¶", "aÂ¶b" });
 		internaltestSetString(new String[] {});
 		internaltestSetString(new String[] {"a"});
-		internaltestSetString(new String[] {"¶"});
-		internaltestSetString(new String[] {"€"});
+		internaltestSetString(new String[] {"Â¶"});
+		internaltestSetString(new String[] {"â‚¬"});
 		log.info(")testSetString");
 	}
 

@@ -1,4 +1,5 @@
 package byps.test;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.Date;
 
@@ -139,7 +140,7 @@ public class TestRemoteArrays {
 		long[] long1 = new long[] {999,88,7};
 		float[] float1 = new float[] {1.2f, 2.2f, 3.2f};
 		double[] double1 = new double[] {1e1, 1e2, 1e3};
-		String[] string1 = new String[] {"趑\0趑"};
+		String[] string1 = new String[] {"么么\0么么"};
 		PrimitiveTypes[] primitiveTypes1 = new PrimitiveTypes[] { TestUtils.createObjectPrimitiveTypes() };
 		Object[] object1 = new ArrayTypes1dim[] { new ArrayTypes1dim() };
 		Date[] date1 = new Date[] { new Date(System.currentTimeMillis()), null, new Date(System.currentTimeMillis() + 1)};
