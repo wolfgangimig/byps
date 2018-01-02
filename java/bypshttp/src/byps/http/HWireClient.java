@@ -3,6 +3,7 @@ package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.nio.ByteBuffer;
@@ -109,24 +110,38 @@ public class HWireClient extends BWire {
    * @see BWire#FLAG_GZIP
    */
   public HWireClient(String url, int flags, int timeoutSeconds, Executor threadPool) {
-    super(flags);
-    
-    if (log.isDebugEnabled()) log.debug("HWireClient(" + url + ", flags=" + flags + ", timeoutSeconds=" + timeoutSeconds + ", threadPool=" + threadPool);
+    this(createHttpClient(url), url, flags, timeoutSeconds, threadPool);
+  }
 
-    if (url == null || url.length() == 0) throw new IllegalStateException("Missing URL");
+  /**
+   * Initializes a new client-side HTTP communication. 
+   * @param httpClient
+   * @param url
+   * @param flags
+   * @param timeoutSeconds
+   * @param threadPool
+   */
+  public HWireClient(HHttpClient httpClient, String url, int flags, int timeoutSeconds, Executor threadPool) {
+    super(flags);
+    if (log.isDebugEnabled()) log.debug("HWireClient(" + url + ", flags=" + flags + ", timeoutSeconds=" + timeoutSeconds + ", threadPool=" + threadPool);
 
     this.surl = url;
     this.timeoutSecondsClient = timeoutSeconds;
-
     this.isMyThreadPool = threadPool == null;
     if (threadPool == null) {
       threadPool = Executors.newCachedThreadPool();
     }
     this.threadPool = threadPool;
-
     this.testAdapter = new HTestAdapter(this);
+    this.httpClient = httpClient;
+    
+    if (log.isDebugEnabled()) log.debug(")HWireClient");
+  }
 
-    // Create HTTP client object by a HHttpClientFactory. ----------------
+  private static HHttpClient createHttpClient(String url) {
+    if (log.isDebugEnabled()) log.debug("createHttpClient(");
+
+    if (url == null || url.length() == 0) throw new IllegalStateException("Missing URL");
 
     // The class name of the HHttpClientFactory is taken from the
     // System.properties.
@@ -148,10 +163,11 @@ public class HWireClient extends BWire {
     }
 
     if (log.isDebugEnabled()) log.debug("createHttpClient...");
-    this.httpClient = fact.createHttpClient(url);
-    if (log.isDebugEnabled()) log.debug("createHttpClient OK, " + this.httpClient);
-
-    if (log.isDebugEnabled()) log.debug(")HWireClient");
+    HHttpClient httpClient = fact.createHttpClient(url);
+    if (log.isDebugEnabled()) log.debug("createHttpClient OK, " + httpClient);
+    
+    if (log.isDebugEnabled()) log.debug(")createHttpClient");
+    return httpClient;
   }
 
   protected class AsyncResultAfterAllRequests implements BAsyncResult<BMessage> {

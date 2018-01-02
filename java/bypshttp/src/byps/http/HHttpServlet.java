@@ -421,7 +421,7 @@ public abstract class HHttpServlet extends HttpServlet implements
   }
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+  public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     if (log.isDebugEnabled()) log.debug("doGet(");
 
@@ -555,11 +555,11 @@ public abstract class HHttpServlet extends HttpServlet implements
       HttpServletResponse response) throws ServletException, IOException {
     if (log.isDebugEnabled()) log.debug("doPostMessage(");
 
-    if (log.isDebugEnabled()) log.debug("read message");
-    String contentType = request.getContentType();
-    String contentLength = request.getHeader("Content-Length");
-    if (log.isDebugEnabled()) log.debug("contentType=" + contentType
-        + ", contentLength=" + contentLength);
+    if (log.isDebugEnabled()) {
+      String contentType = request.getContentType();
+      String contentLength = request.getHeader("Content-Length");
+      log.debug("contentType=" + contentType + ", contentLength=" + contentLength);
+    }
 
     InputStream is = request.getInputStream();
     ByteBuffer ibuf = BWire.bufferFromStream(is);
@@ -614,7 +614,7 @@ public abstract class HHttpServlet extends HttpServlet implements
     return sess;
   }
 
-  protected void doMessage(final HttpServletRequest request,
+  public void doMessage(final HttpServletRequest request,
       final HttpServletResponse response, final ByteBuffer ibuf)
       throws IOException {
     if (log.isDebugEnabled()) log.debug("doMessage(");

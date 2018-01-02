@@ -31,6 +31,7 @@ public abstract class BRegistry {
   public final static int TYPEID_OBJECT = 21;
   public final static int TYPEID_VALUECLASS = 22;
   public final static int TYPEID_PUBLISH_CLIENT = 23;
+  public final static int TYPEID_HTTP_REQUEST = 24; // Used by bypshttp-shmem
   public final static int TYPEID_HEADER = 30;
 
   public final static int TYPEID_STRING_UTF16 = TYPEID_STRING;
@@ -38,7 +39,7 @@ public abstract class BRegistry {
   public final static int TYPEID_MIN_USER = 64;
 
   public final BBinaryModel bmodel;
-
+  
   public BRegistry(BBinaryModel bmodel) {
     this.bmodel = bmodel;
   }
@@ -61,30 +62,34 @@ public abstract class BRegistry {
   }
 
   protected BSerializer internalGetSerializer(int typeId) throws BException {
-    BRegisteredSerializer[] ssers = getSortedSerializers();
-    int left = 0, right = ssers.length;
-    while (left <= right) {
-      int idx = (right + left) / 2;
-      
-      BRegisteredSerializer rser = ssers[idx];
-      if (rser.typeId == typeId) {
-        if (rser.instance == null) {
-          Class<?> c;
-          try {
-            c = Class.forName(rser.name);
-            rser.instance = (BSerializer) c.newInstance();
-          } catch (Exception e) {
-            throw new BException(BExceptionC.CORRUPT, "No serializer for typeId=" + typeId);
+    BSerializer ser = null;
+    if (typeId >= TYPEID_MIN_USER) {
+      BRegisteredSerializer[] ssers = getSortedSerializers();
+      int left = 0, right = ssers.length;
+      while (left <= right) {
+        int idx = (right + left) / 2;
+        
+        BRegisteredSerializer rser = ssers[idx];
+        if (rser.typeId == typeId) {
+          if (rser.instance == null) {
+            Class<?> c;
+            try {
+              c = Class.forName(rser.name);
+              rser.instance = (BSerializer) c.newInstance();
+            } catch (Exception e) {
+              throw new BException(BExceptionC.CORRUPT, "No serializer for typeId=" + typeId);
+            }
           }
+          return rser.instance;
         }
-        return rser.instance;
+        
+        if (rser.typeId < typeId) left = idx + 1;
+        if (rser.typeId > typeId) right = idx - 1;
       }
-      
-      if (rser.typeId < typeId) left = idx + 1;
-      if (rser.typeId > typeId) right = idx - 1;
     }
-
-    BSerializer ser = getBuiltInSerializer(typeId);
+    else {
+      ser = getBuiltInSerializer(typeId);
+    }
     return ser;
   }
 
@@ -191,6 +196,7 @@ public abstract class BRegistry {
       if (typeId == TYPEID_SET) return BSerializer_14.instance;
       if (typeId == TYPEID_EXCEPTION) return BSerializer_20.instance;
       if (typeId == TYPEID_STREAM) return BSerializer_15.instance;
+      if (typeId == TYPEID_HTTP_REQUEST) return BSerializer_24.instance;
     }
     return null;
   }
@@ -204,6 +210,7 @@ public abstract class BRegistry {
     if (typeId == TYPEID_MAP) return true;
     if (typeId == TYPEID_SET) return true;
     if (typeId == TYPEID_STREAM) return true;
+    if (typeId == TYPEID_HTTP_REQUEST) return true;
     return false;
   }
 
