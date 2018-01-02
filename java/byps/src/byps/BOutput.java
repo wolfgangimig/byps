@@ -70,7 +70,7 @@ public abstract class BOutput {
 		}
 		store(ex);
 		
-		// Alle Streams schlieﬂen. Sie werden nicht gesendet.
+		// Close all streams. They will not be sent.
 		if (streams != null) {
 			for (BContentStream stream : streams) {
 				try { 

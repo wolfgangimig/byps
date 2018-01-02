@@ -10,10 +10,10 @@ import java.nio.ByteOrder;
  * Stream Header
  *
  * Binary Stream Big Endian:
- * BYPS + version binär + error binär + flags binär + messageId binär
+ * BYPS + version  + error  + flags  + messageId 
  * 
  * Binary Stream Little Endian:
- * SPYB + version binär + error binär + flags binär + messageId binär
+ * SPYB + version + error + flags + messageId 
  *
  * JSON
  * ["J", "version as stirng", "error as string","flags as string","messageId as string"

@@ -63,9 +63,13 @@ public class StdRequest implements HHttpRequest {
   }
 
   protected static BHttpRequest deserializeHttpRequest(BTransport transport, ByteBuffer bbuf) throws BException {
-    BInput bin = transport.getInput(null, bbuf); // hier einen BMessageHeader übergeben?
+    BInput bin = transport.getInput(null, bbuf); // hier einen BMessageHeader ï¿½bergeben?
     BHttpRequest response = (BHttpRequest)bin.load();
     return response;
+  }
+
+  @Override
+  public void setRequestProperty(String name, String value) {
   }
   
   

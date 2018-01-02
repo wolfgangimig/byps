@@ -34,23 +34,11 @@ public class BWire {
 	/**
 	 * Send bytes in buf and receive result in asyncResult.
 	 * Override this function to implement a useful transport of bytes.
-	 * Die Funktion wird nur clientseitig benötigt
+	 * This function is only used on the client side.
 	 * @param msg
 	 * @param asyncResult
-	 * @return null oder ein CancelSend-Objekt, dass die Send-Operation abbrechen kann.
 	 */
 	public void send(BMessage msg, BAsyncResult<BMessage> asyncResult) {
-//		ByteBuffer obuf = ByteBuffer.allocate(msg.buf.remaining());
-//		obuf.put(msg.buf);
-//		obuf.flip();
-//		
-//		putStreams(msg.streams, asyncResult);
-//		
-//		BMessageHeader oheader = new BMessageHeader(msg.header);
-//		oheader.flags |= BMessageHeader.FLAG_RESPONSE;
-//		BMessage omsg = new BMessage(oheader, obuf, null);
-//		asyncResult.setAsyncResult(omsg, null);
-	  
 	  asyncResult.setAsyncResult(null, new BException(BExceptionC.INTERNAL, "No wire attached to transport."));
 	}
 	
@@ -83,9 +71,9 @@ public class BWire {
 	}
 	
 	/**
-	 * Gib den Stream zur ID zurück.
-	 * Der Stream wird erst beim ersten read() geöffnet. Bzw. der BLOB wird erst beim ersten read() angefordert.
-	 * Funktion wird client- und serverseitig benötigt.
+	 * Gib den Stream zur ID zurï¿½ck.
+	 * Der Stream wird erst beim ersten read() geï¿½ffnet. Bzw. der BLOB wird erst beim ersten read() angefordert.
+	 * Funktion wird client- und serverseitig benï¿½tigt.
 	 * @param targetId Stream target ID
 	 * @return BContentStream object.
 	 * @throws IOException

@@ -4,7 +4,7 @@
     <!--ANT 1.7 is required                                        -->
     <!--define folder properties-->
     <property name="dir.buildfile" value="."/>
-    <property name="dir.workspace" value="D:/java/workspace_byps"/>
+    <!-- property name="dir.workspace" value="D:/java/workspace_byps"/ set as command line property -->
     <property name="dir.jarfile" value="${dir.buildfile}/dist"/>
     <target name="create_run_jar">
         <jar destfile="${dir.jarfile}/echo-program.jar" filesetmanifest="mergewithoutmain">
@@ -13,10 +13,11 @@
                 <attribute name="Class-Path" value="."/>
             </manifest>
             <fileset dir="${dir.buildfile}/bin"/>
-            <fileset dir="D:/git/byps/java/byps/bin"/>
-            <fileset dir="D:/git/byps/java/bypshttp-shmem/bin"/>
-            <fileset dir="D:/git/byps/java/byps-api/bin"/>
-            <fileset dir="D:/git/byps/java/byps-override/bin"/>
+            <fileset dir="${dir.workspace}/byps/bin"/>
+            <fileset dir="${dir.workspace}/bypshttp/bin"/>
+            <fileset dir="${dir.workspace}/bypshttp-shmem/bin"/>
+            <fileset dir="${dir.workspace}/byps-api/bin"/>
+            <fileset dir="${dir.workspace}/byps-override/bin"/>
             <zipfileset excludes="META-INF/*.SF" src="C:/Program Files/apache-tomcat-8.0.30/lib/annotations-api.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="C:/Program Files/apache-tomcat-8.0.30/lib/catalina-ant.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="C:/Program Files/apache-tomcat-8.0.30/lib/catalina-ha.jar"/>
@@ -49,7 +50,6 @@
             <zipfileset excludes="META-INF/*.SF" src="C:/Program Files/eclipse/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="C:/Program Files/eclipse/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="D:/git/byps/lib/java/log4j-1.2.17.jar"/>
-            <fileset dir="D:/git/byps/java/bypshttp/bin"/>
             <zipfileset excludes="META-INF/*.SF" src="D:/git/byps/lib/java/commons-fileupload-1.3.1.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="D:/git/byps/lib/java/commons-io-2.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="D:/git/byps/lib/java/undertow/undertow-examples-1.3.0.Beta5.jar"/>

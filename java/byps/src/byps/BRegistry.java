@@ -17,8 +17,7 @@ public abstract class BRegistry {
   public final static int TYPEID_DOUBLE = 8;
 
   public final static int TYPEID_STRING = 10;
-  // public final static int TYPEID_WSTRING = 11;// brauche ich wahrscheinlich
-  // nicht, weil das Übertragungsformat immer UTF-8 sein kann.
+  // public final static int TYPEID_WSTRING = 11; unused, Strings are always transported as UTF-8
 
   public final static int TYPEID_LIST = 12;
   public final static int TYPEID_MAP = 13;
@@ -148,25 +147,19 @@ public abstract class BRegistry {
     // }
     // }
 
-    // diese Funktion darf nur gerufen werden für objekte, die von BSerializable
-    // abgeleitet sind. Andere objekte dürfen nicht "annonym" exportiert werden.
-    // für sie muss beim writeObject der BSerializer mit angegeben werden.
-    //
-    // Diese Einschränkung muss gmacht werden, weil aus der Klasseninfo von obj
-    // keine Typ-Informationen zu den Generic-argumenten ermittelt werden
-    // können. Die
-    // JavaVM gibt das nicht her. Beispielsweise kann man nicht herausfinden,
-    // ob obj eine List<Integer> oder eine List<Long> ist.
-    //
-    // Die Funktion muss auch für Implementierungen von BRemote bzw. Subklassen
-    // von
-    // BSkeleton funktionieren. Weil die BRemote nicht zugleich auch
-    // Serializable sind,
-    // wird nur das Feld serialVersionUID gesucht und nciht etwa geprüft, ob das
-    // Objekt
-    // die Schnittstelle Serializable implementiert - tut es ja nicht, wenn's
-    // ein BRemote ist.
-
+    // This function can only be called for objects that inherit from BSerializable.
+    // Other objects cannot be exported anonymously. For those objects, the 
+    // BSerializer object has to be supplied in writeObject.
+    
+    // This limitation is required, because it is not possible to get 
+    // the type information from Generic arguments in Java. 
+    // E.g. you cannot distinguish between List<String> or List<Long> at
+    // runtime.
+    
+    // This function has to work for BRemote respectively BSkeleton too. 
+    // That's why we do not check whether the passed object implements
+    // BSerializable. Only the field serialVersionUID is evaluated.
+    
   }
 
   protected static class BRegisteredSerializer {
