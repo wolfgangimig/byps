@@ -33,12 +33,14 @@ repositories {
 
 dependencies {
 	compile project(":bypshttp")
+	compile project(":bypshttp-shmem")
 	compile project(":bypshttpasf")
 	compile project(":bypstest-api")
 	compile project(":bypstest-ser")
 	compile project(":bypstest-ser-json")
+	compile project(":bypstest-servlet")
 	
-	testCompile group: 'junit', name: 'junit', version: '4.12'
+	compile group: 'junit', name: 'junit', version: '4.12'
 	
 	// https://mvnrepository.com/artifact/io.undertow/undertow-core
 	compile group: 'io.undertow', name: 'undertow-core', version: '1.4.+'
