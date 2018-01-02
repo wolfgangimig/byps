@@ -166,10 +166,7 @@ public class StdioServer extends StdioCommunication {
         handler.service(servletRequest, servletResponse);
         servletResponse.getOutputStream().close();
       }
-      
-      // Make sure the StdioServletOutputStream is closed an the OnSendResponse is fired.
-      //servletResponse.getOutputStream().close();
-  
+        
     } catch (Exception e) {
       
       asyncResult.setAsyncResult(null, e);

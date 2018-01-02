@@ -122,7 +122,8 @@ public abstract class StdioCommunication {
   
   private void startPeerProgram() throws Exception {
     String javaHome = System.getProperty("java.home");
-    File javaExe = new File(new File(javaHome, "bin"), "java.exe");
+    String javaProg = System.getProperty("os.name").toLowerCase().contains("win") ? "java.exe" : "java";
+    File javaExe = new File(new File(javaHome, "bin"), javaProg);
     ProcessBuilder pbuilder = new ProcessBuilder(
         javaExe.getAbsolutePath(),
         "-jar",

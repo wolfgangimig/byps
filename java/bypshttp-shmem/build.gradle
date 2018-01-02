@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 
 sourceCompatibility = 1.8
-version = '5.13'
+
 
 sourceSets {
     main {
@@ -24,12 +24,6 @@ sourceSets {
 }
 
 
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'BYPS-test-srv',
-                   'Implementation-Version': version
-    }
-}
 
 repositories {
     mavenCentral()
@@ -54,4 +48,21 @@ dependencies {
 	
 }
 
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'BYPS-STDIO'
+                   //'Class-Path': configurations.runtime.files.collect { "lib/$it.name" }.join(' ')
+     }
+}
 
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+	manifest {
+        attributes 'Implementation-Title': 'BYPS-STDIO-Echo',
+ 				   'Main-Class': 'byps.stdio.common.EchoProgram'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+jar.dependsOn fatJar

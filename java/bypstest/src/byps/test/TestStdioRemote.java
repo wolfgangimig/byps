@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
+import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -29,6 +30,7 @@ import byps.BWire;
 import byps.RemoteException;
 import byps.http.HHttpServlet;
 import byps.http.HTransportFactoryClient;
+import byps.http.client.HHttpRequest;
 import byps.stdio.client.StdioClient;
 import byps.stdio.client.StdioServer;
 import byps.stdio.client.StdioWireClient;
@@ -45,59 +47,22 @@ import io.undertow.servlet.api.DeploymentInfo;
 import io.undertow.servlet.api.DeploymentManager;
 import io.undertow.servlet.api.InstanceHandle;
 
+/**
+ * Compare execution performance of HTTP communication to STDIO communication to in-process communication.
+ *
+ */
 public class TestStdioRemote {
+
+  /**
+   * Execute JAR task of bypshttp-shmem (resp. main project bypstest-srv) to get this program:
+   */
+  private final static String ECHO_PROGRAM_JAR = "../bypshttp-shmem/build/libs/bypshttp-shmem-all.jar";
 
   private final static Log log = LogFactory.getLog(TestStdioRemote.class);
   private volatile Undertow server;
   private CountDownLatch serverStopped = new CountDownLatch(1);
   private Servlet bypsServlet; 
 
-  private void startHttpServer(boolean waitForStop) throws Exception {
-    log.info("startHttpServer(wait=" + waitForStop);
-    
-    int port = 12146;
-    log.info("start at port " + port);
-    DeploymentInfo servletBuilder = Servlets
-        .deployment()
-        .setClassLoader(BypsServlet.class.getClassLoader())
-        .setContextPath("/stdio")
-        .setDeploymentName("stdio.war")
-        .addServlets(
-            Servlets.servlet("BypsServlet", BypsServlet.class)
-                .addInitParam("testAdapterEnabled", "true")
-                .addMapping("/bypsservlet").addMapping("/bypsservletauth/auth"));
-
-    DeploymentManager manager = Servlets.defaultContainer().addDeployment(
-        servletBuilder);
-    manager.deploy();
-    PathHandler path = Handlers.path(Handlers.redirect("/stdio"))
-        .addPrefixPath("/stdio", manager.start());
-
-    server = Undertow.builder().addHttpListener(port, "localhost")
-        .setHandler(path).build();
-    server.start();
-    
-    InstanceHandle<? extends Servlet> servletHandle = manager.getDeployment().getServlets().getManagedServlet("BypsServlet").getServlet();
-    bypsServlet = servletHandle.getInstance();
-
-    if (waitForStop) {
-      boolean isTimedout = serverStopped.await(100, TimeUnit.SECONDS);
-      if (!isTimedout) {
-        log.error("timeout");
-        server.stop();
-      }
-    }
-    log.info(")startHttpServer");
-  }
-
-  // Called from CoTestServlet
-  void stopHttpServer() {
-    if (server != null) {
-      server.stop();
-      serverStopped.countDown();
-    }
-  }    
-  
   @Before
   public void setUp() {
     try {
@@ -113,8 +78,51 @@ public class TestStdioRemote {
     stopHttpServer();
   }
   
+  /**
+   * The test {@link #testStdioCommunication()} requires a helper program
+   * that echos the stdin data to stdout. 
+   * Make sure, that this program works.
+   */
   @Test
-  public void testStdioCommunicationLocal() {
+  public void testClient() {
+    StdioClient client = new StdioClient(ECHO_PROGRAM_JAR);
+    try {
+      client.start();
+      CountDownLatch cdl = new CountDownLatch(1);
+      
+      ByteBuffer request = ByteBuffer.wrap("requesttext".getBytes());
+      
+      HHttpRequest httpRequest = client.post("abc-url", request, (result, ex) -> {
+        if (ex != null) {
+          ex.printStackTrace();
+        }
+        else {
+          String s = new String(result.array(), result.position(), result.remaining());
+          System.out.println("result=" + s);
+        }
+        cdl.countDown();
+      });
+      
+      httpRequest.run();
+      
+      cdl.await(10, TimeUnit.SECONDS);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+    finally {
+      client.done();
+      System.out.println("ok");
+    }
+  }
+  
+
+  /**
+   * In-process communication.
+   * Client and server communicate via PipedIn/OutputStreams.
+   */
+  @Test
+  public void testPipeCommunicationInProcess() {
     StdioClient httpClient = null;
     StdioServer server = null;
     BClient_Testser client;
@@ -139,9 +147,6 @@ public class TestStdioRemote {
       int nbOfThreads = 1;
       invokeMethod(client, nbOfRequests, nbOfThreads);
       
-//      BClient_Testser clientHttp = TestUtilsHttp.createClient();
-//      invokeMethod(clientHttp, nbOfRequests, nbOfThreads);
-//      clientHttp.done();
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -156,6 +161,10 @@ public class TestStdioRemote {
     }
   }
 
+  /**
+   * Test communication via STDIO.
+   * 
+   */
   @Test
   public void testStdioCommunication() {
     StdioServer server = null;
@@ -163,24 +172,26 @@ public class TestStdioRemote {
     Process proc2 = null;
     BClient_Testser client = null;
     try {
+      
+      // Start helper programs that echo their stdin to stdout.
+      // This programs allows to have the client side and server side in this test.
       proc1 = startEchoProgram();
       proc2 = startEchoProgram();
       
+      // Server side reads from proc1 and writes to proc2.
       server = new StdioServer(proc1.getInputStream(), proc2.getOutputStream(), 
           StdioServer.MessageHandler.fromServlet((HHttpServlet)bypsServlet), 
           10);
 
       server.start();
 
+      // Client side reads from proc2 and writes to proc1.
       client = createClient(proc2.getInputStream(), proc1.getOutputStream());
 
       int nbOfRequests = 100000;
       int nbOfThreads = 10;
       invokeMethod(client, nbOfRequests, nbOfThreads);
       
-//      BClient_Testser clientHttp = TestUtilsHttp.createClient();
-//      invokeMethod(clientHttp, nbOfRequests, nbOfThreads);
-//      clientHttp.done();
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -201,6 +212,10 @@ public class TestStdioRemote {
     }
   }
 
+  
+  /**
+   * Test communication via TCP.
+   */
   @Test
   public void testTcpCommunication() {
     BClient_Testser client = null;
@@ -249,11 +264,12 @@ public class TestStdioRemote {
 
   private Process startEchoProgram() throws Exception {
     String javaHome = System.getProperty("java.home");
-    File javaExe = new File(new File(javaHome, "bin"), "java.exe");
+    String javaProg = System.getProperty("os.name").toLowerCase().contains("win") ? "java.exe" : "java";
+    File javaExe = new File(new File(javaHome, "bin"), javaProg);
     ProcessBuilder pbuilder = new ProcessBuilder(
         javaExe.getAbsolutePath(),
         "-jar",
-        "..\\bypshttp-shmem\\dist\\echo-program.jar");
+        ECHO_PROGRAM_JAR);
 //        "d:\\temp\\log\\byps-stdout.txt",
 //        "d:\\temp\\log\\byps-stderr.txt");
     Process proc = pbuilder.start();
@@ -322,5 +338,52 @@ public class TestStdioRemote {
     syncResult.getResult();
     return client;
   }
+
+  private void startHttpServer(boolean waitForStop) throws Exception {
+    log.info("startHttpServer(wait=" + waitForStop);
+    
+    int port = 12146;
+    log.info("start at port " + port);
+    DeploymentInfo servletBuilder = Servlets
+        .deployment()
+        .setClassLoader(BypsServlet.class.getClassLoader())
+        .setContextPath("/stdio")
+        .setDeploymentName("stdio.war")
+        .addServlets(
+            Servlets.servlet("BypsServlet", BypsServlet.class)
+                .addInitParam("testAdapterEnabled", "true")
+                .addMapping("/bypsservlet").addMapping("/bypsservletauth/auth"));
+
+    DeploymentManager manager = Servlets.defaultContainer().addDeployment(
+        servletBuilder);
+    manager.deploy();
+    PathHandler path = Handlers.path(Handlers.redirect("/stdio"))
+        .addPrefixPath("/stdio", manager.start());
+
+    server = Undertow.builder().addHttpListener(port, "localhost")
+        .setHandler(path).build();
+    server.start();
+    
+    InstanceHandle<? extends Servlet> servletHandle = manager.getDeployment().getServlets().getManagedServlet("BypsServlet").getServlet();
+    bypsServlet = servletHandle.getInstance();
+
+    if (waitForStop) {
+      boolean isTimedout = serverStopped.await(100, TimeUnit.SECONDS);
+      if (!isTimedout) {
+        log.error("timeout");
+        server.stop();
+      }
+    }
+    log.info(")startHttpServer");
+  }
+
+  // Called from CoTestServlet
+  void stopHttpServer() {
+    if (server != null) {
+      server.stop();
+      serverStopped.countDown();
+    }
+  }    
+  
 
 }
