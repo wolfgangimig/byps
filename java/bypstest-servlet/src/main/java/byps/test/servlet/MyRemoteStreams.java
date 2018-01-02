@@ -142,7 +142,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	
 	@Override
 	public InputStream getTextStream() throws RemoteException {
-		final String text = "text-stream euro=€";
+		final String text = "text-stream euro=â‚¬";
 		return new BContentStreamWrapper() {
 			@Override
 			protected InputStream openStream() throws IOException {
@@ -154,7 +154,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 			}
 			@Override 
 			public String getContentDisposition() {
-			  return "attachment; filename=\"text*stream €\"";
+			  return "attachment; filename=\"text*stream â‚¬\"";
 			}
 		};
 		

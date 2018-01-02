@@ -661,12 +661,6 @@ public class HWireClient extends BWire {
 
   protected class MyInputStream extends InputStreamWrapper implements BAsyncResult<BContentStream> {
 
-    // Implementierung ist so kompliziert, damit die HTTP-Verbindung abgebrochen
-    // werden kann.
-    // Die Exception durch RequestToCancel.cancle() wird nur in openStream
-    // ausgewertet. Aber da
-    // müsste das cancel schon während des openStream kommen.
-
     volatile RequestToCancel request;
     volatile HttpURLConnection conn;
     volatile Throwable ex;

@@ -543,6 +543,11 @@ class PrintContext extends PrintContextBase {
 	private int maxFileSize;
 	private Map<String,String> packageAliasMap;
 
+	/**
+	 * Lamda expressions supported.
+	 * Currently, we do only have a generator for C++ that supports lambdas.
+	 * This value must be true.
+	 */
 	public final boolean lambdaSupported;
 
 

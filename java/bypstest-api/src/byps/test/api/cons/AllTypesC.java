@@ -2,7 +2,6 @@ package byps.test.api.cons;
 
 import java.io.Serializable;
 
-
 public class AllTypesC implements Serializable {
 
 	private static final long serialVersionUID = 6059479029804902916L;

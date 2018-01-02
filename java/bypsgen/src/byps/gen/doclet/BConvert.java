@@ -479,16 +479,6 @@ public class BConvert {
 					isFinal, 
 					isInline);
 			
-			
-			
-//			if (tinfo.isSetType()) {
-//				TypeInfo targ = tinfo.typeArgs.get(0);
-//				if ( targ.isInline && !targ.isArrayType()) {
-//					// Das geht nicht in C++. Ich müsste einen operator < definieren.
-//					throw new GeneratorException(errInfo + ": Inline classes cannot be used as elements of sets.");
-//				}
-//			}
-			
 			makeSerialInfoForCollectionType(errInfo, tinfo);
 		}
 		
@@ -1095,7 +1085,7 @@ public class BConvert {
 	
 	private final static HashSet<String> supportedCollections = new HashSet<String>(Arrays.asList(
 			"java.util.List", "java.util.ArrayList", 
-			// LinkedList wird nicht unterstützt, weil wir in JSON-Serializierung über den Index auf die Elemente zugreifen
+			// We do not support LinkedList because we access the elements by index in JSON serialization.
 			"java.util.Map", "java.util.HashMap", "java.util.TreeMap",
 			"java.util.Set", "java.util.HashSet", "java.util.TreeSet"));
 	

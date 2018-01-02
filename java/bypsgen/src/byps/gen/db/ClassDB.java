@@ -44,16 +44,16 @@ public class ClassDB {
 
   public void add(SerialInfo v) {
     SerialInfo p = serials.get(v.toString());
-
-    // Während der Code analysiert wird, kann es dazu kommen, dass
-    // eine Klasse zuerst als Array-Typ (z. B. Point2D[]) gefunden wird,
-    // bevor sie als Serializable eingelesen wird.
-    // In diesem Fall ist keine Information darüber verfügbar,
-    // ob die Klasse "inline" ist. Sie gelangt hier also zunächst
-    // mit isInline=false in die Map.
-    // Wenn sie später als Serializable aufgenommen wird,
-    // tausche ich sie aus.
-
+    
+    // During code analysis, a class could be found as 
+    // array type first (e.g. Point2D[]) before it is 
+    // recognized as a Serializable. 
+    // In this case, we do not have information about
+    // its inline status.
+    // So it is inserted into the map with isInline=false.
+    // If the class is found as Serializable later, 
+    // it is replaced in the map.
+    
     if (p == null) {
       log.info("Add serializable Class " + v);
       serials.put(v.toString(), v);
@@ -79,10 +79,9 @@ public class ClassDB {
 
   public TypeInfo getTypeInfo(String fullName) {
 
-    // Die funktion gibt's ganz ähnlich auch in
-    // BRegistryForClassDB-getTypeIdForBuiltInType
-    // kann man eine eliminieren?
-
+	// A similar function can be found in BRegistryForClassDB.getTypeIdForBuiltInType.
+	// Can one of this functions be eliminated?
+	  
     int typeId = -1;
     if (fullName.equals("boolean")) typeId = BRegistry.TYPEID_BOOL;
     else if (fullName.equals("byte")) typeId = BRegistry.TYPEID_INT8;

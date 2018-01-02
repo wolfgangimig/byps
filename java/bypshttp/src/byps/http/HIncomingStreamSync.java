@@ -359,7 +359,6 @@ public class HIncomingStreamSync extends BContentStream {
 			}
 		}
 		
-		// Lebenszeit verlängern
 		extendLifetime();
 		
 		return bytesRead;

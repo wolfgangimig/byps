@@ -49,7 +49,11 @@ initParams = { @WebInitParam(name = "testAdapterEnabled", value = "true")
 })
 public class BypsServlet extends HHttpServlet {
   private static final long serialVersionUID = 1L;
-  private File tempDir = new File("d:\\temp\\bypssrv");
+
+  /**
+   * Temporary directory used for streams.
+   */
+  private File tempDir = new File(System.getProperty("java.io.tmpdir"));
   
   static {
     // Shorten the accepted duration for authentication so that some tests do not have 
@@ -58,7 +62,6 @@ public class BypsServlet extends HHttpServlet {
   }
 
   public BypsServlet() {
-    // temp. Verzeichnis für Streams
     if (tempDir == null) {
       String tempDirStr = System.getProperty("java.io.tmpdir");
       if (tempDirStr != null && tempDirStr.length() != 0) {
