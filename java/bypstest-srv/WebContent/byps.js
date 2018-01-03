@@ -914,7 +914,7 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 		var ret = this._url;
 		if (servletPath.length) {
 			var p = ret.lastIndexOf('/');
-			if (p >= 0) ret = ret.substring(0, p);
+			ret = (p >= 0) ? ret.substring(0, p) : "";
 			ret += servletPath;
 		}
 		

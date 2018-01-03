@@ -2,6 +2,8 @@ BYPS version history
 
 5.14 2017-12-28
 
+- Allow relative URLs in JSON API.
+
 - Allow to send additional request headers.
 
 - On MacOS, ensure that mime types are found for file extensions.
