@@ -914,7 +914,7 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 		var ret = this._url;
 		if (servletPath.length) {
 			var p = ret.lastIndexOf('/');
-			if (p >= 0) ret = ret.substring(0, p);
+			ret = (p >= 0) ? ret.substring(0, p) : "";
 			ret += servletPath;
 		}
 		
@@ -1004,88 +1004,123 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 		return new byps.BInputOutput(this, null, jsonText);
 	};
 	
+	/**
+	 * Send a method and receive its result.
+	 * If asyncResult is unset and byps.createPromise is unset, the function is executed synchronously.
+	 * If asyncResult is unset and byps.createPromise is set, the function returns a Promise object.
+	 * If asyncResult is set, the method result is passed to this function. 
+	 * @param methodRequest Serialized method
+	 * @param asyncResult Optional. Function that receives the result or exception.
+	 * @return Depends on asyncResult.
+	 */
 	this.sendMethod = function(methodRequest, asyncResult) {
+		
 		var ret = null;
+		
+		// Results for synchronous processing.
+		var syncResult = null;
+		var syncException = null;
+		
 		var me = this;
+		
+		// Use Promises?
 		if (!asyncResult && byps.createPromise) {
-			ret = byps.createPromise(function(resolve, reject) {
-				me.internalSendMethod(methodRequest, function(result, ex) {
-					if (ex) {
-						reject(ex);
-					}
-					else {
-						resolve(result);
-					}
-				});
-			});
+			
+			var cb = function(resolve, reject) {
+				me._internalSendMethod(methodRequest, function(result, ex) {
+					if (ex) reject(ex); else resolve(result);
+				}, true);
+			}
+			
+			ret = byps.createPromise(cb);
 		}
 		else {
-			ret = me.internalSendMethod(methodRequest, asyncResult);
+			
+			// Process synchronously or asynchronously.
+			// For further processing, an asyncResult object is provided in either case.
+			// This means, that method result or exception is always passed to an asyncResult function.
+			// A boolean parameter, processAsync, determines whether function calls are sync or async.
+			
+			// For synchronous processing, an asyncResult function is defined here, that
+			// stores the method result in a local variable.
+			// This variable is returned after the _internalSendMethod function returns.
+			
+			var processAsync = !!asyncResult;
+			
+			if (!processAsync) {
+				
+				// Sync processing. 
+				// Fake an asyncResult that stores the method result in 
+				// local variables syncResult and syncException.
+				
+				asyncResult = function(result, ex) {
+					syncResult = result;
+					syncException = ex;
+				};
+			}
+			
+			me._internalSendMethod(methodRequest, asyncResult, processAsync);
+			
+			if (!processAsync) {
+				if (syncException) {
+					throw syncException;
+				}
+				ret = syncResult;
+			}
+			
 		}
 		
 		return ret;
 	};
 
-	this.internalSendMethod = function(methodRequest, asyncResult) {
-		var ret = null;
+	this._internalSendMethod = function(methodRequest, asyncResult, processAsync) {
+		
+		var innerResult = function(methodResult, ex) {
+			// Get method result from the method result class.
+			var ret = methodResult ? methodResult.result : null;
+			asyncResult(ret, ex);
+		};
+		
+		this._assignSessionThenSendMethod(methodRequest, innerResult, processAsync);
+	};
 
-		if (asyncResult) {
-			
-			this._assignSessionThenSendMethod(methodRequest, function(methodResult, ex) {
-				var ret = methodResult ? methodResult.result : null;
-				asyncResult(ret, ex);
+	this._assignSessionThenSendMethod = function(methodRequest, asyncResult, processAsync) {
+		
+		// Is authentication used?
+		if (this._authentication) {
+
+			var transport = this;
+
+			// Get session object from authentication hander.
+			this._authentication.getSession(null, methodRequest._typeId, function(session, ex) {
+
+				if (ex) {
+					
+					// Relogin if a 401 is returned.
+
+					var relogin = transport._internalIsReloginException(ex, typeId);
+					if (relogin) {
+						transport._reloginAndRetrySend(methodRequest, asyncResult, processAsync);
+					}
+					else {
+						asyncResult(null, ex);
+					}
+
+				}
+				else {
+					// Assign the session object to the method.
+					transport._assignSessionInMethodRequest(methodRequest, session);
+					
+					// Send the method.
+					transport.send(methodRequest, asyncResult, processAsync);
+				}
 			});
 
 		}
 		else {
-			var methodResult = this._assignSessionThenSendMethod(methodRequest);
-			ret = methodResult ? methodResult.result : null;
+			
+			this.send(methodRequest, asyncResult, processAsync);
 		}
-		return ret;
-	};
-
-	this._assignSessionThenSendMethod = function(methodRequest, asyncResult) {
-		var methodResult = null;
-
-		if (this._authentication) {
-
-			if (asyncResult) {
-
-				var transport = this;
-
-				this._authentication.getSession(null, methodRequest._typeId, function(session, ex) {
-
-					if (ex) {
-
-						var relogin = transport._internalIsReloginException(ex, typeId);
-						if (relogin) {
-							transport._reloginAndRetrySend(methodRequest, asyncResult);
-						}
-						else {
-							asyncResult(null, ex);
-						}
-
-						asyncResult(null, ex);
-					}
-					else {
-
-						transport._assignSessionInMethodRequest(methodRequest, session);
-						transport.send(methodRequest, asyncResult);
-					}
-				});
-
-			}
-			else {
-				var session = this._authentication.getSession(null, methodRequest._typeId);
-				this._assignSessionInMethodRequest(methodRequest, session);
-				methodResult = this.send(methodRequest);
-			}
-		}
-		else {
-			methodResult = this.send(methodRequest, asyncResult);
-		}
-
-		return methodResult;
 	};
 
 	this._assignSessionInMethodRequest = function(methodRequest, session) {
@@ -1099,25 +1134,8 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 		}
 	};
 
-	this.send = function(obj, asyncResult) {
-		var processAsync = !!asyncResult;
-		var methodResult = {};
-		var exception = null;
-
-		if (!processAsync) {
-			asyncResult = function(result, ex) {
-				methodResult = result;
-				exception = ex;
-			};
-		}
-
+	this.send = function(obj, asyncResult, processAsync) {
 		this._internalSend(obj, asyncResult, processAsync);
-
-		if (!processAsync) {
-			if (exception) throw exception;
-		}
-
-		return methodResult;
 	};
 
 	this._internalSend = function(obj, asyncResult, processAsync) {
@@ -1132,6 +1150,7 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 
 			var methodResult = null;
 
+			// Deserialize the method result.
 			try {
 				if (!ex) {
 					var bin = transport.getInput(responseMessage.jsonText);
@@ -1142,6 +1161,7 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 				ex = ex2;
 			}
 
+			// Authentication error thrown?
 			var relogin = me._internalIsReloginException(ex, 0);
 			if (relogin) {
 
@@ -1153,6 +1173,7 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 			}
 		};
 
+		// Send method
 		wire.send(requestMessage, outerResult, processAsync);
 
 	};
@@ -1237,22 +1258,12 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 	};
 
 	this._internalAuthenticate = function(asyncResult, processAsync) {
-		var result = null;
-		
 		if (this._authentication) {
-
-			result = this._authentication.authenticate(null, processAsync ? authResult : null);
+			this._authentication.authenticate(null, asyncResult, processAsync);
 		}
 		else {
-			if (processAsync) {
-				result = true;
-			}
-			else {
-				asyncResult(true, null);
-			}
+			asyncResult(true, null);
 		}
-		
-		return result;
 	};
 
 	this._internalIsReloginException = function(ex, typeId) {
@@ -1278,16 +1289,7 @@ byps.BTransport = function(apiDesc, wire, targetId) {
 			}
 			else {
 				// Send request again
-				var messageResult = null;
-				try {
-					messageResult = transport._assignSessionThenSendMethod(methodRequest, processAsync ? asyncResult : null);
-				}
-				catch (ex2) {
-					ex = ex2;
-				}
-				if (!processAsync) {
-					asyncResult(messageResult, ex);
-				}
+				transport._assignSessionThenSendMethod(methodRequest, asyncResult, processAsync);
 			}
 		};
 
@@ -1669,9 +1671,7 @@ byps.BClient = function() {
 
 		  _innerAuth : innerAuth,
 
-		  authenticate : function(ignored, asyncResult) {
-
-			  var processAsync = !!asyncResult;
+		  authenticate : function(ignored, asyncResult, processAsync) {
 
 			  var outerResult = function(result, ex) {
 
@@ -1686,27 +1686,14 @@ byps.BClient = function() {
 					  }
 				  }
 
-				  if (processAsync) {
-					  asyncResult(result, ex);
-				  }
-				  else if (ex) { throw ex; }
+				  asyncResult(result, ex);
 			  };
 
 			  var result = true;
 			  var exception = null;
 
 			  if (innerAuth) {
-
-				  try {
-					  result = innerAuth.authenticate(me, processAsync ? outerResult : null);
-				  }
-				  catch (ex) {
-					  exception = ex;
-				  }
-
-				  if (!processAsync) {
-					  outerResult(result, exception);
-				  }
+				  innerAuth.authenticate(me, outerResult, processAsync);
 			  }
 			  else {
 				  outerResult(result, null);

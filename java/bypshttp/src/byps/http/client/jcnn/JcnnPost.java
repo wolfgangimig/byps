@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
 
 import org.apache.commons.logging.Log;
@@ -89,6 +90,10 @@ public class JcnnPost extends JcnnRequest {
       catch (SocketException e) {
         if (log.isDebugEnabled()) log.debug("received exception=" + e);
         returnException = new BException(BExceptionC.CONNECTION_TO_SERVER_FAILED, "Socket error", e);
+      }
+      catch (SocketTimeoutException e) {
+        if (log.isDebugEnabled()) log.debug("received exception=" + e);
+        returnException = new BException(BExceptionC.TIMEOUT, "Socket timeout", e);
       }
       catch (Throwable e) {
         if (log.isDebugEnabled()) log.debug("received exception=" + e);

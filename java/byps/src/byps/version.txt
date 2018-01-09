@@ -1,3 +1,0 @@
-5.10 2017-02-21
-
- - HTTP connection and read timeout values were not applied. 

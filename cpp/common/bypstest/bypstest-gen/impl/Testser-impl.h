@@ -1,8 +1,8 @@
 ﻿#ifndef __Testser_impl_H__
 #define __Testser_impl_H__
 
-#include <Byps-impl.h>
-#include <Testser-api.h>
+#include "Byps-impl.h"
+#include "Testser-api.h"
 
 
 // checkpoint byps.gen.cpp.GenApiClass:652

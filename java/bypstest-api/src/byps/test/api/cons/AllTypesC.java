@@ -2,7 +2,6 @@ package byps.test.api.cons;
 
 import java.io.Serializable;
 
-
 public class AllTypesC implements Serializable {
 
 	private static final long serialVersionUID = 6059479029804902916L;
@@ -10,20 +9,20 @@ public class AllTypesC implements Serializable {
 	public final static boolean bool1s = true;
 	public final static boolean bool2s = false;
 	public final static byte byte1s = (byte)1;
-	public final static char char1s = '¿';
+	public final static char char1s = 'Â¿';
 	public final static String stringNull = ""; 
 	
 	/**
 	 * This constant holds the currency symbol for Euro.
 	 * It is defined "final static" and thus cannot be changed. 
 	 */
-	public final static char char2s = '€';
+	public final static char char2s = 'â‚¬';
 	public final static short short1s = (short)3;
 	public final static int int1s = 4;
 	public final static long long1s = 0x5555555555555555L;
 	public final static float float1s = 6.8f;
 	public final static double double1s = 7.8;
-	public final static String string1s = "Aa__¶¶__€€__\t\r\n\"\'";
+	public final static String string1s = "Aa__Â¶Â¶__â‚¬â‚¬__\t\r\n\"\'";
 	
 	/**
 	 * This defines a complex constant.

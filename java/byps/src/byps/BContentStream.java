@@ -4,6 +4,9 @@ package byps;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 /**
  * BContentStream is an InputStream with content type and content length.
@@ -281,17 +284,50 @@ public abstract class BContentStream extends InputStream {
 	  if (value != null && value.length() != 0) {
 	    value = value.trim();
 	    att = value.indexOf("attachment;") >= 0;
-	    int p = value.indexOf("filename=");
+	    
+	    // Check for filename header following https://tools.ietf.org/html/rfc5987 
+	    // 3.2.2 Examples: foo: bar; title*=UTF-8''%c2%a3%20and%20%e2%82%ac%20rates
+	    int p = value.indexOf("filename*=");
 	    if (p >= 0) {
-	      fileName = value.substring(p + "filename=".length()).trim();
-	      if (fileName.startsWith("\"")) {
-	        fileName = fileName.substring(1);
-	        if (fileName.endsWith("\"")) {
-	          fileName = fileName.substring(0, fileName.length()-1);
-	        }
+	      int b = p + 10;
+	      int e = value.indexOf('\'', b);
+	      if (e != -1) {
+	    	  String charSet = value.substring(b, e);
+	    	  b = e;
+	    	  e = value.indexOf('\'', b+1);
+	    	  if (e != -1) {
+	    		  //String lang = value.substring(b, e); ignored
+	    		  b = e + 1;
+	    		  e = value.indexOf(';', b);
+	    		  if (e == -1) e = value.length();
+	    		  fileName = value.substring(b, e);
+	    		  fileName = fileName.trim();
+	    		  if (fileName.startsWith("\"") && fileName.endsWith("\"")) fileName = fileName.substring(1, fileName.length()-1);
+	    		  try {
+	    			  fileName = URLDecoder.decode(fileName, charSet);
+	    		  } catch (UnsupportedEncodingException e1) {
+	    		  }
+	    	  }
 	      }
 	    }
+	    
+	    if (fileName.isEmpty()) {
+	      p = value.indexOf("filename=");
+		  if (p >= 0) {
+		    int b = p + 9;
+		    int e = value.indexOf(';', b);
+		    if (e == -1) e = value.length();
+		    fileName = value.substring(b, e);
+	        fileName = fileName.trim();
+	        if (fileName.startsWith("\"") && fileName.endsWith("\"")) fileName = fileName.substring(1, fileName.length()-1);
+            try {
+	          fileName = URLDecoder.decode(fileName, "ISO-8859-1");
+            } catch (UnsupportedEncodingException e1) {
+            }
+          }
+	    }
 	  }
+	  
 	  setContentDisposition(fileName, att);
 	}
  	
@@ -303,13 +339,22 @@ public abstract class BContentStream extends InputStream {
  	public String getContentDisposition() {
     StringBuilder sbuf = new StringBuilder();
     sbuf.append( getAttachmentCode() == ATTACHMENT ? "attachment;" : "inline;" );
-    final String fileName = getFileName();
+    String fileName = getFileName();
     if (fileName != null && fileName.length() != 0) {
       sbuf.append(" filename=");
-      boolean q = fileName.indexOf(' ') >= 0;
-      if (q) sbuf.append("\"");
-      sbuf.append(fileName);
-      if (q) sbuf.append("\"");
+      try {
+		String fileNameA = URLEncoder.encode(fileName, "ISO-8859-1").replaceAll("\\+", "%20");
+		sbuf.append(fileNameA);
+	  } catch (UnsupportedEncodingException e) {
+	  }
+      
+      sbuf.append("; filename*=UTF-8''");
+      try {
+		String fileNameU = URLEncoder.encode(fileName, "UTF-8").replaceAll("\\+", "%20");
+		sbuf.append(fileNameU);
+	  } catch (UnsupportedEncodingException e) {
+	  }
+
     }
     return sbuf.toString();
  	}

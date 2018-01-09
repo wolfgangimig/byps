@@ -1,4 +1,27 @@
 BYPS Version History
 
+5.14 2017-12-28
+
 - Filter empty cookies before calling CookieManager.put to prevent SEVERE log entry.
 
+- Allow relative URLs in JSON API.
+
+- Allow to send additional request headers.
+
+- On MacOS, ensure that mime types are found for file extensions.
+
+- Fix empty method results in JSON API when re-login and executed synchronously.
+
+- BAuthentication in JSON API has to return method results via asyncResult object even 
+  if executed synchronously.
+ 
+- C# uses .NET Framework 4.5
+
+5.13
+
+- Do not retry requests on SocketTimeoutException
+
+
+5.10 2017-02-21
+
+ - HTTP connection and read timeout values were not applied. 

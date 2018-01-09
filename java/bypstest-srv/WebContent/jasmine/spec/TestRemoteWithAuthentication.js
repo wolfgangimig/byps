@@ -8,28 +8,35 @@ describe("Tests with authentication.", function() {
 		this.pwd = pwd;
 		this.sess = null;
 
-		this.authenticate = function(client, asyncResult) {
-
+		this.authenticate = function(client, asyncResult, processAsync) {
+			
 			var me = this;
-			var processAsync = !!asyncResult;
+			var outerResult = null;
 
-			var outerResult = function(result, ex) {
-				log.info("authenticate sess=" + sess + ", ex="
-						+ ex);
-				me.sess = result;
-				if (asyncResult) {
+			if (processAsync) {
+				outerResult = function(result, ex) {
+					log.info("authenticate sess=" + sess + ", ex="
+							+ ex);
+					me.sess = result;
 					asyncResult(true, ex);
-				}
-			};
-
-			var sess = client.remoteWithAuthentication.login(me.userName,
-					me.pwd, processAsync ? outerResult : null);
-
-			if (!processAsync) {
-				this.sess = sess;
+				};
 			}
 
-			return sess;
+			var sess = null;
+			var ex = null;
+			try {
+				sess = client.remoteWithAuthentication.login(me.userName, me.pwd, outerResult);
+			}
+			catch (e) {
+				ex = e;
+			}
+
+			if (!processAsync) {
+				me.sess = sess;
+				log.info("authenticate: sess=" + sess + ", ex=" + ex);
+				asyncResult(!ex, ex);
+			}
+
 		};
 
 		this.isReloginException = function(client, ex, typeId) {
@@ -40,6 +47,7 @@ describe("Tests with authentication.", function() {
 			if (asyncResult) {
 				asyncResult(this.sess, null);
 			}
+			log.info("getSession: sess=" + this.sess);
 			return this.sess;
 		};
 
@@ -105,7 +113,7 @@ describe("Tests with authentication.", function() {
 		log.info("testAuthenticate(");
 
 		client.setAuthentication(new MyAuthentication("Fritz", "abc"));
-
+		
 		// This method call will fail internally the first time with a
 		// BExceptionC.AUTHENTICATION_REQUIRED.
 		// Then, BTranpsport invokes MyAuthentication.authenticate and retries
@@ -125,23 +133,21 @@ describe("Tests with authentication.", function() {
 
 		client.setAuthentication(new MyAuthentication("Fritz", "abc"));
 
-		var sessAsync = null;
+		var valueAsync = null;
 		var exceptionAsync = null;
 
 		runs(function() {
-			remote.login("Fritz", "abc", function(sess, ex) {
-				sessAsync = sess;
+			remote.doit(1, function(ret, ex) {
+				valueAsync = ret;
 				exceptionAsync = ex;
-
-				remote.expire();
 			});
-		}, "exec login");
+		}, "exec doit");
 
 		waitsFor(function() {
 			if (exceptionAsync)
 				throw exceptionAsync;
-			return !!sessAsync && sessAsync.sessionID == "123";
-		}, "Expected value must be 123", 5000);
+			return !!valueAsync && valueAsync == 2;
+		}, "Expected value must be 2", 5000);
 
 		log.info(")testAuthenticateAsync");
 	});

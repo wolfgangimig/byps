@@ -1,4 +1,5 @@
 package byps.test;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.Date;
 import java.util.HashMap;
@@ -48,7 +49,7 @@ public class TestRemoteMapTypes {
 		obj.byte1 = new HashMap<Double,Byte>(new MyMap<Double,Byte>().add(1.0, (byte)-1).add(2.0, (byte)-2));
 		obj.char1 = new MyMap<Float, Character>().add(-1.0f, 'a').add(1.0e-1f, 'b');
 		obj.double1 = new MyMap<Byte, Double>().add((byte)3, -1.0e12);
-		obj.float1 = new MyMap<Character, Float>().add('A', 1.0f).add('¶', 2.0f).add('€', -1.2468e-3f);
+		obj.float1 = new MyMap<Character, Float>().add('A', 1.0f).add('Â¶', 2.0f).add('â‚¬', -1.2468e-3f);
 		obj.int1 = new MyMap<Integer, Integer>().add(1,2).add(2, 3);
 		obj.long1 = new MyMap<Short, Long>().add((short)99, 33L).add((short)-99, -33L);
 		obj.primitiveTypes1 = new MyMap<Integer, PrimitiveTypes>().add(1, TestUtils.createObjectPrimitiveTypes()).add(2, TestUtils.createObjectPrimitiveTypes());

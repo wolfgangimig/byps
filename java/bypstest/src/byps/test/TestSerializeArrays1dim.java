@@ -1,4 +1,5 @@
 package byps.test;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.nio.ByteBuffer;
 import java.util.Date;
@@ -188,11 +189,11 @@ public class TestSerializeArrays1dim {
 	@Test
 	public void testArrayTypes1dimChar() throws BException {
 		log.info("testArrayTypes1dimChar(");
-		internalTestArrayTypes1dimChar(new char[] {'a', '¶', '€' });
+		internalTestArrayTypes1dimChar(new char[] {'a', 'Â¶', 'â‚¬' });
 		internalTestArrayTypes1dimChar(new char[] {});
 		internalTestArrayTypes1dimChar(new char[] {'a'});
-		internalTestArrayTypes1dimChar(new char[] {'¶'});
-		internalTestArrayTypes1dimChar(new char[] {'€'});
+		internalTestArrayTypes1dimChar(new char[] {'Â¶'});
+		internalTestArrayTypes1dimChar(new char[] {'â‚¬'});
 		log.info(")testArrayTypes1dimChar");
 	}
 
@@ -339,11 +340,11 @@ public class TestSerializeArrays1dim {
 	@Test
 	public void testArrayTypes1dimString() throws BException {
 		log.info("testArrayTypes1dimString(");
-		internalTestArrayTypes1dimString(new String[] {"a", "bc", "def", "€", "€a", "a€", "a€b", "¶", "¶a", "a¶", "a¶b" });
+		internalTestArrayTypes1dimString(new String[] {"a", "bc", "def", "â‚¬", "â‚¬a", "aâ‚¬", "aâ‚¬b", "Â¶", "Â¶a", "aÂ¶", "aÂ¶b" });
 		internalTestArrayTypes1dimString(new String[] {});
 		internalTestArrayTypes1dimString(new String[] {"a"});
-		internalTestArrayTypes1dimString(new String[] {"¶"});
-		internalTestArrayTypes1dimString(new String[] {"€"});
+		internalTestArrayTypes1dimString(new String[] {"Â¶"});
+		internalTestArrayTypes1dimString(new String[] {"â‚¬"});
 		log.info(")testArrayTypes1dimString");
 	}
 

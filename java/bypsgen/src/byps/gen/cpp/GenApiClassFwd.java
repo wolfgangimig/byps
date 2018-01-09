@@ -39,8 +39,7 @@ class GenApiClassFwd {
       // This type is declared in the BYPS headers, thus a forward definition is not requrired.
     }
     else if (tinfo.isPrimitiveType()) {
-      // Für int, long, java.lang.String, java.lang.Object
-      // werden keine Forward-Decl benötigt
+      // Do not need forward declarations for int, long, java.lang.String, java.lang.Object, etc.
     }
     else if (serInfo != null && serInfo.isResultClass()) {
     }

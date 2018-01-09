@@ -1,6 +1,12 @@
 // bypstest.cpp : Defines the entry point for the console application.
 //
 
+// does not help to log the source code file/line where a memory leak is detected.
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+
+
 #include "stdafx.h"
 #include "AllTests.h"
 #include <Windows.h>
@@ -14,7 +20,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	//| _CRTDBG_CHECK_ALWAYS_DF 
 	//| _CRTDBG_DELAY_FREE_MEM_DF
 	);
-	//_CrtSetBreakAlloc(18334);
+	//_CrtSetBreakAlloc(3511);
 
 	//try {
 	//	PClient client = TestUtilHttp::createClient();

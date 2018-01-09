@@ -3,7 +3,8 @@ apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp'
 
 sourceCompatibility = 1.8
-version = '5.12'
+compileJava.options.encoding = 'UTF-8'
+version = '5.13'
 
 sourceSets {
     main {
@@ -15,7 +16,7 @@ sourceSets {
             srcDir 'src-ureq-ser'
         }
         resources {
-            
+            srcDir 'res'
         }
     }
 }

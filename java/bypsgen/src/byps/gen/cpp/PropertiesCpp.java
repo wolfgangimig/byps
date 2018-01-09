@@ -13,14 +13,14 @@ public class PropertiesCpp extends GeneratorProperties {
 	public final static String MAX_FILE_SIZE = "-gencpp.max-fsize";
 	
 	/**
-	 * Bildet Example_getRegistryFactory, Example_typeDescs,
-	 * Dateinamen Example-Api.h, Example-Impl.h usw.
+	 * API name.
+	 * Used as file prefix and symbol prefix.
 	 */
 	public final static String API_NAME = "-gencpp.api.name";
 	
 	/**
-	 * Compiler unterstützt C++11 Lambda Funktionen.
-	 * Option muss true sein.
+	 * Compiler suppots C++11 lambdas.
+	 * This value must be set.
 	 */
 	public static final String LAMBDA = "-gencpp.lambda";
 	

@@ -1,0 +1,853 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C0EFFEE41FFA353E00775768 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFEE31FFA353E00775768 /* main.swift */; };
+		C0EFFEEE1FFA38D000775768 /* MyClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFEEC1FFA38D000775768 /* MyClass.cpp */; };
+		C0EFFFA61FFA3E5900775768 /* TestRemoteEnums.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF5F1FFA3D4F00775768 /* TestRemoteEnums.cpp */; };
+		C0EFFFA71FFA3E7100775768 /* Testser-impl-004.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF631FFA3D4F00775768 /* Testser-impl-004.cpp */; };
+		C0EFFFA81FFA3E7100775768 /* Testser-impl-010.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF641FFA3D4F00775768 /* Testser-impl-010.cpp */; };
+		C0EFFFA91FFA3E7100775768 /* Testser-impl-011.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF651FFA3D4F00775768 /* Testser-impl-011.cpp */; };
+		C0EFFFAA1FFA3E7100775768 /* Testser-impl-005.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF661FFA3D4F00775768 /* Testser-impl-005.cpp */; };
+		C0EFFFAB1FFA3E7100775768 /* Testser-impl-013.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF671FFA3D4F00775768 /* Testser-impl-013.cpp */; };
+		C0EFFFAC1FFA3E7100775768 /* Testser-impl-007.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF681FFA3D4F00775768 /* Testser-impl-007.cpp */; };
+		C0EFFFAD1FFA3E7100775768 /* Testser-impl-006.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF691FFA3D4F00775768 /* Testser-impl-006.cpp */; };
+		C0EFFFAE1FFA3E7100775768 /* Testser-impl-012.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF6A1FFA3D4F00775768 /* Testser-impl-012.cpp */; };
+		C0EFFFAF1FFA3E7100775768 /* Testser-impl-016.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF6B1FFA3D4F00775768 /* Testser-impl-016.cpp */; };
+		C0EFFFB01FFA3E7100775768 /* Testser-impl-002.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF6C1FFA3D4F00775768 /* Testser-impl-002.cpp */; };
+		C0EFFFB11FFA3E7100775768 /* Testser-impl-003.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF6D1FFA3D4F00775768 /* Testser-impl-003.cpp */; };
+		C0EFFFB31FFA3E7100775768 /* Testser-impl-001.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF6F1FFA3D4F00775768 /* Testser-impl-001.cpp */; };
+		C0EFFFB41FFA3E7100775768 /* Testser-impl-015.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF701FFA3D4F00775768 /* Testser-impl-015.cpp */; };
+		C0EFFFB51FFA3E7100775768 /* Testser-impl-014.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF711FFA3D4F00775768 /* Testser-impl-014.cpp */; };
+		C0EFFFB61FFA3E7100775768 /* Testser-impl-008.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF721FFA3D4F00775768 /* Testser-impl-008.cpp */; };
+		C0EFFFB71FFA3E7100775768 /* Testser-impl-009.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF731FFA3D4F00775768 /* Testser-impl-009.cpp */; };
+		C0EFFFB81FFA3E8F00775768 /* TestRemoteMapTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF761FFA3D4F00775768 /* TestRemoteMapTypes.cpp */; };
+		C0EFFFB91FFA3E8F00775768 /* TestRemoteListTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF771FFA3D4F00775768 /* TestRemoteListTypes.cpp */; };
+		C0EFFFBA1FFA3E8F00775768 /* TestUtilHttp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF781FFA3D4F00775768 /* TestUtilHttp.cpp */; };
+		C0EFFFBB1FFA3E8F00775768 /* TestRemotePrimitiveTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF791FFA3D4F00775768 /* TestRemotePrimitiveTypes.cpp */; };
+		C0EFFFBC1FFA3E8F00775768 /* TestRemoteServerR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF7A1FFA3D4F00775768 /* TestRemoteServerR.cpp */; };
+		C0EFFFBD1FFA3E8F00775768 /* TestRemoteSetTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF7B1FFA3D4F00775768 /* TestRemoteSetTypes.cpp */; };
+		C0EFFFBE1FFA3E8F00775768 /* TestRemoteStreams.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF7C1FFA3D4F00775768 /* TestRemoteStreams.cpp */; };
+		C0EFFFBF1FFA3E8F00775768 /* TestRemoteWithAuthentication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF7D1FFA3D4F00775768 /* TestRemoteWithAuthentication.cpp */; };
+		C0EFFFC01FFA3E8F00775768 /* TestRemoteArrays4Dim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF7F1FFA3D4F00775768 /* TestRemoteArrays4Dim.cpp */; };
+		C0EFFFC11FFA3E8F00775768 /* TestBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF801FFA3D4F00775768 /* TestBase.cpp */; };
+		C0EFFFC21FFA3E8F00775768 /* AllTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF831FFA3D4F00775768 /* AllTests.cpp */; };
+		C0EFFFC31FFA3E8F00775768 /* TestRemoteArrays.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF851FFA3D4F00775768 /* TestRemoteArrays.cpp */; };
+		C0EFFFC41FFA3E8F00775768 /* TestRemoteInlineInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF861FFA3D4F00775768 /* TestRemoteInlineInstance.cpp */; };
+		C0EFFFC51FFA3E8F00775768 /* TestUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF871FFA3D4F00775768 /* TestUtils.cpp */; };
+		C0EFFFC61FFA3E8F00775768 /* TestRemoteConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF881FFA3D4F00775768 /* TestRemoteConstants.cpp */; };
+		C0EFFFC81FFA480600775768 /* SwiftHttpClientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFFC71FFA480600775768 /* SwiftHttpClientFactory.swift */; };
+		C0EFFFC91FFA4A3400775768 /* SwiftHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFFF9D1FFA3D4F00775768 /* SwiftHttpClient.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C0EFFEDE1FFA353E00775768 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C0EFFEE01FFA353E00775768 /* bypstest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = bypstest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0EFFEE31FFA353E00775768 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		C0EFFEEB1FFA38D000775768 /* bypstest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bypstest-Bridging-Header.h"; sourceTree = "<group>"; };
+		C0EFFEEC1FFA38D000775768 /* MyClass.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MyClass.cpp; sourceTree = "<group>"; };
+		C0EFFEED1FFA38D000775768 /* MyClass.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MyClass.hpp; sourceTree = "<group>"; };
+		C0EFFEF51FFA3D4F00775768 /* testfw.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = testfw.hpp; sourceTree = "<group>"; };
+		C0EFFEF61FFA3D4F00775768 /* TestSuite.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TestSuite.hpp; sourceTree = "<group>"; };
+		C0EFFEF71FFA3D4F00775768 /* AssertException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AssertException.hpp; sourceTree = "<group>"; };
+		C0EFFEF81FFA3D4F00775768 /* TestAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAssert.h; sourceTree = "<group>"; };
+		C0EFFEF91FFA3D4F00775768 /* testfw.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testfw.h; sourceTree = "<group>"; };
+		C0EFFEFA1FFA3D4F00775768 /* TestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCase.h; sourceTree = "<group>"; };
+		C0EFFEFB1FFA3D4F00775768 /* TestSuite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestSuite.h; sourceTree = "<group>"; };
+		C0EFFEFC1FFA3D4F00775768 /* AssertException.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssertException.h; sourceTree = "<group>"; };
+		C0EFFEFD1FFA3D4F00775768 /* TestCase.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TestCase.hpp; sourceTree = "<group>"; };
+		C0EFFF001FFA3D4F00775768 /* BLostConnectionHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BLostConnectionHandler.hpp; sourceTree = "<group>"; };
+		C0EFFF011FFA3D4F00775768 /* Byps.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Byps.hpp; sourceTree = "<group>"; };
+		C0EFFF021FFA3D4F00775768 /* BMessageHeader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BMessageHeader.hpp; sourceTree = "<group>"; };
+		C0EFFF031FFA3D4F00775768 /* BServer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BServer.hpp; sourceTree = "<group>"; };
+		C0EFFF041FFA3D4F00775768 /* BThreadPool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BThreadPool.h; sourceTree = "<group>"; };
+		C0EFFF051FFA3D4F00775768 /* BStub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BStub.h; sourceTree = "<group>"; };
+		C0EFFF061FFA3D4F00775768 /* BValueClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BValueClass.h; sourceTree = "<group>"; };
+		C0EFFF071FFA3D4F00775768 /* BNegotiate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BNegotiate.h; sourceTree = "<group>"; };
+		C0EFFF081FFA3D4F00775768 /* BDateTime.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BDateTime.hpp; sourceTree = "<group>"; };
+		C0EFFF091FFA3D4F00775768 /* BAuthentication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BAuthentication.h; sourceTree = "<group>"; };
+		C0EFFF0A1FFA3D4F00775768 /* BProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BProtocol.h; sourceTree = "<group>"; };
+		C0EFFF0B1FFA3D4F00775768 /* BRemote.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRemote.h; sourceTree = "<group>"; };
+		C0EFFF0C1FFA3D4F00775768 /* BSerializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSerializable.h; sourceTree = "<group>"; };
+		C0EFFF0D1FFA3D4F00775768 /* BLogger.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BLogger.hpp; sourceTree = "<group>"; };
+		C0EFFF0E1FFA3D4F00775768 /* BIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BIO.h; sourceTree = "<group>"; };
+		C0EFFF0F1FFA3D4F00775768 /* BTransport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTransport.h; sourceTree = "<group>"; };
+		C0EFFF101FFA3D4F00775768 /* BProtocol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BProtocol.hpp; sourceTree = "<group>"; };
+		C0EFFF111FFA3D4F00775768 /* BBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBuffer.h; sourceTree = "<group>"; };
+		C0EFFF121FFA3D4F00775768 /* BVersioning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVersioning.h; sourceTree = "<group>"; };
+		C0EFFF131FFA3D4F00775768 /* BRegistry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRegistry.h; sourceTree = "<group>"; };
+		C0EFFF141FFA3D4F00775768 /* BSynchronized.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSynchronized.h; sourceTree = "<group>"; };
+		C0EFFF151FFA3D4F00775768 /* BSerializer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BSerializer.hpp; sourceTree = "<group>"; };
+		C0EFFF161FFA3D4F00775768 /* BDateTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BDateTime.h; sourceTree = "<group>"; };
+		C0EFFF171FFA3D4F00775768 /* BServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BServer.h; sourceTree = "<group>"; };
+		C0EFFF1A1FFA3D4F00775768 /* msvc_x86_x64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = msvc_x86_x64.h; sourceTree = "<group>"; };
+		C0EFFF1C1FFA3D4F00775768 /* QTThreadPool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTThreadPool.h; sourceTree = "<group>"; };
+		C0EFFF1D1FFA3D4F00775768 /* QTThreadPool.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = QTThreadPool.hpp; sourceTree = "<group>"; };
+		C0EFFF1E1FFA3D4F00775768 /* platform-api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "platform-api.h"; sourceTree = "<group>"; };
+		C0EFFF201FFA3D4F00775768 /* gcc_x86_x64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gcc_x86_x64.h; sourceTree = "<group>"; };
+		C0EFFF211FFA3D4F00775768 /* platform.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = platform.hpp; sourceTree = "<group>"; };
+		C0EFFF231FFA3D4F00775768 /* BThreadPool.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BThreadPool.hpp; sourceTree = "<group>"; };
+		C0EFFF241FFA3D4F00775768 /* any.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = any.hpp; sourceTree = "<group>"; };
+		C0EFFF251FFA3D4F00775768 /* any.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = any.h; sourceTree = "<group>"; };
+		C0EFFF261FFA3D4F00775768 /* platform-impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "platform-impl.h"; sourceTree = "<group>"; };
+		C0EFFF271FFA3D4F00775768 /* BMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMessage.h; sourceTree = "<group>"; };
+		C0EFFF281FFA3D4F00775768 /* BLostConnectionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLostConnectionHandler.h; sourceTree = "<group>"; };
+		C0EFFF291FFA3D4F00775768 /* BAsyncResult.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BAsyncResult.hpp; sourceTree = "<group>"; };
+		C0EFFF2A1FFA3D4F00775768 /* BException.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BException.h; sourceTree = "<group>"; };
+		C0EFFF2B1FFA3D4F00775768 /* BStub.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BStub.hpp; sourceTree = "<group>"; };
+		C0EFFF2C1FFA3D4F00775768 /* BLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLogger.h; sourceTree = "<group>"; };
+		C0EFFF2D1FFA3D4F00775768 /* BWire.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BWire.hpp; sourceTree = "<group>"; };
+		C0EFFF2E1FFA3D4F00775768 /* BUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BUtils.h; sourceTree = "<group>"; };
+		C0EFFF2F1FFA3D4F00775768 /* BArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BArray.hpp; sourceTree = "<group>"; };
+		C0EFFF301FFA3D4F00775768 /* BMessage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BMessage.hpp; sourceTree = "<group>"; };
+		C0EFFF311FFA3D4F00775768 /* BInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BInput.h; sourceTree = "<group>"; };
+		C0EFFF321FFA3D4F00775768 /* BRegistry.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BRegistry.hpp; sourceTree = "<group>"; };
+		C0EFFF331FFA3D4F00775768 /* BTargetId.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTargetId.h; sourceTree = "<group>"; };
+		C0EFFF341FFA3D4F00775768 /* BStreamRequest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BStreamRequest.hpp; sourceTree = "<group>"; };
+		C0EFFF351FFA3D4F00775768 /* BTransportFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTransportFactory.h; sourceTree = "<group>"; };
+		C0EFFF361FFA3D4F00775768 /* BBytes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BBytes.hpp; sourceTree = "<group>"; };
+		C0EFFF371FFA3D4F00775768 /* BBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BBuffer.hpp; sourceTree = "<group>"; };
+		C0EFFF381FFA3D4F00775768 /* BOutput.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BOutput.hpp; sourceTree = "<group>"; };
+		C0EFFF391FFA3D4F00775768 /* BBinaryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBinaryModel.h; sourceTree = "<group>"; };
+		C0EFFF3A1FFA3D4F00775768 /* BTargetId.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BTargetId.hpp; sourceTree = "<group>"; };
+		C0EFFF3B1FFA3D4F00775768 /* BTestAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTestAdapter.h; sourceTree = "<group>"; };
+		C0EFFF3C1FFA3D4F00775768 /* BIO.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BIO.hpp; sourceTree = "<group>"; };
+		C0EFFF3D1FFA3D4F00775768 /* BFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFile.h; sourceTree = "<group>"; };
+		C0EFFF3E1FFA3D4F00775768 /* BMethodRequest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BMethodRequest.hpp; sourceTree = "<group>"; };
+		C0EFFF3F1FFA3D4F00775768 /* BApiDescriptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BApiDescriptor.h; sourceTree = "<group>"; };
+		C0EFFF401FFA3D4F00775768 /* BClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BClient.h; sourceTree = "<group>"; };
+		C0EFFF411FFA3D4F00775768 /* BSkeleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSkeleton.h; sourceTree = "<group>"; };
+		C0EFFF421FFA3D4F00775768 /* BNegotiate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BNegotiate.hpp; sourceTree = "<group>"; };
+		C0EFFF431FFA3D4F00775768 /* BByteOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BByteOrder.h; sourceTree = "<group>"; };
+		C0EFFF441FFA3D4F00775768 /* BSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSerializer.h; sourceTree = "<group>"; };
+		C0EFFF451FFA3D4F00775768 /* BTransport.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BTransport.hpp; sourceTree = "<group>"; };
+		C0EFFF461FFA3D4F00775768 /* BMessageHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMessageHeader.h; sourceTree = "<group>"; };
+		C0EFFF471FFA3D4F00775768 /* BOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BOutput.h; sourceTree = "<group>"; };
+		C0EFFF481FFA3D4F00775768 /* BMethodResult.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BMethodResult.hpp; sourceTree = "<group>"; };
+		C0EFFF491FFA3D4F00775768 /* BVariant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BVariant.h; sourceTree = "<group>"; };
+		C0EFFF4A1FFA3D4F00775768 /* BBytes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBytes.h; sourceTree = "<group>"; };
+		C0EFFF4B1FFA3D4F00775768 /* Byps.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Byps.h; sourceTree = "<group>"; };
+		C0EFFF4C1FFA3D4F00775768 /* BException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BException.hpp; sourceTree = "<group>"; };
+		C0EFFF4D1FFA3D4F00775768 /* BArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BArray.h; sourceTree = "<group>"; };
+		C0EFFF4E1FFA3D4F00775768 /* BStreamRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BStreamRequest.h; sourceTree = "<group>"; };
+		C0EFFF4F1FFA3D4F00775768 /* BClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BClient.hpp; sourceTree = "<group>"; };
+		C0EFFF501FFA3D4F00775768 /* BMethodRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMethodRequest.h; sourceTree = "<group>"; };
+		C0EFFF511FFA3D4F00775768 /* BMethodResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMethodResult.h; sourceTree = "<group>"; };
+		C0EFFF521FFA3D4F00775768 /* BUtils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BUtils.hpp; sourceTree = "<group>"; };
+		C0EFFF531FFA3D4F00775768 /* BFile.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BFile.hpp; sourceTree = "<group>"; };
+		C0EFFF541FFA3D4F00775768 /* BInput.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BInput.hpp; sourceTree = "<group>"; };
+		C0EFFF551FFA3D4F00775768 /* BVariant.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BVariant.hpp; sourceTree = "<group>"; };
+		C0EFFF561FFA3D4F00775768 /* BAsyncResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BAsyncResult.h; sourceTree = "<group>"; };
+		C0EFFF571FFA3D4F00775768 /* Byps-impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Byps-impl.h"; sourceTree = "<group>"; };
+		C0EFFF581FFA3D4F00775768 /* BContentStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BContentStream.h; sourceTree = "<group>"; };
+		C0EFFF591FFA3D4F00775768 /* BSerializable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BSerializable.hpp; sourceTree = "<group>"; };
+		C0EFFF5A1FFA3D4F00775768 /* BContentStream.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BContentStream.hpp; sourceTree = "<group>"; };
+		C0EFFF5B1FFA3D4F00775768 /* BValueClass.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BValueClass.hpp; sourceTree = "<group>"; };
+		C0EFFF5C1FFA3D4F00775768 /* BSkeleton.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BSkeleton.hpp; sourceTree = "<group>"; };
+		C0EFFF5D1FFA3D4F00775768 /* BWire.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWire.h; sourceTree = "<group>"; };
+		C0EFFF5F1FFA3D4F00775768 /* TestRemoteEnums.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestRemoteEnums.cpp; sourceTree = "<group>"; };
+		C0EFFF621FFA3D4F00775768 /* Testser-impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Testser-impl.h"; sourceTree = "<group>"; };
+		C0EFFF631FFA3D4F00775768 /* Testser-impl-004.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-004.cpp"; sourceTree = "<group>"; };
+		C0EFFF641FFA3D4F00775768 /* Testser-impl-010.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-010.cpp"; sourceTree = "<group>"; };
+		C0EFFF651FFA3D4F00775768 /* Testser-impl-011.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-011.cpp"; sourceTree = "<group>"; };
+		C0EFFF661FFA3D4F00775768 /* Testser-impl-005.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-005.cpp"; sourceTree = "<group>"; };
+		C0EFFF671FFA3D4F00775768 /* Testser-impl-013.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-013.cpp"; sourceTree = "<group>"; };
+		C0EFFF681FFA3D4F00775768 /* Testser-impl-007.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-007.cpp"; sourceTree = "<group>"; };
+		C0EFFF691FFA3D4F00775768 /* Testser-impl-006.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-006.cpp"; sourceTree = "<group>"; };
+		C0EFFF6A1FFA3D4F00775768 /* Testser-impl-012.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-012.cpp"; sourceTree = "<group>"; };
+		C0EFFF6B1FFA3D4F00775768 /* Testser-impl-016.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-016.cpp"; sourceTree = "<group>"; };
+		C0EFFF6C1FFA3D4F00775768 /* Testser-impl-002.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-002.cpp"; sourceTree = "<group>"; };
+		C0EFFF6D1FFA3D4F00775768 /* Testser-impl-003.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-003.cpp"; sourceTree = "<group>"; };
+		C0EFFF6F1FFA3D4F00775768 /* Testser-impl-001.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-001.cpp"; sourceTree = "<group>"; };
+		C0EFFF701FFA3D4F00775768 /* Testser-impl-015.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-015.cpp"; sourceTree = "<group>"; };
+		C0EFFF711FFA3D4F00775768 /* Testser-impl-014.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-014.cpp"; sourceTree = "<group>"; };
+		C0EFFF721FFA3D4F00775768 /* Testser-impl-008.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-008.cpp"; sourceTree = "<group>"; };
+		C0EFFF731FFA3D4F00775768 /* Testser-impl-009.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "Testser-impl-009.cpp"; sourceTree = "<group>"; };
+		C0EFFF751FFA3D4F00775768 /* Testser-api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Testser-api.h"; sourceTree = "<group>"; };
+		C0EFFF761FFA3D4F00775768 /* TestRemoteMapTypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestRemoteMapTypes.cpp; sourceTree = "<group>"; };
+		C0EFFF771FFA3D4F00775768 /* TestRemoteListTypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestRemoteListTypes.cpp; sourceTree = "<group>"; };
+		C0EFFF781FFA3D4F00775768 /* TestUtilHttp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestUtilHttp.cpp; sourceTree = "<group>"; };
+		C0EFFF791FFA3D4F00775768 /* TestRemotePrimitiveTypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestRemotePrimitiveTypes.cpp; sourceTree = "<group>"; };
+		C0EFFF7A1FFA3D4F00775768 /* TestRemoteServerR.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestRemoteServerR.cpp; sourceTree = "<group>"; };
+		C0EFFF7B1FFA3D4F00775768 /* TestRemoteSetTypes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestRemoteSetTypes.cpp; sourceTree = "<group>"; };
+		C0EFFF7C1FFA3D4F00775768 /* TestRemoteStreams.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestRemoteStreams.cpp; sourceTree = "<group>"; };
+		C0EFFF7D1FFA3D4F00775768 /* TestRemoteWithAuthentication.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestRemoteWithAuthentication.cpp; sourceTree = "<group>"; };
+		C0EFFF7E1FFA3D4F00775768 /* TestUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUtils.h; sourceTree = "<group>"; };
+		C0EFFF7F1FFA3D4F00775768 /* TestRemoteArrays4Dim.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestRemoteArrays4Dim.cpp; sourceTree = "<group>"; };
+		C0EFFF801FFA3D4F00775768 /* TestBase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestBase.cpp; sourceTree = "<group>"; };
+		C0EFFF811FFA3D4F00775768 /* TestUtilHttp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUtilHttp.h; sourceTree = "<group>"; };
+		C0EFFF821FFA3D4F00775768 /* TestBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestBase.h; sourceTree = "<group>"; };
+		C0EFFF831FFA3D4F00775768 /* AllTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AllTests.cpp; sourceTree = "<group>"; };
+		C0EFFF841FFA3D4F00775768 /* AllTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllTests.h; sourceTree = "<group>"; };
+		C0EFFF851FFA3D4F00775768 /* TestRemoteArrays.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestRemoteArrays.cpp; sourceTree = "<group>"; };
+		C0EFFF861FFA3D4F00775768 /* TestRemoteInlineInstance.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestRemoteInlineInstance.cpp; sourceTree = "<group>"; };
+		C0EFFF871FFA3D4F00775768 /* TestUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestUtils.cpp; sourceTree = "<group>"; };
+		C0EFFF881FFA3D4F00775768 /* TestRemoteConstants.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestRemoteConstants.cpp; sourceTree = "<group>"; };
+		C0EFFF8B1FFA3D4F00775768 /* Bypshttp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Bypshttp.hpp; sourceTree = "<group>"; };
+		C0EFFF8C1FFA3D4F00775768 /* Bypshttp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bypshttp.h; sourceTree = "<group>"; };
+		C0EFFF8D1FFA3D4F00775768 /* HTransportFactoryClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HTransportFactoryClient.hpp; sourceTree = "<group>"; };
+		C0EFFF8E1FFA3D4F00775768 /* HHttpClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HHttpClient.hpp; sourceTree = "<group>"; };
+		C0EFFF911FFA3D4F00775768 /* HException.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HException.h; sourceTree = "<group>"; };
+		C0EFFF921FFA3D4F00775768 /* WinHttpClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WinHttpClient.hpp; sourceTree = "<group>"; };
+		C0EFFF931FFA3D4F00775768 /* WinHttpClientI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WinHttpClientI.h; sourceTree = "<group>"; };
+		C0EFFF941FFA3D4F00775768 /* HException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HException.hpp; sourceTree = "<group>"; };
+		C0EFFF951FFA3D4F00775768 /* WinHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WinHttpClient.h; sourceTree = "<group>"; };
+		C0EFFF971FFA3D4F00775768 /* QTHttpClientI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTHttpClientI.h; sourceTree = "<group>"; };
+		C0EFFF981FFA3D4F00775768 /* QTHttpClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = QTHttpClient.hpp; sourceTree = "<group>"; };
+		C0EFFF991FFA3D4F00775768 /* QTHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTHttpClient.h; sourceTree = "<group>"; };
+		C0EFFF9B1FFA3D4F00775768 /* MacHttpClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MacHttpClient.hpp; sourceTree = "<group>"; };
+		C0EFFF9C1FFA3D4F00775768 /* MacHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacHttpClient.h; sourceTree = "<group>"; };
+		C0EFFF9D1FFA3D4F00775768 /* SwiftHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftHttpClient.swift; sourceTree = "<group>"; };
+		C0EFFF9E1FFA3D4F00775768 /* SwiftHttpClient-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftHttpClient-Bridging-Header.h"; sourceTree = "<group>"; };
+		C0EFFF9F1FFA3D4F00775768 /* HWireClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HWireClient.hpp; sourceTree = "<group>"; };
+		C0EFFFA01FFA3D4F00775768 /* HWireClientI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HWireClientI.h; sourceTree = "<group>"; };
+		C0EFFFA11FFA3D4F00775768 /* HServerR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HServerR.h; sourceTree = "<group>"; };
+		C0EFFFA21FFA3D4F00775768 /* HTransportFactoryClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTransportFactoryClient.h; sourceTree = "<group>"; };
+		C0EFFFA31FFA3D4F00775768 /* HHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HHttpClient.h; sourceTree = "<group>"; };
+		C0EFFFA41FFA3D4F00775768 /* HServerR.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HServerR.hpp; sourceTree = "<group>"; };
+		C0EFFFA51FFA3D4F00775768 /* HWireClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HWireClient.h; sourceTree = "<group>"; };
+		C0EFFFC71FFA480600775768 /* SwiftHttpClientFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftHttpClientFactory.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C0EFFEDD1FFA353E00775768 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C0EFFED71FFA353E00775768 = {
+			isa = PBXGroup;
+			children = (
+				C0EFFEF21FFA3D4F00775768 /* common */,
+				C0EFFEE21FFA353E00775768 /* bypstest */,
+				C0EFFEE11FFA353E00775768 /* Products */,
+				C0EFFEEF1FFA3A2400775768 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C0EFFEE11FFA353E00775768 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFEE01FFA353E00775768 /* bypstest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0EFFEE21FFA353E00775768 /* bypstest */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFEE31FFA353E00775768 /* main.swift */,
+				C0EFFEEC1FFA38D000775768 /* MyClass.cpp */,
+				C0EFFEED1FFA38D000775768 /* MyClass.hpp */,
+				C0EFFEEB1FFA38D000775768 /* bypstest-Bridging-Header.h */,
+			);
+			path = bypstest;
+			sourceTree = "<group>";
+		};
+		C0EFFEEF1FFA3A2400775768 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C0EFFEF21FFA3D4F00775768 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFEF31FFA3D4F00775768 /* testfw */,
+				C0EFFEFE1FFA3D4F00775768 /* byps */,
+				C0EFFF5E1FFA3D4F00775768 /* bypstest */,
+				C0EFFF891FFA3D4F00775768 /* bypshttp */,
+			);
+			name = common;
+			path = ../../common;
+			sourceTree = "<group>";
+		};
+		C0EFFEF31FFA3D4F00775768 /* testfw */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFEF41FFA3D4F00775768 /* include */,
+			);
+			path = testfw;
+			sourceTree = "<group>";
+		};
+		C0EFFEF41FFA3D4F00775768 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFEF51FFA3D4F00775768 /* testfw.hpp */,
+				C0EFFEF61FFA3D4F00775768 /* TestSuite.hpp */,
+				C0EFFEF71FFA3D4F00775768 /* AssertException.hpp */,
+				C0EFFEF81FFA3D4F00775768 /* TestAssert.h */,
+				C0EFFEF91FFA3D4F00775768 /* testfw.h */,
+				C0EFFEFA1FFA3D4F00775768 /* TestCase.h */,
+				C0EFFEFB1FFA3D4F00775768 /* TestSuite.h */,
+				C0EFFEFC1FFA3D4F00775768 /* AssertException.h */,
+				C0EFFEFD1FFA3D4F00775768 /* TestCase.hpp */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		C0EFFEFE1FFA3D4F00775768 /* byps */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFEFF1FFA3D4F00775768 /* include */,
+			);
+			path = byps;
+			sourceTree = "<group>";
+		};
+		C0EFFEFF1FFA3D4F00775768 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF001FFA3D4F00775768 /* BLostConnectionHandler.hpp */,
+				C0EFFF011FFA3D4F00775768 /* Byps.hpp */,
+				C0EFFF021FFA3D4F00775768 /* BMessageHeader.hpp */,
+				C0EFFF031FFA3D4F00775768 /* BServer.hpp */,
+				C0EFFF041FFA3D4F00775768 /* BThreadPool.h */,
+				C0EFFF051FFA3D4F00775768 /* BStub.h */,
+				C0EFFF061FFA3D4F00775768 /* BValueClass.h */,
+				C0EFFF071FFA3D4F00775768 /* BNegotiate.h */,
+				C0EFFF081FFA3D4F00775768 /* BDateTime.hpp */,
+				C0EFFF091FFA3D4F00775768 /* BAuthentication.h */,
+				C0EFFF0A1FFA3D4F00775768 /* BProtocol.h */,
+				C0EFFF0B1FFA3D4F00775768 /* BRemote.h */,
+				C0EFFF0C1FFA3D4F00775768 /* BSerializable.h */,
+				C0EFFF0D1FFA3D4F00775768 /* BLogger.hpp */,
+				C0EFFF0E1FFA3D4F00775768 /* BIO.h */,
+				C0EFFF0F1FFA3D4F00775768 /* BTransport.h */,
+				C0EFFF101FFA3D4F00775768 /* BProtocol.hpp */,
+				C0EFFF111FFA3D4F00775768 /* BBuffer.h */,
+				C0EFFF121FFA3D4F00775768 /* BVersioning.h */,
+				C0EFFF131FFA3D4F00775768 /* BRegistry.h */,
+				C0EFFF141FFA3D4F00775768 /* BSynchronized.h */,
+				C0EFFF151FFA3D4F00775768 /* BSerializer.hpp */,
+				C0EFFF161FFA3D4F00775768 /* BDateTime.h */,
+				C0EFFF171FFA3D4F00775768 /* BServer.h */,
+				C0EFFF181FFA3D4F00775768 /* platform */,
+				C0EFFF271FFA3D4F00775768 /* BMessage.h */,
+				C0EFFF281FFA3D4F00775768 /* BLostConnectionHandler.h */,
+				C0EFFF291FFA3D4F00775768 /* BAsyncResult.hpp */,
+				C0EFFF2A1FFA3D4F00775768 /* BException.h */,
+				C0EFFF2B1FFA3D4F00775768 /* BStub.hpp */,
+				C0EFFF2C1FFA3D4F00775768 /* BLogger.h */,
+				C0EFFF2D1FFA3D4F00775768 /* BWire.hpp */,
+				C0EFFF2E1FFA3D4F00775768 /* BUtils.h */,
+				C0EFFF2F1FFA3D4F00775768 /* BArray.hpp */,
+				C0EFFF301FFA3D4F00775768 /* BMessage.hpp */,
+				C0EFFF311FFA3D4F00775768 /* BInput.h */,
+				C0EFFF321FFA3D4F00775768 /* BRegistry.hpp */,
+				C0EFFF331FFA3D4F00775768 /* BTargetId.h */,
+				C0EFFF341FFA3D4F00775768 /* BStreamRequest.hpp */,
+				C0EFFF351FFA3D4F00775768 /* BTransportFactory.h */,
+				C0EFFF361FFA3D4F00775768 /* BBytes.hpp */,
+				C0EFFF371FFA3D4F00775768 /* BBuffer.hpp */,
+				C0EFFF381FFA3D4F00775768 /* BOutput.hpp */,
+				C0EFFF391FFA3D4F00775768 /* BBinaryModel.h */,
+				C0EFFF3A1FFA3D4F00775768 /* BTargetId.hpp */,
+				C0EFFF3B1FFA3D4F00775768 /* BTestAdapter.h */,
+				C0EFFF3C1FFA3D4F00775768 /* BIO.hpp */,
+				C0EFFF3D1FFA3D4F00775768 /* BFile.h */,
+				C0EFFF3E1FFA3D4F00775768 /* BMethodRequest.hpp */,
+				C0EFFF3F1FFA3D4F00775768 /* BApiDescriptor.h */,
+				C0EFFF401FFA3D4F00775768 /* BClient.h */,
+				C0EFFF411FFA3D4F00775768 /* BSkeleton.h */,
+				C0EFFF421FFA3D4F00775768 /* BNegotiate.hpp */,
+				C0EFFF431FFA3D4F00775768 /* BByteOrder.h */,
+				C0EFFF441FFA3D4F00775768 /* BSerializer.h */,
+				C0EFFF451FFA3D4F00775768 /* BTransport.hpp */,
+				C0EFFF461FFA3D4F00775768 /* BMessageHeader.h */,
+				C0EFFF471FFA3D4F00775768 /* BOutput.h */,
+				C0EFFF481FFA3D4F00775768 /* BMethodResult.hpp */,
+				C0EFFF491FFA3D4F00775768 /* BVariant.h */,
+				C0EFFF4A1FFA3D4F00775768 /* BBytes.h */,
+				C0EFFF4B1FFA3D4F00775768 /* Byps.h */,
+				C0EFFF4C1FFA3D4F00775768 /* BException.hpp */,
+				C0EFFF4D1FFA3D4F00775768 /* BArray.h */,
+				C0EFFF4E1FFA3D4F00775768 /* BStreamRequest.h */,
+				C0EFFF4F1FFA3D4F00775768 /* BClient.hpp */,
+				C0EFFF501FFA3D4F00775768 /* BMethodRequest.h */,
+				C0EFFF511FFA3D4F00775768 /* BMethodResult.h */,
+				C0EFFF521FFA3D4F00775768 /* BUtils.hpp */,
+				C0EFFF531FFA3D4F00775768 /* BFile.hpp */,
+				C0EFFF541FFA3D4F00775768 /* BInput.hpp */,
+				C0EFFF551FFA3D4F00775768 /* BVariant.hpp */,
+				C0EFFF561FFA3D4F00775768 /* BAsyncResult.h */,
+				C0EFFF571FFA3D4F00775768 /* Byps-impl.h */,
+				C0EFFF581FFA3D4F00775768 /* BContentStream.h */,
+				C0EFFF591FFA3D4F00775768 /* BSerializable.hpp */,
+				C0EFFF5A1FFA3D4F00775768 /* BContentStream.hpp */,
+				C0EFFF5B1FFA3D4F00775768 /* BValueClass.hpp */,
+				C0EFFF5C1FFA3D4F00775768 /* BSkeleton.hpp */,
+				C0EFFF5D1FFA3D4F00775768 /* BWire.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		C0EFFF181FFA3D4F00775768 /* platform */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF191FFA3D4F00775768 /* msvc */,
+				C0EFFF1B1FFA3D4F00775768 /* qt */,
+				C0EFFF1E1FFA3D4F00775768 /* platform-api.h */,
+				C0EFFF1F1FFA3D4F00775768 /* gcc */,
+				C0EFFF211FFA3D4F00775768 /* platform.hpp */,
+				C0EFFF221FFA3D4F00775768 /* any */,
+				C0EFFF261FFA3D4F00775768 /* platform-impl.h */,
+			);
+			path = platform;
+			sourceTree = "<group>";
+		};
+		C0EFFF191FFA3D4F00775768 /* msvc */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF1A1FFA3D4F00775768 /* msvc_x86_x64.h */,
+			);
+			path = msvc;
+			sourceTree = "<group>";
+		};
+		C0EFFF1B1FFA3D4F00775768 /* qt */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF1C1FFA3D4F00775768 /* QTThreadPool.h */,
+				C0EFFF1D1FFA3D4F00775768 /* QTThreadPool.hpp */,
+			);
+			path = qt;
+			sourceTree = "<group>";
+		};
+		C0EFFF1F1FFA3D4F00775768 /* gcc */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF201FFA3D4F00775768 /* gcc_x86_x64.h */,
+			);
+			path = gcc;
+			sourceTree = "<group>";
+		};
+		C0EFFF221FFA3D4F00775768 /* any */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF231FFA3D4F00775768 /* BThreadPool.hpp */,
+				C0EFFF241FFA3D4F00775768 /* any.hpp */,
+				C0EFFF251FFA3D4F00775768 /* any.h */,
+			);
+			path = any;
+			sourceTree = "<group>";
+		};
+		C0EFFF5E1FFA3D4F00775768 /* bypstest */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF5F1FFA3D4F00775768 /* TestRemoteEnums.cpp */,
+				C0EFFF601FFA3D4F00775768 /* bypstest-gen */,
+				C0EFFF761FFA3D4F00775768 /* TestRemoteMapTypes.cpp */,
+				C0EFFF771FFA3D4F00775768 /* TestRemoteListTypes.cpp */,
+				C0EFFF781FFA3D4F00775768 /* TestUtilHttp.cpp */,
+				C0EFFF791FFA3D4F00775768 /* TestRemotePrimitiveTypes.cpp */,
+				C0EFFF7A1FFA3D4F00775768 /* TestRemoteServerR.cpp */,
+				C0EFFF7B1FFA3D4F00775768 /* TestRemoteSetTypes.cpp */,
+				C0EFFF7C1FFA3D4F00775768 /* TestRemoteStreams.cpp */,
+				C0EFFF7D1FFA3D4F00775768 /* TestRemoteWithAuthentication.cpp */,
+				C0EFFF7E1FFA3D4F00775768 /* TestUtils.h */,
+				C0EFFF7F1FFA3D4F00775768 /* TestRemoteArrays4Dim.cpp */,
+				C0EFFF801FFA3D4F00775768 /* TestBase.cpp */,
+				C0EFFF811FFA3D4F00775768 /* TestUtilHttp.h */,
+				C0EFFF821FFA3D4F00775768 /* TestBase.h */,
+				C0EFFF831FFA3D4F00775768 /* AllTests.cpp */,
+				C0EFFF841FFA3D4F00775768 /* AllTests.h */,
+				C0EFFF851FFA3D4F00775768 /* TestRemoteArrays.cpp */,
+				C0EFFF861FFA3D4F00775768 /* TestRemoteInlineInstance.cpp */,
+				C0EFFF871FFA3D4F00775768 /* TestUtils.cpp */,
+				C0EFFF881FFA3D4F00775768 /* TestRemoteConstants.cpp */,
+			);
+			path = bypstest;
+			sourceTree = "<group>";
+		};
+		C0EFFF601FFA3D4F00775768 /* bypstest-gen */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF611FFA3D4F00775768 /* impl */,
+				C0EFFF741FFA3D4F00775768 /* api */,
+			);
+			path = "bypstest-gen";
+			sourceTree = "<group>";
+		};
+		C0EFFF611FFA3D4F00775768 /* impl */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF621FFA3D4F00775768 /* Testser-impl.h */,
+				C0EFFF631FFA3D4F00775768 /* Testser-impl-004.cpp */,
+				C0EFFF641FFA3D4F00775768 /* Testser-impl-010.cpp */,
+				C0EFFF651FFA3D4F00775768 /* Testser-impl-011.cpp */,
+				C0EFFF661FFA3D4F00775768 /* Testser-impl-005.cpp */,
+				C0EFFF671FFA3D4F00775768 /* Testser-impl-013.cpp */,
+				C0EFFF681FFA3D4F00775768 /* Testser-impl-007.cpp */,
+				C0EFFF691FFA3D4F00775768 /* Testser-impl-006.cpp */,
+				C0EFFF6A1FFA3D4F00775768 /* Testser-impl-012.cpp */,
+				C0EFFF6B1FFA3D4F00775768 /* Testser-impl-016.cpp */,
+				C0EFFF6C1FFA3D4F00775768 /* Testser-impl-002.cpp */,
+				C0EFFF6D1FFA3D4F00775768 /* Testser-impl-003.cpp */,
+				C0EFFF6F1FFA3D4F00775768 /* Testser-impl-001.cpp */,
+				C0EFFF701FFA3D4F00775768 /* Testser-impl-015.cpp */,
+				C0EFFF711FFA3D4F00775768 /* Testser-impl-014.cpp */,
+				C0EFFF721FFA3D4F00775768 /* Testser-impl-008.cpp */,
+				C0EFFF731FFA3D4F00775768 /* Testser-impl-009.cpp */,
+			);
+			path = impl;
+			sourceTree = "<group>";
+		};
+		C0EFFF741FFA3D4F00775768 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF751FFA3D4F00775768 /* Testser-api.h */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		C0EFFF891FFA3D4F00775768 /* bypshttp */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF8A1FFA3D4F00775768 /* include */,
+			);
+			path = bypshttp;
+			sourceTree = "<group>";
+		};
+		C0EFFF8A1FFA3D4F00775768 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF8B1FFA3D4F00775768 /* Bypshttp.hpp */,
+				C0EFFF8C1FFA3D4F00775768 /* Bypshttp.h */,
+				C0EFFF8D1FFA3D4F00775768 /* HTransportFactoryClient.hpp */,
+				C0EFFF8E1FFA3D4F00775768 /* HHttpClient.hpp */,
+				C0EFFF8F1FFA3D4F00775768 /* platform */,
+				C0EFFF9F1FFA3D4F00775768 /* HWireClient.hpp */,
+				C0EFFFA01FFA3D4F00775768 /* HWireClientI.h */,
+				C0EFFFA11FFA3D4F00775768 /* HServerR.h */,
+				C0EFFFA21FFA3D4F00775768 /* HTransportFactoryClient.h */,
+				C0EFFFA31FFA3D4F00775768 /* HHttpClient.h */,
+				C0EFFFA41FFA3D4F00775768 /* HServerR.hpp */,
+				C0EFFFA51FFA3D4F00775768 /* HWireClient.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		C0EFFF8F1FFA3D4F00775768 /* platform */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF901FFA3D4F00775768 /* win */,
+				C0EFFF961FFA3D4F00775768 /* qt */,
+				C0EFFF9A1FFA3D4F00775768 /* mac */,
+			);
+			path = platform;
+			sourceTree = "<group>";
+		};
+		C0EFFF901FFA3D4F00775768 /* win */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF911FFA3D4F00775768 /* HException.h */,
+				C0EFFF921FFA3D4F00775768 /* WinHttpClient.hpp */,
+				C0EFFF931FFA3D4F00775768 /* WinHttpClientI.h */,
+				C0EFFF941FFA3D4F00775768 /* HException.hpp */,
+				C0EFFF951FFA3D4F00775768 /* WinHttpClient.h */,
+			);
+			path = win;
+			sourceTree = "<group>";
+		};
+		C0EFFF961FFA3D4F00775768 /* qt */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF971FFA3D4F00775768 /* QTHttpClientI.h */,
+				C0EFFF981FFA3D4F00775768 /* QTHttpClient.hpp */,
+				C0EFFF991FFA3D4F00775768 /* QTHttpClient.h */,
+			);
+			path = qt;
+			sourceTree = "<group>";
+		};
+		C0EFFF9A1FFA3D4F00775768 /* mac */ = {
+			isa = PBXGroup;
+			children = (
+				C0EFFF9B1FFA3D4F00775768 /* MacHttpClient.hpp */,
+				C0EFFF9C1FFA3D4F00775768 /* MacHttpClient.h */,
+				C0EFFF9D1FFA3D4F00775768 /* SwiftHttpClient.swift */,
+				C0EFFF9E1FFA3D4F00775768 /* SwiftHttpClient-Bridging-Header.h */,
+				C0EFFFC71FFA480600775768 /* SwiftHttpClientFactory.swift */,
+			);
+			path = mac;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C0EFFEDF1FFA353E00775768 /* bypstest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0EFFEE71FFA353E00775768 /* Build configuration list for PBXNativeTarget "bypstest" */;
+			buildPhases = (
+				C0EFFEDC1FFA353E00775768 /* Sources */,
+				C0EFFEDD1FFA353E00775768 /* Frameworks */,
+				C0EFFEDE1FFA353E00775768 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = bypstest;
+			productName = bypstest;
+			productReference = C0EFFEE01FFA353E00775768 /* bypstest */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C0EFFED81FFA353E00775768 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Wolfgang Imig";
+				TargetAttributes = {
+					C0EFFEDF1FFA353E00775768 = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = C0EFFEDB1FFA353E00775768 /* Build configuration list for PBXProject "bypstest" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C0EFFED71FFA353E00775768;
+			productRefGroup = C0EFFEE11FFA353E00775768 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C0EFFEDF1FFA353E00775768 /* bypstest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C0EFFEDC1FFA353E00775768 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0EFFFB81FFA3E8F00775768 /* TestRemoteMapTypes.cpp in Sources */,
+				C0EFFFB91FFA3E8F00775768 /* TestRemoteListTypes.cpp in Sources */,
+				C0EFFFBA1FFA3E8F00775768 /* TestUtilHttp.cpp in Sources */,
+				C0EFFFBB1FFA3E8F00775768 /* TestRemotePrimitiveTypes.cpp in Sources */,
+				C0EFFFBC1FFA3E8F00775768 /* TestRemoteServerR.cpp in Sources */,
+				C0EFFFBD1FFA3E8F00775768 /* TestRemoteSetTypes.cpp in Sources */,
+				C0EFFFBE1FFA3E8F00775768 /* TestRemoteStreams.cpp in Sources */,
+				C0EFFFC91FFA4A3400775768 /* SwiftHttpClient.swift in Sources */,
+				C0EFFFBF1FFA3E8F00775768 /* TestRemoteWithAuthentication.cpp in Sources */,
+				C0EFFFC01FFA3E8F00775768 /* TestRemoteArrays4Dim.cpp in Sources */,
+				C0EFFFC11FFA3E8F00775768 /* TestBase.cpp in Sources */,
+				C0EFFFC21FFA3E8F00775768 /* AllTests.cpp in Sources */,
+				C0EFFFC31FFA3E8F00775768 /* TestRemoteArrays.cpp in Sources */,
+				C0EFFFC41FFA3E8F00775768 /* TestRemoteInlineInstance.cpp in Sources */,
+				C0EFFFC51FFA3E8F00775768 /* TestUtils.cpp in Sources */,
+				C0EFFFC61FFA3E8F00775768 /* TestRemoteConstants.cpp in Sources */,
+				C0EFFFA71FFA3E7100775768 /* Testser-impl-004.cpp in Sources */,
+				C0EFFFA81FFA3E7100775768 /* Testser-impl-010.cpp in Sources */,
+				C0EFFFA91FFA3E7100775768 /* Testser-impl-011.cpp in Sources */,
+				C0EFFFAA1FFA3E7100775768 /* Testser-impl-005.cpp in Sources */,
+				C0EFFFAB1FFA3E7100775768 /* Testser-impl-013.cpp in Sources */,
+				C0EFFFAC1FFA3E7100775768 /* Testser-impl-007.cpp in Sources */,
+				C0EFFFAD1FFA3E7100775768 /* Testser-impl-006.cpp in Sources */,
+				C0EFFFAE1FFA3E7100775768 /* Testser-impl-012.cpp in Sources */,
+				C0EFFFAF1FFA3E7100775768 /* Testser-impl-016.cpp in Sources */,
+				C0EFFFB01FFA3E7100775768 /* Testser-impl-002.cpp in Sources */,
+				C0EFFFB11FFA3E7100775768 /* Testser-impl-003.cpp in Sources */,
+				C0EFFFC81FFA480600775768 /* SwiftHttpClientFactory.swift in Sources */,
+				C0EFFFB31FFA3E7100775768 /* Testser-impl-001.cpp in Sources */,
+				C0EFFFB41FFA3E7100775768 /* Testser-impl-015.cpp in Sources */,
+				C0EFFFB51FFA3E7100775768 /* Testser-impl-014.cpp in Sources */,
+				C0EFFFB61FFA3E7100775768 /* Testser-impl-008.cpp in Sources */,
+				C0EFFFB71FFA3E7100775768 /* Testser-impl-009.cpp in Sources */,
+				C0EFFFA61FFA3E5900775768 /* TestRemoteEnums.cpp in Sources */,
+				C0EFFEEE1FFA38D000775768 /* MyClass.cpp in Sources */,
+				C0EFFEE41FFA353E00775768 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C0EFFEE51FFA353E00775768 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C0EFFEE61FFA353E00775768 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		C0EFFEE81FFA353E00775768 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = ../bypslib/bypslib;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bypstest/bypstest-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		C0EFFEE91FFA353E00775768 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = ../bypslib/bypslib;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bypstest/bypstest-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C0EFFEDB1FFA353E00775768 /* Build configuration list for PBXProject "bypstest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0EFFEE51FFA353E00775768 /* Debug */,
+				C0EFFEE61FFA353E00775768 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0EFFEE71FFA353E00775768 /* Build configuration list for PBXNativeTarget "bypstest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0EFFEE81FFA353E00775768 /* Debug */,
+				C0EFFEE91FFA353E00775768 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C0EFFED81FFA353E00775768 /* Project object */;
+}

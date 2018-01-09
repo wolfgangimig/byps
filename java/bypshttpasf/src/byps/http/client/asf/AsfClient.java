@@ -48,7 +48,7 @@ public class AsfClient implements HHttpClient {
 
     context = internalCreateSSOContext();
     
-    // Braucht unter Notes sehr lang fï¿½r Aufrufe!
+    // We do not use this call ... because it needs a lot of time under Notes JVM.
     // httpclient = HttpClients.createSystem();
     if (log.isDebugEnabled()) log.debug(")AsfClient");
   }
@@ -118,7 +118,7 @@ public class AsfClient implements HHttpClient {
       log.info("Register SPNEGO (Negotate) over JAAS");
       boolean skipPortAtKerberosDatabaseLookup = true;
       builder.register(AuthSchemes.SPNEGO, new SPNegoSchemeFactory(skipPortAtKerberosDatabaseLookup));
-      // SSO über SPNEGO/Kerberos funktioniert nur, wenn der Test unter einem Windows-Benutzerkonto läuft, dass nicht lokaler Administrator ist.
+      // SSO ï¿½ber SPNEGO/Kerberos funktioniert nur, wenn der Test unter einem Windows-Benutzerkonto lï¿½uft, dass nicht lokaler Administrator ist.
     }
     
     log.info("Ignore WARN Authentication scheme Negotiate not supported."); 

@@ -29,6 +29,10 @@ typedef byps_ptr<HHttpClient> PHttpClient;
 
 #include "platform/win/WinHttpClient.h"
 
+#elif __MACH__
+
+#include "platform/mac/MacHttpClient.h"
+
 #endif
 
 #endif

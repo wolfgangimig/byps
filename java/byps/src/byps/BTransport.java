@@ -314,7 +314,7 @@ public class BTransport {
     if (log.isDebugEnabled()) log.debug("recv(");
     final long requestId = requestCounter.incrementAndGet(); 
     final long t0 = System.currentTimeMillis();
-    
+    BAsyncResult<?> asyncResultForException = asyncResult;
     try {
       
       final BInput bin = getInput(msg.header, msg.buf);
@@ -362,6 +362,8 @@ public class BTransport {
         }
   
       };
+      
+      asyncResultForException = methodResult;
 
       // server-side: Target ID might be encrypted
       final BTargetId targetIdEncr = bin.header.targetId;
@@ -384,14 +386,15 @@ public class BTransport {
         // Server the message here.
         server.recv(clientTargetId, methodObj, methodResult);
       }
+      
     } catch (Exception e) {
       
-      if (printRequestIntoLogger && log.isInfoEnabled()) {
+      if (printRequestIntoLogger && asyncResultForException == asyncResult && log.isInfoEnabled()) {
         long t1 = System.currentTimeMillis();
         log.info("recv-" + requestId + " [" + (t1-t0) + "] Response=" + e);
       }
 
-      asyncResult.setAsyncResult(null, e);
+      asyncResultForException.setAsyncResult(null, e);
     }
 
     if (log.isDebugEnabled()) log.debug(")recv");

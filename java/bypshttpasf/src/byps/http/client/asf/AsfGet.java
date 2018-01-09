@@ -36,6 +36,7 @@ public class AsfGet extends AsfRequest {
     
     request = new HttpGet(url);
     applyTimeout();
+    applyRequestProperties();
     
     CloseableHttpResponse response = null; 
     InputStream is = null;

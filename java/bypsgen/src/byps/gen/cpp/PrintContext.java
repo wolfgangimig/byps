@@ -29,7 +29,7 @@ class PrintContext extends PrintContextBase {
 	private CodePrinter prImplC;
 
 	/**
-	 * Schreibt in den Header für öffentliche Definitionen.
+	 * Schreibt in den Header fï¿½r ï¿½ffentliche Definitionen.
 	 */
 	private CodePrinter prApiAllH;
 
@@ -56,15 +56,15 @@ class PrintContext extends PrintContextBase {
 		prApiAllH.print("#ifndef __{0}__", apiName + "_api_H"); prApiAllH.println();
 		prApiAllH.print("#define __{0}__", apiName + "_api_H"); prApiAllH.println();
 		prApiAllH.println();
-		prApiAllH.println("#include <Byps.h>");
+		prApiAllH.println("#include \"Byps.h\"");
 		
 		File fileImplAllH = new File(dirImplH, apiName + "-impl.h");
 		prImplAllH = new CodePrinter(new FileOutputStream(fileImplAllH), true);
 		prImplAllH.print("#ifndef __{0}__", apiName + "_impl_H"); prImplAllH.println();
 		prImplAllH.print("#define __{0}__", apiName + "_impl_H"); prImplAllH.println();
 		prImplAllH.println();
-		prImplAllH.println("#include <Byps-impl.h>");
-		prImplAllH.print("#include <{0}>", apiName + "-api.h").println();
+		prImplAllH.println("#include \"Byps-impl.h\"");
+		prImplAllH.print("#include \"{0}\"", apiName + "-api.h").println();
 		prImplAllH.println();
 		
 		OutputStream osImplC = new SplitFileOutputStreamSource(null, apiName + "-impl-%03d.cpp", maxFileSize);
@@ -543,6 +543,11 @@ class PrintContext extends PrintContextBase {
 	private int maxFileSize;
 	private Map<String,String> packageAliasMap;
 
+	/**
+	 * Lamda expressions supported.
+	 * Currently, we do only have a generator for C++ that supports lambdas.
+	 * This value must be true.
+	 */
 	public final boolean lambdaSupported;
 
 

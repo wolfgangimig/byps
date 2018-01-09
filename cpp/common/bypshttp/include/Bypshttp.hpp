@@ -16,4 +16,8 @@
 #include "platform/qt/QTHttpClient.hpp"
 #endif
 
+#ifdef __MACH__
+#include "platform/mac/MacHttpClient.hpp"
+#endif
+
 #endif

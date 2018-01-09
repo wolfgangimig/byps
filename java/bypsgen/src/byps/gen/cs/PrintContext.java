@@ -598,7 +598,7 @@ public class PrintContext extends PrintContextBase {
 				.print(");");
 		}
 		
-		// Item für List<Integer> ?
+		// Item is e.g. List<Integer> ?
 		else if (tinfo.toString().startsWith("java.lang.")) {
 			String fnct = PrintHelper.streamPutMember(tinfo);
 			String arg = varName;

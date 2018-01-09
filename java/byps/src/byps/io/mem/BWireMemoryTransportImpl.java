@@ -1,18 +1,12 @@
 package byps.io.mem;
 
 import java.io.InputStream;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import byps.BApiDescriptor;
-import byps.BClient;
-import byps.BServer;
 
 public class BWireMemoryTransportImpl {
 

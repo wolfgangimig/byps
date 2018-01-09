@@ -83,13 +83,13 @@ void TestUtilHttp::tassert(const char* file, int line, const std::wstring& msg,
 
 	char buf[2345], bufR[2345];
 	int32_t len = 0, lenR;
-	while ((len = strm->read(buf, 0, sizeof(buf))) != -1) {
-		com::wilutions::test::tassert(file, line, msg + L" read len != 0", true, len != 0);
-		int32_t offsR = 0;
-		while ((lenR = strmR->read(bufR, offsR, len - offsR)) != -1) {
-			com::wilutions::test::tassert(file, line, msg + L" read lenR != 0", true, lenR != 0);
-			if (lenR + offsR == len) break;
-			offsR += lenR;
+	while ((lenR = strm->read(bufR, 0, sizeof(bufR))) != -1) {
+		com::wilutions::test::tassert(file, line, msg + L" read lenR != 0", true, lenR != 0);
+		int32_t offs = 0;
+		while ((len = strmR->read(buf, offs, lenR - offs)) != -1) {
+			com::wilutions::test::tassert(file, line, msg + L" read len != 0", true, len != 0);
+			if (len + offs == lenR) break;
+			offs += len;
 		}
 
 		if (memcmp(buf, bufR, len)) {

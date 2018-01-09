@@ -80,18 +80,17 @@ public class BServer {
         throw new BException(BExceptionC.FORBIDDEN, "Access denied", "Client " + clientTargetId + " is not allowed to call interface of type=" + remoteId);
       }
       
-			// Die Target-ID aus dem Header ist gleich der Target-ID des BServer-Objekts
-			// für einen normalen Client-Server-Request
+			// For a normal request, the target IDs of client an server are equal.
 			if (clientTargetId.equals(serverTargetId)) {
 				remote = remotes.get(remoteId);
 				if (log.isDebugEnabled()) log.debug("client calls its server-side: remoteId=" + remoteId + ", remote=" + remote);
 			}
 			else if (this.transport.getServerRegistry() != null) { // should not be null for server-side transport
 				
-				// Es wird eine andere Target-ID angesteuert.
-				// Ermittle hier die BRemote-Schnittstelle dieser Target-ID.
-				// I.d.R. dürfte sie einem anderen Client gehören.
-				
+			  // The target ID belongs to another server instance. 
+			  // Get the remote interface of this server and forward the request
+			  // when the method is executed.
+			  
 				remote = this.transport.getServerRegistry().getRemote(clientTargetId, remoteId);
 				if (log.isDebugEnabled()) log.debug("client calls another client: remoteId=" + remoteId + ", remote=" + remote);
 			}

@@ -8,15 +8,9 @@ import java.nio.ByteOrder;
 
 /**
  * 
- * Negotiate-Nachricht besteht aus:
+ * Negotiate request consists of:
  * ["N","SCJ","version","{B,L,_}", "targetId", "bversion"]
  *
- * JSON-Nachricht besteht aus:
- * ["J",{nachricht}]
- * 
- * Binäre Nachricht besteht aus:
- * BYPS....
- * BYPC....
  */
 public class BNegotiate {
 	
@@ -58,8 +52,8 @@ public class BNegotiate {
 	}
 	
 	/**
-	 * Prüfe, ob die Nachricht mit ["N" beginnt.
-	 * Erlaubt ist auch ['N' oder [ 'N' oder [ "N" oder [\r\n\t N usw.
+	 * A negotiate request starts with ["N" .
+	 * ... or ['N' or [ 'N' or [ "N" or [\r\n\t N etf.
 	 * @param buf
 	 * @return
 	 */
