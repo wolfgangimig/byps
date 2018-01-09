@@ -44,7 +44,7 @@ public class JcnnPost extends JcnnRequest {
     do {
       try {
         c = createConnection(url);
-  
+        
         c.setDoInput(true);
         c.setDoOutput(true);
   
@@ -119,9 +119,10 @@ public class JcnnPost extends JcnnRequest {
 
       retry++;
       
-    } while(retry < JcnnClient.MAX_RETRIES && 
-      returnException != null && 
-      returnException.code == BExceptionC.CONNECTION_TO_SERVER_FAILED);
+    } while(retry < JcnnClient.MAX_RETRIES &&
+        buf != null && 
+        returnException != null && 
+        returnException.code == BExceptionC.CONNECTION_TO_SERVER_FAILED);
 
     buf = null; // Speicher freigeben
 
