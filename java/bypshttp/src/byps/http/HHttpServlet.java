@@ -1317,9 +1317,8 @@ public abstract class HHttpServlet extends HttpServlet implements
       if (sessObj != null) {
         ret = sessObj.getFirstSessionOrNull();
       }
-      if (ret == null) {
-        hsess.invalidate();
-      }
+      // Do not invalidate the HTTP session, if no BYPS session could be found.
+      // Otherwise, IX manager page looses it's authentication objects.
     }
     catch (IllegalStateException ignored) {
       // HttpSession could be already invalidated.

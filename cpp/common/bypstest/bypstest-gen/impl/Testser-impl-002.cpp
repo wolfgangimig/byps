@@ -5,6 +5,50 @@ using namespace ::byps;
 namespace byps { namespace test { namespace api { 
 
 //-------------------------------------------------
+// Implementation of class BResult_1973996106
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.PrintContext:496
+BTYPEID byps::test::api::BResult_1973996106::BSerializable_getTypeId() {
+	return 1391760319; 
+}
+// checkpoint byps.gen.cpp.GenApiClass:876
+void BResult_1973996106::serialize(BIO& ar, const BVERSION version) {
+	ar & this->result;
+}
+}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:933
+namespace byps { namespace test { namespace api { 
+void BSerializer_1391760319(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_ObjS_Template<byps::test::api::BResult_1973996106>(bio, pObj, pObjS, pBase);	
+}
+}}}
+namespace byps { namespace test { namespace api { 
+
+//-------------------------------------------------
+// Implementation of class BResult_1997002548
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.PrintContext:496
+BTYPEID byps::test::api::BResult_1997002548::BSerializable_getTypeId() {
+	return 1082818537; 
+}
+// checkpoint byps.gen.cpp.GenApiClass:876
+void BResult_1997002548::serialize(BIO& ar, const BVERSION version) {
+	ar & this->result;
+}
+}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:933
+namespace byps { namespace test { namespace api { 
+void BSerializer_1082818537(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_ObjS_Template<byps::test::api::BResult_1997002548>(bio, pObj, pObjS, pBase);	
+}
+}}}
+namespace byps { namespace test { namespace api { 
+
+//-------------------------------------------------
 // Implementation of class BResult_2
 // Generated from class byps.gen.cpp.GenApiClass
 
@@ -12,13 +56,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_2::BSerializable_getTypeId() {
 	return 432867946; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_2::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_432867946(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_2>(bio, pObj, pObjS, pBase);	
@@ -34,13 +78,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_2028443792::BSerializable_getTypeId() {
 	return 1664501789; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_2028443792::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1664501789(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_2028443792>(bio, pObj, pObjS, pBase);	
@@ -56,13 +100,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_2052431866::BSerializable_getTypeId() {
 	return 1566928477; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_2052431866::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1566928477(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_2052431866>(bio, pObj, pObjS, pBase);	
@@ -78,13 +122,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_2053507648::BSerializable_getTypeId() {
 	return 1814499786; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_2053507648::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1814499786(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_2053507648>(bio, pObj, pObjS, pBase);	
@@ -100,13 +144,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_2058423690::BSerializable_getTypeId() {
 	return 1698849803; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_2058423690::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1698849803(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_2058423690>(bio, pObj, pObjS, pBase);	
@@ -122,13 +166,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_2064980445::BSerializable_getTypeId() {
 	return 937508540; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_2064980445::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_937508540(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_2064980445>(bio, pObj, pObjS, pBase);	
@@ -144,13 +188,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_2067161310::BSerializable_getTypeId() {
 	return 925799231; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_2067161310::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_925799231(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_2067161310>(bio, pObj, pObjS, pBase);	
@@ -166,13 +210,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_2087445849::BSerializable_getTypeId() {
 	return 1650981375; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_2087445849::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1650981375(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_2087445849>(bio, pObj, pObjS, pBase);	
@@ -188,13 +232,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_21::BSerializable_getTypeId() {
 	return 534004389; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_21::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_534004389(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_21>(bio, pObj, pObjS, pBase);	
@@ -210,13 +254,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_2123584667::BSerializable_getTypeId() {
 	return 253151806; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_2123584667::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_253151806(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_2123584667>(bio, pObj, pObjS, pBase);	
@@ -232,13 +276,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_3::BSerializable_getTypeId() {
 	return 432867945; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_3::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_432867945(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_3>(bio, pObj, pObjS, pBase);	
@@ -254,13 +298,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_31512998::BSerializable_getTypeId() {
 	return 1620912700; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_31512998::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1620912700(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_31512998>(bio, pObj, pObjS, pBase);	
@@ -276,13 +320,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_39910537::BSerializable_getTypeId() {
 	return 245460547; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_39910537::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_245460547(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_39910537>(bio, pObj, pObjS, pBase);	
@@ -298,13 +342,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_4::BSerializable_getTypeId() {
 	return 432867944; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_4::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_432867944(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_4>(bio, pObj, pObjS, pBase);	
@@ -320,13 +364,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_476459792::BSerializable_getTypeId() {
 	return 255681041; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_476459792::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_255681041(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_476459792>(bio, pObj, pObjS, pBase);	
@@ -342,13 +386,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_5::BSerializable_getTypeId() {
 	return 432867943; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_5::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_432867943(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_5>(bio, pObj, pObjS, pBase);	
@@ -364,13 +408,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_51898890::BSerializable_getTypeId() {
 	return 905019472; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_51898890::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_905019472(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_51898890>(bio, pObj, pObjS, pBase);	
@@ -386,13 +430,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_564008001::BSerializable_getTypeId() {
 	return 1405156912; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_564008001::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1405156912(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_564008001>(bio, pObj, pObjS, pBase);	
@@ -408,13 +452,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_588723219::BSerializable_getTypeId() {
 	return 1537615291; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_588723219::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1537615291(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_588723219>(bio, pObj, pObjS, pBase);	
@@ -430,13 +474,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_6::BSerializable_getTypeId() {
 	return 432867942; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_6::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_432867942(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_6>(bio, pObj, pObjS, pBase);	
@@ -452,13 +496,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_601099730::BSerializable_getTypeId() {
 	return 856233055; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_601099730::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_856233055(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_601099730>(bio, pObj, pObjS, pBase);	
@@ -474,13 +518,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_65775978::BSerializable_getTypeId() {
 	return 1872312576; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_65775978::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1872312576(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_65775978>(bio, pObj, pObjS, pBase);	
@@ -496,13 +540,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_673917574::BSerializable_getTypeId() {
 	return 2098743607; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_673917574::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_2098743607(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_673917574>(bio, pObj, pObjS, pBase);	
@@ -518,13 +562,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_7::BSerializable_getTypeId() {
 	return 432867941; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_7::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_432867941(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_7>(bio, pObj, pObjS, pBase);	
@@ -540,13 +584,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_7007::BSerializable_getTypeId() {
 	return 2076960068; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_7007::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_2076960068(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_7007>(bio, pObj, pObjS, pBase);	
@@ -562,13 +606,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_758319514::BSerializable_getTypeId() {
 	return 1168951451; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_758319514::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1168951451(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_758319514>(bio, pObj, pObjS, pBase);	
@@ -584,13 +628,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_766441794::BSerializable_getTypeId() {
 	return 1167917980; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_766441794::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1167917980(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_766441794>(bio, pObj, pObjS, pBase);	
@@ -606,13 +650,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_769021986::BSerializable_getTypeId() {
 	return 580900026; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_769021986::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_580900026(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_769021986>(bio, pObj, pObjS, pBase);	
@@ -628,13 +672,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_8::BSerializable_getTypeId() {
 	return 432867940; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_8::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_432867940(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_8>(bio, pObj, pObjS, pBase);	
@@ -650,13 +694,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_846419204::BSerializable_getTypeId() {
 	return 167272824; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_846419204::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_167272824(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_846419204>(bio, pObj, pObjS, pBase);	
@@ -672,13 +716,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_8789515::BSerializable_getTypeId() {
 	return 323111619; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_8789515::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_323111619(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_8789515>(bio, pObj, pObjS, pBase);	
@@ -694,13 +738,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_9001::BSerializable_getTypeId() {
 	return 2076900492; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_9001::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_2076900492(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_9001>(bio, pObj, pObjS, pBase);	
@@ -716,13 +760,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_936607009::BSerializable_getTypeId() {
 	return 968248604; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_936607009::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_968248604(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_936607009>(bio, pObj, pObjS, pBase);	
@@ -738,13 +782,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_94341197::BSerializable_getTypeId() {
 	return 1800858646; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_94341197::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1800858646(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_94341197>(bio, pObj, pObjS, pBase);	
@@ -760,13 +804,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_945713488::BSerializable_getTypeId() {
 	return 1852992857; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_945713488::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1852992857(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_945713488>(bio, pObj, pObjS, pBase);	
@@ -782,13 +826,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_949340697::BSerializable_getTypeId() {
 	return 996206823; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_949340697::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_996206823(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_949340697>(bio, pObj, pObjS, pBase);	
@@ -804,13 +848,13 @@ namespace byps { namespace test { namespace api {
 BTYPEID byps::test::api::BResult_955752991::BSerializable_getTypeId() {
 	return 695494982; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BResult_955752991::serialize(BIO& ar, const BVERSION version) {
 	ar & this->result;
 }
 }}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_695494982(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::BResult_955752991>(bio, pObj, pObjS, pBase);	
@@ -843,7 +887,7 @@ byps::test::api::arr::ArrayTypes1dim::ArrayTypes1dim(const PArrayBoolean& boolea
 BTYPEID byps::test::api::arr::ArrayTypes1dim::BSerializable_getTypeId() {
 	return 2001; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void ArrayTypes1dim::serialize(BIO& ar, const BVERSION version) {
 	ar & this->boolean1;
 	ar & this->byte1;
@@ -859,7 +903,7 @@ void ArrayTypes1dim::serialize(BIO& ar, const BVERSION version) {
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_2001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::arr::ArrayTypes1dim>(bio, pObj, pObjS, pBase);	
@@ -891,7 +935,7 @@ byps::test::api::arr::ArrayTypes4dim::ArrayTypes4dim(const PArray4Boolean& boole
 BTYPEID byps::test::api::arr::ArrayTypes4dim::BSerializable_getTypeId() {
 	return 2004; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void ArrayTypes4dim::serialize(BIO& ar, const BVERSION version) {
 	ar & this->boolean4;
 	ar & this->byte4;
@@ -906,7 +950,7 @@ void ArrayTypes4dim::serialize(BIO& ar, const BVERSION version) {
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_2004(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::arr::ArrayTypes4dim>(bio, pObj, pObjS, pBase);	
@@ -929,13 +973,13 @@ byps::test::api::auth::SessionInfo::SessionInfo(const ::std::wstring& sessionID)
 BTYPEID byps::test::api::auth::SessionInfo::BSerializable_getTypeId() {
 	return 65775978; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void SessionInfo::serialize(BIO& ar, const BVERSION version) {
 	ar & this->sessionID;
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_65775978(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::auth::SessionInfo>(bio, pObj, pObjS, pBase);	
@@ -1076,12 +1120,12 @@ AllTypesC::AllTypesC() {
 BTYPEID byps::test::api::cons::AllTypesC::BSerializable_getTypeId() {
 	return 930294276; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void AllTypesC::serialize(BIO& ar, const BVERSION version) {
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_930294276(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::cons::AllTypesC>(bio, pObj, pObjS, pBase);	
@@ -1167,7 +1211,7 @@ void AllTypesZ::setString2(PArrayString v) {
 void AllTypesZ::setHebrew2(PArrayHebrewZ v) {
 	hebrew2 = v;
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void AllTypesZ::serialize(BIO& ar, const BVERSION version) {
 	ar & this->bool1;
 	ar & this->byte1;
@@ -1186,13 +1230,13 @@ void AllTypesZ::serialize(BIO& ar, const BVERSION version) {
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_142458(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::cons::AllTypesZ>(bio, pObj, pObjS, pBase);	
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_81775365(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_Obj_Template<::byps::BArray2< byps::test::api::cons::PAllTypesZ > >(bio, pObj, pObjS, pBase);	
@@ -1221,12 +1265,12 @@ HebrewC::HebrewC() {
 BTYPEID byps::test::api::cons::HebrewC::BSerializable_getTypeId() {
 	return 1770673942; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void HebrewC::serialize(BIO& ar, const BVERSION version) {
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1770673942(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::cons::HebrewC>(bio, pObj, pObjS, pBase);	
@@ -1252,19 +1296,19 @@ BTYPEID byps::test::api::cons::HebrewZ::BSerializable_getTypeId() {
 void HebrewZ::setCore(::std::wstring v) {
 	core = v;
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void HebrewZ::serialize(BIO& ar, const BVERSION version) {
 	ar & this->core;
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1518668429(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::cons::HebrewZ>(bio, pObj, pObjS, pBase);	
 }
 }}}
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_92445340(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_Obj_Template<::byps::BArray1< byps::test::api::cons::PHebrewZ > >(bio, pObj, pObjS, pBase);	
@@ -1296,7 +1340,7 @@ BTYPEID byps::test::api::enu::UsePlanets::BSerializable_getTypeId() {
 void UsePlanets::setPlanet2(EnumPlanets v) {
 	planet2 = v;
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void UsePlanets::serialize(BIO& ar, const BVERSION version) {
 	ar & this->planet;
 	ar & this->planet2;
@@ -1306,7 +1350,7 @@ void UsePlanets::serialize(BIO& ar, const BVERSION version) {
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_10000(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::enu::UsePlanets>(bio, pObj, pObjS, pBase);	
@@ -1330,7 +1374,7 @@ byps::test::api::inherit::BRequest_BioFruitService_certify::BRequest_BioFruitSer
 BTYPEID byps::test::api::inherit::BRequest_BioFruitService_certify::BSerializable_getTypeId() {
 	return 1435417025; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BRequest_BioFruitService_certify::serialize(BIO& ar, const BVERSION version) {
 	ar & this->param;
 }
@@ -1348,7 +1392,7 @@ void byps::test::api::inherit::BRequest_BioFruitService_certify::execute(const P
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1435417025(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::inherit::BRequest_BioFruitService_certify>(bio, pObj, pObjS, pBase);	
@@ -1367,7 +1411,7 @@ BRequest_BioLemonService_useParing::BRequest_BioLemonService_useParing() : BMeth
 BTYPEID byps::test::api::inherit::BRequest_BioLemonService_useParing::BSerializable_getTypeId() {
 	return 2108700976; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BRequest_BioLemonService_useParing::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::inherit::BRequest_BioLemonService_useParing::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -1384,7 +1428,7 @@ void byps::test::api::inherit::BRequest_BioLemonService_useParing::execute(const
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_2108700976(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::inherit::BRequest_BioLemonService_useParing>(bio, pObj, pObjS, pBase);	
@@ -1403,7 +1447,7 @@ BRequest_FruitService_squeeze::BRequest_FruitService_squeeze() : BMethodRequest(
 BTYPEID byps::test::api::inherit::BRequest_FruitService_squeeze::BSerializable_getTypeId() {
 	return 1290167289; 
 }
-// checkpoint byps.gen.cpp.GenApiClass:878
+// checkpoint byps.gen.cpp.GenApiClass:876
 void BRequest_FruitService_squeeze::serialize(BIO& ar, const BVERSION version) {
 }
 void byps::test::api::inherit::BRequest_FruitService_squeeze::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
@@ -1420,89 +1464,9 @@ void byps::test::api::inherit::BRequest_FruitService_squeeze::execute(const PRem
 }
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:935
+// checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1290167289(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::inherit::BRequest_FruitService_squeeze>(bio, pObj, pObjS, pBase);	
-}
-}}}
-namespace byps { namespace test { namespace api { namespace inherit { 
-
-//-------------------------------------------------
-// Implementation of class BRequest_LemonService_pick
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_LemonService_pick::BRequest_LemonService_pick() : BMethodRequest(605543968) {
-}
-// checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::inherit::BRequest_LemonService_pick::BRequest_LemonService_pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree)
-	: BMethodRequest(605543968) 
-	, sess(sess)
-	, fromTree(fromTree)
-	{}
-// checkpoint byps.gen.cpp.PrintContext:496
-BTYPEID byps::test::api::inherit::BRequest_LemonService_pick::BSerializable_getTypeId() {
-	return 1022088379; 
-}
-// checkpoint byps.gen.cpp.GenApiClass:878
-void BRequest_LemonService_pick::serialize(BIO& ar, const BVERSION version) {
-	ar & this->fromTree;
-	ar & this->sess;
-}
-void byps::test::api::inherit::BRequest_LemonService_pick::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
-	PLemonService __byps__remoteT = byps_ptr_cast<LemonService>(__byps__remote);
-	__byps__remoteT->pick(sess, fromTree, [__byps__asyncResult](::std::wstring __byps__result, const BException& __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_10(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:935
-namespace byps { namespace test { namespace api { 
-void BSerializer_1022088379(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_ObjS_Template<byps::test::api::inherit::BRequest_LemonService_pick>(bio, pObj, pObjS, pBase);	
-}
-}}}
-namespace byps { namespace test { namespace api { namespace inherit { 
-
-//-------------------------------------------------
-// Implementation of class BRequest_PlantService_grow
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_PlantService_grow::BRequest_PlantService_grow() : BMethodRequest(1954605928) {
-}
-// checkpoint byps.gen.cpp.PrintContext:496
-BTYPEID byps::test::api::inherit::BRequest_PlantService_grow::BSerializable_getTypeId() {
-	return 695716901; 
-}
-// checkpoint byps.gen.cpp.GenApiClass:878
-void BRequest_PlantService_grow::serialize(BIO& ar, const BVERSION version) {
-}
-void byps::test::api::inherit::BRequest_PlantService_grow::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
-	PPlantService __byps__remoteT = byps_ptr_cast<PlantService>(__byps__remote);
-	__byps__remoteT->grow([__byps__asyncResult](::std::wstring __byps__result, const BException& __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_10(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:935
-namespace byps { namespace test { namespace api { 
-void BSerializer_695716901(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_ObjS_Template<byps::test::api::inherit::BRequest_PlantService_grow>(bio, pObj, pObjS, pBase);	
 }
 }}}

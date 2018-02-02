@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.15 2017-02-01
+
+- Do not invalidate the HTTP session, if no BYPS session could be found.
+
 5.14 2017-12-28
 
 - Filter empty cookies before calling CookieManager.put to prevent SEVERE log entry.

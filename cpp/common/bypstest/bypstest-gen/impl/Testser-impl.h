@@ -19,7 +19,7 @@ class BResult_1 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1(bool result = bool()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -39,7 +39,7 @@ class BResult_10 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_10(::std::wstring result = ::std::wstring()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -59,7 +59,7 @@ class BResult_1000 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1000(byps::test::api::prim::PPrimitiveTypes result = byps::test::api::prim::PPrimitiveTypes()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -79,7 +79,7 @@ class BResult_100361105 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_100361105(PArrayInt result = PArrayInt()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -99,7 +99,7 @@ class BResult_1050216688 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1050216688(byps::PVectorLong result = byps::PVectorLong()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -119,7 +119,7 @@ class BResult_1059148284 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1059148284(byps::PVectorByte result = byps::PVectorByte()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -139,7 +139,7 @@ class BResult_1097129250 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1097129250(PArrayLong result = PArrayLong()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -159,7 +159,7 @@ class BResult_1097919350 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1097919350(byps::PSetDate result = byps::PSetDate()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -179,7 +179,7 @@ class BResult_1174971318 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1174971318(byps_ptr< ::std::vector< PBytes > > result = byps_ptr< ::std::vector< PBytes > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -199,7 +199,7 @@ class BResult_12 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_12(byps::PVectorObject result = byps::PVectorObject()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -219,7 +219,7 @@ class BResult_1201775504 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1201775504(PArray4Byte result = PArray4Byte()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -239,7 +239,7 @@ class BResult_1218831438 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1218831438(byps::PVectorInputStream result = byps::PVectorInputStream()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -259,7 +259,7 @@ class BResult_124584219 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_124584219(byps::PArray4Object result = byps::PArray4Object()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -279,7 +279,7 @@ class BResult_1279823631 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1279823631(byps::PMapStringBoolean result = byps::PMapStringBoolean()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -299,7 +299,7 @@ class BResult_1320560671 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1320560671(byps::PSetDouble result = byps::PSetDouble()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -319,7 +319,7 @@ class BResult_1347703734 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1347703734(byps::PMapIntegerInteger result = byps::PMapIntegerInteger()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -339,7 +339,7 @@ class BResult_1358523233 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1358523233(byps::test::api::inl::PMapIntegerPoint2D result = byps::test::api::inl::PMapIntegerPoint2D()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -359,7 +359,7 @@ class BResult_1359468275 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1359468275(PArrayDouble result = PArrayDouble()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -379,7 +379,7 @@ class BResult_1361632968 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1361632968(PArrayChar result = PArrayChar()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -399,7 +399,7 @@ class BResult_1365696060 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1365696060(byps::PSetBoolean result = byps::PSetBoolean()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -419,7 +419,7 @@ class BResult_1366799209 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1366799209(byps::PMapStringDate result = byps::PMapStringDate()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -439,7 +439,7 @@ class BResult_1374008726 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1374008726(PBytes result = PBytes()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -459,7 +459,7 @@ class BResult_1375035164 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1375035164(byps::test::api::enu::EnumPlanets result = byps::test::api::enu::EnumPlanets()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -479,7 +479,7 @@ class BResult_1391985860 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1391985860(byps::test::api::ver::PEvolve result = byps::test::api::ver::PEvolve()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -499,7 +499,7 @@ class BResult_14 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_14(byps_ptr< ::std::set< PSerializable > > result = byps_ptr< ::std::set< PSerializable > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -519,7 +519,7 @@ class BResult_1406124761 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1406124761(byps_ptr< ::std::set< PArrayInt > > result = byps_ptr< ::std::set< PArrayInt > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -539,7 +539,7 @@ class BResult_1406664368 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1406664368(PArrayDate result = PArrayDate()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -559,7 +559,7 @@ class BResult_1457164460 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1457164460(byps::PSetLong result = byps::PSetLong()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -579,7 +579,7 @@ class BResult_1487265161 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1487265161(byps::PMapByteDouble result = byps::PMapByteDouble()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -599,7 +599,7 @@ class BResult_1488550492 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1488550492(byps::PMapStringObject result = byps::PMapStringObject()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -619,7 +619,7 @@ class BResult_1493282670 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1493282670(byps::PSetInteger result = byps::PSetInteger()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -639,7 +639,7 @@ class BResult_15 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_15(PContentStream result = PContentStream()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -659,7 +659,7 @@ class BResult_1504867122 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1504867122(byps::PVectorDate result = byps::PVectorDate()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -679,7 +679,7 @@ class BResult_1516687588 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1516687588(PArray4Float result = PArray4Float()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -699,7 +699,7 @@ class BResult_1555345627 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1555345627(byps::PVectorDouble result = byps::PVectorDouble()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -719,7 +719,7 @@ class BResult_1596367810 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1596367810(byps::test::api::prim::PVectorPrimitiveTypes result = byps::test::api::prim::PVectorPrimitiveTypes()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -739,7 +739,7 @@ class BResult_16 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_16(PRemote result = PRemote()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -759,7 +759,7 @@ class BResult_1617670280 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1617670280(byps::PVectorBoolean result = byps::PVectorBoolean()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -779,7 +779,7 @@ class BResult_1628501332 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1628501332(byps::PVectorFloat result = byps::PVectorFloat()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -799,7 +799,7 @@ class BResult_1633500852 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1633500852(byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > > result = byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -819,7 +819,7 @@ class BResult_1633750383 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1633750383(byps_ptr< ::std::map< int32_t , PArrayInt > > result = byps_ptr< ::std::map< int32_t , PArrayInt > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -839,7 +839,7 @@ class BResult_1661807911 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1661807911(byps::PVectorCharacter result = byps::PVectorCharacter()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -859,7 +859,7 @@ class BResult_17 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_17(BDateTime result = BDateTime()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -879,7 +879,7 @@ class BResult_1710660846 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1710660846(byps::PMapStringString result = byps::PMapStringString()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -899,7 +899,7 @@ class BResult_171948703 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_171948703(byps::test::api::inl::PActor result = byps::test::api::inl::PActor()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -919,7 +919,7 @@ class BResult_1746702954 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1746702954(byps_ptr< ::std::vector< byps::PVectorInteger > > result = byps_ptr< ::std::vector< byps::PVectorInteger > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -939,7 +939,7 @@ class BResult_1752158699 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1752158699(byps_ptr< ::std::vector< PArrayInt > > result = byps_ptr< ::std::vector< PArrayInt > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -959,7 +959,7 @@ class BResult_1799280818 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1799280818(byps_ptr< ::std::map< int32_t , PBytes > > result = byps_ptr< ::std::map< int32_t , PBytes > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -979,7 +979,7 @@ class BResult_181681714 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_181681714(byps::PVectorInteger result = byps::PVectorInteger()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -999,7 +999,7 @@ class BResult_1823330785 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1823330785(byps_ptr< ::std::vector< byps::test::api::inl::PVectorPoint2D > > result = byps_ptr< ::std::vector< byps::test::api::inl::PVectorPoint2D > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1019,7 +1019,7 @@ class BResult_1831201218 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1831201218(byps::test::api::prim::PMapIntegerPrimitiveTypes result = byps::test::api::prim::PMapIntegerPrimitiveTypes()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1039,7 +1039,7 @@ class BResult_183594037 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_183594037(byps::PArrayObject result = byps::PArrayObject()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1059,7 +1059,7 @@ class BResult_184101377 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_184101377(byps::test::api::inl::PArrayPoint2D result = byps::test::api::inl::PArrayPoint2D()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1079,7 +1079,7 @@ class BResult_1859644668 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1859644668(PArray4Short result = PArray4Short()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1099,7 +1099,7 @@ class BResult_1888107655 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1888107655(PArrayString result = PArrayString()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1119,7 +1119,7 @@ class BResult_1888799711 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1888799711(byps::PSetString result = byps::PSetString()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1139,7 +1139,7 @@ class BResult_1898022288 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1898022288(byps::PSetFloat result = byps::PSetFloat()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1159,7 +1159,7 @@ class BResult_19 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_19(bool result = bool()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1179,7 +1179,7 @@ class BResult_1972793385 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1972793385(byps::PMapDoubleByte result = byps::PMapDoubleByte()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1199,7 +1199,7 @@ class BResult_1973996106 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1973996106(byps::PMapShortLong result = byps::PMapShortLong()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1219,7 +1219,7 @@ class BResult_1997002548 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_1997002548(byps::PVectorShort result = byps::PVectorShort()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1239,7 +1239,7 @@ class BResult_2 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_2(int8_t result = int8_t()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1259,7 +1259,7 @@ class BResult_2028443792 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_2028443792(byps::PSetShort result = byps::PSetShort()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1279,7 +1279,7 @@ class BResult_2052431866 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_2052431866(byps_ptr< ::std::set< PBytes > > result = byps_ptr< ::std::set< PBytes > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1299,7 +1299,7 @@ class BResult_2053507648 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_2053507648(byps::test::api::prim::PArrayPrimitiveTypes result = byps::test::api::prim::PArrayPrimitiveTypes()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1319,7 +1319,7 @@ class BResult_2058423690 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_2058423690(PArrayBoolean result = PArrayBoolean()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1339,7 +1339,7 @@ class BResult_2064980445 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_2064980445(byps::test::api::inl::PVectorPoint2D result = byps::test::api::inl::PVectorPoint2D()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1359,7 +1359,7 @@ class BResult_2067161310 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_2067161310(PArrayShort result = PArrayShort()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1379,7 +1379,7 @@ class BResult_2087445849 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_2087445849(PArray4Double result = PArray4Double()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1399,7 +1399,7 @@ class BResult_21 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_21(PSerializable result = PSerializable()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1419,7 +1419,7 @@ class BResult_2123584667 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_2123584667(byps::PVectorString result = byps::PVectorString()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1439,7 +1439,7 @@ class BResult_3 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_3(int16_t result = int16_t()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1459,7 +1459,7 @@ class BResult_31512998 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_31512998(byps::PSetByte result = byps::PSetByte()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1479,7 +1479,7 @@ class BResult_39910537 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_39910537(PArray4Int result = PArray4Int()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1499,7 +1499,7 @@ class BResult_4 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_4(wchar_t result = wchar_t()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1519,7 +1519,7 @@ class BResult_476459792 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_476459792(byps::PMapIntegerInputStream result = byps::PMapIntegerInputStream()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1539,7 +1539,7 @@ class BResult_5 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_5(int32_t result = int32_t()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1559,7 +1559,7 @@ class BResult_51898890 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_51898890(PArray4Date result = PArray4Date()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1579,7 +1579,7 @@ class BResult_564008001 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_564008001(byps::test::api::ver::PEvolveIF result = byps::test::api::ver::PEvolveIF()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1599,7 +1599,7 @@ class BResult_588723219 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_588723219(PArray4String result = PArray4String()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1619,7 +1619,7 @@ class BResult_6 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_6(int64_t result = int64_t()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1639,7 +1639,7 @@ class BResult_601099730 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_601099730(byps::PMapLongShort result = byps::PMapLongShort()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1659,7 +1659,7 @@ class BResult_65775978 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_65775978(byps::test::api::auth::PSessionInfo result = byps::test::api::auth::PSessionInfo()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1679,7 +1679,7 @@ class BResult_673917574 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_673917574(byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > > result = byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > >()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1699,7 +1699,7 @@ class BResult_7 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_7(float result = float()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1719,7 +1719,7 @@ class BResult_7007 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_7007(byps::test::api::srvr::PChatStructure result = byps::test::api::srvr::PChatStructure()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1739,7 +1739,7 @@ class BResult_758319514 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_758319514(byps::test::api::prim::PArray4PrimitiveTypes result = byps::test::api::prim::PArray4PrimitiveTypes()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1759,7 +1759,7 @@ class BResult_766441794 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_766441794(PArrayFloat result = PArrayFloat()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1779,7 +1779,7 @@ class BResult_769021986 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_769021986(PArray4Char result = PArray4Char()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1799,7 +1799,7 @@ class BResult_8 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_8(double result = double()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1819,7 +1819,7 @@ class BResult_846419204 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_846419204(PArray4Long result = PArray4Long()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1839,7 +1839,7 @@ class BResult_8789515 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_8789515(byps::PMapFloatCharacter result = byps::PMapFloatCharacter()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1859,7 +1859,7 @@ class BResult_9001 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_9001(byps::test::api::refs::PNode result = byps::test::api::refs::PNode()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1879,7 +1879,7 @@ class BResult_936607009 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_936607009(byps::PSetCharacter result = byps::PSetCharacter()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1899,7 +1899,7 @@ class BResult_94341197 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_94341197(byps::PMapCharacterFloat result = byps::PMapCharacterFloat()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1919,7 +1919,7 @@ class BResult_945713488 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_945713488(PArray4Boolean result = PArray4Boolean()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1939,7 +1939,7 @@ class BResult_949340697 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_949340697(byps::test::api::inl::PArray4Point2D result = byps::test::api::inl::PArray4Point2D()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1959,7 +1959,7 @@ class BResult_955752991 : public BSerializable {
 	// checkpoint byps.gen.cpp.GenApiClass:473
 	public: BResult_955752991(byps::test::api::srvr::PClientIF result = byps::test::api::srvr::PClientIF()) : result(result) {}	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -1982,7 +1982,7 @@ class BRequest_BioFruitService_certify : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_BioFruitService_certify(const ::std::wstring& param);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2004,7 +2004,7 @@ class BRequest_BioLemonService_useParing : public BMethodRequest {
 	public: BRequest_BioLemonService_useParing();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2026,7 +2026,7 @@ class BRequest_FruitService_squeeze : public BMethodRequest {
 	public: BRequest_FruitService_squeeze();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2051,7 +2051,7 @@ class BRequest_LemonService_pick : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_LemonService_pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2073,7 +2073,7 @@ class BRequest_PlantService_grow : public BMethodRequest {
 	public: BRequest_PlantService_grow();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2095,7 +2095,7 @@ class BRequest_RemoteArrayTypes1dim_getBool : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes1dim_getBool();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2117,7 +2117,7 @@ class BRequest_RemoteArrayTypes1dim_getByte : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes1dim_getByte();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2139,7 +2139,7 @@ class BRequest_RemoteArrayTypes1dim_getChar : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes1dim_getChar();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2161,7 +2161,7 @@ class BRequest_RemoteArrayTypes1dim_getDate : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes1dim_getDate();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2183,7 +2183,7 @@ class BRequest_RemoteArrayTypes1dim_getDouble : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes1dim_getDouble();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2205,7 +2205,7 @@ class BRequest_RemoteArrayTypes1dim_getFloat : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes1dim_getFloat();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2227,7 +2227,7 @@ class BRequest_RemoteArrayTypes1dim_getInt : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes1dim_getInt();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2249,7 +2249,7 @@ class BRequest_RemoteArrayTypes1dim_getLong : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes1dim_getLong();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2271,7 +2271,7 @@ class BRequest_RemoteArrayTypes1dim_getObject : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes1dim_getObject();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2293,7 +2293,7 @@ class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes1dim_getPrimitiveTypes();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2315,7 +2315,7 @@ class BRequest_RemoteArrayTypes1dim_getShort : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes1dim_getShort();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2337,7 +2337,7 @@ class BRequest_RemoteArrayTypes1dim_getString : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes1dim_getString();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2361,7 +2361,7 @@ class BRequest_RemoteArrayTypes1dim_setBool : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes1dim_setBool(const PArrayBoolean& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2385,7 +2385,7 @@ class BRequest_RemoteArrayTypes1dim_setByte : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes1dim_setByte(const PBytes& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2409,7 +2409,7 @@ class BRequest_RemoteArrayTypes1dim_setChar : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes1dim_setChar(const PArrayChar& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2433,7 +2433,7 @@ class BRequest_RemoteArrayTypes1dim_setDate : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes1dim_setDate(const PArrayDate& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2457,7 +2457,7 @@ class BRequest_RemoteArrayTypes1dim_setDouble : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes1dim_setDouble(const PArrayDouble& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2481,7 +2481,7 @@ class BRequest_RemoteArrayTypes1dim_setFloat : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes1dim_setFloat(const PArrayFloat& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2505,7 +2505,7 @@ class BRequest_RemoteArrayTypes1dim_setInt : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes1dim_setInt(const PArrayInt& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2529,7 +2529,7 @@ class BRequest_RemoteArrayTypes1dim_setLong : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes1dim_setLong(const PArrayLong& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2553,7 +2553,7 @@ class BRequest_RemoteArrayTypes1dim_setObject : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes1dim_setObject(const byps::PArrayObject& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2577,7 +2577,7 @@ class BRequest_RemoteArrayTypes1dim_setPrimitiveTypes : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes1dim_setPrimitiveTypes(const byps::test::api::prim::PArrayPrimitiveTypes& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2601,7 +2601,7 @@ class BRequest_RemoteArrayTypes1dim_setShort : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes1dim_setShort(const PArrayShort& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2625,7 +2625,7 @@ class BRequest_RemoteArrayTypes1dim_setString : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes1dim_setString(const PArrayString& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2651,7 +2651,7 @@ class BRequest_RemoteArrayTypes23_sendArraysClass : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes23_sendArraysClass(const byps::test::api::prim::PArray2PrimitiveTypes& arr2, const byps::test::api::prim::PArray3PrimitiveTypes& arr3, const byps::test::api::prim::PArray4PrimitiveTypes& arr4);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2677,7 +2677,7 @@ class BRequest_RemoteArrayTypes23_sendArraysInline : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes23_sendArraysInline(const byps::test::api::inl::PArray2Point2D& arr2, const byps::test::api::inl::PArray3Point2D& arr3, const byps::test::api::inl::PArray4Point2D& arr4);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2703,7 +2703,7 @@ class BRequest_RemoteArrayTypes23_sendArraysInt : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes23_sendArraysInt(const PArray2Int& arr2, const PArray3Int& arr3, const PArray4Int& arr4);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2729,7 +2729,7 @@ class BRequest_RemoteArrayTypes23_sendArraysObject : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes23_sendArraysObject(const byps::PArray2Object& arr2, const byps::PArray3Object& arr3, const byps::PArray4Object& arr4);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2755,7 +2755,7 @@ class BRequest_RemoteArrayTypes23_sendArraysString : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes23_sendArraysString(const PArray2String& arr2, const PArray3String& arr3, const PArray4String& arr4);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2777,7 +2777,7 @@ class BRequest_RemoteArrayTypes4dim_getBool : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes4dim_getBool();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2799,7 +2799,7 @@ class BRequest_RemoteArrayTypes4dim_getByte : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes4dim_getByte();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2821,7 +2821,7 @@ class BRequest_RemoteArrayTypes4dim_getChar : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes4dim_getChar();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2843,7 +2843,7 @@ class BRequest_RemoteArrayTypes4dim_getDate : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes4dim_getDate();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2865,7 +2865,7 @@ class BRequest_RemoteArrayTypes4dim_getDouble : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes4dim_getDouble();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2887,7 +2887,7 @@ class BRequest_RemoteArrayTypes4dim_getFloat : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes4dim_getFloat();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2909,7 +2909,7 @@ class BRequest_RemoteArrayTypes4dim_getInt : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes4dim_getInt();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2931,7 +2931,7 @@ class BRequest_RemoteArrayTypes4dim_getLong : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes4dim_getLong();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2953,7 +2953,7 @@ class BRequest_RemoteArrayTypes4dim_getObject : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes4dim_getObject();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2975,7 +2975,7 @@ class BRequest_RemoteArrayTypes4dim_getPrimitiveTypes : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes4dim_getPrimitiveTypes();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -2997,7 +2997,7 @@ class BRequest_RemoteArrayTypes4dim_getShort : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes4dim_getShort();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3019,7 +3019,7 @@ class BRequest_RemoteArrayTypes4dim_getString : public BMethodRequest {
 	public: BRequest_RemoteArrayTypes4dim_getString();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3043,7 +3043,7 @@ class BRequest_RemoteArrayTypes4dim_setBool : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes4dim_setBool(const PArray4Boolean& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3067,7 +3067,7 @@ class BRequest_RemoteArrayTypes4dim_setByte : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes4dim_setByte(const PArray4Byte& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3091,7 +3091,7 @@ class BRequest_RemoteArrayTypes4dim_setChar : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes4dim_setChar(const PArray4Char& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3115,7 +3115,7 @@ class BRequest_RemoteArrayTypes4dim_setDate : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes4dim_setDate(const PArray4Date& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3139,7 +3139,7 @@ class BRequest_RemoteArrayTypes4dim_setDouble : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes4dim_setDouble(const PArray4Double& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3163,7 +3163,7 @@ class BRequest_RemoteArrayTypes4dim_setFloat : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes4dim_setFloat(const PArray4Float& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3187,7 +3187,7 @@ class BRequest_RemoteArrayTypes4dim_setInt : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes4dim_setInt(const PArray4Int& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3211,7 +3211,7 @@ class BRequest_RemoteArrayTypes4dim_setLong : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes4dim_setLong(const PArray4Long& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3235,7 +3235,7 @@ class BRequest_RemoteArrayTypes4dim_setObject : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes4dim_setObject(const byps::PArray4Object& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3259,7 +3259,7 @@ class BRequest_RemoteArrayTypes4dim_setPrimitiveTypes : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes4dim_setPrimitiveTypes(const byps::test::api::prim::PArray4PrimitiveTypes& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3283,7 +3283,7 @@ class BRequest_RemoteArrayTypes4dim_setShort : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes4dim_setShort(const PArray4Short& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3307,7 +3307,7 @@ class BRequest_RemoteArrayTypes4dim_setString : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteArrayTypes4dim_setString(const PArray4String& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3347,7 +3347,7 @@ class BRequest_RemoteConstants_compare_AllTypesC : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteConstants_compare_AllTypesC(bool bool1s, bool bool2s, wchar_t char1s, const ::std::wstring& stringNull, wchar_t char2s, int16_t short1s, int32_t int1s, int64_t long1s, float float1s, double double1s, const ::std::wstring& string1s, const byps::test::api::cons::PAllTypesZ& ALL, const PArrayInt& arrInt, const PArray4Int& arrInt4, const PArrayString& arrStrings, const PArray4String& arrStrings4, const byps::test::api::cons::PArray2AllTypesZ& arrAll);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3372,7 +3372,7 @@ class BRequest_RemoteConstants_compare_HebrewC : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteConstants_compare_HebrewC(const byps::test::api::cons::PHebrewZ& ALEPH, const byps::test::api::cons::PHebrewZ& BETH);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3394,7 +3394,7 @@ class BRequest_RemoteEnums_getPlanet : public BMethodRequest {
 	public: BRequest_RemoteEnums_getPlanet();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3418,7 +3418,7 @@ class BRequest_RemoteEnums_setPlanet : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteEnums_setPlanet(byps::test::api::enu::EnumPlanets planet);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3440,7 +3440,7 @@ class BRequest_RemoteInlineInstance_getActor : public BMethodRequest {
 	public: BRequest_RemoteInlineInstance_getActor();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3462,7 +3462,7 @@ class BRequest_RemoteInlineInstance_getPoint2DArray1dim : public BMethodRequest 
 	public: BRequest_RemoteInlineInstance_getPoint2DArray1dim();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3484,7 +3484,7 @@ class BRequest_RemoteInlineInstance_getPoint2DArray4dim : public BMethodRequest 
 	public: BRequest_RemoteInlineInstance_getPoint2DArray4dim();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3506,7 +3506,7 @@ class BRequest_RemoteInlineInstance_getPoint2DList : public BMethodRequest {
 	public: BRequest_RemoteInlineInstance_getPoint2DList();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3528,7 +3528,7 @@ class BRequest_RemoteInlineInstance_getPoint2DListList : public BMethodRequest {
 	public: BRequest_RemoteInlineInstance_getPoint2DListList();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3550,7 +3550,7 @@ class BRequest_RemoteInlineInstance_getPoint2DMap : public BMethodRequest {
 	public: BRequest_RemoteInlineInstance_getPoint2DMap();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3574,7 +3574,7 @@ class BRequest_RemoteInlineInstance_setActor : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteInlineInstance_setActor(const byps::test::api::inl::PActor& act);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3598,7 +3598,7 @@ class BRequest_RemoteInlineInstance_setPoint2DArray1dim : public BMethodRequest 
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteInlineInstance_setPoint2DArray1dim(const byps::test::api::inl::PArrayPoint2D& pointArray);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3622,7 +3622,7 @@ class BRequest_RemoteInlineInstance_setPoint2DArray4dim : public BMethodRequest 
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteInlineInstance_setPoint2DArray4dim(const byps::test::api::inl::PArray4Point2D& pointArray);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3646,7 +3646,7 @@ class BRequest_RemoteInlineInstance_setPoint2DList : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteInlineInstance_setPoint2DList(const byps::test::api::inl::PVectorPoint2D& pointList);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3670,7 +3670,7 @@ class BRequest_RemoteInlineInstance_setPoint2DListList : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteInlineInstance_setPoint2DListList(const byps_ptr< ::std::vector< byps::test::api::inl::PVectorPoint2D > >& pointListList);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3694,7 +3694,7 @@ class BRequest_RemoteInlineInstance_setPoint2DMap : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteInlineInstance_setPoint2DMap(const byps::test::api::inl::PMapIntegerPoint2D& pointMap);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3716,7 +3716,7 @@ class BRequest_RemoteListTypes_getBoolean1 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getBoolean1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3738,7 +3738,7 @@ class BRequest_RemoteListTypes_getByte1 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getByte1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3760,7 +3760,7 @@ class BRequest_RemoteListTypes_getByte2 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getByte2();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3782,7 +3782,7 @@ class BRequest_RemoteListTypes_getChar1 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getChar1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3804,7 +3804,7 @@ class BRequest_RemoteListTypes_getDate1 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getDate1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3826,7 +3826,7 @@ class BRequest_RemoteListTypes_getDouble1 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getDouble1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3848,7 +3848,7 @@ class BRequest_RemoteListTypes_getFloat1 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getFloat1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3870,7 +3870,7 @@ class BRequest_RemoteListTypes_getInt1 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getInt1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3892,7 +3892,7 @@ class BRequest_RemoteListTypes_getInt2 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getInt2();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3914,7 +3914,7 @@ class BRequest_RemoteListTypes_getInt3 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getInt3();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3936,7 +3936,7 @@ class BRequest_RemoteListTypes_getInt4 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getInt4();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3958,7 +3958,7 @@ class BRequest_RemoteListTypes_getLong1 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getLong1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -3980,7 +3980,7 @@ class BRequest_RemoteListTypes_getObj1 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getObj1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4002,7 +4002,7 @@ class BRequest_RemoteListTypes_getPrimitiveTypes1 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getPrimitiveTypes1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4024,7 +4024,7 @@ class BRequest_RemoteListTypes_getShort1 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getShort1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4046,7 +4046,7 @@ class BRequest_RemoteListTypes_getString1 : public BMethodRequest {
 	public: BRequest_RemoteListTypes_getString1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4070,7 +4070,7 @@ class BRequest_RemoteListTypes_setBoolean1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setBoolean1(const byps::PVectorBoolean& boolean1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4094,7 +4094,7 @@ class BRequest_RemoteListTypes_setByte1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setByte1(const byps::PVectorByte& byte1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4118,7 +4118,7 @@ class BRequest_RemoteListTypes_setByte2 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setByte2(const byps_ptr< ::std::vector< PBytes > >& byte2);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4142,7 +4142,7 @@ class BRequest_RemoteListTypes_setChar1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setChar1(const byps::PVectorCharacter& char1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4166,7 +4166,7 @@ class BRequest_RemoteListTypes_setDate1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setDate1(const byps::PVectorDate& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4190,7 +4190,7 @@ class BRequest_RemoteListTypes_setDouble1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setDouble1(const byps::PVectorDouble& double1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4214,7 +4214,7 @@ class BRequest_RemoteListTypes_setFloat1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setFloat1(const byps::PVectorFloat& float1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4238,7 +4238,7 @@ class BRequest_RemoteListTypes_setInt1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setInt1(const byps::PVectorInteger& int1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4262,7 +4262,7 @@ class BRequest_RemoteListTypes_setInt2 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setInt2(const byps_ptr< ::std::vector< PArrayInt > >& int2);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4286,7 +4286,7 @@ class BRequest_RemoteListTypes_setInt3 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setInt3(const byps_ptr< ::std::vector< byps::PVectorInteger > >& int3);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4310,7 +4310,7 @@ class BRequest_RemoteListTypes_setInt4 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setInt4(const byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > >& int4);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4334,7 +4334,7 @@ class BRequest_RemoteListTypes_setLong1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setLong1(const byps::PVectorLong& long1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4358,7 +4358,7 @@ class BRequest_RemoteListTypes_setObj1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setObj1(const byps::PVectorObject& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4382,7 +4382,7 @@ class BRequest_RemoteListTypes_setPrimitiveTypes1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setPrimitiveTypes1(const byps::test::api::prim::PVectorPrimitiveTypes& primitiveTypes1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4406,7 +4406,7 @@ class BRequest_RemoteListTypes_setShort1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setShort1(const byps::PVectorShort& short1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4430,7 +4430,7 @@ class BRequest_RemoteListTypes_setString1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteListTypes_setString1(const byps::PVectorString& string1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4452,7 +4452,7 @@ class BRequest_RemoteMapTypes_getBoolean1 : public BMethodRequest {
 	public: BRequest_RemoteMapTypes_getBoolean1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4474,7 +4474,7 @@ class BRequest_RemoteMapTypes_getByte1 : public BMethodRequest {
 	public: BRequest_RemoteMapTypes_getByte1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4496,7 +4496,7 @@ class BRequest_RemoteMapTypes_getByte2 : public BMethodRequest {
 	public: BRequest_RemoteMapTypes_getByte2();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4518,7 +4518,7 @@ class BRequest_RemoteMapTypes_getChar1 : public BMethodRequest {
 	public: BRequest_RemoteMapTypes_getChar1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4540,7 +4540,7 @@ class BRequest_RemoteMapTypes_getDate1 : public BMethodRequest {
 	public: BRequest_RemoteMapTypes_getDate1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4562,7 +4562,7 @@ class BRequest_RemoteMapTypes_getDouble1 : public BMethodRequest {
 	public: BRequest_RemoteMapTypes_getDouble1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4584,7 +4584,7 @@ class BRequest_RemoteMapTypes_getFloat1 : public BMethodRequest {
 	public: BRequest_RemoteMapTypes_getFloat1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4606,7 +4606,7 @@ class BRequest_RemoteMapTypes_getInt1 : public BMethodRequest {
 	public: BRequest_RemoteMapTypes_getInt1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4628,7 +4628,7 @@ class BRequest_RemoteMapTypes_getInt2 : public BMethodRequest {
 	public: BRequest_RemoteMapTypes_getInt2();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4650,7 +4650,7 @@ class BRequest_RemoteMapTypes_getLong1 : public BMethodRequest {
 	public: BRequest_RemoteMapTypes_getLong1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4672,7 +4672,7 @@ class BRequest_RemoteMapTypes_getObj1 : public BMethodRequest {
 	public: BRequest_RemoteMapTypes_getObj1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4694,7 +4694,7 @@ class BRequest_RemoteMapTypes_getPrimitiveTypes1 : public BMethodRequest {
 	public: BRequest_RemoteMapTypes_getPrimitiveTypes1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4716,7 +4716,7 @@ class BRequest_RemoteMapTypes_getShort1 : public BMethodRequest {
 	public: BRequest_RemoteMapTypes_getShort1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4738,7 +4738,7 @@ class BRequest_RemoteMapTypes_getString1 : public BMethodRequest {
 	public: BRequest_RemoteMapTypes_getString1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4762,7 +4762,7 @@ class BRequest_RemoteMapTypes_setBoolean1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteMapTypes_setBoolean1(const byps::PMapStringBoolean& boolean1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4786,7 +4786,7 @@ class BRequest_RemoteMapTypes_setByte1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteMapTypes_setByte1(const byps::PMapDoubleByte& byte1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4810,7 +4810,7 @@ class BRequest_RemoteMapTypes_setByte2 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteMapTypes_setByte2(const byps_ptr< ::std::map< int32_t , PBytes > >& byte2);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4834,7 +4834,7 @@ class BRequest_RemoteMapTypes_setChar1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteMapTypes_setChar1(const byps::PMapFloatCharacter& char1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4858,7 +4858,7 @@ class BRequest_RemoteMapTypes_setDate1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteMapTypes_setDate1(const byps::PMapStringDate& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4882,7 +4882,7 @@ class BRequest_RemoteMapTypes_setDouble1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteMapTypes_setDouble1(const byps::PMapByteDouble& double1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4906,7 +4906,7 @@ class BRequest_RemoteMapTypes_setFloat1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteMapTypes_setFloat1(const byps::PMapCharacterFloat& float1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4930,7 +4930,7 @@ class BRequest_RemoteMapTypes_setInt1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteMapTypes_setInt1(const byps::PMapIntegerInteger& int1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4954,7 +4954,7 @@ class BRequest_RemoteMapTypes_setInt2 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteMapTypes_setInt2(const byps_ptr< ::std::map< int32_t , PArrayInt > >& int2);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -4978,7 +4978,7 @@ class BRequest_RemoteMapTypes_setLong1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteMapTypes_setLong1(const byps::PMapShortLong& long1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5002,7 +5002,7 @@ class BRequest_RemoteMapTypes_setObj1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteMapTypes_setObj1(const byps::PMapStringObject& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5026,7 +5026,7 @@ class BRequest_RemoteMapTypes_setPrimitiveTypes1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteMapTypes_setPrimitiveTypes1(const byps::test::api::prim::PMapIntegerPrimitiveTypes& primitiveTypes1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5050,7 +5050,7 @@ class BRequest_RemoteMapTypes_setShort1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteMapTypes_setShort1(const byps::PMapLongShort& short1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5074,7 +5074,7 @@ class BRequest_RemoteMapTypes_setString1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteMapTypes_setString1(const byps::PMapStringString& string1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5099,7 +5099,7 @@ class BRequest_RemotePrimitiveTypes_add : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_add(int32_t a, int32_t b);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5121,7 +5121,7 @@ class BRequest_RemotePrimitiveTypes_getBool : public BMethodRequest {
 	public: BRequest_RemotePrimitiveTypes_getBool();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5143,7 +5143,7 @@ class BRequest_RemotePrimitiveTypes_getByte : public BMethodRequest {
 	public: BRequest_RemotePrimitiveTypes_getByte();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5165,7 +5165,7 @@ class BRequest_RemotePrimitiveTypes_getChar : public BMethodRequest {
 	public: BRequest_RemotePrimitiveTypes_getChar();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5187,7 +5187,7 @@ class BRequest_RemotePrimitiveTypes_getDate : public BMethodRequest {
 	public: BRequest_RemotePrimitiveTypes_getDate();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5209,7 +5209,7 @@ class BRequest_RemotePrimitiveTypes_getDouble : public BMethodRequest {
 	public: BRequest_RemotePrimitiveTypes_getDouble();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5231,7 +5231,7 @@ class BRequest_RemotePrimitiveTypes_getFloat : public BMethodRequest {
 	public: BRequest_RemotePrimitiveTypes_getFloat();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5253,7 +5253,7 @@ class BRequest_RemotePrimitiveTypes_getInt : public BMethodRequest {
 	public: BRequest_RemotePrimitiveTypes_getInt();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5275,7 +5275,7 @@ class BRequest_RemotePrimitiveTypes_getLong : public BMethodRequest {
 	public: BRequest_RemotePrimitiveTypes_getLong();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5297,7 +5297,7 @@ class BRequest_RemotePrimitiveTypes_getObject : public BMethodRequest {
 	public: BRequest_RemotePrimitiveTypes_getObject();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5319,7 +5319,7 @@ class BRequest_RemotePrimitiveTypes_getPrimitiveTypes : public BMethodRequest {
 	public: BRequest_RemotePrimitiveTypes_getPrimitiveTypes();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5341,7 +5341,7 @@ class BRequest_RemotePrimitiveTypes_getShort : public BMethodRequest {
 	public: BRequest_RemotePrimitiveTypes_getShort();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5363,7 +5363,7 @@ class BRequest_RemotePrimitiveTypes_getString : public BMethodRequest {
 	public: BRequest_RemotePrimitiveTypes_getString();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5393,7 +5393,7 @@ class BRequest_RemotePrimitiveTypes_makeDate : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_makeDate(int32_t year, int32_t month, int32_t day, int32_t hour, int32_t minute, int32_t second, int32_t millisecond);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5417,7 +5417,7 @@ class BRequest_RemotePrimitiveTypes_parseDate : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_parseDate(const BDateTime& date);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5450,7 +5450,7 @@ class BRequest_RemotePrimitiveTypes_sendAllTypes : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_sendAllTypes(bool b, wchar_t c, int16_t s, int32_t i, int64_t l, float f, double d, const ::std::wstring& str, const byps::test::api::prim::PPrimitiveTypes& pt, const PSerializable& o);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5474,7 +5474,7 @@ class BRequest_RemotePrimitiveTypes_setBool : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_setBool(bool v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5498,7 +5498,7 @@ class BRequest_RemotePrimitiveTypes_setByte : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_setByte(int8_t v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5522,7 +5522,7 @@ class BRequest_RemotePrimitiveTypes_setChar : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_setChar(wchar_t v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5546,7 +5546,7 @@ class BRequest_RemotePrimitiveTypes_setDate : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_setDate(const BDateTime& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5570,7 +5570,7 @@ class BRequest_RemotePrimitiveTypes_setDouble : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_setDouble(double v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5594,7 +5594,7 @@ class BRequest_RemotePrimitiveTypes_setFloat : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_setFloat(float v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5618,7 +5618,7 @@ class BRequest_RemotePrimitiveTypes_setInt : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_setInt(int32_t v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5642,7 +5642,7 @@ class BRequest_RemotePrimitiveTypes_setLong : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_setLong(int64_t v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5666,7 +5666,7 @@ class BRequest_RemotePrimitiveTypes_setObject : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_setObject(const PSerializable& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5690,7 +5690,7 @@ class BRequest_RemotePrimitiveTypes_setPrimitiveTypes : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_setPrimitiveTypes(const byps::test::api::prim::PPrimitiveTypes& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5714,7 +5714,7 @@ class BRequest_RemotePrimitiveTypes_setShort : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_setShort(int16_t v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5738,7 +5738,7 @@ class BRequest_RemotePrimitiveTypes_setString : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemotePrimitiveTypes_setString(const ::std::wstring& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5760,7 +5760,7 @@ class BRequest_RemotePrimitiveTypes_throwException : public BMethodRequest {
 	public: BRequest_RemotePrimitiveTypes_throwException();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5782,7 +5782,7 @@ class BRequest_RemotePrimitiveTypes_voidFunctionVoid : public BMethodRequest {
 	public: BRequest_RemotePrimitiveTypes_voidFunctionVoid();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5804,7 +5804,7 @@ class BRequest_RemoteReferences_getNode : public BMethodRequest {
 	public: BRequest_RemoteReferences_getNode();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5828,7 +5828,7 @@ class BRequest_RemoteReferences_setNode : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteReferences_setNode(const byps::test::api::refs::PNode& v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5852,7 +5852,7 @@ class BRequest_RemoteServerCtrl_getPublishedRemote : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteServerCtrl_getPublishedRemote(const ::std::wstring& name);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5878,7 +5878,7 @@ class BRequest_RemoteServerCtrl_publishRemote : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteServerCtrl_publishRemote(const ::std::wstring& name, const PRemote& remote, bool fowardToOtherServers);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5902,7 +5902,7 @@ class BRequest_RemoteServerCtrl_removePublishedRemote : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteServerCtrl_removePublishedRemote(const ::std::wstring& name);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5924,7 +5924,7 @@ class BRequest_RemoteSetTypes_getBoolean1 : public BMethodRequest {
 	public: BRequest_RemoteSetTypes_getBoolean1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5946,7 +5946,7 @@ class BRequest_RemoteSetTypes_getByte1 : public BMethodRequest {
 	public: BRequest_RemoteSetTypes_getByte1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5968,7 +5968,7 @@ class BRequest_RemoteSetTypes_getByte2 : public BMethodRequest {
 	public: BRequest_RemoteSetTypes_getByte2();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -5990,7 +5990,7 @@ class BRequest_RemoteSetTypes_getChar1 : public BMethodRequest {
 	public: BRequest_RemoteSetTypes_getChar1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6012,7 +6012,7 @@ class BRequest_RemoteSetTypes_getDate1 : public BMethodRequest {
 	public: BRequest_RemoteSetTypes_getDate1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6034,7 +6034,7 @@ class BRequest_RemoteSetTypes_getDouble1 : public BMethodRequest {
 	public: BRequest_RemoteSetTypes_getDouble1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6056,7 +6056,7 @@ class BRequest_RemoteSetTypes_getFloat1 : public BMethodRequest {
 	public: BRequest_RemoteSetTypes_getFloat1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6078,7 +6078,7 @@ class BRequest_RemoteSetTypes_getInt1 : public BMethodRequest {
 	public: BRequest_RemoteSetTypes_getInt1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6100,7 +6100,7 @@ class BRequest_RemoteSetTypes_getInt2 : public BMethodRequest {
 	public: BRequest_RemoteSetTypes_getInt2();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6122,7 +6122,7 @@ class BRequest_RemoteSetTypes_getLong1 : public BMethodRequest {
 	public: BRequest_RemoteSetTypes_getLong1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6144,7 +6144,7 @@ class BRequest_RemoteSetTypes_getObj1 : public BMethodRequest {
 	public: BRequest_RemoteSetTypes_getObj1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6166,7 +6166,7 @@ class BRequest_RemoteSetTypes_getPrimitiveTypes1 : public BMethodRequest {
 	public: BRequest_RemoteSetTypes_getPrimitiveTypes1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6188,7 +6188,7 @@ class BRequest_RemoteSetTypes_getShort1 : public BMethodRequest {
 	public: BRequest_RemoteSetTypes_getShort1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6210,7 +6210,7 @@ class BRequest_RemoteSetTypes_getString1 : public BMethodRequest {
 	public: BRequest_RemoteSetTypes_getString1();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6234,7 +6234,7 @@ class BRequest_RemoteSetTypes_setBoolean1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteSetTypes_setBoolean1(const byps::PSetBoolean& boolean1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6258,7 +6258,7 @@ class BRequest_RemoteSetTypes_setByte1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteSetTypes_setByte1(const byps::PSetByte& byte1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6282,7 +6282,7 @@ class BRequest_RemoteSetTypes_setByte2 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteSetTypes_setByte2(const byps_ptr< ::std::set< PBytes > >& byte2);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6306,7 +6306,7 @@ class BRequest_RemoteSetTypes_setChar1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteSetTypes_setChar1(const byps::PSetCharacter& char1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6330,7 +6330,7 @@ class BRequest_RemoteSetTypes_setDate1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteSetTypes_setDate1(const byps::PSetDate& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6354,7 +6354,7 @@ class BRequest_RemoteSetTypes_setDouble1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteSetTypes_setDouble1(const byps::PSetDouble& double1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6378,7 +6378,7 @@ class BRequest_RemoteSetTypes_setFloat1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteSetTypes_setFloat1(const byps::PSetFloat& float1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6402,7 +6402,7 @@ class BRequest_RemoteSetTypes_setInt1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteSetTypes_setInt1(const byps::PSetInteger& int1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6426,7 +6426,7 @@ class BRequest_RemoteSetTypes_setInt2 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteSetTypes_setInt2(const byps_ptr< ::std::set< PArrayInt > >& int2);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6450,7 +6450,7 @@ class BRequest_RemoteSetTypes_setLong1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteSetTypes_setLong1(const byps::PSetLong& long1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6474,7 +6474,7 @@ class BRequest_RemoteSetTypes_setObj1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteSetTypes_setObj1(const byps_ptr< ::std::set< PSerializable > >& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6498,7 +6498,7 @@ class BRequest_RemoteSetTypes_setPrimitiveTypes1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteSetTypes_setPrimitiveTypes1(const byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6522,7 +6522,7 @@ class BRequest_RemoteSetTypes_setShort1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteSetTypes_setShort1(const byps::PSetShort& short1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6546,7 +6546,7 @@ class BRequest_RemoteSetTypes_setString1 : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteSetTypes_setString1(const byps::PSetString& string1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6568,7 +6568,7 @@ class BRequest_RemoteStreams_getImage : public BMethodRequest {
 	public: BRequest_RemoteStreams_getImage();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6590,7 +6590,7 @@ class BRequest_RemoteStreams_getImages : public BMethodRequest {
 	public: BRequest_RemoteStreams_getImages();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6612,7 +6612,7 @@ class BRequest_RemoteStreams_getStreamDeferedProperies : public BMethodRequest {
 	public: BRequest_RemoteStreams_getStreamDeferedProperies();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6634,7 +6634,7 @@ class BRequest_RemoteStreams_getStreamDoNotClone : public BMethodRequest {
 	public: BRequest_RemoteStreams_getStreamDoNotClone();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6656,7 +6656,7 @@ class BRequest_RemoteStreams_getTextStream : public BMethodRequest {
 	public: BRequest_RemoteStreams_getTextStream();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6678,7 +6678,7 @@ class BRequest_RemoteStreams_getVideoCheckSupportByteRange : public BMethodReque
 	public: BRequest_RemoteStreams_getVideoCheckSupportByteRange();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6702,7 +6702,7 @@ class BRequest_RemoteStreams_setImage : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteStreams_setImage(const PContentStream& istrm);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6727,7 +6727,7 @@ class BRequest_RemoteStreams_setImages : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteStreams_setImages(const byps::PMapIntegerInputStream& istrms, int32_t doNotReadStreamAtKey);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6751,7 +6751,7 @@ class BRequest_RemoteStreams_setStreamDoNotMaterialize : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteStreams_setStreamDoNotMaterialize(const PContentStream& stream);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6773,7 +6773,7 @@ class BRequest_RemoteStreams_throwLastException : public BMethodRequest {
 	public: BRequest_RemoteStreams_throwLastException();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6798,10 +6798,10 @@ class BRequest_RemoteWithAuthentication_doit : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteWithAuthentication_doit(int32_t value);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
-	// checkpoint byps.gen.cpp.GenApiClass:845
+	// checkpoint byps.gen.cpp.GenApiClass:843
 	public: virtual void setSession(const PSerializable& __byps__sess);
 };
 
@@ -6823,10 +6823,10 @@ class BRequest_RemoteWithAuthentication_expire : public BMethodRequest {
 	public: BRequest_RemoteWithAuthentication_expire();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
-	// checkpoint byps.gen.cpp.GenApiClass:845
+	// checkpoint byps.gen.cpp.GenApiClass:843
 	public: virtual void setSession(const PSerializable& __byps__sess);
 };
 
@@ -6851,10 +6851,10 @@ class BRequest_RemoteWithAuthentication_login : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteWithAuthentication_login(const ::std::wstring& userName, const ::std::wstring& userPwd);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
-	// checkpoint byps.gen.cpp.GenApiClass:845
+	// checkpoint byps.gen.cpp.GenApiClass:843
 	public: virtual void setSession(const PSerializable& __byps__sess);
 };
 
@@ -6877,7 +6877,7 @@ class BRequest_RemoteWithAuthentication_setReloginCount : public BMethodRequest 
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteWithAuthentication_setReloginCount(int32_t count);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6901,7 +6901,7 @@ class BRequest_RemoteWithAuthentication_setUseAuthentication : public BMethodReq
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_RemoteWithAuthentication_setUseAuthentication(bool useAuth);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6925,7 +6925,7 @@ class BRequest_ClientIF_getStreams : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_ClientIF_getStreams(int32_t ctrl);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6949,7 +6949,7 @@ class BRequest_ClientIF_incrementInt : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_ClientIF_incrementInt(int32_t a);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6974,7 +6974,7 @@ class BRequest_ClientIF_putStreams : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_ClientIF_putStreams(const byps::PVectorInputStream& strm, int32_t ctrl);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -6998,7 +6998,7 @@ class BRequest_ClientIF_sendChat : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_ClientIF_sendChat(const PChatStructure& cs);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -7022,7 +7022,7 @@ class BRequest_ServerIF_callClientIncrementInt : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_ServerIF_callClientIncrementInt(int32_t v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -7046,7 +7046,7 @@ class BRequest_ServerIF_callClientParallel : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_ServerIF_callClientParallel(int32_t v);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -7070,7 +7070,7 @@ class BRequest_ServerIF_getClient : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_ServerIF_getClient(int32_t id);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -7092,7 +7092,7 @@ class BRequest_ServerIF_getClientIds : public BMethodRequest {
 	public: BRequest_ServerIF_getClientIds();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -7114,7 +7114,7 @@ class BRequest_ServerIF_getPartner : public BMethodRequest {
 	public: BRequest_ServerIF_getPartner();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -7138,7 +7138,7 @@ class BRequest_ServerIF_getStreamsFromClient : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_ServerIF_getStreamsFromClient(bool materializeOnServer);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -7162,7 +7162,7 @@ class BRequest_ServerIF_putStreamsOnClient : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_ServerIF_putStreamsOnClient(const byps::PVectorInputStream& streams);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -7186,7 +7186,7 @@ class BRequest_ServerIF_registerWithClientMap : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_ServerIF_registerWithClientMap(int32_t id);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -7210,7 +7210,7 @@ class BRequest_ServerIF_setPartner : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_ServerIF_setPartner(const PClientIF& client);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -7232,7 +7232,7 @@ class BRequest_EvolveIF_getClient : public BMethodRequest {
 	public: BRequest_EvolveIF_getClient();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -7254,7 +7254,7 @@ class BRequest_EvolveIF_getEvolve : public BMethodRequest {
 	public: BRequest_EvolveIF_getEvolve();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -7276,7 +7276,7 @@ class BRequest_EvolveIF_sendEvolveToClient : public BMethodRequest {
 	public: BRequest_EvolveIF_sendEvolveToClient();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -7300,7 +7300,7 @@ class BRequest_EvolveIF_setClient : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_EvolveIF_setClient(const PEvolveIF& partner);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
@@ -7324,7 +7324,7 @@ class BRequest_EvolveIF_setEvolve : public BMethodRequest {
 	// checkpoint byps.gen.cpp.GenApiClass:535
 	public: BRequest_EvolveIF_setEvolve(const PEvolve& obj);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:872
+	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
 };
