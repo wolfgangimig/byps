@@ -851,7 +851,7 @@ byps.BWireClient = function(url, flags, timeoutSeconds) {
 
 	this._internalCancelAllRequests = function(cancelMessageId, asyncResult) {
 		
-		for (requestId in this.openRequestsToCancel) {
+		for (var requestId in this.openRequestsToCancel) {
 			var xhr = this.openRequestsToCancel[requestId];
 			xhr.abort();
 		}
