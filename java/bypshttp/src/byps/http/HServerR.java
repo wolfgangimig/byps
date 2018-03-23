@@ -115,17 +115,20 @@ public class HServerR extends BServerR {
             }
             else {
               BException ex = (BException) e;
-              log.info("Reverse request received exception=" + ex);
               
               switch (ex.code) {
 
               case BExceptionC.SESSION_CLOSED: // Session was invalidated.
+                log.info("Reverse request stops due to closed session.");
               case BExceptionC.UNAUTHORIZED: // Re-login required
+                log.info("Reverse request was unauthorized.");
               case BExceptionC.CANCELLED:
+                log.info("Reverse request was cancelled.");
                 // no retry
                 break;
                 
               case BExceptionC.RESEND_LONG_POLL:
+                log.info("Reverse request refreshs long-poll.");
                 // HWireClientR has released the expried long-poll.
                 // Ignore the error and send a new long-poll.
                 asyncResult.setAsyncResult(null, null);
@@ -166,9 +169,11 @@ public class HServerR extends BServerR {
           }
           
           if (callLostConnectionHandler) {
+            log.info("Reverse request lost connection due to " + ex + ", call handler for lost connection.");
             lostConnectionHandler.onLostConnection(ex);
           }
           else {
+            log.info("Reverse request refreshs long-poll after due to " + ex);
             asyncResult.setAsyncResult(null, null);
           }
           
