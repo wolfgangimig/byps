@@ -117,6 +117,7 @@ public class GenSerArray {
 			mpr.print(idxVar).print(i > 0 ? "," : "]");
 		}
 		mpr.println(";");
+    pr.println("bin.onObjectCreated(arr);");
 		pr.println();
 
 		printReadWriteLoop("arr", false);
