@@ -4,7 +4,9 @@ BYPS Version History
 
 - Java 1.6 source compatibility.
 
--  
+- Dump headers and body if request cannot be processed.
+
+- Fix error "Null values must not be mapped" in C# deserialization.
 
 5.15 2017-02-01
 
