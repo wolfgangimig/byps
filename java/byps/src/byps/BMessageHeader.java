@@ -10,10 +10,10 @@ import java.nio.ByteOrder;
  * Stream Header
  *
  * Binary Stream Big Endian:
- * BYPS + version binär + error binär + flags binär + messageId binär
+ * BYPS + version  + error  + flags  + messageId 
  * 
  * Binary Stream Little Endian:
- * SPYB + version binär + error binär + flags binär + messageId binär
+ * SPYB + version + error + flags + messageId 
  *
  * JSON
  * ["J", "version as stirng", "error as string","flags as string","messageId as string"
@@ -27,7 +27,7 @@ public class BMessageHeader {
 	private final static int MAGIC_BINARY_STREAM_LE = ((int)'S' << 24) | ((int)'P' << 16) | ((int)'Y' << 8) | ((int)'B');
 	
 	public final static int MAGIC_JSON = ((int)'{' << 24) | ((int)'\"' << 16) | ((int)'h' << 8) | ((int)'e');
-	private final static int MAGIC_JSON_SINGLE_QUOTE = ((int)'{' << 24) | ((int)'\'' << 16) | ((int)'h' << 8) | ((int)'e');
+	// unused private final static int MAGIC_JSON_SINGLE_QUOTE = ((int)'{' << 24) | ((int)'\'' << 16) | ((int)'h' << 8) | ((int)'e');
 		
   public final static int BYPS_VERSION_EXTENDED_STREAM_INFORMATION = 1;
   public final static int BYPS_VERSION_ENCRYPTED_TARGETID = 2;

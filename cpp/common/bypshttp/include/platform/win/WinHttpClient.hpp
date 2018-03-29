@@ -91,6 +91,10 @@ namespace byps { namespace http { namespace winhttp {
         // WinHttpCloseHandle will call onHandleClosing where this might be deleted
         PWinHttpRequest holdMe = shared_from_this();
 
+        // Do not call:
+        //WinHttpSetStatusCallback(hRequest, NULL, WINHTTP_CALLBACK_FLAG_ALL_NOTIFICATIONS, NULL);
+        // ... otherwise event onHandleClosing is not sent.
+
         WinHttpCloseHandle(hRequest);
 
         s_handleCount--;
@@ -421,17 +425,22 @@ namespace byps { namespace http { namespace winhttp {
         // Sonst wird onReadComplete nicht mit 0 aufgerufen .
       }
 
-      BOOL succ = WinHttpReadData(hRequest, 
+      internalWinHttpReadData(hRequest,
         respBytes->data + respIdx, 
-        (DWORD)(respBytes->length - respIdx), 
-        NULL);
+        (DWORD)(respBytes->length - respIdx));
+      
+    }
+
+    void internalWinHttpReadData(HINTERNET hRequest, void* buffer, DWORD length) {
+      if (!hRequest) return;
+      l_debug << L"WinHttpReadData, length=" << length;
+      BOOL succ = WinHttpReadData(hRequest, buffer, length, NULL);
       if (!succ) {
         DWORD err = GetLastError();
         finishOnError(HException(L"WinHttpReadData", err));
       }
     }
-
-
+  
     virtual void onReadComplete(BYTE* , DWORD length) throw() {
       if (length) {
         respIdx += length;
@@ -464,13 +473,53 @@ namespace byps { namespace http { namespace winhttp {
   
   };
 
+  class Buffer {
+  private:
+    int32_t pos, len;
+    char buffer[16 * 1024]; // Buffer size should be 8k or larger: see MSDN documentation of WinHttpReadData
+  public:
+    Buffer() {
+      reset();
+    }
+    operator void* () {
+      return buffer;
+    }
+    int32_t max() {
+      return sizeof(buffer);
+    }
+    int32_t length() {
+      return len;
+    }
+    void setLength(int32_t n) {
+      len = n;
+    }
+    bool empty() const {
+      return pos == len;
+    }
+    void operator = (const Buffer& rhs) {
+      this->pos = 0;
+      this->len = rhs.len;
+      memcpy(this->buffer, rhs.buffer, (size_t)rhs.len);
+    }
+    int32_t copyTo(char* p, int32_t o, int32_t n) {
+      int32_t ret = std::min(len - pos, n);
+      memcpy(p + o, buffer + pos, ret);
+      pos += ret;
+      return ret;
+    }
+    void reset() {
+      pos = len = 0; 
+      memset(buffer, 0, sizeof(buffer));
+    }
+  };
 
   class WinHttpGetStream : public HHttpGetStream, public virtual WinHttpRequest {
 
-    int32_t bufferPos, bufferLimit;
-    char buffer[8 * 1024]; // Buffer size should be 8k or larger: see MSDN documentation of WinHttpReadData
     BException ex;
     bool sendComplete;
+    bool requestComplete;
+    Buffer readBuffer;
+    Buffer writeBuffer;
 
     byps_condition_variable waitForReadComplete;
     byps_condition_variable waitForWriteComplete;
@@ -480,12 +529,7 @@ namespace byps { namespace http { namespace winhttp {
 
   public:
     WinHttpGetStream(HINTERNET hRequest, const std::wstring& url) 
-      : WinHttpRequest(hRequest, url)
-      , bufferPos(sizeof(buffer))
-      , bufferLimit(sizeof(buffer))
-      , sendComplete(false) {
-
-        memset(buffer, 0, sizeof(buffer));
+      : WinHttpRequest(hRequest, url), sendComplete(false), requestComplete(false) {
     }
 
     virtual ~WinHttpGetStream() {
@@ -525,37 +569,36 @@ namespace byps { namespace http { namespace winhttp {
     }
 
     virtual void onReadComplete(BYTE* , DWORD length) throw() {
-      byps_unique_lock lock(this->mutex);
+      
+      {
+          byps_unique_lock lock(this->mutex);
 
-      if (length) {
-        bufferPos = 0;
-        bufferLimit = length;
-        waitForReadComplete.notify_one();
+          readBuffer.setLength((int32_t)length);
 
-        this->waitForWriteComplete.wait(lock, [this](){ return bufferPos == bufferLimit; });
-        readData();
+          requestComplete = readBuffer.empty();
+
+          if (!requestComplete) {
+
+            writeBuffer = readBuffer;
+        
+            readBuffer.reset();
+          }
+
+          waitForReadComplete.notify_one();
+          this->waitForWriteComplete.wait(lock, [this](){ return writeBuffer.empty(); });
+      }
+      
+      if (requestComplete) {
+        finishOnOK();
       }
       else {
-        bufferPos = 0;
-        bufferLimit = -1;
-        waitForReadComplete.notify_one();
-
-        finishOnOK();
-
+        readData();
       }
+
     }
 
     virtual void readData() throw() {
-      if (!hRequest) return; 
-
-      BOOL succ = WinHttpReadData(hRequest, 
-        buffer, 
-        sizeof(buffer), 
-        NULL);
-      if (!succ) {
-        DWORD err = GetLastError();
-        finishOnError(HException(L"WinHttpReadData", err));
-      }
+      internalWinHttpReadData(hRequest, readBuffer, (DWORD)readBuffer.max());
     }
 
     virtual PContentStream send() {
@@ -624,8 +667,8 @@ namespace byps { namespace http { namespace winhttp {
     std::chrono::milliseconds timeout(100 * 1000);
 
     if (!request->waitForReadComplete.wait_for(lock, timeout, [this](){ 
-      return request->ex || request->bufferLimit < 0 || request->bufferPos < request->bufferLimit; 
-    })) {
+      return request->ex || request->requestComplete || !request->writeBuffer.empty(); 
+      })) {
 
         request->ex = BException(BExceptionC::TIMEOUT, L"Read timeout");
         throw request->ex;
@@ -634,22 +677,19 @@ namespace byps { namespace http { namespace winhttp {
     if (request->ex) {
       throw request->ex;
     }
-    else if (request->bufferLimit < 0) {
+    else if (request->writeBuffer.empty()) {
       // End of stream
-    }
-    else {
-
-      if (request->bufferPos > request->bufferLimit) {
-        BException ex(BExceptionC::INTERNAL, L"Illegal state in WinHttpClient::ContentStream::readData");
+      if (!request->requestComplete) {
+        request->ex = BException(BExceptionC::INTERNAL, L"Empty buffer although request is not complete.");
         throw request->ex;
       }
+    }
+    else {
+      Buffer& writeBuffer = request->writeBuffer;
 
-      ret = std::min(request->bufferLimit - request->bufferPos, len);
-      memcpy(buffer + offs, request->buffer + request->bufferPos, ret);
+      ret = writeBuffer.copyTo(buffer, offs, len);
 
-      request->bufferPos += ret;
-
-      if (request->bufferPos == request->bufferLimit) {
+      if (writeBuffer.empty()) {
         request->waitForWriteComplete.notify_one();
       }
     }
@@ -776,14 +816,7 @@ namespace byps { namespace http { namespace winhttp {
     }
 
     virtual void readData() throw() {
-      BOOL succ = WinHttpReadData(hRequest, 
-        buffer, 
-        sizeof(buffer), 
-        NULL);
-      if (!succ) {
-        DWORD err = GetLastError();
-        finishOnError(HException(L"WinHttpReadData", err));
-      }
+      internalWinHttpReadData(hRequest, buffer, sizeof(buffer));
     }
 
     virtual void writeDataOrReceiveResponse() throw() {
@@ -1067,37 +1100,54 @@ namespace byps { namespace http { namespace winhttp {
       IN DWORD dwInternetStatus,
       IN LPVOID lpvStatusInformation OPTIONAL,
       IN DWORD dwStatusInformationLength) {
+      
+      l_debug << L"winhttp_status_callback(";
 
         WinHttpRequest* pThis = reinterpret_cast<WinHttpRequest*>(dwContext);
 
         if (pThis) {
+          
+          wstring className;
+          if (log.isDebugEnabled()) {
+            className = fromUtf8(typeid(*pThis).name());
+          }
+
           switch (dwInternetStatus) {
           case WINHTTP_CALLBACK_STATUS_SENDREQUEST_COMPLETE:
+            l_debug << className << L"::onSendComplete";
             pThis->onSendComplete();
             break;
           case WINHTTP_CALLBACK_STATUS_HEADERS_AVAILABLE:
+            l_debug << className << L"::onHeadersAvailable";
             pThis->onHeadersAvailable();
             break;
           case WINHTTP_CALLBACK_STATUS_DATA_AVAILABLE:
+            l_debug << className << L"::onDataAvailable";
             pThis->onDataAvailable(*((DWORD*)lpvStatusInformation));
             break;
           case WINHTTP_CALLBACK_STATUS_READ_COMPLETE:
+            l_debug << className << L"::onReadComplete, length=" << dwStatusInformationLength;
             pThis->onReadComplete((BYTE*)lpvStatusInformation, dwStatusInformationLength);
             break;
           case WINHTTP_CALLBACK_STATUS_WRITE_COMPLETE:
+            l_debug << className << L"::onWriteComplete, length=" << (*((DWORD*)lpvStatusInformation));
             pThis->onWriteComplete(*((DWORD*)lpvStatusInformation));
             break;
           case WINHTTP_CALLBACK_STATUS_REQUEST_ERROR:
+            l_debug << className << L"::onRequestError";
             pThis->onRequestError((WINHTTP_ASYNC_RESULT*)lpvStatusInformation);
             break;
           case WINHTTP_CALLBACK_STATUS_GETPROXYFORURL_COMPLETE:
-
+            l_debug << L"WINHTTP_CALLBACK_STATUS_GETPROXYFORURL_COMPLETE";
             break;
           case WINHTTP_CALLBACK_STATUS_HANDLE_CLOSING:
+            l_debug << className << L"::onHandleClosing";
             pThis->onHandleClosing(*((HINTERNET*)lpvStatusInformation));
             break;
           }
         }
+        
+        l_debug << L")winhttp_status_callback";
     }
   };
 

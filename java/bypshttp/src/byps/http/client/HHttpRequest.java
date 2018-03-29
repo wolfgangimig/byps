@@ -23,4 +23,11 @@ public interface HHttpRequest extends Runnable {
    * @return
    */
   public boolean isCancelled();
+  
+  /**
+   * Add a request header.
+   * @param name Header name.
+   * @param value Header value.
+   */
+  public void setRequestProperty(String name, String value);
 }

@@ -27,8 +27,8 @@ public class BRegistryForClassDB extends BRegistry {
 	
 	int getTypeIdForBuiltInType(TypeInfo typeInfo) throws GeneratorException {
 		
-    	// Die funktion gibt's ganz ähnlich auch in ClassDB.getTypeInfo
-    	// kann man eine eliminieren?
+		// A similar function can be found in ClassDB.getTypeInfo.
+		// Can one be eliminated?
 		
 		String qname = typeInfo.qname;
 		int typeId = 0;

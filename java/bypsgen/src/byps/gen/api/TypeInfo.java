@@ -15,11 +15,10 @@ public class TypeInfo {
 	public boolean isEnum;
 	public boolean isFinal;
 	
-	
-	// Strukturen, die ohne vorangestellte typeId in den Stream geschrieben werden.
-	// Objekte dürfen nicht null sein.
-	// Objekte müssen feste Größe haben (z.B nicht String oder ArrayList)
-	// Z.B. 3x3-Matrix
+	/**
+	 * Inline types are written without a type ID.
+	 * Such objects must not be null and have fixed size.
+	 */
 	public boolean isInline;
 	
 	public int typeId;

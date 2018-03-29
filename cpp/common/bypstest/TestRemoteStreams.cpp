@@ -31,7 +31,7 @@ public:
 
     std::string fileContent = "hello";
 
-    BFile file = BFile::createTempFile(L"byps", L".txt");
+    BFile file = BFile::createTempFile(L"b y p s", L".txt");
     byps_ptr<ofstream> fos = file.openWrite();
     (*fos) << fileContent;
     fos->close();
@@ -287,6 +287,9 @@ public:
 
   };
 
+  /*
+  * Pass a stream object received from the server back to the server.
+  */
   void testHandOverStream() {
     l_info << L"testHandOverStream(";
 

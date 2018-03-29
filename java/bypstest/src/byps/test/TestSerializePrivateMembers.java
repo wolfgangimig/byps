@@ -1,4 +1,5 @@
 package byps.test;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.nio.ByteBuffer;
 import java.util.Arrays;
@@ -55,7 +56,7 @@ public class TestSerializePrivateMembers {
 		obj.setListBool(Arrays.asList(false, true, false));
 		obj.setListInt(Arrays.asList(1,2,3,4));
 		obj.setListPrimitiveTypes(Arrays.asList(TestUtils.createObjectPrimitiveTypes()));
-		obj.setListString(Arrays.asList("€€€", "EEE"));
+		obj.setListString(Arrays.asList("â‚¬â‚¬â‚¬", "EEE"));
 		obj.setPrimitiveTypes(TestUtils.createObjectPrimitiveTypes());
 		Map<Integer, List<String>> map = new HashMap<Integer, List<String>>();
 		map.put(123, Arrays.asList("abc","def"));

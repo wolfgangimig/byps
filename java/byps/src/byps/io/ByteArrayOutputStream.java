@@ -79,4 +79,8 @@ public class ByteArrayOutputStream extends OutputStream {
   public void close() throws IOException {
   }
 
+  public ByteBuffer toByteBuffer() {
+    bbuf.flip();
+    return bbuf;
+  }
 }

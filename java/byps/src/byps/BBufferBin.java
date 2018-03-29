@@ -283,6 +283,11 @@ public abstract class BBufferBin extends BBuffer {
     buf.get(v);
   }
 
+  public void putByteBuffer(ByteBuffer v) {
+    ensureRemaining(v.remaining());
+    buf.put(v);
+  }
+
   public abstract void putPointer(int v);
 
   public abstract void putTypeId(int v);

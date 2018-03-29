@@ -43,7 +43,7 @@ public class CompileSource implements ConstFieldReader {
 		String jhome = System.getProperty("java.home");
 		params.add("-bootclasspath");
 		params.add(jhome + File.separator + "lib" + File.separator + "rt.jar");
-		
+				
 		params.add("-source");
 		params.add("1.5");
 		
@@ -56,8 +56,8 @@ public class CompileSource implements ConstFieldReader {
 		compile(params.toArray(new String[0]), sourceDirs);
 
 		
-		// -classpath erlaubt mir, zus. JARs einzubinden. so kann ich die IX-Klassen übersetzen.
-		// Wenn ich die Testklassen übersetzen will, ist aber BRemote nicht mehr bekannt. Wie das?
+		// -classpath erlaubt mir, zus. JARs einzubinden. so kann ich die IX-Klassen ï¿½bersetzen.
+		// Wenn ich die Testklassen ï¿½bersetzen will, ist aber BRemote nicht mehr bekannt. Wie das?
 		
 		try {
 			ArrayList<URL> urls = new ArrayList<URL>();
@@ -111,10 +111,13 @@ public class CompileSource implements ConstFieldReader {
 	}
 
 	public int compile(String[] opts, String[] sourceDirs) throws GeneratorException {
-    if (log.isDebugEnabled()) log.debug("compile(opts=" + Arrays.toString(opts) + ", sourceDirs=" + Arrays.toString(sourceDirs));
+    		if (log.isDebugEnabled()) log.debug("compile(opts=" + Arrays.toString(opts) + ", sourceDirs=" + Arrays.toString(sourceDirs));
+    		
+    		System.out.println("Compile Java source, opts=" + Arrays.toString(opts) + ", sourceDirs=" + Arrays.toString(sourceDirs));
 
+    
 		List<File> files = findSourceFiles(sourceDirs);
-    if (log.isDebugEnabled()) log.debug("files=" + files);
+		if (log.isDebugEnabled()) log.debug("files=" + files);
 		
 		List<String> params = new ArrayList<String>();
 		for (String opt : opts) params.add(opt);

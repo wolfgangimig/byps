@@ -824,8 +824,6 @@ class GenApiClass {
 			prC.println("});");
 		}
 		else {
-			// Geringe Prio: execute() ohne Lambda ergänzen 
-			
 			throw new IllegalStateException("!lambdasupported");
 		}
 

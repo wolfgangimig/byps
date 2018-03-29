@@ -1,6 +1,6 @@
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 #ifndef BANY_H_
-#define BANY_H__
+#define BANY_H_
 
 ///////////////////////////////////////////////////////////////////////////////
 // Include shared pointer etc. from BOOST library
@@ -139,7 +139,7 @@ namespace byps {
 
   template<typename _ch> void splitpath(const std::basic_string<_ch>& path, std::basic_string<_ch>& dir, std::basic_string<_ch>& name) {
     int p = (int)path.size() - 1;
-    for (std::basic_string<_ch>::const_reverse_iterator it = path.rbegin(); it != path.rend(); it++, p--) {
+    for (auto it = path.rbegin(); it != path.rend(); it++, p--) {
       if (*it == '\\' || *it == '/') break;
     }
     p++;

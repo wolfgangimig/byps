@@ -119,7 +119,7 @@ public class GenTestCompatibleApi {
   }
 
   private void printCallTestMethod(RemoteInfo rinfo, MethodInfo minfo) {
-    boolean exceptionExpected = rinfo.qname.equals("byps.test.api.comp.IncompatibleChangeIF");
+    boolean exceptionExpected = false;
     String testFunctionName = getTestFunctionName(rinfo,minfo);
 
     // Tried to verify that incompatible API changes causes exceptions. 

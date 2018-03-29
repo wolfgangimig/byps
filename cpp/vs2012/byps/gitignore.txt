@@ -1,2 +1,0 @@
-byps.sdf
-byps.opensdf

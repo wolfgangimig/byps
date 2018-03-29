@@ -277,6 +277,8 @@ public:
 
   /**
   * Server calls a client interface and sends InputStreams.
+  * This test hangs for some seconds because stream of size=0 is not 
+  * immediatelly closed on the server side. See HWireClient::MyContentStream::dtor
   * @throws InterruptedException
   * @throws IOException
   */

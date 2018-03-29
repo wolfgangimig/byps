@@ -7,6 +7,10 @@ import java.net.HttpCookie;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -26,6 +30,7 @@ public abstract class JcnnRequest implements HHttpRequest {
   protected int connectTimeoutSeconds;
   protected int sendRecvTimeoutSeconds;
   protected AtomicBoolean cancelled = new AtomicBoolean();
+  protected Map<String,String> requestProperties = new HashMap<String,String>();
   private static Log log = LogFactory.getLog(JcnnRequest.class);
   
   /**
@@ -44,6 +49,13 @@ public abstract class JcnnRequest implements HHttpRequest {
     conn.set(c);
     c.setConnectTimeout(connectTimeoutSeconds * 1000);
     c.setReadTimeout(connectTimeoutSeconds * 1000);
+    
+    if (requestProperties != null) {
+      for (Map.Entry<String, String> prop : requestProperties.entrySet()) {
+        c.setRequestProperty(prop.getKey(), prop.getValue());
+      }
+    }
+    
     applySession(this);
     return c;
   }
@@ -114,6 +126,7 @@ public abstract class JcnnRequest implements HHttpRequest {
       CookieStore cookies = cookieManager.getCookieStore();
       for (HttpCookie cookie : cookies.getCookies()) {
         c.setRequestProperty("Cookie", cookie.toString());
+        if (log.isDebugEnabled()) log.debug("request cookie=" + cookie.toString());
       }
     }
   }
@@ -124,12 +137,44 @@ public abstract class JcnnRequest implements HHttpRequest {
     if (c != null) {
       try {
         URI uri = new URI(req.url);
-        cookieManager.put(uri, c.getHeaderFields());
+        
+        // CookieManager.put writes a SEVERE log output if server sends an empty cookie.
+        // To circumvent this log entry, skip all empty cookies.
+        Map<String, List<String>> responseCookies = extractCookieHeaders(c);
+        if (log.isDebugEnabled()) log.debug("responseCookies=" + responseCookies);
+        cookieManager.put(uri, responseCookies);
       }
       catch (Exception e) {
         req.ex = new BException(BExceptionC.IOERROR, "Cannot set session cookie.", e);
       }
     }
+  }
+
+  private Map<String, List<String>> extractCookieHeaders(HttpURLConnection c) {
+    Map<String, List<String>> responseHeaders = c.getHeaderFields();
+    Map<String, List<String>> responseCookies = new HashMap<String, List<String>>(responseHeaders.size());
+    for (String headerKey : responseHeaders.keySet()) {
+      if (headerKey == null) continue;
+      if (headerKey.equalsIgnoreCase("Set-Cookie2") || headerKey.equalsIgnoreCase("Set-Cookie")) {
+        List<String> cookies = new ArrayList<String>();
+        for (String headerValue : responseHeaders.get(headerKey)) {
+          if (log.isDebugEnabled()) log.debug("response cookie=" + headerValue);
+          if (!headerValue.isEmpty()) {
+            cookies.add(headerValue);
+          }
+        }
+        if (!cookies.isEmpty()) {
+          responseCookies.put(headerKey, cookies);
+        }
+      }
+    }
+    return responseCookies;
+  }
+  
+  @Override
+  public void setRequestProperty(String name, String value) {
+    if (requestProperties == null) requestProperties = new HashMap<String,String>();
+    requestProperties.put(name, value);
   }
   
   /**

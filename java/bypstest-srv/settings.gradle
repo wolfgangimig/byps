@@ -28,5 +28,8 @@ project(":bypstest-ser").projectDir = new File("$settingsDir/../bypstest-ser")
 include ("bypstest-ser-json") 
 project(":bypstest-ser-json").projectDir = new File("$settingsDir/../bypstest-ser-json")
 
+include ("bypstest-servlet") 
+project(":bypstest-servlet").projectDir = new File("$settingsDir/../bypstest-servlet")
+
 include ("bypstest") 
 project(":bypstest").projectDir = new File("$settingsDir/../bypstest")

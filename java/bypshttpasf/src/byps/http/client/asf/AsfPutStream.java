@@ -213,7 +213,8 @@ public class AsfPutStream extends AsfRequest {
       }
 
       applyTimeout();
-      
+      applyRequestProperties();
+   
       byte[] content = bbuf.array();
       ((HttpEntityEnclosingRequestBase)request).setEntity(new ByteArrayEntity(content, bbuf.position(), bbuf.remaining()));
       response = httpClient.execute(request);

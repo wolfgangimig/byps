@@ -813,7 +813,6 @@ public class BBufferJson extends BBuffer {
 						log.info(this.toDetailString());
 						throw e;
 					}
-					// key.length() == 0 für eine Map mit key-Wert=""
 	
 					nextExpectedJsonChar(':', true);
 					

@@ -1,4 +1,7 @@
 package byps.test;
+
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -25,7 +28,6 @@ import byps.BProtocolJson;
 import byps.BTransport;
 import byps.BWire;
 import byps.RemoteException;
-/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import byps.io.ByteArrayInputStream;
 import byps.io.ByteArrayOutputStream;
 import byps.test.api.list.ListTypes;
@@ -89,14 +91,14 @@ public class TestSerializePrimitiveTypes {
 	}
 	
 	/**
-	 * € UTF-8: 11100010:10000010:10101100 E2 82 AC
-	 * € UTF-16: 0x20AC
+	 * â‚¬ UTF-8: 11100010:10000010:10101100 E2 82 AC
+	 * â‚¬ UTF-16: 0x20AC
 	 */
 	@Test
 	public void testSerializeStingUTF8() {
 		log.info("testSerializeStringUTF8(");
 
-		internalTestSerializeStringUTF8("¶"); // 2 bytes
+		internalTestSerializeStringUTF8("Â¶"); // 2 bytes
 		
 		internalTestSerializeStringUTF8(createLargeString());
 
@@ -122,12 +124,12 @@ public class TestSerializePrimitiveTypes {
 		internalTestSerializeStringUTF8("c:\tProgram Files\\WILUTIONS\n");
 		internalTestSerializeStringUTF8("c:'Program Files'WILUTIONS\"\"");
 		
-		internalTestSerializeStringUTF8("¶"); // 2 bytes
-		internalTestSerializeStringUTF8("€"); // 3 bytes
-		internalTestSerializeStringUTF8("€€");
-		internalTestSerializeStringUTF8("a€");
-		internalTestSerializeStringUTF8("€a");
-		internalTestSerializeStringUTF8("a€a");
+		internalTestSerializeStringUTF8("Â¶"); // 2 bytes
+		internalTestSerializeStringUTF8("â‚¬"); // 3 bytes
+		internalTestSerializeStringUTF8("â‚¬â‚¬");
+		internalTestSerializeStringUTF8("aâ‚¬");
+		internalTestSerializeStringUTF8("â‚¬a");
+		internalTestSerializeStringUTF8("aâ‚¬a");
 		internalTestSerializeStringUTF8("");
 		
 		internalTestSerializeStringUTF8(null); // null-strings are serialized as empty strings
@@ -179,7 +181,7 @@ public class TestSerializePrimitiveTypes {
 		obj.longVal = 789;
 		obj.floatVal = -1.23f;
 		obj.doubleVal = 3.45e-7;
-		obj.stringVal = "abc\"€€\'def";
+		obj.stringVal = "abc\"â‚¬â‚¬\'def";
 		bout.store(obj);
 		
 		ByteBuffer buf = bout.toByteBuffer();
@@ -244,7 +246,7 @@ public class TestSerializePrimitiveTypes {
 	@Test
 	public void testPrimitiveTypesChar() throws BException {	
 		log.info("testPrimitiveTypesChar(");
-		String chars = "a\t\r\n¶€";
+		String chars = "a\t\r\nÂ¶â‚¬";
 		for (int i = 0; i < chars.length(); i++) {
 			char ch = chars.charAt(i);
 			internalTestChar2(ch);

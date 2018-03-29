@@ -86,7 +86,7 @@ namespace byps {
 
     template<typename _int3264> void serializeIntegerCompressed(_int3264& v1) {
 
-      register int64_t v = v1;
+      int64_t v = v1;
 
       if (isWrite) {
 

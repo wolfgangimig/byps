@@ -1,8 +1,12 @@
 var createCount = 0;
 
 var log = {
-	info : function() {},
-	error : function() {}
+	info : function(s) {
+		console.log(s)
+	},
+	error : function() {
+		console.log("ERROR: " + s);
+	}
 };
 
 var TestUtils = {
@@ -53,8 +57,8 @@ var TestUtils = {
 	    expectedValue = trimNulls(expectedValue);
 	    readValue = trimNulls(readValue);
 	    
-	    // So geht's nicht, weil die Objekte rekurive Referenzen enthalten können.
-	    // Rekursionen können aber nicht mit JSON serialisiert werden.
+	    // So geht's nicht, weil die Objekte rekurive Referenzen enthalten kï¿½nnen.
+	    // Rekursionen kï¿½nnen aber nicht mit JSON serialisiert werden.
 //	    var strE = JSON.stringify(expectedValue);
 //	    var strR = JSON.stringify(readValue);
 //	    expectedValue = JSON.parse(strE);

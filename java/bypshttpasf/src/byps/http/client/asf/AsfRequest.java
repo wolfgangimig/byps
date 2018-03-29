@@ -1,6 +1,8 @@
 package byps.http.client.asf;
 
 import java.net.HttpURLConnection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -22,6 +24,7 @@ public abstract class AsfRequest implements HHttpRequest {
   protected volatile HttpRequestBase request;
   protected int connectTimeoutSeconds;
   protected int sendRecvTimeoutSeconds;
+  protected Map<String,String> requestProperties;
   protected AtomicBoolean cancelled = new AtomicBoolean();
   private static Log log = LogFactory.getLog(AsfRequest.class);
   
@@ -68,5 +71,17 @@ public abstract class AsfRequest implements HHttpRequest {
     requestBuilder = requestBuilder.setSocketTimeout(this.sendRecvTimeoutSeconds * 1000);
     request.setConfig(requestBuilder.build());
   }
+  
+  protected void applyRequestProperties() {
+    if (requestProperties == null) return;
+    for (Map.Entry<String, String> prop : requestProperties.entrySet()) {
+      request.setHeader(prop.getKey(), prop.getValue());
+    }
+  }
 
+  @Override
+  public void setRequestProperty(String name, String value) {
+    if (requestProperties == null) requestProperties = new HashMap<String,String>();
+    requestProperties.put(name, value);
+  }
 }

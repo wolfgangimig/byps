@@ -2,6 +2,7 @@ apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
 
 sourceCompatibility = 1.8
+compileJava.options.encoding = 'UTF-8'
 version = '5.13'
 
 sourceSets {
@@ -36,6 +37,7 @@ dependencies {
 	compile project(":bypstest-api")
 	compile project(":bypstest-ser")
 	compile project(":bypstest-ser-json")
+	compile project(":bypstest-servlet")
 	
 	compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '8.0.+'
 	

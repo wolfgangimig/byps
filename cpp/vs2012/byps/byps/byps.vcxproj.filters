@@ -249,9 +249,6 @@
     <ClInclude Include="..\..\..\common\byps\include\BThreadPool.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\common\byps\include\BThreadPool.hpp">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\common\byps\include\platform\msvc\msvc_x86_x64.h">
       <Filter>include\platform\msvc</Filter>
     </ClInclude>
@@ -263,9 +260,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\common\byps\include\BAuthentication.h">
       <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\common\byps\include\platform\any\BThreadPool.hpp">
-      <Filter>include\platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\common\byps\include\BLostConnectionHandler.h">
       <Filter>include</Filter>
@@ -293,6 +287,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\common\byps\include\BFile.hpp">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\byps\include\platform\any\BThreadPool.hpp">
+      <Filter>include\platform\any</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

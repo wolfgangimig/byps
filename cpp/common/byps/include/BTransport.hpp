@@ -386,7 +386,9 @@ namespace byps {
   BINLINE BTYPEID BTransport::getObjectTypeId(const PSerializable& ser)
   {
     BTYPEID typeId = 0;
-    getProtocol()->getRegistry()->getSerializer(typeid(*ser.get()), typeId);
+      const BSerializable* pser = ser.get();
+      const type_info& tinfo = typeid(*pser);
+    getProtocol()->getRegistry()->getSerializer(tinfo, typeId);
     return typeId;
   }
 

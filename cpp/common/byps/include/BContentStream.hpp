@@ -71,19 +71,44 @@ namespace byps {
   BINLINE void BContentStream::setContentDisposition(const wstring& value) {
     wstring fileName;
     bool att = false;
+
     if (value.size()) {
       att = value.find(L"attachment;") != wstring::npos;
-      size_t p = value.find(L"filename=");
+      size_t p = value.find(L"filename*=");
       if (p != wstring::npos) {
-        fileName = value.substr(p + 9);
-        if (fileName.find(L'\"') == 0) {
-          fileName = fileName.substr(1);
-          if (fileName.find(L'\"') == fileName.size()-1) {
-            fileName = fileName.substr(0, fileName.size()-1);
+        size_t b = p + 10;
+        size_t e = value.find(L'\'', b);
+        if (e != wstring::npos) {
+          wstring charSet = value.substr(b, e-b);
+          b = e;
+          e = value.find(L'\'', b + 1);
+          if (e != -1) {
+            //String lang = value.substring(b, e); ignored
+            b = e+1;
+            e = value.find(L';', b);
+            if (e == -1) e = value.length();
+            fileName = value.substr(b, e-b);
+            fileName = trim(fileName);
+            fileName = trim(fileName, L"\"");
+            fileName = decodeUrl(fileName, charSet);
           }
         }
       }
+
+      if (fileName.empty()) {
+        size_t p = value.find(L"filename=");
+        if (p != wstring::npos) {
+          size_t b = p + 9;
+          size_t e = value.find(L";", b);
+          if (e == wstring::npos) e = value.length();
+          fileName = value.substr(b, e - b);
+          fileName = trim(fileName);
+          fileName = trim(fileName, L"\"");
+          fileName = decodeUrl(fileName, L"ISO-8859-1");
+        }
+      }
     }
+
     this->fileName = fileName;
     this->attachmentCode = att ? ATTACHMENT : INLINE;
   }
@@ -93,11 +118,8 @@ namespace byps {
     wss << ((getAttachmentCode()==ATTACHMENT) ? L"attachment;" : L"inline;") ;
     wstring fileName = getFileName();
     if (fileName.size()) {
-	  wss << L" filename=";
-	  bool qu = fileName.find(' ') != wstring::npos;
-	  if (qu) wss << L"\"";
-	  wss << fileName;
-	  if (qu) wss << L"\"";
+      wss << L" filename=" << encodeUrl(fileName, L"ISO-8859-1");
+      wss << L"; filename*=UTF-8''" << encodeUrl(fileName, L"UTF-8"); 
     }
     return wss.str();
   }
@@ -162,9 +184,7 @@ namespace byps {
     }
     this->contentType = cs;
     
-	// Ignore file name.
-	// Could contain characters which cause an invalid Content-Disposition header.
-	//this->fileName = file.getName();
+	  this->fileName = file.getName();
 
     stdStream = file.open();
   }

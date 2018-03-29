@@ -341,7 +341,7 @@ class PrintContext extends PrintContextBase {
 				.print(");");
 		}
 		
-		// Item für List<Integer> ?
+		// Item e.g. for List<Integer> ?
 		else if (tinfo.toString().startsWith("java.lang.")) {
       pr.checkpoint();
 			String fnct = PrintHelper.streamPutMember(tinfo);
@@ -352,7 +352,7 @@ class PrintContext extends PrintContextBase {
 			mpr = mpr.print(arg).print(");");
 		}
 		
-		// Item für int[], enum, Date
+		// Item for int[], enum, Date
 		else {
       pr.checkpoint();
 			String fnct = PrintHelper.streamPutMember(tinfo);
