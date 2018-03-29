@@ -35,7 +35,7 @@ public class StdContentStream extends BContentStream {
     int ret = -1;
     
     while (!bbuf.hasRemaining() && !endOfStream) {
-      BSyncResult<ByteBuffer> syncResult = new BSyncResult<>();
+      BSyncResult<ByteBuffer> syncResult = new BSyncResult<ByteBuffer>();
       readNextBytes(offset, syncResult);
       endOfStream = true;
       bbuf = syncResult.getResult(stdRequest.timeoutSeconds * 1000);
@@ -60,7 +60,7 @@ public class StdContentStream extends BContentStream {
     return r;
   }
   
-  private void readNextBytes(long offset, BAsyncResult<ByteBuffer> resultBytes) {
+  private void readNextBytes(long offset, final BAsyncResult<ByteBuffer> resultBytes) {
     try {
       BHttpRequest httpRequest = stdRequest.makeHttpRequest();
       httpRequest.setOffset(offset);

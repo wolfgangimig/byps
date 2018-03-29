@@ -14,6 +14,7 @@ import java.util.TreeMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -748,16 +749,18 @@ public class TestRemoteStreams {
       for (int i = 0; i < NB_OF_DOWNLOADS/NB_OF_PARALLEL_DOWNLOADS; i++) {
         CompletableFuture[] completableFutures = new CompletableFuture[NB_OF_PARALLEL_DOWNLOADS];
         for (int j = 0; j < completableFutures.length; j++) {
-          completableFutures[j] = CompletableFuture.supplyAsync(() -> { 
-            try {
-              InputStream istrmR = remote.getImage();
-              istrmR.read(); // read only one byte
-              istrmR.close();
+          completableFutures[j] = CompletableFuture.supplyAsync(new Supplier<Object>() {
+            public Object get() {
+              try {
+                InputStream istrmR = remote.getImage();
+                istrmR.read(); // read only one byte
+                istrmR.close();
+              }
+              catch (Exception e) {
+                throw new IllegalStateException(e);
+              }
+              return true;
             }
-            catch (Exception e) {
-              throw new IllegalStateException(e);
-            }
-            return true;
           });
         }
         CompletableFuture all = CompletableFuture.allOf(completableFutures);

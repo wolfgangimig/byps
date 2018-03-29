@@ -23,7 +23,7 @@ public class TestSSO {
     //String url = "http://localhost:8084/ix-elo100/ixlogin?streamversion=900990000000000&responseformat=html&logout=true";
     String url = "http://srvpelo1:8080/ix-lldo_prod/ixlogin?streamversion=8&responseformat=html&logout=true";
     
-    BSyncResult<ByteBuffer> result = new BSyncResult<>();
+    BSyncResult<ByteBuffer> result = new BSyncResult<ByteBuffer>();
     client.get(url, result).run();
     
     try {

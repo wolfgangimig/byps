@@ -12,8 +12,6 @@ import org.junit.Test;
 import byps.BAsyncResult;
 import byps.BAuthentication;
 import byps.BClient;
-import byps.BException;
-import byps.BExceptionC;
 import byps.BMessageHeader;
 import byps.BWire;
 import byps.RemoteException;
@@ -132,19 +130,22 @@ public class TestRemoteWithAuthentication {
     
     // Re-login
     int nbOfThreads = 10;
-    CountDownLatch cdl = new CountDownLatch(nbOfThreads);
-    AtomicReference<Exception> refExc = new AtomicReference<Exception>();
+    final CountDownLatch cdl = new CountDownLatch(nbOfThreads);
+    final AtomicReference<Exception> refExc = new AtomicReference<Exception>();
+    
     for (int i = 0; i < nbOfThreads; i++) {
-      Runnable run = () -> {
-        try {
-          remote.doit(1);
-        }
-        catch (Exception e) {
-          refExc.compareAndSet(null, e);
-          log.error("Authentication failed: " + e);
-        }
-        finally {
-          cdl.countDown();
+      Runnable run = new Runnable() {
+        public void run() {
+          try {
+            remote.doit(1);
+          }
+          catch (Exception e) {
+            refExc.compareAndSet(null, e);
+            log.error("Authentication failed: " + e);
+          }
+          finally {
+            cdl.countDown();
+          }
         }
       };
       new Thread(run).start();

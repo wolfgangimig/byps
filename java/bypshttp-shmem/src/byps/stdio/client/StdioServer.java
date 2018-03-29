@@ -15,16 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import byps.BAsyncResult;
-import byps.BHashMap;
 import byps.BHttpRequest;
-import byps.BMessage;
-import byps.BMessageHeader;
 import byps.BOutput;
-import byps.BServer;
 import byps.BTransport;
 import byps.http.HHttpServlet;
-import byps.http.HSession;
-import byps.http.HSessionListener;
 import byps.stdio.common.StdioChannel;
 
 public class StdioServer extends StdioCommunication {
@@ -55,12 +49,12 @@ public class StdioServer extends StdioCommunication {
     super.done();
   }
 
-  public static interface MessageHandler {
+  public static abstract class MessageHandler {
     
-    public void service(HttpServletRequest request, HttpServletResponse response);
-    public void doMessage(HttpServletRequest request, HttpServletResponse response, ByteBuffer ibuf);
+    public abstract void service(HttpServletRequest request, HttpServletResponse response);
+    public abstract void doMessage(HttpServletRequest request, HttpServletResponse response, ByteBuffer ibuf);
     
-    public static MessageHandler fromServlet(HHttpServlet servlet1) {
+    public static MessageHandler fromServlet(final HHttpServlet servlet1) {
       return new MessageHandler() {
         
         HHttpServlet servlet = servlet1;
@@ -174,11 +168,13 @@ public class StdioServer extends StdioCommunication {
   }
   
   @Override
-  protected void handleReceivedMessage(int messageId, int method, ByteBuffer request) {
+  protected void handleReceivedMessage(final int messageId, final int method, final ByteBuffer request) {
     while (!Thread.currentThread().isInterrupted() && !stopEvent) {
       try {
-        tpool.execute(() -> {
-          handleReceivedMessageAsync(messageId, method, request);
+        tpool.execute(new Runnable() {
+          public void run() {
+            handleReceivedMessageAsync(messageId, method, request);
+          }
         });
         
         break;

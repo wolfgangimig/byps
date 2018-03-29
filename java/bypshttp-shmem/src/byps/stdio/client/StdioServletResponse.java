@@ -2,6 +2,7 @@ package byps.stdio.client;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,7 +20,6 @@ public class StdioServletResponse implements HttpServletResponse {
   
   private final StdioServletOutputStream ostream;
   private final BHttpRequest response = new BHttpRequest();
-  private final BAsyncResult<BHttpRequest> asyncResult;
   private volatile int status;
   private volatile String statusMessage;
   private volatile PrintWriter writer;
@@ -28,22 +28,24 @@ public class StdioServletResponse implements HttpServletResponse {
     public void handle(BHttpRequest response);
   }
   
-  public StdioServletResponse(BAsyncResult<BHttpRequest> asyncResult) {
-    this.asyncResult = asyncResult;
+  public StdioServletResponse(final BAsyncResult<BHttpRequest> asyncResult) {
     
     // Initialize ServletOutputStream. Pass a handler for 
     // the OnClose event that assigns the stream buffer to 
     // the response body.
-    ostream = new StdioServletOutputStream((bbuf) -> {
+    ostream = new StdioServletOutputStream(new StdioServletOutputStream.OnClose() {
       
-      // If response body not already set by getBypsResponse().setBody()...
-      if (response.getBody() == null) {
+      public void handle(ByteBuffer bbuf) {
+      
+        // If response body not already set by getBypsResponse().setBody()...
+        if (response.getBody() == null) {
+          
+          // Assign the bytes written into the ServletOutputStream. 
+          response.setBody(bbuf);
+        }
         
-        // Assign the bytes written into the ServletOutputStream. 
-        response.setBody(bbuf);
+        asyncResult.setAsyncResult(response, null);
       }
-      
-      this.asyncResult.setAsyncResult(response, null);
     });
   }
 

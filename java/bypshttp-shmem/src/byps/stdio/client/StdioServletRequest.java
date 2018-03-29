@@ -158,7 +158,7 @@ public class StdioServletRequest implements HttpServletRequest {
     if (method == StdioChannel.HTTP_POST) {
     }
     else {
-      map = new HashMap<>();
+      map = new HashMap<String, String[]>();
       String url = request.getUrl();
       String params = url.substring(url.indexOf('?')+1);
       StringTokenizer stokParams = new StringTokenizer(params, "&");
@@ -179,7 +179,7 @@ public class StdioServletRequest implements HttpServletRequest {
     
     String url = request.getUrl();
     String params = url.substring(url.indexOf('?')+1);
-    StringTokenizer stokParams = new StringTokenizer(params, "&");
+    final StringTokenizer stokParams = new StringTokenizer(params, "&");
     
     Enumeration<String> enumeration = new Enumeration<String>() {
 
@@ -475,5 +475,5 @@ public class StdioServletRequest implements HttpServletRequest {
     return ret != null ? ret : EMPTY_HEADERS;
   }
   
-  private final static Map<String,String> EMPTY_HEADERS = new HashMap<>(0);
+  private final static Map<String,String> EMPTY_HEADERS = new HashMap<String,String>(0);
 }

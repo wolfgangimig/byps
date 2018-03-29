@@ -1,9 +1,23 @@
 apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.6
 compileJava.options.encoding = 'UTF-8'
 version = '5.13'
+
+eclipse {
+
+  wtp {
+    facet {
+      facet name: 'jst.web', version: '2.4'
+    }
+
+    component{
+      resource sourcePath: 'WebContent', deployPath: '/'
+      }
+  }
+}
+
 
 sourceSets {
     main {
@@ -11,7 +25,6 @@ sourceSets {
             srcDir 'src'
         }
         resources {
-            
         }
     }
 }

@@ -14,7 +14,7 @@ import byps.http.client.HHttpRequest;
 
 public class StdioClient extends StdioCommunication implements HHttpClient {
 
-  private HashMap<Integer, BAsyncResult<ByteBuffer>> expectingResults = new HashMap<>();
+  private HashMap<Integer, BAsyncResult<ByteBuffer>> expectingResults = new HashMap<Integer, BAsyncResult<ByteBuffer>>();
   private int nextMessageId = 0;
   public final BTransport transport;
 
@@ -76,7 +76,7 @@ public class StdioClient extends StdioCommunication implements HHttpClient {
   
   @Override
   protected synchronized void handleException(Throwable e) {
-    ArrayList<BAsyncResult<ByteBuffer>> results = new ArrayList<>();
+    ArrayList<BAsyncResult<ByteBuffer>> results = new ArrayList<BAsyncResult<ByteBuffer>>();
     synchronized(expectingResults) {
       results.addAll(expectingResults.values());
       expectingResults.clear();

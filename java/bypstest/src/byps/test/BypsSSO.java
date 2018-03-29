@@ -79,7 +79,7 @@ public class BypsSSO {
 
     log.info("-------------");
 
-    BSyncResult<ByteBuffer> result = new BSyncResult<>();
+    BSyncResult<ByteBuffer> result = new BSyncResult<ByteBuffer>();
     client.get(loginUrl, result).run();
     
     try {

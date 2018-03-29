@@ -1,5 +1,11 @@
 BYPS Version History
 
+5.16 2018-03-29
+
+- Java 1.6 source compatibility.
+
+-  
+
 5.15 2017-02-01
 
 - Do not invalidate the HTTP session, if no BYPS session could be found.

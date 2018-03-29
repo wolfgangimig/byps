@@ -95,8 +95,11 @@ public class BContentStreamWrapper extends BContentStream {
       File userHomeDir = new File(System.getProperty("user.home"));
       File mimeTypesFile = new File(userHomeDir, ".mime.types");
       if (!mimeTypesFile.exists()) {
-        try (InputStream istream = BContentStream.class.getResourceAsStream("_dot_mime.types");
-            FileOutputStream ostream = new FileOutputStream(mimeTypesFile)) {
+        InputStream istream = null;
+        FileOutputStream ostream = null;
+        try {
+          istream = BContentStream.class.getResourceAsStream("_dot_mime.types");
+          ostream = new FileOutputStream(mimeTypesFile);
           byte[] buf = new byte[10000];
           int len = 0;
           while ((len = istream.read(buf, 0, buf.length)) != -1) {
@@ -104,7 +107,20 @@ public class BContentStreamWrapper extends BContentStream {
           }
         }
         catch (Exception ignored) {
-          System.out.println(ignored);
+        }
+        finally {
+          if (istream != null) {
+            try {
+              istream.close();
+            } catch (IOException e) {
+            }
+          }
+          if (ostream != null) {
+            try {
+              ostream.close();
+            } catch (IOException e) {
+            }
+          }
         }
       }
     }

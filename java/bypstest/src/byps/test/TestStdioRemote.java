@@ -22,6 +22,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import byps.BApiDescriptor;
+import byps.BAsyncResult;
 import byps.BMessageHeader;
 import byps.BRegistry;
 import byps.BSyncResult;
@@ -88,19 +89,21 @@ public class TestStdioRemote {
     StdioClient client = new StdioClient(ECHO_PROGRAM_JAR);
     try {
       client.start();
-      CountDownLatch cdl = new CountDownLatch(1);
+      final CountDownLatch cdl = new CountDownLatch(1);
       
       ByteBuffer request = ByteBuffer.wrap("requesttext".getBytes());
       
-      HHttpRequest httpRequest = client.post("abc-url", request, (result, ex) -> {
-        if (ex != null) {
-          ex.printStackTrace();
+      HHttpRequest httpRequest = client.post("abc-url", request, new BAsyncResult<ByteBuffer>() {
+        public void setAsyncResult(ByteBuffer result, Throwable ex){
+          if (ex != null) {
+            ex.printStackTrace();
+          }
+          else {
+            String s = new String(result.array(), result.position(), result.remaining());
+            System.out.println("result=" + s);
+          }
+          cdl.countDown();
         }
-        else {
-          String s = new String(result.array(), result.position(), result.remaining());
-          System.out.println("result=" + s);
-        }
-        cdl.countDown();
       });
       
       httpRequest.run();
@@ -237,21 +240,23 @@ public class TestStdioRemote {
   }
 
 
-  private void invokeMethod(BClient_Testser client, int nbOfRequests, int nbOfThreads) throws InterruptedException {
-    CountDownLatch cdl = new CountDownLatch(nbOfRequests);
+  private void invokeMethod(final BClient_Testser client, int nbOfRequests, int nbOfThreads) throws InterruptedException {
+    final CountDownLatch cdl = new CountDownLatch(nbOfRequests);
     ThreadPoolExecutor tpool = (ThreadPoolExecutor)Executors.newFixedThreadPool(nbOfThreads);
     long t1 = System.currentTimeMillis();
     for (int i = 0; i < nbOfRequests; i++) {
-      tpool.execute(() -> {
-        try {
-          client.getRemoteListTypes().setBoolean1(Arrays.asList(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE));
-          List<Boolean> list = client.getRemoteListTypes().getBoolean1();
-          if (cdl.getCount() == 1) System.out.println("list=" + list);
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-        finally {
-          cdl.countDown();
+      tpool.execute(new Runnable() {
+        public void run() {
+          try {
+            client.getRemoteListTypes().setBoolean1(Arrays.asList(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE));
+            List<Boolean> list = client.getRemoteListTypes().getBoolean1();
+            if (cdl.getCount() == 1) System.out.println("list=" + list);
+          } catch (Exception e) {
+            e.printStackTrace();
+          }
+          finally {
+            cdl.countDown();
+          }
         }
       });
     }

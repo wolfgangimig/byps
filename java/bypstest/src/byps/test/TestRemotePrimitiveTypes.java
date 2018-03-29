@@ -188,11 +188,12 @@ public class TestRemotePrimitiveTypes {
     remote.setBool(true, new BAsyncResult<Object>() {
       public void setAsyncResult(Object ignored, Throwable exception) {
         
-        remote.getBool( (Boolean result, Throwable ex2) -> {
+        remote.getBool(new BAsyncResult<Boolean>() {
+          public void setAsyncResult(Boolean result, Throwable ex2) {
             ret[0] = result;
             ex[0] = ex2;
           }
-        );
+        });
       }
     });
     
