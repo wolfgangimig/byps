@@ -738,7 +738,25 @@ public abstract class HHttpServlet extends HttpServlet implements
     catch (Throwable e) {
       HttpServletResponse resp = rctxt != null ? (HttpServletResponse) rctxt.getResponse() : response;
       if (!resp.isCommitted()) {
-        if (log.isInfoEnabled()) log.info("Failed to process message.", e);
+        
+        String CR = System.getProperty("line.separator", "\n");
+        StringBuilder headers = new StringBuilder();
+        for (Enumeration<String> en = request.getHeaderNames(); en.hasMoreElements(); ) {
+          String name = en.nextElement();
+          headers.append(name).append(": ").append(request.getHeader(name)).append(CR);
+        }
+        
+        String body = BBuffer.toDetailString(ibuf);
+        
+        if (log.isInfoEnabled()) {
+          log.info("Failed to process message"
+            + ", remote-address="+ request.getRemoteAddr()
+            + ", remote-host=" + request.getRemoteHost());
+          
+          log.info("Headers:" + CR + headers);
+          log.info("Body:" + CR + body);
+        }
+        
         resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         resp.getWriter().print(e.toString());
         resp.getWriter().close();
