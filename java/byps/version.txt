@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.17 2018-05-07
+
+- Infinite read timeout for long poll was ignored. This caused timeout exceptions in HServerR.
+
 5.16 2018-03-29
 
 - Java 1.6 source compatibility.

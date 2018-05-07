@@ -48,7 +48,7 @@ public abstract class JcnnRequest implements HHttpRequest {
     HttpURLConnection c = (HttpURLConnection) new URL(destUrl).openConnection();
     conn.set(c);
     c.setConnectTimeout(connectTimeoutSeconds * 1000);
-    c.setReadTimeout(connectTimeoutSeconds * 1000);
+    c.setReadTimeout(sendRecvTimeoutSeconds * 1000); 
     
     if (requestProperties != null) {
       for (Map.Entry<String, String> prop : requestProperties.entrySet()) {
