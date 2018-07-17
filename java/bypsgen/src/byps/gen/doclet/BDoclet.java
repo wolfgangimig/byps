@@ -5,15 +5,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
+import java.util.Set;
+
+import javax.lang.model.SourceVersion;
+import javax.tools.Diagnostic;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.PropertyConfigurator;
 
-import com.sun.javadoc.Doclet;
 import com.sun.javadoc.LanguageVersion;
 import com.sun.javadoc.RootDoc;
 
@@ -35,6 +40,10 @@ import byps.gen.js.PropertiesJS;
 import byps.gen.utils.AssignUniqueSerialVersionUID;
 import byps.gen.utils.CodePrinter;
 import byps.gen.utils.Utils;
+import jdk.javadoc.doclet.Doclet;
+import jdk.javadoc.doclet.Doclet.Option.Kind;
+import jdk.javadoc.doclet.DocletEnvironment;
+import jdk.javadoc.doclet.Reporter;
 
 /**
  * This class reads the API definition and generates the serialization classes.
@@ -62,7 +71,7 @@ import byps.gen.utils.Utils;
  * @BSessionParamType Klassenname f�r Session-Parameter
  * @BClientRemote Remote-Interface, dass auf der Clientseite implementiert wird
  */
-public class BDoclet extends Doclet {
+public class BDoclet implements Doclet {
 
   /**
    * API definition file with the new classes. The API classes found by this run
@@ -130,15 +139,35 @@ public class BDoclet extends Doclet {
    * Logger
    */
   private static Log log = LogFactory.getLog(BDoclet.class);
-
+  
   /**
-   * Javadoc start function.
-   * 
-   * @param root
-   *          javadoc root object.
-   * @return true
+   * Provides error, warning and notice reporting.
    */
-  public static boolean start(RootDoc root) {
+  private Reporter reporter;
+
+  @Override
+  public void init(Locale locale, Reporter reporter) {
+	  this.reporter = reporter;
+	  reporter.print(Diagnostic.Kind.NOTE, "Doclet using locale=" + locale);
+  }
+
+  @Override
+  public String getName() {
+  	return "BYPS Doclet";
+  }
+
+  @Override
+  public Set<? extends Option> getSupportedOptions() {
+  	return Collections.emptySet();
+  }
+
+  @Override
+  public SourceVersion getSupportedSourceVersion() {
+  	return SourceVersion.RELEASE_8;
+  }
+
+  @Override
+  public boolean run(DocletEnvironment root) {
     log.debug("start(");
     
     // Enable printing checkpoints
@@ -497,8 +526,19 @@ public class BDoclet extends Doclet {
       String[] javadocArgs = javadocParams.toArray(new String[javadocParams.size()]);
 
       log.info("Generate serialisation layer ==============");
-      com.sun.tools.javadoc.Main.execute(javadocArgs);
 
+      // Für Java 8:
+      //com.sun.tools.javadoc.Main.execute(javadocArgs);
+      // Für Java 10 wäre der Aufruff:  
+      jdk.javadoc.internal.tool.Main.execute(javadocArgs);
+      // Aber er liefert den Fehler:
+//      Exception in thread "main" java.lang.IllegalAccessError: class byps.gen.doclet.BDoclet (in unnamed module @0x1f36e637) cannot access class jdk.javadoc.internal.tool.Main (in module jdk.javadoc) because module jdk.javadoc does not export jdk.javadoc.internal.tool to unnamed module @0x1f36e637
+//      at byps.gen.doclet.BDoclet.main(BDoclet.java:530)
+
+      // Hab dazu einen Stackoverflow-Beitrag geschrieben:
+      // https://stackoverflow.com/questions/51384097/how-can-i-debug-a-doclet-in-java-10
+      
+      
       System.out.println("Finished");
       
     } catch (Exception e) {

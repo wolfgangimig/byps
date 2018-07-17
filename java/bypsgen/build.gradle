@@ -1,9 +1,22 @@
+import org.gradle.plugins.ide.eclipse.model.AccessRule
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
 sourceCompatibility = 1.6
 compileJava.options.encoding = 'UTF-8'
 version = '5.13'
+
+eclipse {
+  classpath {
+    file {
+      whenMerged {
+        def jre = entries.find { it.path.contains 'org.eclipse.jdt.launching.JRE_CONTAINER' }
+        jre.accessRules.add(new AccessRule('0', 'jdk/javadoc/**'))
+      }
+    }
+  }
+}
 
 sourceSets {
     main {
@@ -36,6 +49,15 @@ dependencies {
 	compile project(":byps-api")
 	compile project(":byps-override")
 	compile project(":byps")
+	
+	// https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+	// https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl
+	compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0.1'
+	// https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-core
+	compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0.1'
+	// https://mvnrepository.com/artifact/javax.activation/activation
+	compile group: 'javax.activation', name: 'activation', version: '1.1.1'
 	
 	compile files(org.gradle.internal.jvm.Jvm.current().toolsJar)
 }

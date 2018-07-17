@@ -7,8 +7,22 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+import javax.lang.model.element.Element;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import com.sun.javadoc.ClassDoc;
+import com.sun.javadoc.Doc;
+import com.sun.javadoc.FieldDoc;
+import com.sun.javadoc.MethodDoc;
+import com.sun.javadoc.PackageDoc;
+import com.sun.javadoc.Parameter;
+import com.sun.javadoc.ParameterizedType;
+import com.sun.javadoc.Tag;
+import com.sun.javadoc.Type;
+import com.sun.javadoc.WildcardType;
+import com.sun.source.util.DocTrees;
 
 import byps.BApiDescriptor;
 import byps.BVersioning;
@@ -23,18 +37,7 @@ import byps.gen.api.SerialInfo;
 import byps.gen.api.TypeInfo;
 import byps.gen.db.ClassDB;
 import byps.gen.db.ConstFieldReader;
-
-import com.sun.javadoc.ClassDoc;
-import com.sun.javadoc.Doc;
-import com.sun.javadoc.FieldDoc;
-import com.sun.javadoc.MethodDoc;
-import com.sun.javadoc.PackageDoc;
-import com.sun.javadoc.Parameter;
-import com.sun.javadoc.ParameterizedType;
-import com.sun.javadoc.RootDoc;
-import com.sun.javadoc.Tag;
-import com.sun.javadoc.Type;
-import com.sun.javadoc.WildcardType;
+import jdk.javadoc.doclet.DocletEnvironment;
 
 /**
  * This class converts from javadoc objects to internal objects.
@@ -95,17 +98,26 @@ public class BConvert {
 	 * @return API representation object.
 	 * @throws GeneratorException
 	 */
-	public static ClassDB makeClassDB(RootDoc rdoc, ConstFieldReader constReader, int opts) throws GeneratorException {
+	public static ClassDB makeClassDB(DocletEnvironment rdoc, ConstFieldReader constReader, int opts) throws GeneratorException {
 		BConvert conv = new BConvert(opts);
 		return conv.internalMakeClassDB(rdoc, constReader);
 	}
 	
-	private ClassDB internalMakeClassDB(RootDoc rdoc, ConstFieldReader constReader) throws GeneratorException {
+	private ClassDB internalMakeClassDB(DocletEnvironment rdoc, ConstFieldReader constReader) throws GeneratorException {
 		log.debug("makeClassDB(rdoc=" + rdoc + ", + constReader=" + constReader);
 
 		classDB = ClassDB.createNewVersion(constReader);
 		
-		ClassDoc[] classes = rdoc.classes();
+		DocTrees docTrees = rdoc.getDocTrees();
+		for (Element e : rdoc.getSpecifiedElements()) {
+		  System.out.println("e=" + e);
+		}
+		
+		if (docTrees != null) {
+		  return null;
+		}
+		
+		ClassDoc[] classes = null; //rdoc.classes();
 		log.debug("#classes=" + classes.length);
 
 		// ------------------------------------------------------------
