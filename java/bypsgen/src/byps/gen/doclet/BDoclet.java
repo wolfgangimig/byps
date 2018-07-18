@@ -9,18 +9,22 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.Properties;
+import java.util.ServiceLoader;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 
 import javax.lang.model.SourceVersion;
 import javax.tools.Diagnostic;
+import javax.tools.Tool;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.PropertyConfigurator;
 
 import com.sun.javadoc.LanguageVersion;
-import com.sun.javadoc.RootDoc;
 
 import byps.BException;
 import byps.gen.api.ErrorInfo;
@@ -41,7 +45,6 @@ import byps.gen.utils.AssignUniqueSerialVersionUID;
 import byps.gen.utils.CodePrinter;
 import byps.gen.utils.Utils;
 import jdk.javadoc.doclet.Doclet;
-import jdk.javadoc.doclet.Doclet.Option.Kind;
 import jdk.javadoc.doclet.DocletEnvironment;
 import jdk.javadoc.doclet.Reporter;
 
@@ -529,8 +532,8 @@ public class BDoclet implements Doclet {
 
       // Für Java 8:
       //com.sun.tools.javadoc.Main.execute(javadocArgs);
-      // Für Java 10 wäre der Aufruff:  
-      jdk.javadoc.internal.tool.Main.execute(javadocArgs);
+      // Für Java 10 wäre der Aufruf:  
+      //jdk.javadoc.internal.tool.Main.execute(javadocArgs);
       // Aber er liefert den Fehler:
 //      Exception in thread "main" java.lang.IllegalAccessError: class byps.gen.doclet.BDoclet (in unnamed module @0x1f36e637) cannot access class jdk.javadoc.internal.tool.Main (in module jdk.javadoc) because module jdk.javadoc does not export jdk.javadoc.internal.tool to unnamed module @0x1f36e637
 //      at byps.gen.doclet.BDoclet.main(BDoclet.java:530)
@@ -538,6 +541,12 @@ public class BDoclet implements Doclet {
       // Hab dazu einen Stackoverflow-Beitrag geschrieben:
       // https://stackoverflow.com/questions/51384097/how-can-i-debug-a-doclet-in-java-10
       
+      
+      
+      final AtomicReference<Integer> status = new AtomicReference<Integer>();
+      ServiceLoader<Tool> toolService = ServiceLoader.load(Tool.class);
+      Optional<Tool> javadocOpt = toolService.stream().map(p -> p.get()).filter(t -> t.name().equals("javadoc")).findFirst();
+      javadocOpt.orElseThrow().run(System.in, System.out, System.err, javadocArgs);
       
       System.out.println("Finished");
       

@@ -11,7 +11,7 @@ apply plugin: 'java-library'
 
 compileJava.options.encoding = 'UTF-8'
 
-sourceCompatibility = 1.6
+sourceCompatibility = 1.8
 
 // In this section you declare where to find the dependencies of your project
 repositories {
