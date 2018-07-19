@@ -55,6 +55,12 @@ import byps.gen.utils.Utils;
  * others are private to the generators. A list of all parameters can be found
  * in the manual.
  * 
+ * This program produces the following warnings under Java 10 caused by JAXB:   
+ * WARNING: An illegal reflective access operation has occurred
+ * WARNING: Illegal reflective access by com.sun.xml.bind.v2.runtime.reflect.opt.Injector (file:/C:/Users/Imig/.gradle/caches/modules-2/files-2.1/com.sun.xml.bind/jaxb-impl/2.3.0.1/2e979dabb3e5e74a0686115075956391a14dece8/jaxb-impl-2.3.0.1.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int)
+ * WARNING: Please consider reporting this to the maintainers of com.sun.xml.bind.v2.runtime.reflect.opt.Injector
+ * WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+ * WARNING: All illegal access operations will be denied in a future release
  * 
  * 
  * Meine Erweiterungen:
@@ -276,8 +282,9 @@ public class BDoclet extends Doclet {
    */
   public static void main(String[] args) {
     
-    System.setProperty("--illegal-access", "warn");
-
+    
+    
+    
     configureLog4j("WARN");
 
     // DEBUG
