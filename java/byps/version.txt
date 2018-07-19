@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.18 2018-07-19
+
+- Generator can be run under Java 10. 
+
 5.17 2018-05-07
 
 - Infinite read timeout for long poll was ignored. This caused timeout exceptions in HServerR.
