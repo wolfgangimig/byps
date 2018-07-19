@@ -46,11 +46,11 @@ repositories {
 }
 
 dependencies {
+	compile project(":bypstest-servlet")
 	compile project(":bypshttp")
 	compile project(":bypstest-api")
 	compile project(":bypstest-ser")
 	compile project(":bypstest-ser-json")
-	compile project(":bypstest-servlet")
 	
 	compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '8.0.+'
 	

@@ -275,6 +275,8 @@ public class BDoclet extends Doclet {
    * @param args
    */
   public static void main(String[] args) {
+    
+    System.setProperty("--illegal-access", "warn");
 
     configureLog4j("WARN");
 

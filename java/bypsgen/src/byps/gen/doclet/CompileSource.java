@@ -40,15 +40,15 @@ public class CompileSource implements ConstFieldReader {
 			params.add(classpath);
 		}
 		
-		String jhome = System.getProperty("java.home");
-		params.add("-bootclasspath");
-		params.add(jhome + File.separator + "lib" + File.separator + "rt.jar");
+//		String jhome = System.getProperty("java.home");
+//		params.add("-bootclasspath");
+//		params.add(jhome + File.separator + "lib" + File.separator + "rt.jar");
 				
 		params.add("-source");
-		params.add("1.5");
+		params.add("1.6");
 		
 		params.add("-target");
-		params.add("1.5");
+		params.add("1.6");
 		
 		params.add("-d");
 		params.add(foutDir.getAbsolutePath());
