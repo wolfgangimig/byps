@@ -39,11 +39,16 @@ public class CompileSource implements ConstFieldReader {
 			params.add("-classpath");
 			params.add(classpath);
 		}
-		
+
+		// Änderung für Java 10: kein bootclasspath übergeben.
+		// Damit läuft BDoclet im Eclipse. Aber leider nicht mit dem bypstest-api/ant-build.xml.
+		// Warum, werde ich später untersuchen. 
 //		String jhome = System.getProperty("java.home");
 //		params.add("-bootclasspath");
 //		params.add(jhome + File.separator + "lib" + File.separator + "rt.jar");
 				
+		
+		// Änderung für Java 10: Mindestversion 1.6 
 		params.add("-source");
 		params.add("1.6");
 		
