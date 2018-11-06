@@ -29,6 +29,7 @@ namespace byps.test.api
 			
 			// create array
 			int[,,] arr =  new int[n2,n1,n0];
+			bin.onObjectCreated(arr);
 			
 			// read
 			for (int i2 = 0; i2 < n2; i2++) {

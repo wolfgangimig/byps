@@ -27,6 +27,7 @@ namespace byps.test.api
 			
 			// create array
 			byps.test.api.enu.EnumPlanets[] arr =  new byps.test.api.enu.EnumPlanets[n0];
+			bin.onObjectCreated(arr);
 			
 			// read
 			for (int i0 = 0; i0 < n0; i0++) {

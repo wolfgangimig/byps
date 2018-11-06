@@ -27,6 +27,7 @@ namespace byps.test.api
 			
 			// create array
 			Object[] arr =  new Object[n0];
+			bin.onObjectCreated(arr);
 			
 			// read
 			for (int i0 = 0; i0 < n0; i0++) {

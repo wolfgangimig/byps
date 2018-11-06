@@ -27,6 +27,7 @@ namespace byps.test.api
 			
 			// create array
 			byps.test.api.inl.Point2D[] arr =  new byps.test.api.inl.Point2D[n0];
+			bin.onObjectCreated(arr);
 			
 			// read
 			for (int i0 = 0; i0 < n0; i0++) {

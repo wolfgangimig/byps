@@ -28,6 +28,7 @@ namespace byps.test.api
 			
 			// create array
 			byps.test.api.cons.AllTypesZ[,] arr =  new byps.test.api.cons.AllTypesZ[n1,n0];
+			bin.onObjectCreated(arr);
 			
 			// read
 			for (int i1 = 0; i1 < n1; i1++) {

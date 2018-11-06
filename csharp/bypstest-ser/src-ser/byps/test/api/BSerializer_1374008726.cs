@@ -27,6 +27,7 @@ namespace byps.test.api
 			
 			// create array
 			byte[] arr =  new byte[n0];
+			bin.onObjectCreated(arr);
 			
 			// read
 			bbuf.getArrayByte(arr);

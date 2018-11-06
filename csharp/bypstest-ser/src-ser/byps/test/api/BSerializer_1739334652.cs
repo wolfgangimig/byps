@@ -29,6 +29,7 @@ namespace byps.test.api
 			
 			// create array
 			byps.test.api.prim.PrimitiveTypes[,,] arr =  new byps.test.api.prim.PrimitiveTypes[n2,n1,n0];
+			bin.onObjectCreated(arr);
 			
 			// read
 			for (int i2 = 0; i2 < n2; i2++) {
