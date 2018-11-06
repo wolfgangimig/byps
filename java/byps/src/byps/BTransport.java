@@ -197,7 +197,7 @@ public class BTransport {
     }
   }
 
-  protected <T> void send(final Object obj, final BAsyncResult<T> asyncResult) {
+  public <T> void send(final Object obj, final BAsyncResult<T> asyncResult) {
     if (log.isDebugEnabled()) log.debug("send(obj=" + obj + ", asyncResult=" + asyncResult);
     
     final long requestId = requestCounter.incrementAndGet(); 

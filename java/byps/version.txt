@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.19 
+
+- Allow to send methods without applying authentication. Therefore, BTransport.send is public now.
+
 5.18 2018-07-19
 
 - Generator can be run under Java 10. 
