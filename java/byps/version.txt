@@ -4,6 +4,10 @@ BYPS Version History
 
 - Allow to send methods without applying authentication. Therefore, BTransport.send is public now.
 
+- Generator checks whether constant value is null.
+
+- Fix potential BufferOverflowException when serializing streams and stubs. EIX-1145.
+
 5.18 2018-07-19
 
 - Generator can be run under Java 10. 

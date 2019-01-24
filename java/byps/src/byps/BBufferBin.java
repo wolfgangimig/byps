@@ -52,6 +52,17 @@ public abstract class BBufferBin extends BBuffer {
     }
   }
 
+  // EIX-1145 
+  public void putTargetId(BTargetId targetId, int bversion) {
+    ensureRemaining(40);
+    targetId.write(buf, bversion);
+  }
+  
+  // EIX-1145 
+  public BTargetId getTargetId(int bversion) {
+    return BTargetId.read(buf, bversion);
+  }
+
   // https://developers.google.com/protocol-buffers/docs/encoding#varints
   private void putLongCompressed(long v) {
     ensureRemaining(10);

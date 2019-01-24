@@ -31,14 +31,14 @@ public class BSerializer_16 extends BSerializer {
       }
     }
     
-		targetId.write(bout.bbuf.getBuffer(), bout1.header.bversion);
+    bout.bbuf.putTargetId(targetId, bout1.header.bversion);
 	}
 
 	@Override
 	public Object read(final Object obj1, final BInput bin1, final long version) throws BException {
 		BInputBin bin = ((BInputBin)bin1);
 		BRemote remote = null;
-		BTargetId targetId = BTargetId.read(bin.bbuf.getBuffer(), bin1.header.bversion);; 
+    BTargetId targetId = bin.bbuf.getTargetId(bin1.header.bversion);
 		
 		final BServerRegistry rreg = bin.transport.getServerRegistry();
 		if (rreg != null) {
