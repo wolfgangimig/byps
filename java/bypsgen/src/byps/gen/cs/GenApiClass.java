@@ -179,7 +179,7 @@ class GenApiClass {
 		else if (tinfo.isPointerType() && (value instanceof BJsonObject)) {
 			sbuf.append(makeNewInstance(tinfo, (BJsonObject)value));
 		}
-		else {
+		else if (value != null) {
 			BJsonObject js = BJsonObject.fromString((String)value);
 			sbuf.append(makeNewInstance(tinfo, js));
 		}
