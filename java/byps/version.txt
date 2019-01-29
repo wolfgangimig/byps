@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.20
+
+- Provide JSESSIONID via HWireClient.getHttpClient().getHttpSession()
+
 5.19 
 
 - Allow to send methods without applying authentication. Therefore, BTransport.send is public now.

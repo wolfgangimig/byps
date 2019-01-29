@@ -125,11 +125,13 @@ public class AsfClient implements HHttpClient {
     log.info("Ignore WARN Authentication scheme Basic not supported."); 
     
     Lookup<AuthSchemeProvider> authSchemeRegistry = builder.build();
-
+    
     CloseableHttpClient httpclient = HttpClients.custom()
             .setConnectionManager(cm)
             .setDefaultAuthSchemeRegistry(authSchemeRegistry)
             .build();
+    
+    
 
     if (log.isDebugEnabled()) log.debug(")internalCreateHttpClient");
     return httpclient;
@@ -205,6 +207,20 @@ public class AsfClient implements HHttpClient {
   public HHttpRequest putStream(String url, InputStream stream,
       BAsyncResult<ByteBuffer> asyncResult) {
     return new AsfPutStream(url, stream, asyncResult, httpclient, context);
+  }
+  
+  @Override
+  public String getHttpSession() {
+    String ret = "";
+    org.apache.http.client.CookieStore cookieStore = context.getCookieStore();
+    if (cookieStore != null) {
+      for (org.apache.http.cookie.Cookie cookie : cookieStore.getCookies()) {
+        if (cookie.getName().equals("JSESSIONID")) {
+          return cookie.getValue();
+        }
+      }
+    }
+    return ret;
   }
 
   public static void main(String[] args)  {

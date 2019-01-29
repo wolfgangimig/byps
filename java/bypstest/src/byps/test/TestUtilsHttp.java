@@ -71,7 +71,7 @@ public class TestUtilsHttp {
 		
 		myDesc.addRegistry(registry);
 
-		BWire wire = new HWireClient(url, flags, READ_TIMEOUT, tpool);
+		HWireClient wire = new HWireClient(url, flags, READ_TIMEOUT, tpool);
 		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, nbOfReverseRequests); 
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
@@ -80,6 +80,10 @@ public class TestUtilsHttp {
 		client.start(syncResult);
 		
 		syncResult.getResult();
+		
+		String jsessionId = wire.getHttpClient().getHttpSession();
+		log.info("jsessionId=" + jsessionId);
+		
 		return client;
 	}
 	

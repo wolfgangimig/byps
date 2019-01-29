@@ -3,13 +3,13 @@ package byps.http.client.jcnn;
 import java.io.InputStream;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
+import java.net.HttpCookie;
 import java.nio.ByteBuffer;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
 import byps.http.client.HHttpClient;
 import byps.http.client.HHttpRequest;
-import byps.http.client.HHttpSessionManager;
 
 public class JcnnClient implements HHttpClient {
   
@@ -49,5 +49,17 @@ public class JcnnClient implements HHttpClient {
   @Override
   public void clearHttpSession() {
     cookieManager.getCookieStore().removeAll();
+  }
+  
+  @Override
+  public String getHttpSession() {
+    String ret = "";
+    for (HttpCookie cookie : cookieManager.getCookieStore().getCookies()) {
+      if (cookie.getName().equals("JSESSIONID")) {
+        ret = cookie.getValue();
+        break;
+      }
+    }
+    return ret;
   }
 }

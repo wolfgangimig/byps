@@ -66,6 +66,13 @@ public interface HHttpClient {
    * @return PUT object
    */
   public HHttpRequest putStream(String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult);
+  
+  /**
+   * Return HTTP session ID.
+   * E.g. returns cookie JSESIONID from Tomcat.
+   * @return Session ID
+   */
+  public String getHttpSession();
 
   /**
    * Clear HTTP Session cookie.

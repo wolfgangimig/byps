@@ -105,5 +105,8 @@ public class StdioClient extends StdioCommunication implements HHttpClient {
     return messageId;
   }
   
-  
+  @Override
+  public String getHttpSession() {
+    throw new UnsupportedOperationException("HttpClient.getHttpSession is not supported for stdio communication.");
+  }  
 }
