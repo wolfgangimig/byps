@@ -3,7 +3,6 @@ package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.nio.ByteBuffer;
@@ -971,7 +970,11 @@ public class HWireClient extends BWire {
   public HHttpClient getHttpClient() {
     return this.httpClient;
   }
-  
+
+  public String getHttpSession() {
+    return getHttpClient().getHttpSession();
+  }
+
   private volatile BClient_BUtilityRequests clientUtilityRequests;
   
   public void applyNegotiateForUtilityRequests(BNegotiate nego) throws BException {
@@ -987,4 +990,5 @@ public class HWireClient extends BWire {
       clientUtilityRequests = bclient;
     }
   }
+
 }

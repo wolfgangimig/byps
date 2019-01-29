@@ -81,7 +81,7 @@ public class TestUtilsHttp {
 		
 		syncResult.getResult();
 		
-		String jsessionId = wire.getHttpClient().getHttpSession();
+		String jsessionId = wire.getHttpSession();
 		log.info("jsessionId=" + jsessionId);
 		
 		return client;
