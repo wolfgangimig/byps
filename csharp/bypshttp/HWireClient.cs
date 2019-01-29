@@ -913,6 +913,20 @@ namespace byps
             return clientUtilityRequests;
         }
 
+        public String getHttpSession()
+        {
+            String ret = "";
+            CookieCollection cookies = cookieJar.GetCookies(new Uri(url));
+            foreach (Cookie cookie in cookies)
+            {
+                if (cookie.Name == "JSESSIONID")
+                {
+                    ret = cookie.Value;
+                }
+            }
+            return ret;
+        }
+
         protected readonly static long MESSAGEID_CANCEL_ALL_REQUESTS = -1;
         protected readonly static long MESSAGEID_DISCONNECT = -2;
         protected String url;
