@@ -16,7 +16,7 @@ public final class BRequest_RemoteArrayTypes1dim_getPrimitiveTypes extends BMeth
 	
 	public final static long serialVersionUID = 1992537556L;
 	
-	public int getRemoteId() { return 963816328; }
+	public int getRemoteId() { return 123123; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {

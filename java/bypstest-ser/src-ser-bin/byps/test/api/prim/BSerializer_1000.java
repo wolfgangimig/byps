@@ -12,11 +12,11 @@ import byps.*;
 // isEnum=false
 // isFinal=false
 // isInline=false
-// #members=14
+// #members=15
 
 // checkpoint byps.gen.j.GenSerStruct:274
 @SuppressWarnings("all")
-public class BSerializer_1000 extends BSerializer {
+public class BSerializer_1000 extends byps.BSerializer_22 {
 	
 	public final static BSerializer instance = new BSerializer_1000();
 	
@@ -32,12 +32,14 @@ public class BSerializer_1000 extends BSerializer {
 	@Override
 	public void write(final Object obj1, final BOutput bout1, final long version) throws BException {
 		final PrimitiveTypes obj = (PrimitiveTypes)obj1;		
+		super.write(obj, bout1, version);		
 		final BOutputBin bout = (BOutputBin)bout1;
 		final BBufferBin bbuf = bout.bbuf;
 		bbuf.putBoolean(obj.boolVal);
 		bbuf.putByte(obj.byteVal);
 		bbuf.putChar(obj.charVal);
 		bbuf.putDate(obj.dateVal);
+		bbuf.putInt(obj.deferredValue);
 		bbuf.putDouble(obj.doubleVal);
 		bbuf.putFloat(obj.floatVal);
 		bbuf.putInt(obj.intVal);
@@ -54,12 +56,16 @@ public class BSerializer_1000 extends BSerializer {
 		final BInputBin bin = (BInputBin)bin1;
 		final PrimitiveTypes obj = (PrimitiveTypes)(obj1 != null ? obj1 : bin.onObjectCreated(new PrimitiveTypes()));
 		
+		// Read base class members
+		super.read(obj, bin, version);
+		
 		final BBufferBin bbuf = bin.bbuf;
 		
 		obj.boolVal = bbuf.getBoolean();
 		obj.byteVal = bbuf.getByte();
 		obj.charVal = bbuf.getChar();
 		obj.dateVal = bbuf.getDate();
+		obj.deferredValue = bbuf.getInt();
 		obj.doubleVal = bbuf.getDouble();
 		obj.floatVal = bbuf.getFloat();
 		obj.intVal = bbuf.getInt();

@@ -4,8 +4,6 @@ package byps;
 
 import java.util.HashMap;
 
-import byps.BException;
-
 
 
 public abstract class BInput {
@@ -30,6 +28,11 @@ public abstract class BInput {
 		if (currentId != null) {
 			idMap.put(currentId, obj);
 		}
+		
+    if (obj instanceof BValueClass) {
+      ((BValueClass)obj).bypsClient = transport.clientHelperToInjectInBValueClass;
+    }
+
 		return obj;
 	}
 

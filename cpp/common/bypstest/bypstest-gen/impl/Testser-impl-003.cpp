@@ -402,9 +402,10 @@ PrimitiveTypes::PrimitiveTypes() {
 	floatVal = 0;
 	doubleVal = 0;
 	value = false;
+	deferredValue = 0;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::prim::PrimitiveTypes::PrimitiveTypes(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, const ::std::wstring& stringVal, const BDateTime& dateVal, const PSerializable& objVal, const PSerializable& objVal2, bool value, const PSerializable& temp)
+byps::test::api::prim::PrimitiveTypes::PrimitiveTypes(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, const ::std::wstring& stringVal, const BDateTime& dateVal, const PSerializable& objVal, const PSerializable& objVal2, bool value, const PSerializable& temp, int32_t deferredValue)
 	: boolVal(boolVal)
 	, byteVal(byteVal)
 	, charVal(charVal)
@@ -419,17 +420,23 @@ byps::test::api::prim::PrimitiveTypes::PrimitiveTypes(bool boolVal, int8_t byteV
 	, objVal2(objVal2)
 	, value(value)
 	, temp(temp)
+	, deferredValue(deferredValue)
 	{}
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::prim::PrimitiveTypes::BSerializable_getTypeId() {
 	return 1000; 
 }
+void PrimitiveTypes::setDeferredValue(int32_t v) {
+	deferredValue = v;
+}
 // checkpoint byps.gen.cpp.GenApiClass:876
 void PrimitiveTypes::serialize(BIO& ar, const BVERSION version) {
+	BValueClass::serialize(ar, version);
 	ar & this->boolVal;
 	ar & this->byteVal;
 	ar & this->charVal;
 	ar & this->dateVal;
+	ar & this->deferredValue;
 	ar & this->doubleVal;
 	ar & this->floatVal;
 	ar & this->intVal;
@@ -657,7 +664,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_getBool::BRequest_RemoteArrayTypes1dim_getBool() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_getBool::BRequest_RemoteArrayTypes1dim_getBool() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getBool::BSerializable_getTypeId() {
@@ -693,7 +700,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_getByte::BRequest_RemoteArrayTypes1dim_getByte() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_getByte::BRequest_RemoteArrayTypes1dim_getByte() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getByte::BSerializable_getTypeId() {
@@ -729,7 +736,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_getChar::BRequest_RemoteArrayTypes1dim_getChar() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_getChar::BRequest_RemoteArrayTypes1dim_getChar() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getChar::BSerializable_getTypeId() {
@@ -765,7 +772,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_getDate::BRequest_RemoteArrayTypes1dim_getDate() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_getDate::BRequest_RemoteArrayTypes1dim_getDate() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getDate::BSerializable_getTypeId() {
@@ -801,7 +808,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_getDouble::BRequest_RemoteArrayTypes1dim_getDouble() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_getDouble::BRequest_RemoteArrayTypes1dim_getDouble() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getDouble::BSerializable_getTypeId() {
@@ -837,7 +844,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_getFloat::BRequest_RemoteArrayTypes1dim_getFloat() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_getFloat::BRequest_RemoteArrayTypes1dim_getFloat() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getFloat::BSerializable_getTypeId() {
@@ -873,7 +880,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_getInt::BRequest_RemoteArrayTypes1dim_getInt() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_getInt::BRequest_RemoteArrayTypes1dim_getInt() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getInt::BSerializable_getTypeId() {
@@ -909,7 +916,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_getLong::BRequest_RemoteArrayTypes1dim_getLong() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_getLong::BRequest_RemoteArrayTypes1dim_getLong() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getLong::BSerializable_getTypeId() {
@@ -945,7 +952,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_getObject::BRequest_RemoteArrayTypes1dim_getObject() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_getObject::BRequest_RemoteArrayTypes1dim_getObject() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getObject::BSerializable_getTypeId() {
@@ -981,7 +988,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_getPrimitiveTypes::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_getPrimitiveTypes::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getPrimitiveTypes::BSerializable_getTypeId() {
@@ -1017,7 +1024,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_getShort::BRequest_RemoteArrayTypes1dim_getShort() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_getShort::BRequest_RemoteArrayTypes1dim_getShort() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getShort::BSerializable_getTypeId() {
@@ -1053,7 +1060,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_getString::BRequest_RemoteArrayTypes1dim_getString() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_getString::BRequest_RemoteArrayTypes1dim_getString() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::remote::BRequest_RemoteArrayTypes1dim_getString::BSerializable_getTypeId() {
@@ -1089,11 +1096,11 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_setBool::BRequest_RemoteArrayTypes1dim_setBool() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_setBool::BRequest_RemoteArrayTypes1dim_setBool() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setBool::BRequest_RemoteArrayTypes1dim_setBool(const PArrayBoolean& v)
-	: BMethodRequest(963816328) 
+	: BMethodRequest(123123) 
 	, v(v)
 	{}
 // checkpoint byps.gen.cpp.PrintContext:496
@@ -1131,11 +1138,11 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_setByte::BRequest_RemoteArrayTypes1dim_setByte() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_setByte::BRequest_RemoteArrayTypes1dim_setByte() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setByte::BRequest_RemoteArrayTypes1dim_setByte(const PBytes& v)
-	: BMethodRequest(963816328) 
+	: BMethodRequest(123123) 
 	, v(v)
 	{}
 // checkpoint byps.gen.cpp.PrintContext:496
@@ -1173,11 +1180,11 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_setChar::BRequest_RemoteArrayTypes1dim_setChar() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_setChar::BRequest_RemoteArrayTypes1dim_setChar() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setChar::BRequest_RemoteArrayTypes1dim_setChar(const PArrayChar& v)
-	: BMethodRequest(963816328) 
+	: BMethodRequest(123123) 
 	, v(v)
 	{}
 // checkpoint byps.gen.cpp.PrintContext:496
@@ -1215,11 +1222,11 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Generated from class byps.gen.cpp.GenApiClass
 
 // checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteArrayTypes1dim_setDate::BRequest_RemoteArrayTypes1dim_setDate() : BMethodRequest(963816328) {
+BRequest_RemoteArrayTypes1dim_setDate::BRequest_RemoteArrayTypes1dim_setDate() : BMethodRequest(123123) {
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
 byps::test::api::remote::BRequest_RemoteArrayTypes1dim_setDate::BRequest_RemoteArrayTypes1dim_setDate(const PArrayDate& v)
-	: BMethodRequest(963816328) 
+	: BMethodRequest(123123) 
 	, v(v)
 	{}
 // checkpoint byps.gen.cpp.PrintContext:496

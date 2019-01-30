@@ -11,9 +11,9 @@ using byps;
 namespace byps.test.api.prim
 {
 	
-	public class BSerializer_1000 : BSerializer {
+	public class BSerializer_1000 : byps.BSerializer_22 {
 		
-		public readonly static BSerializer instance = new BSerializer_1000();
+		public readonly static new BSerializer instance = new BSerializer_1000();
 		
 		public BSerializer_1000()
 			: base(1000) {}
@@ -24,6 +24,7 @@ namespace byps.test.api.prim
 		
 		public override void write(Object obj1, BOutput bout1, long version)
 		{
+			base.write(obj1, bout1, version);			
 			PrimitiveTypes obj = (PrimitiveTypes)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
@@ -35,6 +36,8 @@ namespace byps.test.api.prim
 			bbuf.putChar(obj.CharVal);
 			// checkpoint byps.gen.cs.PrintContext:494
 			bbuf.putDate(obj.DateVal);
+			// checkpoint byps.gen.cs.PrintContext:494
+			bbuf.putInt(obj.DeferredValue);
 			// checkpoint byps.gen.cs.PrintContext:494
 			bbuf.putDouble(obj.DoubleVal);
 			// checkpoint byps.gen.cs.PrintContext:494
@@ -60,6 +63,7 @@ namespace byps.test.api.prim
 			BInputBin bin = (BInputBin)bin1;
 			PrimitiveTypes obj = (PrimitiveTypes)(obj1 != null ? obj1 : bin.onObjectCreated(new PrimitiveTypes()));
 			
+			base.read(obj, bin1, version);			
 			BBufferBin bbuf = bin.bbuf;
 			// checkpoint byps.gen.cs.PrintContext:449
 			obj.BoolVal = bbuf.getBoolean();
@@ -69,6 +73,8 @@ namespace byps.test.api.prim
 			obj.CharVal = bbuf.getChar();
 			// checkpoint byps.gen.cs.PrintContext:449
 			obj.DateVal = bbuf.getDate();
+			// checkpoint byps.gen.cs.PrintContext:449
+			obj.DeferredValue = bbuf.getInt();
 			// checkpoint byps.gen.cs.PrintContext:449
 			obj.DoubleVal = bbuf.getDouble();
 			// checkpoint byps.gen.cs.PrintContext:449

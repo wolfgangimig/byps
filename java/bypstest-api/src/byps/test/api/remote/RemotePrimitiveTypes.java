@@ -11,6 +11,8 @@ import byps.test.api.prim.PrimitiveTypes;
  */
 public interface RemotePrimitiveTypes extends BRemote {
 
+  public final static long serialVersionUID = 456456L;
+
 	public void voidFunctionVoid() throws RemoteException;
 	
 	public void setBool(boolean v) throws RemoteException;
@@ -46,5 +48,7 @@ public interface RemotePrimitiveTypes extends BRemote {
 	public Date makeDate(int year, int month, int day, int hour, int minute, int second, int millisecond) throws RemoteException;
 	public int[] parseDate(Date date) throws RemoteException;
 	
-	 public void throwException() throws RemoteException;
+	public void throwException() throws RemoteException;
+	
+	public int getDeferredValueFromServer(int param1, String param2) throws RemoteException;
 }

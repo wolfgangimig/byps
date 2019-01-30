@@ -62,7 +62,7 @@ public class BServer_Testser extends BServer {
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim remoteSkeleton) {
-		addRemote(963816328, remoteSkeleton);
+		addRemote(123123, remoteSkeleton);
 		return this;
 	}
 	
@@ -102,7 +102,7 @@ public class BServer_Testser extends BServer {
 	}
 	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemotePrimitiveTypes remoteSkeleton) {
-		addRemote(1178916877, remoteSkeleton);
+		addRemote(456456, remoteSkeleton);
 		return this;
 	}
 	

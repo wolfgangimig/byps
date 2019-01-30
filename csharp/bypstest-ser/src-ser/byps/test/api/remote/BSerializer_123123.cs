@@ -11,12 +11,12 @@ using byps;
 namespace byps.test.api.remote
 {
 	
-	public class BSerializer_963816328 : BSerializer_16 {
+	public class BSerializer_123123 : BSerializer_16 {
 		
-		public readonly static BSerializer instance = new BSerializer_963816328();
+		public readonly static BSerializer instance = new BSerializer_123123();
 		
-		public BSerializer_963816328()
-			: base(963816328) {}
+		public BSerializer_123123()
+			: base(123123) {}
 		
 		protected override BRemote internalCreate(BTransport transport) {
 			return new BStub_RemoteArrayTypes1dim(transport);

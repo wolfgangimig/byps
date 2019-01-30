@@ -13,7 +13,7 @@ namespace byps.test.api.prim
 	/// <summary>
 	/// Example class with primitive types like boolean, int, String.
 	/// </summary>
-	public class PrimitiveTypes : BSerializable
+	public class PrimitiveTypes : BValueClass, BSerializable
 	{
 	
 		#region Constructors
@@ -21,7 +21,7 @@ namespace byps.test.api.prim
 		public PrimitiveTypes() {
 		}		
 		
-		public PrimitiveTypes(bool @boolVal, byte @byteVal, char @charVal, short @shortVal, int @intVal, long @longVal, float @floatVal, double @doubleVal, String @stringVal, DateTime @dateVal, Object @objVal, Object @objVal2, bool @value, Object @temp) {
+		public PrimitiveTypes(bool @boolVal, byte @byteVal, char @charVal, short @shortVal, int @intVal, long @longVal, float @floatVal, double @doubleVal, String @stringVal, DateTime @dateVal, Object @objVal, Object @objVal2, bool @value, Object @temp, int @deferredValue) {
 			this.boolValValue = @boolVal;
 			this.byteValValue = @byteVal;
 			this.charValValue = @charVal;
@@ -36,9 +36,10 @@ namespace byps.test.api.prim
 			this.objVal2Value = @objVal2;
 			this.valueValue = @value;
 			this.tempValue = @temp;
+			this.deferredValueValue = @deferredValue;
 		}		
 		
-		public PrimitiveTypes(PrimitiveTypes rhs)
+		public PrimitiveTypes(PrimitiveTypes rhs) : base(rhs)
 		{
 			this.boolValValue = rhs.boolValValue;
 			this.byteValValue = rhs.byteValValue;
@@ -54,6 +55,7 @@ namespace byps.test.api.prim
 			this.objVal2Value = rhs.objVal2Value;
 			this.valueValue = rhs.valueValue;
 			this.tempValue = rhs.tempValue;
+			this.deferredValueValue = rhs.deferredValueValue;
 		}		
 		
 		#endregion
@@ -269,6 +271,22 @@ namespace byps.test.api.prim
 		}
 		
 		
+		/// <summary>
+		/// This value is read in its getter function.
+		/// </summary>
+		public int DeferredValue
+		{
+			get
+			{
+				return deferredValueValue;
+			}
+			set
+			{
+				this.deferredValueValue = value;
+			}
+		}
+		
+		
 		#endregion
 		
 		#region Fields
@@ -301,9 +319,11 @@ namespace byps.test.api.prim
 
 		protected Object tempValue; // transient
 
+		protected int deferredValueValue;
+
 		#endregion
 		
 		
-		public static readonly long serialVersionUID = 1000L;		
+		public static readonly new long serialVersionUID = 1000L;		
 	} // end class
 }  // end namespace

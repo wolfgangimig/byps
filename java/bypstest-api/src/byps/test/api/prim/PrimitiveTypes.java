@@ -1,12 +1,14 @@
 package byps.test.api.prim;
 
-import java.io.Serializable;
 import java.util.Date;
+
+import byps.BClient;
+import byps.BValueClass;
 
 /**
  * Example class with primitive types like boolean, int, String.
  */
-public class PrimitiveTypes implements Serializable {
+public class PrimitiveTypes extends BValueClass {
 	
 	private static final long serialVersionUID = 1000L;
 	
@@ -48,7 +50,26 @@ public class PrimitiveTypes implements Serializable {
 	
 	public transient Object temp;
 
+	
+  /**
+   * This value is read in its getter function.
+   */
+	protected int deferredValue;
 
+  public int getDeferredValue() {
+    if (deferredValue == 0) {
+      BClient bclient = bypsClient.get();
+      long remoteId = 1178916877L; // BStub_RemotePrimitiveTypes
+      deferredValue = (Integer)bclient.call(remoteId, "getDeferredValueFromServer", 123, "abc");
+    }
+    return deferredValue;
+  }
+
+  public void setDeferredValue(int v) {
+    this.deferredValue = v;
+  }
+
+	
   @Override
   public String toString() {
     return "PrimitiveTypes [boolVal=" + boolVal + ", byteVal=" + byteVal + ", charVal=" + charVal + ", shortVal=" + shortVal + ", intVal=" + intVal

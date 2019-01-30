@@ -16,7 +16,7 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemotePrimitiveTypesAsync {
 	
-	public final static long serialVersionUID = 1178916877L;
+	public final static long serialVersionUID = 456456L;
 	
 	// checkpoint byps.gen.j.PrintContext:383
 	public void voidFunctionVoid() throws RemoteException {
@@ -433,6 +433,20 @@ public class BSkeleton_RemotePrimitiveTypes extends BSkeleton implements RemoteP
 		try {
 			throwException();
 			asyncResult.setAsyncResult(null, null);
+		} catch (Throwable e) {
+			asyncResult.setAsyncResult(null, e);
+		}
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:383
+	public int getDeferredValueFromServer(int param1, java.lang.String param2) throws RemoteException {
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+	}
+	// checkpoint byps.gen.j.PrintContext:427
+	public void getDeferredValueFromServer(int param1, java.lang.String param2, final BAsyncResult<Integer> asyncResult) {
+		try {
+			int ret = getDeferredValueFromServer(param1, param2);
+			asyncResult.setAsyncResult(ret, null);
 		} catch (Throwable e) {
 			asyncResult.setAsyncResult(null, e);
 		}

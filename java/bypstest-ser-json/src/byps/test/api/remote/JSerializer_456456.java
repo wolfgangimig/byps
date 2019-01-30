@@ -8,12 +8,12 @@ package byps.test.api.remote;
 
 import byps.*;
 @SuppressWarnings("all")
-public class BSerializer_1178916877 extends BSerializer_16 {
+public class JSerializer_456456 extends JSerializer_16 {
 	
-	public final static BSerializer instance = new BSerializer_1178916877();
+	public final static BSerializer instance = new JSerializer_456456();
 	
-	public BSerializer_1178916877() {
-		super(1178916877);
+	public JSerializer_456456() {
+		super(456456);
 	}
 	
 	@Override

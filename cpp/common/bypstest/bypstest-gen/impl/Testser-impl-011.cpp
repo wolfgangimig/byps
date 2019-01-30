@@ -5,6 +5,48 @@ using namespace ::byps;
 namespace byps { namespace test { namespace api { namespace srvr { 
 
 //-------------------------------------------------
+// Implementation of class BRequest_ClientIF_sendChat
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_ClientIF_sendChat::BRequest_ClientIF_sendChat() : BMethodRequest(2049072174) {
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::srvr::BRequest_ClientIF_sendChat::BRequest_ClientIF_sendChat(const PChatStructure& cs)
+	: BMethodRequest(2049072174) 
+	, cs(cs)
+	{}
+// checkpoint byps.gen.cpp.PrintContext:496
+BTYPEID byps::test::api::srvr::BRequest_ClientIF_sendChat::BSerializable_getTypeId() {
+	return 41050276; 
+}
+// checkpoint byps.gen.cpp.GenApiClass:876
+void BRequest_ClientIF_sendChat::serialize(BIO& ar, const BVERSION version) {
+	ar & this->cs;
+}
+void byps::test::api::srvr::BRequest_ClientIF_sendChat::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
+	PClientIF __byps__remoteT = byps_ptr_cast<ClientIF>(__byps__remote);
+	__byps__remoteT->sendChat(cs, [__byps__asyncResult](PChatStructure __byps__result, const BException& __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_7007(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:933
+namespace byps { namespace test { namespace api { 
+void BSerializer_41050276(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_ObjS_Template<byps::test::api::srvr::BRequest_ClientIF_sendChat>(bio, pObj, pObjS, pBase);	
+}
+}}}
+namespace byps { namespace test { namespace api { namespace srvr { 
+
+//-------------------------------------------------
 // Implementation of class BRequest_ServerIF_callClientIncrementInt
 // Generated from class byps.gen.cpp.GenApiClass
 
@@ -1193,41 +1235,5 @@ void BSerializer_94341197(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* p
 namespace byps { namespace test { namespace api { 
 void BSerializer_1358523233(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_Obj_Template<::std::map< int32_t , byps::test::api::inl::Point2D >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_1831201218(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::map< int32_t , byps::test::api::prim::PPrimitiveTypes >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_1799280818(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::map< int32_t , PBytes >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_1633750383(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::map< int32_t , PArrayInt >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_779528402(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::map< int32_t , PContentStream >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_1347703734(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::map< int32_t , int32_t >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_132175071(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::map< int32_t , byps::PVectorString >>(bio, pObj, pObjS, pBase);	
 }
 }}}

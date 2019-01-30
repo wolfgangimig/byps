@@ -40,7 +40,30 @@ public class TestRemotePrimitiveTypes {
 			client.done();
 		}
 	}
-	
+
+	/**
+	 * Test deferred read of a class member. 
+	 * @throws RemoteException
+	 */
+	 @Test
+	  public void testDeferredReadElement() throws RemoteException {
+	    log.info("testDeferredReadElement(");
+	    
+	    // Provide a value that will be returned by MyRemotePrimitiveTypes.getDeferredValue
+	    int value = 4455;
+	    remote.setInt(value);
+
+      PrimitiveTypes pr = TestUtils.createObjectPrimitiveTypes();
+      remote.setPrimitiveTypes(pr);
+
+	    PrimitiveTypes prR = remote.getPrimitiveTypes();
+      int valueR = prR.getDeferredValue();
+      
+      TestUtils.assertEquals(log, "deferredValue", value, valueR);
+
+	    log.info(")testDeferredReadElement");
+	 }
+	 
 	/**
 	 * Send/receive primitive data types.
 	 * Tests with bool, byte, char, int, String etc.

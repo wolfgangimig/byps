@@ -5,6 +5,48 @@ using namespace ::byps;
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
+// Implementation of class BRequest_RemoteSetTypes_setFloat1
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_RemoteSetTypes_setFloat1::BRequest_RemoteSetTypes_setFloat1() : BMethodRequest(1900796440) {
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::remote::BRequest_RemoteSetTypes_setFloat1::BRequest_RemoteSetTypes_setFloat1(const byps::PSetFloat& float1)
+	: BMethodRequest(1900796440) 
+	, float1(float1)
+	{}
+// checkpoint byps.gen.cpp.PrintContext:496
+BTYPEID byps::test::api::remote::BRequest_RemoteSetTypes_setFloat1::BSerializable_getTypeId() {
+	return 1999943579; 
+}
+// checkpoint byps.gen.cpp.GenApiClass:876
+void BRequest_RemoteSetTypes_setFloat1::serialize(BIO& ar, const BVERSION version) {
+	ar & this->float1;
+}
+void byps::test::api::remote::BRequest_RemoteSetTypes_setFloat1::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
+	PRemoteSetTypes __byps__remoteT = byps_ptr_cast<RemoteSetTypes>(__byps__remote);
+	__byps__remoteT->setFloat1(float1, [__byps__asyncResult](bool __byps__result, const BException& __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:933
+namespace byps { namespace test { namespace api { 
+void BSerializer_1999943579(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_ObjS_Template<byps::test::api::remote::BRequest_RemoteSetTypes_setFloat1>(bio, pObj, pObjS, pBase);	
+}
+}}}
+namespace byps { namespace test { namespace api { namespace remote { 
+
+//-------------------------------------------------
 // Implementation of class BRequest_RemoteSetTypes_setInt1
 // Generated from class byps.gen.cpp.GenApiClass
 
@@ -1088,47 +1130,5 @@ void byps::test::api::srvr::BRequest_ClientIF_putStreams::execute(const PRemote&
 namespace byps { namespace test { namespace api { 
 void BSerializer_2016865344(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::srvr::BRequest_ClientIF_putStreams>(bio, pObj, pObjS, pBase);	
-}
-}}}
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-//-------------------------------------------------
-// Implementation of class BRequest_ClientIF_sendChat
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ClientIF_sendChat::BRequest_ClientIF_sendChat() : BMethodRequest(2049072174) {
-}
-// checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::srvr::BRequest_ClientIF_sendChat::BRequest_ClientIF_sendChat(const PChatStructure& cs)
-	: BMethodRequest(2049072174) 
-	, cs(cs)
-	{}
-// checkpoint byps.gen.cpp.PrintContext:496
-BTYPEID byps::test::api::srvr::BRequest_ClientIF_sendChat::BSerializable_getTypeId() {
-	return 41050276; 
-}
-// checkpoint byps.gen.cpp.GenApiClass:876
-void BRequest_ClientIF_sendChat::serialize(BIO& ar, const BVERSION version) {
-	ar & this->cs;
-}
-void byps::test::api::srvr::BRequest_ClientIF_sendChat::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
-	PClientIF __byps__remoteT = byps_ptr_cast<ClientIF>(__byps__remote);
-	__byps__remoteT->sendChat(cs, [__byps__asyncResult](PChatStructure __byps__result, const BException& __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_7007(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_41050276(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_ObjS_Template<byps::test::api::srvr::BRequest_ClientIF_sendChat>(bio, pObj, pObjS, pBase);	
 }
 }}}

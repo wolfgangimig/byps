@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
+import byps.BAsyncResult;
 import byps.BException;
 import byps.BExceptionC;
 import byps.RemoteException;
@@ -203,4 +204,10 @@ public class MyRemotePrimitiveTypes extends BSkeleton_RemotePrimitiveTypes {
 	    return null;
 	  }
 	}
+	
+	
+	@Override
+  public void getDeferredValueFromServer(int param1, String param2, BAsyncResult<Integer> asyncResult) {
+    asyncResult.setAsyncResult(intVal, null); 
+  }
 }

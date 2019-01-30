@@ -10,7 +10,7 @@ using byps;
 namespace byps.test.api.remote
 {
 	
-	public sealed class BRequest_RemotePrimitiveTypes_setPrimitiveTypes : BMethodRequest, BSerializable
+	public sealed class BRequest_RemotePrimitiveTypes_getDeferredValueFromServer : BMethodRequest, BSerializable
 	{
 	
 		#region Execute
@@ -21,10 +21,10 @@ namespace byps.test.api.remote
 			// checkpoint byps.gen.cs.GenApiClass:406
 			try {
 				RemotePrimitiveTypes __byps__remoteT = (RemotePrimitiveTypes)__byps__remote;				
-				BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new byps.test.api.BResult_19());				
-				__byps__remoteT.SetPrimitiveTypes(vValue, BAsyncResultHelper.ToDelegate(__byps__outerResult));
+				BAsyncResultSendMethod<int> __byps__outerResult = new BAsyncResultSendMethod<int>(__byps__asyncResult, new byps.test.api.BResult_5());				
+				__byps__remoteT.GetDeferredValueFromServer(param1Value, param2Value, BAsyncResultHelper.ToDelegate(__byps__outerResult));
 			} catch (Exception e) {
-				__byps__asyncResult.setAsyncResult(null, e);
+				__byps__asyncResult.setAsyncResult(0, e);
 			}
 		}		
 		
@@ -32,11 +32,13 @@ namespace byps.test.api.remote
 		
 		#region Fields
 		
-		internal byps.test.api.prim.PrimitiveTypes vValue;
+		internal int param1Value;
+
+		internal String param2Value;
 
 		#endregion
 		
 		
-		public static readonly long serialVersionUID = 225526541L;		
+		public static readonly long serialVersionUID = 547282058L;		
 	} // end class
 }  // end namespace

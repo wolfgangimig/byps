@@ -1,5 +1,8 @@
 package byps;
 
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Method;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
 import org.apache.commons.logging.Log;
@@ -39,6 +42,10 @@ public abstract class BClient {
 		this.transport = transport;
 		this.serverR = serverR;
 		this.setAuthentication(null);
+		
+		// Deserialization injects this weak reference into BValueClass.bypsClient
+		// to allow deferred loading of elements in getter functions of BValueClass objects.
+		this.transport.setClientHelperToInjectInBValueClass(new WeakReference<BClient>(this));
 	}
 	
 	/**
@@ -235,6 +242,70 @@ public abstract class BClient {
     }
 
 	}
+
+  public Object call(long remoteId, String methodName, Object ... params) {
+    Object ret = null;
+    
+    try {
+      long typeMask = transport.getOutput().registry.getMaxTypeId(); // Integer.MAX_VALUE
+      
+      BRemote remote = getStub((int)(remoteId & typeMask));
+      if (remote == null) throw new IllegalArgumentException("Missing stub for remoteId=" + remoteId);
+
+      Method methodToCall = null;
+      
+      for (Method method : remote.getClass().getDeclaredMethods()) {
+        if (!method.getName().equals(methodName)) continue;
+        int paramCount = method.getParameterCount();
+        if (params.length != paramCount) continue;
+        
+        boolean fit = true;
+        int paramIndex = 0; 
+        for (Class<?> declaredParamClass : method.getParameterTypes()) {
+          Object param = params[paramIndex]; 
+          if (param != null) {
+            Class<?> paramClass = param.getClass();
+            Class<?> paramClassW = getWrapperOf(paramClass);
+            Class<?> declaredParamClassW = getWrapperOf(declaredParamClass);
+            fit = declaredParamClassW.isAssignableFrom(paramClassW);
+            if (!fit) break;
+          }
+          paramIndex++;
+        }
+        
+        if (!fit) continue;
+        
+        methodToCall = method;
+        break;
+      }
+      
+      if (methodToCall == null) {
+        throw new IllegalArgumentException("Method not found, remote=" + remote + ", methodName=" + methodName);
+      }
+      
+      ret = methodToCall.invoke(remote, params);
+
+    } catch (RuntimeException e) {
+      throw e;
+    } catch (Exception e) {
+      throw new IllegalArgumentException(e);
+    }
+    
+    return ret;
+  }
+  
+  private static Class<?> getWrapperOf(Class<?> clazz) {
+    if (!clazz.isPrimitive()) return clazz;
+    if (clazz.equals(boolean.class)) return Boolean.class;
+    if (clazz.equals(char.class)) return Character.class;
+    if (clazz.equals(byte.class)) return Byte.class;
+    if (clazz.equals(short.class)) return Short.class;
+    if (clazz.equals(int.class)) return Integer.class;
+    if (clazz.equals(long.class)) return Long.class;
+    if (clazz.equals(float.class)) return Float.class;
+    if (clazz.equals(double.class)) return Double.class;
+    throw new IllegalArgumentException("No wrapper class for primitive type=" + clazz);
+  }
 
   public String toString() {
     return "[" + getClass().getSimpleName() + ", transport=" + transport.toString() + "]";

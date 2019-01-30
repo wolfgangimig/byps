@@ -1,5 +1,7 @@
 package byps;
 
+import java.lang.ref.WeakReference;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
 import java.nio.ByteBuffer;
@@ -32,6 +34,8 @@ public class BTransport {
   private BProtocol protocol;
 
   protected BAuthentication authentication;
+  
+  protected WeakReference<BClient> clientHelperToInjectInBValueClass;
   
   protected AtomicLong requestCounter = new AtomicLong();
   
@@ -631,6 +635,14 @@ public class BTransport {
    */
   protected void setAuthentication(BAuthentication auth) {
     authentication = auth;
+  }
+  
+  public WeakReference<BClient> getClientHelperToInjectInBValueClass() {
+    return clientHelperToInjectInBValueClass;
+  }
+  
+  public void setClientHelperToInjectInBValueClass(WeakReference<BClient> v) {
+    this.clientHelperToInjectInBValueClass = v;
   }
 
   public boolean isPrintRequestIntoLogger() {

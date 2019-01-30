@@ -3,6 +3,7 @@ package byps;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
 import java.io.Serializable;
+import java.lang.ref.WeakReference;
 
 public class BValueClass implements Serializable {
   
@@ -12,7 +13,16 @@ public class BValueClass implements Serializable {
   
   protected final static int FLAG_SEALED = 1;
 	
+  /**
+   * This reference can be used for arbitrary purposes. 
+   */
 	protected transient Object dbHelper;
+	
+	/**
+	 * Deserialisation on the client-side stores the BClient object in this member.
+	 * This reference can be used for deferred loading of elements.
+	 */
+	protected transient WeakReference<BClient> bypsClient;
 	
 	public long getChangedMembers() {
 		return changedMembers;
@@ -75,5 +85,4 @@ public class BValueClass implements Serializable {
 
   private static final long serialVersionUID = 22;
 
-	
 }

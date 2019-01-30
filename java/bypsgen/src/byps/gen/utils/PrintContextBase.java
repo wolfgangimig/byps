@@ -176,7 +176,7 @@ public class PrintContextBase {
         }
         else {
           // This error should have already been caught during the javadoc process. 
-          throw new IllegalStateException("Serializers have same typeId, " + serInfo + ", " + serializers.get(idx));
+          throw new IllegalStateException("Serializers have same typeId=" + serInfo.typeId + ", " + serInfo + ", " + serializers.get(idx));
         }
      }
    

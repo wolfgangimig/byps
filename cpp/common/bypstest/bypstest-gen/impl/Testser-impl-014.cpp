@@ -2,6 +2,21 @@
 using namespace ::std;
 using namespace ::byps;
 
+namespace byps { namespace test { namespace api { namespace remote { 
+void BStub_RemoteListTypes::setInt4(const byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > >& int4)  {
+	BSyncResultT< bool > syncResult;	
+	setInt4(int4, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteListTypes::setInt4(const byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > >& int4, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteListTypes_setInt4(int4));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
 // checkpoint byps.gen.cpp.GenRemoteStub:224
 namespace byps { namespace test { namespace api { 
 void BSerializer_1233438138(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* reserved){
@@ -456,7 +471,7 @@ BStub_RemotePrimitiveTypes::BStub_RemotePrimitiveTypes(PTransport transport)
 
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::remote::BStub_RemotePrimitiveTypes::BSerializable_getTypeId() {
-	return 1178916877; 
+	return 456456; 
 }
 namespace byps { namespace test { namespace api { namespace remote { 
 void BStub_RemotePrimitiveTypes::voidFunctionVoid()  {
@@ -908,10 +923,25 @@ void BStub_RemotePrimitiveTypes::throwException(::std::function< void (bool, BEx
 }
 }}}}
 
+namespace byps { namespace test { namespace api { namespace remote { 
+int32_t BStub_RemotePrimitiveTypes::getDeferredValueFromServer(int32_t param1, const ::std::wstring& param2)  {
+	BSyncResultT< int32_t > syncResult;	
+	getDeferredValueFromServer(param1, param2, [&syncResult](int32_t v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_RemotePrimitiveTypes::getDeferredValueFromServer(int32_t param1, const ::std::wstring& param2, ::std::function< void (int32_t, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemotePrimitiveTypes_getDeferredValueFromServer(param1, param2));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< int32_t, byps::test::api::BResult_5 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
 // checkpoint byps.gen.cpp.GenRemoteStub:224
 namespace byps { namespace test { namespace api { 
-void BSerializer_1178916877(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* reserved){
-	BSerializer_16_Template<byps::test::api::remote::BStub_RemotePrimitiveTypes, 1178916877>(bio, pObj, pObjS, reserved);
+void BSerializer_456456(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* reserved){
+	BSerializer_16_Template<byps::test::api::remote::BStub_RemotePrimitiveTypes, 456456>(bio, pObj, pObjS, reserved);
 }
 }}}
 
@@ -1062,36 +1092,6 @@ void BStub_RemoteSetTypes::setBoolean1(const byps::PSetBoolean& boolean1)  {
 }
 void BStub_RemoteSetTypes::setBoolean1(const byps::PSetBoolean& boolean1, ::std::function< void (bool, BException ex) > asyncResult)  {
 	PMethodRequest req(new BRequest_RemoteSetTypes_setBoolean1(boolean1));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace remote { 
-byps::PSetByte BStub_RemoteSetTypes::getByte1()  {
-	BSyncResultT< byps::PSetByte > syncResult;	
-	getByte1([&syncResult](byps::PSetByte v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteSetTypes::getByte1(::std::function< void (byps::PSetByte, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_RemoteSetTypes_getByte1());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps::PSetByte, byps::test::api::BResult_31512998 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace remote { 
-void BStub_RemoteSetTypes::setByte1(const byps::PSetByte& byte1)  {
-	BSyncResultT< bool > syncResult;	
-	setByte1(byte1, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteSetTypes::setByte1(const byps::PSetByte& byte1, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_RemoteSetTypes_setByte1(byte1));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }

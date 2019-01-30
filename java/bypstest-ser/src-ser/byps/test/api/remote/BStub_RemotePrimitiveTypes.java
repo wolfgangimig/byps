@@ -11,7 +11,7 @@ import byps.*;
 public class BStub_RemotePrimitiveTypes extends BStub implements RemotePrimitiveTypesAsync, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 1178916877L;
+	public final static long serialVersionUID = 456456L;
 	
 	public BStub_RemotePrimitiveTypes(final BTransport transport) {
 		super(transport);		
@@ -466,6 +466,22 @@ public class BStub_RemotePrimitiveTypes extends BStub implements RemotePrimitive
 	public void throwException(final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemotePrimitiveTypes_throwException req = new BRequest_RemotePrimitiveTypes_throwException();		
+		transport.sendMethod(req, asyncResult);
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:383
+	public int getDeferredValueFromServer(int param1, java.lang.String param2) throws RemoteException {
+		// checkpoint byps.gen.j.GenRemoteStub:46
+		final BSyncResult<Integer> asyncResult = new BSyncResult<Integer>();		
+		getDeferredValueFromServer(param1, param2, asyncResult);
+		return asyncResult.getResult();		
+	}
+	// checkpoint byps.gen.j.PrintContext:427
+	public void getDeferredValueFromServer(int param1, java.lang.String param2, final BAsyncResult<Integer> asyncResult) {
+		// checkpoint byps.gen.j.GenRemoteStub:113
+		BRequest_RemotePrimitiveTypes_getDeferredValueFromServer req = new BRequest_RemotePrimitiveTypes_getDeferredValueFromServer();		
+		req.param1 = param1;
+		req.param2 = param2;
 		transport.sendMethod(req, asyncResult);
 	}
 	

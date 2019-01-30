@@ -129,6 +129,10 @@ namespace byps.test.api.remote
 		void ThrowException(BAsyncResult<Object> asyncResult) ;
 		Task ThrowExceptionAsync();
 		
+		int GetDeferredValueFromServer(int param1, String param2);
+		void GetDeferredValueFromServer(int param1, String param2, BAsyncResult<int> asyncResult) ;
+		Task<int> GetDeferredValueFromServerAsync(int param1, String param2);
+		
 		
 	}
 }  // end namespace

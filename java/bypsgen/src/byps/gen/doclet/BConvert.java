@@ -10,6 +10,18 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.sun.javadoc.ClassDoc;
+import com.sun.javadoc.Doc;
+import com.sun.javadoc.FieldDoc;
+import com.sun.javadoc.MethodDoc;
+import com.sun.javadoc.PackageDoc;
+import com.sun.javadoc.Parameter;
+import com.sun.javadoc.ParameterizedType;
+import com.sun.javadoc.RootDoc;
+import com.sun.javadoc.Tag;
+import com.sun.javadoc.Type;
+import com.sun.javadoc.WildcardType;
+
 import byps.BApiDescriptor;
 import byps.BVersioning;
 import byps.RemoteException;
@@ -23,18 +35,6 @@ import byps.gen.api.SerialInfo;
 import byps.gen.api.TypeInfo;
 import byps.gen.db.ClassDB;
 import byps.gen.db.ConstFieldReader;
-
-import com.sun.javadoc.ClassDoc;
-import com.sun.javadoc.Doc;
-import com.sun.javadoc.FieldDoc;
-import com.sun.javadoc.MethodDoc;
-import com.sun.javadoc.PackageDoc;
-import com.sun.javadoc.Parameter;
-import com.sun.javadoc.ParameterizedType;
-import com.sun.javadoc.RootDoc;
-import com.sun.javadoc.Tag;
-import com.sun.javadoc.Type;
-import com.sun.javadoc.WildcardType;
 
 /**
  * This class converts from javadoc objects to internal objects.
@@ -147,7 +147,7 @@ public class BConvert {
 			
 			log.info("Process class=" + c);
 			
-			// Is the javadoc object an interface for which RPC calles should be generated?
+			// Is the javadoc object an interface for which RPC calls should be generated?
 			if (isRemote(c)) {
 				if (isSerializable(c)) {
 					ErrorInfo errInfo = new ErrorInfo();
@@ -1057,8 +1057,8 @@ public class BConvert {
 		    qname, baseQNames, 
 		    minfos, authParamClassName, 
 		    isClientRemote, since);
-		
-		classDB.createStubForRemote(rinfo);
+
+    classDB.createStubForRemote(rinfo);
 
 		return rinfo;
 	}

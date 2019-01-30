@@ -150,7 +150,7 @@ public class ClassDB {
         authParamClassName, 
         isClientRemote, 
         since);
-
+    
     if (methods != null) {
       for (MethodInfo method : methods) {
         method.remoteInfo = rinfo;
@@ -177,7 +177,7 @@ public class ClassDB {
     String stubName = makeStubName(rinfo.name);
     String stubQname = makeStubName(rinfo.qname);
     List<MemberInfo> stubMembers = new ArrayList<MemberInfo>();
-
+    
     SerialInfo sinfo = createSerialInfo(stubName, 
         null, 
         stubQname, 
@@ -189,8 +189,9 @@ public class ClassDB {
         false, 
         false,
         rinfo.since);
+    
     add(sinfo);
-
+    
     return sinfo;
   }
 
@@ -220,9 +221,35 @@ public class ClassDB {
   public void assignTypeIds() throws GeneratorException {
     log.debug("assignTypeIds(");
 
-    for (SerialInfo sinfo : serials.values()) {
-      sinfo.typeId = getOrCreateTypeId(sinfo);
+    // Read serialVersionUID from class file.
+    for (RemoteInfo rinfo : remotes.values()) {
+      
+      String stubQname = makeStubName(rinfo.qname);
+      SerialInfo sinfo = serials.get(stubQname);
+     
+      // FIXME
+      if (rinfo.qname.equals("byps.test.api.remote.RemoteArrayTypes1dim")) {
+        log.info(rinfo.qname);
+      }
+
+      int typeId = readTypeIdFromSerialVersionUID(rinfo);
+      if (typeId != 0) {
+        log.info("Found in source, typeId=" + typeId + " for remote=" + rinfo);
+      }
+      else {
+        typeId = getOrCreateTypeId(sinfo);
+      }
+      rinfo.typeId = sinfo.typeId = typeId;
     }
+    
+    serials.values().stream().filter(sinfo -> sinfo.typeId == 0).forEach(sinfo -> {
+        try {
+          sinfo.typeId = getOrCreateTypeId(sinfo);
+        } catch (GeneratorException e) {
+          throw new RuntimeException(e);
+        }
+      }
+    );
 
     for (SerialInfo sinfo : serials.values()) {
       assignTypeIdToMembers(sinfo);
@@ -232,11 +259,11 @@ public class ClassDB {
       assignBaseInfo(sinfo);
     }
 
-    for (RemoteInfo rinfo : remotes.values()) {
-      String stubQname = makeStubName(rinfo.qname);
-      SerialInfo sinfo = serials.get(stubQname);
-      rinfo.typeId = sinfo.typeId;
-    }
+//    for (RemoteInfo rinfo : remotes.values()) {
+//      String stubQname = makeStubName(rinfo.qname);
+//      SerialInfo sinfo = serials.get(stubQname);
+//      rinfo.typeId = sinfo.typeId;
+//    }
 
     log.debug(")assignTypeIds");
   }
@@ -306,6 +333,7 @@ public class ClassDB {
 
   public int getOrCreateTypeId(TypeInfo tinfo) throws GeneratorException {
     log.debug("getOrCreateTypeId(" + tinfo);
+    
     TypeInfo knownType = getKnownType(tinfo.qname, tinfo.dims, tinfo.typeArgs);
     int typeId = (knownType != null) ? knownType.typeId : 0;
     if (typeId == 0) {
@@ -520,10 +548,7 @@ public class ClassDB {
       typeId = makeTypeIdFromNameHash(tinfo);
     }
     else {
-      long longTypeId = fieldReader.getSerialVersionUID(tinfo);
-
-      int typeIdMask = registry.getMaxTypeId();
-      typeId = (int) (longTypeId & typeIdMask);
+      typeId = readTypeIdFromSerialVersionUID(tinfo);
 
       if (typeId == 0) {
         typeId = makeTypeIdFromNameHash(tinfo);
@@ -545,6 +570,15 @@ public class ClassDB {
     }
 
     log.debug(")makeNewTypeId=" + typeId);
+    return typeId;
+  }
+
+  public int readTypeIdFromSerialVersionUID(TypeInfo tinfo) throws GeneratorException {
+    int typeId;
+    long longTypeId = fieldReader.getSerialVersionUID(tinfo);
+
+    int typeIdMask = registry.getMaxTypeId();
+    typeId = (int) (longTypeId & typeIdMask);
     return typeId;
   }
 

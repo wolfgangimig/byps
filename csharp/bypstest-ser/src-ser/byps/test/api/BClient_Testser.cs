@@ -116,7 +116,7 @@ namespace byps.test.api
 			if (remoteId == 715959905) return fruitServiceVal;
 			if (remoteId == 605543968) return lemonServiceVal;
 			if (remoteId == 1954605928) return plantServiceVal;
-			if (remoteId == 963816328) return remoteArrayTypes1dimVal;
+			if (remoteId == 123123) return remoteArrayTypes1dimVal;
 			if (remoteId == 769717182) return remoteArrayTypes23Val;
 			if (remoteId == 963726955) return remoteArrayTypes4dimVal;
 			if (remoteId == 2045242510) return remoteConstantsVal;
@@ -124,7 +124,7 @@ namespace byps.test.api
 			if (remoteId == 567395951) return remoteInlineInstanceVal;
 			if (remoteId == 1233438138) return remoteListTypesVal;
 			if (remoteId == 664304990) return remoteMapTypesVal;
-			if (remoteId == 1178916877) return remotePrimitiveTypesVal;
+			if (remoteId == 456456) return remotePrimitiveTypesVal;
 			if (remoteId == 568637225) return remoteReferencesVal;
 			if (remoteId == 1652234479) return remoteServerCtrlVal;
 			if (remoteId == 1900796440) return remoteSetTypesVal;

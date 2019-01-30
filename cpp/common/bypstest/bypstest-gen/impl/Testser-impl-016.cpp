@@ -116,7 +116,7 @@ PRemote BClient_Testser::getStub(int remoteId) {
 	if (remoteId == 715959905) return fruitService;
 	if (remoteId == 605543968) return lemonService;
 	if (remoteId == 1954605928) return plantService;
-	if (remoteId == 963816328) return remoteArrayTypes1dim;
+	if (remoteId == 123123) return remoteArrayTypes1dim;
 	if (remoteId == 769717182) return remoteArrayTypes23;
 	if (remoteId == 963726955) return remoteArrayTypes4dim;
 	if (remoteId == 2045242510) return remoteConstants;
@@ -124,7 +124,7 @@ PRemote BClient_Testser::getStub(int remoteId) {
 	if (remoteId == 567395951) return remoteInlineInstance;
 	if (remoteId == 1233438138) return remoteListTypes;
 	if (remoteId == 664304990) return remoteMapTypes;
-	if (remoteId == 1178916877) return remotePrimitiveTypes;
+	if (remoteId == 456456) return remotePrimitiveTypes;
 	if (remoteId == 568637225) return remoteReferences;
 	if (remoteId == 1652234479) return remoteServerCtrl;
 	if (remoteId == 1900796440) return remoteSetTypes;

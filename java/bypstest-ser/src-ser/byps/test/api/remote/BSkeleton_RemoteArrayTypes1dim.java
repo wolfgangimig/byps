@@ -16,7 +16,7 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteArrayTypes1dim extends BSkeleton implements RemoteArrayTypes1dimAsync {
 	
-	public final static long serialVersionUID = 963816328L;
+	public final static long serialVersionUID = 123123L;
 	
 	// checkpoint byps.gen.j.PrintContext:383
 	public void setBool(boolean[] v) throws RemoteException {

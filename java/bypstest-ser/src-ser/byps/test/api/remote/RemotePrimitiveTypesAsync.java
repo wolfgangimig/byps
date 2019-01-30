@@ -220,5 +220,12 @@ public interface RemotePrimitiveTypesAsync extends BRemote,
 	// checkpoint byps.gen.j.PrintContext:427
 	public void throwException(final BAsyncResult<Object> asyncResult) ;
 	
+	/**
+	*/
+	// checkpoint byps.gen.j.PrintContext:383
+	public int getDeferredValueFromServer(int param1, java.lang.String param2) throws RemoteException;
+	// checkpoint byps.gen.j.PrintContext:427
+	public void getDeferredValueFromServer(int param1, java.lang.String param2, final BAsyncResult<Integer> asyncResult) ;
+	
 	
 }

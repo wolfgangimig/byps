@@ -1415,7 +1415,7 @@ using namespace ::byps;
 /// <summary>
 /// Example class with primitive types like boolean, int, String.
 /// </summary>
-class PrimitiveTypes : public BSerializable {
+class PrimitiveTypes : public BValueClass {
 	/// <summary>
 	/// Boolean value.
 	/// </summary>
@@ -1457,12 +1457,18 @@ class PrimitiveTypes : public BSerializable {
 	/// </remarks>
 	public: bool value;
 	public: PSerializable temp; // transient
+	/// <summary>
+	/// This value is read in its getter function.
+	/// </summary>
+	protected: int32_t deferredValue;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: PrimitiveTypes();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: PrimitiveTypes(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, const ::std::wstring& stringVal, const BDateTime& dateVal, const PSerializable& objVal, const PSerializable& objVal2, bool value, const PSerializable& temp);	
+	public: PrimitiveTypes(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, const ::std::wstring& stringVal, const BDateTime& dateVal, const PSerializable& objVal, const PSerializable& objVal2, bool value, const PSerializable& temp, int32_t deferredValue);	
 	public: virtual BTYPEID BSerializable_getTypeId();
+	public: int32_t getDeferredValue() { return deferredValue; }
+	public: void setDeferredValue(int32_t v);
 	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
@@ -3114,6 +3120,9 @@ class RemotePrimitiveTypes : public virtual BRemote {
 	public: virtual void throwException()  = 0;
 	public: virtual void throwException(::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
+	public: virtual int32_t getDeferredValueFromServer(int32_t param1, const ::std::wstring& param2)  = 0;
+	public: virtual void getDeferredValueFromServer(int32_t param1, const ::std::wstring& param2, ::std::function< void (int32_t, BException ex) > asyncResult)  = 0;
+	
 	
 };
 
@@ -3193,6 +3202,8 @@ class BStub_RemotePrimitiveTypes : public BStub, public virtual RemotePrimitiveT
 	public: virtual void parseDate(const BDateTime& date, ::std::function< void (PArrayInt, BException ex) > asyncResult) ;
 	public: virtual void throwException() ;
 	public: virtual void throwException(::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual int32_t getDeferredValueFromServer(int32_t param1, const ::std::wstring& param2) ;
+	public: virtual void getDeferredValueFromServer(int32_t param1, const ::std::wstring& param2, ::std::function< void (int32_t, BException ex) > asyncResult) ;
 	
 };
 }}}}

@@ -12,6 +12,8 @@ import byps.test.api.prim.PrimitiveTypes;
  *
  */
 public interface RemoteArrayTypes1dim extends BRemote {
+  
+  public final static long serialVersionUID = 123123;
 	
 	public void setBool(boolean[] v) throws RemoteException;
 	public void setByte(byte[] v) throws RemoteException;
@@ -38,5 +40,4 @@ public interface RemoteArrayTypes1dim extends BRemote {
 	public PrimitiveTypes[] getPrimitiveTypes() throws RemoteException;
 	public Object[] getObject() throws RemoteException;
 	public Date[] getDate() throws RemoteException;
-
 }

@@ -11,19 +11,20 @@ import java.io.Serializable;
 /**
 */
 @SuppressWarnings("all")
-public final class BRequest_RemotePrimitiveTypes_setDouble extends BMethodRequest implements Serializable {
+public final class BRequest_RemotePrimitiveTypes_getDeferredValueFromServer extends BMethodRequest implements Serializable {
 
-	public double v;
+	public int param1;
+	public java.lang.String param2;
 	
-	public final static long serialVersionUID = 1727949326L;
+	public final static long serialVersionUID = 547282058L;
 	
 	public int getRemoteId() { return 456456; }
 	
 	public void execute(BRemote __byps__remote, BAsyncResult<Object> __byps__asyncResult) throws Throwable {
 		try {
 			final RemotePrimitiveTypesAsync __byps__remoteT = (RemotePrimitiveTypesAsync)__byps__remote;			
-			BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new byps.test.api.BResult_19());			
-			__byps__remoteT.setDouble(v, __byps__outerResult);
+			BAsyncResultSendMethod<Integer> __byps__outerResult = new BAsyncResultSendMethod<Integer>(__byps__asyncResult, new byps.test.api.BResult_5());			
+			__byps__remoteT.getDeferredValueFromServer(param1, param2, __byps__outerResult);
 		} catch (Throwable e) {
 			__byps__asyncResult.setAsyncResult(null, e);
 		}
@@ -31,8 +32,9 @@ public final class BRequest_RemotePrimitiveTypes_setDouble extends BMethodReques
 	
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		s.append("[RemotePrimitiveTypes.setDouble(");
-		s.append(BBuffer.paramToString(v));
+		s.append("[RemotePrimitiveTypes.getDeferredValueFromServer(");
+		s.append(BBuffer.paramToString(param1));
+		s.append(",").append(BBuffer.paramToString(param2));
 		s.append(")]");
 		return s.toString();
 	}

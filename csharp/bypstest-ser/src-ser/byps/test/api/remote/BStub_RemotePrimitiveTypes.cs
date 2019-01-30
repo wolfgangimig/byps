@@ -8,7 +8,7 @@ namespace byps.test.api.remote
 	
 	public class BStub_RemotePrimitiveTypes : BStub, RemotePrimitiveTypes, BSerializable {	
 		
-		public readonly static long serialVersionUID = 1178916877L;
+		public readonly static long serialVersionUID = 456456L;
 		
 		public BStub_RemotePrimitiveTypes(BTransport transport)
 			: base(transport) {}			
@@ -555,6 +555,26 @@ namespace byps.test.api.remote
 			BRequest_RemotePrimitiveTypes_throwException req = new BRequest_RemotePrimitiveTypes_throwException();			
 			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
 			await task;
+		}
+		
+		public virtual int GetDeferredValueFromServer(int param1, String param2) {
+			BSyncResult<int> asyncResult = new BSyncResult<int>();			
+			GetDeferredValueFromServer(param1, param2, BAsyncResultHelper.ToDelegate<int>(asyncResult));
+			return asyncResult.GetResult();			
+		}
+		public virtual void GetDeferredValueFromServer(int param1, String param2, BAsyncResult<int> asyncResult) {
+			BRequest_RemotePrimitiveTypes_getDeferredValueFromServer req = new BRequest_RemotePrimitiveTypes_getDeferredValueFromServer();			
+			req.param1Value = param1;
+			req.param2Value = param2;
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task<int> GetDeferredValueFromServerAsync(int param1, String param2){
+			BRequest_RemotePrimitiveTypes_getDeferredValueFromServer req = new BRequest_RemotePrimitiveTypes_getDeferredValueFromServer();			
+			req.param1Value = param1;
+			req.param2Value = param2;
+			Task<int> task = Task<int>.Factory.FromAsync(transport.BeginSend<int>, transport.EndSend<int>, req, null);
+			return await task;
 		}
 		
 		

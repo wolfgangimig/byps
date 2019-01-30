@@ -3,6 +3,36 @@ using namespace ::std;
 using namespace ::byps;
 
 namespace byps { namespace test { namespace api { namespace remote { 
+void BStub_RemoteArrayTypes4dim::setDouble(const PArray4Double& v)  {
+	BSyncResultT< bool > syncResult;	
+	setDouble(v, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteArrayTypes4dim::setDouble(const PArray4Double& v, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteArrayTypes4dim_setDouble(v));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace remote { 
+void BStub_RemoteArrayTypes4dim::setString(const PArray4String& v)  {
+	BSyncResultT< bool > syncResult;	
+	setString(v, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteArrayTypes4dim::setString(const PArray4String& v, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteArrayTypes4dim_setString(v));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace remote { 
 void BStub_RemoteArrayTypes4dim::setPrimitiveTypes(const byps::test::api::prim::PArray4PrimitiveTypes& v)  {
 	BSyncResultT< bool > syncResult;	
 	setPrimitiveTypes(v, [&syncResult](bool v, BException ex) {
@@ -1000,21 +1030,6 @@ byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector
 void BStub_RemoteListTypes::getInt4(::std::function< void (byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > >, BException ex) > asyncResult)  {
 	PMethodRequest req(new BRequest_RemoteListTypes_getInt4());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > >, byps::test::api::BResult_1633500852 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace remote { 
-void BStub_RemoteListTypes::setInt4(const byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > >& int4)  {
-	BSyncResultT< bool > syncResult;	
-	setInt4(int4, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_RemoteListTypes::setInt4(const byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > >& int4, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_RemoteListTypes_setInt4(int4));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
 }}}}
