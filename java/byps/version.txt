@@ -1,5 +1,11 @@
 BYPS Version History
 
+5.21 
+
+- Allow to lazy-load elements of BValueClass objects.
+
+- Take serialVersionUID of BRemote interfaces into account.
+
 5.20
 
 - Provide JSESSIONID via HWireClient.getHttpClient().getHttpSession()
