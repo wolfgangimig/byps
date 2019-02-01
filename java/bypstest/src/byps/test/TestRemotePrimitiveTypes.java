@@ -10,7 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import byps.BAsyncResult;
+import byps.BClient;
 import byps.BException;
+import byps.BLazyLoad;
 import byps.RemoteException;
 import byps.test.api.BClient_Testser;
 import byps.test.api.prim.PrimitiveTypes;
@@ -46,8 +48,22 @@ public class TestRemotePrimitiveTypes {
 	 * @throws RemoteException
 	 */
 	 @Test
-	  public void testDeferredReadElement() throws RemoteException {
-	    log.info("testDeferredReadElement(");
+	  public void testLazyLoadMember() throws RemoteException {
+	    log.info("testLazyLoadMember(");
+	    
+	    client.setLazyLoad(new BLazyLoad() {
+        public void lazyLoadMembers(BClient bclient, Object obj, long member) {
+          try {
+            if (obj.getClass() == PrimitiveTypes.class) {
+              int value = remote.getDeferredValueFromServer(123, "abc");
+              ((PrimitiveTypes)obj).setDeferredValue(value);
+            }
+          }
+          catch (Exception e) {
+            throw new RuntimeException(e);
+          }
+        }
+	    });
 	    
 	    // Provide a value that will be returned by MyRemotePrimitiveTypes.getDeferredValue
 	    int value = 4455;
@@ -61,7 +77,7 @@ public class TestRemotePrimitiveTypes {
       
       TestUtils.assertEquals(log, "deferredValue", value, valueR);
 
-	    log.info(")testDeferredReadElement");
+	    log.info(")testLazyLoadMember");
 	 }
 	 
 	/**

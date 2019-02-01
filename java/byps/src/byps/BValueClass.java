@@ -21,6 +21,11 @@ public class BValueClass implements Serializable {
 	/**
 	 * Deserialisation on the client-side stores the BClient object in this member.
 	 * This reference can be used for deferred loading of elements.
+	 * It is defined as a weak reference, because we do not want to cause this
+	 * relation to keep a BClient object in memory. If a BClient is not reachable
+	 * by a strong reference anymore, it is most unlikely that any lazy loaded 
+	 * element is of further interest. However, as long as there is somewhere in the program
+	 * a strong reference to the BClient, the weak reference is not released.
 	 */
 	protected transient WeakReference<BClient> bypsClient;
 	
@@ -82,7 +87,15 @@ public class BValueClass implements Serializable {
   public void setDbHelper(Object dbHelper) {
     this.dbHelper = dbHelper;
   }
+  
+  public WeakReference<BClient> getBypsClient() {
+    return bypsClient;
+  }
 
+  public void setBypsClient(WeakReference<BClient> bypsClient) {
+    this.bypsClient = bypsClient;
+  }
+  
   private static final long serialVersionUID = 22;
 
 }

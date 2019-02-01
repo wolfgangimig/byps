@@ -285,7 +285,7 @@ public class BDoclet extends Doclet {
     
     
     
-    configureLog4j("INFO");
+    configureLog4j("WARN");
 
     // DEBUG
     if (args == null || args.length == 0) {

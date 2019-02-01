@@ -32,6 +32,11 @@ public abstract class BClient {
 	 * Start server for reverse requests after protocol is negotiated.
 	 */
 	protected volatile boolean startR;
+	
+	/**
+	 * An interface to support lazy loading of object elements.
+	 */
+	protected volatile BLazyLoad lazyLoad;
 		
 	/**
 	 * Constructor used by generated derived classes.
@@ -64,7 +69,22 @@ public abstract class BClient {
 	public BTransport getTransport() {
 	  return transport;
 	}
+
+	/**
+	 * Get interface to lazy load elements.
+	 * @return BLazyLoad
+	 */
+	public BLazyLoad getLazyLoad() {
+    return lazyLoad;
+  }
 	
+  /**
+   * Set interface to lazy load elements.
+   * @param lazyLoad BLazyLoad
+   */
+	public void setLazyLoad(BLazyLoad lazyLoad) {
+    this.lazyLoad = lazyLoad;
+  }
 	
 	/**
 	 * Handler that is called when a reverse connection is interrupted.
@@ -243,7 +263,15 @@ public abstract class BClient {
 
 	}
 
-  public Object call(long remoteId, String methodName, Object ... params) {
+	/**
+	 * Call API method via reflection.
+	 * @param remoteId ID of a remote interface (serialVersionUID)
+	 * @param methodName Method name.
+	 * @param params Method params.
+	 * @return Method result.
+	 */
+  @SuppressWarnings("unused")
+  private Object call(long remoteId, String methodName, Object ... params) {
     Object ret = null;
     
     try {
@@ -305,6 +333,38 @@ public abstract class BClient {
     if (clazz.equals(float.class)) return Float.class;
     if (clazz.equals(double.class)) return Double.class;
     throw new IllegalArgumentException("No wrapper class for primitive type=" + clazz);
+  }
+  
+  /**
+   * Lazy load an object's element.
+   * @param bclientRef Reference to BClient object.
+   * @param obj A member of this object should be read.
+   * @param members This value can be used to specify which element has to be loaded.
+   */
+  public static void lazyLoadMember(WeakReference<BClient> bclientRef, Object obj, long member) {
+    
+    // Service reference supplied?
+    if (bclientRef != null) {
+
+      // Service reference valid?
+      BClient bclient = bclientRef.get();
+      if (bclient != null) {
+        
+        BLazyLoad lazyLoad = bclient.getLazyLoad();
+        if (lazyLoad == null) {
+          throw new UnsupportedOperationException("Lazy load member for object=" + obj + " is not supported.");
+        }
+        
+        lazyLoad.lazyLoadMembers(bclient, obj, member);
+      }
+      else {
+        // Service has already been garbage collected. 
+        // Assume that this object and the member to load is not relevant anymore.
+        // Hence, just do nothing.
+      }
+      
+    }
+    
   }
 
   public String toString() {

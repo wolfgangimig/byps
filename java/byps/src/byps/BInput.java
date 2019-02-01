@@ -30,7 +30,7 @@ public abstract class BInput {
 		}
 		
     if (obj instanceof BValueClass) {
-      ((BValueClass)obj).bypsClient = transport.clientHelperToInjectInBValueClass;
+      ((BValueClass)obj).setBypsClient(transport.clientHelperToInjectInBValueClass);
     }
 
 		return obj;

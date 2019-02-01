@@ -58,9 +58,7 @@ public class PrimitiveTypes extends BValueClass {
 
   public int getDeferredValue() {
     if (deferredValue == 0) {
-      BClient bclient = bypsClient.get();
-      long remoteId = 1178916877L; // BStub_RemotePrimitiveTypes
-      deferredValue = (Integer)bclient.call(remoteId, "getDeferredValueFromServer", 123, "abc");
+      BClient.lazyLoadMember(bypsClient, this, 1);
     }
     return deferredValue;
   }
