@@ -6,6 +6,10 @@ BYPS Version History
 
 - Take serialVersionUID of BRemote interfaces into account.
 
+- Generate JS definition also for serializable classes with no members.
+
+- Ignore .gitignore files in output directory. 
+
 5.20
 
 - Provide JSESSIONID via HWireClient.getHttpClient().getHttpSession()

@@ -110,10 +110,8 @@ class GenApiClass {
 		ArrayList<MemberInfo> constMembers = new ArrayList<MemberInfo>();
 		PrintHelper.collectAllMembers(serInfo, valueMembers, constMembers);
 
-		if (valueMembers.size() != 0) {
-			generateClassForValues(valueMembers);
-			pr.println();
-		}
+		generateClassForValues(valueMembers);
+		pr.println();
 		
 		log.debug(")generate");
 	}
