@@ -3,13 +3,17 @@ package byps.gen.utils;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import byps.BBinaryModel;
 import byps.gen.api.MemberInfo;
 import byps.gen.api.SerialInfo;
 
 public class Utils {
+  
+  private final static String[] PURGE_EXTS_DEFAULT = new String[] {".gitignore"};
 	
 	public static int getDimCount(String dims) {
 		int dimCount = 0;
@@ -95,12 +99,17 @@ public class Utils {
 				purgeDir(f, exts);
 			}
 			else {
-				boolean found = false;
 				if (exts != null) {
-  				for (String ext : exts) {
-  					found = f.getName().toLowerCase().endsWith(ext.toLowerCase());
-  					if (found) break;
-  				}
+				  
+				  Set<String> set = new HashSet<String>(Arrays.asList(exts));
+				  for (String ext : exts) set.add(ext.toLowerCase());
+				  set.addAll(Arrays.asList(PURGE_EXTS_DEFAULT));
+
+				  String ext = f.getName();
+				  int p = ext.lastIndexOf('.');
+				  if (p >= 0) ext = ext.substring(p);
+	        boolean found = set.contains(ext);
+	        
   				if (!found) {
   					// We do not delete other files than the generated.
   					// The generator must not delete arbitrary directories, 
