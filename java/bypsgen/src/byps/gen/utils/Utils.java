@@ -3,13 +3,17 @@ package byps.gen.utils;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import byps.BBinaryModel;
 import byps.gen.api.MemberInfo;
 import byps.gen.api.SerialInfo;
 
 public class Utils {
+  
+  private final static Set<String> DO_NOT_PURGE_FILES_WITH_EXTS = new HashSet<String>(Arrays.asList(new String[] {".gitignore"}));
 	
 	public static int getDimCount(String dims) {
 		int dimCount = 0;
@@ -88,29 +92,41 @@ public class Utils {
 	
 	public static void purgeDir(File dir, String[] exts) throws IOException {
 		if (dir == null || !dir.exists()) return;
-		
+
 		File[] files = dir.listFiles();
 		for (File f : files) {
 			if (f.isDirectory()) {
 				purgeDir(f, exts);
 			}
 			else {
-				boolean found = false;
-				if (exts != null) {
-  				for (String ext : exts) {
-  					found = f.getName().toLowerCase().endsWith(ext.toLowerCase());
-  					if (found) break;
+			  
+        String fext = "";
+        int p = f.getName().lastIndexOf('.');
+        if (p >= 0) fext = f.getName().substring(p).toLowerCase();
+        
+        if (!DO_NOT_PURGE_FILES_WITH_EXTS.contains(fext)) {
+			  
+  				if (exts != null) {
+  
+  				  boolean found = false;
+            for (String ext : exts) {
+              found = fext.endsWith(ext.toLowerCase());
+              if (found) break;
+            }
+  	        
+    				if (!found) {
+    					// We do not delete other files than the generated.
+    					// The generator must not delete arbitrary directories, 
+    					// if there is just a mistake in the configuration.
+    					throw new IOException("The generator deletes only files named with extensions \"" + Arrays.toString(exts) + "\". It does not delete the file=" + f + ". Delete this file manually.");
+    				}
   				}
-  				if (!found) {
-  					// We do not delete other files than the generated.
-  					// The generator must not delete arbitrary directories, 
-  					// if there is just a mistake in the configuration.
-  					throw new IOException("The generator deletes only files named with extensions \"" + Arrays.toString(exts) + "\". It does not delete the file=" + f + ". Delete this file manually.");
+  				
+  				if (!f.delete()) {
+  					throw new IOException("Cannot delete file " + f);
   				}
-				}
-				if (!f.delete()) {
-					throw new IOException("Cannot delete file " + f);
-				}
+  				
+        }
 			}
 		}
 		
