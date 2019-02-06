@@ -2,6 +2,7 @@ package byps.gen.utils;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -86,11 +87,16 @@ public class Utils {
 	
 	public static void purgeDirs(File[] dirs, String[] exts) throws IOException {
 		for (File dir : dirs) {
-			purgeDir(dir, exts);
+			purgeDirContents(dir, exts);
 		}
 	}
-	
+
 	public static void purgeDir(File dir, String[] exts) throws IOException {
+    purgeDirContents(dir, exts);
+    Files.delete(dir.toPath());
+  }
+
+  public static void purgeDirContents(File dir, String[] exts) throws IOException {
 		if (dir == null || !dir.exists()) return;
 
 		File[] files = dir.listFiles();
@@ -122,17 +128,9 @@ public class Utils {
     				}
   				}
   				
-  				if (!f.delete()) {
-  					throw new IOException("Cannot delete file " + f);
-  				}
-  				
+  				Files.delete(f.toPath());
         }
 			}
-		}
-		
-		boolean succ = dir.delete();
-		if (!succ) {
-			throw new IOException("Cannot delete directory " + dir);
 		}
 	}
 
