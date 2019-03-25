@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.22
+
+- Generator does not delete a directory if we expect files to remain
+
 5.21 
 
 - Allow to lazy-load elements of BValueClass objects.
