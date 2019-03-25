@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 
 sourceCompatibility = 1.6
 compileJava.options.encoding = 'UTF-8'
-version = '5.20'
+version = '5.23'
 
 sourceSets {
     main {
