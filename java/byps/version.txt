@@ -1,8 +1,8 @@
 BYPS Version History
 
-5.22
+5.23
 
-- Generator does not delete a directory if we expect files to remain
+- Generator does not delete a directory if we expect files to remain.
 
 5.21 
 
