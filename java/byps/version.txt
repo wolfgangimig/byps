@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.24
+
+- No retry of HTTP requests.   
+
 5.23
 
 - Generator does not delete a directory if we expect files to remain.
