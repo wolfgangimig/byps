@@ -10,19 +10,16 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.http.auth.AuthSchemeProvider;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.Credentials;
-import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.config.AuthSchemes;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Lookup;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.impl.auth.SPNegoSchemeFactory;
-import org.apache.http.impl.auth.win.WindowsCredentialsProvider;
-import org.apache.http.impl.auth.win.WindowsNTLMSchemeFactory;
-import org.apache.http.impl.auth.win.WindowsNegotiateSchemeFactory;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.client.SystemDefaultCredentialsProvider;
+import org.apache.http.impl.client.WinHttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
 import byps.BAsyncResult;
@@ -53,28 +50,11 @@ public class AsfClient implements HHttpClient {
     if (log.isDebugEnabled()) log.debug(")AsfClient");
   }
   
-  /**
-   * Detects system property byps.http.client.asf.sso.
-   * @return true, if system property is set and NTLM is included.
-   */
-  private static boolean isNTLMAuthenticationEnabled() {
-    String authSchemasSystemProperty = System.getProperty(AsfClientFactory.SSO_AUTHENTICATION_SCHEMAS);
-    boolean ret = authSchemasSystemProperty != null && authSchemasSystemProperty.contains(AsfClientFactory.SSO_AUTHENTICATION_NTLM);
-    if (log.isDebugEnabled()) log.debug("isNTLMAuthenticationEnabled=" + ret + ", authSchemas=" + authSchemasSystemProperty);
-    return ret; 
+  private static boolean isWindows() {
+    String os = System.getProperty("os.name");
+    return os != null && os.toLowerCase().contains("windows");
   }
-
-  /**
-   * Detects system property byps.http.client.asf.sso.
-   * @return true, if system property is not set or SPNEGO is included.
-   */
-  private static boolean isSPNEGOAuthenticationEnabled() {
-    String authSchemasSystemProperty = System.getProperty(AsfClientFactory.SSO_AUTHENTICATION_SCHEMAS);
-    boolean ret = authSchemasSystemProperty == null || authSchemasSystemProperty.contains(AsfClientFactory.SSO_AUTHENTICATION_SPNEGO);
-    if (log.isDebugEnabled()) log.debug("isSPNEGOAuthenticationEnabled=" + ret + ", authSchemas=" + authSchemasSystemProperty);
-    return ret; 
-  }
-
+  
   private static CloseableHttpClient internalCreateHttpClient() {
     if (log.isDebugEnabled()) log.debug("internalCreateHttpClient(");
 
@@ -82,59 +62,32 @@ public class AsfClient implements HHttpClient {
     int maxConnections = maxConnStr != null && maxConnStr.length() != 0 ? Integer.parseInt(maxConnStr) : 100;
     log.info("maxConnections=" + maxConnections);
     
-    PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
-    cm.setMaxTotal(maxConnections);
-    cm.setDefaultMaxPerRoute(maxConnections);
-
-    RegistryBuilder<AuthSchemeProvider> builder = RegistryBuilder.<AuthSchemeProvider>create();
+    HttpClientBuilder httpClientBuilder = null;
     
-    String authSchemasSystemProperty = System.getProperty(AsfClientFactory.SSO_AUTHENTICATION_SCHEMAS);
-    log.info(AsfClientFactory.SSO_AUTHENTICATION_SCHEMAS + "=" + authSchemasSystemProperty);
-    
-    // Use special classes for Windows authentication schemas?
-    if (isNTLMAuthenticationEnabled()) {
-
-      // Service prinzipal name (DC name)
-      String servicePrincipalName = System.getProperty(AsfClientFactory.SSO_AUTHENTICATION_SPN);
-      log.info(AsfClientFactory.SSO_AUTHENTICATION_SPN + "=" + servicePrincipalName);
-      
-      // NTLM authentication works servicePrincipalName=null too.
-      log.info("Register NTLM");
-      builder.register(AuthSchemes.NTLM, new WindowsNTLMSchemeFactory(servicePrincipalName));
-      
-      // SPNEGO authentication works only with servicePrincipalName!=null in my test environment.
-      if (servicePrincipalName != null && isSPNEGOAuthenticationEnabled()) 
-      {
-        log.info("Register SPNEGO (Negotiate)");
-        builder.register(AuthSchemes.SPNEGO, new WindowsNegotiateSchemeFactory(servicePrincipalName));
-      }
-      else {
-        log.info("For using SPNEGO (Negotiate), system property " + AsfClientFactory.SSO_AUTHENTICATION_SCHEMAS + " must include SPNEGO and " + AsfClientFactory.SSO_AUTHENTICATION_SPN + " must specify the FQN of an AD server.");
-      }
-
+    // Use special classes for Windows.
+    if (isWindows()) {
+      httpClientBuilder = WinHttpClients.custom();
     }
     else {
       // if the port does not match the kerberos database entry, skip it during the lookup
       log.info("Register SPNEGO (Negotate) over JAAS");
       boolean skipPortAtKerberosDatabaseLookup = true;
+      RegistryBuilder<AuthSchemeProvider> builder = RegistryBuilder.<AuthSchemeProvider>create();
       builder.register(AuthSchemes.SPNEGO, new SPNegoSchemeFactory(skipPortAtKerberosDatabaseLookup));
-      // SSO �ber SPNEGO/Kerberos funktioniert nur, wenn der Test unter einem Windows-Benutzerkonto l�uft, dass nicht lokaler Administrator ist.
+
+      Lookup<AuthSchemeProvider> authSchemeRegistry = builder.build();
+      httpClientBuilder = HttpClients.custom().setDefaultAuthSchemeRegistry(authSchemeRegistry);
     }
-    
-    log.info("Ignore WARN Authentication scheme Negotiate not supported."); 
-    log.info("Ignore WARN Authentication scheme Basic not supported."); 
-    
-    Lookup<AuthSchemeProvider> authSchemeRegistry = builder.build();
-    
-    CloseableHttpClient httpclient = HttpClients.custom()
-            .setConnectionManager(cm)
-            .setDefaultAuthSchemeRegistry(authSchemeRegistry)
-            .build();
-    
-    
+
+    // SSO über SPNEGO/Kerberos funktioniert nur, wenn der Test unter einem Windows-Benutzerkonto l�uft, dass nicht lokaler Administrator ist.
+
+    PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
+    cm.setMaxTotal(maxConnections);
+    cm.setDefaultMaxPerRoute(maxConnections);
+    CloseableHttpClient httpClient = httpClientBuilder.setConnectionManager(cm).build();
 
     if (log.isDebugEnabled()) log.debug(")internalCreateHttpClient");
-    return httpclient;
+    return httpClient;
   }
   
   private static HttpClientContext internalCreateSSOContext() {
@@ -147,12 +100,7 @@ public class AsfClient implements HHttpClient {
 
     HttpClientContext context = HttpClientContext.create();
     
-    if (isNTLMAuthenticationEnabled()) {
-      if (log.isDebugEnabled()) log.debug("set WindowsCredentialsProvider");
-      final CredentialsProvider credsProvider = new WindowsCredentialsProvider(new SystemDefaultCredentialsProvider());
-      context.setCredentialsProvider(credsProvider);
-    }
-    else {
+    if (!isWindows()) {
 
       if (log.isDebugEnabled()) log.debug("set JAAS credential provider");
 

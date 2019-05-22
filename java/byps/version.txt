@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.25
+
+- Use WinHttpClient for requests with ApacheHttpClient (Option -Dbyps.http.client.factory=byps.http.client.asf.AsfClientFactory).
+
 5.24
 
 - No retry of HTTP requests.   

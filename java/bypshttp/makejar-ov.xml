@@ -11,11 +11,11 @@
     	<delete file="${javalibdir}/bypshttp-ov.jar" />
     	
         <jar destfile="${javalibdir}/bypshttp-ov.jar">
-            <fileset dir="../bypshttp/bin"/>
-            <fileset dir="../bypshttpasf/bin"/>
-            <fileset dir="../byps/bin"/>
-            <fileset dir="../byps-api/bin"/>
-           	<fileset dir="../byps-override/bin"/>
+            <fileset dir="../bypshttp/bin/main"/>
+            <fileset dir="../bypshttpasf/bin/main"/>
+            <fileset dir="../byps/bin/main"/>
+            <fileset dir="../byps-api/bin/main"/>
+           	<fileset dir="../byps-override/bin/main"/>
 
         	<!-- include source -->
         	

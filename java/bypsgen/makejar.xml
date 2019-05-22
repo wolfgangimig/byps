@@ -12,10 +12,10 @@
                 <attribute name="Main-Class" value="byps.gen.doclet.BDoclet"/>
                 <attribute name="Class-Path" value=". tools.jar log4j-1.2.17.jar commons-logging-1.2.jar jargs-1.0.jar"/>
             </manifest>
-            <fileset dir="../bypsgen/bin"/>
-            <fileset dir="../byps/bin"/>
-            <fileset dir="../byps-api/bin"/>
-            <fileset dir="../byps-override/bin"/>
+            <fileset dir="../bypsgen/bin/main"/>
+            <fileset dir="../byps/bin/main"/>
+            <fileset dir="../byps-api/bin/main"/>
+            <fileset dir="../byps-override/bin/main"/>
         </jar>
     	
     </target>
