@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
-sourceCompatibility = 1.6
+// sourceCompatibility - BYPS-1: Java12  -  = 1.6
 compileJava.options.encoding = 'UTF-8'
 version = '5.26'
 

@@ -74,7 +74,7 @@ public abstract class BRegistry {
             Class<?> c;
             try {
               c = Class.forName(rser.name);
-              rser.instance = (BSerializer) c.newInstance();
+              rser.instance = (BSerializer) c.getConstructor().newInstance();
             } catch (Exception e) {
               throw new BException(BExceptionC.CORRUPT, "No serializer for typeId=" + typeId);
             }

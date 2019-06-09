@@ -531,7 +531,7 @@ public class BDoclet extends Doclet {
   private static void doJavaDoc(String[] javadocArgs) {
     ServiceLoader<DocumentationTool> toolService = ServiceLoader.load(DocumentationTool.class);
     
-    DocumentationTool javadocTool = toolService.findFirst().get();
+    DocumentationTool javadocTool = toolService.iterator().next();
     
     Writer out = null;
     JavaFileManager fileManager = null;
