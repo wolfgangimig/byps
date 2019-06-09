@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="ser" default="build">
 
+	<!-- OBSOLETE, use build.gradle/buildJarForCompatibilityTest -->
+	
 	<property name="bypstest.jar" value="./bypstest_793.jar" />
 
 	<target name="build">

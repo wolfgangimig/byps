@@ -1,6 +1,10 @@
 package byps.http;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.File;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -12,6 +16,8 @@ import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+
+import org.apache.log4j.PropertyConfigurator;
 
 public class HConfigImpl implements HConfig {
 
@@ -111,6 +117,9 @@ public class HConfigImpl implements HConfig {
       }
     }
 
+    // Logger config
+    configureLogger();
+
     // Server IDs
     {
       serverIds = new ArrayList<Integer>();
@@ -163,6 +172,34 @@ public class HConfigImpl implements HConfig {
       String tempDirStr = System.getProperty("java.io.tmpdir");
       tempDir = new File(tempDirStr, "byps.http.HConfigImpl");
       tempDir.mkdirs();
+    }
+  }
+
+  private void configureLogger() {
+    try {
+      String logFile = configMap.get("log.file");
+      String logLevel = configMap.get("log.level");
+      
+      if (logFile != null) {
+        
+        if (logLevel == null || logLevel.isEmpty()) {
+          logLevel = "INFO";
+        }
+        
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        PrintWriter pr = new PrintWriter(new OutputStreamWriter(bos));
+        pr.println("log4j.rootLogger=" + logLevel + ", file");
+        pr.println("log4j.appender.file=org.apache.log4j.RollingFileAppender");
+        pr.println("log4j.appender.file.Append=false");
+        pr.println("log4j.appender.file.File=" + logFile);
+        pr.println("log4j.appender.file.layout=org.apache.log4j.PatternLayout");
+        pr.println("log4j.appender.file.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %t %-5p %c{1}:%L - %m%n");
+        pr.close();
+        PropertyConfigurator.configure(new ByteArrayInputStream(bos.toByteArray()));
+      }
+    }
+    catch (Exception e) {
+      e.printStackTrace();
     }
   }
 

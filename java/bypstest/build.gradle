@@ -50,4 +50,9 @@ dependencies {
 	
 }
 
-
+task buildJarForCompatibilityTest(type: Jar) {
+  group = 'build'
+  archiveName = 'bypstest_793.jar'
+  from { configurations.compile.collect { it.isDirectory() ? it : (it.name.startsWith("byps") ? zipTree(it) : []) } }
+  with jar
+}
