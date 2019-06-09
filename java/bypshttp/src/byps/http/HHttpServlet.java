@@ -1010,6 +1010,13 @@ public abstract class HHttpServlet extends HttpServlet implements
         wr.println(file.getName());
       }
       wr.close();
+      
+      // Delete all temp files
+      for (File file : files) {
+        file.delete();
+      }
+
+      return;
     }
 
     response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -1284,6 +1291,12 @@ public abstract class HHttpServlet extends HttpServlet implements
                 wr.append(file.getName()).append("\r\n");
               }
               ret.put("return", wr.toString());
+              
+              // Delete all temp files
+              for (File file : files) {
+                file.delete();
+              }
+
             }
 
             if (log.isDebugEnabled()) log.debug(")testAdapter=" + ret);

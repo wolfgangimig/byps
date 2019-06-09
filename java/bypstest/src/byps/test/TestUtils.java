@@ -21,8 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import junit.framework.Assert;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -49,13 +47,17 @@ import byps.test.api.inl.Actor;
 import byps.test.api.inl.Matrix2D;
 import byps.test.api.inl.Point2D;
 import byps.test.api.prim.PrimitiveTypes;
+import junit.framework.Assert;
 
 public class TestUtils {
 
 	private static Log log = LogFactory.getLog(TestUtils.class);
 	//public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
 	public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
+	
 	public static boolean TEST_LARGE_STREAMS = false;
+	
+	public static boolean TEST_ONE_SHORT_STREAM = true;
 	
 	public static BTransport createTransport() {
 		return createTransport(BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_CURRENT, 0);

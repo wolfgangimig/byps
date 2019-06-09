@@ -46,10 +46,13 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	public void setImage(InputStream istrm) throws RemoteException {
 		if (log.isDebugEnabled()) log.debug("setImage(" + istrm);
 		closeImageStream();
+    long startTime = 0;
+    long endTime = 0;
+
 		if (istrm != null) {
 		  
 			try {
-			  
+	      startTime = System.currentTimeMillis();
 			  if (!istrm.markSupported()) {
 			    throw new BException(BExceptionC.IOERROR, "markSupported must return true");
 			  }
@@ -59,11 +62,17 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	        istrm.read(someBytes);
 	        istrm.reset();
 	      }
+			  endTime = System.currentTimeMillis();
+			  log.info("some bytes read in " + (endTime - startTime) + "ms");
 
 				// Clone the stream to be able to store it in a member variable
+			  startTime = System.currentTimeMillis();
 		    if (log.isDebugEnabled()) log.debug("materialize stream ...");
 				imageStream = BContentStream.materialize(istrm);
         if (log.isDebugEnabled()) log.debug("materialize stream OK");
+        endTime = System.currentTimeMillis();
+        log.info("materialize stream in " + (endTime - startTime) + "ms");
+        
 	     } catch (BException e) {
 	        log.error("Exception=", e);
 	        throw e;
@@ -73,9 +82,21 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
         throw new BException(BExceptionC.IOERROR, "", e);
       }
 		}
-    System.gc();
+		
+    doSystemGC();
+    
 		if (log.isDebugEnabled()) log.debug(")setImage");
 	}
+
+  private void doSystemGC() {
+    if (System.getProperty("MyRemoteStreams.System.gc", "false").equals("false")) return;
+    long startTime;
+    long endTime;
+    startTime = System.currentTimeMillis();
+    System.gc();
+    endTime = System.currentTimeMillis();
+    log.info("System.gc() in " + (endTime - startTime) + "ms");
+  }
 	
 	@Override
 	public InputStream getImage() throws RemoteException {
