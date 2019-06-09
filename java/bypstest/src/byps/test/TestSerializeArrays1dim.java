@@ -2,6 +2,7 @@ package byps.test;
 
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.nio.ByteBuffer;
+import java.util.Base64;
 import java.util.Date;
 
 import org.apache.commons.logging.Log;
@@ -173,7 +174,7 @@ public class TestSerializeArrays1dim {
 		bbuf.flip();
 		
 		if (v != null) {
-			String expectedText = "\"" + javax.xml.bind.DatatypeConverter.printBase64Binary(v) + "\"";
+			String expectedText = "\"" + Base64.getEncoder().encodeToString(v) + "\"";
 			log.info("expectedText=\r\n" + expectedText);
 			String textR = TestUtils.bufferToString(buf);
 			log.info("readText=\r\n" + textR);

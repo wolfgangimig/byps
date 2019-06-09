@@ -47,13 +47,8 @@ public class CompileSource implements ConstFieldReader {
 //		params.add("-bootclasspath");
 //		params.add(jhome + File.separator + "lib" + File.separator + "rt.jar");
 				
-		
-		// Änderung für Java 10: Mindestversion 1.6 
-		params.add("-source");
-		params.add("1.6");
-		
-		params.add("-target");
-		params.add("1.6");
+		// BYPS-1: keine Vorgaben für Source-Code-Versionen.
+		// Die erlaubten Werte ändern sich scheinbar mit jeder JDK-Version.
 		
 		params.add("-d");
 		params.add(foutDir.getAbsolutePath());

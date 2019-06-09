@@ -2,12 +2,19 @@ package byps.gen.doclet;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.File;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.ServiceLoader;
+
+import javax.tools.DiagnosticListener;
+import javax.tools.DocumentationTool;
+import javax.tools.JavaFileManager;
+import javax.tools.JavaFileObject;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -506,7 +513,8 @@ public class BDoclet extends Doclet {
       String[] javadocArgs = javadocParams.toArray(new String[javadocParams.size()]);
 
       log.info("Generate serialisation layer ==============");
-      com.sun.tools.javadoc.Main.execute(javadocArgs);
+      //com.sun.tools.javadoc.Main.execute(javadocArgs);
+      doJavaDoc(javadocArgs);
 
       System.out.println("Finished");
       
@@ -518,6 +526,28 @@ public class BDoclet extends Doclet {
     if (exitCode != 0) {
       System.exit(exitCode);
     }
+  }
+  
+  private static void doJavaDoc(String[] javadocArgs) {
+    ServiceLoader<DocumentationTool> toolService = ServiceLoader.load(DocumentationTool.class);
+    
+    DocumentationTool javadocTool = toolService.findFirst().get();
+    
+    Writer out = null;
+    JavaFileManager fileManager = null;
+    DiagnosticListener<? super JavaFileObject> diagnosticListener = null;
+    Class<?> docletClass = BDoclet.class;
+    Iterable<String> options = Arrays.asList(javadocArgs);
+    Iterable<? extends JavaFileObject> compilationUnits = null;
+    
+    DocumentationTool.DocumentationTask javadocTask = javadocTool.getTask(out,
+        fileManager,
+        diagnosticListener,
+        docletClass,
+        options,
+        compilationUnits);
+
+    javadocTask.call();
   }
 
   /**
