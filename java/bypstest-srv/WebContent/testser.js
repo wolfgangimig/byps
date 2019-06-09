@@ -146,6 +146,13 @@ byps.test.api.auth.SessionInfo = function(sessionID) {
 
 /**
 */
+byps.test.api.cons.AllTypesC = function() {
+	this._typeId = 930294276;
+};
+
+
+/**
+*/
 byps.test.api.cons.AllTypesZ = function(bool1, byte1, char1, short1, int1, long1, float1, double1, string1, hebrew1, byte2, int2, string2, hebrew2) {
 	this._typeId = 142458;
 	this.bool1 = bool1 || false;
@@ -167,9 +174,24 @@ byps.test.api.cons.AllTypesZ = function(bool1, byte1, char1, short1, int1, long1
 
 /**
 */
+byps.test.api.cons.HebrewC = function() {
+	this._typeId = 1770673942;
+};
+
+
+/**
+*/
 byps.test.api.cons.HebrewZ = function(core) {
 	this._typeId = 1518668429;
 	this.core = core || "";
+};
+
+
+/**
+ * Sample enum.
+*/
+byps.test.api.enu.EnumPlanets = function() {
+	this._typeId = 1375035164;
 };
 
 
