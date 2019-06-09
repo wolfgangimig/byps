@@ -41,13 +41,19 @@ dependencies {
 	compile project(":bypstest-ser-json")
 	compile project(":bypstest-servlet")
 	
-	compile group: 'junit', name: 'junit', version: '4.12'
+	compileOnly group: 'junit', name: 'junit', version: '4.12'
 	
 	// https://mvnrepository.com/artifact/io.undertow/undertow-core
-	compile group: 'io.undertow', name: 'undertow-core', version: '1.4.+'
+	compileOnly group: 'io.undertow', name: 'undertow-core', version: '1.4.+'
 	// https://mvnrepository.com/artifact/io.undertow/undertow-servlet
-	compile group: 'io.undertow', name: 'undertow-servlet', version: '1.4.+'
+	compileOnly group: 'io.undertow', name: 'undertow-servlet', version: '1.4.+'
 	
 }
 
 
+task buildJarForCompatibilityTest(type: Jar) {
+  group = 'build'
+  baseName = 'bypstest_793'
+  from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+  with jar
+}
