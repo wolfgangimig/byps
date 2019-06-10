@@ -9,11 +9,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
-
-import junit.framework.Assert;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -37,6 +34,7 @@ import byps.test.api.srvr.BSkeleton_ClientIF;
 import byps.test.api.srvr.ClientIF;
 import byps.test.api.srvr.ServerIF;
 import byps.test.api.srvr.ServerIFAsync;
+import junit.framework.Assert;
 
 /**
  * The test cases in this class verify that the server is able to invoke an 
