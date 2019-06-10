@@ -76,12 +76,13 @@ public class StdContentStream extends BContentStream {
               
               String contentTypeStr = httpResponse.getHeaders().get("Content-Type");
               if (contentTypeStr != null && !contentTypeStr.isEmpty()) {
-                contentType = contentTypeStr;
+                setContentType(contentTypeStr);
               }
               
               String contentLengthStr = httpResponse.getHeaders().get("Content-Length");
               try {
-                contentLength = (contentLengthStr != null) ? Long.parseLong(contentLengthStr) : -1; 
+                long contentLength = (contentLengthStr != null) ? Long.parseLong(contentLengthStr) : -1; 
+                setContentLength(contentLength);
               }
               catch (Exception ignored) {}
               

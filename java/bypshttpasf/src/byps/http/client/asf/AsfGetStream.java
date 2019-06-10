@@ -82,8 +82,12 @@ public class AsfGetStream extends AsfRequest {
       this.response = response;
       if (ex2 == null) {
         Header header = entity.getContentType();
-        contentType = header != null ? header.getValue() : BContentStream.DEFAULT_CONTENT_TYPE;
-        contentLength = entity.getContentLength();
+        
+        String contentType = header != null ? header.getValue() : BContentStream.DEFAULT_CONTENT_TYPE;
+        setContentType(contentType);
+        long contentLength = entity.getContentLength();
+        setContentLength(contentLength);
+        
         try {
           innerStream = entity.getContent();
         }

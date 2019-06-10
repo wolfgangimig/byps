@@ -4,6 +4,9 @@ BYPS Version History
 
 - BYPS-1: Generator runs on Java 12.
 
+- BYPS-5: Stream properties (Content-Type, Content-Length, etc.) were not properly set 
+  if stream exchanged between clients and servers.
+
 5.25
 
 - Use WinHttpClient for requests with ApacheHttpClient (Option -Dbyps.http.client.factory=byps.http.client.asf.AsfClientFactory).

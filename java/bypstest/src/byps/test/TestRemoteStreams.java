@@ -104,10 +104,25 @@ public class TestRemoteStreams {
       if (fos != null) fos.close();
     }
     
-    InputStream istrm = new BContentStreamWrapper(file);
-    remote.setImage(istrm);
+    // setImage
+    {
+      InputStream istrm = new BContentStreamWrapper(file);
+      long startTime = System.currentTimeMillis();
+      log.info("setImage...");
+      remote.setImage(istrm);
+      long endTime = System.currentTimeMillis();
+      log.info("setImage OK " + (endTime-startTime) + "ms");
+    }
 
-    BContentStream istrmR = (BContentStream)remote.getImage();
+    // getImage
+    BContentStream istrmR = null;
+    {
+      long startTime = System.currentTimeMillis();
+      log.info("getImage...");
+      istrmR = (BContentStream)remote.getImage();
+      long endTime = System.currentTimeMillis();
+      log.info("getImage OK " + (endTime-startTime) + "ms");
+    }
     
     TestUtils.assertEquals(log,  "Content-Type", "text/plain", istrmR.getContentType());
     TestUtils.assertEquals(log,  "Content-Length", file.length() , istrmR.getContentLength());

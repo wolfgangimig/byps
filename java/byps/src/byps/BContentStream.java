@@ -61,8 +61,7 @@ public abstract class BContentStream extends InputStream {
 	 */
 	public BContentStream(String contentType, long contentLength) {
 		this.lifetimeMillis = 0;
-		this.contentType = contentType;
-		this.contentLength = contentLength;
+		this.properties_access_getProperties = new BContentStreamProperties(contentType, contentLength, "", ATTACHMENT);
 		extendLifetime();
 	}
 	
@@ -74,8 +73,7 @@ public abstract class BContentStream extends InputStream {
 	 */
 	public BContentStream(String contentType, long contentLength, long lifetimeMillis) {
 		this.lifetimeMillis = lifetimeMillis;
-		this.contentType = contentType;
-		this.contentLength = contentLength;
+    this.properties_access_getProperties = new BContentStreamProperties(contentType, contentLength, "", ATTACHMENT);
 		extendLifetime();
 	}
 	
@@ -97,20 +95,15 @@ public abstract class BContentStream extends InputStream {
 	 * @see #hasValidProperties()
 	 */
   public void copyProperties(BContentStream rhs) {
-    this.contentType = rhs.getContentType();
-		this.contentLength = rhs.getContentLength();
-		this.attachmentCode = rhs.getAttachmentCode();
-		this.fileName = rhs.getFileName();
+    this.setProperties(rhs.getProperties());
 		this.targetId = rhs.getTargetId();
   }
   
-	/**
+  /**
 	 * Default constructor.
 	 */
 	public BContentStream() {
 		this.lifetimeMillis = 0;
-		this.contentType = "";
-		this.contentLength = -1L;
 	}
 	
 	/**
@@ -129,8 +122,7 @@ public abstract class BContentStream extends InputStream {
 	 * @return Content type.
 	 */
 	public String getContentType() {
-	  String s = contentType;
-		return s != null ? s : ""; 
+	  return getProperties().getContentType();
 		// e.g. "text/plain; charset=utf-8"
 	}
 	
@@ -140,7 +132,7 @@ public abstract class BContentStream extends InputStream {
 	 * @return this
 	 */
 	public void setContentType(String v) {
-	  contentType = v;
+	  getProperties().setContentType(v);
 	}
 	
 	/**
@@ -151,7 +143,7 @@ public abstract class BContentStream extends InputStream {
    * @see #ensureProperies()
 	 */
 	public long getContentLength() {
-		return contentLength; 
+		return getProperties().getContentLength(); 
 	}
 	
 	/**
@@ -161,7 +153,7 @@ public abstract class BContentStream extends InputStream {
    * @see #ensureProperies()
 	 */
 	public void setContentLength(long v) {
-	  contentLength = v;
+	  getProperties().setContentLength(v);
 	}
 	
   /**
@@ -269,8 +261,8 @@ public abstract class BContentStream extends InputStream {
 	 * @return this
 	 */
 	public void setContentDisposition(String fileName, boolean attachment) {
-    this.fileName = fileName;
-    this.attachmentCode = attachment ? ATTACHMENT : INLINE;
+    this.getProperties().setFileName(fileName);
+    this.getProperties().setAttachmentCode(attachment ? ATTACHMENT : INLINE);
 	}
 	
 	/**
@@ -365,7 +357,7 @@ public abstract class BContentStream extends InputStream {
    * @see #ensureProperies()
  	 */
   public int getAttachmentCode() {
-    return attachmentCode;
+    return getProperties().getAttachmentCode();
   }
   
   /**
@@ -374,7 +366,7 @@ public abstract class BContentStream extends InputStream {
    * @return this;
    */
   public void setAttachmentCode(int att) {
-    attachmentCode = att;
+    getProperties().setAttachmentCode(att);
   }
   
   /**
@@ -383,7 +375,7 @@ public abstract class BContentStream extends InputStream {
    * @see #ensureProperies()
    */
   public String getFileName() {
-    return fileName;
+    return getProperties().getFileName();
   }
   
   /**
@@ -392,7 +384,7 @@ public abstract class BContentStream extends InputStream {
    * @return this
    */
   public BContentStream setFileName(String fileName) {
-    this.fileName = fileName;
+    this.getProperties().setFileName(fileName);
     return this;
   }
   
@@ -430,19 +422,24 @@ public abstract class BContentStream extends InputStream {
     super.close();
   }
   
+  public BContentStreamProperties getProperties() {
+    return this.properties_access_getProperties;
+  }
+  
+  private void setProperties(BContentStreamProperties properties) {
+    properties_access_getProperties = properties;
+  }
+
   private volatile long bestBefore;
 	protected final long lifetimeMillis;
-	protected volatile String contentType;
-	protected volatile long contentLength = -1L;
-	protected volatile String fileName;
-	protected volatile int attachmentCode;
 	protected volatile BTargetId targetId = BTargetId.ZERO;
+	private BContentStreamProperties properties_access_getProperties = new BContentStreamProperties();
 
 	protected volatile BContentStreamAsyncCallback callback;
 	
 	public String toString() {
 	  StringBuilder sbuf = new StringBuilder();
-	  sbuf.append("[").append(contentType).append(", #=").append(contentLength);
+	  sbuf.append("[").append(getProperties());
     if (targetId != null) sbuf.append(",targetId=").append(targetId);
 	  sbuf.append("]");
 	  return sbuf.toString();

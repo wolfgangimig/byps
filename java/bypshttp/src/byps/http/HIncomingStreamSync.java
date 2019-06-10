@@ -70,8 +70,9 @@ public class HIncomingStreamSync extends BContentStream {
 	@Override
 	public synchronized long getContentLength() {
 		
-	  if (contentLength >= 0) {
-	    return contentLength;
+	  long ret = super.getContentLength();
+	  if (ret >= 0) {
+	    return ret;
 	  }
 	  
 		while (!writeClosed) {
@@ -84,17 +85,18 @@ public class HIncomingStreamSync extends BContentStream {
 		
 		switch (bytesSource) {
 			case FIRST_BYTES: 
-			  contentLength = (long)firstBytes.length; 
+			  ret = (long)firstBytes.length; 
 			  break;
 			case SECOND_BYTES: 
-			  contentLength = (long)secondBytesWritePos; 
+			  ret = (long)secondBytesWritePos; 
 			  break;
 			case FILE_BYTES: 
-			  contentLength = file.getFile().length(); 
+			  ret = file.getFile().length(); 
 			  break;
 		}
 		
-		return contentLength;
+		setContentLength(ret);
+		return ret;
 	}
 	
 	protected synchronized void assignBytes(byte[] buf) {
@@ -110,7 +112,7 @@ public class HIncomingStreamSync extends BContentStream {
 		this.bytesSource = FILE_BYTES;
 		this.readPos = 0;
 		this.writeClosed = true;
-		this.contentLength = file.getFile().length();
+		this.setContentLength(file.getFile().length());
 	}
 	
 	protected void assignStream(InputStream is) throws IOException {
@@ -160,7 +162,7 @@ public class HIncomingStreamSync extends BContentStream {
   
   		writeClose();
 
-      this.contentLength = sum;
+      setContentLength(sum);
     }
     
 	}

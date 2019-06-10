@@ -32,6 +32,7 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 	
 	public synchronized void addStream(long partId, long contentLength, boolean isLastPart, HRequestContext rctxt) throws IOException {
 		if (log.isDebugEnabled()) log.debug("addStream(" + targetId + ", partId=" + partId + ", contentLength=" + contentLength + ", isLastPart=" + isLastPart);
+		String contentType = getContentType();
 		HIncomingStreamAsync streamPart = new HIncomingStreamAsync(targetId, contentType, contentLength, "", lifetimeMillis, tempDir, rctxt);
 		streamParts.put(partId, streamPart);
 		if (isLastPart) maxPartId = partId+1;
@@ -90,7 +91,7 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 	
 	private int internalRead(byte[] b, int off, int len) throws IOException {
 		int ret = -1;
-		final long totalLength = super.contentLength;
+		final long totalLength = getContentLength();
 		if (totalLength == -1 || readPos < totalLength) {
 			HIncomingStreamAsync streamPart = getCurrentStreamPart(false);
 			if (streamPart != null) {

@@ -27,14 +27,11 @@ public class HOutgoingStream extends BContentStreamWrapper {
       if (innerStream instanceof BContentStreamWrapper) {
         BContentStreamWrapper bstream = (BContentStreamWrapper)innerStream;
         bstream.ensureStream();
-        bstream.ensureProperties();
-        copyProperties(bstream);
       }
-      else if (innerStream instanceof BContentStream) {
-        BContentStream bstream = (BContentStream)innerStream;
-        bstream.ensureProperties();
-        copyProperties(bstream);
-      }
+      
+      BContentStream bstream = (BContentStream)innerStream;
+      bstream.ensureProperties();
+      copyProperties(bstream);
       
       isOpen = true;
 	  }

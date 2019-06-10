@@ -193,7 +193,7 @@ public class HConfigImpl implements HConfig {
         pr.println("log4j.appender.file.Append=false");
         pr.println("log4j.appender.file.File=" + logFile);
         pr.println("log4j.appender.file.layout=org.apache.log4j.PatternLayout");
-        pr.println("log4j.appender.file.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %t %-5p %c{1}:%L - %m%n");
+        pr.println("log4j.appender.file.layout.ConversionPattern=%d{ABSOLUTE} %t %1x %-5p (%F:%L) - %m%n");
         pr.close();
         PropertyConfigurator.configure(new ByteArrayInputStream(bos.toByteArray()));
       }

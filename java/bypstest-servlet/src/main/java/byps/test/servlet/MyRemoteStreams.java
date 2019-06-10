@@ -1,7 +1,6 @@
 package byps.test.servlet;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -81,6 +80,12 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
         log.error("Exception=", e);
         throw new BException(BExceptionC.IOERROR, "", e);
       }
+			finally {
+			  try {
+          istrm.close();
+        } catch (IOException e) {
+        }
+			}
 		}
 		
     doSystemGC();
@@ -188,9 +193,8 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	 */
 	private static class StreamWithDeferedProperties extends BContentStream {
 	  
-	  private volatile boolean isOpen = false;
 	  private int rc = 5;
-
+	  
     @Override
     public int read() throws IOException {
       return rc < 0 ? -1 : (--rc);
@@ -198,27 +202,10 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
     
     @Override
     public void ensureProperties() {
-      isOpen = true;
-    }
-
-    @Override
-    public String getContentType() {
-      return isOpen ? "application/mycontentype" : null;
-    }
-
-    @Override
-    public long getContentLength() {
-      return isOpen ? 5 : -1;
-    }
-
-    @Override
-    public int getAttachmentCode() {
-      return isOpen ? ATTACHMENT : 0;
-    }
-
-    @Override
-    public String getFileName() {
-      return isOpen ? "myfilename" : null;
+      getProperties().setContentType("application/mycontentype");
+      getProperties().setContentLength(5);
+      getProperties().setAttachmentCode(ATTACHMENT);
+      getProperties().setFileName("myfilename");
     }
     
 	}

@@ -619,11 +619,11 @@ public class TestUtils {
 			this.nbOfBytes = nbOfBytes;
 			this.chunked = chunked;
 			
-			super.fileName = "file-" + nbOfBytes + ".txt";
-			super.attachmentCode = nbOfBytes > 10000 ? ATTACHMENT : INLINE;
+			setFileName("file-" + nbOfBytes + ".txt");
+			setAttachmentCode(nbOfBytes > 10000 ? ATTACHMENT : INLINE);
 			
-			super.contentType = "application/byps-" + nbOfBytes;
-			super.contentLength  =chunked ? -1L : nbOfBytes;
+			setContentType("application/byps-" + nbOfBytes);
+			setContentLength(chunked ? -1L : nbOfBytes);
 		}
 
 		@Override

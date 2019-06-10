@@ -65,26 +65,6 @@ public class HWireServer extends BWire {
     }
     
     @Override
-    public long getContentLength() {
-      try {
-        ensureStream();
-        return super.getContentLength();
-      } catch (IOException e) {
-        return -1;
-      }
-    }
-
-    @Override
-    public String getContentType() {
-      try {
-        ensureStream();
-        return super.getContentType();
-      } catch (IOException e) {
-        return BContentStream.DEFAULT_CONTENT_TYPE;
-      }
-    }
-
-    @Override
     protected InputStream openStream() throws IOException {
       if (log.isDebugEnabled()) log.debug("openStream(");
 
