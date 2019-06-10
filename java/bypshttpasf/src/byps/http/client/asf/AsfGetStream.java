@@ -81,12 +81,17 @@ public class AsfGetStream extends AsfRequest {
       this.entity = entity;
       this.response = response;
       if (ex2 == null) {
-        Header header = entity.getContentType();
         
+        Header header = entity.getContentType();
         String contentType = header != null ? header.getValue() : BContentStream.DEFAULT_CONTENT_TYPE;
         setContentType(contentType);
+        
         long contentLength = entity.getContentLength();
         setContentLength(contentLength);
+        
+        // BYPS-8: Missed file name header.
+        header = response.getFirstHeader("Content-Disposition");
+        setContentDisposition(header.getValue());
         
         try {
           innerStream = entity.getContent();

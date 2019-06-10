@@ -5,12 +5,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import byps.BProtocolJson;
-
 @RunWith(Suite.class)
 @SuiteClasses({ 
   AllTestsMEDIUM.class,
-  AllTestsJSON.class,
+  //AllTestsJSON.class,
   })
 public class AllTestsAsf {
   

@@ -146,6 +146,13 @@ public class TestRemoteWithAuthentication {
               remote.doit(1);
             }
             catch (Exception e) {
+              
+              // Im Server tritt hier eine ClassCastException von 
+              // BStub_RemoteWithAuthentication nach RemoteWithAuthenticationAsync
+              // auf, wenn sich die Client-TargetId während remote.doit durch einen
+              // gleichzeitiges Negotiate ändert.
+              // Ich habe dafür noch keine Lösung.
+
               refExc.compareAndSet(null, e);
               log.error("Authentication failed: ", e);
             }
@@ -159,6 +166,8 @@ public class TestRemoteWithAuthentication {
           
       cdl.await();
       if (refExc.get() != null) {
+        
+        
         TestUtils.fail(log, refExc.get().toString());
       }
     }

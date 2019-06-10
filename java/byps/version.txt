@@ -9,6 +9,8 @@ BYPS Version History
   
 - BYPS-7: Simultaneous re-login via Apache HTTP Client could cause socket errors.
 
+- BYPS-8: Content-Disposition (file name) was not read by Apache HTTP Client.
+
 5.25
 
 - Use WinHttpClient for requests with ApacheHttpClient (Option -Dbyps.http.client.factory=byps.http.client.asf.AsfClientFactory).
