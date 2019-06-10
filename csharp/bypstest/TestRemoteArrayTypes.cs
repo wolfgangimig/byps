@@ -45,8 +45,6 @@ namespace bypstest
 	
 	    private void internalTestPerformance(BBinaryModel bmodel, int gzip, int loopCount, int objCount) 
         {
-		    BClient_Testser client = TestUtilsHttp.createClient();
-
 		    PrimitiveTypes[] primitiveTypes1 = new PrimitiveTypes[objCount];
 		    for (int i = 0; i < primitiveTypes1.Length; i++) {
 			    primitiveTypes1[i] = TestUtils.createObjectPrimitiveTypes();
@@ -64,8 +62,6 @@ namespace bypstest
 		    }
 		    long t4 = DateTime.Now.Ticks;
 		
-		    client.done();
-
             t1 /= 10000;
             t2 /= 10000;
             t3 /= 10000;
