@@ -435,8 +435,6 @@ public class HWireClient extends BWire {
         destUrl = getUrlStringBuilder(negoServlet);
         destUrl.append("&negotiate=").append(negoStr);
         
-        // Clear session Cookie
-        httpClient.clearHttpSession();
       }
 
       // Reverse request (long-poll) ?

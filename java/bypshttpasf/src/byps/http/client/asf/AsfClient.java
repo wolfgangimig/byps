@@ -120,12 +120,6 @@ public class AsfClient implements HHttpClient {
   }
 
   @Override
-  public void clearHttpSession() {
-    done();
-    httpclient = internalCreateHttpClient();
-  }
-
-  @Override
   public void done() {
     try {
       httpclient.close();

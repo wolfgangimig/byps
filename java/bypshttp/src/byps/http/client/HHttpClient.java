@@ -73,11 +73,5 @@ public interface HHttpClient {
    * @return Session ID
    */
   public String getHttpSession();
-
-  /**
-   * Clear HTTP Session cookie.
-   */
-  @Deprecated
-  public void clearHttpSession();
   
 }

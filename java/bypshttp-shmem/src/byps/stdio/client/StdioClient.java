@@ -71,10 +71,6 @@ public class StdioClient extends StdioCommunication implements HHttpClient {
   }
 
   @Override
-  public void clearHttpSession() {
-  }
-  
-  @Override
   protected synchronized void handleException(Throwable e) {
     ArrayList<BAsyncResult<ByteBuffer>> results = new ArrayList<BAsyncResult<ByteBuffer>>();
     synchronized(expectingResults) {

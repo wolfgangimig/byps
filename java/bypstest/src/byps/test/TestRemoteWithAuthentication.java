@@ -32,6 +32,7 @@ public class TestRemoteWithAuthentication {
 
   @Before
   public void setUp() throws RemoteException {
+    
     BClient_Testser client1 = TestUtilsHttp.createClient();
     client1.getRemoteWithAuthentication().setUseAuthentication(true);
     client1.done();
@@ -117,46 +118,49 @@ public class TestRemoteWithAuthentication {
     
     client.setAuthentication(new MyAuthentication("Fritz", "abc"));
 
-    // This method call will fail internally the first time with a BExceptionO.AUTHENTICATION_REQUIRED.
-    // Then, BTranpsport invokes MyAuthentication.authenticate and retries the method call.
-    int ret = remote.doit(1);
-    TestUtils.assertEquals(log, "ret", 2, ret);
-    
-    // Invalidate session
-    remote.expire();
-    
-    // Wait 1s, BTransport assumes that a session is at least 1s valid.
-    Thread.sleep(1000);
-    
-    // Re-login
-    int nbOfThreads = 10;
-    final CountDownLatch cdl = new CountDownLatch(nbOfThreads);
-    final AtomicReference<Exception> refExc = new AtomicReference<Exception>();
-    
-    for (int i = 0; i < nbOfThreads; i++) {
-      Runnable run = new Runnable() {
-        public void run() {
-          try {
-            remote.doit(1);
-          }
-          catch (Exception e) {
-            refExc.compareAndSet(null, e);
-            log.error("Authentication failed: " + e);
-          }
-          finally {
-            cdl.countDown();
-          }
-        }
-      };
-      new Thread(run).start();
+    // Login/Re-login
+    for (int i = 0; i < 2; i++) {
+   
+      // This method call will fail internally the first time with a BExceptionO.AUTHENTICATION_REQUIRED.
+      // Then, BTranpsport invokes MyAuthentication.authenticate and retries the method call.
+      int ret = remote.doit(1);
+      TestUtils.assertEquals(log, "ret", 2, ret);
+      
+      // Invalidate session
+      remote.expire();
+      
+      // Wait 1s, BTransport assumes that a session is at least 1s valid.
+      Thread.sleep(1000);
     }
     
-    //ret = remote.doit(1);
-    //TestUtils.assertEquals(log, "ret", 2, ret);
-    
-    cdl.await();
-    if (refExc.get() != null) {
-      TestUtils.fail(log, refExc.get().toString());
+    // Simultaneous Re-login
+    {
+      int nbOfThreads = 10;
+      final CountDownLatch cdl = new CountDownLatch(nbOfThreads);
+      final AtomicReference<Exception> refExc = new AtomicReference<Exception>();
+      
+      for (int i = 0; i < nbOfThreads; i++) {
+        Runnable run = new Runnable() {
+          public void run() {
+            try {
+              remote.doit(1);
+            }
+            catch (Exception e) {
+              refExc.compareAndSet(null, e);
+              log.error("Authentication failed: ", e);
+            }
+            finally {
+              cdl.countDown();
+            }
+          }
+        };
+        new Thread(run).start();
+      }
+          
+      cdl.await();
+      if (refExc.get() != null) {
+        TestUtils.fail(log, refExc.get().toString());
+      }
     }
     
     log.info(")testAuthenticateRelogin");

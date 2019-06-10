@@ -47,11 +47,6 @@ public class JcnnClient implements HHttpClient {
   }
 
   @Override
-  public void clearHttpSession() {
-    cookieManager.getCookieStore().removeAll();
-  }
-  
-  @Override
   public String getHttpSession() {
     String ret = "";
     for (HttpCookie cookie : cookieManager.getCookieStore().getCookies()) {

@@ -124,7 +124,11 @@ public abstract class JcnnRequest implements HHttpRequest {
     HttpURLConnection c = req.conn.get();
     if (c != null) {
       CookieStore cookies = cookieManager.getCookieStore();
-      for (HttpCookie cookie : cookies.getCookies()) {
+      
+      // BYPS-2: copy cookies to circumvent ConcurrentModificationException
+      List<HttpCookie> httpCookies = new ArrayList<HttpCookie>(cookies.getCookies());
+      
+      for (HttpCookie cookie : httpCookies) {
         c.setRequestProperty("Cookie", cookie.toString());
         if (log.isDebugEnabled()) log.debug("request cookie=" + cookie.toString());
       }
