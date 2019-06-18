@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.ServiceLoader;
@@ -513,7 +514,6 @@ public class BDoclet extends Doclet {
       String[] javadocArgs = javadocParams.toArray(new String[javadocParams.size()]);
 
       log.info("Generate serialisation layer ==============");
-      //com.sun.tools.javadoc.Main.execute(javadocArgs);
       doJavaDoc(javadocArgs);
 
       System.out.println("Finished");
@@ -531,23 +531,36 @@ public class BDoclet extends Doclet {
   private static void doJavaDoc(String[] javadocArgs) {
     ServiceLoader<DocumentationTool> toolService = ServiceLoader.load(DocumentationTool.class);
     
-    DocumentationTool javadocTool = toolService.iterator().next();
-    
-    Writer out = null;
-    JavaFileManager fileManager = null;
-    DiagnosticListener<? super JavaFileObject> diagnosticListener = null;
-    Class<?> docletClass = BDoclet.class;
-    Iterable<String> options = Arrays.asList(javadocArgs);
-    Iterable<? extends JavaFileObject> compilationUnits = null;
-    
-    DocumentationTool.DocumentationTask javadocTask = javadocTool.getTask(out,
-        fileManager,
-        diagnosticListener,
-        docletClass,
-        options,
-        compilationUnits);
+    Iterator<DocumentationTool> it = toolService.iterator(); 
 
-    javadocTask.call();
+    if (it.hasNext()) {
+      
+      // Java 11, ...
+      
+      DocumentationTool javadocTool = toolService.iterator().next();
+      
+      Writer out = null;
+      JavaFileManager fileManager = null;
+      DiagnosticListener<? super JavaFileObject> diagnosticListener = null;
+      Class<?> docletClass = BDoclet.class;
+      Iterable<String> options = Arrays.asList(javadocArgs);
+      Iterable<? extends JavaFileObject> compilationUnits = null;
+      
+      DocumentationTool.DocumentationTask javadocTask = javadocTool.getTask(out,
+          fileManager,
+          diagnosticListener,
+          docletClass,
+          options,
+          compilationUnits);
+  
+      javadocTask.call();
+      
+    }
+    else {
+      // Java 8
+      com.sun.tools.javadoc.Main.execute(javadocArgs);
+    }
+    
   }
 
   /**
