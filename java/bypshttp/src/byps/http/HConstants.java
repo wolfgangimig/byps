@@ -13,7 +13,7 @@ public class HConstants {
    * How long a request can take. A request can last up to this number of
    * milliseconds.
    */
-  public final static long REQUEST_TIMEOUT_MILLIS = 10 * 60 * 1000L;
+  public static long REQUEST_TIMEOUT_MILLIS = 10 * 60 * 1000L;
   
   /**
    * An incoming stream must be available after this millis.
@@ -130,6 +130,8 @@ public class HConstants {
   {
     INCOMING_STREAM_TIMEOUT_MILLIS = getSystemPropertyLong("byps.http.incomingStreamTimeoutSeconds", INCOMING_STREAM_TIMEOUT_MILLIS / 1000) * 1000;
     KEEP_MESSAGE_AFTER_FINISHED = INCOMING_STREAM_TIMEOUT_MILLIS + CLEANUP_MILLIS;
+    
+    REQUEST_TIMEOUT_MILLIS = getSystemPropertyLong("byps.http.requestTimeoutSeconds", REQUEST_TIMEOUT_MILLIS / 1000) * 1000;
     
     TIMEOUT_LONGPOLL_MILLIS = getSystemPropertyLong("byps.http.longPollTimeoutSeconds", TIMEOUT_LONGPOLL_MILLIS / 1000) * 1000;
   }
