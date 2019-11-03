@@ -642,6 +642,10 @@ namespace byps {
 				class BStub_RemotePrimitiveTypes; 
 				typedef byps_ptr< BStub_RemotePrimitiveTypes > PStub_RemotePrimitiveTypes; 
 				
+				// byps.test.api.remote.BStub_RemoteProcessingEx
+				class BStub_RemoteProcessingEx; 
+				typedef byps_ptr< BStub_RemoteProcessingEx > PStub_RemoteProcessingEx; 
+				
 				// byps.test.api.remote.BStub_RemoteReferences
 				class BStub_RemoteReferences; 
 				typedef byps_ptr< BStub_RemoteReferences > PStub_RemoteReferences; 
@@ -697,6 +701,10 @@ namespace byps {
 				// byps.test.api.remote.RemotePrimitiveTypes
 				class RemotePrimitiveTypes; 
 				typedef byps_ptr< RemotePrimitiveTypes > PRemotePrimitiveTypes; 
+				
+				// byps.test.api.remote.RemoteProcessingEx
+				class RemoteProcessingEx; 
+				typedef byps_ptr< RemoteProcessingEx > PRemoteProcessingEx; 
 				
 				// byps.test.api.remote.RemoteReferences
 				class RemoteReferences; 
@@ -3210,6 +3218,50 @@ class BStub_RemotePrimitiveTypes : public BStub, public virtual RemotePrimitiveT
 
 
 //-------------------------------------------------
+// RemoteProcessingEx
+
+namespace byps { namespace test { namespace api { namespace remote { 
+
+using namespace ::byps;
+
+/// <summary>
+/// Interface used to check BExceptionC#PROCESSING.
+/// </summary>
+class RemoteProcessingEx : public virtual BRemote {
+	
+	/// <summary>
+	/// This function sleeps the given number of seconds and returns true.
+	/// </summary>
+	public: virtual bool getValueAfterProcessingExceptions(int32_t sleepSeconds)  = 0;
+	public: virtual void getValueAfterProcessingExceptions(int32_t sleepSeconds, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	
+	
+};
+
+}}}}
+//-------------------------------------------------
+// Stub class BStub_RemoteProcessingEx
+
+namespace byps { namespace test { namespace api { namespace remote { 
+
+using namespace ::byps;
+
+class BStub_RemoteProcessingEx;
+typedef byps_ptr<BStub_RemoteProcessingEx> PStub_RemoteProcessingEx;
+
+class BStub_RemoteProcessingEx : public BStub, public virtual RemoteProcessingEx {
+	
+	public: BStub_RemoteProcessingEx(PTransport transport);	
+	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	public: virtual bool getValueAfterProcessingExceptions(int32_t sleepSeconds) ;
+	public: virtual void getValueAfterProcessingExceptions(int32_t sleepSeconds, ::std::function< void (bool, BException ex) > asyncResult) ;
+	
+};
+}}}}
+
+
+//-------------------------------------------------
 // RemoteReferences
 
 namespace byps { namespace test { namespace api { namespace remote { 
@@ -3989,6 +4041,7 @@ class BClient_Testser : public BClient {
 	virtual byps::test::api::remote::PRemoteListTypes getRemoteListTypes();	
 	virtual byps::test::api::remote::PRemoteMapTypes getRemoteMapTypes();	
 	virtual byps::test::api::remote::PRemotePrimitiveTypes getRemotePrimitiveTypes();	
+	virtual byps::test::api::remote::PRemoteProcessingEx getRemoteProcessingEx();	
 	virtual byps::test::api::remote::PRemoteReferences getRemoteReferences();	
 	virtual byps::test::api::remote::PRemoteServerCtrl getRemoteServerCtrl();	
 	virtual byps::test::api::remote::PRemoteSetTypes getRemoteSetTypes();	
@@ -4014,6 +4067,7 @@ class BClient_Testser : public BClient {
 	protected: byps::test::api::remote::PRemoteListTypes remoteListTypes;
 	protected: byps::test::api::remote::PRemoteMapTypes remoteMapTypes;
 	protected: byps::test::api::remote::PRemotePrimitiveTypes remotePrimitiveTypes;
+	protected: byps::test::api::remote::PRemoteProcessingEx remoteProcessingEx;
 	protected: byps::test::api::remote::PRemoteReferences remoteReferences;
 	protected: byps::test::api::remote::PRemoteServerCtrl remoteServerCtrl;
 	protected: byps::test::api::remote::PRemoteSetTypes remoteSetTypes;

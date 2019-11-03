@@ -81,6 +81,7 @@ byps.test.api.BClient_Testser = function(transportFactory) {
 	this.remoteListTypes = new byps.test.api.remote.BStub_RemoteListTypes(this.transport);
 	this.remoteMapTypes = new byps.test.api.remote.BStub_RemoteMapTypes(this.transport);
 	this.remotePrimitiveTypes = new byps.test.api.remote.BStub_RemotePrimitiveTypes(this.transport);
+	this.remoteProcessingEx = new byps.test.api.remote.BStub_RemoteProcessingEx(this.transport);
 	this.remoteReferences = new byps.test.api.remote.BStub_RemoteReferences(this.transport);
 	this.remoteServerCtrl = new byps.test.api.remote.BStub_RemoteServerCtrl(this.transport);
 	this.remoteSetTypes = new byps.test.api.remote.BStub_RemoteSetTypes(this.transport);
@@ -2600,6 +2601,31 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getDeferredValueFromSe
 };
 
 /**
+ * Interface used to check BExceptionC#PROCESSING.
+*/
+byps.test.api.remote.BStub_RemoteProcessingEx = function(transport) {
+	
+	this._typeId = 790485113;
+	
+	this.transport = transport;
+	
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+ * This function sleeps the given number of seconds and returns true.
+ * @param sleepSeconds Time in seconds to sleep.
+ * @return true
+ * @throws RemoteException
+*/
+byps.test.api.remote.BStub_RemoteProcessingEx.prototype.getValueAfterProcessingExceptions = function(sleepSeconds, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1155485035, sleepSeconds : sleepSeconds };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+/**
 */
 byps.test.api.remote.BStub_RemoteReferences = function(transport) {
 	
@@ -4903,6 +4929,17 @@ byps.test.api.BServer_Testser = function(transport) {
 				432867943, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getDeferredValueFromServer(methodObj.param1, methodObj.param2, methodResult);
+				}
+			],
+		
+		
+		// Remote Interface RemoteProcessingEx			
+			// Method getValueAfterProcessingExceptions
+			1155485035 : [ // _typeId of request class
+				790485113, // _typeId of remote interface
+				432867947, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_getValueAfterProcessingExceptions(methodObj.sleepSeconds, methodResult);
 				}
 			],
 		
@@ -9817,6 +9854,19 @@ byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
+		// byps.test.api.remote.BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions
+		1155485035 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:146
+			// names of persistent elements
+			{
+				"sleepSeconds":5 // int
+			},
+			// checkpoint byps.gen.js.GenRegistry:146
+			null,
+			// inlineInstance
+			false
+		),
+		
 		// byps.test.api.remote.BRequest_RemoteReferences_getNode
 		1366991859 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:146
@@ -10452,6 +10502,9 @@ byps.test.api.BRegistry_Testser = function() {
 		
 		// byps.test.api.remote.BStub_RemotePrimitiveTypes
 		456456 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemotePrimitiveTypes),
+		
+		// byps.test.api.remote.BStub_RemoteProcessingEx
+		790485113 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteProcessingEx),
 		
 		// byps.test.api.remote.BStub_RemoteReferences
 		568637225 : new byps.BSerializer_16(byps.test.api.remote.BStub_RemoteReferences),

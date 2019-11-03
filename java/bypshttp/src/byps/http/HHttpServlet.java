@@ -25,7 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.connector.ClientAbortException;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -662,28 +661,42 @@ public abstract class HHttpServlet extends HttpServlet implements
 
       }
       else {
-        final HRequestContext rctxt2 = rctxt = createRequestContext(request,
-            response, HConstants.PROCESS_MESSAGE_ASYNC);
+        final HRequestContext rctxt2 = rctxt = createRequestContext(request, response, HConstants.PROCESS_MESSAGE_ASYNC);
 
+        // Set request timeout.
+        // If a timeout occurs, we return a BExceptionC#PROCESSING exception. The client will
+        // sent a follow-up message (BMessageHeader.FLAG_POLL_PROCESSING) with the same message ID and the server will use its HRequestContext
+        // to return the result to the client.
+        final long timeout = (header.flags & BMessageHeader.FLAG_TIMEOUT) != 0 
+            ? (header.timeoutSeconds * 1000) : getDefaultRequestProcessingTimeout();
+        if (log.isDebugEnabled()) log.debug("set timeout=" + timeout);
+        rctxt.setTimeout(timeout);
+        
         final Runnable run = new Runnable() {
           public void run() {
 
-            final BAsyncResult<BMessage> asyncResponse = sess.wireServer
-                .addMessage(header, rctxt2, Thread.currentThread());
+            // Prepare message for execution.
+            // Either a new HActiveMessage is created. 
+            // Or, if this is a follow-up message (BMessageHeader#FLAG_POLL_PROCESSING) 
+            // for a long running process, add the HRequestContext to an existing message.
+            final BAsyncResult<BMessage> asyncResponse = sess.wireServer.addMessage(header, rctxt2, Thread.currentThread());
 
-            // Message already canceled?
+            // Nothing has to be done, if a message with header.messageId is already cancelled, 
+            // finished or a follow-up message is received.
             if (asyncResponse == null) return;
 
             try {
-              if (HConstants.PROCESS_MESSAGE_ASYNC) {
-                // NDC.push(hsess.getId());
-              }
 
               // ---------- execute Message ------------------
               final BServer server = sess.getServer();
               final BTransport transport = server.getTransport();
 
               if (HConstants.PROCESS_MESSAGE_ASYNC) {
+                
+                // Since 5.28, messages are always processed asynchronously to handle
+                // long-running requests by messages with BMessageHeader#FLAG_POLL_PROCESSING
+                // and BExceptionC#PROCESSING
+                
                 transport.recv(server, msg, asyncResponse);
               }
               else {
@@ -694,10 +707,8 @@ public abstract class HHttpServlet extends HttpServlet implements
 
                 if (log.isDebugEnabled()) log.debug("wait for result");
                 try {
-                  BMessage omsg = syncResponse
-                      .getResult(HConstants.REQUEST_TIMEOUT_MILLIS);
-                  if (log.isDebugEnabled()) log
-                      .debug("received result=" + omsg);
+                  BMessage omsg = syncResponse.getResult(timeout);
+                  if (log.isDebugEnabled()) log.debug("received result=" + omsg);
                   asyncResponse.setAsyncResult(omsg, null);
                 }
                 catch (Throwable e) {
@@ -709,25 +720,23 @@ public abstract class HHttpServlet extends HttpServlet implements
             }
             catch (Throwable e) {
               if (log.isDebugEnabled()) log.debug("Failed to execute.", e);
-              asyncResponse.setAsyncResult(null, e);
+              try {
+                asyncResponse.setAsyncResult(null, e);
+              }
+              catch (Exception ignored) {
+                // setAsyncResult might fail when it writes to the HttpServletResponse.
+                // This happens e.g. in testRemoteStreamsThrowExceptionOnRead when all requests
+                // are cancelled. The cancel method has already closed the HttpServletResponse objects.
+              }
             }
             finally {
 
               getActiveMessages().removeWorker(header.messageId);
 
-              if (HConstants.PROCESS_MESSAGE_ASYNC) {
-                // NDC.pop();
-              }
             }
 
           }
         };
-
-        // Set request timeout
-        long timeout = (header.flags & BMessageHeader.FLAG_TIMEOUT) != 0 ? (header.timeoutSeconds * 1000)
-            : HConstants.REQUEST_TIMEOUT_MILLIS;
-        if (log.isDebugEnabled()) log.debug("set timeout=" + timeout);
-        rctxt.setTimeout(timeout);
 
         // Start request
         if (log.isDebugEnabled()) log.debug("start sync/async");
@@ -770,6 +779,10 @@ public abstract class HHttpServlet extends HttpServlet implements
     }
 
     if (log.isDebugEnabled()) log.debug(")doMessage");
+  }
+
+  private long getDefaultRequestProcessingTimeout() {
+    return testAdapterRequestTimeoutMillis != 0 ? testAdapterRequestTimeoutMillis : HConstants.REQUEST_TIMEOUT_MILLIS;
   }
 
   protected void doNegotiate(final HttpServletRequest request,
@@ -1050,7 +1063,6 @@ public abstract class HHttpServlet extends HttpServlet implements
       upload.setSizeMax(maxSize);
 
       // Parse the request
-      @SuppressWarnings("unchecked")
       List<FileItem> items = upload.parseRequest(request);
       if (log.isDebugEnabled()) log.debug("received #items=" + items.size());
 
@@ -1175,24 +1187,20 @@ public abstract class HHttpServlet extends HttpServlet implements
       status = response.getStatus();
 
     }
-    catch (Throwable e) {
+    catch (FileNotFoundException e) {
       ex = e;
-
-      if (!(e instanceof ClientAbortException)) {
-        if (e instanceof FileNotFoundException) {
-          status = HttpServletResponse.SC_NOT_FOUND;
-        }
-
-        if (!response.isCommitted()) {
-          try {
-            response.sendError(status, e.getMessage());
-          }
-          catch (Throwable e2) {
-            log.debug("ex2=" + e2 + " caused by:", e);
-          }
-        }
+      status = HttpServletResponse.SC_NOT_FOUND;
+      sendResponseErrorNoEx(response, status);
+    }
+    catch (Exception e) {
+      ex = e;
+      status = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
+      
+      // Ignore error, if client has closed the connection.
+      // Check as string to be able to run the code on Undertow.
+      if (!e.toString().contains("ClientAbortException")) { 
+        sendResponseErrorNoEx(response, status);
       }
-
     }
     finally {
 
@@ -1214,6 +1222,17 @@ public abstract class HHttpServlet extends HttpServlet implements
     }
 
     if (log.isDebugEnabled()) log.debug(")service");
+  }
+
+  private void sendResponseErrorNoEx(HttpServletResponse response, int status) {
+    if (!response.isCommitted()) {
+      try {
+        response.sendError(status);
+      }
+      catch (Exception e2) {
+        log.debug("response.sendError failed", e2);
+      }
+    }
   }
 
   private String makeLogRequest(HttpServletRequest request, int status) {
@@ -1296,7 +1315,12 @@ public abstract class HHttpServlet extends HttpServlet implements
               for (File file : files) {
                 file.delete();
               }
-
+            }
+            
+            else if (functionName.equals(HTestAdapter.TIMEOUT_FOR_PROCESSING)) {
+              String timeoutSecondsStr = params.values().iterator().next();
+              int timeoutSeconds = Integer.parseInt(timeoutSecondsStr);
+              testAdapterRequestTimeoutMillis = (long)timeoutSeconds * 1000L;
             }
 
             if (log.isDebugEnabled()) log.debug(")testAdapter=" + ret);
@@ -1364,6 +1388,7 @@ public abstract class HHttpServlet extends HttpServlet implements
   private HCleanupResources cleanupThread;
   private AtomicBoolean isInitialized = new AtomicBoolean();
   private final Integer httpHeaderkeepAliveTimeout;
+  private long testAdapterRequestTimeoutMillis;
 
   private final static HServerListener defaultListener = new HServerListener() {
     @Override

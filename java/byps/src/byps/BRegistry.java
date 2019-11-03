@@ -182,6 +182,7 @@ public abstract class BRegistry {
       if (typeId == TYPEID_SET) return JSerializer_14.instance;
       if (typeId == TYPEID_EXCEPTION) return JSerializer_20.instance;
       if (typeId == TYPEID_STREAM) return JSerializer_15.instance;
+      if (typeId == TYPEID_VALUECLASS) return JSerializer_22.instance;
     }
     else {
       if (typeId == TYPEID_LIST) return BSerializer_12.instance;
@@ -190,6 +191,7 @@ public abstract class BRegistry {
       if (typeId == TYPEID_EXCEPTION) return BSerializer_20.instance;
       if (typeId == TYPEID_STREAM) return BSerializer_15.instance;
       if (typeId == TYPEID_HTTP_REQUEST) return BSerializer_24.instance;
+      if (typeId == TYPEID_VALUECLASS) return BSerializer_22.instance;
     }
     return null;
   }

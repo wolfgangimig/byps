@@ -48,6 +48,12 @@ public class HTestAdapter implements BTestAdapter {
 	}
 	
   @Override
+  public void setTimeoutForProcessingException(int timeoutSeconds) {
+    wire.testAdapter(HTestAdapter.TIMEOUT_FOR_PROCESSING, 
+        new String[] { HTestAdapter.TIMEOUT_FOR_PROCESSING, Integer.toString(timeoutSeconds) });
+  }
+  
+  @Override
   public void cancelAllRequests() {
     wire.internalCancelAllRequests(HWireClient.MESSAGEID_CANCEL_ALL_REQUESTS);
   }
@@ -104,6 +110,9 @@ public class HTestAdapter implements BTestAdapter {
 	 * @see #SET_SERVER_APP_VERSION
 	 */
 	public final static String VERSION = "version";
-	
-	
+
+	/**
+	 * 
+	 */
+  public static final String TIMEOUT_FOR_PROCESSING = "timeout-for-processing";
 }

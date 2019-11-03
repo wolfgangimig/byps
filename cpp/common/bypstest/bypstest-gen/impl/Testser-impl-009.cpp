@@ -162,6 +162,49 @@ void BSerializer_2033139391(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
+// Implementation of class BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions::BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions() : BMethodRequest(790485113) {
+	sleepSeconds = 0;
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::remote::BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions::BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions(int32_t sleepSeconds)
+	: BMethodRequest(790485113) 
+	, sleepSeconds(sleepSeconds)
+	{}
+// checkpoint byps.gen.cpp.PrintContext:496
+BTYPEID byps::test::api::remote::BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions::BSerializable_getTypeId() {
+	return 1155485035; 
+}
+// checkpoint byps.gen.cpp.GenApiClass:876
+void BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions::serialize(BIO& ar, const BVERSION version) {
+	ar & this->sleepSeconds;
+}
+void byps::test::api::remote::BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
+	PRemoteProcessingEx __byps__remoteT = byps_ptr_cast<RemoteProcessingEx>(__byps__remote);
+	__byps__remoteT->getValueAfterProcessingExceptions(sleepSeconds, [__byps__asyncResult](bool __byps__result, const BException& __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_1(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:933
+namespace byps { namespace test { namespace api { 
+void BSerializer_1155485035(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_ObjS_Template<byps::test::api::remote::BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions>(bio, pObj, pObjS, pBase);	
+}
+}}}
+namespace byps { namespace test { namespace api { namespace remote { 
+
+//-------------------------------------------------
 // Implementation of class BRequest_RemoteReferences_getNode
 // Generated from class byps.gen.cpp.GenApiClass
 
@@ -1080,47 +1123,5 @@ void byps::test::api::remote::BRequest_RemoteSetTypes_setDate1::execute(const PR
 namespace byps { namespace test { namespace api { 
 void BSerializer_1461676227(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::remote::BRequest_RemoteSetTypes_setDate1>(bio, pObj, pObjS, pBase);	
-}
-}}}
-namespace byps { namespace test { namespace api { namespace remote { 
-
-//-------------------------------------------------
-// Implementation of class BRequest_RemoteSetTypes_setDouble1
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_RemoteSetTypes_setDouble1::BRequest_RemoteSetTypes_setDouble1() : BMethodRequest(1900796440) {
-}
-// checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::remote::BRequest_RemoteSetTypes_setDouble1::BRequest_RemoteSetTypes_setDouble1(const byps::PSetDouble& double1)
-	: BMethodRequest(1900796440) 
-	, double1(double1)
-	{}
-// checkpoint byps.gen.cpp.PrintContext:496
-BTYPEID byps::test::api::remote::BRequest_RemoteSetTypes_setDouble1::BSerializable_getTypeId() {
-	return 185153786; 
-}
-// checkpoint byps.gen.cpp.GenApiClass:876
-void BRequest_RemoteSetTypes_setDouble1::serialize(BIO& ar, const BVERSION version) {
-	ar & this->double1;
-}
-void byps::test::api::remote::BRequest_RemoteSetTypes_setDouble1::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
-	PRemoteSetTypes __byps__remoteT = byps_ptr_cast<RemoteSetTypes>(__byps__remote);
-	__byps__remoteT->setDouble1(double1, [__byps__asyncResult](bool __byps__result, const BException& __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_19(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_185153786(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_ObjS_Template<byps::test::api::remote::BRequest_RemoteSetTypes_setDouble1>(bio, pObj, pObjS, pBase);	
 }
 }}}

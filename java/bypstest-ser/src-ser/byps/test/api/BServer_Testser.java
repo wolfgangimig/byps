@@ -106,6 +106,11 @@ public class BServer_Testser extends BServer {
 		return this;
 	}
 	
+	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteProcessingEx remoteSkeleton) {
+		addRemote(790485113, remoteSkeleton);
+		return this;
+	}
+	
 	public BServer_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteReferences remoteSkeleton) {
 		addRemote(568637225, remoteSkeleton);
 		return this;
@@ -183,6 +188,8 @@ public class BServer_Testser extends BServer {
 		byps.test.api.remote.RemoteMapTypesAsync.class,
 		byps.test.api.remote.RemotePrimitiveTypes.class,
 		byps.test.api.remote.RemotePrimitiveTypesAsync.class,
+		byps.test.api.remote.RemoteProcessingEx.class,
+		byps.test.api.remote.RemoteProcessingExAsync.class,
 		byps.test.api.remote.RemoteReferences.class,
 		byps.test.api.remote.RemoteReferencesAsync.class,
 		byps.test.api.remote.RemoteServerCtrl.class,

@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InterruptedIOException;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +17,6 @@ import org.apache.commons.logging.LogFactory;
 import byps.BAsyncResult;
 import byps.BContentStream;
 import byps.BException;
-import byps.BHashMap;
 import byps.BMessage;
 import byps.BMessageHeader;
 import byps.BTargetId;
@@ -28,7 +26,6 @@ public class HWireServer extends BWire {
 
   private final HWriteResponseHelper writeHelper;
   private final HActiveMessages activeMessages;
-  private final BHashMap<Long, Long> activeMessageIds = new BHashMap<Long, Long>();
   private final HConfig hConfig;
   private final static Log log = LogFactory.getLog(HWireServer.class);
   
@@ -47,16 +44,11 @@ public class HWireServer extends BWire {
   
   public void cancelMessage(long messageId) {
     activeMessages.cancelMessage(messageId);
-    activeMessageIds.remove(messageId);
   }
 
   public void cancelAllMessages() {
-    ArrayList<Long> messageIds = new ArrayList<Long>(activeMessageIds.keys());
-    for (Long messageId : messageIds) {
-      cancelMessage(messageId);
-    }
+    activeMessages.cancelAllMessages();
   }
-
 
   private class MyIncomingInputStream extends BWire.InputStreamWrapper {
 
@@ -169,9 +161,11 @@ public class HWireServer extends BWire {
         }
         writeResponse(header.messageId, buf, e);
       }
-      catch (IOException ex) { // Tomcat: Client abort Exception
-        if (log.isDebugEnabled()) log.debug("ClientAbortException");
-        // Client has closed the connection.
+      catch (IOException ex) { 
+        if (log.isDebugEnabled()) log.debug("Assume client has closed the connection.", ex);
+        // Client has closed the connection, Tomcat: ClientAbortException
+        // Need to re-throw in order to terminate the message in HWireClientR 
+        // if a disconnected long-poll request is used.
         throw new IllegalStateException(ex);
       }
       catch (Throwable ex) {
@@ -206,11 +200,12 @@ public class HWireServer extends BWire {
       log.debug("writeResponse(messageId=" + messageId + ", obuf=" + obuf + ", exception=" + e);
     }
     
-    activeMessageIds.remove(messageId);
-    HRequestContext rctxt = activeMessages.getAndRemoveRequestContext(messageId);
+    HRequestContext rctxt = activeMessages.getAndRemoveRequestContext(messageId, HRemoveMessageControl.FINISHED);
     if (log.isDebugEnabled()) log.debug("async context of messageId: " + rctxt);
+    
     if (rctxt == null) {
-      // An async request could be already completed if a timeout has occurred. 
+      // An async request could be already completed if a timeout has occurred
+      // or if the message has been cancelled.
       if (log.isDebugEnabled()) log.debug("No async context for messageId=" + messageId + ", message already written or an exception occured while it was beeing written before.");
       throw new IOException("Response already written.");
     }
@@ -218,16 +213,23 @@ public class HWireServer extends BWire {
       writeHelper.writeResponse(obuf, e, (HttpServletResponse) rctxt.getResponse(), rctxt.isAsync());
       rctxt.complete();
     }
+    
     if (log.isDebugEnabled()) log.debug(")writeResponse");
   }
 
   public BAsyncResult<BMessage> addMessage(final BMessageHeader header, HRequestContext rctxt, Thread workerThread) {
     if (log.isDebugEnabled()) log.debug("addMessage(" + rctxt + ", messageId=" + header.messageId);
 
-    BAsyncResult<BMessage> asyncResponse = new AsyncMessageResponse(header);
+    BAsyncResult<BMessage> asyncResponse = null;
+    
     try {
       activeMessages.addMessage(header, rctxt, workerThread);
-      activeMessageIds.put(header.messageId, header.messageId);
+      
+      boolean pollProcessing = (header.flags & BMessageHeader.FLAG_POLL_PROCESSING) != 0;
+      if (!pollProcessing) {
+        asyncResponse = new AsyncMessageResponse(header);
+      }
+      
     }
     catch (BException e) {
       try {
@@ -237,7 +239,6 @@ public class HWireServer extends BWire {
         if (log.isWarnEnabled()) log.warn("Failed to write error response.", e1);
       }
       rctxt.complete();
-      asyncResponse = null;
     }
 
     if (log.isDebugEnabled()) log.debug(")addMessage=" + header.messageId);

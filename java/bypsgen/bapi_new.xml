@@ -7131,6 +7131,27 @@
             <since>0.0.0.0</since>
         </serial>
         <serial>
+            <typeName>byps.test.api.remote.BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions</typeName>
+            <typeId>1155485035</typeId>
+            <members>
+                <member>
+                    <name>sleepSeconds</name>
+                    <typeName>int</typeName>
+                    <isTransient>false</isTransient>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <access>PUBLIC</access>
+                    <since>0.0.0.0</since>
+                </member>
+            </members>
+            <comments/>
+            <baseFullName></baseFullName>
+            <isInline>false</isInline>
+            <isEnum>false</isEnum>
+            <isFinal>true</isFinal>
+            <since>0.0.0.0</since>
+        </serial>
+        <serial>
             <typeName>byps.test.api.remote.BRequest_RemoteReferences_getNode</typeName>
             <typeId>1366991859</typeId>
             <members/>
@@ -12018,6 +12039,46 @@
                 </method>
             </methods>
             <comments/>
+            <since>0.0.0.0</since>
+        </remote>
+        <remote>
+            <typeName>byps.test.api.remote.RemoteProcessingEx</typeName>
+            <typeId>790485113</typeId>
+            <isClientRemote>false</isClientRemote>
+            <methods>
+                <method>
+                    <name>getValueAfterProcessingExceptions</name>
+                    <remoteName>byps.test.api.remote.RemoteProcessingEx</remoteName>
+                    <since>0.0.0.0</since>
+                    <requestTypeName>byps.test.api.remote.BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions</requestTypeName>
+                    <resultTypeName>byps.test.api.BResult_1</resultTypeName>
+                    <exceptionTypeNames/>
+                    <comments>
+                        <comment>
+                            <kind>@summary</kind>
+                            <text>This function sleeps the given number of seconds and returns true.</text>
+                        </comment>
+                        <comment>
+                            <kind>@param</kind>
+                            <text>sleepSeconds Time in seconds to sleep.</text>
+                        </comment>
+                        <comment>
+                            <kind>@return</kind>
+                            <text>true</text>
+                        </comment>
+                        <comment>
+                            <kind>@throws</kind>
+                            <text>RemoteException</text>
+                        </comment>
+                    </comments>
+                </method>
+            </methods>
+            <comments>
+                <comment>
+                    <kind>@summary</kind>
+                    <text>Interface used to check BExceptionC#PROCESSING.</text>
+                </comment>
+            </comments>
             <since>0.0.0.0</since>
         </remote>
         <remote>

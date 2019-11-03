@@ -116,6 +116,21 @@ public class BExceptionC {
   public static final int TIMEOUT = 408;
   
   /**
+   * Processing continues and requires new request.
+   * The server sends this exception code to indicated, that
+   * the request is still being processed. The client has 
+   * to send a new request using the same message ID and 
+   * the flag {@link BMessageHeader#FLAG_POLL_PROCESSING}.
+   * Handling this exception allows to avoid long running 
+   * TCP channels which could be disconnected by third party 
+   * components between client and server.
+   * 
+   * @since 5.28
+   */
+  public static final int PROCESSING = 202;
+    // BYPS-9
+  
+  /**
    * Client has already invalidated the session.
    * Same value as HttpURLConnection.HTTP_GONE.
    */

@@ -101,6 +101,12 @@ public class BClient_Testser extends BClient {
 		return this;
 	}
 	
+	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteProcessingEx remoteSkeleton) throws BException {
+		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
+		serverR.server.addRemote(790485113, remoteSkeleton);
+		return this;
+	}
+	
 	public BClient_Testser addRemote(byps.test.api.remote.BSkeleton_RemoteReferences remoteSkeleton) throws BException {
 		if (serverR == null) throw new BException(BExceptionC.NO_REVERSE_CONNECTIONS, "No reverse connections.");
 		serverR.server.addRemote(568637225, remoteSkeleton);
@@ -191,6 +197,9 @@ public class BClient_Testser extends BClient {
 	public byps.test.api.remote.RemotePrimitiveTypesAsync getRemotePrimitiveTypes() {
 		return remotePrimitiveTypes;
 	}
+	public byps.test.api.remote.RemoteProcessingExAsync getRemoteProcessingEx() {
+		return remoteProcessingEx;
+	}
 	public byps.test.api.remote.RemoteReferencesAsync getRemoteReferences() {
 		return remoteReferences;
 	}
@@ -232,6 +241,7 @@ public class BClient_Testser extends BClient {
 		if (remoteId == 1233438138) return remoteListTypes;
 		if (remoteId == 664304990) return remoteMapTypes;
 		if (remoteId == 456456) return remotePrimitiveTypes;
+		if (remoteId == 790485113) return remoteProcessingEx;
 		if (remoteId == 568637225) return remoteReferences;
 		if (remoteId == 1652234479) return remoteServerCtrl;
 		if (remoteId == 1900796440) return remoteSetTypes;
@@ -272,6 +282,7 @@ public class BClient_Testser extends BClient {
 	protected byps.test.api.remote.RemoteListTypesAsync remoteListTypes;
 	protected byps.test.api.remote.RemoteMapTypesAsync remoteMapTypes;
 	protected byps.test.api.remote.RemotePrimitiveTypesAsync remotePrimitiveTypes;
+	protected byps.test.api.remote.RemoteProcessingExAsync remoteProcessingEx;
 	protected byps.test.api.remote.RemoteReferencesAsync remoteReferences;
 	protected byps.test.api.remote.RemoteServerCtrlAsync remoteServerCtrl;
 	protected byps.test.api.remote.RemoteSetTypesAsync remoteSetTypes;
@@ -296,6 +307,7 @@ public class BClient_Testser extends BClient {
 		remoteListTypes = new byps.test.api.remote.BStub_RemoteListTypes(transport);
 		remoteMapTypes = new byps.test.api.remote.BStub_RemoteMapTypes(transport);
 		remotePrimitiveTypes = new byps.test.api.remote.BStub_RemotePrimitiveTypes(transport);
+		remoteProcessingEx = new byps.test.api.remote.BStub_RemoteProcessingEx(transport);
 		remoteReferences = new byps.test.api.remote.BStub_RemoteReferences(transport);
 		remoteServerCtrl = new byps.test.api.remote.BStub_RemoteServerCtrl(transport);
 		remoteSetTypes = new byps.test.api.remote.BStub_RemoteSetTypes(transport);

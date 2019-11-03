@@ -77,6 +77,10 @@ namespace byps.test.api
 		{
 			get { return remotePrimitiveTypesVal; }
 		}
+		public virtual byps.test.api.remote.RemoteProcessingEx RemoteProcessingEx
+		{
+			get { return remoteProcessingExVal; }
+		}
 		public virtual byps.test.api.remote.RemoteReferences RemoteReferences
 		{
 			get { return remoteReferencesVal; }
@@ -125,6 +129,7 @@ namespace byps.test.api
 			if (remoteId == 1233438138) return remoteListTypesVal;
 			if (remoteId == 664304990) return remoteMapTypesVal;
 			if (remoteId == 456456) return remotePrimitiveTypesVal;
+			if (remoteId == 790485113) return remoteProcessingExVal;
 			if (remoteId == 568637225) return remoteReferencesVal;
 			if (remoteId == 1652234479) return remoteServerCtrlVal;
 			if (remoteId == 1900796440) return remoteSetTypesVal;
@@ -167,6 +172,7 @@ namespace byps.test.api
 		protected byps.test.api.remote.RemoteListTypes remoteListTypesVal;
 		protected byps.test.api.remote.RemoteMapTypes remoteMapTypesVal;
 		protected byps.test.api.remote.RemotePrimitiveTypes remotePrimitiveTypesVal;
+		protected byps.test.api.remote.RemoteProcessingEx remoteProcessingExVal;
 		protected byps.test.api.remote.RemoteReferences remoteReferencesVal;
 		protected byps.test.api.remote.RemoteServerCtrl remoteServerCtrlVal;
 		protected byps.test.api.remote.RemoteSetTypes remoteSetTypesVal;
@@ -191,6 +197,7 @@ namespace byps.test.api
 			remoteListTypesVal = new byps.test.api.remote.BStub_RemoteListTypes(transport);
 			remoteMapTypesVal = new byps.test.api.remote.BStub_RemoteMapTypes(transport);
 			remotePrimitiveTypesVal = new byps.test.api.remote.BStub_RemotePrimitiveTypes(transport);
+			remoteProcessingExVal = new byps.test.api.remote.BStub_RemoteProcessingEx(transport);
 			remoteReferencesVal = new byps.test.api.remote.BStub_RemoteReferences(transport);
 			remoteServerCtrlVal = new byps.test.api.remote.BStub_RemoteServerCtrl(transport);
 			remoteSetTypesVal = new byps.test.api.remote.BStub_RemoteSetTypes(transport);

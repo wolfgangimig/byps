@@ -13,7 +13,7 @@ public class HConstants {
    * How long a request can take. A request can last up to this number of
    * milliseconds.
    */
-  public final static long REQUEST_TIMEOUT_MILLIS = 10 * 60 * 1000L;
+  public static long REQUEST_TIMEOUT_MILLIS = 10 * 60 * 1000L;
   
   /**
    * An incoming stream must be available after this millis.
@@ -70,8 +70,10 @@ public class HConstants {
 
   /**
    * Process messages asynchronously.
+   * Since 5.28, messages have to be processed asynchronously (Servlet 3.0) 
+   * in order to support BExceptionC#PROCESSING exceptions. 
    */
-  public final static boolean PROCESS_MESSAGE_ASYNC = false;
+  public final static boolean PROCESS_MESSAGE_ASYNC = true;
 
   /**
    * Incoming streams up to this size are kept in memory. If the stream is
@@ -132,6 +134,7 @@ public class HConstants {
     KEEP_MESSAGE_AFTER_FINISHED = INCOMING_STREAM_TIMEOUT_MILLIS + CLEANUP_MILLIS;
     
     TIMEOUT_LONGPOLL_MILLIS = getSystemPropertyLong("byps.http.longPollTimeoutSeconds", TIMEOUT_LONGPOLL_MILLIS / 1000) * 1000;
+    REQUEST_TIMEOUT_MILLIS = getSystemPropertyLong("byps.http.requestTimeoutSeconds", REQUEST_TIMEOUT_MILLIS / 1000) * 1000;    
   }
 
   private static long getSystemPropertyLong(String prop, long defaultValue) {

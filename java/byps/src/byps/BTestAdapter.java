@@ -39,5 +39,10 @@ public interface BTestAdapter {
 	 */
 	void setServerAppVersion(long version);
 	
+	/**
+	 * Set timeout until a {@link BExceptionC#PROCESSING} occurs.
+	 */
+	void setTimeoutForProcessingException(int timeoutSeconds);
+	
 	void cancelAllRequests();
 }

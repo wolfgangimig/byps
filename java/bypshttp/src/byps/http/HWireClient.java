@@ -593,6 +593,9 @@ public class HWireClient extends BWire {
           }
         }
       }
+      catch (Exception ex) {
+        log.error("Failed to read response.", ex);
+      }
       finally {
         // Remove request from HWireClient's internal map of requests.
         HWireClient.this.removeRequest(this);
