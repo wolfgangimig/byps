@@ -8,6 +8,7 @@ import java.net.URLEncoder;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -169,94 +170,177 @@ public class HWireClient extends BWire {
     return httpClient;
   }
 
+  /**
+   * This class is used to join stream upload results with their method call result. 
+   * 
+   */
   protected class AsyncResultAfterAllRequests implements BAsyncResult<BMessage> {
-    final BAsyncResult<BMessage> innerResult;
+    
+    /**
+     * Message ID.
+     * Used to cancel the method request and the stream requests if an error occurs.
+     */
     final long messageId;
-    int nbOfOutstandingResults;
-    BMessage result;
-    Throwable ex;
+    
+    /**
+     * Method result.
+     * If the method request and the stream requests are finished, the method result is passed to this object. 
+     */
+    private BAsyncResult<BMessage> methodResult;
+    
+    /**
+     * Counter for currently running requests.
+     * If this counter is 0, all requests belonging to "this" are finished.  
+     */
+    private int nbOfOutstandingResults;
+    
+    /**
+     * Result received from the method request.
+     * This result is passed to {@link #methodResult} if {@link #nbOfOutstandingResults} is 0.
+     */
+    private BMessage result;
+    
+    /**
+     * Exception received from the method request or from one of the stream requests.
+     * This exception is passed to {@link #methodResult} if {@link #nbOfOutstandingResults} is 0.
+     */
+    private Throwable ex;
 
-    public AsyncResultAfterAllRequests(long messageId, BAsyncResult<BMessage> asyncResult, final int nbOfRequests) {
-      this.innerResult = asyncResult;
+    /**
+     * Constructor.
+     * @param messageId Message ID 
+     * @param methodResult Receiver for the method result.
+     * @param nbOfRequests Number of associated requests. Equals to number of stream requests plus one.
+     */
+    public AsyncResultAfterAllRequests(long messageId, BAsyncResult<BMessage> methodResult, final int nbOfRequests) {
       this.messageId = messageId;
+      this.methodResult = methodResult;
       this.nbOfOutstandingResults = nbOfRequests;
     }
-    
-    private boolean unsync_gotException() {
-      if (ex != null) return true;
-      if (result != null && result.header != null && result.header.error != 0) return true;
-      return false;
+
+    /**
+     * Tests, whether an exception has already been received.
+     * Only the first exception is passed to {@link #methodResult}. 
+     * @return true, if an exception ahs already been received.
+     */
+    private boolean hasException() {
+      return ex != null || 
+          (result != null && result.header != null && result.header.error != 0);
     }
 
     @Override
     public void setAsyncResult(BMessage msg, Throwable ex) {
       if (log.isDebugEnabled()) log.debug("setAsyncResult(msg=" + msg + ", ex=" + ex);
 
+      // True, if an error has occurred and the message should be cancelled.
       boolean cancelMessage = false;
-      boolean isLastResult = false;
+
+      // This variables are used to avoid processing of object in the synchronized block below.
       BMessage innerMsg = null;
       Throwable innerEx = null;
+      BAsyncResult<BMessage> asyncResult = null;
 
       synchronized (this) {
 
-        isLastResult = --nbOfOutstandingResults == 0;
-        if (log.isDebugEnabled()) log.debug("isLastResult=" + isLastResult);
+        // Decrement counter of running requests.
+        nbOfOutstandingResults--;
 
+        // Received an exception of the underlying HTTP protocol?
         if (ex != null) {
+          
+          // If this exception is a BExceptionC#PROCESSING, the client has to send a 
+          // processing message to supply a new TCP channel for the server.
           int code = ex instanceof BException ? ((BException)ex).code : 0;
           if (code == BExceptionC.PROCESSING) {
             if (log.isDebugEnabled()) log.debug("re-send message");
+            
+            // Revert counter, because a new request is started in BTransport.
+            nbOfOutstandingResults++; 
+
+            // Pass this exception to BTransport (after the synchronized block). 
+            asyncResult = methodResult;
+            innerEx = ex;
+            
+            // The processing message will assign a new BAsyncResult that receives the result of the method request.
+            // This is done in HWireClient#replaceAsyncResultOfRequestForPollProcessing. 
+            // See #setInnerMethodResult.
+            methodResult = null;
           }
           else {
-            cancelMessage = !unsync_gotException();
+            
+            // Only the first exception is taken into account.
+            // If the first exception is received, the method request and stream requests will be cancelled. 
+            cancelMessage = !hasException();
             if (cancelMessage) this.ex = ex;
             if (log.isDebugEnabled()) log.debug("cancelMessage=" + cancelMessage);
           }
         }
-        
+
+        // Result information passed?
         if (msg != null && msg.buf != null) {
           if (log.isDebugEnabled()) log.debug("set result=" + msg);
           
+          // Received an exception from the server application?
           if (msg.header.error != 0) {
             if (log.isDebugEnabled()) log.debug("msg.header.error=" + msg.header.error);
-            cancelMessage = !unsync_gotException();
+            cancelMessage = !hasException();
           }
           
           this.result = msg;
         }
         else {
-          // Stream result OK
+          
+          // Response of a successfully uploaded stream. 
+          
         }
 
-        if (isLastResult) {
+        // Finished processing all requests?
+        if (nbOfOutstandingResults == 0) {
+          
+          if (log.isDebugEnabled()) log.debug("finshed all requests");
+          
+          // Set result variables. 
           innerMsg = this.result;
           innerEx = this.ex;
+          asyncResult = this.methodResult;
         }
 
       } // synchronized
 
-      if (isLastResult) {
-        if (log.isDebugEnabled()) log.debug("innerResult.setAsyncResult(result=" + innerMsg + ", ex=" + innerEx);
-        innerResult.setAsyncResult(innerMsg, innerEx);
-      }
 
-      if (cancelMessage && !isLastResult) {
+      // Pass the result or (first) exception to BTransport? 
+      if (asyncResult != null) {
+        if (log.isDebugEnabled()) log.debug("setAsyncResult(result=" + innerMsg + ", ex=" + innerEx);
+        asyncResult.setAsyncResult(innerMsg, innerEx);
+      }
+      
+      // Cancel all associated requests? 
+      else if (cancelMessage) {
         sendCancelMessage(messageId);
       }
 
       if (log.isDebugEnabled()) log.debug(")setAsyncResult");
     }
 
+    /**
+     * Replace the method result.
+     * This function is called when sending a request that polls processing of a long running request.
+     * @param asyncResult New method result
+     */
+    public synchronized void setInnerMethodResult(BAsyncResult<BMessage> asyncResult) {
+      methodResult = asyncResult;
+    }
+
   }
 
   @Override
   public synchronized void send(final BMessage msg, final BAsyncResult<BMessage> asyncResult) {
-    internalSendMessageAndStreams(msg, asyncResult);
+    internalSendMessage(msg, asyncResult);
   }
 
   @Override
   public void sendR(BMessage msg, BAsyncResult<BMessage> asyncResult) {
-    internalSendMessageAndStreams(msg, asyncResult);
+    internalSendMessage(msg, asyncResult);
   }
 
   protected void executeRequest(RequestToCancel r) throws BException {
@@ -302,113 +386,86 @@ public class HWireClient extends BWire {
     }
   }
 
-  private synchronized void internalSendMessageAndStreams(final BMessage msg, final BAsyncResult<BMessage> asyncResult) {
-    if (log.isDebugEnabled()) log.debug("send(" + msg + ", asyncResult=" + asyncResult);
-
+  /**
+   * Send a message and provide a result object.
+   * 
+   * @param msg Message to be sent.
+   * @param asyncResult Result object to be called when the message is finished.
+   */
+  private synchronized void internalSendMessage(BMessage msg, BAsyncResult<BMessage> asyncResult) {
+    if (log.isDebugEnabled()) log.debug("internalSendMessage(" + msg.header.messageId);
     try {
 
-      // If the BMessage contains streams, the given asyncResult is wrapped into a
-      // BAsyncRequest object that sets the asynchronous result after the
-      // message and all streams
-      // have been sent.
-      BAsyncResult<BMessage> outerResult = asyncResult;
-      if (msg.streams != null && msg.streams.size() != 0) {
-        if (log.isDebugEnabled()) log.debug("wrap asyncResult");
-        outerResult = new AsyncResultAfterAllRequests(msg.header.messageId, asyncResult, msg.streams.size() + 1);
-      }
-      
-      // Eval timeout for message.
-      // If the message is sent with streams, it does not return before all streams are sent.
-      // If large streams are uploaded, the message could cause a timeout error on the client side. 
-      // In order to prevent this situation, set an infinite timeout (=0).
-      boolean hasStreams = msg.streams != null && msg.streams.size() != 0;
-      int timeoutSecondsRequest = hasStreams ? 0 : this.timeoutSecondsClient; 
+      // Helper variables for message options.
+      boolean hasStreams = msg.streams != null && !msg.streams.isEmpty();
+      boolean isProcessing = (msg.header.flags & BMessageHeader.FLAG_POLL_PROCESSING) != 0;
+      if (log.isDebugEnabled()) log.debug("hasStreams=" + hasStreams + ", isProcessing=" + isProcessing);
 
-      // Create RequestToCancel for message
-      RequestToCancel req = createRequestForMessage(msg, outerResult, timeoutSecondsRequest);
-      executeRequest(req);
-
-      // Create RequestToCancel objects for each stream.
+      // Does the message send also streams?
       if (hasStreams) {
-        putStreams(msg.streams, outerResult);
+        internalSendMessageAndStreams(msg, asyncResult);
       }
+      else {
+        
+        // Is this request following a BException#PROCESSING?
+        if (isProcessing) {
+          
+          // BYPS-9.
+          // Check, whether there is an active stream request and if so, replace the 
+          // method result in this stream.
+          BAsyncResult<BMessage> prevAsyncResult = replaceAsyncResultOfRequestForPollProcessing(msg.header.messageId, asyncResult);
+          if (prevAsyncResult != null) {
+            asyncResult = prevAsyncResult;
+          }
+        }
 
+        // Send a message without streams.
+        internalSendMessageWithoutStreams(msg, asyncResult);
+      }
     }
     catch (BException e) {
       asyncResult.setAsyncResult(null, e);
     }
+    if (log.isDebugEnabled()) log.debug(")internalSendMessage");
+  }
+  
+  /**
+   * Send a message that does not include streams.
+   * @param msg Message object
+   * @param asyncResult Result object
+   * @throws BException
+   */
+  private synchronized void internalSendMessageWithoutStreams(final BMessage msg, final BAsyncResult<BMessage> asyncResult) throws BException {
+    RequestToCancel req = createRequestForMessage(msg, asyncResult, timeoutSecondsClient);
+    executeRequest(req);
+  }
+  
+  /**
+   * Send a message object that includes streams.
+   * @param msg Message object
+   * @param asyncResult Result object
+   * @throws BException
+   */
+  private synchronized void internalSendMessageAndStreams(final BMessage msg, final BAsyncResult<BMessage> asyncResult) throws BException {
+    if (log.isDebugEnabled()) log.debug("send(" + msg + ", asyncResult=" + asyncResult);
+
+    // If the BMessage contains streams, the given asyncResult is wrapped into a
+    // BAsyncRequest object that sets the asynchronous result after the
+    // message and all streams
+    // have been sent.
+    if (log.isDebugEnabled()) log.debug("wrap asyncResult");
+    BAsyncResult<BMessage> outerResult = new AsyncResultAfterAllRequests(msg.header.messageId, asyncResult, msg.streams.size() + 1);
+    
+    // Create RequestToCancel for message
+    RequestToCancel req = createRequestForMessage(msg, outerResult, timeoutSecondsClient);
+    executeRequest(req);
+
+    // Create RequestToCancel objects for each stream.
+    putStreams(msg.streams, outerResult);
 
     if (log.isDebugEnabled()) log.debug(")send");
   }
 
-  @SuppressWarnings("unused")
-  private synchronized void internalSendStreamsThenMessage(final BMessage msg, final BAsyncResult<BMessage> asyncResult) {
-    if (log.isDebugEnabled()) log.debug("internalSendStreamsThenMessage(" + msg + ", asyncResult=" + asyncResult);
-
-    // Convert the BMessage into RequestToCancel objects.
-    // One RequestToCancel is created for msg.buf.
-    // For each stream in msg.streams further RequestToCancel objects are
-    // created.
-
-    int nbOfStreams = msg.streams != null ? msg.streams.size() : 0;
-    final ArrayList<RequestToCancel> requests = new ArrayList<RequestToCancel>(nbOfStreams != 0 ? nbOfStreams : 1);
-
-    // Does the message contains streams?
-    if (nbOfStreams != 0) {
-
-      // Send the streams first and then send the message.
-      // If the message is sent before the streams,
-      // a timeout happens for the message if it takes
-      // more than timeoutMillisRequest to send the streams.
-
-      // Create an BAsyncResult that sends the message on setAsyncResult
-      BAsyncResult<BMessage> asyncSendMessage = new BAsyncResult<BMessage>() {
-        @Override
-        public void setAsyncResult(BMessage result, Throwable exception) {
-          if (exception != null) {
-            asyncResult.setAsyncResult(null, exception);
-          }
-          else {
-            // Send the message
-            try {
-              RequestToCancel messageRequest = createRequestForMessage(msg, asyncResult, timeoutSecondsClient);
-              executeRequest(messageRequest);
-            }
-            catch (BException e) {
-              asyncResult.setAsyncResult(null, e);
-            }
-          }
-        }
-      };
-
-      // Create requests for each stream
-      BAsyncResult<BMessage> outerResult = new AsyncResultAfterAllRequests(msg.header.messageId, asyncSendMessage, nbOfStreams);
-      for (BContentStream stream : msg.streams) {
-        RequestToCancel streamRequest = createRequestForPutStream(stream, outerResult);
-        requests.add(streamRequest);
-      }
-
-    }
-    else {
-      // Create RequestToCancel for msg.buf
-      RequestToCancel req = createRequestForMessage(msg, asyncResult, timeoutSecondsClient);
-      requests.add(req);
-    }
-
-    // Execute the RequestToCancel objects in the thread pool
-    if (log.isDebugEnabled()) log.debug("put requests into thread pool");
-    try {
-      for (RequestToCancel r : requests) {
-        executeRequest(r);
-      }
-    }
-    catch (BException e) {
-      asyncResult.setAsyncResult(null, e);
-    }
-
-    if (log.isDebugEnabled()) log.debug(")internalSendStreamsThenMessage");
-  }
-  
   protected RequestToCancel createRequestForMessage(BMessage msg, BAsyncResult<BMessage> asyncResult, int timeoutSecondsRequest) {
     if (log.isDebugEnabled()) log.debug("createRequestForMessage(" + msg);
     ByteBuffer requestDataBuffer = msg.buf;
@@ -839,6 +896,31 @@ public class HWireClient extends BWire {
     if (robj == null) return;
     openRequestsToCancel.remove(robj);
     if (log.isDebugEnabled()) log.debug(")removeRequest");
+  }
+  
+  protected RequestToCancel findRequest(long messageId) {
+    RequestToCancel ret = null;
+    Collection<RequestToCancel> copyOfRequests = openRequestsToCancel.keys();
+    for (RequestToCancel req : copyOfRequests) {
+      if (req.messageId == messageId) {
+        ret = req;
+        break;
+      }
+    }
+    return ret;
+  }
+  
+  protected BAsyncResult<BMessage> replaceAsyncResultOfRequestForPollProcessing(long messageId, BAsyncResult<BMessage> asyncResult) {
+    BAsyncResult<BMessage> ret = null;
+    RequestToCancel request = findRequest(messageId);
+    if (request != null) {
+      BAsyncResult<BMessage> allResults = request.asyncResult;
+      if (allResults instanceof AsyncResultAfterAllRequests) {
+        ((AsyncResultAfterAllRequests)allResults).setInnerMethodResult(asyncResult);
+        ret = allResults;
+      }
+    }
+    return ret;
   }
 
   /**

@@ -55,7 +55,7 @@ public class TestUtils {
 	//public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
 	public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
 	
-	public static boolean TEST_LARGE_STREAMS = false;
+	public static boolean TEST_LARGE_STREAMS = true;
 	
 	public static boolean TEST_ONE_SHORT_STREAM = true;
 	
@@ -614,6 +614,8 @@ public class TestUtils {
 		private long pos;
 		private final long nbOfBytes;
 		private final boolean chunked;
+		private final byte[] oneByteBuffer = new byte[1];
+		private long lastProgress;
 		
 		public MyContentStream(long nbOfBytes, boolean chunked) {
 			this.nbOfBytes = nbOfBytes;
@@ -628,14 +630,37 @@ public class TestUtils {
 
 		@Override
 		public int read() throws IOException {
-			if (nbOfBytes == pos) {
-				return -1;
-			}
-			else {
-				int ret = (int)(pos++ & 0xFF);
-				if ((ret % 5) == 0) ret = 0; 
-				return ret;
-			}
+		  int ret = read(oneByteBuffer, 0, 1);
+		  if (ret > 0) {
+		    ret = (int)(oneByteBuffer[0]) & 0xFF;
+		  }
+		  return ret;
+		}
+		
+		@Override
+		public int read(byte[] b, int off, int len) throws IOException {
+		  int ret = -1;
+      long bytesAvailable = nbOfBytes - pos;
+		  if (bytesAvailable > 0) {
+		    
+		    if (bytesAvailable < (long)len) len = (int)bytesAvailable;
+		    
+		    for (int i = 0; i < len; i++) {
+		      b[i] = (byte)((pos + i) & 0xFF);
+		    }
+		    
+		    pos += len;
+		    ret = len;
+		    
+		    long progress = (pos * 100L) / nbOfBytes;
+		    if (progress != lastProgress) {
+		      if ((progress % 10) == 0) {
+		        log.info("Stream.read " + progress + "%");
+		      }
+		      lastProgress = progress;
+		    }
+		  }
+		  return ret;
 		}
 	}
 

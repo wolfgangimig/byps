@@ -227,7 +227,7 @@ public class TestRemoteStreams {
   }
   
   /**
-   * Read/write large stream, 120GB
+   * Read/write large stream, 1.20GB
    * @throws InterruptedException
    * @throws IOException
    */
@@ -235,13 +235,26 @@ public class TestRemoteStreams {
   public void testRemoteStreamsLargeStream() throws InterruptedException, IOException {
     log.info("testRemoteStreamsLargeStream(");
     if (TestUtils.TEST_LARGE_STREAMS) {
-      long contentLength = Double.valueOf(1.0e9).longValue() + 1;
-      InputStream istrm = new TestUtils.MyContentStream(contentLength, false);
-      remote.setImage(istrm);
-  
-      InputStream istrmR = remote.getImage();
-      InputStream istrmE = new TestUtils.MyContentStream(contentLength, false);
-      TestUtils.assertEquals(log, "stream", istrmE, istrmR);
+      
+      // Set 1s timeout until BExceptionC#PROCESSING is thrown.
+      client.getTransport().getWire().getTestAdapter().setTimeoutForProcessingException(30);
+      
+      try {
+
+        long contentLength = Double.valueOf(1.20e9).longValue() + 1;
+        InputStream istrm = new TestUtils.MyContentStream(contentLength, false);
+        remote.setImage(istrm);
+    
+        InputStream istrmR = remote.getImage();
+        InputStream istrmE = new TestUtils.MyContentStream(contentLength, false);
+        TestUtils.assertEquals(log, "stream", istrmE, istrmR);
+        
+      }
+      finally {
+        
+        // Reset timeout 
+        client.getTransport().getWire().getTestAdapter().setTimeoutForProcessingException(0);
+      }
     }
     else {
       log.info("skipped");
