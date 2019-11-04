@@ -13,7 +13,7 @@ public class HConstants {
    * How long a request can take. A request can last up to this number of
    * milliseconds.
    */
-  public static long REQUEST_TIMEOUT_MILLIS = 10 * 60 * 1000L;
+  public static long REQUEST_TIMEOUT_MILLIS = 2 * 60 * 1000L; // FIXME timeout 10min
   
   /**
    * An incoming stream must be available after this millis.
@@ -44,7 +44,7 @@ public class HConstants {
    * appropriate values in BMessageHeader. This is applied in byps.js 
    * for browser clients, where a timeout of 30s is passed.
    */
-  public static long TIMEOUT_LONGPOLL_MILLIS = 5 * 60 * 1000L;
+  public static long TIMEOUT_LONGPOLL_MILLIS = 1 * 60 * 1000L; // FIXME timeout 5min
 
   /**
    * Keep message in memory after it was finished. After a message is canceled,
