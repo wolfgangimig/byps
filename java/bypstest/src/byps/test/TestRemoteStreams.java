@@ -235,7 +235,7 @@ public class TestRemoteStreams {
   public void testRemoteStreamsLargeStream() throws InterruptedException, IOException {
     log.info("testRemoteStreamsLargeStream(");
     if (TestUtils.TEST_LARGE_STREAMS) {
-      long contentLength = Double.valueOf(120.0e9).longValue() + 1;
+      long contentLength = Double.valueOf(1.0e9).longValue() + 1;
       InputStream istrm = new TestUtils.MyContentStream(contentLength, false);
       remote.setImage(istrm);
   

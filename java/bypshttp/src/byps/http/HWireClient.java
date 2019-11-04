@@ -203,9 +203,15 @@ public class HWireClient extends BWire {
         if (log.isDebugEnabled()) log.debug("isLastResult=" + isLastResult);
 
         if (ex != null) {
-          cancelMessage = !unsync_gotException();
-          if (cancelMessage) this.ex = ex;
-          if (log.isDebugEnabled()) log.debug("cancelMessage=" + cancelMessage);
+          int code = ex instanceof BException ? ((BException)ex).code : 0;
+          if (code == BExceptionC.PROCESSING) {
+            if (log.isDebugEnabled()) log.debug("re-send message");
+          }
+          else {
+            cancelMessage = !unsync_gotException();
+            if (cancelMessage) this.ex = ex;
+            if (log.isDebugEnabled()) log.debug("cancelMessage=" + cancelMessage);
+          }
         }
         
         if (msg != null && msg.buf != null) {
