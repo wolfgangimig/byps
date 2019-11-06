@@ -73,6 +73,7 @@ public class MySession extends HSession {
 		server.addRemote(new MyRemoteArrayTypes23());
 		server.addRemote(new MyRemoteConstants());
 		server.addRemote(new MyRemoteWithAuthentication(this));
+		server.addRemote(new MyRemoteProcessingEx());
 
 		myRemoteServerCtrl.setServerRegistry(serverContext.getServerRegistry()); 
 		server.addRemote(myRemoteServerCtrl);

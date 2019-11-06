@@ -1,11 +1,10 @@
 package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InterruptedIOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
@@ -77,7 +76,7 @@ public class HActiveMessages {
 	public void addMessage(final BMessageHeader header, final HRequestContext rctxt, final Thread workerThread) throws BException {
 		if (log.isDebugEnabled()) log.debug("addMessage(" + header + ", rctxt=" + rctxt);
 		
-		HActiveMessage msg = getOrCreateActiveMessage(header.messageId);
+		final HActiveMessage msg = getOrCreateActiveMessage(header.messageId);
 		msg.setSessionid(header.sessionId);
 		
 		HAsyncErrorListener alsn = new HAsyncErrorListener() {
@@ -85,16 +84,38 @@ public class HActiveMessages {
 			@Override
 			public void onTimeout(AsyncEvent arg0) throws IOException {
 			  
-	      HRequestContext rctxt = getAndRemoveRequestContext(header.messageId);
+			  // A timeout can occur for a long-poll request or a request that requires 
+			  // a long time to execute (e.g. upload of a large InputStream that is received in HHttpServlet.putStream).
+			  
+			  // If we are in a long-poll, the message is completed with HTTP 204 which
+			  // instructs the client to send a new long-poll (with a new message ID).
+			  
+			  // If this is not a long-poll, a HTTP 202 is sent which lets the client 
+			  // re-new the request by sending an empty message with the same message ID.
+			  // This empty message has BMessageHeader.FLAG_POLL_PROCESSING.
+			  // BYPS-9: Avoid socket exception while uploading large files.
+			  
+			  boolean isLongPoll = (header.flags & BMessageHeader.FLAG_LONGPOLL) != 0;
+			  HRemoveMessageControl removeControl = isLongPoll ? HRemoveMessageControl.FINISHED : HRemoveMessageControl.PROCESSING;
+			      
+			  HRequestContext rctxt = getAndRemoveRequestContext(header.messageId, removeControl);
 	      if (rctxt == null) return;
+	      
+	      if (log.isInfoEnabled()) {
+	        if (isLongPoll) {
+	          log.info("Client is notified to refresh long-poll.");
+	        }
+	        else {
+	          log.info("Timeout for message processed by " + msg.getWorkerThread() + ", client is notified to send a new request to receive the message result.");
+	        }
+	      }
 	       
 				HttpServletResponse resp = (HttpServletResponse)arg0.getSuppliedResponse();
 				
-				boolean isLongPoll = (header.flags & BMessageHeader.FLAG_LONGPOLL) != 0;
-				int status = isLongPoll ? HttpServletResponse.SC_NO_CONTENT : HttpServletResponse.SC_REQUEST_TIMEOUT;
+				int status = isLongPoll ? HttpServletResponse.SC_NO_CONTENT : HttpServletResponse.SC_ACCEPTED;
 				resp.setStatus(status);
 				  
-				resp.getOutputStream().close();
+				resp.getOutputStream().close(); 
 				
         if (log.isDebugEnabled()) log.debug("AsyncErrorListener.onTimeout(" + arg0 + ") status=" + status);
 			}
@@ -102,12 +123,15 @@ public class HActiveMessages {
 			@Override
 			public void onError(AsyncEvent arg0) throws IOException {
 				if (log.isDebugEnabled()) log.debug("AsyncErrorListener.onError(" + arg0 + ")");
-				getAndRemoveRequestContext(header.messageId);
+				getAndRemoveRequestContext(header.messageId, HRemoveMessageControl.FINISHED);
 			}
 		};
 		rctxt.addListener(alsn);
 
-		msg.setRequestContext(rctxt, workerThread);
+		boolean pollProcessingMessage = (header.flags & BMessageHeader.FLAG_POLL_PROCESSING) != 0;
+		Thread modifyWorkerThread = pollProcessingMessage ? null : workerThread;
+		msg.setRequestContext(rctxt, modifyWorkerThread);
+		
 		if (log.isDebugEnabled()) log.debug(")addMessage");
 	}
 
@@ -160,11 +184,11 @@ public class HActiveMessages {
 		return ret;
 	}
 	
-	public HRequestContext getAndRemoveRequestContext(Long messageId) throws BException {
+	public HRequestContext getAndRemoveRequestContext(Long messageId, HRemoveMessageControl removeControl) throws BException {
 		if (log.isDebugEnabled()) log.debug("getAndRemoveRequestContext(" + messageId);
 		HActiveMessage msg = activeMessages.get(messageId);
 		// msg might be null when called from HActiveMessages.addMessage, HAsyncErrorListener.onTimeout, HActiveMessages.addMessage-HAsyncErrorListener.onError
-		HRequestContext rctxt = msg != null ? msg.getAndRemoveRequestContext() : null;
+		HRequestContext rctxt = msg != null ? msg.getAndRemoveRequestContext(removeControl) : null;
 		if (log.isDebugEnabled()) log.debug(")getAndRemoveRequestContext=" + rctxt);
 		return rctxt;
 	}
@@ -192,8 +216,22 @@ public class HActiveMessages {
 	public void cancelMessage(final Long messageId) {
 		if (log.isDebugEnabled()) log.debug("cancelMessage(" + messageId);
 		HActiveMessage msg = activeMessages.get(messageId);
-		msg.cancelMessage();
+		if (msg != null) {
+		  msg.cancelMessage();
+		}
 		if (log.isDebugEnabled()) log.debug(")cancelMessage");
+	}
+	
+	/**
+	 * Set cancel flag for all messages.
+	 */
+	public void cancelAllMessages() {
+	  if (log.isDebugEnabled()) log.debug("cancelAllMessages(");
+	  Collection<HActiveMessage> copyOfValues = activeMessages.values();
+	  for (HActiveMessage msg : copyOfValues) {
+	    msg.cancelMessage();
+	  }
+	  if (log.isDebugEnabled()) log.debug(")cancelAllMessages");
 	}
 	
 	/**
@@ -301,8 +339,10 @@ public class HActiveMessages {
 		for (HActiveMessage msg : msgs) {
 		  if (msg.getWorkerThread() != excludeThread) {
   			if (inclLongPolls || !msg.isLongPoll()) {
-  			  if (log.isDebugEnabled()) log.debug("activeMessage=" + msg);
-  				list.add(msg.messageId);
+  			  if (!msg.isFinished()) {
+  			    if (log.isDebugEnabled()) log.debug("activeMessage=" + msg);
+  			    list.add(msg.messageId);
+  			  }
   			}
 		  }
 		}

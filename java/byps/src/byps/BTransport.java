@@ -95,8 +95,7 @@ public class BTransport {
   
   public synchronized BOutput getOutput() throws BException {
     if (protocol == null) throw new BException(BExceptionC.INTERNAL, "No protocol negotiated.");
-    BOutput bout = protocol.getOutput(this, null);
-    return bout;
+    return protocol.getOutput(this, null);
   }
 
   public synchronized BOutput getResponse(BMessageHeader requestHeader) throws BException {
@@ -200,86 +199,212 @@ public class BTransport {
       BTransport.this.send(methodRequest, asyncResult);
     }
   }
+  
+  /**
+   * This class processes a BMessage received from the server.
+   * In {@link BTransport#send(Object, BAsyncResult)} the object to sent is 
+   * serialized into a BMessage and sent to the server. The server receives
+   * a BMessage as response which is de-serialized in this class to a 
+   * result object. The result is passed to the BAsyncResult provied in the
+   * constructor.
+   * If the server sends a re-login exception a new authentication is processed
+   * and the message is sent again. If the server sends a {@link BExceptionC#PROCESSING} 
+   * exception, an empty message with the same header is sent to provide a
+   * new channel to receive the response. 
+   * BYPS-9: Avoid socket exception while uploading large files.
+   * @param <T> Type of result object
+   */
+  private class SendMessageResult<T> implements BAsyncResult<BMessage> {
+    
+    /**
+     * Header of the request message.
+     */
+    private final BMessageHeader header;
+    /**
+     * Object to be sent.
+     * This object is casted to a BMethodRequest.
+     */
+    private final Object obj;
+    /**
+     * Request number.
+     * Used for logging.
+     */
+    private final long requestId;
+    /**
+     * Asynchronous result.
+     */
+    private final BAsyncResult<T> asyncResult;
+    /**
+     * Start time of processing.
+     */
+    private final long t0 = System.currentTimeMillis();
+    
+    /**
+     * Initialize by parameters from within {@link BTransport#send(Object, BAsyncResult)}.
+     * @param header Message header.
+     * @param obj Object to be sent. Must be a BMethodRequest.
+     * @param requestId Request number, used for logging.
+     * @param asyncResult Asynchronous result.
+     */
+    public SendMessageResult(BMessageHeader header, Object obj, long requestId, BAsyncResult<T> asyncResult) {
+      this.header = header;
+      this.obj = obj;
+      this.requestId = requestId;
+      this.asyncResult = asyncResult;
+    }
+
+    /**
+     * This constructor is used to clone the previous result object if a {@link BExceptionC#PROCESSING} has occured.
+     * @param prevResult Previous result object.
+     */
+    public SendMessageResult(SendMessageResult<T> prevResult) {
+      this.header = prevResult.header;
+      this.obj = prevResult.obj;
+      this.requestId = prevResult.requestId;
+      this.asyncResult = prevResult.asyncResult;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public void setAsyncResult(BMessage msgRecv, Throwable e) {
+      if (log.isDebugEnabled()) log.debug("setAsyncResult(" + msgRecv + ", ex=" + e);
+
+      T ret = null;
+      Throwable rex = e;
+      int typeId = 0;
+
+      try {
+        
+        // Get typeId of request object. Required to process a re-login exception.
+        typeId = protocol.getRegistry().getSerializer(obj, true).typeId;
+        
+        // If there was no Socket exception and HTTP response code was 200...
+        if (e == null) {
+          
+          // De-serialize the result object.
+          final BInput bin = getInput(msgRecv.header, msgRecv.buf);
+          if (log.isDebugEnabled()) log.debug("load object");
+          ret = (T) bin.load();
+        }
+
+      } catch (Throwable ex) {
+        
+        // The server sent an exception in the request body.
+        // This is the ordinary way for the server to pass an error result.
+        
+        if (log.isDebugEnabled()) log.debug("Received exception.", ex);
+        rex = ex;
+      }
+
+      // BYPS or Application relogin error? (HTTP 401)
+      if (internalIsReloginException(rex, typeId)) {
+
+        logResponse(ret, rex, "relogin");
+        
+        // Authenticate and send the message again.
+        
+        // The server is responsible for killing long-polls of invalid sessions.
+        // So we do not need to stop the serverR before re-login.
+        
+        reloginAndRetrySend((BMethodRequest)obj, asyncResult);
+
+      }
+      
+      // Processing exception, HTTP 202
+      else if (isProcessingException(rex)) {
+        
+        logResponse(ret, rex, "processing");
+        
+        // The server still works on the message.
+        // Send a poll message with the same message ID and a dummy object to have a payload.
+        // The server responds to this message, when it has finished.
+        // BYPS-9: Avoid socket exception while uploading large files.
+        
+        try {
+          BMessageHeader pollHeader = new BMessageHeader(header);
+          pollHeader.flags &= ~BMessageHeader.FLAG_RESPONSE;
+          pollHeader.flags |= BMessageHeader.FLAG_POLL_PROCESSING;
+          BOutput bout = protocol.getOutput(BTransport.this, pollHeader);
+          bout.store(new BValueClass());
+          BMessage pollMsg = bout.toMessage();
+          wire.send(pollMsg, new SendMessageResult<T>(this));
+        }
+        catch (Exception ex) {
+          if (log.isWarnEnabled()) log.warn("Processing status cannot be polled", ex);
+          asyncResult.setAsyncResult(ret, rex);
+        }
+      }
+      
+      // Success or other error.
+      else {
+        
+        logResponse(ret, rex, null);
+
+        asyncResult.setAsyncResult(ret, rex);
+      }
+      
+      if (log.isDebugEnabled()) log.debug(")setAsyncResult");
+    }
+    
+    /**
+     * Print response data into log file.
+     * @param ret Response object
+     * @param rex Exception
+     * @param hint "relogin" or "processing" or empty
+     */
+    private void logResponse(T ret, Throwable rex, String hint) {
+      if (printRequestIntoLogger && log.isInfoEnabled()) {
+        long t1 = System.currentTimeMillis();
+        StringBuilder sbuf = new StringBuilder();
+        sbuf.append("send-").append(requestId).append(" [").append(t1 - t0).append("]");
+        sbuf.append(" Response=");
+        if (hint != null && !hint.isEmpty()) {
+          sbuf.append(hint);
+        }
+        else if (rex != null) {
+          sbuf.append(rex);
+        }
+        else {
+          sbuf.append(ret);
+        }
+        log.info(sbuf);
+      }
+    }
+
+    /**
+     * Test whether the given exception is a {@link BExceptionC#PROCESSING}.
+     * @param e Exception
+     * @return true, if e is a {@link BExceptionC#PROCESSING}.
+     */
+    private boolean isProcessingException(Throwable e) {
+      boolean ret = false;
+      if (e instanceof BException) {
+        BException bex = (BException)e;
+        ret = bex.code == BExceptionC.PROCESSING;
+      }
+      return ret;
+    }
+    
+  }
 
   public <T> void send(final Object obj, final BAsyncResult<T> asyncResult) {
     if (log.isDebugEnabled()) log.debug("send(obj=" + obj + ", asyncResult=" + asyncResult);
     
     final long requestId = requestCounter.incrementAndGet(); 
     if (printRequestIntoLogger && log.isInfoEnabled()) log.info("send-" + requestId + " Request=" + obj);
-    final long t0 = System.currentTimeMillis();
     
     try {
-      final BOutput bout = getOutput();
-      final int typeId = protocol.getRegistry().getSerializer(obj, true).typeId;
       
+      // Store object into message.
       if (log.isDebugEnabled()) log.debug("store object");
+      final BOutput bout = getOutput();
       bout.store(obj);
-      
-      final BAsyncResult<BMessage> outerResult = new BAsyncResult<BMessage>() {
-
-        @SuppressWarnings("unchecked")
-        @Override
-        public void setAsyncResult(BMessage msgRecv, Throwable e) {
-          if (log.isDebugEnabled()) log.debug("setAsyncResult(" + msgRecv + ", ex=" + e);
-
-          boolean relogin = false;
-
-          try {
-
-            if (e != null) {
-
-              // BYPS relogin error? (HTTP 401)
-              relogin = internalIsReloginException(e, typeId);
-              long t1 = System.currentTimeMillis();
-              if (printRequestIntoLogger && log.isInfoEnabled()) log.info("send-" + requestId + " [" + (t1-t0) + "] Response=" + e + ", relogin=" + relogin);
-
-              if (!relogin) {
-                asyncResult.setAsyncResult(null, e);
-              }
-
-            }
-            else {
-              final BInput bin = getInput(msgRecv.header, msgRecv.buf);
-              if (log.isDebugEnabled()) log.debug("load object");
-              T ret = (T) bin.load();
-              long t1 = System.currentTimeMillis();
-              if (printRequestIntoLogger && log.isInfoEnabled()) log.info("send-" + requestId + " [" + (t1-t0) + "] Response=" + ret);
-              asyncResult.setAsyncResult(ret, e);
-            }
-
-          } catch (Throwable ex) {
-            if (log.isDebugEnabled()) log.debug("Received exception.", ex);
-
-            // Application relogin error?
-            relogin = internalIsReloginException(ex, typeId);
-            if (log.isDebugEnabled()) log.debug("isReloginException=" + relogin);
-
-            if (!relogin) {
-              long t1 = System.currentTimeMillis();
-              if (printRequestIntoLogger && log.isInfoEnabled()) log.info("send-" + requestId + " [" + (t1-t0) + "] Response=" + ex);
-              asyncResult.setAsyncResult(null, ex);
-            }
-
-          }
-
-          if (relogin) {
-
-            // Authenticate and send the message again.
-            
-            // The server is responsible for killing long-polls of invalid sessions.
-            // So we do not need to stop the serverR before re-login.
-            
-            if (log.isInfoEnabled()) log.debug("Re-login");
-            reloginAndRetrySend((BMethodRequest)obj, asyncResult);
-
-          }
-
-          if (log.isDebugEnabled()) log.debug(")setAsyncResult");
-        }
-
-      };
-
       final BMessage msgSend = bout.toMessage();
+      
+      // Wrap asyncResult to handle re-login and processing response.
+      final BAsyncResult<BMessage> outerResult = new SendMessageResult<T>(bout.header, obj, requestId, asyncResult);
+
+      // Send request.
       wire.send(msgSend, outerResult);
       
     } catch (Throwable e) {
@@ -333,6 +458,9 @@ public class BTransport {
             long t1 = System.currentTimeMillis();
             Object resp = e != null ? e : obj;
             log.info("recv-" + requestId + " [" + (t1-t0) + "] Response=" + resp);
+            if (e != null) {
+              log.info("exception", e);
+            }
           }
 
           try {
@@ -346,6 +474,7 @@ public class BTransport {
             }
             final BMessage msg = bout.toMessage();
             asyncResult.setAsyncResult(msg, null);
+            
           } catch (BException ex) {
             
             // Try to send the exception to the other part
@@ -387,7 +516,7 @@ public class BTransport {
         forwardMessage(client, clientTargetId, methodObj, methodResult);
       }
       else {
-        // Server the message here.
+        // Serve the message here.
         server.recv(clientTargetId, methodObj, methodResult);
       }
       

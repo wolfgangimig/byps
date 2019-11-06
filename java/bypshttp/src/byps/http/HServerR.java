@@ -120,8 +120,10 @@ public class HServerR extends BServerR {
 
               case BExceptionC.SESSION_CLOSED: // Session was invalidated.
                 log.info("Reverse request stops due to closed session.");
+                break;
               case BExceptionC.UNAUTHORIZED: // Re-login required
                 log.info("Reverse request was unauthorized.");
+                break;
               case BExceptionC.CANCELLED:
                 log.info("Reverse request was cancelled.");
                 // no retry

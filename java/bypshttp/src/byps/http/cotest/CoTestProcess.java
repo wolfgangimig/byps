@@ -250,6 +250,7 @@ public class CoTestProcess {
         .setDeploymentName("comptest.war")
         .addServlets(
             Servlets.servlet("TestServlet", CoTestServlet.class)
+                .setAsyncSupported(true)
                 .addInitParam("testAdapterEnabled", "true")
                 .addMapping("/bypsservlet").addMapping("/bypsservletauth/auth"));
 

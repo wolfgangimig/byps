@@ -227,7 +227,7 @@ public class TestRemoteStreams {
   }
   
   /**
-   * Read/write large stream, 120GB
+   * Read/write large stream, 1.20GB
    * @throws InterruptedException
    * @throws IOException
    */
@@ -235,13 +235,26 @@ public class TestRemoteStreams {
   public void testRemoteStreamsLargeStream() throws InterruptedException, IOException {
     log.info("testRemoteStreamsLargeStream(");
     if (TestUtils.TEST_LARGE_STREAMS) {
-      long contentLength = Double.valueOf(120.0e9).longValue() + 1;
-      InputStream istrm = new TestUtils.MyContentStream(contentLength, false);
-      remote.setImage(istrm);
-  
-      InputStream istrmR = remote.getImage();
-      InputStream istrmE = new TestUtils.MyContentStream(contentLength, false);
-      TestUtils.assertEquals(log, "stream", istrmE, istrmR);
+      
+      // Set 1s timeout until BExceptionC#PROCESSING is thrown.
+      client.getTransport().getWire().getTestAdapter().setTimeoutForProcessingException(30);
+      
+      try {
+
+        long contentLength = Double.valueOf(1.20e9).longValue() + 1;
+        InputStream istrm = new TestUtils.MyContentStream(contentLength, false);
+        remote.setImage(istrm);
+    
+        InputStream istrmR = remote.getImage();
+        InputStream istrmE = new TestUtils.MyContentStream(contentLength, false);
+        TestUtils.assertEquals(log, "stream", istrmE, istrmR);
+        
+      }
+      finally {
+        
+        // Reset timeout 
+        client.getTransport().getWire().getTestAdapter().setTimeoutForProcessingException(0);
+      }
     }
     else {
       log.info("skipped");
@@ -423,27 +436,20 @@ public class TestRemoteStreams {
 
     try {
     	
-//    	The number of messages increase during this loop. TODO
-    	
-//      // There should be no active messages on the server after the client side
-//      // has been finished.
-//      long timeoutMillis = 2 * Math.max(HConstants.KEEP_MESSAGE_AFTER_FINISHED, HConstants.CLEANUP_MILLIS);
-//      long timeoutAt = timeoutMillis + System.currentTimeMillis();
-//      
-//      while (timeoutAt > System.currentTimeMillis()) {
-//    	  
-//    	  Thread.sleep(HConstants.CLEANUP_MILLIS/10);
-//    	  
-//    	  long[] messageIds = client.getTransport().getWire().getTestAdapter().getAcitveMessagesOnServer(false);
-//    	  log.info("messageIds=" + Arrays.toString(messageIds));
-//    	  if (messageIds.length == 0) break;
-//      }
+      // There should be no active messages on the server after the client side has been finished.
+      long timeoutMillis = 2 * Math.max(HConstants.KEEP_MESSAGE_AFTER_FINISHED, HConstants.CLEANUP_MILLIS);
+      long timeoutAt = timeoutMillis + System.currentTimeMillis();
       
-      {
-		  long[] messageIds = client.getTransport().getWire().getTestAdapter().getAcitveMessagesOnServer(false);
+      long[] messageIds = new long[1];
+      while (messageIds.length != 0 && timeoutAt > System.currentTimeMillis()) {
+    	  
+    	  Thread.sleep(HConstants.CLEANUP_MILLIS/10);
+    	  
+    	  messageIds = client.getTransport().getWire().getTestAdapter().getAcitveMessagesOnServer(false);
     	  log.info("messageIds=" + Arrays.toString(messageIds));
-//		  TestUtils.assertEquals(log, "active messages: ", new long[0], messageIds);
       }
+    	  
+      TestUtils.assertEquals(log, "active messages: ", new long[0], messageIds);
 	  
     } finally {
       client.done();
@@ -758,7 +764,7 @@ public class TestRemoteStreams {
     InputStream istrm = new TestUtils.MyContentStream(101, false);
     remote.setImage(istrm);
 
-    final int NB_OF_DOWNLOADS = 10 * 1000;
+    final int NB_OF_DOWNLOADS = 1000;
     final int NB_OF_PARALLEL_DOWNLOADS = 10;
     try {
       for (int i = 0; i < NB_OF_DOWNLOADS/NB_OF_PARALLEL_DOWNLOADS; i++) {

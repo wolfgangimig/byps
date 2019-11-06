@@ -583,6 +583,14 @@ public class TestCompatibleApi_Testser {
 			}
 		}
 		
+		// byps.test.api.remote.RemoteProcessingEx
+		if (negotiatedVersion >= 0L) {
+			byps.test.api.remote.BStub_RemoteProcessingEx remote = (byps.test.api.remote.BStub_RemoteProcessingEx)bclient.getClass().getDeclaredMethod("getRemoteProcessingEx").invoke(bclient);
+			if (negotiatedVersion >= 0L) {
+				internalTest_byps_test_api_remote_RemoteProcessingEx_getValueAfterProcessingExceptions(remote);
+			}
+		}
+		
 		// byps.test.api.remote.RemoteReferences
 		if (negotiatedVersion >= 0L) {
 			byps.test.api.remote.BStub_RemoteReferences remote = (byps.test.api.remote.BStub_RemoteReferences)bclient.getClass().getDeclaredMethod("getRemoteReferences").invoke(bclient);
@@ -1854,6 +1862,13 @@ public class TestCompatibleApi_Testser {
 	}
 	
 	
+	public static void internalTest_byps_test_api_remote_RemoteProcessingEx_getValueAfterProcessingExceptions(byps.test.api.remote.BStub_RemoteProcessingEx remote) throws RemoteException {
+		log.info("internalTest_byps_test_api_remote_RemoteProcessingEx_getValueAfterProcessingExceptions()");
+		int		obj142 = 9876543;
+		remote.getValueAfterProcessingExceptions(obj142);
+	}
+	
+	
 	public static void internalTest_byps_test_api_remote_RemoteReferences_getNode(byps.test.api.remote.BStub_RemoteReferences remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteReferences_getNode()");
 		remote.getNode();
@@ -1861,43 +1876,43 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteReferences_setNode(byps.test.api.remote.BStub_RemoteReferences remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteReferences_setNode()");
-		byps.test.api.refs.Node obj143 = new byps.test.api.refs.Node();
-		{
-			byps.test.api.refs.Node obj144 = new byps.test.api.refs.Node();
-			obj144.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
-			obj144.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
-			obj143.next = obj144;
-		}
+		byps.test.api.refs.Node obj144 = new byps.test.api.refs.Node();
 		{
 			byps.test.api.refs.Node obj145 = new byps.test.api.refs.Node();
 			obj145.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
 			obj145.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
-			obj143.me = obj145;
+			obj144.next = obj145;
 		}
-		obj143.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
-		obj143.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
-		remote.setNode(obj143);
+		{
+			byps.test.api.refs.Node obj146 = new byps.test.api.refs.Node();
+			obj146.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
+			obj146.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
+			obj144.me = obj146;
+		}
+		obj144.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
+		obj144.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
+		remote.setNode(obj144);
 	}
 	
 	
 	public static void internalTest_byps_test_api_remote_RemoteServerCtrl_publishRemote(byps.test.api.remote.BStub_RemoteServerCtrl remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteServerCtrl_publishRemote()");
-		java.lang.String		obj146 = "STRING";
-		BRemote obj147 = null;
-		boolean		obj148 = true;
-		remote.publishRemote(obj146, obj147, obj148);
+		java.lang.String		obj147 = "STRING";
+		BRemote obj148 = null;
+		boolean		obj149 = true;
+		remote.publishRemote(obj147, obj148, obj149);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteServerCtrl_getPublishedRemote(byps.test.api.remote.BStub_RemoteServerCtrl remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteServerCtrl_getPublishedRemote()");
-		java.lang.String		obj149 = "STRING";
-		remote.getPublishedRemote(obj149);
+		java.lang.String		obj150 = "STRING";
+		remote.getPublishedRemote(obj150);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteServerCtrl_removePublishedRemote(byps.test.api.remote.BStub_RemoteServerCtrl remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteServerCtrl_removePublishedRemote()");
-		java.lang.String		obj150 = "STRING";
-		remote.removePublishedRemote(obj150);
+		java.lang.String		obj151 = "STRING";
+		remote.removePublishedRemote(obj151);
 	}
 	
 	
@@ -1908,8 +1923,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_setBoolean1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteSetTypes_setBoolean1()");
-		java.util.Set<java.lang.Boolean>		obj151 = new HashSet<java.lang.Boolean>();
-		remote.setBoolean1(obj151);
+		java.util.Set<java.lang.Boolean>		obj152 = new HashSet<java.lang.Boolean>();
+		remote.setBoolean1(obj152);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_getByte1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
@@ -1919,8 +1934,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_setByte1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteSetTypes_setByte1()");
-		java.util.HashSet<java.lang.Byte>		obj152 = new java.util.HashSet<java.lang.Byte>();
-		remote.setByte1(obj152);
+		java.util.HashSet<java.lang.Byte>		obj153 = new java.util.HashSet<java.lang.Byte>();
+		remote.setByte1(obj153);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_getChar1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
@@ -1930,8 +1945,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_setChar1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteSetTypes_setChar1()");
-		java.util.TreeSet<java.lang.Character>		obj153 = new java.util.TreeSet<java.lang.Character>();
-		remote.setChar1(obj153);
+		java.util.TreeSet<java.lang.Character>		obj154 = new java.util.TreeSet<java.lang.Character>();
+		remote.setChar1(obj154);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_getShort1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
@@ -1941,8 +1956,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_setShort1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteSetTypes_setShort1()");
-		java.util.Set<java.lang.Short>		obj154 = new HashSet<java.lang.Short>();
-		remote.setShort1(obj154);
+		java.util.Set<java.lang.Short>		obj155 = new HashSet<java.lang.Short>();
+		remote.setShort1(obj155);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_getInt1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
@@ -1952,8 +1967,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_setInt1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteSetTypes_setInt1()");
-		java.util.Set<java.lang.Integer>		obj155 = new HashSet<java.lang.Integer>();
-		remote.setInt1(obj155);
+		java.util.Set<java.lang.Integer>		obj156 = new HashSet<java.lang.Integer>();
+		remote.setInt1(obj156);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_getLong1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
@@ -1963,8 +1978,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_setLong1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteSetTypes_setLong1()");
-		java.util.Set<java.lang.Long>		obj156 = new HashSet<java.lang.Long>();
-		remote.setLong1(obj156);
+		java.util.Set<java.lang.Long>		obj157 = new HashSet<java.lang.Long>();
+		remote.setLong1(obj157);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_getFloat1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
@@ -1974,8 +1989,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_setFloat1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteSetTypes_setFloat1()");
-		java.util.Set<java.lang.Float>		obj157 = new HashSet<java.lang.Float>();
-		remote.setFloat1(obj157);
+		java.util.Set<java.lang.Float>		obj158 = new HashSet<java.lang.Float>();
+		remote.setFloat1(obj158);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_getDouble1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
@@ -1985,8 +2000,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_setDouble1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteSetTypes_setDouble1()");
-		java.util.Set<java.lang.Double>		obj158 = new HashSet<java.lang.Double>();
-		remote.setDouble1(obj158);
+		java.util.Set<java.lang.Double>		obj159 = new HashSet<java.lang.Double>();
+		remote.setDouble1(obj159);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_getString1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
@@ -1996,8 +2011,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_setString1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteSetTypes_setString1()");
-		java.util.Set<java.lang.String>		obj159 = new HashSet<java.lang.String>();
-		remote.setString1(obj159);
+		java.util.Set<java.lang.String>		obj160 = new HashSet<java.lang.String>();
+		remote.setString1(obj160);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_getPrimitiveTypes1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
@@ -2007,8 +2022,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_setPrimitiveTypes1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteSetTypes_setPrimitiveTypes1()");
-		java.util.Set<byps.test.api.prim.PrimitiveTypes>		obj160 = new HashSet<byps.test.api.prim.PrimitiveTypes>();
-		remote.setPrimitiveTypes1(obj160);
+		java.util.Set<byps.test.api.prim.PrimitiveTypes>		obj161 = new HashSet<byps.test.api.prim.PrimitiveTypes>();
+		remote.setPrimitiveTypes1(obj161);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_getByte2(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
@@ -2018,8 +2033,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_setByte2(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteSetTypes_setByte2()");
-		java.util.Set<byte[]>		obj161 = new HashSet<byte[]>();
-		remote.setByte2(obj161);
+		java.util.Set<byte[]>		obj162 = new HashSet<byte[]>();
+		remote.setByte2(obj162);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_getInt2(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
@@ -2029,8 +2044,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_setInt2(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteSetTypes_setInt2()");
-		java.util.Set<int[]>		obj162 = new HashSet<int[]>();
-		remote.setInt2(obj162);
+		java.util.Set<int[]>		obj163 = new HashSet<int[]>();
+		remote.setInt2(obj163);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_getObj1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
@@ -2040,14 +2055,14 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_setObj1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteSetTypes_setObj1()");
-		java.util.Set<java.lang.Object>		obj163 = new HashSet<java.lang.Object>();
-		remote.setObj1(obj163);
+		java.util.Set<java.lang.Object>		obj164 = new HashSet<java.lang.Object>();
+		remote.setObj1(obj164);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_setDate1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteSetTypes_setDate1()");
-		java.util.Set<java.util.Date>		obj164 = new HashSet<java.util.Date>();
-		remote.setDate1(obj164);
+		java.util.Set<java.util.Date>		obj165 = new HashSet<java.util.Date>();
+		remote.setDate1(obj165);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteSetTypes_getDate1(byps.test.api.remote.BStub_RemoteSetTypes remote) throws RemoteException {
@@ -2063,8 +2078,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteStreams_setImage(byps.test.api.remote.BStub_RemoteStreams remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteStreams_setImage()");
-		java.io.InputStream obj165 = null;
-		remote.setImage(obj165);
+		java.io.InputStream obj166 = null;
+		remote.setImage(obj166);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteStreams_getImages(byps.test.api.remote.BStub_RemoteStreams remote) throws RemoteException {
@@ -2074,9 +2089,9 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteStreams_setImages(byps.test.api.remote.BStub_RemoteStreams remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteStreams_setImages()");
-		java.util.Map<java.lang.Integer,java.io.InputStream>		obj166 = new HashMap<java.lang.Integer,java.io.InputStream>();
-		int		obj167 = 9876543;
-		remote.setImages(obj166, obj167);
+		java.util.Map<java.lang.Integer,java.io.InputStream>		obj167 = new HashMap<java.lang.Integer,java.io.InputStream>();
+		int		obj168 = 9876543;
+		remote.setImages(obj167, obj168);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteStreams_throwLastException(byps.test.api.remote.BStub_RemoteStreams remote) throws RemoteException {
@@ -2101,8 +2116,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteStreams_setStreamDoNotMaterialize(byps.test.api.remote.BStub_RemoteStreams remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteStreams_setStreamDoNotMaterialize()");
-		java.io.InputStream obj168 = null;
-		remote.setStreamDoNotMaterialize(obj168);
+		java.io.InputStream obj169 = null;
+		remote.setStreamDoNotMaterialize(obj169);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteStreams_getStreamDoNotClone(byps.test.api.remote.BStub_RemoteStreams remote) throws RemoteException {
@@ -2113,21 +2128,21 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteWithAuthentication_setUseAuthentication(byps.test.api.remote.BStub_RemoteWithAuthentication remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteWithAuthentication_setUseAuthentication()");
-		boolean		obj169 = true;
-		remote.setUseAuthentication(obj169);
+		boolean		obj170 = true;
+		remote.setUseAuthentication(obj170);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteWithAuthentication_login(byps.test.api.remote.BStub_RemoteWithAuthentication remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteWithAuthentication_login()");
-		java.lang.String		obj170 = "STRING";
 		java.lang.String		obj171 = "STRING";
-		remote.login(obj170, obj171);
+		java.lang.String		obj172 = "STRING";
+		remote.login(obj171, obj172);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteWithAuthentication_doit(byps.test.api.remote.BStub_RemoteWithAuthentication remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteWithAuthentication_doit()");
-		int		obj172 = 9876543;
-		remote.doit(obj172);
+		int		obj173 = 9876543;
+		remote.doit(obj173);
 	}
 	
 	public static void internalTest_byps_test_api_remote_RemoteWithAuthentication_expire(byps.test.api.remote.BStub_RemoteWithAuthentication remote) throws RemoteException {
@@ -2137,50 +2152,50 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_remote_RemoteWithAuthentication_setReloginCount(byps.test.api.remote.BStub_RemoteWithAuthentication remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteWithAuthentication_setReloginCount()");
-		int		obj173 = 9876543;
-		remote.setReloginCount(obj173);
+		int		obj174 = 9876543;
+		remote.setReloginCount(obj174);
 	}
 	
 	
 	public static void internalTest_byps_test_api_srvr_ClientIF_incrementInt(byps.test.api.srvr.BStub_ClientIF remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_srvr_ClientIF_incrementInt()");
-		int		obj174 = 9876543;
-		remote.incrementInt(obj174);
+		int		obj175 = 9876543;
+		remote.incrementInt(obj175);
 	}
 	
 	public static void internalTest_byps_test_api_srvr_ClientIF_getStreams(byps.test.api.srvr.BStub_ClientIF remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_srvr_ClientIF_getStreams()");
-		int		obj175 = 9876543;
-		remote.getStreams(obj175);
+		int		obj176 = 9876543;
+		remote.getStreams(obj176);
 	}
 	
 	public static void internalTest_byps_test_api_srvr_ClientIF_putStreams(byps.test.api.srvr.BStub_ClientIF remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_srvr_ClientIF_putStreams()");
-		java.util.List<java.io.InputStream>		obj176 = new ArrayList<java.io.InputStream>();
-		int		obj177 = 9876543;
-		remote.putStreams(obj176, obj177);
+		java.util.List<java.io.InputStream>		obj177 = new ArrayList<java.io.InputStream>();
+		int		obj178 = 9876543;
+		remote.putStreams(obj177, obj178);
 	}
 	
 	public static void internalTest_byps_test_api_srvr_ClientIF_sendChat(byps.test.api.srvr.BStub_ClientIF remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_srvr_ClientIF_sendChat()");
-		byps.test.api.srvr.ChatStructure obj179 = new byps.test.api.srvr.ChatStructure();
-		obj179.msg = "STRING";
-		obj179.sentAt = 9.876;
-		obj179.receivedAt = 9.876;
-		remote.sendChat(obj179);
+		byps.test.api.srvr.ChatStructure obj180 = new byps.test.api.srvr.ChatStructure();
+		obj180.msg = "STRING";
+		obj180.sentAt = 9.876;
+		obj180.receivedAt = 9.876;
+		remote.sendChat(obj180);
 	}
 	
 	
 	public static void internalTest_byps_test_api_srvr_ServerIF_callClientIncrementInt(byps.test.api.srvr.BStub_ServerIF remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_srvr_ServerIF_callClientIncrementInt()");
-		int		obj180 = 9876543;
-		remote.callClientIncrementInt(obj180);
+		int		obj181 = 9876543;
+		remote.callClientIncrementInt(obj181);
 	}
 	
 	public static void internalTest_byps_test_api_srvr_ServerIF_setPartner(byps.test.api.srvr.BStub_ServerIF remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_srvr_ServerIF_setPartner()");
-		byps.test.api.srvr.ClientIF obj181 = null;
-		remote.setPartner(obj181);
+		byps.test.api.srvr.ClientIF obj182 = null;
+		remote.setPartner(obj182);
 	}
 	
 	public static void internalTest_byps_test_api_srvr_ServerIF_getPartner(byps.test.api.srvr.BStub_ServerIF remote) throws RemoteException {
@@ -2190,26 +2205,26 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_srvr_ServerIF_getStreamsFromClient(byps.test.api.srvr.BStub_ServerIF remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_srvr_ServerIF_getStreamsFromClient()");
-		boolean		obj182 = true;
-		remote.getStreamsFromClient(obj182);
+		boolean		obj183 = true;
+		remote.getStreamsFromClient(obj183);
 	}
 	
 	public static void internalTest_byps_test_api_srvr_ServerIF_putStreamsOnClient(byps.test.api.srvr.BStub_ServerIF remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_srvr_ServerIF_putStreamsOnClient()");
-		java.util.List<java.io.InputStream>		obj183 = new ArrayList<java.io.InputStream>();
-		remote.putStreamsOnClient(obj183);
+		java.util.List<java.io.InputStream>		obj184 = new ArrayList<java.io.InputStream>();
+		remote.putStreamsOnClient(obj184);
 	}
 	
 	public static void internalTest_byps_test_api_srvr_ServerIF_registerWithClientMap(byps.test.api.srvr.BStub_ServerIF remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_srvr_ServerIF_registerWithClientMap()");
-		int		obj184 = 9876543;
-		remote.registerWithClientMap(obj184);
+		int		obj185 = 9876543;
+		remote.registerWithClientMap(obj185);
 	}
 	
 	public static void internalTest_byps_test_api_srvr_ServerIF_getClient(byps.test.api.srvr.BStub_ServerIF remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_srvr_ServerIF_getClient()");
-		int		obj185 = 9876543;
-		remote.getClient(obj185);
+		int		obj186 = 9876543;
+		remote.getClient(obj186);
 	}
 	
 	public static void internalTest_byps_test_api_srvr_ServerIF_getClientIds(byps.test.api.srvr.BStub_ServerIF remote) throws RemoteException {
@@ -2219,91 +2234,91 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_srvr_ServerIF_callClientParallel(byps.test.api.srvr.BStub_ServerIF remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_srvr_ServerIF_callClientParallel()");
-		int		obj186 = 9876543;
-		remote.callClientParallel(obj186);
+		int		obj187 = 9876543;
+		remote.callClientParallel(obj187);
 	}
 	
 	
 	public static void internalTest_byps_test_api_ver_EvolveIF_setEvolve(byps.test.api.ver.BStub_EvolveIF remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_ver_EvolveIF_setEvolve()");
-		byps.test.api.ver.Evolve obj188 = new byps.test.api.ver.Evolve();
-		obj188.bool1 = true;
-		obj188.byte1 = (byte)1;
-		obj188.char1 = 'a';
-		obj188.short1 = (short)123;
-		obj188.int1 = 9876543;
-		obj188.long1 = 987654321012345L;
-		obj188.float1 = 1.23f;
-		obj188.double1 = 9.876;
-		obj188.bools1 = new boolean[0];
-		obj188.bytes1 = new byte[0];
-		obj188.chars1 = new char[0];
-		obj188.shorts1 = new short[0];
-		obj188.ints1 = new int[0];
-		obj188.longs1 = new long[0];
-		obj188.floats1 = new float[0];
-		obj188.doubles1 = new double[0];
-		obj188.str1 = "STRING";
-		{
-			byps.test.api.ver.Evolve2 obj189 = new byps.test.api.ver.Evolve2();
-			obj189.setN1(9876543);
-			obj188.evo1 = obj189;
-		}
-		obj188.list1 = new ArrayList<java.lang.Integer>();
-		obj188.set1 = new HashSet<java.lang.Integer>();
-		obj188.map1 = new HashMap<java.lang.Integer,java.lang.Integer>();
-		obj188.bool2 = true;
-		obj188.byte2 = (byte)1;
-		obj188.char2 = 'a';
-		obj188.short2 = (short)123;
-		obj188.int2 = 9876543;
-		obj188.long2 = 987654321012345L;
-		obj188.float2 = 1.23f;
-		obj188.double2 = 9.876;
-		obj188.bools2 = new boolean[0];
-		obj188.bytes2 = new byte[0];
-		obj188.chars2 = new char[0];
-		obj188.shorts2 = new short[0];
-		obj188.ints2 = new int[0];
-		obj188.longs2 = new long[0];
-		obj188.floats2 = new float[0];
-		obj188.doubles2 = new double[0];
-		obj188.str2 = "STRING";
+		byps.test.api.ver.Evolve obj189 = new byps.test.api.ver.Evolve();
+		obj189.bool1 = true;
+		obj189.byte1 = (byte)1;
+		obj189.char1 = 'a';
+		obj189.short1 = (short)123;
+		obj189.int1 = 9876543;
+		obj189.long1 = 987654321012345L;
+		obj189.float1 = 1.23f;
+		obj189.double1 = 9.876;
+		obj189.bools1 = new boolean[0];
+		obj189.bytes1 = new byte[0];
+		obj189.chars1 = new char[0];
+		obj189.shorts1 = new short[0];
+		obj189.ints1 = new int[0];
+		obj189.longs1 = new long[0];
+		obj189.floats1 = new float[0];
+		obj189.doubles1 = new double[0];
+		obj189.str1 = "STRING";
 		{
 			byps.test.api.ver.Evolve2 obj190 = new byps.test.api.ver.Evolve2();
 			obj190.setN1(9876543);
-			obj188.evo2 = obj190;
+			obj189.evo1 = obj190;
 		}
-		obj188.list2 = new ArrayList<java.lang.Integer>();
-		obj188.set2 = new HashSet<java.lang.Integer>();
-		obj188.map2 = new HashMap<java.lang.Integer,java.lang.Integer>();
-		obj188.bool3 = true;
-		obj188.byte3 = (byte)1;
-		obj188.char3 = 'a';
-		obj188.short3 = (short)123;
-		obj188.int3 = 9876543;
-		obj188.long3 = 987654321012345L;
-		obj188.float3 = 1.23f;
-		obj188.double3 = 9.876;
-		obj188.bools3 = new boolean[0];
-		obj188.bytes3 = new byte[0];
-		obj188.chars3 = new char[0];
-		obj188.shorts3 = new short[0];
-		obj188.ints3 = new int[0];
-		obj188.longs3 = new long[0];
-		obj188.floats3 = new float[0];
-		obj188.doubles3 = new double[0];
-		obj188.str3 = "STRING";
+		obj189.list1 = new ArrayList<java.lang.Integer>();
+		obj189.set1 = new HashSet<java.lang.Integer>();
+		obj189.map1 = new HashMap<java.lang.Integer,java.lang.Integer>();
+		obj189.bool2 = true;
+		obj189.byte2 = (byte)1;
+		obj189.char2 = 'a';
+		obj189.short2 = (short)123;
+		obj189.int2 = 9876543;
+		obj189.long2 = 987654321012345L;
+		obj189.float2 = 1.23f;
+		obj189.double2 = 9.876;
+		obj189.bools2 = new boolean[0];
+		obj189.bytes2 = new byte[0];
+		obj189.chars2 = new char[0];
+		obj189.shorts2 = new short[0];
+		obj189.ints2 = new int[0];
+		obj189.longs2 = new long[0];
+		obj189.floats2 = new float[0];
+		obj189.doubles2 = new double[0];
+		obj189.str2 = "STRING";
 		{
 			byps.test.api.ver.Evolve2 obj191 = new byps.test.api.ver.Evolve2();
 			obj191.setN1(9876543);
-			obj188.evo3 = obj191;
+			obj189.evo2 = obj191;
 		}
-		obj188.list3 = new ArrayList<java.lang.Integer>();
-		obj188.set3 = new HashSet<java.lang.Integer>();
-		obj188.map3 = new HashMap<java.lang.Integer,java.lang.Integer>();
-		obj188.since793 = 9876543;
-		remote.setEvolve(obj188);
+		obj189.list2 = new ArrayList<java.lang.Integer>();
+		obj189.set2 = new HashSet<java.lang.Integer>();
+		obj189.map2 = new HashMap<java.lang.Integer,java.lang.Integer>();
+		obj189.bool3 = true;
+		obj189.byte3 = (byte)1;
+		obj189.char3 = 'a';
+		obj189.short3 = (short)123;
+		obj189.int3 = 9876543;
+		obj189.long3 = 987654321012345L;
+		obj189.float3 = 1.23f;
+		obj189.double3 = 9.876;
+		obj189.bools3 = new boolean[0];
+		obj189.bytes3 = new byte[0];
+		obj189.chars3 = new char[0];
+		obj189.shorts3 = new short[0];
+		obj189.ints3 = new int[0];
+		obj189.longs3 = new long[0];
+		obj189.floats3 = new float[0];
+		obj189.doubles3 = new double[0];
+		obj189.str3 = "STRING";
+		{
+			byps.test.api.ver.Evolve2 obj192 = new byps.test.api.ver.Evolve2();
+			obj192.setN1(9876543);
+			obj189.evo3 = obj192;
+		}
+		obj189.list3 = new ArrayList<java.lang.Integer>();
+		obj189.set3 = new HashSet<java.lang.Integer>();
+		obj189.map3 = new HashMap<java.lang.Integer,java.lang.Integer>();
+		obj189.since793 = 9876543;
+		remote.setEvolve(obj189);
 	}
 	
 	public static void internalTest_byps_test_api_ver_EvolveIF_getEvolve(byps.test.api.ver.BStub_EvolveIF remote) throws RemoteException {
@@ -2313,8 +2328,8 @@ public class TestCompatibleApi_Testser {
 	
 	public static void internalTest_byps_test_api_ver_EvolveIF_setClient(byps.test.api.ver.BStub_EvolveIF remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_ver_EvolveIF_setClient()");
-		byps.test.api.ver.EvolveIF obj192 = null;
-		remote.setClient(obj192);
+		byps.test.api.ver.EvolveIF obj193 = null;
+		remote.setClient(obj193);
 	}
 	
 	public static void internalTest_byps_test_api_ver_EvolveIF_getClient(byps.test.api.ver.BStub_EvolveIF remote) throws RemoteException {
@@ -2334,8 +2349,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public boolean certify(java.lang.String param) throws RemoteException {
 				log.info("BioFruitService.certify()");
-				boolean				obj193 = true;
-				return obj193;
+				boolean				obj194 = true;
+				return obj194;
 			}
 		});
 		
@@ -2344,8 +2359,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public int useParing() throws RemoteException {
 				log.info("BioLemonService.useParing()");
-				int				obj194 = 9876543;
-				return obj194;
+				int				obj195 = 9876543;
+				return obj195;
 			}
 		});
 		
@@ -2354,8 +2369,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.lang.String squeeze() throws RemoteException {
 				log.info("FruitService.squeeze()");
-				java.lang.String				obj195 = "STRING";
-				return obj195;
+				java.lang.String				obj196 = "STRING";
+				return obj196;
 			}
 		});
 		
@@ -2364,8 +2379,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.lang.String pick(byps.test.api.auth.SessionInfo sess, java.lang.String fromTree) throws RemoteException {
 				log.info("LemonService.pick()");
-				java.lang.String				obj196 = "STRING";
-				return obj196;
+				java.lang.String				obj197 = "STRING";
+				return obj197;
 			}
 		});
 		
@@ -2374,8 +2389,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.lang.String grow() throws RemoteException {
 				log.info("PlantService.grow()");
-				java.lang.String				obj197 = "STRING";
-				return obj197;
+				java.lang.String				obj198 = "STRING";
+				return obj198;
 			}
 		});
 		
@@ -2444,85 +2459,85 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public boolean[] getBool() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getBool()");
-				boolean[]				obj198 = new boolean[0];
-				return obj198;
+				boolean[]				obj199 = new boolean[0];
+				return obj199;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public byte[] getByte() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getByte()");
-				byte[]				obj199 = new byte[0];
-				return obj199;
+				byte[]				obj200 = new byte[0];
+				return obj200;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public char[] getChar() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getChar()");
-				char[]				obj200 = new char[0];
-				return obj200;
+				char[]				obj201 = new char[0];
+				return obj201;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public short[] getShort() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getShort()");
-				short[]				obj201 = new short[0];
-				return obj201;
+				short[]				obj202 = new short[0];
+				return obj202;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public int[] getInt() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getInt()");
-				int[]				obj202 = new int[0];
-				return obj202;
+				int[]				obj203 = new int[0];
+				return obj203;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public long[] getLong() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getLong()");
-				long[]				obj203 = new long[0];
-				return obj203;
+				long[]				obj204 = new long[0];
+				return obj204;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public float[] getFloat() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getFloat()");
-				float[]				obj204 = new float[0];
-				return obj204;
+				float[]				obj205 = new float[0];
+				return obj205;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public double[] getDouble() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getDouble()");
-				double[]				obj205 = new double[0];
-				return obj205;
+				double[]				obj206 = new double[0];
+				return obj206;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.lang.String[] getString() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getString()");
-				java.lang.String[]				obj206 = new java.lang.String[0];
-				return obj206;
+				java.lang.String[]				obj207 = new java.lang.String[0];
+				return obj207;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.prim.PrimitiveTypes[] getPrimitiveTypes() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getPrimitiveTypes()");
-				byps.test.api.prim.PrimitiveTypes[]				obj207 = new byps.test.api.prim.PrimitiveTypes[0];
-				return obj207;
+				byps.test.api.prim.PrimitiveTypes[]				obj208 = new byps.test.api.prim.PrimitiveTypes[0];
+				return obj208;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.lang.Object[] getObject() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getObject()");
-				java.lang.Object[] obj208 = null;
-				return obj208;
+				java.lang.Object[] obj209 = null;
+				return obj209;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Date[] getDate() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getDate()");
-				java.util.Date[]				obj209 = new java.util.Date[0];
-				return obj209;
+				java.util.Date[]				obj210 = new java.util.Date[0];
+				return obj210;
 			}
 		});
 		
@@ -2531,36 +2546,36 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public int[] sendArraysInt(int[][] arr2, int[][][] arr3, int[][][][] arr4) throws RemoteException {
 				log.info("RemoteArrayTypes23.sendArraysInt()");
-				int[]				obj210 = new int[0];
-				return obj210;
+				int[]				obj211 = new int[0];
+				return obj211;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.lang.String[] sendArraysString(java.lang.String[][] arr2, java.lang.String[][][] arr3, java.lang.String[][][][] arr4) throws RemoteException {
 				log.info("RemoteArrayTypes23.sendArraysString()");
-				java.lang.String[]				obj211 = new java.lang.String[0];
-				return obj211;
+				java.lang.String[]				obj212 = new java.lang.String[0];
+				return obj212;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.prim.PrimitiveTypes[] sendArraysClass(byps.test.api.prim.PrimitiveTypes[][] arr2, byps.test.api.prim.PrimitiveTypes[][][] arr3, byps.test.api.prim.PrimitiveTypes[][][][] arr4) throws RemoteException {
 				log.info("RemoteArrayTypes23.sendArraysClass()");
-				byps.test.api.prim.PrimitiveTypes[]				obj212 = new byps.test.api.prim.PrimitiveTypes[0];
-				return obj212;
+				byps.test.api.prim.PrimitiveTypes[]				obj213 = new byps.test.api.prim.PrimitiveTypes[0];
+				return obj213;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.lang.Object[] sendArraysObject(java.lang.Object[][] arr2, java.lang.Object[][][] arr3, java.lang.Object[][][][] arr4) throws RemoteException {
 				log.info("RemoteArrayTypes23.sendArraysObject()");
-				java.lang.Object[] obj213 = null;
-				return obj213;
+				java.lang.Object[] obj214 = null;
+				return obj214;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.inl.Point2D[] sendArraysInline(byps.test.api.inl.Point2D[][] arr2, byps.test.api.inl.Point2D[][][] arr3, byps.test.api.inl.Point2D[][][][] arr4) throws RemoteException {
 				log.info("RemoteArrayTypes23.sendArraysInline()");
-				byps.test.api.inl.Point2D[]				obj214 = new byps.test.api.inl.Point2D[0];
-				return obj214;
+				byps.test.api.inl.Point2D[]				obj215 = new byps.test.api.inl.Point2D[0];
+				return obj215;
 			}
 		});
 		
@@ -2629,85 +2644,85 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public boolean[][][][] getBool() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getBool()");
-				boolean[][][][]				obj215 = new boolean[0][0][0][0];
-				return obj215;
+				boolean[][][][]				obj216 = new boolean[0][0][0][0];
+				return obj216;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public byte[][][][] getByte() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getByte()");
-				byte[][][][]				obj216 = new byte[0][0][0][0];
-				return obj216;
+				byte[][][][]				obj217 = new byte[0][0][0][0];
+				return obj217;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public char[][][][] getChar() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getChar()");
-				char[][][][]				obj217 = new char[0][0][0][0];
-				return obj217;
+				char[][][][]				obj218 = new char[0][0][0][0];
+				return obj218;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public short[][][][] getShort() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getShort()");
-				short[][][][]				obj218 = new short[0][0][0][0];
-				return obj218;
+				short[][][][]				obj219 = new short[0][0][0][0];
+				return obj219;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public int[][][][] getInt() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getInt()");
-				int[][][][]				obj219 = new int[0][0][0][0];
-				return obj219;
+				int[][][][]				obj220 = new int[0][0][0][0];
+				return obj220;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public long[][][][] getLong() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getLong()");
-				long[][][][]				obj220 = new long[0][0][0][0];
-				return obj220;
+				long[][][][]				obj221 = new long[0][0][0][0];
+				return obj221;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public float[][][][] getFloat() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getFloat()");
-				float[][][][]				obj221 = new float[0][0][0][0];
-				return obj221;
+				float[][][][]				obj222 = new float[0][0][0][0];
+				return obj222;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public double[][][][] getDouble() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getDouble()");
-				double[][][][]				obj222 = new double[0][0][0][0];
-				return obj222;
+				double[][][][]				obj223 = new double[0][0][0][0];
+				return obj223;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.lang.String[][][][] getString() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getString()");
-				java.lang.String[][][][]				obj223 = new java.lang.String[0][0][0][0];
-				return obj223;
+				java.lang.String[][][][]				obj224 = new java.lang.String[0][0][0][0];
+				return obj224;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.prim.PrimitiveTypes[][][][] getPrimitiveTypes() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getPrimitiveTypes()");
-				byps.test.api.prim.PrimitiveTypes[][][][]				obj224 = new byps.test.api.prim.PrimitiveTypes[0][0][0][0];
-				return obj224;
+				byps.test.api.prim.PrimitiveTypes[][][][]				obj225 = new byps.test.api.prim.PrimitiveTypes[0][0][0][0];
+				return obj225;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.lang.Object[][][][] getObject() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getObject()");
-				java.lang.Object[][][][] obj225 = null;
-				return obj225;
+				java.lang.Object[][][][] obj226 = null;
+				return obj226;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Date[][][][] getDate() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getDate()");
-				java.util.Date[][][][]				obj226 = new java.util.Date[0][0][0][0];
-				return obj226;
+				java.util.Date[][][][]				obj227 = new java.util.Date[0][0][0][0];
+				return obj227;
 			}
 		});
 		
@@ -2721,8 +2736,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public boolean compare_AllTypesC(boolean bool1s, boolean bool2s, char char1s, java.lang.String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, java.lang.String string1s, byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[][][][] arrInt4, java.lang.String[] arrStrings, java.lang.String[][][][] arrStrings4, byps.test.api.cons.AllTypesZ[][] arrAll) throws RemoteException {
 				log.info("RemoteConstants.compare_AllTypesC()");
-				boolean				obj227 = true;
-				return obj227;
+				boolean				obj228 = true;
+				return obj228;
 			}
 		});
 		
@@ -2731,8 +2746,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.enu.EnumPlanets getPlanet() throws RemoteException {
 				log.info("RemoteEnums.getPlanet()");
-				byps.test.api.enu.EnumPlanets				obj228 = byps.test.api.enu.EnumPlanets.values()[0];
-				return obj228;
+				byps.test.api.enu.EnumPlanets				obj229 = byps.test.api.enu.EnumPlanets.values()[0];
+				return obj229;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2751,22 +2766,22 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.inl.Actor getActor() throws RemoteException {
 				log.info("RemoteInlineInstance.getActor()");
-				byps.test.api.inl.Actor obj230 = new byps.test.api.inl.Actor();
-				obj230.shape = new byps.test.api.inl.Point2D[0];
+				byps.test.api.inl.Actor obj231 = new byps.test.api.inl.Actor();
+				obj231.shape = new byps.test.api.inl.Point2D[0];
 				{
-					byps.test.api.inl.Matrix2D obj231 = new byps.test.api.inl.Matrix2D();
-					obj231._11 = 1.23f;
-					obj231._12 = 1.23f;
-					obj231._13 = 1.23f;
-					obj231._21 = 1.23f;
-					obj231._22 = 1.23f;
-					obj231._23 = 1.23f;
-					obj231._31 = 1.23f;
-					obj231._32 = 1.23f;
-					obj231._33 = 1.23f;
-					obj230.position = obj231;
+					byps.test.api.inl.Matrix2D obj232 = new byps.test.api.inl.Matrix2D();
+					obj232._11 = 1.23f;
+					obj232._12 = 1.23f;
+					obj232._13 = 1.23f;
+					obj232._21 = 1.23f;
+					obj232._22 = 1.23f;
+					obj232._23 = 1.23f;
+					obj232._31 = 1.23f;
+					obj232._32 = 1.23f;
+					obj232._33 = 1.23f;
+					obj231.position = obj232;
 				}
-				return obj230;
+				return obj231;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2777,8 +2792,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.inl.Point2D[] getPoint2DArray1dim() throws RemoteException {
 				log.info("RemoteInlineInstance.getPoint2DArray1dim()");
-				byps.test.api.inl.Point2D[]				obj232 = new byps.test.api.inl.Point2D[0];
-				return obj232;
+				byps.test.api.inl.Point2D[]				obj233 = new byps.test.api.inl.Point2D[0];
+				return obj233;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2789,8 +2804,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.inl.Point2D[][][][] getPoint2DArray4dim() throws RemoteException {
 				log.info("RemoteInlineInstance.getPoint2DArray4dim()");
-				byps.test.api.inl.Point2D[][][][]				obj233 = new byps.test.api.inl.Point2D[0][0][0][0];
-				return obj233;
+				byps.test.api.inl.Point2D[][][][]				obj234 = new byps.test.api.inl.Point2D[0][0][0][0];
+				return obj234;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2801,8 +2816,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<byps.test.api.inl.Point2D> getPoint2DList() throws RemoteException {
 				log.info("RemoteInlineInstance.getPoint2DList()");
-				java.util.List<byps.test.api.inl.Point2D>				obj234 = new ArrayList<byps.test.api.inl.Point2D>();
-				return obj234;
+				java.util.List<byps.test.api.inl.Point2D>				obj235 = new ArrayList<byps.test.api.inl.Point2D>();
+				return obj235;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2813,8 +2828,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.util.List<byps.test.api.inl.Point2D>> getPoint2DListList() throws RemoteException {
 				log.info("RemoteInlineInstance.getPoint2DListList()");
-				java.util.List<java.util.List<byps.test.api.inl.Point2D>>				obj235 = new ArrayList<java.util.List<byps.test.api.inl.Point2D>>();
-				return obj235;
+				java.util.List<java.util.List<byps.test.api.inl.Point2D>>				obj236 = new ArrayList<java.util.List<byps.test.api.inl.Point2D>>();
+				return obj236;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2825,8 +2840,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D> getPoint2DMap() throws RemoteException {
 				log.info("RemoteInlineInstance.getPoint2DMap()");
-				java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>				obj236 = new HashMap<java.lang.Integer,byps.test.api.inl.Point2D>();
-				return obj236;
+				java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>				obj237 = new HashMap<java.lang.Integer,byps.test.api.inl.Point2D>();
+				return obj237;
 			}
 		});
 		
@@ -2835,8 +2850,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.lang.Boolean> getBoolean1() throws RemoteException {
 				log.info("RemoteListTypes.getBoolean1()");
-				java.util.List<java.lang.Boolean>				obj237 = new ArrayList<java.lang.Boolean>();
-				return obj237;
+				java.util.List<java.lang.Boolean>				obj238 = new ArrayList<java.lang.Boolean>();
+				return obj238;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2847,8 +2862,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.lang.Byte> getByte1() throws RemoteException {
 				log.info("RemoteListTypes.getByte1()");
-				java.util.List<java.lang.Byte>				obj238 = new ArrayList<java.lang.Byte>();
-				return obj238;
+				java.util.List<java.lang.Byte>				obj239 = new ArrayList<java.lang.Byte>();
+				return obj239;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2859,8 +2874,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.lang.Character> getChar1() throws RemoteException {
 				log.info("RemoteListTypes.getChar1()");
-				java.util.List<java.lang.Character>				obj239 = new ArrayList<java.lang.Character>();
-				return obj239;
+				java.util.List<java.lang.Character>				obj240 = new ArrayList<java.lang.Character>();
+				return obj240;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2871,8 +2886,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.lang.Short> getShort1() throws RemoteException {
 				log.info("RemoteListTypes.getShort1()");
-				java.util.List<java.lang.Short>				obj240 = new ArrayList<java.lang.Short>();
-				return obj240;
+				java.util.List<java.lang.Short>				obj241 = new ArrayList<java.lang.Short>();
+				return obj241;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2883,8 +2898,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.lang.Integer> getInt1() throws RemoteException {
 				log.info("RemoteListTypes.getInt1()");
-				java.util.List<java.lang.Integer>				obj241 = new ArrayList<java.lang.Integer>();
-				return obj241;
+				java.util.List<java.lang.Integer>				obj242 = new ArrayList<java.lang.Integer>();
+				return obj242;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2895,8 +2910,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.lang.Long> getLong1() throws RemoteException {
 				log.info("RemoteListTypes.getLong1()");
-				java.util.List<java.lang.Long>				obj242 = new ArrayList<java.lang.Long>();
-				return obj242;
+				java.util.List<java.lang.Long>				obj243 = new ArrayList<java.lang.Long>();
+				return obj243;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2907,8 +2922,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.lang.Float> getFloat1() throws RemoteException {
 				log.info("RemoteListTypes.getFloat1()");
-				java.util.List<java.lang.Float>				obj243 = new ArrayList<java.lang.Float>();
-				return obj243;
+				java.util.List<java.lang.Float>				obj244 = new ArrayList<java.lang.Float>();
+				return obj244;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2919,8 +2934,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.lang.Double> getDouble1() throws RemoteException {
 				log.info("RemoteListTypes.getDouble1()");
-				java.util.List<java.lang.Double>				obj244 = new ArrayList<java.lang.Double>();
-				return obj244;
+				java.util.List<java.lang.Double>				obj245 = new ArrayList<java.lang.Double>();
+				return obj245;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2931,8 +2946,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.lang.String> getString1() throws RemoteException {
 				log.info("RemoteListTypes.getString1()");
-				java.util.List<java.lang.String>				obj245 = new ArrayList<java.lang.String>();
-				return obj245;
+				java.util.List<java.lang.String>				obj246 = new ArrayList<java.lang.String>();
+				return obj246;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2943,8 +2958,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<byps.test.api.prim.PrimitiveTypes> getPrimitiveTypes1() throws RemoteException {
 				log.info("RemoteListTypes.getPrimitiveTypes1()");
-				java.util.List<byps.test.api.prim.PrimitiveTypes>				obj246 = new ArrayList<byps.test.api.prim.PrimitiveTypes>();
-				return obj246;
+				java.util.List<byps.test.api.prim.PrimitiveTypes>				obj247 = new ArrayList<byps.test.api.prim.PrimitiveTypes>();
+				return obj247;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2955,8 +2970,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<byte[]> getByte2() throws RemoteException {
 				log.info("RemoteListTypes.getByte2()");
-				java.util.List<byte[]>				obj247 = new ArrayList<byte[]>();
-				return obj247;
+				java.util.List<byte[]>				obj248 = new ArrayList<byte[]>();
+				return obj248;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2967,8 +2982,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<int[]> getInt2() throws RemoteException {
 				log.info("RemoteListTypes.getInt2()");
-				java.util.List<int[]>				obj248 = new ArrayList<int[]>();
-				return obj248;
+				java.util.List<int[]>				obj249 = new ArrayList<int[]>();
+				return obj249;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2979,8 +2994,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.lang.Object> getObj1() throws RemoteException {
 				log.info("RemoteListTypes.getObj1()");
-				java.util.List<java.lang.Object>				obj249 = new ArrayList<java.lang.Object>();
-				return obj249;
+				java.util.List<java.lang.Object>				obj250 = new ArrayList<java.lang.Object>();
+				return obj250;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -2996,15 +3011,15 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.util.Date> getDate1() throws RemoteException {
 				log.info("RemoteListTypes.getDate1()");
-				java.util.List<java.util.Date>				obj250 = new ArrayList<java.util.Date>();
-				return obj250;
+				java.util.List<java.util.Date>				obj251 = new ArrayList<java.util.Date>();
+				return obj251;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.util.List<java.lang.Integer>> getInt3() throws RemoteException {
 				log.info("RemoteListTypes.getInt3()");
-				java.util.List<java.util.List<java.lang.Integer>>				obj251 = new ArrayList<java.util.List<java.lang.Integer>>();
-				return obj251;
+				java.util.List<java.util.List<java.lang.Integer>>				obj252 = new ArrayList<java.util.List<java.lang.Integer>>();
+				return obj252;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3015,8 +3030,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>> getInt4() throws RemoteException {
 				log.info("RemoteListTypes.getInt4()");
-				java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>				obj252 = new ArrayList<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>();
-				return obj252;
+				java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>				obj253 = new ArrayList<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>();
+				return obj253;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3030,8 +3045,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Map<java.lang.String,java.lang.Boolean> getBoolean1() throws RemoteException {
 				log.info("RemoteMapTypes.getBoolean1()");
-				java.util.Map<java.lang.String,java.lang.Boolean>				obj253 = new HashMap<java.lang.String,java.lang.Boolean>();
-				return obj253;
+				java.util.Map<java.lang.String,java.lang.Boolean>				obj254 = new HashMap<java.lang.String,java.lang.Boolean>();
+				return obj254;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3042,8 +3057,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.HashMap<java.lang.Double,java.lang.Byte> getByte1() throws RemoteException {
 				log.info("RemoteMapTypes.getByte1()");
-				java.util.HashMap<java.lang.Double,java.lang.Byte>				obj254 = new java.util.HashMap<java.lang.Double,java.lang.Byte>();
-				return obj254;
+				java.util.HashMap<java.lang.Double,java.lang.Byte>				obj255 = new java.util.HashMap<java.lang.Double,java.lang.Byte>();
+				return obj255;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3054,8 +3069,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.TreeMap<java.lang.Float,java.lang.Character> getChar1() throws RemoteException {
 				log.info("RemoteMapTypes.getChar1()");
-				java.util.TreeMap<java.lang.Float,java.lang.Character>				obj255 = new java.util.TreeMap<java.lang.Float,java.lang.Character>();
-				return obj255;
+				java.util.TreeMap<java.lang.Float,java.lang.Character>				obj256 = new java.util.TreeMap<java.lang.Float,java.lang.Character>();
+				return obj256;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3066,8 +3081,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Map<java.lang.Long,java.lang.Short> getShort1() throws RemoteException {
 				log.info("RemoteMapTypes.getShort1()");
-				java.util.Map<java.lang.Long,java.lang.Short>				obj256 = new HashMap<java.lang.Long,java.lang.Short>();
-				return obj256;
+				java.util.Map<java.lang.Long,java.lang.Short>				obj257 = new HashMap<java.lang.Long,java.lang.Short>();
+				return obj257;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3078,8 +3093,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Map<java.lang.Integer,java.lang.Integer> getInt1() throws RemoteException {
 				log.info("RemoteMapTypes.getInt1()");
-				java.util.Map<java.lang.Integer,java.lang.Integer>				obj257 = new HashMap<java.lang.Integer,java.lang.Integer>();
-				return obj257;
+				java.util.Map<java.lang.Integer,java.lang.Integer>				obj258 = new HashMap<java.lang.Integer,java.lang.Integer>();
+				return obj258;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3090,8 +3105,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Map<java.lang.Short,java.lang.Long> getLong1() throws RemoteException {
 				log.info("RemoteMapTypes.getLong1()");
-				java.util.Map<java.lang.Short,java.lang.Long>				obj258 = new HashMap<java.lang.Short,java.lang.Long>();
-				return obj258;
+				java.util.Map<java.lang.Short,java.lang.Long>				obj259 = new HashMap<java.lang.Short,java.lang.Long>();
+				return obj259;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3102,8 +3117,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Map<java.lang.Character,java.lang.Float> getFloat1() throws RemoteException {
 				log.info("RemoteMapTypes.getFloat1()");
-				java.util.Map<java.lang.Character,java.lang.Float>				obj259 = new HashMap<java.lang.Character,java.lang.Float>();
-				return obj259;
+				java.util.Map<java.lang.Character,java.lang.Float>				obj260 = new HashMap<java.lang.Character,java.lang.Float>();
+				return obj260;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3114,8 +3129,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Map<java.lang.Byte,java.lang.Double> getDouble1() throws RemoteException {
 				log.info("RemoteMapTypes.getDouble1()");
-				java.util.Map<java.lang.Byte,java.lang.Double>				obj260 = new HashMap<java.lang.Byte,java.lang.Double>();
-				return obj260;
+				java.util.Map<java.lang.Byte,java.lang.Double>				obj261 = new HashMap<java.lang.Byte,java.lang.Double>();
+				return obj261;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3126,8 +3141,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Map<java.lang.String,java.lang.String> getString1() throws RemoteException {
 				log.info("RemoteMapTypes.getString1()");
-				java.util.Map<java.lang.String,java.lang.String>				obj261 = new HashMap<java.lang.String,java.lang.String>();
-				return obj261;
+				java.util.Map<java.lang.String,java.lang.String>				obj262 = new HashMap<java.lang.String,java.lang.String>();
+				return obj262;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3138,8 +3153,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes> getPrimitiveTypes1() throws RemoteException {
 				log.info("RemoteMapTypes.getPrimitiveTypes1()");
-				java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>				obj262 = new HashMap<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>();
-				return obj262;
+				java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>				obj263 = new HashMap<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>();
+				return obj263;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3150,8 +3165,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Map<java.lang.Integer,byte[]> getByte2() throws RemoteException {
 				log.info("RemoteMapTypes.getByte2()");
-				java.util.Map<java.lang.Integer,byte[]>				obj263 = new HashMap<java.lang.Integer,byte[]>();
-				return obj263;
+				java.util.Map<java.lang.Integer,byte[]>				obj264 = new HashMap<java.lang.Integer,byte[]>();
+				return obj264;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3162,8 +3177,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Map<java.lang.Integer,int[]> getInt2() throws RemoteException {
 				log.info("RemoteMapTypes.getInt2()");
-				java.util.Map<java.lang.Integer,int[]>				obj264 = new HashMap<java.lang.Integer,int[]>();
-				return obj264;
+				java.util.Map<java.lang.Integer,int[]>				obj265 = new HashMap<java.lang.Integer,int[]>();
+				return obj265;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3174,8 +3189,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Map<java.lang.String,java.lang.Object> getObj1() throws RemoteException {
 				log.info("RemoteMapTypes.getObj1()");
-				java.util.Map<java.lang.String,java.lang.Object>				obj265 = new HashMap<java.lang.String,java.lang.Object>();
-				return obj265;
+				java.util.Map<java.lang.String,java.lang.Object>				obj266 = new HashMap<java.lang.String,java.lang.Object>();
+				return obj266;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3186,8 +3201,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Map<java.lang.String,java.util.Date> getDate1() throws RemoteException {
 				log.info("RemoteMapTypes.getDate1()");
-				java.util.Map<java.lang.String,java.util.Date>				obj266 = new HashMap<java.lang.String,java.util.Date>();
-				return obj266;
+				java.util.Map<java.lang.String,java.util.Date>				obj267 = new HashMap<java.lang.String,java.util.Date>();
+				return obj267;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3266,97 +3281,97 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public boolean getBool() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getBool()");
-				boolean				obj267 = true;
-				return obj267;
+				boolean				obj268 = true;
+				return obj268;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public byte getByte() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getByte()");
-				byte				obj268 = (byte)1;
-				return obj268;
+				byte				obj269 = (byte)1;
+				return obj269;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public char getChar() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getChar()");
-				char				obj269 = 'a';
-				return obj269;
+				char				obj270 = 'a';
+				return obj270;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public short getShort() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getShort()");
-				short				obj270 = (short)123;
-				return obj270;
+				short				obj271 = (short)123;
+				return obj271;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public int getInt() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getInt()");
-				int				obj271 = 9876543;
-				return obj271;
+				int				obj272 = 9876543;
+				return obj272;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public long getLong() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getLong()");
-				long				obj272 = 987654321012345L;
-				return obj272;
+				long				obj273 = 987654321012345L;
+				return obj273;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public float getFloat() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getFloat()");
-				float				obj273 = 1.23f;
-				return obj273;
+				float				obj274 = 1.23f;
+				return obj274;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public double getDouble() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getDouble()");
-				double				obj274 = 9.876;
-				return obj274;
+				double				obj275 = 9.876;
+				return obj275;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.lang.String getString() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getString()");
-				java.lang.String				obj275 = "STRING";
-				return obj275;
+				java.lang.String				obj276 = "STRING";
+				return obj276;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.prim.PrimitiveTypes getPrimitiveTypes() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getPrimitiveTypes()");
-				byps.test.api.prim.PrimitiveTypes obj277 = new byps.test.api.prim.PrimitiveTypes();
-				obj277.boolVal = true;
-				obj277.byteVal = (byte)1;
-				obj277.charVal = 'a';
-				obj277.shortVal = (short)123;
-				obj277.intVal = 9876543;
-				obj277.longVal = 987654321012345L;
-				obj277.floatVal = 1.23f;
-				obj277.doubleVal = 9.876;
-				obj277.stringVal = "STRING";
-				obj277.dateVal = new Date(System.currentTimeMillis());
-				obj277.value = true;
-				obj277.setDeferredValue(9876543);
-				return obj277;
+				byps.test.api.prim.PrimitiveTypes obj278 = new byps.test.api.prim.PrimitiveTypes();
+				obj278.boolVal = true;
+				obj278.byteVal = (byte)1;
+				obj278.charVal = 'a';
+				obj278.shortVal = (short)123;
+				obj278.intVal = 9876543;
+				obj278.longVal = 987654321012345L;
+				obj278.floatVal = 1.23f;
+				obj278.doubleVal = 9.876;
+				obj278.stringVal = "STRING";
+				obj278.dateVal = new Date(System.currentTimeMillis());
+				obj278.value = true;
+				obj278.setDeferredValue(9876543);
+				return obj278;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.lang.Object getObject() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getObject()");
-				java.lang.Object obj278 = null;
-				return obj278;
+				java.lang.Object obj279 = null;
+				return obj279;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Date getDate() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getDate()");
-				java.util.Date				obj279 = new Date(System.currentTimeMillis());
-				return obj279;
+				java.util.Date				obj280 = new Date(System.currentTimeMillis());
+				return obj280;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3367,22 +3382,22 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public int add(int a, int b) throws RemoteException {
 				log.info("RemotePrimitiveTypes.add()");
-				int				obj280 = 9876543;
-				return obj280;
+				int				obj281 = 9876543;
+				return obj281;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Date makeDate(int year, int month, int day, int hour, int minute, int second, int millisecond) throws RemoteException {
 				log.info("RemotePrimitiveTypes.makeDate()");
-				java.util.Date				obj281 = new Date(System.currentTimeMillis());
-				return obj281;
+				java.util.Date				obj282 = new Date(System.currentTimeMillis());
+				return obj282;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public int[] parseDate(java.util.Date date) throws RemoteException {
 				log.info("RemotePrimitiveTypes.parseDate()");
-				int[]				obj282 = new int[0];
-				return obj282;
+				int[]				obj283 = new int[0];
+				return obj283;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3393,8 +3408,18 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public int getDeferredValueFromServer(int param1, java.lang.String param2) throws RemoteException {
 				log.info("RemotePrimitiveTypes.getDeferredValueFromServer()");
-				int				obj283 = 9876543;
-				return obj283;
+				int				obj284 = 9876543;
+				return obj284;
+			}
+		});
+		
+		server.addRemote(790485113, new byps.test.api.remote.BSkeleton_RemoteProcessingEx() {
+			@Override
+			// checkpoint byps.gen.j.PrintContext:383
+			public boolean getValueAfterProcessingExceptions(int sleepSeconds) throws RemoteException {
+				log.info("RemoteProcessingEx.getValueAfterProcessingExceptions()");
+				boolean				obj285 = true;
+				return obj285;
 			}
 		});
 		
@@ -3403,22 +3428,22 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.refs.Node getNode() throws RemoteException {
 				log.info("RemoteReferences.getNode()");
-				byps.test.api.refs.Node obj285 = new byps.test.api.refs.Node();
+				byps.test.api.refs.Node obj287 = new byps.test.api.refs.Node();
 				{
-					byps.test.api.refs.Node obj286 = new byps.test.api.refs.Node();
-					obj286.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
-					obj286.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
-					obj285.next = obj286;
+					byps.test.api.refs.Node obj288 = new byps.test.api.refs.Node();
+					obj288.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
+					obj288.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
+					obj287.next = obj288;
 				}
 				{
-					byps.test.api.refs.Node obj287 = new byps.test.api.refs.Node();
-					obj287.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
-					obj287.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
-					obj285.me = obj287;
+					byps.test.api.refs.Node obj289 = new byps.test.api.refs.Node();
+					obj289.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
+					obj289.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
+					obj287.me = obj289;
 				}
-				obj285.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
-				obj285.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
-				return obj285;
+				obj287.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
+				obj287.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
+				return obj287;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3437,8 +3462,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public BRemote getPublishedRemote(java.lang.String name) throws RemoteException {
 				log.info("RemoteServerCtrl.getPublishedRemote()");
-				BRemote obj288 = null;
-				return obj288;
+				BRemote obj290 = null;
+				return obj290;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3452,8 +3477,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Set<java.lang.Boolean> getBoolean1() throws RemoteException {
 				log.info("RemoteSetTypes.getBoolean1()");
-				java.util.Set<java.lang.Boolean>				obj289 = new HashSet<java.lang.Boolean>();
-				return obj289;
+				java.util.Set<java.lang.Boolean>				obj291 = new HashSet<java.lang.Boolean>();
+				return obj291;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3464,8 +3489,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.HashSet<java.lang.Byte> getByte1() throws RemoteException {
 				log.info("RemoteSetTypes.getByte1()");
-				java.util.HashSet<java.lang.Byte>				obj290 = new java.util.HashSet<java.lang.Byte>();
-				return obj290;
+				java.util.HashSet<java.lang.Byte>				obj292 = new java.util.HashSet<java.lang.Byte>();
+				return obj292;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3476,8 +3501,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.TreeSet<java.lang.Character> getChar1() throws RemoteException {
 				log.info("RemoteSetTypes.getChar1()");
-				java.util.TreeSet<java.lang.Character>				obj291 = new java.util.TreeSet<java.lang.Character>();
-				return obj291;
+				java.util.TreeSet<java.lang.Character>				obj293 = new java.util.TreeSet<java.lang.Character>();
+				return obj293;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3488,8 +3513,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Set<java.lang.Short> getShort1() throws RemoteException {
 				log.info("RemoteSetTypes.getShort1()");
-				java.util.Set<java.lang.Short>				obj292 = new HashSet<java.lang.Short>();
-				return obj292;
+				java.util.Set<java.lang.Short>				obj294 = new HashSet<java.lang.Short>();
+				return obj294;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3500,8 +3525,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Set<java.lang.Integer> getInt1() throws RemoteException {
 				log.info("RemoteSetTypes.getInt1()");
-				java.util.Set<java.lang.Integer>				obj293 = new HashSet<java.lang.Integer>();
-				return obj293;
+				java.util.Set<java.lang.Integer>				obj295 = new HashSet<java.lang.Integer>();
+				return obj295;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3512,8 +3537,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Set<java.lang.Long> getLong1() throws RemoteException {
 				log.info("RemoteSetTypes.getLong1()");
-				java.util.Set<java.lang.Long>				obj294 = new HashSet<java.lang.Long>();
-				return obj294;
+				java.util.Set<java.lang.Long>				obj296 = new HashSet<java.lang.Long>();
+				return obj296;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3524,8 +3549,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Set<java.lang.Float> getFloat1() throws RemoteException {
 				log.info("RemoteSetTypes.getFloat1()");
-				java.util.Set<java.lang.Float>				obj295 = new HashSet<java.lang.Float>();
-				return obj295;
+				java.util.Set<java.lang.Float>				obj297 = new HashSet<java.lang.Float>();
+				return obj297;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3536,8 +3561,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Set<java.lang.Double> getDouble1() throws RemoteException {
 				log.info("RemoteSetTypes.getDouble1()");
-				java.util.Set<java.lang.Double>				obj296 = new HashSet<java.lang.Double>();
-				return obj296;
+				java.util.Set<java.lang.Double>				obj298 = new HashSet<java.lang.Double>();
+				return obj298;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3548,8 +3573,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Set<java.lang.String> getString1() throws RemoteException {
 				log.info("RemoteSetTypes.getString1()");
-				java.util.Set<java.lang.String>				obj297 = new HashSet<java.lang.String>();
-				return obj297;
+				java.util.Set<java.lang.String>				obj299 = new HashSet<java.lang.String>();
+				return obj299;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3560,8 +3585,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Set<byps.test.api.prim.PrimitiveTypes> getPrimitiveTypes1() throws RemoteException {
 				log.info("RemoteSetTypes.getPrimitiveTypes1()");
-				java.util.Set<byps.test.api.prim.PrimitiveTypes>				obj298 = new HashSet<byps.test.api.prim.PrimitiveTypes>();
-				return obj298;
+				java.util.Set<byps.test.api.prim.PrimitiveTypes>				obj300 = new HashSet<byps.test.api.prim.PrimitiveTypes>();
+				return obj300;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3572,8 +3597,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Set<byte[]> getByte2() throws RemoteException {
 				log.info("RemoteSetTypes.getByte2()");
-				java.util.Set<byte[]>				obj299 = new HashSet<byte[]>();
-				return obj299;
+				java.util.Set<byte[]>				obj301 = new HashSet<byte[]>();
+				return obj301;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3584,8 +3609,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Set<int[]> getInt2() throws RemoteException {
 				log.info("RemoteSetTypes.getInt2()");
-				java.util.Set<int[]>				obj300 = new HashSet<int[]>();
-				return obj300;
+				java.util.Set<int[]>				obj302 = new HashSet<int[]>();
+				return obj302;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3596,8 +3621,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Set<java.lang.Object> getObj1() throws RemoteException {
 				log.info("RemoteSetTypes.getObj1()");
-				java.util.Set<java.lang.Object>				obj301 = new HashSet<java.lang.Object>();
-				return obj301;
+				java.util.Set<java.lang.Object>				obj303 = new HashSet<java.lang.Object>();
+				return obj303;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3613,8 +3638,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Set<java.util.Date> getDate1() throws RemoteException {
 				log.info("RemoteSetTypes.getDate1()");
-				java.util.Set<java.util.Date>				obj302 = new HashSet<java.util.Date>();
-				return obj302;
+				java.util.Set<java.util.Date>				obj304 = new HashSet<java.util.Date>();
+				return obj304;
 			}
 		});
 		
@@ -3623,8 +3648,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.io.InputStream getImage() throws RemoteException {
 				log.info("RemoteStreams.getImage()");
-				java.io.InputStream obj303 = null;
-				return obj303;
+				java.io.InputStream obj305 = null;
+				return obj305;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3635,8 +3660,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.TreeMap<java.lang.Integer,java.io.InputStream> getImages() throws RemoteException {
 				log.info("RemoteStreams.getImages()");
-				java.util.TreeMap<java.lang.Integer,java.io.InputStream>				obj304 = new java.util.TreeMap<java.lang.Integer,java.io.InputStream>();
-				return obj304;
+				java.util.TreeMap<java.lang.Integer,java.io.InputStream>				obj306 = new java.util.TreeMap<java.lang.Integer,java.io.InputStream>();
+				return obj306;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3652,22 +3677,22 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.io.InputStream getTextStream() throws RemoteException {
 				log.info("RemoteStreams.getTextStream()");
-				java.io.InputStream obj305 = null;
-				return obj305;
+				java.io.InputStream obj307 = null;
+				return obj307;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.io.InputStream getVideoCheckSupportByteRange() throws RemoteException {
 				log.info("RemoteStreams.getVideoCheckSupportByteRange()");
-				java.io.InputStream obj306 = null;
-				return obj306;
+				java.io.InputStream obj308 = null;
+				return obj308;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.io.InputStream getStreamDeferedProperies() throws RemoteException {
 				log.info("RemoteStreams.getStreamDeferedProperies()");
-				java.io.InputStream obj307 = null;
-				return obj307;
+				java.io.InputStream obj309 = null;
+				return obj309;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3678,8 +3703,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.io.InputStream getStreamDoNotClone() throws RemoteException {
 				log.info("RemoteStreams.getStreamDoNotClone()");
-				java.io.InputStream obj308 = null;
-				return obj308;
+				java.io.InputStream obj310 = null;
+				return obj310;
 			}
 		});
 		
@@ -3693,16 +3718,16 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.auth.SessionInfo login(byps.test.api.auth.SessionInfo sess, java.lang.String userName, java.lang.String userPwd) throws RemoteException {
 				log.info("RemoteWithAuthentication.login()");
-				byps.test.api.auth.SessionInfo obj310 = new byps.test.api.auth.SessionInfo();
-				obj310.sessionID = "STRING";
-				return obj310;
+				byps.test.api.auth.SessionInfo obj312 = new byps.test.api.auth.SessionInfo();
+				obj312.sessionID = "STRING";
+				return obj312;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public int doit(byps.test.api.auth.SessionInfo sess, int value) throws RemoteException {
 				log.info("RemoteWithAuthentication.doit()");
-				int				obj311 = 9876543;
-				return obj311;
+				int				obj313 = 9876543;
+				return obj313;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3721,15 +3746,15 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public int incrementInt(int a) throws RemoteException {
 				log.info("ClientIF.incrementInt()");
-				int				obj312 = 9876543;
-				return obj312;
+				int				obj314 = 9876543;
+				return obj314;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.io.InputStream> getStreams(int ctrl) throws RemoteException {
 				log.info("ClientIF.getStreams()");
-				java.util.List<java.io.InputStream>				obj313 = new ArrayList<java.io.InputStream>();
-				return obj313;
+				java.util.List<java.io.InputStream>				obj315 = new ArrayList<java.io.InputStream>();
+				return obj315;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3740,11 +3765,11 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.srvr.ChatStructure sendChat(byps.test.api.srvr.ChatStructure cs) throws RemoteException {
 				log.info("ClientIF.sendChat()");
-				byps.test.api.srvr.ChatStructure obj315 = new byps.test.api.srvr.ChatStructure();
-				obj315.msg = "STRING";
-				obj315.sentAt = 9.876;
-				obj315.receivedAt = 9.876;
-				return obj315;
+				byps.test.api.srvr.ChatStructure obj317 = new byps.test.api.srvr.ChatStructure();
+				obj317.msg = "STRING";
+				obj317.sentAt = 9.876;
+				obj317.receivedAt = 9.876;
+				return obj317;
 			}
 		});
 		
@@ -3753,8 +3778,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public int callClientIncrementInt(int v) throws RemoteException {
 				log.info("ServerIF.callClientIncrementInt()");
-				int				obj316 = 9876543;
-				return obj316;
+				int				obj318 = 9876543;
+				return obj318;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3765,15 +3790,15 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.srvr.ClientIF getPartner() throws RemoteException {
 				log.info("ServerIF.getPartner()");
-				byps.test.api.srvr.ClientIF obj317 = null;
-				return obj317;
+				byps.test.api.srvr.ClientIF obj319 = null;
+				return obj319;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.List<java.io.InputStream> getStreamsFromClient(boolean materializeOnServer) throws RemoteException {
 				log.info("ServerIF.getStreamsFromClient()");
-				java.util.List<java.io.InputStream>				obj318 = new ArrayList<java.io.InputStream>();
-				return obj318;
+				java.util.List<java.io.InputStream>				obj320 = new ArrayList<java.io.InputStream>();
+				return obj320;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3789,22 +3814,22 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.srvr.ClientIF getClient(int id) throws RemoteException {
 				log.info("ServerIF.getClient()");
-				byps.test.api.srvr.ClientIF obj319 = null;
-				return obj319;
+				byps.test.api.srvr.ClientIF obj321 = null;
+				return obj321;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public java.util.Set<java.lang.Integer> getClientIds() throws RemoteException {
 				log.info("ServerIF.getClientIds()");
-				java.util.Set<java.lang.Integer>				obj320 = new HashSet<java.lang.Integer>();
-				return obj320;
+				java.util.Set<java.lang.Integer>				obj322 = new HashSet<java.lang.Integer>();
+				return obj322;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
 			public int callClientParallel(int v) throws RemoteException {
 				log.info("ServerIF.callClientParallel()");
-				int				obj321 = 9876543;
-				return obj321;
+				int				obj323 = 9876543;
+				return obj323;
 			}
 		});
 		
@@ -3818,84 +3843,84 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.ver.Evolve getEvolve() throws RemoteException {
 				log.info("EvolveIF.getEvolve()");
-				byps.test.api.ver.Evolve obj323 = new byps.test.api.ver.Evolve();
-				obj323.bool1 = true;
-				obj323.byte1 = (byte)1;
-				obj323.char1 = 'a';
-				obj323.short1 = (short)123;
-				obj323.int1 = 9876543;
-				obj323.long1 = 987654321012345L;
-				obj323.float1 = 1.23f;
-				obj323.double1 = 9.876;
-				obj323.bools1 = new boolean[0];
-				obj323.bytes1 = new byte[0];
-				obj323.chars1 = new char[0];
-				obj323.shorts1 = new short[0];
-				obj323.ints1 = new int[0];
-				obj323.longs1 = new long[0];
-				obj323.floats1 = new float[0];
-				obj323.doubles1 = new double[0];
-				obj323.str1 = "STRING";
-				{
-					byps.test.api.ver.Evolve2 obj324 = new byps.test.api.ver.Evolve2();
-					obj324.setN1(9876543);
-					obj323.evo1 = obj324;
-				}
-				obj323.list1 = new ArrayList<java.lang.Integer>();
-				obj323.set1 = new HashSet<java.lang.Integer>();
-				obj323.map1 = new HashMap<java.lang.Integer,java.lang.Integer>();
-				obj323.bool2 = true;
-				obj323.byte2 = (byte)1;
-				obj323.char2 = 'a';
-				obj323.short2 = (short)123;
-				obj323.int2 = 9876543;
-				obj323.long2 = 987654321012345L;
-				obj323.float2 = 1.23f;
-				obj323.double2 = 9.876;
-				obj323.bools2 = new boolean[0];
-				obj323.bytes2 = new byte[0];
-				obj323.chars2 = new char[0];
-				obj323.shorts2 = new short[0];
-				obj323.ints2 = new int[0];
-				obj323.longs2 = new long[0];
-				obj323.floats2 = new float[0];
-				obj323.doubles2 = new double[0];
-				obj323.str2 = "STRING";
-				{
-					byps.test.api.ver.Evolve2 obj325 = new byps.test.api.ver.Evolve2();
-					obj325.setN1(9876543);
-					obj323.evo2 = obj325;
-				}
-				obj323.list2 = new ArrayList<java.lang.Integer>();
-				obj323.set2 = new HashSet<java.lang.Integer>();
-				obj323.map2 = new HashMap<java.lang.Integer,java.lang.Integer>();
-				obj323.bool3 = true;
-				obj323.byte3 = (byte)1;
-				obj323.char3 = 'a';
-				obj323.short3 = (short)123;
-				obj323.int3 = 9876543;
-				obj323.long3 = 987654321012345L;
-				obj323.float3 = 1.23f;
-				obj323.double3 = 9.876;
-				obj323.bools3 = new boolean[0];
-				obj323.bytes3 = new byte[0];
-				obj323.chars3 = new char[0];
-				obj323.shorts3 = new short[0];
-				obj323.ints3 = new int[0];
-				obj323.longs3 = new long[0];
-				obj323.floats3 = new float[0];
-				obj323.doubles3 = new double[0];
-				obj323.str3 = "STRING";
+				byps.test.api.ver.Evolve obj325 = new byps.test.api.ver.Evolve();
+				obj325.bool1 = true;
+				obj325.byte1 = (byte)1;
+				obj325.char1 = 'a';
+				obj325.short1 = (short)123;
+				obj325.int1 = 9876543;
+				obj325.long1 = 987654321012345L;
+				obj325.float1 = 1.23f;
+				obj325.double1 = 9.876;
+				obj325.bools1 = new boolean[0];
+				obj325.bytes1 = new byte[0];
+				obj325.chars1 = new char[0];
+				obj325.shorts1 = new short[0];
+				obj325.ints1 = new int[0];
+				obj325.longs1 = new long[0];
+				obj325.floats1 = new float[0];
+				obj325.doubles1 = new double[0];
+				obj325.str1 = "STRING";
 				{
 					byps.test.api.ver.Evolve2 obj326 = new byps.test.api.ver.Evolve2();
 					obj326.setN1(9876543);
-					obj323.evo3 = obj326;
+					obj325.evo1 = obj326;
 				}
-				obj323.list3 = new ArrayList<java.lang.Integer>();
-				obj323.set3 = new HashSet<java.lang.Integer>();
-				obj323.map3 = new HashMap<java.lang.Integer,java.lang.Integer>();
-				obj323.since793 = 9876543;
-				return obj323;
+				obj325.list1 = new ArrayList<java.lang.Integer>();
+				obj325.set1 = new HashSet<java.lang.Integer>();
+				obj325.map1 = new HashMap<java.lang.Integer,java.lang.Integer>();
+				obj325.bool2 = true;
+				obj325.byte2 = (byte)1;
+				obj325.char2 = 'a';
+				obj325.short2 = (short)123;
+				obj325.int2 = 9876543;
+				obj325.long2 = 987654321012345L;
+				obj325.float2 = 1.23f;
+				obj325.double2 = 9.876;
+				obj325.bools2 = new boolean[0];
+				obj325.bytes2 = new byte[0];
+				obj325.chars2 = new char[0];
+				obj325.shorts2 = new short[0];
+				obj325.ints2 = new int[0];
+				obj325.longs2 = new long[0];
+				obj325.floats2 = new float[0];
+				obj325.doubles2 = new double[0];
+				obj325.str2 = "STRING";
+				{
+					byps.test.api.ver.Evolve2 obj327 = new byps.test.api.ver.Evolve2();
+					obj327.setN1(9876543);
+					obj325.evo2 = obj327;
+				}
+				obj325.list2 = new ArrayList<java.lang.Integer>();
+				obj325.set2 = new HashSet<java.lang.Integer>();
+				obj325.map2 = new HashMap<java.lang.Integer,java.lang.Integer>();
+				obj325.bool3 = true;
+				obj325.byte3 = (byte)1;
+				obj325.char3 = 'a';
+				obj325.short3 = (short)123;
+				obj325.int3 = 9876543;
+				obj325.long3 = 987654321012345L;
+				obj325.float3 = 1.23f;
+				obj325.double3 = 9.876;
+				obj325.bools3 = new boolean[0];
+				obj325.bytes3 = new byte[0];
+				obj325.chars3 = new char[0];
+				obj325.shorts3 = new short[0];
+				obj325.ints3 = new int[0];
+				obj325.longs3 = new long[0];
+				obj325.floats3 = new float[0];
+				obj325.doubles3 = new double[0];
+				obj325.str3 = "STRING";
+				{
+					byps.test.api.ver.Evolve2 obj328 = new byps.test.api.ver.Evolve2();
+					obj328.setN1(9876543);
+					obj325.evo3 = obj328;
+				}
+				obj325.list3 = new ArrayList<java.lang.Integer>();
+				obj325.set3 = new HashSet<java.lang.Integer>();
+				obj325.map3 = new HashMap<java.lang.Integer,java.lang.Integer>();
+				obj325.since793 = 9876543;
+				return obj325;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383
@@ -3906,8 +3931,8 @@ public class TestCompatibleApi_Testser {
 			// checkpoint byps.gen.j.PrintContext:383
 			public byps.test.api.ver.EvolveIF getClient() throws RemoteException {
 				log.info("EvolveIF.getClient()");
-				byps.test.api.ver.EvolveIF obj327 = null;
-				return obj327;
+				byps.test.api.ver.EvolveIF obj329 = null;
+				return obj329;
 			}
 			@Override
 			// checkpoint byps.gen.j.PrintContext:383

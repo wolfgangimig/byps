@@ -69,7 +69,16 @@ public class HActiveMessage {
   public synchronized void setRequestContext(HRequestContext rctxt, Thread workerThread) {
     this.waitingForRequestContext = false;
     this.rctxtMessage = rctxt;
-    this.workerThread = workerThread;
+    
+    // workerThread is null for messages that poll processing status.
+    // BYPS-9: Avoid socket exception while uploading large files.
+    if (workerThread != null) {
+      this.workerThread = workerThread;
+    }
+    
+    // Mglw. wartet ein Thread in getAndRemoveRequestContext
+    this.notifyAll();
+    
     if (log.isDebugEnabled()) log.debug("assigned rctxt=" + rctxt + ", workerThread=" + workerThread);
   }
   
@@ -114,12 +123,40 @@ public class HActiveMessage {
 
   private void checkFinished() {
   }
+  
+  public synchronized HRequestContext getAndRemoveRequestContext(HRemoveMessageControl removeControl) throws BException {
+    if (log.isDebugEnabled()) log.debug("getAndRemoveRequestContext(" + messageId + ", " + removeControl);
 
-  public synchronized HRequestContext getAndRemoveRequestContext() throws BException {
-    if (log.isDebugEnabled()) log.debug("getAndRemoveRequestContext(" + messageId);
-
+    // Request should be completed?
+    if (removeControl == HRemoveMessageControl.FINISHED) {
+      
+      // Maybe wait some seconds until a RequestContext is available.
+      // It is  missing at this point, if a BExceptionC#PROCESSING has occurred and the 
+      // client has not jet send a follow-up message.
+      
+      long timeoutAtMillis = System.currentTimeMillis() + HConstants.INCOMING_STREAM_TIMEOUT_MILLIS;
+      while (waitingForRequestContext && rctxtMessage == null && System.currentTimeMillis() < timeoutAtMillis) {
+        if (log.isDebugEnabled()) log.debug("Wait for HRequestContext...");
+        try {
+          this.wait(1000L);
+        } catch (InterruptedException e) {
+          Thread.currentThread().interrupt();
+          if (log.isDebugEnabled()) log.debug("Interrupted while waiting for HRequestContext");
+          break;
+        }
+      }
+      if (log.isDebugEnabled()) log.debug("Continue with rctxt=" + rctxtMessage);
+    }
+    
     HRequestContext rctxt = rctxtMessage;
     rctxtMessage = null;
+    
+    // If the server still works on the message, we keep the HActiveMessage object  
+    // alive by setting waitingForRequestContext=true. 
+    // When the client sends the follow-up message, its RequestContext is assigned
+    // to this message.
+    // BYPS-9: Avoid socket exception while uploading large files.
+    waitingForRequestContext = removeControl == HRemoveMessageControl.PROCESSING;
 
     checkFinished();
 
@@ -147,11 +184,18 @@ public class HActiveMessage {
     Thread thread = workerThread;
     if (log.isDebugEnabled()) log.debug("worker is still running: " + (thread != null));
     if (thread != null) {
-      if (log.isDebugEnabled()) log.debug("interrupt thread=" + thread);
-      thread.interrupt();
+      
+      // Do not cancel the current thread. Otherwise, BSkeleton_BUtilityRequests.cancelMessage
+      // cannot send its response to the client.  
+      if (thread != Thread.currentThread()) {
+        
+        if (log.isDebugEnabled()) log.debug("interrupt thread=" + thread);
+        thread.interrupt();
 
-      // The worker thread will call RequestContext.complete
-      // when it is finished.
+        // The worker thread will call RequestContext.complete
+        // when it is finished.
+      }
+      
     }
     else if (rctxtMessage != null) {
 

@@ -24,6 +24,7 @@ import byps.BProtocolS;
 	TestSerializeDifferentVersions.class,
 	TestCompatibleApi.class,
 	TestRemotePrimitiveTypes.class,
+	TestRemoteProcessingEx.class,
 	TestRemoteArrays.class,
 	TestRemoteMapTypes.class,
 	TestRemoteEnums.class,

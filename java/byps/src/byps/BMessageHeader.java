@@ -40,6 +40,13 @@ public class BMessageHeader {
 	public final static int FLAG_TIMEOUT = 4;
 	public final static int FLAG_LONGPOLL_WITH_TIMEOUT = FLAG_LONGPOLL + 4;
 	
+	/**
+	 * This flag indicates that the message is to provide a new response 
+	 * object after {@link BExceptionC#PROCESSING}.
+	 * @since 5.28
+	 */
+	public static final int FLAG_POLL_PROCESSING = 8;
+	
 	public final static int SESSIONID_LENGTH = 16;
 	
 	public int magic;

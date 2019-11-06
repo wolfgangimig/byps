@@ -5816,6 +5816,30 @@ class BRequest_RemotePrimitiveTypes_voidFunctionVoid : public BMethodRequest {
 
 // checkpoint byps.gen.cpp.GenApiClass:652
 //-------------------------------------------------
+// BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions
+// typeId=1155485035
+
+namespace byps { namespace test { namespace api { namespace remote { 
+
+using namespace ::byps;
+
+class BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions : public BMethodRequest {
+	public: int32_t sleepSeconds;
+	
+	// checkpoint byps.gen.cpp.GenApiClass:488
+	public: BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions();
+	// checkpoint byps.gen.cpp.GenApiClass:535
+	public: BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions(int32_t sleepSeconds);	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	// checkpoint byps.gen.cpp.GenApiClass:870
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:652
+//-------------------------------------------------
 // BRequest_RemoteReferences_getNode
 // typeId=1366991859
 
@@ -7962,6 +7986,8 @@ void BSerializer_1293977038(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 void BSerializer_1278149706(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_voidFunctionVoid
 void BSerializer_2033139391(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions
+void BSerializer_1155485035(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteReferences_getNode
 void BSerializer_1366991859(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteReferences_setNode
@@ -8076,6 +8102,8 @@ void BSerializer_1233438138(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 void BSerializer_664304990(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemotePrimitiveTypes
 void BSerializer_456456(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BStub_RemoteProcessingEx
+void BSerializer_790485113(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteReferences
 void BSerializer_568637225(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BStub_RemoteServerCtrl
