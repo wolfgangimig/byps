@@ -697,13 +697,14 @@ public abstract class HHttpServlet extends HttpServlet implements
                 // long-running requests by messages with BMessageHeader#FLAG_POLL_PROCESSING
                 // and BExceptionC#PROCESSING
                 
-                transport.recv(server, msg, asyncResponse);
+                executeMessageInRequestContext(msg, rctxt2, asyncResponse, server, transport);
+                
               }
               else {
 
                 final BSyncResult<BMessage> syncResponse = new BSyncResult<BMessage>();
 
-                transport.recv(server, msg, syncResponse);
+                executeMessageInRequestContext(msg, rctxt2, syncResponse, server, transport);
 
                 if (log.isDebugEnabled()) log.debug("wait for result");
                 try {
@@ -779,6 +780,25 @@ public abstract class HHttpServlet extends HttpServlet implements
     }
 
     if (log.isDebugEnabled()) log.debug(")doMessage");
+  }
+
+  /**
+   * Deserialize and execute message.
+   * @param msg BMessage
+   * @param requestContext HRequestContext
+   * @param asyncResponse Response.
+   * @param server BServer
+   * @param transport BTransport
+   */
+  protected void executeMessageInRequestContext(final BMessage msg, final HRequestContext requestContext, final BAsyncResult<BMessage> asyncResponse,
+      final BServer server, final BTransport transport) {
+    HThreadRequestContext.set(requestContext);
+    try {
+      transport.recv(server, msg, asyncResponse);
+    }
+    finally {
+      HThreadRequestContext.remove();
+    }
   }
 
   private long getDefaultRequestProcessingTimeout() {
