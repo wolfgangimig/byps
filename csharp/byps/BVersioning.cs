@@ -13,11 +13,12 @@ namespace byps
             long ver = 0;
             if (sver != null && sver.Length != 0)
             {
-                String[] arr = sver.Split(new char[] { '.' });
-                for (int i = 0; i < arr.Length; i++)
+                List<String> arr = new List<String>(sver.Split(new char[] { '.' }));
+                while (arr.Count < 4) arr.Add("0");
+                for (int i = 0; i < arr.Count; i++)
                 {
                     ver *= 10000;
-                    if (i == arr.Length - 1) ver *= 100;
+                    if (i == arr.Count - 1) ver *= 100;
                     if (arr[i].Length != 0)
                     {
                         ver += Convert.ToInt32(arr[i]);
