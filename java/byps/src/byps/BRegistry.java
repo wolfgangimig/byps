@@ -173,7 +173,7 @@ public abstract class BRegistry {
     }
   }
 
-  protected abstract BRegisteredSerializer[] getSortedSerializers() throws BException;
+  protected abstract BRegisteredSerializer[] getSortedSerializers();
 
   private BSerializer getBuiltInSerializer(int typeId) throws BException {
     if (bmodel == BBinaryModel.JSON) {
@@ -209,4 +209,15 @@ public abstract class BRegistry {
     return false;
   }
 
+  public boolean replaceSerializer(BSerializer bser) {
+    BRegisteredSerializer[] ssers = getSortedSerializers();
+    for (BRegisteredSerializer sser : ssers) {
+      if (sser.typeId == bser.typeId) {
+        sser.instance = bser;
+        return true;
+      }
+    }
+    return false;
+  }
+  
 }

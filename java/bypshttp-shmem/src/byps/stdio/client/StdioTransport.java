@@ -23,7 +23,7 @@ public class StdioTransport {
     BApiDescriptor apiDesc = new BApiDescriptor("StdioHttpHeaders", "byps", version, false);
     apiDesc.addRegistry(new BRegistry(BProtocolS.BINARY_MODEL) {
       @Override
-      protected BRegisteredSerializer[] getSortedSerializers() throws BException {
+      protected BRegisteredSerializer[] getSortedSerializers() {
         return new BRegisteredSerializer[0];
       }
     });

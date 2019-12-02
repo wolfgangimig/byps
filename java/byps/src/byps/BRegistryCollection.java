@@ -16,7 +16,7 @@ public class BRegistryCollection extends BRegistry {
   }
 
   @Override
-  protected BRegisteredSerializer[] getSortedSerializers() throws BException {
+  protected BRegisteredSerializer[] getSortedSerializers() {
     throw new UnsupportedOperationException();
   }
 
@@ -34,4 +34,13 @@ public class BRegistryCollection extends BRegistry {
     return registries.isEmpty();
   }
 
+  @Override
+  public boolean replaceSerializer(BSerializer bser) {
+    for (BRegistry reg : registries) {
+      if (reg.replaceSerializer(bser)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
