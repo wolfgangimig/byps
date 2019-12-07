@@ -321,10 +321,10 @@ public class XmlGenerator extends XmlGeneratorBase {
     
     boolean isPublic = fieldElement.getModifiers().contains(Modifier.PUBLIC);
     boolean isProtected = fieldElement.getModifiers().contains(Modifier.PROTECTED);
-    boolean isPackage = fieldElement.getModifiers().contains(Modifier.PROTECTED);
     boolean isPrivate = fieldElement.getModifiers().contains(Modifier.PRIVATE);
     boolean isFinal = fieldElement.getModifiers().contains(Modifier.FINAL);
     boolean isTransient = fieldElement.getModifiers().contains(Modifier.TRANSIENT);
+    boolean isPackage = !(isPublic || isProtected || isPrivate);
         
     return new MemberInfo(name, commentInfos, typeInfo, 
         isPublic, isProtected, isPackage, isPrivate,
