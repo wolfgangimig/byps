@@ -325,7 +325,7 @@ public class Context {
   }
 
   public File getFileClassDB() {
-    return fileClassDB;
+    return fileClassDB.getAbsoluteFile();
   }
 
   public PropertiesCS getPropsCS() {

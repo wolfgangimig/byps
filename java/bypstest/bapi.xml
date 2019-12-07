@@ -9578,9 +9578,9 @@
             <members/>
             <comments/>
             <baseFullName></baseFullName>
-            <isInline>true</isInline>
+            <isInline>false</isInline>
             <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
+            <isFinal>true</isFinal>
             <since>0.0.0.0</since>
         </serial>
         <serial>
@@ -9589,9 +9589,9 @@
             <members/>
             <comments/>
             <baseFullName></baseFullName>
-            <isInline>true</isInline>
+            <isInline>false</isInline>
             <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
+            <isFinal>true</isFinal>
             <since>0.0.0.0</since>
         </serial>
         <serial>
@@ -9600,9 +9600,9 @@
             <members/>
             <comments/>
             <baseFullName></baseFullName>
-            <isInline>true</isInline>
+            <isInline>false</isInline>
             <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
+            <isFinal>true</isFinal>
             <since>0.0.0.0</since>
         </serial>
         <serial>
@@ -9611,9 +9611,9 @@
             <members/>
             <comments/>
             <baseFullName></baseFullName>
-            <isInline>true</isInline>
+            <isInline>false</isInline>
             <isEnum>false</isEnum>
-            <isFinal>false</isFinal>
+            <isFinal>true</isFinal>
             <since>0.0.0.0</since>
         </serial>
         <serial>
@@ -10381,6 +10381,10 @@
                     <kind>@BSessionParamType</kind>
                     <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
                 </comment>
+                <comment>
+                    <kind>@BSessionParamType</kind>
+                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                </comment>
             </comments>
             <baseQNames>byps.test.api.inherit.FruitService</baseQNames>
             <since>0.0.0.0</since>
@@ -10402,6 +10406,10 @@
                 </method>
             </methods>
             <comments>
+                <comment>
+                    <kind>@BSessionParamType</kind>
+                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                </comment>
                 <comment>
                     <kind>@BSessionParamType</kind>
                     <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
@@ -10432,6 +10440,10 @@
                     <kind>@BSessionParamType</kind>
                     <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
                 </comment>
+                <comment>
+                    <kind>@BSessionParamType</kind>
+                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                </comment>
             </comments>
             <baseQNames>byps.test.api.inherit.PlantService</baseQNames>
             <since>0.0.0.0</since>
@@ -10457,6 +10469,10 @@
                     <kind>@BSessionParamType</kind>
                     <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
                 </comment>
+                <comment>
+                    <kind>@BSessionParamType</kind>
+                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                </comment>
             </comments>
             <baseQNames>byps.test.api.inherit.FruitService</baseQNames>
             <since>0.0.0.0</since>
@@ -10478,6 +10494,10 @@
                 </method>
             </methods>
             <comments>
+                <comment>
+                    <kind>@BSessionParamType</kind>
+                    <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
+                </comment>
                 <comment>
                     <kind>@BSessionParamType</kind>
                     <text>com.wilutions.byps.test.api.auth.SessionInfo</text>
@@ -12695,6 +12715,10 @@
                     <kind>@BSessionParamType</kind>
                     <text>byps.test.api.auth.SessionInfo</text>
                 </comment>
+                <comment>
+                    <kind>@BSessionParamType</kind>
+                    <text>byps.test.api.auth.SessionInfo</text>
+                </comment>
             </comments>
             <since>0.0.0.0</since>
         </remote>
@@ -12741,6 +12765,10 @@
                 </method>
             </methods>
             <comments>
+                <comment>
+                    <kind>@BClientRemote</kind>
+                    <text></text>
+                </comment>
                 <comment>
                     <kind>@BClientRemote</kind>
                     <text></text>

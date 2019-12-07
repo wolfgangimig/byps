@@ -114,10 +114,11 @@ public class Main {
   
   public static ClassDB readReferenceClassDB(Context context) {
     ClassDB prevClassDB = null;
-    if (context.getFileClassDB() != null) {
+    File fileClassDB = context.getFileClassDB();
+    if (fileClassDB != null) {
       log.info("Read previous API definitions from ClassDB file ==============");
-      log.info(context.getFileClassDB().getAbsolutePath());
-      prevClassDB = XmlClassDB.read(context.getFileClassDB(), false);
+      log.info(fileClassDB);
+      prevClassDB = XmlClassDB.read(fileClassDB, false);
       log.info("");
     }
     return prevClassDB;
