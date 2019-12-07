@@ -50,14 +50,9 @@ dependencies {
 	compile project(":byps-override")
 	compile project(":byps")
 	
-	// https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
-	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
-	// https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl
-	compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0.1'
-	// https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-core
-	compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0.1'
-	// https://mvnrepository.com/artifact/javax.activation/activation
-	compile group: 'javax.activation', name: 'activation', version: '1.1.1'
+	// https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime
+	compile group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.1'
+	
 }
 
 

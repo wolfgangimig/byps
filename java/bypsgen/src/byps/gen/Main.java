@@ -1,18 +1,25 @@
 package byps.gen;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import byps.BException;
 import byps.BVersioning;
+import byps.gen.api.GeneratorException;
+import byps.gen.cpp.GeneratorCpp;
+import byps.gen.cs.GeneratorCS;
 import byps.gen.db.ClassDB;
 import byps.gen.db.CompatibleClassDB;
 import byps.gen.db.ConstFieldReader;
 import byps.gen.db.XmlClassDB;
 import byps.gen.doclet.BDoclet;
 import byps.gen.doclet.CompileSource;
+import byps.gen.j.GeneratorJ;
+import byps.gen.js.GeneratorJS;
 import byps.gen.utils.AssignUniqueSerialVersionUID;
 
 public class Main {
@@ -56,6 +63,8 @@ public class Main {
       }
     }
     
+    System.out.println("Finished, exit code=" + context.getExitCode());
+    
     if (context.getExitCode() != 0) {
       System.exit(context.getExitCode());
     }
@@ -75,7 +84,9 @@ public class Main {
     
     if (mode == EMode.DETECT) {
       String[] javaVersion = System.getProperty("java.version").split("\\.");
-      useAnnotationProcessor = Integer.valueOf(javaVersion[0]) > 1;
+      int major = Integer.parseInt(javaVersion[0]);
+      int minor = javaVersion.length > 1 ? Integer.parseInt(javaVersion[1]) : 0;
+      useAnnotationProcessor = major > 1 || minor >= 6;
     }
     else {
       useAnnotationProcessor = mode == EMode.ANNOTATION_PROCESSOR;
@@ -119,6 +130,64 @@ public class Main {
     }
   }
 
+  /**
+   * Generate the API based on the API definitions in the passed XML file.
+   * 
+   */
+  public static void generateAPI(Context context) throws IOException {
+    
+    System.out.println("Generate serialisation classes.");
+
+    File fileClassDBNew = context.getFileClassDBNew();
+    
+    // -------------------------------------------------
+    // Read current API definitions from the XML file.
+
+    log.info("Read API definitions from ClassDB file ==============");
+    log.info(fileClassDBNew.getAbsolutePath());
+    ClassDB jdocClassDB = XmlClassDB.read(fileClassDBNew, true);
+    log.info("");
+
+    // --------------------------------------------------
+    // Some checks before the generators run.
+
+    log.info("Validate API definitions ==============");
+    jdocClassDB.validate();
+    log.info("");
+
+    // generate C++
+    if (context.getPropsCpp() != null) {
+      log.info("Generate Cpp code ==============");
+      GeneratorCpp gen = new GeneratorCpp();
+      gen.build(jdocClassDB, context.getPropsCpp());
+      log.info("");
+    }
+
+    // generate Java
+    if (context.getPropsJ() != null) {
+      log.info("Generate Java code ==============");
+      GeneratorJ gen = new GeneratorJ();
+      gen.build(jdocClassDB, context.getPropsJ());
+      log.info("");
+    }
+
+    // generate C#
+    if (context.getPropsCS() != null) {
+      log.info("Generate C# code ==============");
+      GeneratorCS gen = new GeneratorCS();
+      gen.build(jdocClassDB, context.getPropsCS());
+      log.info("");
+    }
+
+    // generate JavaScript
+    if (context.getPropsJS() != null) {
+      log.info("Generate JavaScript code ==============");
+      GeneratorJS gen = new GeneratorJS();
+      gen.build(jdocClassDB, context.getPropsJS());
+      log.info("");
+    }
+  }
+  
 
 
 }

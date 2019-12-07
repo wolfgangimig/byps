@@ -9,7 +9,7 @@ public class TestXmlGenerator {
   @Test
   public void runAnnoationProcessor() {
     
-    Main.setMode(Main.EMode.ANNOTATION_PROCESSOR);
+    Main.setMode(Main.EMode.DETECT);
     Main.main(null);
 
   }
@@ -17,7 +17,7 @@ public class TestXmlGenerator {
   @Test
   public void runJavaDoc() {
     
-    Main.setMode(Main.EMode.DETECT);
+    Main.setMode(Main.EMode.JAVADOC);
     Main.main(null);
 
   }

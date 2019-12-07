@@ -51,8 +51,7 @@ public class MainAP extends Main {
     // ------------------------------------------------
     // Convert javadoc objects to internal representation
 
-    log.info("Analyze classes in source directories ==============");
-    ClassDB newClassDB = generateApi(context, constFieldReader);
+    ClassDB newClassDB = processApiClasses(context, constFieldReader);
     
     // ------------------------------------------------
     // Write current definition into XML file
@@ -65,9 +64,17 @@ public class MainAP extends Main {
     // Is the current definition compatible?
 
     checkCompatibility(context, prevClassDB, newClassDB);
+    
+    // -------------------------------------------------
+    // Generate the API.
+
+    generateAPI(context);
+
   }
 
-  private ClassDB generateApi(Context context, ConstFieldReader constFieldReader) throws IOException {
+  private ClassDB processApiClasses(Context context, ConstFieldReader constFieldReader) throws IOException {
+
+    System.out.println("Process API classes.");
     
     int options = XmlGeneratorBase.OPT_ALL_REMOTES | XmlGeneratorBase.OPT_ALL_SERIALS;
     XmlGenerator xmlGenerator = new XmlGenerator(options, constFieldReader);
