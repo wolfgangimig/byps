@@ -21,6 +21,7 @@ import byps.gen.doclet.CompileSource;
 import byps.gen.j.GeneratorJ;
 import byps.gen.js.GeneratorJS;
 import byps.gen.utils.AssignUniqueSerialVersionUID;
+import byps.gen.utils.CodePrinter;
 
 public class Main {
 
@@ -36,6 +37,9 @@ public class Main {
   
   public static void main(String[] args) {
     
+    // Enable printing checkpoints
+    CodePrinter.enableCheckpoints(true);
+
     Context context = new Context();
     try {
       context.parseArgs(args);

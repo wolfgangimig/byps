@@ -15,8 +15,10 @@ import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
+import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
+import javax.lang.model.element.VariableElement;
 import javax.lang.model.type.ArrayType;
 import javax.lang.model.type.DeclaredType;
 import javax.lang.model.type.ExecutableType;
@@ -600,14 +602,13 @@ public class XmlGenerator extends XmlGeneratorBase {
 
   private SerialInfo makeMethodRequest(ErrorInfo errorInfo1, String remoteName, String remoteQName, Element methodElement) {
     ErrorInfo errorInfo = errorInfo1.copy();
-
-    ExecutableType executableType = (ExecutableType)methodElement.asType();
-    ArrayList<MemberInfo> parameterInfos = new ArrayList<>();
+    ExecutableElement executableElmenent = (ExecutableElement)methodElement;
     
-    List<? extends TypeMirror> parameterTypes = executableType.getParameterTypes();
-    for (int i = 0; i < parameterTypes.size(); i++) {
-      String parameterName = "arg" + i;
-      MemberInfo pinfo = makeMethodParamInfo(errorInfo, parameterTypes.get(i), parameterName);
+    ArrayList<MemberInfo> parameterInfos = new ArrayList<>();
+    for (VariableElement param : executableElmenent.getParameters()) {
+      String parameterName = param.getSimpleName().toString();
+      TypeMirror parameterType = param.asType();
+      MemberInfo pinfo = makeMethodParamInfo(errorInfo, parameterType, parameterName);
       parameterInfos.add(pinfo);
     }
     

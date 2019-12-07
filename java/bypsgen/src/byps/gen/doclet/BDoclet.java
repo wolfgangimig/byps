@@ -89,10 +89,7 @@ public class BDoclet extends Doclet {
    */
   public static boolean start(RootDoc root) {
     log.debug("start(");
-    
-    // Enable printing checkpoints
-    CodePrinter.enableCheckpoints(true);
-    
+        
     try {
 
       // -----------------------------------------------
