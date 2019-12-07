@@ -3,6 +3,7 @@ package byps.test.api.inl;
 import java.io.Serializable;
 
 /**
+ * 
  * @inline
  *
  */

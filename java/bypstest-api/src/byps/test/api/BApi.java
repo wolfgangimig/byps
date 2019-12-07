@@ -1,5 +1,6 @@
 package byps.test.api;
 
+@byps.gen.BApi
 /**
  * API description for the test project.
  */

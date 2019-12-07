@@ -103,7 +103,7 @@ public class CompileSource implements ConstFieldReader {
 		}
 		catch (Throwable e) {
 			ErrorInfo errInfo = new ErrorInfo();
-			errInfo.msg = "Failed to read serialVersionUID.";
+			errInfo.msg = "Failed to read " + fieldName;
 			throw new GeneratorException(errInfo, e);
 		}
     if (log.isDebugEnabled()) log.debug(")getValue=" + value);
