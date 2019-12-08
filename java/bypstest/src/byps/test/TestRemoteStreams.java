@@ -10,6 +10,7 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Random;
 import java.util.TreeMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
@@ -43,6 +44,7 @@ public class TestRemoteStreams {
   BClient_Testser client;
   RemoteStreams remote;
   private Log log = LogFactory.getLog(TestRemoteStreams.class);
+  Random rand = new Random();
 
   @Before
   public void setUp() throws RemoteException {
@@ -798,6 +800,55 @@ public class TestRemoteStreams {
     TestUtils.checkTempDirEmpty(client);
 
     log.info(")testRemoteStreamsCancelDownload");
+  }
+
+  /**
+   * A large stream was not entirely submitted if it returned less than 10000 bytes
+   * in the first call to read().
+   * BYPS-11
+   * @throws IOException
+   */
+  @Test
+  public void testRemoteStreamChunkedSmallBuffer() throws IOException {
+    log.info("testRemoteStreamChunkedSmallBuffer(");
+
+    final int CHUNK_SIZE = 10 * 1000;
+    final int MAX_STREAM_PART_SIZE = 1000 * CHUNK_SIZE;
+    
+    byte[] buf = new byte[MAX_STREAM_PART_SIZE + CHUNK_SIZE + 1];
+    rand.nextBytes(buf);
+    
+    InputStream istrm = new BContentStream() {
+      
+      ByteArrayInputStream bis = new ByteArrayInputStream(buf);
+      
+       @Override
+      public long getContentLength() {
+        return -1L;
+      }
+
+      @Override
+      public int read() throws IOException {
+        throw new UnsupportedOperationException();
+      }
+      
+      @Override
+      public int read(byte[] buf, int offset, int length) throws IOException {
+        return bis.read(buf, offset, Math.min(length, CHUNK_SIZE - 1));
+      }
+
+    };
+
+    remote.setImage(istrm);
+
+    InputStream istrmR = remote.getImage();
+    
+    TestUtils.assertEquals(log, "stream", new ByteArrayInputStream(buf), istrmR);
+
+    remote.setImage(null);
+    TestUtils.checkTempDirEmpty(client);
+
+    log.info(")testRemoteStreamsOneStreamChunked");
   }
 
 }
