@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.29
+
+- BYPS-10: Generate code using annotation processor. JDK 13 compatible.
+
 5.28
 
 - BYPS-9: Avoid TCP errors when uploading large streams.

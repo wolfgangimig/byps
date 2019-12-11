@@ -88,6 +88,9 @@ public class XmlGenerator extends XmlGeneratorBase {
           .filter(element -> element.getSimpleName().contentEquals(BAPI_DESCRIPTOR_CLASS_NAME))
           .findAny();
       
+      System.out.println("XmlGenerator.process BApi=" + apiDescriptorElementOpt
+          .map(Element::asType).map(this::getQualifiedName).orElse(""));
+       
       if (apiDescriptorElementOpt.isPresent()) {
         
         makeBApiDescriptor(apiDescriptorElementOpt.get());

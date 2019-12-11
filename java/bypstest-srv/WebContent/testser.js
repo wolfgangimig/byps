@@ -707,7 +707,6 @@ byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_sendChat = function(cs, __
 
 /**
  * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
 */
 byps.test.api.inherit.BStub_BioFruitService = function(transport) {
 	
@@ -749,7 +748,6 @@ byps.test.api.inherit.BStub_BioFruitService.prototype.certify = function(param, 
 };
 
 /**
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
  * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
 */
 byps.test.api.inherit.BStub_BioLemonService = function(transport) {
@@ -813,7 +811,6 @@ byps.test.api.inherit.BStub_BioLemonService.prototype.useParing = function(__byp
 
 /**
  * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
 */
 byps.test.api.inherit.BStub_FruitService = function(transport) {
 	
@@ -844,7 +841,6 @@ byps.test.api.inherit.BStub_FruitService.prototype.grow = function(__byps__async
 };
 
 /**
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
  * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
 */
 byps.test.api.inherit.BStub_LemonService = function(transport) {
@@ -886,7 +882,6 @@ byps.test.api.inherit.BStub_LemonService.prototype.pick = function(sess, fromTre
 };
 
 /**
- * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
  * @BSessionParamType com.wilutions.byps.test.api.auth.SessionInfo
 */
 byps.test.api.inherit.BStub_PlantService = function(transport) {
@@ -3112,7 +3107,6 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getStreamDoNotClone = functio
 /**
  * This interface is an example for using the authentication mechanism.
  * @BSessionParamType byps.test.api.auth.SessionInfo
- * @BSessionParamType byps.test.api.auth.SessionInfo
 */
 byps.test.api.remote.BStub_RemoteWithAuthentication = function(transport) {
 	
@@ -3195,7 +3189,6 @@ byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setReloginCount = 
 };
 
 /**
- * @BClientRemote 
  * @BClientRemote 
 */
 byps.test.api.srvr.BStub_ClientIF = function(transport) {
