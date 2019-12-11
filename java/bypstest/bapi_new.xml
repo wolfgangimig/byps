@@ -2316,12 +2316,12 @@
             </members>
             <comments>
                 <comment>
-                    <kind>@summary</kind>
-                    <text>Example for a session class.</text>
-                </comment>
-                <comment>
                     <kind>@see</kind>
                     <text>byps.test.api.remote.RemoteWithAuthentication</text>
+                </comment>
+                <comment>
+                    <kind>@summary</kind>
+                    <text>Example for a session class.</text>
                 </comment>
             </comments>
             <baseFullName></baseFullName>
@@ -2387,12 +2387,12 @@
                 <member>
                     <name>char2s</name>
                     <comments>
-                        <kind>@summary</kind>
-                        <text>This constant holds the currency symbol for Euro.</text>
-                    </comments>
-                    <comments>
                         <kind>@remarks</kind>
                         <text>It is defined "final static" and thus cannot be changed.</text>
+                    </comments>
+                    <comments>
+                        <kind>@summary</kind>
+                        <text>This constant holds the currency symbol for Euro.</text>
                     </comments>
                     <typeName>char</typeName>
                     <isTransient>false</isTransient>
@@ -2465,13 +2465,13 @@
                 <member>
                     <name>ALL</name>
                     <comments>
-                        <kind>@summary</kind>
-                        <text>This defines a complex constant.</text>
-                    </comments>
-                    <comments>
                         <kind>@remarks</kind>
                         <text>It is an instance of the class AllTypesZ.
  The field value cannot be changed, but it's contents could.</text>
+                    </comments>
+                    <comments>
+                        <kind>@summary</kind>
+                        <text>This defines a complex constant.</text>
                     </comments>
                     <typeName>byps.test.api.cons.AllTypesZ</typeName>
                     <isTransient>false</isTransient>
@@ -3212,6 +3212,14 @@
                     <kind>@inline</kind>
                     <text></text>
                 </comment>
+                <comment>
+                    <kind>@since</kind>
+                    <text>0</text>
+                </comment>
+                <comment>
+                    <kind>@summary</kind>
+                    <text>AThis class is inline which means it is serialized as value not as object.</text>
+                </comment>
             </comments>
             <baseFullName></baseFullName>
             <isInline>true</isInline>
@@ -3244,8 +3252,8 @@
             </members>
             <comments>
                 <comment>
-                    <kind>@summary</kind>
-                    <text>Example for an inline class.</text>
+                    <kind>@inline</kind>
+                    <text></text>
                 </comment>
                 <comment>
                     <kind>@remarks</kind>
@@ -3256,8 +3264,8 @@
  large arrays of small objects being serialized.</text>
                 </comment>
                 <comment>
-                    <kind>@inline</kind>
-                    <text></text>
+                    <kind>@summary</kind>
+                    <text>Example for an inline class.</text>
                 </comment>
             </comments>
             <baseFullName></baseFullName>
@@ -3641,12 +3649,12 @@
                 <member>
                     <name>boolVal</name>
                     <comments>
-                        <kind>@summary</kind>
-                        <text>Boolean value.</text>
-                    </comments>
-                    <comments>
                         <kind>@remarks</kind>
                         <text>Serialized as one byte with value 1 for true and value 0 for false.</text>
+                    </comments>
+                    <comments>
+                        <kind>@summary</kind>
+                        <text>Boolean value.</text>
                     </comments>
                     <typeName>boolean</typeName>
                     <isTransient>false</isTransient>
@@ -3671,12 +3679,12 @@
                 <member>
                     <name>charVal</name>
                     <comments>
-                        <kind>@summary</kind>
-                        <text>One wide (2 byte) character.</text>
-                    </comments>
-                    <comments>
                         <kind>@remarks</kind>
                         <text>Serialized as short integer in binary serialization and as string when serializing in JSON format.</text>
+                    </comments>
+                    <comments>
+                        <kind>@summary</kind>
+                        <text>One wide (2 byte) character.</text>
                     </comments>
                     <typeName>char</typeName>
                     <isTransient>false</isTransient>
@@ -3751,12 +3759,12 @@
                 <member>
                     <name>objVal</name>
                     <comments>
-                        <kind>@summary</kind>
-                        <text>This element can refer a an arbitrary type that implements Serializable.</text>
-                    </comments>
-                    <comments>
                         <kind>@remarks</kind>
                         <text>It cannot hold an array, List, ArrayList, etc.</text>
+                    </comments>
+                    <comments>
+                        <kind>@summary</kind>
+                        <text>This element can refer a an arbitrary type that implements Serializable.</text>
                     </comments>
                     <typeName>java.lang.Object</typeName>
                     <isTransient>false</isTransient>
@@ -3777,12 +3785,12 @@
                 <member>
                     <name>value</name>
                     <comments>
-                        <kind>@summary</kind>
-                        <text>In CSharp, value is a keyword in property setter functions.</text>
-                    </comments>
-                    <comments>
                         <kind>@remarks</kind>
                         <text>But it must not be a problem to name a member by value.</text>
+                    </comments>
+                    <comments>
+                        <kind>@summary</kind>
+                        <text>In CSharp, value is a keyword in property setter functions.</text>
                     </comments>
                     <typeName>boolean</typeName>
                     <isTransient>false</isTransient>
@@ -12035,16 +12043,16 @@
                     <exceptionTypeNames/>
                     <comments>
                         <comment>
-                            <kind>@summary</kind>
-                            <text>This function sleeps the given number of seconds and returns true.</text>
-                        </comment>
-                        <comment>
                             <kind>@param</kind>
                             <text>sleepSeconds Time in seconds to sleep.</text>
                         </comment>
                         <comment>
                             <kind>@return</kind>
                             <text>true</text>
+                        </comment>
+                        <comment>
+                            <kind>@summary</kind>
+                            <text>This function sleeps the given number of seconds and returns true.</text>
                         </comment>
                         <comment>
                             <kind>@throws</kind>
@@ -12453,16 +12461,16 @@
                     <exceptionTypeNames/>
                     <comments>
                         <comment>
-                            <kind>@summary</kind>
-                            <text>Return a large video stream to be able to test that byte ranges are correctly handled.</text>
-                        </comment>
-                        <comment>
                             <kind>@remarks</kind>
                             <text>This functionality is currently only tested in the JSON API by TestVideoCheckSupportByteRange.html.</text>
                         </comment>
                         <comment>
                             <kind>@return</kind>
                             <text>InputStream</text>
+                        </comment>
+                        <comment>
+                            <kind>@summary</kind>
+                            <text>Return a large video stream to be able to test that byte ranges are correctly handled.</text>
                         </comment>
                         <comment>
                             <kind>@throws</kind>
@@ -12479,10 +12487,6 @@
                     <exceptionTypeNames/>
                     <comments>
                         <comment>
-                            <kind>@summary</kind>
-                            <text>Return stream without properties.</text>
-                        </comment>
-                        <comment>
                             <kind>@remarks</kind>
                             <text>The properties must be made explicitly available on the client-side by calling 
  BContentStream.ensureProperties()</text>
@@ -12490,6 +12494,10 @@
                         <comment>
                             <kind>@return</kind>
                             <text>InputStream</text>
+                        </comment>
+                        <comment>
+                            <kind>@summary</kind>
+                            <text>Return stream without properties.</text>
                         </comment>
                         <comment>
                             <kind>@throws</kind>
@@ -12506,12 +12514,12 @@
                     <exceptionTypeNames/>
                     <comments>
                         <comment>
-                            <kind>@summary</kind>
-                            <text>Stores a stream reference but does not create an internal copy (does not materialize)</text>
-                        </comment>
-                        <comment>
                             <kind>@param</kind>
                             <text>stream</text>
+                        </comment>
+                        <comment>
+                            <kind>@summary</kind>
+                            <text>Stores a stream reference but does not create an internal copy (does not materialize)</text>
                         </comment>
                         <comment>
                             <kind>@throws</kind>
@@ -12556,12 +12564,12 @@
                     <exceptionTypeNames/>
                     <comments>
                         <comment>
-                            <kind>@summary</kind>
-                            <text>Set authentication flag in MySession.</text>
-                        </comment>
-                        <comment>
                             <kind>@param</kind>
                             <text>useAuth</text>
+                        </comment>
+                        <comment>
+                            <kind>@summary</kind>
+                            <text>Set authentication flag in MySession.</text>
                         </comment>
                         <comment>
                             <kind>@throws</kind>
@@ -12578,14 +12586,6 @@
                     <exceptionTypeNames/>
                     <comments>
                         <comment>
-                            <kind>@summary</kind>
-                            <text>Login.</text>
-                        </comment>
-                        <comment>
-                            <kind>@remarks</kind>
-                            <text>Only user "Fritz" is allowed to login.</text>
-                        </comment>
-                        <comment>
                             <kind>@param</kind>
                             <text>sess Session information, always null in this scenario.</text>
                         </comment>
@@ -12598,8 +12598,16 @@
                             <text>userPwd</text>
                         </comment>
                         <comment>
+                            <kind>@remarks</kind>
+                            <text>Only user "Fritz" is allowed to login.</text>
+                        </comment>
+                        <comment>
                             <kind>@return</kind>
                             <text>Session object</text>
+                        </comment>
+                        <comment>
+                            <kind>@summary</kind>
+                            <text>Login.</text>
                         </comment>
                         <comment>
                             <kind>@throws</kind>
@@ -12616,10 +12624,6 @@
                     <exceptionTypeNames/>
                     <comments>
                         <comment>
-                            <kind>@summary</kind>
-                            <text>Do something.</text>
-                        </comment>
-                        <comment>
                             <kind>@param</kind>
                             <text>sess Session information. Must not be null, if user was logged in.</text>
                         </comment>
@@ -12630,6 +12634,10 @@
                         <comment>
                             <kind>@return</kind>
                             <text>value+1</text>
+                        </comment>
+                        <comment>
+                            <kind>@summary</kind>
+                            <text>Do something.</text>
                         </comment>
                         <comment>
                             <kind>@throws</kind>
@@ -12646,12 +12654,12 @@
                     <exceptionTypeNames/>
                     <comments>
                         <comment>
-                            <kind>@summary</kind>
-                            <text>Logout</text>
-                        </comment>
-                        <comment>
                             <kind>@param</kind>
                             <text>sess</text>
+                        </comment>
+                        <comment>
+                            <kind>@summary</kind>
+                            <text>Logout</text>
                         </comment>
                         <comment>
                             <kind>@throws</kind>
@@ -12668,16 +12676,16 @@
                     <exceptionTypeNames/>
                     <comments>
                         <comment>
-                            <kind>@summary</kind>
-                            <text>Set the number of login calls nessesary to login the user.</text>
+                            <kind>@param</kind>
+                            <text>count</text>
                         </comment>
                         <comment>
                             <kind>@remarks</kind>
                             <text>This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.</text>
                         </comment>
                         <comment>
-                            <kind>@param</kind>
-                            <text>count</text>
+                            <kind>@summary</kind>
+                            <text>Set the number of login calls nessesary to login the user.</text>
                         </comment>
                         <comment>
                             <kind>@throws</kind>
@@ -12688,12 +12696,12 @@
             </methods>
             <comments>
                 <comment>
-                    <kind>@summary</kind>
-                    <text>This interface is an example for using the authentication mechanism.</text>
-                </comment>
-                <comment>
                     <kind>@BSessionParamType</kind>
                     <text>byps.test.api.auth.SessionInfo</text>
+                </comment>
+                <comment>
+                    <kind>@summary</kind>
+                    <text>This interface is an example for using the authentication mechanism.</text>
                 </comment>
             </comments>
             <since>0.0.0.0</since>

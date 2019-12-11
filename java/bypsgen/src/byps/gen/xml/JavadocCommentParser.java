@@ -1,5 +1,7 @@
 package byps.gen.xml;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import byps.gen.api.CommentInfo;
@@ -8,16 +10,21 @@ public class JavadocCommentParser {
   
   private final String comment;
   private int currentIndex;
+  private List<CommentInfo> cinfos = new ArrayList<>();
   
-  public static void parse(String commentInfos, List<CommentInfo> cinfos) {
+  public static List<CommentInfo> parse(String commentInfos) {
     if (commentInfos != null) {
       commentInfos = commentInfos.trim();
       
       if (!commentInfos.isEmpty()) {
         JavadocCommentParser me = new JavadocCommentParser(commentInfos);
-        me.doit(cinfos);
+        me.doit();
+        List<CommentInfo> ret = me.cinfos;
+        ret.sort((a,b) -> a.kind.compareTo(b.kind));
+        return me.cinfos;
       }
     }
+    return Collections.emptyList();
   }
   
   private JavadocCommentParser(String commentInfos) {
@@ -58,7 +65,7 @@ public class JavadocCommentParser {
     return p >= 0 ? skipWhitespace(s, p+1) : i;
   }
 
-  private boolean parseCommentTag(List<CommentInfo> cinfos) {
+  private boolean parseCommentTag() {
     CommentInfo commentInfo = null;
     int startIndex = currentIndex;
     
@@ -76,47 +83,51 @@ public class JavadocCommentParser {
     
     boolean ret = commentInfo != null;
     if (ret) {
-      cinfos.add(commentInfo);
+      add(commentInfo);
     }
     
     return ret;
   }
   
-  private boolean parseSummary(List<CommentInfo> cinfos) {
+  private boolean parseSummary() {
     int startIndex = currentIndex;
     int endIndex = findSummaryEnd(comment, startIndex);
     String summary = comment.substring(startIndex, endIndex).trim();
     boolean ret = !summary.isEmpty();
     if (ret) {
-      cinfos.add(new CommentInfo(CommentInfo.KIND_SUMMARY, summary));
+      add(new CommentInfo(CommentInfo.KIND_SUMMARY, summary));
       currentIndex = endIndex;
     }
     return ret;
   }
   
-  private boolean parseRemarks(List<CommentInfo> cinfos) {
+  private boolean parseRemarks() {
     int startIndex = currentIndex;
     int endIndex = findNextTag(comment, startIndex);
     String remarks = comment.substring(startIndex, endIndex).trim();
     boolean ret = !remarks.isEmpty();
     if (ret) {
-      cinfos.add(new CommentInfo(CommentInfo.KIND_REMARKS, remarks));
+      add(new CommentInfo(CommentInfo.KIND_REMARKS, remarks));
       currentIndex = endIndex;
     }
     return ret;
   }
   
-  private void doit(List<CommentInfo> cinfos) {
+  private void add(CommentInfo cinfo) {
+    cinfos.add(cinfo);
+  }
+  
+  private void doit() {
       
-    if (!parseCommentTag(cinfos)) {
-      parseSummary(cinfos);
+    if (!parseCommentTag()) {
+      parseSummary();
     }
     
-    if (!parseCommentTag(cinfos)) {
-      parseRemarks(cinfos);
+    if (!parseCommentTag()) {
+      parseRemarks();
     }
     
-    while (parseCommentTag(cinfos)) {
+    while (parseCommentTag()) {
       // breaks if no more tags found
     }
     

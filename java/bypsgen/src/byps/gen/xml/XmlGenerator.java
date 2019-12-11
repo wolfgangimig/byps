@@ -1,7 +1,6 @@
 package byps.gen.xml;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -56,8 +55,6 @@ public class XmlGenerator extends XmlGeneratorBase {
   private TypeMirror bypsSerializableType;
   private TypeMirror bypsRemoteExceptionType;
 
-  private static final String BAPI_DESCRIPTOR_CLASS_NAME = "BApi";
-
   public XmlGenerator(int options, ConstFieldReader constFieldReader) {
     super(options);
     this.constFieldReader = constFieldReader;
@@ -84,16 +81,25 @@ public class XmlGenerator extends XmlGeneratorBase {
   public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
     try {
       
-      Optional<? extends Element> apiDescriptorElementOpt = roundEnv.getRootElements().stream()
-          .filter(element -> element.getSimpleName().contentEquals(BAPI_DESCRIPTOR_CLASS_NAME))
-          .findAny();
+      // This function is called twice for unknown reasons. 
+      // The first time, the roundEnv contains the classes inclusive API descriptor.
+      // The second time, roundEnv.getRootElements is empty.
       
-      System.out.println("XmlGenerator.process BApi=" + apiDescriptorElementOpt
-          .map(Element::asType).map(this::getQualifiedName).orElse(""));
-       
-      if (apiDescriptorElementOpt.isPresent()) {
+      Set<? extends Element> apiDescriptorElements = roundEnv.getElementsAnnotatedWith(byps.gen.BApi.class);
+      if (apiDescriptorElements.size() > 1) {
+        throw new GeneratorException("Only one API descriptor supported, found=" + apiDescriptorElements);
+      }
+      
+      if (!apiDescriptorElements.isEmpty()) {
+
+        Element apiDescriptorElement = apiDescriptorElements.iterator().next();
         
-        makeBApiDescriptor(apiDescriptorElementOpt.get());
+        // If we do not see this line on stdout, no class annotated by @byps.gen.BApi
+        // is found in the source code directories.
+        
+        System.out.println("XmlGenerator.process #classes=" + roundEnv.getRootElements().size() + ", BApi=" + apiDescriptorElement);
+        
+        makeBApiDescriptor(apiDescriptorElement);
         
         // Remotes
         roundEnv.getRootElements().stream()
@@ -125,6 +131,10 @@ public class XmlGenerator extends XmlGeneratorBase {
     return false;
   }
   
+  /**
+   * Return only one annotation: byps.gen.BApi.
+   * @return Annotation BApi
+   */
   @Override
   public Set<String> getSupportedAnnotationTypes() {
     Set<String> ret = new HashSet<>();
@@ -132,6 +142,10 @@ public class XmlGenerator extends XmlGeneratorBase {
     return ret;
   }
 
+  /**
+   * The latest source code version is supported.
+   * @return SourceVersion.latest
+   */
   @Override
   public SourceVersion getSupportedSourceVersion() {
     return SourceVersion.latest();
@@ -169,7 +183,7 @@ public class XmlGenerator extends XmlGeneratorBase {
       return false;
     }
     
-    if (element.getSimpleName().contentEquals(BAPI_DESCRIPTOR_CLASS_NAME)) {
+    if (element.getAnnotation(byps.gen.BApi.class) != null) {
       return false;
     }
     
@@ -182,22 +196,38 @@ public class XmlGenerator extends XmlGeneratorBase {
     return ((options & OPT_ALL_SERIALS) != 0);
   }
   
-  private boolean isInline(Collection<CommentInfo> commentInfos) {
-    return commentInfos.stream().anyMatch(cinfo -> cinfo.kind.equals("@inline"));
+  /**
+   * Check comments for @inline tag. 
+   * @param commentInfos Commends of this element.
+   * @return true, if tag is found.
+   */
+  private boolean isInline(List<CommentInfo> commentInfos) {
+    return getCommentInfo("@inline", commentInfos).isPresent();
   }
   
-  private String getSessionParamType(Collection<CommentInfo> commentInfos) {
-    return commentInfos.stream().filter(cinfo -> cinfo.kind.equals("@BSessionParamType")).map(cinfo -> cinfo.text).findAny().orElse(null);
+  private String getSessionParamType(List<CommentInfo> commentInfos) {
+    return getCommentInfo("@BSessionParamType", commentInfos).map(c -> c.text).orElse(null);
   }
   
-  private boolean isClientRemote(Collection<CommentInfo> commentInfos) {
-    return commentInfos.stream().anyMatch(cinfo -> cinfo.kind.equals("@BClientRemote"));
+  private boolean isClientRemote(List<CommentInfo> commentInfos) {
+    return getCommentInfo("@BClientRemote", commentInfos).isPresent();
   }
   
-  private long getSince(Collection<CommentInfo> commentInfos) {
-    return commentInfos.stream()
-        .filter(cinfo -> cinfo.kind.equals("@since"))
-        .map(cinfo -> BVersioning.stringToLong(cinfo.text)).findAny().orElse(0L);
+  private long getSince(List<CommentInfo> commentInfos) {
+    return getCommentInfo("@since", commentInfos)
+        .map(c -> c.text)
+        .map(BVersioning::stringToLong)
+        .orElse(0L);
+  }
+  
+  private Optional<CommentInfo> getCommentInfo(String kind, List<CommentInfo> commentInfos) {
+    CommentInfo ret = null;
+    
+    int index = Collections.binarySearch(commentInfos, kind, (a,b) -> ((CommentInfo)a).kind.compareTo((String)b));
+    if (index >= 0) {
+      ret = commentInfos.get(index);
+    }
+    return Optional.ofNullable(ret);
   }
 
   private BApiDescriptor makeBApiDescriptor(Element apiDescElement) {
@@ -225,8 +255,7 @@ public class XmlGenerator extends XmlGeneratorBase {
       errorInfo.className = serialQName;
     }
     
-    ArrayList<CommentInfo> commentInfos = new ArrayList<>();
-    addSummaryAndRemarksCommentInfo(serialType, commentInfos);
+    List<CommentInfo> commentInfos = addSummaryAndRemarksCommentInfo(serialType);
 
     ArrayList<MemberInfo> members = new ArrayList<>();
     for (Element fieldElement : serialElement.getEnclosedElements()) {
@@ -269,9 +298,16 @@ public class XmlGenerator extends XmlGeneratorBase {
       baseQName = "java.lang.Exception";
     }
     
-
-    SerialInfo sinfo = classDB.createSerialInfo(serialName, commentInfos, serialQName, baseQName, "", argInfos, 
-        members, isEnum, isFinal, isInline, since);
+    SerialInfo sinfo = classDB.createSerialInfo(
+        serialName, 
+        commentInfos, 
+        serialQName, 
+        baseQName, 
+        "", 
+        argInfos, 
+        members, 
+        isEnum, isFinal, isInline, 
+        since);
     classDB.add(sinfo);
     
     log.debug(")makeSerialInfo");
@@ -290,8 +326,7 @@ public class XmlGenerator extends XmlGeneratorBase {
       throw new GeneratorException(errorInfo);
     }
     
-    ArrayList<CommentInfo> commentInfos = new ArrayList<>();
-    addSummaryAndRemarksCommentInfo(fieldElement, commentInfos);
+    List<CommentInfo> commentInfos = addSummaryAndRemarksCommentInfo(fieldElement);
     
     boolean isInline = isInline(commentInfos);
     
@@ -351,8 +386,7 @@ public class XmlGenerator extends XmlGeneratorBase {
         .map(TypeMirror::toString)
         .collect(Collectors.toList());
     
-    List<CommentInfo> commentInfos = new ArrayList<>();
-    addSummaryAndRemarksCommentInfo(remoteType, commentInfos);
+    List<CommentInfo> commentInfos = addSummaryAndRemarksCommentInfo(remoteType);
 
     List<MethodInfo> minfos = remoteType.getEnclosedElements().stream()
         .filter(e -> e.getKind() == ElementKind.METHOD)
@@ -363,7 +397,8 @@ public class XmlGenerator extends XmlGeneratorBase {
     boolean isClientRemote = isClientRemote(commentInfos);
     long since = getSince(commentInfos);
     
-    RemoteInfo rinfo = classDB.createRemoteInfo(remoteName, commentInfos, 
+    RemoteInfo rinfo = classDB.createRemoteInfo(remoteName, 
+        commentInfos, 
         remoteQName, baseQNames, 
         minfos, sessionParamTypeName, 
         isClientRemote, since);
@@ -373,16 +408,15 @@ public class XmlGenerator extends XmlGeneratorBase {
     return rinfo;
   }
   
-  private void addSummaryAndRemarksCommentInfo(Element remoteElement, List<CommentInfo> commentInfos) {
+  private List<CommentInfo> addSummaryAndRemarksCommentInfo(Element remoteElement) {
     String commentLines = elements.getDocComment(remoteElement);
-    JavadocCommentParser.parse(commentLines, commentInfos);
+    return JavadocCommentParser.parse(commentLines);
   }
 
   private MethodInfo makeMethodInfo(ErrorInfo errorInfo1, String remoteName, String remoteQName, Element methodElement) {
     ErrorInfo errorInfo = errorInfo1.copy();
 
-    List<CommentInfo> commentInfos = new ArrayList<>();
-    addSummaryAndRemarksCommentInfo(methodElement, commentInfos);
+    List<CommentInfo> commentInfos = addSummaryAndRemarksCommentInfo(methodElement);
 
     String name = errorInfo.methodName = methodElement.getSimpleName().toString();
     if (FORBIDDEN_FIELD_AND_METHOD_NAMES.contains(name)) {

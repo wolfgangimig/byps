@@ -820,6 +820,9 @@ namespace byps { namespace test { namespace api { namespace inl {
 
 using namespace ::byps;
 
+/// <summary>
+/// AThis class is inline which means it is serialized as value not as object.
+/// </summary>
 class Matrix2D : public BSerializable {
 	public: float _11;
 	public: float _12;

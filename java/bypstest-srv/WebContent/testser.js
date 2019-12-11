@@ -136,8 +136,8 @@ byps.test.api.arr.ArrayTypes4dim = function(boolean4, byte4, char4, short4, int4
 
 
 /**
- * Example for a session class.
  * @see byps.test.api.remote.RemoteWithAuthentication
+ * Example for a session class.
 */
 byps.test.api.auth.SessionInfo = function(sessionID) {
 	this._typeId = 65775978;
@@ -260,6 +260,8 @@ byps.test.api.inl.Actor = function(shape, position) {
 
 /**
  * @inline 
+ * @since 0
+ * AThis class is inline which means it is serialized as value not as object.
 */
 byps.test.api.inl.Matrix2D = function(_11, _12, _13, _21, _22, _23, _31, _32, _33) {
 	// this._typeId = 135329019;
@@ -276,13 +278,13 @@ byps.test.api.inl.Matrix2D = function(_11, _12, _13, _21, _22, _23, _31, _32, _3
 
 
 /**
- * Example for an inline class.
+ * @inline 
  * Final classes cannot be evolved or derived.
  * Objects of final classes are serialized without
  * the overhead of type and reference information.
  * This optimization is especially useful in the case of
  * large arrays of small objects being serialized.
- * @inline 
+ * Example for an inline class.
 */
 byps.test.api.inl.Point2D = function(x, y) {
 	// this._typeId = 1835035436;
@@ -546,8 +548,8 @@ byps.test.api.cons.AllTypesC_Type = function() {
 	this.char1s = '\u00bf';
 	this.stringNull = "";
 	/**
-	 * This constant holds the currency symbol for Euro.
 	 * It is defined "final static" and thus cannot be changed.
+	 * This constant holds the currency symbol for Euro.
 	*/
 	this.char2s = '\u20ac';
 	this.short1s = 3;
@@ -557,9 +559,9 @@ byps.test.api.cons.AllTypesC_Type = function() {
 	this.double1s = 7.8;
 	this.string1s = "Aa__\u00b6\u00b6__\u20ac\u20ac__\t\r\n\"\'";
 	/**
-	 * This defines a complex constant.
 	 * It is an instance of the class AllTypesZ.
 	 * The field value cannot be changed, but it's contents could.
+	 * This defines a complex constant.
 	*/
 	this.ALL = new byps.test.api.cons.AllTypesZ(true, 1, 'A', 2, 3, "4.", 5.0, 6.0, "777", new byps.test.api.cons.HebrewZ("\u05d0"), "AQID", [-4,-5], ["a","b"], [new byps.test.api.cons.HebrewZ("\u05d0"),new byps.test.api.cons.HebrewZ("\u05d1")]);
 	this.arrInt = [1,2,3];
@@ -2608,9 +2610,9 @@ byps.test.api.remote.BStub_RemoteProcessingEx = function(transport) {
 
 // checkpoint byps.gen.js.PrintContext:133
 /**
- * This function sleeps the given number of seconds and returns true.
  * @param sleepSeconds Time in seconds to sleep.
  * @return true
+ * This function sleeps the given number of seconds and returns true.
  * @throws RemoteException
 */
 byps.test.api.remote.BStub_RemoteProcessingEx.prototype.getValueAfterProcessingExceptions = function(sleepSeconds, __byps__asyncResult) {
@@ -3052,9 +3054,9 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getTextStream = function(__by
 
 // checkpoint byps.gen.js.PrintContext:133
 /**
- * Return a large video stream to be able to test that byte ranges are correctly handled.
  * This functionality is currently only tested in the JSON API by TestVideoCheckSupportByteRange.html.
  * @return InputStream
+ * Return a large video stream to be able to test that byte ranges are correctly handled.
  * @throws RemoteException
 */
 byps.test.api.remote.BStub_RemoteStreams.prototype.getVideoCheckSupportByteRange = function(__byps__asyncResult) {
@@ -3066,10 +3068,10 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getVideoCheckSupportByteRange
 
 // checkpoint byps.gen.js.PrintContext:133
 /**
- * Return stream without properties.
  * The properties must be made explicitly available on the client-side by calling
  * BContentStream.ensureProperties()
  * @return InputStream
+ * Return stream without properties.
  * @throws RemoteException
 */
 byps.test.api.remote.BStub_RemoteStreams.prototype.getStreamDeferedProperies = function(__byps__asyncResult) {
@@ -3081,8 +3083,8 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getStreamDeferedProperies = f
 
 // checkpoint byps.gen.js.PrintContext:133
 /**
- * Stores a stream reference but does not create an internal copy (does not materialize)
  * @param stream
+ * Stores a stream reference but does not create an internal copy (does not materialize)
  * @throws RemoteException
 */
 byps.test.api.remote.BStub_RemoteStreams.prototype.setStreamDoNotMaterialize = function(stream, __byps__asyncResult) {
@@ -3105,8 +3107,8 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getStreamDoNotClone = functio
 };
 
 /**
- * This interface is an example for using the authentication mechanism.
  * @BSessionParamType byps.test.api.auth.SessionInfo
+ * This interface is an example for using the authentication mechanism.
 */
 byps.test.api.remote.BStub_RemoteWithAuthentication = function(transport) {
 	
@@ -3118,8 +3120,8 @@ byps.test.api.remote.BStub_RemoteWithAuthentication = function(transport) {
 
 // checkpoint byps.gen.js.PrintContext:133
 /**
- * Set authentication flag in MySession.
  * @param useAuth
+ * Set authentication flag in MySession.
  * @throws RemoteException
 */
 byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setUseAuthentication = function(useAuth, __byps__asyncResult) {
@@ -3131,12 +3133,12 @@ byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setUseAuthenticati
 
 // checkpoint byps.gen.js.PrintContext:133
 /**
- * Login.
- * Only user "Fritz" is allowed to login.
  * @param sess Session information, always null in this scenario.
  * @param userName
  * @param userPwd
+ * Only user "Fritz" is allowed to login.
  * @return Session object
+ * Login.
  * @throws RemoteException
 */
 byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.login = function(userName, userPwd, __byps__asyncResult) {
@@ -3148,10 +3150,10 @@ byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.login = function(u
 
 // checkpoint byps.gen.js.PrintContext:133
 /**
- * Do something.
  * @param sess Session information. Must not be null, if user was logged in.
  * @param value
  * @return value+1
+ * Do something.
  * @throws RemoteException
 */
 byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.doit = function(value, __byps__asyncResult) {
@@ -3163,8 +3165,8 @@ byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.doit = function(va
 
 // checkpoint byps.gen.js.PrintContext:133
 /**
- * Logout
  * @param sess
+ * Logout
  * @throws RemoteException
 */
 byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.expire = function(__byps__asyncResult) {
@@ -3176,9 +3178,9 @@ byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.expire = function(
 
 // checkpoint byps.gen.js.PrintContext:133
 /**
- * Set the number of login calls nessesary to login the user.
- * This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
  * @param count
+ * This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
+ * Set the number of login calls nessesary to login the user.
  * @throws RemoteException
 */
 byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setReloginCount = function(count, __byps__asyncResult) {
