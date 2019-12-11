@@ -38,54 +38,10 @@ namespace byps
             this.innerStream = innerStream;
         }
 
-        public BContentStreamWrapper(FileInfo file)
-            : this(file.OpenRead(), getContentTypeFromRegistry(file), file.Length)
-        {
-            this.fileNameVal = file.Name;
-        }
 
         public BContentStreamWrapper(MemoryStream innerStream, String contentType)
             : this(innerStream, contentType, innerStream.Length, 0)
         {
-        }
-
-        private static String getContentTypeFromRegistry(FileInfo file)
-        {
-            String mime = DEFAULT_CONTENT_TYPE;
-            Microsoft.Win32.RegistryKey regKey = null;
-
-            try
-            {
-                String ext = file.Extension;
-                if (!(string.IsNullOrEmpty(ext) || string.IsNullOrWhiteSpace(ext)))
-                {
-                    regKey = Microsoft.Win32.Registry.ClassesRoot.OpenSubKey(ext);
-                    if (regKey != null)
-                    {
-                        object val = regKey.GetValue("Content Type");
-                        if (val != null)
-                        {
-                            string strval = val.ToString();
-                            if (!(string.IsNullOrEmpty(strval) || string.IsNullOrWhiteSpace(strval)))
-                            {
-                                mime = strval;
-                            }
-                        }
-                    }
-                }
-
-            }
-            catch (Exception)
-            {
-            }
-            finally
-            {
-                if (regKey != null)
-                {
-                    regKey.Close();
-                }
-            }
-            return mime;
         }
 
         protected virtual Stream openStream()

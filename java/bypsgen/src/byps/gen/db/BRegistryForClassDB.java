@@ -19,7 +19,7 @@ public class BRegistryForClassDB extends BRegistry {
 	}
 	
 	@Override
-	protected BRegisteredSerializer[] getSortedSerializers() throws BException {
+	protected BRegisteredSerializer[] getSortedSerializers() {
 		// This BRegistry subclass is used only by the ClassDB and is
 		// never called to serialize any object.
 		throw new IllegalStateException("BRegistryForClassDB.getApiSerializer must not be called");

@@ -131,5 +131,19 @@ namespace byps
             return ret;
         }
 
+        public bool replaceSerializer(BSerializer bser)
+        {
+            BRegisteredSerializer[] ssers = getSortedSerializers();
+            foreach (BRegisteredSerializer sser in ssers)
+            {
+                if (sser.typeId == bser.typeId)
+                {
+                    sser.instance = bser;
+                    return true;
+                }
+            }
+            return false;
+        }
     }
+
 }

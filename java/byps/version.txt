@@ -8,6 +8,8 @@ BYPS Version History
 
 - BYPS-9: Avoid TCP errors when uploading large streams.
 
+- Allow to replace serializers.
+
 5.28
 
 - BYPS-1: Generator runs on Java 12.
