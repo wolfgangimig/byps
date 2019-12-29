@@ -19,16 +19,11 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Supplier;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -867,100 +862,5 @@ public class TestRemoteStreams {
     TestUtils.checkTempDirEmpty(client);
 
     log.info(")testRemoteStreamsOneStreamChunked");
-  }
-
-  
-  @Test
-  public void testAsf() throws InterruptedException {
-    AsfClientFactory fact = new AsfClientFactory();
-    String baseUrl = "http://localhost:6080/test-srv/ahc?a=a";
-    HHttpClient asfClient = fact.createHttpClient(baseUrl);
-    
-    int testTimeSeconds = 10;
-    
-    ExecutorService tpool = Executors.newFixedThreadPool(3);
-    
-    AtomicBoolean stopEvent = new AtomicBoolean();
-    
-    TimerTask setStopEvent = new TimerTask() {
-      public void run() {
-        stopEvent.set(true);
-      }
-    };
-    
-    try {
-      
-      Timer timer = new Timer();
-      timer.schedule(setStopEvent, TimeUnit.SECONDS.toMillis(testTimeSeconds));
-      
-      tpool.execute(() -> {
-        while (!stopEvent.get()) {
-          post(asfClient, baseUrl, 200);
-        }
-      });
-      
-      tpool.execute(() -> {
-        while (!stopEvent.get()) {
-          post(asfClient, baseUrl, 204);
-        }
-      });
-      
-      tpool.execute(() -> {
-        while (!stopEvent.get()) {
-          put(asfClient, baseUrl);
-        }
-      });
-
-      tpool.shutdown();
-      tpool.awaitTermination(testTimeSeconds + 10L, TimeUnit.SECONDS);
-      timer.cancel();
-    }
-    finally {
-      asfClient.done();
-    }
-
-  }
-  
-  AtomicLong trackingIdCounter = new AtomicLong();
-  
-  private void post(HHttpClient client, String baseUrl, int status) {
-    log.info("post " + baseUrl);
-    long trackingId = trackingIdCounter.incrementAndGet();
-    String url = baseUrl + "?status=" + status;
-    BTransport transport = TestUtils.createTransport();
-    try {
-      BOutput out = transport.getOutput();
-      out.store(null);
-      BMessage msg = out.toMessage(trackingId);
-      client.post(trackingId, url, msg.buf, (buf, ex) -> {
-        if (isError(ex)) {
-          log.error("post failed: " + ex);
-        }
-      }).run();
-    } catch (BException e) {
-      log.info("",e);
-    }
-  }
-  private void put(HHttpClient client, String baseUrl) {
-    log.info("put " + baseUrl);
-    long trackingId = trackingIdCounter.incrementAndGet();
-    String url = baseUrl;
-    InputStream istream = new ByteArrayInputStream(new byte[10*1000*1000]);
-    client.putStream(trackingId, url, istream, (buf, ex) -> {
-      if (isError(ex)) {
-        log.error("put failed: " + ex);
-      }
-    }).run();
-  }
-  
-  private int responseStatusFromException(Throwable e) {
-    int status = 0;
-    if (e instanceof BException) {
-      status = ((BException)e).code;
-    }
-    return status;
-  }
-  private boolean isError(Throwable e) {
-    return e != null && (responseStatusFromException(e) / 100 != 2);
   }
 }

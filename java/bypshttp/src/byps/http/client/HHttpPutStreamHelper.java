@@ -152,9 +152,7 @@ public class HHttpPutStreamHelper {
       lastPart = len < MAX_STREAM_PART_SIZE;
       
       putBytesRetry(partId, lastPart, totalLength, new byps.io.ByteArrayInputStream(buf, 0, len), contentType, contentDisposition);
-      
     }
-    while(!lastPart);
   }
 
   private void putBytesFromMemory(String contentType, long totalLength, String contentDisposition,
@@ -180,8 +178,10 @@ public class HHttpPutStreamHelper {
   
   
   private void putBytesRetry(String url, byps.io.ByteArrayInputStream sendBuffer, String contentType, String contentDisposition) throws IOException {
-    for (int retry = JcnnClient.MAX_RETRIES-1; retry >= 0; retry--) {
-      if (putBytes(url, sendBuffer, contentType, contentDisposition, retry == 0) == HttpURLConnection.HTTP_OK) {
+    for (int retry = 0; retry < JcnnClient.MAX_RETRIES; retry++) {
+      boolean lastRetry = retry == JcnnClient.MAX_RETRIES-1;
+      if (log.isDebugEnabled()) log.debug("putBytesRetry url=" + url + ", retry=" + retry + ", lastRetry=" + lastRetry);
+      if (putBytes(url, sendBuffer, contentType, contentDisposition, lastRetry) == HttpURLConnection.HTTP_OK) {
         break;
       }
     }
