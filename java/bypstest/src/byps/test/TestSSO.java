@@ -24,7 +24,7 @@ public class TestSSO {
     String url = "http://srvpelo1:8080/ix-lldo_prod/ixlogin?streamversion=8&responseformat=html&logout=true";
     
     BSyncResult<ByteBuffer> result = new BSyncResult<ByteBuffer>();
-    client.get(url, result).run();
+    client.get(2, url, result).run();
     
     try {
       ByteBuffer ret = result.getResult();

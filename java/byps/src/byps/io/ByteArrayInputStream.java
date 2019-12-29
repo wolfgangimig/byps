@@ -10,7 +10,7 @@ import java.nio.ByteBuffer;
  */
 public final class ByteArrayInputStream extends InputStream {
 
-  final ByteBuffer bbuf;
+  private final ByteBuffer bbuf;
 
   public ByteArrayInputStream() {
     bbuf = ByteBuffer.wrap(new byte[0]);
@@ -24,21 +24,10 @@ public final class ByteArrayInputStream extends InputStream {
     bbuf = ByteBuffer.wrap(buf, 0, count);
   }
 
-  public ByteArrayInputStream(byte buf[], int offset, int length) {
+  public ByteArrayInputStream(byte[] buf, int offset, int length) {
     bbuf = ByteBuffer.wrap(buf, offset, length);
   }
   
-  public ByteArrayInputStream(java.io.ByteArrayInputStream bis) {
-    try {
-      byte[] buf = (byte[])java.io.ByteArrayInputStream.class.getField("buf").get(bis);
-      int pos = (Integer)java.io.ByteArrayInputStream.class.getField("pos").get(bis);
-      int count = (Integer)java.io.ByteArrayInputStream.class.getField("count").get(bis);
-      bbuf = ByteBuffer.wrap(buf, pos, count);
-    } catch (Exception e) {
-      throw new IllegalArgumentException();
-    }
-  }
-
   @Override
   public final int available() {
     return bbuf.remaining();
@@ -46,7 +35,9 @@ public final class ByteArrayInputStream extends InputStream {
 
   @Override
   public final int read() {
-    return bbuf.remaining() != 0 ? bbuf.get() : -1;
+    if (bbuf.remaining() == 0) return -1;
+    byte b = bbuf.get();
+    return ((int)b) & 0xFF;
   }
 
   @Override
@@ -73,7 +64,7 @@ public final class ByteArrayInputStream extends InputStream {
   }
 
   @Override
-  public void mark(int readlimit) {
+  public synchronized void mark(int readlimit) {
     throw new UnsupportedOperationException();
   }
 
@@ -85,4 +76,7 @@ public final class ByteArrayInputStream extends InputStream {
     bbuf.position(offset + length);
   }
   
+  public ByteBuffer getBuffer() {
+    return bbuf;
+  }
 }

@@ -33,10 +33,15 @@ public class TestUtilsHttp {
 
   private static Log log = LogFactory.getLog(TestUtilsHttp.class);
 	
-	//public static String url = "http://www.wilutions.com/bypstest-srv/bypsservlet";
+	//public static String url = "http://www.wilutions.com:7010/bypstest-srv-5.28/bypsservlet";
 	public static String url = "http://localhost:6080/bypstest-srv/bypsservlet";
 	public static String url2 = "http://localhost:5080/bypstest-srv/bypsservlet";
 	//public static String url = "http://srvtdev02:8020/bypstest-srv/bypsservlet";
+	
+	static {
+    System.setProperty("byps.http.client.factory", "byps.http.client.asf.AsfClientFactory");
+
+	}
 	
 	private static Executor tpool = Executors.newCachedThreadPool();
 	

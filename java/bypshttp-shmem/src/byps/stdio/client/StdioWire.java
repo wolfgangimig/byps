@@ -1,15 +1,11 @@
 package byps.stdio.client;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
-import java.util.List;
 
 import byps.BAsyncResult;
-import byps.BContentStream;
 import byps.BMessage;
-import byps.BTargetId;
 import byps.BWire;
 import byps.stdio.common.StdioChannel;
 
@@ -30,13 +26,4 @@ public class StdioWire extends BWire {
     });
   }
   
-  @Override
-  public void putStreams(List<BContentStream> streams, BAsyncResult<BMessage> asyncResult) {
-    super.putStreams(streams, asyncResult);
-  }
-  
-  @Override
-  public BContentStream getStream(BTargetId targetId) throws IOException {
-    return super.getStream(targetId);
-  }
 }

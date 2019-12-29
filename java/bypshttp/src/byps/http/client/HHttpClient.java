@@ -20,6 +20,8 @@ public interface HHttpClient {
   /**
    * Create a GET request object to read few bytes.
    * 
+   * @param trackingId 
+   *        An ID that allows to follow requests in the log file. 
    * @param url
    *          URL to GET, must address the same server and port as in
    *          {@link #init(String)}.
@@ -27,11 +29,13 @@ public interface HHttpClient {
    *          Asynchronous result.
    * @return GET object.
    */
-  public HHttpRequest get(String url, BAsyncResult<ByteBuffer> asyncResult);
+  public HHttpRequest get(long trackingId, String url, BAsyncResult<ByteBuffer> asyncResult);
 
   /**
    * Create a GET request object to read large streams.
    * 
+   * @param trackingId 
+   *        An ID that allows to follow requests in the log file. 
    * @param url
    *          URL to GET, must address the same server and port as in
    *          {@link #init(String)}.
@@ -39,11 +43,13 @@ public interface HHttpClient {
    *          Asynchronous result.
    * @return GET object
    */
-  public HHttpRequest getStream(String url, BAsyncResult<BContentStream> asyncResult);
+  public HHttpRequest getStream(long trackingId, String url, BAsyncResult<BContentStream> asyncResult);
 
   /**
    * Create a POST request object to send bytes.
    * 
+   * @param trackingId 
+   *        An ID that allows to follow requests in the log file. 
    * @param url
    *          URL to POST, must address the same server and port as in
    *          {@link #init(String)}.
@@ -53,11 +59,13 @@ public interface HHttpClient {
    *          Asynchronous result.
    * @return POST object
    */
-  public HHttpRequest post(String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult);
+  public HHttpRequest post(long trackingId, String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult);
 
   /**
    * Create a PUT request object to send large streams.
    * 
+   * @param trackingId 
+   *        An ID that allows to follow requests in the log file. 
    * @param url
    *          URL to PUT, must address the same server and port as in
    *          {@link #init(String)}.
@@ -65,7 +73,7 @@ public interface HHttpClient {
    *          Asynchronous result. Only the exception parameter is used.
    * @return PUT object
    */
-  public HHttpRequest putStream(String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult);
+  public HHttpRequest putStream(long trackingId, String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult);
   
   /**
    * Return HTTP session ID.

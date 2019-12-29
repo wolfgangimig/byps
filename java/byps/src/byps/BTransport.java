@@ -37,7 +37,7 @@ public class BTransport {
   
   protected WeakReference<BClient> clientHelperToInjectInBValueClass;
   
-  protected AtomicLong requestCounter = new AtomicLong();
+  protected static final AtomicLong requestCounter = new AtomicLong();
   
   public BTransport(BApiDescriptor apiDesc, BWire wire, BServerRegistry serverRegistry) {
     this.apiDesc = apiDesc;
@@ -326,7 +326,7 @@ public class BTransport {
           pollHeader.flags |= BMessageHeader.FLAG_POLL_PROCESSING;
           BOutput bout = protocol.getOutput(BTransport.this, pollHeader);
           bout.store(new BValueClass());
-          BMessage pollMsg = bout.toMessage();
+          BMessage pollMsg = bout.toMessage(requestId);
           wire.send(pollMsg, new SendMessageResult<T>(this));
         }
         catch (Exception ex) {
@@ -399,7 +399,7 @@ public class BTransport {
       if (log.isDebugEnabled()) log.debug("store object");
       final BOutput bout = getOutput();
       bout.store(obj);
-      final BMessage msgSend = bout.toMessage();
+      final BMessage msgSend = bout.toMessage(requestId);
       
       // Wrap asyncResult to handle re-login and processing response.
       final BAsyncResult<BMessage> outerResult = new SendMessageResult<T>(bout.header, obj, requestId, asyncResult);
@@ -472,7 +472,7 @@ public class BTransport {
             else {
               bout.store(obj);
             }
-            final BMessage msg = bout.toMessage();
+            final BMessage msg = bout.toMessage(requestId);
             asyncResult.setAsyncResult(msg, null);
             
           } catch (BException ex) {
@@ -481,7 +481,7 @@ public class BTransport {
             try {
               BOutput bout = getResponse(bin.header);
               bout.setException(ex);
-              final BMessage msg = bout.toMessage();
+              final BMessage msg = bout.toMessage(requestId);
               asyncResult.setAsyncResult(msg, null);
             }
             catch (BException ex2) {

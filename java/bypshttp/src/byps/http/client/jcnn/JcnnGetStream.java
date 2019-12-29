@@ -8,6 +8,7 @@ import java.net.SocketException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.NDC;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
@@ -21,15 +22,16 @@ public class JcnnGetStream extends JcnnRequest {
   private static Log log = LogFactory.getLog(JcnnGetStream.class);
   private final BAsyncResult<BContentStream> asyncResult;
 
-  protected JcnnGetStream(String url, BAsyncResult<BContentStream> asyncResult,
+  protected JcnnGetStream(long trackingId, String url, BAsyncResult<BContentStream> asyncResult,
       CookieManager cookieManager) {
-    super(url, cookieManager);
+    super(trackingId, url, cookieManager);
     this.asyncResult = asyncResult;
   }
 
   @Override
   public void run() {
-
+    NDC.push("jcnngetstream-" + trackingId);
+    
     HttpURLConnection c = null;
     InputStream is = null;
     BException returnException = null;
@@ -51,23 +53,15 @@ public class JcnnGetStream extends JcnnRequest {
         statusCode = getResponseCode(c);
   
         if (statusCode != HttpURLConnection.HTTP_OK && statusCode != HttpURLConnection.HTTP_PARTIAL) {
-          throw new IOException("HTTP status " + statusCode);
+          returnException = new BException(statusCode, "Send message failed.");
+          cleanupInputStream(c);
         }
-  
-        contentType = c.getContentType();
-        contentDisposition = c.getHeaderField("Content-Disposition");
-  
-        contentLength = -1L;
-        try {
-          String s = c.getHeaderField("Content-Length");
-          if (s != null && s.length() != 0) {
-            contentLength = Long.parseLong(s);
-          }
+        else {
+          contentType = c.getContentType();
+          contentDisposition = c.getHeaderField("Content-Disposition");
+          contentLength = getContentLengthHeader(c);
+          is = c.getInputStream();
         }
-        catch (NumberFormatException ex) {
-        }
-  
-        is = c.getInputStream();
       }
       catch (SocketException e) {
         if (log.isDebugEnabled()) log.debug("received exception=" + e);
@@ -76,20 +70,10 @@ public class JcnnGetStream extends JcnnRequest {
       }
       catch (Throwable e) {
         if (log.isDebugEnabled()) log.debug("received exception=" + e);
-  
-        try {
-          if (c != null) {
-            is = c.getErrorStream();
-            BWire.bufferFromStream(is, false);
-            is = null;
-          }
-        }
-        catch (IOException ignored) {
-        }
-  
         returnException = new BException(statusCode, "Send message failed", e);
       }
       finally {
+        cleanupErrorStream(c);
       }
       
       retry++;
@@ -114,6 +98,20 @@ public class JcnnGetStream extends JcnnRequest {
     stream.setContentDisposition(contentDisposition);
 
     asyncResult.setAsyncResult(stream, null);
+    NDC.pop();
+  }
+
+  private long getContentLengthHeader(HttpURLConnection c) {
+    long contentLength = -1L;
+    try {
+      String s = c.getHeaderField("Content-Length");
+      if (s != null && s.length() != 0) {
+        contentLength = Long.parseLong(s);
+      }
+    }
+    catch (NumberFormatException ex) {
+    }
+    return contentLength;
   }
 
 }

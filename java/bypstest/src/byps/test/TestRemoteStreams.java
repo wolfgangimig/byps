@@ -11,14 +11,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.TreeMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Supplier;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.ByteArrayEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,9 +38,14 @@ import byps.BContentStreamAsyncCallback;
 import byps.BContentStreamWrapper;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BMessage;
+import byps.BOutput;
+import byps.BTransport;
 import byps.BWire;
 import byps.RemoteException;
 import byps.http.HConstants;
+import byps.http.client.HHttpClient;
+import byps.http.client.asf.AsfClientFactory;
 import byps.test.api.BClient_Testser;
 import byps.test.api.remote.RemoteStreams;
 import junit.framework.Assert;
@@ -49,11 +64,12 @@ public class TestRemoteStreams {
   @Before
   public void setUp() throws RemoteException {
     client = TestUtilsHttp.createClient();
+    TestUtils.purgeServerTempDir(client);
     remote = client.getRemoteStreams();
   }
 
   @After
-  public void tearDown() throws InterruptedException {
+  public void tearDown() {
     if (client != null) {
       client.done();
     }
@@ -234,17 +250,19 @@ public class TestRemoteStreams {
    * @throws IOException
    */
   @Test
-  public void testRemoteStreamsLargeStream() throws InterruptedException, IOException {
+  public void testRemoteStreamsLargeStream() throws IOException {
     log.info("testRemoteStreamsLargeStream(");
     if (TestUtils.TEST_LARGE_STREAMS) {
       
       // Set 1s timeout until BExceptionC#PROCESSING is thrown.
-      client.getTransport().getWire().getTestAdapter().setTimeoutForProcessingException(30);
+      client.getTransport().getWire().getTestAdapter().setTimeoutForProcessingException(10);
+      
+      long durationMillis = TimeUnit.MINUTES.toMillis(1);
       
       try {
 
-        long contentLength = Double.valueOf(1.20e9).longValue() + 1;
-        InputStream istrm = new TestUtils.MyContentStream(contentLength, false);
+        long contentLength = (long)(1.20e9) + 1;
+        InputStream istrm = new TestUtils.MyContentStream(contentLength, durationMillis, false);
         remote.setImage(istrm);
     
         InputStream istrmR = remote.getImage();
@@ -263,7 +281,7 @@ public class TestRemoteStreams {
     }
     log.info(")testRemoteStreamsLargeStream");
   }
-
+  
   /**
    * Read/write stream slowly.
    * Ensure that the function call is finished after the server detects that the stream is not available.
@@ -815,7 +833,7 @@ public class TestRemoteStreams {
     final int CHUNK_SIZE = 10 * 1000;
     final int MAX_STREAM_PART_SIZE = 1000 * CHUNK_SIZE;
     
-    byte[] buf = new byte[MAX_STREAM_PART_SIZE + CHUNK_SIZE + 1];
+    final byte[] buf = new byte[MAX_STREAM_PART_SIZE + CHUNK_SIZE + 1];
     rand.nextBytes(buf);
     
     InputStream istrm = new BContentStream() {
@@ -851,4 +869,98 @@ public class TestRemoteStreams {
     log.info(")testRemoteStreamsOneStreamChunked");
   }
 
+  
+  @Test
+  public void testAsf() throws InterruptedException {
+    AsfClientFactory fact = new AsfClientFactory();
+    String baseUrl = "http://localhost:6080/test-srv/ahc?a=a";
+    HHttpClient asfClient = fact.createHttpClient(baseUrl);
+    
+    int testTimeSeconds = 10;
+    
+    ExecutorService tpool = Executors.newFixedThreadPool(3);
+    
+    AtomicBoolean stopEvent = new AtomicBoolean();
+    
+    TimerTask setStopEvent = new TimerTask() {
+      public void run() {
+        stopEvent.set(true);
+      }
+    };
+    
+    try {
+      
+      Timer timer = new Timer();
+      timer.schedule(setStopEvent, TimeUnit.SECONDS.toMillis(testTimeSeconds));
+      
+      tpool.execute(() -> {
+        while (!stopEvent.get()) {
+          post(asfClient, baseUrl, 200);
+        }
+      });
+      
+      tpool.execute(() -> {
+        while (!stopEvent.get()) {
+          post(asfClient, baseUrl, 204);
+        }
+      });
+      
+      tpool.execute(() -> {
+        while (!stopEvent.get()) {
+          put(asfClient, baseUrl);
+        }
+      });
+
+      tpool.shutdown();
+      tpool.awaitTermination(testTimeSeconds + 10L, TimeUnit.SECONDS);
+      timer.cancel();
+    }
+    finally {
+      asfClient.done();
+    }
+
+  }
+  
+  AtomicLong trackingIdCounter = new AtomicLong();
+  
+  private void post(HHttpClient client, String baseUrl, int status) {
+    log.info("post " + baseUrl);
+    long trackingId = trackingIdCounter.incrementAndGet();
+    String url = baseUrl + "?status=" + status;
+    BTransport transport = TestUtils.createTransport();
+    try {
+      BOutput out = transport.getOutput();
+      out.store(null);
+      BMessage msg = out.toMessage(trackingId);
+      client.post(trackingId, url, msg.buf, (buf, ex) -> {
+        if (isError(ex)) {
+          log.error("post failed: " + ex);
+        }
+      }).run();
+    } catch (BException e) {
+      log.info("",e);
+    }
+  }
+  private void put(HHttpClient client, String baseUrl) {
+    log.info("put " + baseUrl);
+    long trackingId = trackingIdCounter.incrementAndGet();
+    String url = baseUrl;
+    InputStream istream = new ByteArrayInputStream(new byte[10*1000*1000]);
+    client.putStream(trackingId, url, istream, (buf, ex) -> {
+      if (isError(ex)) {
+        log.error("put failed: " + ex);
+      }
+    }).run();
+  }
+  
+  private int responseStatusFromException(Throwable e) {
+    int status = 0;
+    if (e instanceof BException) {
+      status = ((BException)e).code;
+    }
+    return status;
+  }
+  private boolean isError(Throwable e) {
+    return e != null && (responseStatusFromException(e) / 100 != 2);
+  }
 }

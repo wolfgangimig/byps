@@ -66,7 +66,7 @@ public class BWire {
 	 * @param streamRequests Streams to send.
 	 * @param asyncResult Result callback.
 	 */
-	public void putStreams(List<BContentStream> streams, BAsyncResult<BMessage> asyncResult) {
+	public void putStreams(long trackingId, List<BContentStream> streams, BAsyncResult<BMessage> asyncResult) {
     asyncResult.setAsyncResult(null, new BException(BExceptionC.INTERNAL, "No wire attached to transport."));
 	}
 	
@@ -78,7 +78,7 @@ public class BWire {
 	 * @return BContentStream object.
 	 * @throws IOException
 	 */
-	public BContentStream getStream(BTargetId targetId) throws IOException {
+	public BContentStream getStream(long trackingId, BTargetId targetId) throws IOException {
     throw new BException(BExceptionC.INTERNAL, "No wire attached to transport.");
 	}
 	

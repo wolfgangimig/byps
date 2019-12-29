@@ -51,22 +51,22 @@ public class StdioClient extends StdioCommunication implements HHttpClient {
   }
   
   @Override
-  public HHttpRequest get(String url, BAsyncResult<ByteBuffer> asyncResult) {
+  public HHttpRequest get(long trackingId, String url, BAsyncResult<ByteBuffer> asyncResult) {
     return new StdGet(this, url, asyncResult);
   }
 
   @Override
-  public HHttpRequest getStream(String url, BAsyncResult<BContentStream> asyncResult) {
+  public HHttpRequest getStream(long trackingId, String url, BAsyncResult<BContentStream> asyncResult) {
     return new StdGetStream(this, url, asyncResult);
   }
 
   @Override
-  public HHttpRequest post(String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult) {
+  public HHttpRequest post(long trackingId, String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult) {
     return new StdPost(this, url, buf, asyncResult);
   }
 
   @Override
-  public HHttpRequest putStream(String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult) {
+  public HHttpRequest putStream(long trackingId, String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult) {
     return new StdPutStream(this, url, stream, asyncResult);  
   }
 

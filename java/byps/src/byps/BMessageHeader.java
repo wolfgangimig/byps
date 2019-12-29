@@ -76,6 +76,12 @@ public class BMessageHeader {
 	 * in BInputJson.load, we store the message object in this value.
 	 */
 	public Object messageObject;
+	
+	/**
+	 * ID for request tracking.
+	 * BYPS-11
+	 */
+	private transient long trackingId;
 
 	public BMessageHeader(int magic, final int bversion, final long version, ByteOrder byteOrder, long mid) {
 		this.magic = magic;
@@ -271,6 +277,7 @@ public class BMessageHeader {
 			.append(", messageId=").append(messageId)
       .append(", timeout=").append(timeoutSeconds)
       .append(", sessionId=").append(sessionId)
+      .append(", trackingId=").append(trackingId)
 			.append(", messageObject=").append(messageObject)
 			.append("]");
 		return sbuf.toString();
@@ -287,5 +294,13 @@ public class BMessageHeader {
 	  }
 	  return ret;
 	}
+
+  public long getTrackingId() {
+    return trackingId;
+  }
+
+  public void setTrackingId(long trackingId) {
+    this.trackingId = trackingId;
+  }
 	
 }

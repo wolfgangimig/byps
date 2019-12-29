@@ -40,8 +40,9 @@ public abstract class BOutput {
 
 	public abstract ByteBuffer toByteBuffer();
 	
-	public BMessage toMessage() {
+	public BMessage toMessage(long trackingId) {
 		final BMessage msg = new BMessage(header, toByteBuffer(), streams);
+		header.setTrackingId(trackingId);
 		return msg;
 	}
 	

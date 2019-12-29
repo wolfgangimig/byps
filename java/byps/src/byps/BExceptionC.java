@@ -127,7 +127,7 @@ public class BExceptionC {
    * 
    * @since 5.28
    */
-  public static final int PROCESSING = 202;
+  public static final int PROCESSING = 204;
     // BYPS-9
   
   /**

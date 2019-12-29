@@ -524,6 +524,7 @@ public abstract class HHttpServlet extends HttpServlet implements
       throws RemoteException, IOException {
     final long messageId = BBufferJson.parseLong(messageIdStr);
     final long streamId = BBufferJson.parseLong(streamIdStr);
+    final long trackingId = messageId;
     final int serverId = serverIdStr != null && serverIdStr.length() != 0 ? Integer
         .valueOf(serverIdStr) : getConfig().getMyServerId();
 
@@ -536,7 +537,7 @@ public abstract class HHttpServlet extends HttpServlet implements
         .getForwardClientIfForeignTargetId(targetId) : null;
 
     final BContentStream stream = forwardClient != null ? forwardClient
-        .getTransport().getWire().getStream(targetId) : getActiveMessages()
+        .getTransport().getWire().getStream(trackingId, targetId) : getActiveMessages()
         .getOutgoingStream(targetId);
 
     // Session verl�ngern. Wichtig f�r den Download sehr gro�er Dateien.

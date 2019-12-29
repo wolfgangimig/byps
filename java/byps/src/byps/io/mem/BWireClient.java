@@ -86,7 +86,7 @@ public class BWireClient extends BWire {
   
   
   @Override
-  public BContentStream getStream(BTargetId targetId) throws IOException {
+  public BContentStream getStream(long trackingId, BTargetId targetId) throws IOException {
     InputStream istream = null;
     try {
       istream = wmt.waitForStream(targetId.getMessageId(), targetId.getStreamId());

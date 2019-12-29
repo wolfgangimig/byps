@@ -55,7 +55,7 @@ public class BSerializer_15 extends BSerializer {
     }
 
     try {
-      BContentStream strm = bin.transport.getWire().getStream(targetId);
+      BContentStream strm = bin.transport.getWire().getStream(targetId.getMessageId(), targetId);
       bin.onObjectCreated(strm);
       strm.setContentLength(contentLength);
       strm.setContentType(contentType);

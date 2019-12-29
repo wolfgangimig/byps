@@ -1,6 +1,9 @@
 package byps.http.client.asf;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -8,11 +11,15 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.client.CloseableHttpClient;
 
+import byps.BBufferJson;
+import byps.BWire;
 import byps.http.client.HHttpRequest;
 
 public abstract class AsfRequest implements HHttpRequest {
@@ -26,6 +33,7 @@ public abstract class AsfRequest implements HHttpRequest {
   protected int sendRecvTimeoutSeconds;
   protected Map<String,String> requestProperties;
   protected AtomicBoolean cancelled = new AtomicBoolean();
+  protected final long trackingId;
   private static Log log = LogFactory.getLog(AsfRequest.class);
   
   /**
@@ -33,7 +41,8 @@ public abstract class AsfRequest implements HHttpRequest {
    */
   private int responseCode = -1;
 
-  protected AsfRequest(String url, CloseableHttpClient httpClient, HttpClientContext context) {
+  protected AsfRequest(long trackingId, String url, CloseableHttpClient httpClient, HttpClientContext context) {
+    this.trackingId = trackingId;
     this.url = url;
     this.httpClient = httpClient;
     this.context = context;
@@ -83,5 +92,40 @@ public abstract class AsfRequest implements HHttpRequest {
   public void setRequestProperty(String name, String value) {
     if (requestProperties == null) requestProperties = new HashMap<String,String>();
     requestProperties.put(name, value);
+  }
+  
+  protected boolean isEntityGzipEncoded(HttpEntity entity) {
+    boolean gzip = false;
+    Header header = entity.getContentEncoding();
+    if (header != null) {
+      String enc = header.getValue();
+      gzip = enc != null && enc.equals("gzip");
+    }
+    return gzip;
+  }
+
+  protected ByteBuffer readEntity(HttpEntity entity) throws IOException {
+    ByteBuffer obuf = null;
+    if (entity != null) {
+      InputStream is = entity.getContent();
+      if (is != null) {
+        try {
+          if (log.isDebugEnabled()) log.debug("read stream");
+          boolean gzip = isEntityGzipEncoded(entity);
+          obuf = BWire.bufferFromStream(is, gzip);
+          if (log.isDebugEnabled()) {
+            log.debug("received #bytes=" + obuf.remaining());
+            obuf.mark();
+            BBufferJson bbuf = new BBufferJson(obuf);
+            log.debug(bbuf.toDetailString());
+            obuf.reset();
+          }
+        }
+        finally {
+          is.close();
+        }
+      }
+    }
+    return obuf;
   }
 }

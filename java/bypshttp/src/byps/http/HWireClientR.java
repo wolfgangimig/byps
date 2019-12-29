@@ -231,13 +231,13 @@ public class HWireClientR extends BWire {
   }
 
   @Override
-  public void putStreams(List<BContentStream> streams, BAsyncResult<BMessage> asyncResult) {
-    wireServer.putStreams(streams, asyncResult);
+  public void putStreams(long trackingId, List<BContentStream> streams, BAsyncResult<BMessage> asyncResult) {
+    wireServer.putStreams(trackingId, streams, asyncResult);
   };
 
   @Override
-  public BContentStream getStream(BTargetId targetId) throws IOException {
-    return wireServer.getStream(targetId);
+  public BContentStream getStream(long trackingId, BTargetId targetId) throws IOException {
+    return wireServer.getStream(trackingId, targetId);
   }
 
   /**

@@ -13,6 +13,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.log4j.NDC;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
@@ -25,13 +26,14 @@ public class AsfGetStream extends AsfRequest {
   private static Log log = LogFactory.getLog(AsfGetStream.class);
   private final BAsyncResult<BContentStream> asyncResult;
 
-  protected AsfGetStream(String url, BAsyncResult<BContentStream> asyncResult, CloseableHttpClient httpClient, HttpClientContext context) {
-    super(url, httpClient, context);
+  protected AsfGetStream(long trackingId, String url, BAsyncResult<BContentStream> asyncResult, CloseableHttpClient httpClient, HttpClientContext context) {
+    super(trackingId, url, httpClient, context);
     this.asyncResult = asyncResult;
   }
 
   @Override
   public void run() {
+    NDC.push("asfgetstream-" + trackingId);
     request = new HttpGet(url);
     applyTimeout();
     applyRequestProperties();
@@ -48,7 +50,7 @@ public class AsfGetStream extends AsfRequest {
 
       statusCode = response.getStatusLine().getStatusCode();
       if (statusCode != HttpURLConnection.HTTP_OK && statusCode != HttpURLConnection.HTTP_PARTIAL) {
-        throw new IOException("HTTP status " + statusCode);
+        returnException = new BException(statusCode, "Send message failed.");
       }
 
       entity = response.getEntity();
@@ -64,11 +66,13 @@ public class AsfGetStream extends AsfRequest {
       returnException = new BException(statusCode, "Send message failed", e);
     }
     finally {
+      
+      BContentStream stream = new MyContentStream(returnException, entity, response);
+      asyncResult.setAsyncResult(stream, null);
+      
+      NDC.pop();
     }
 
-    BContentStream stream = new MyContentStream(returnException, entity, response);
-
-    asyncResult.setAsyncResult(stream, null);
   }
 
   class MyContentStream extends BContentStreamWrapper {

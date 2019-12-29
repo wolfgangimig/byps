@@ -10,6 +10,7 @@ import java.nio.ByteBuffer;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.NDC;
 
 import byps.BAsyncResult;
 import byps.BBufferJson;
@@ -25,16 +26,16 @@ public class JcnnPost extends JcnnRequest {
   private final BAsyncResult<ByteBuffer> asyncResult;
   private ByteBuffer buf;
   
-  protected JcnnPost(String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult, CookieManager cookieManager) {
-    super(url, cookieManager);
+  protected JcnnPost(long trackingId, String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult, CookieManager cookieManager) {
+    super(trackingId, url, cookieManager);
     this.buf = buf;
     this.asyncResult = asyncResult;
   }
 
   @Override
   public void run() {
+    NDC.push("jcnnpost-" + trackingId);
     HttpURLConnection c = null;
-    InputStream is = null;
     ByteBuffer returnBuffer = null;
     BException returnException = null;
     int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;
@@ -53,7 +54,10 @@ public class JcnnPost extends JcnnRequest {
         c.setRequestProperty("Accept", "application/json, application/byps");
         c.setRequestProperty("Accept-Encoding", "gzip");
         c.setRequestProperty("Content-Type", contentType);
-  
+        if (isJson) {
+          c.setRequestProperty("Content-Encoding", "gzip");
+        }
+
         if (log.isDebugEnabled()) log.debug("write to output stream");
         OutputStreamByteCount osbc = new OutputStreamByteCount(c.getOutputStream());
         BWire.bufferToStream(buf, isJson, osbc);
@@ -62,30 +66,15 @@ public class JcnnPost extends JcnnRequest {
         statusCode = getResponseCode(c);
   
         if (statusCode != HttpURLConnection.HTTP_OK) {
-          throw new IOException("HTTP status " + statusCode);
+          returnException = new BException(statusCode, "Send message failed.");
+          cleanupInputStream(c);
         }
-
-        buf = null; // Speicher freigeben
-
-        saveSession(this);
-  
-        is = c.getInputStream();
-  
-        String enc = c.getHeaderField("Content-Encoding");
-        boolean gzip = enc != null && enc.equals("gzip");
-  
-        if (log.isDebugEnabled()) log.debug("read stream");
-        ByteBuffer obuf = BWire.bufferFromStream(is, gzip);
-        if (log.isDebugEnabled()) {
-          log.debug("received #bytes=" + obuf.remaining());
-          obuf.mark();
-          BBufferJson bbuf = new BBufferJson(obuf);
-          log.debug(bbuf.toDetailString());
-          obuf.reset();
+        else {
+          buf = null; // Speicher freigeben
+          saveSession(this);
+          returnBuffer = readResponse(c);
         }
-  
-        is = null;
-        returnBuffer = obuf;
+        
       }
       catch (SocketException e) {
         if (log.isDebugEnabled()) log.debug("received exception=" + e);
@@ -97,28 +86,10 @@ public class JcnnPost extends JcnnRequest {
       }
       catch (Throwable e) {
         if (log.isDebugEnabled()) log.debug("received exception=" + e);
-  
-        try {
-          if (c != null) {
-            is = c.getErrorStream();
-            BWire.bufferFromStream(is, false);
-            is = null;
-          }
-        }
-        catch (IOException ignored) {
-        }
-  
         returnException = new BException(statusCode, "Send message failed", e);
       }
       finally {
-        if (is != null) {
-          try {
-            is.close();
-          }
-          catch (IOException ignored) {
-          }
-        }
-        
+        cleanupErrorStream(c);
         done();
       }
 
@@ -133,6 +104,7 @@ public class JcnnPost extends JcnnRequest {
 
     asyncResult.setAsyncResult(returnBuffer, returnException);
     
+    NDC.pop();
   }
   
 }

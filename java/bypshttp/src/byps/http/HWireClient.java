@@ -374,10 +374,10 @@ public class HWireClient extends BWire {
   }
 
   @Override
-  public void putStreams(List<BContentStream> streams, BAsyncResult<BMessage> asyncResult) {
+  public void putStreams(long trackingId, List<BContentStream> streams, BAsyncResult<BMessage> asyncResult) {
     try {
       for (BContentStream stream : streams) {
-        RequestToCancel req = createRequestForPutStream(stream, asyncResult);
+        RequestToCancel req = createRequestForPutStream(trackingId, stream, asyncResult);
         executeRequest(req);
       }
     }
@@ -461,7 +461,8 @@ public class HWireClient extends BWire {
     executeRequest(req);
 
     // Create RequestToCancel objects for each stream.
-    putStreams(msg.streams, outerResult);
+    long trackingId = msg.header.getTrackingId();
+    putStreams(trackingId, msg.streams, outerResult);
 
     if (log.isDebugEnabled()) log.debug(")send");
   }
@@ -514,11 +515,13 @@ public class HWireClient extends BWire {
       else {
         destUrl = getUrlStringBuilder("");
       }
+      
+      long trackingId = msg.header.getTrackingId();
 
       if (log.isDebugEnabled()) log.debug("open connection, url=" + destUrl);
       final HHttpRequest httpRequest = isNegotiate ? 
-          httpClient.get(destUrl.toString(), requestToCancel) : 
-          httpClient.post(destUrl.toString(), requestDataBuffer, requestToCancel);
+          httpClient.get(trackingId, destUrl.toString(), requestToCancel) : 
+          httpClient.post(trackingId, destUrl.toString(), requestDataBuffer, requestToCancel);
 
       httpRequest.setTimeouts(timeoutSecondsClient, timeoutSecondsRequest);
       
@@ -536,7 +539,7 @@ public class HWireClient extends BWire {
     return requestToCancel;
   }
 
-  protected RequestToCancel createRequestForPutStream(BContentStream stream, BAsyncResult<BMessage> asyncResult) {
+  protected RequestToCancel createRequestForPutStream(long trackingId, BContentStream stream, BAsyncResult<BMessage> asyncResult) {
     if (log.isDebugEnabled()) log.debug("createRequestForPutStream(" + stream);
 
     final long messageId = stream.getTargetId().getMessageId();
@@ -545,7 +548,7 @@ public class HWireClient extends BWire {
     destUrl.append("&messageid=").append(messageId).append("&streamid=").append(streamId);
 
     final RequestToCancel requestToCancel = new RequestToCancel(messageId, streamId, 0L, asyncResult);
-    final HHttpRequest httpRequest = httpClient.putStream(destUrl.toString(), stream, requestToCancel);
+    final HHttpRequest httpRequest = httpClient.putStream(trackingId, destUrl.toString(), stream, requestToCancel);
 
     requestToCancel.setHttpRequest(httpRequest);
     addRequest(requestToCancel);
@@ -554,7 +557,7 @@ public class HWireClient extends BWire {
     return requestToCancel;
   }
 
-  protected RequestToCancel createRequestForGetStream(final BTargetId targetId, final BAsyncResult<BContentStream> asyncResult) {
+  protected RequestToCancel createRequestForGetStream(long trackingId, final BTargetId targetId, final BAsyncResult<BContentStream> asyncResult) {
     if (log.isDebugEnabled()) log.debug("createRequestForGetStream(" + targetId);
 
     final long messageId = targetId.getMessageId();
@@ -566,7 +569,7 @@ public class HWireClient extends BWire {
       .append("&streamid=").append(streamId);
 
     final RequestToCancel requestToCancel = new RequestToCancel(messageId, streamId, 0L, null);
-    final HHttpRequest httpRequest = httpClient.getStream(destUrl.toString(), new BAsyncResult<BContentStream>() {
+    final HHttpRequest httpRequest = httpClient.getStream(trackingId, destUrl.toString(), new BAsyncResult<BContentStream>() {
       public void setAsyncResult(BContentStream stream, Throwable ex) {
         asyncResult.setAsyncResult(stream, ex);
         requestToCancel.setAsyncResult(null, ex);
@@ -586,8 +589,10 @@ public class HWireClient extends BWire {
       }
     });
 
+    long trackingId = messageId;
+    
     String destUrl = surl + "?messageid=" + messageId + "&cancel=1";
-    final HHttpRequest httpRequest = httpClient.get(destUrl, requestToCancel);
+    final HHttpRequest httpRequest = httpClient.get(trackingId, destUrl, requestToCancel);
 
     requestToCancel.setHttpRequest(httpRequest);
 
@@ -727,9 +732,11 @@ public class HWireClient extends BWire {
     volatile RequestToCancel request;
     volatile HttpURLConnection conn;
     volatile Throwable ex;
+    private final long trackingId;
 
-    public MyInputStream(BTargetId targetId) {
+    public MyInputStream(long trackingId, BTargetId targetId) {
       super(targetId);
+      this.trackingId = trackingId;
     }
 
     @Override
@@ -831,7 +838,7 @@ public class HWireClient extends BWire {
 
     protected void internalOpenStream(BAsyncResult<BContentStream> asyncResult) throws IOException {
       if (log.isDebugEnabled()) log.debug("internalOpenStream(");
-      RequestToCancel requestToCancel = createRequestForGetStream(targetId, asyncResult);
+      RequestToCancel requestToCancel = createRequestForGetStream(trackingId, targetId, asyncResult);
       executeRequest(requestToCancel);
       if (log.isDebugEnabled()) log.debug(")internalOpenStream");
     }
@@ -844,9 +851,9 @@ public class HWireClient extends BWire {
   }
 
   @Override
-  public BContentStream getStream(BTargetId targetId) throws IOException {
+  public BContentStream getStream(long trackingId, BTargetId targetId) throws IOException {
     if (log.isDebugEnabled()) log.debug("getStream(" + targetId);
-    BContentStream is = new MyInputStream(targetId);
+    BContentStream is = new MyInputStream(trackingId, targetId);
     if (log.isDebugEnabled()) log.debug(")getStream=" + is);
     return is;
   }

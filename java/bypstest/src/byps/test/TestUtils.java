@@ -121,7 +121,7 @@ public class TestUtils {
 		}
 		
 		@Override
-		public void putStreams(List<BContentStream> streamRequests, BAsyncResult<BMessage> asyncResult) {
+		public void putStreams(long trackingId, List<BContentStream> streamRequests, BAsyncResult<BMessage> asyncResult) {
 			if (streamRequests == null) return;
 			
 			for (BContentStream streamRequest : streamRequests) {
@@ -142,7 +142,7 @@ public class TestUtils {
 		}
 
 		@Override
-		public BContentStream getStream(BTargetId targetId)
+		public BContentStream getStream(long trackingId, BTargetId targetId)
 				throws IOException {
 			HashMap<Long, ByteBuffer> map = mapStreams.get(targetId.getMessageId());
 			if (map == null) throw new IOException("Stream not found.");
@@ -616,10 +616,18 @@ public class TestUtils {
 		private final boolean chunked;
 		private final byte[] oneByteBuffer = new byte[1];
 		private long lastProgress;
+		private long startTime;
+		private long durationMillis;
 		
 		public MyContentStream(long nbOfBytes, boolean chunked) {
+		  this(nbOfBytes, 0, chunked);
+		}
+		
+		public MyContentStream(long nbOfBytes, long durationMillis, boolean chunked) {
 			this.nbOfBytes = nbOfBytes;
 			this.chunked = chunked;
+			this.startTime = System.currentTimeMillis();
+			this.durationMillis = durationMillis;
 			
 			setFileName("file-" + nbOfBytes + ".txt");
 			setAttachmentCode(nbOfBytes > 10000 ? ATTACHMENT : INLINE);
@@ -643,14 +651,35 @@ public class TestUtils {
       long bytesAvailable = nbOfBytes - pos;
 		  if (bytesAvailable > 0) {
 		    
+		    len = Math.min(len, (int)((pos + 1000) % 11111111L));
+		    
 		    if (bytesAvailable < (long)len) len = (int)bytesAvailable;
 		    
 		    for (int i = 0; i < len; i++) {
-		      b[i] = (byte)((pos + i) & 0xFF);
+		      b[off + i] = (byte)((pos + i) & 0xFF);
 		    }
 		    
 		    pos += len;
 		    ret = len;
+		    
+		    if (durationMillis != 0) {
+		      long elapsedMillis = System.currentTimeMillis() - startTime;
+		      double timeQ = (double)elapsedMillis/(double)durationMillis;
+		      double posQ = (double)pos/(double)nbOfBytes;
+		      if (posQ > timeQ) {
+		        double waitQ =  posQ - timeQ;
+		        long waitMillis = (long)(waitQ * durationMillis);
+		        if (waitMillis > 1000L) {
+		          log.info("stream.read wait " + waitMillis + "ms at pos=" + pos);
+  		        try {
+                Thread.sleep(waitMillis);
+              } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new IOException(e);
+              }
+		        }
+		      }
+		    }
 		    
 		    long progress = (pos * 100L) / nbOfBytes;
 		    if (progress != lastProgress) {
@@ -708,6 +737,10 @@ public class TestUtils {
                     byte r = rbuf[i];
                     if (e != r)
                     {
+                        String expected = BBuffer.toDetailString(ByteBuffer.wrap(ebuf, 0, n));
+                        String read = BBuffer.toDetailString(ByteBuffer.wrap(rbuf, 0, n));
+                        log.info("expected=" + expected);
+                        log.info("read=" + read);
                         TestUtils.assertEquals(log, msg + ". stream byte, p=" + p, e, r);
                     }
                     p++;
@@ -722,10 +755,14 @@ public class TestUtils {
 	}
 
 	public static void checkTempDirEmpty(BClient client) throws RemoteException {
-		log.info("check temp dir is empty");
-		String[] tempFiles = client.getTransport().getWire().getTestAdapter().getServerTempFiles();
-		TestUtils.assertEquals(log, "temp files", new String[0], tempFiles);
-	}
+    log.info("check temp dir is empty");
+    String[] tempFiles = client.getTransport().getWire().getTestAdapter().getServerTempFiles();
+    TestUtils.assertEquals(log, "temp files", new String[0], tempFiles);
+  }
+	
+	public static void purgeServerTempDir(BClient client) throws RemoteException {
+    client.getTransport().getWire().getTestAdapter().getServerTempFiles();
+  }
 
 	private static short x;
 	public static Point2D createPoint2D() {

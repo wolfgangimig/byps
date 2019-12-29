@@ -17,6 +17,7 @@ import org.apache.http.config.RegistryBuilder;
 import org.apache.http.impl.auth.SPNegoSchemeFactory;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.WinHttpClients;
@@ -78,6 +79,8 @@ public class AsfClient implements HHttpClient {
       Lookup<AuthSchemeProvider> authSchemeRegistry = builder.build();
       httpClientBuilder = HttpClients.custom().setDefaultAuthSchemeRegistry(authSchemeRegistry);
     }
+    
+    httpClientBuilder.setRetryHandler(new DefaultHttpRequestRetryHandler(3, true));
 
     // SSO über SPNEGO/Kerberos funktioniert nur, wenn der Test unter einem Windows-Benutzerkonto l�uft, dass nicht lokaler Administrator ist.
 
@@ -129,26 +132,26 @@ public class AsfClient implements HHttpClient {
   }
 
   @Override
-  public HHttpRequest get(String url, BAsyncResult<ByteBuffer> asyncResult) {
-    return new AsfGet(url, asyncResult, httpclient, context);
+  public HHttpRequest get(long trackingId, String url, BAsyncResult<ByteBuffer> asyncResult) {
+    return new AsfGet(trackingId, url, asyncResult, httpclient, context);
   }
 
   @Override
-  public HHttpRequest getStream(String url,
+  public HHttpRequest getStream(long trackingId, String url,
       BAsyncResult<BContentStream> asyncResult) {
-    return new AsfGetStream(url, asyncResult, httpclient, context);
+    return new AsfGetStream(trackingId, url, asyncResult, httpclient, context);
   }
 
   @Override
-  public HHttpRequest post(String url, ByteBuffer buf,
+  public HHttpRequest post(long trackingId, String url, ByteBuffer buf,
       BAsyncResult<ByteBuffer> asyncResult) {
-    return new AsfPost(url, buf, asyncResult, httpclient, context);
+    return new AsfPost(trackingId, url, buf, asyncResult, httpclient, context);
   }
 
   @Override
-  public HHttpRequest putStream(String url, InputStream stream,
+  public HHttpRequest putStream(long trackingId, String url, InputStream stream,
       BAsyncResult<ByteBuffer> asyncResult) {
-    return new AsfPutStream(url, stream, asyncResult, httpclient, context);
+    return new AsfPutStream(trackingId, url, stream, asyncResult, httpclient, context);
   }
   
   @Override
@@ -172,7 +175,7 @@ public class AsfClient implements HHttpClient {
       //String url = "http://localhost:8084/ix-elo90";
       AsfClient client = new AsfClient(url + "/ix");
       BSyncResult<ByteBuffer> asyncResult = new BSyncResult<ByteBuffer>();
-      client.get(url + "/bypsauth/auth?streamversion=8&responseformat=html&logout=true", asyncResult).run();
+      client.get(4, url + "/bypsauth/auth?streamversion=8&responseformat=html&logout=true", asyncResult).run();
       ByteBuffer bbuf = asyncResult.getResult();
       System.out.println(new String(bbuf.array(), "UTF-8"));
     }

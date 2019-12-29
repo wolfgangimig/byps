@@ -1,4 +1,6 @@
 package byps.http;
+import java.util.concurrent.atomic.AtomicLong;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -18,6 +20,8 @@ import byps.BTransport;
  * 
  */
 public class HServerR extends BServerR {
+  
+  protected static final AtomicLong requstCounter = new AtomicLong();
 
   public HServerR(BTransport transport, BServer server, int nbOfConns) {
     super(transport, server);
@@ -65,6 +69,7 @@ public class HServerR extends BServerR {
 
     protected LongPoll(BMessage methodResult) throws BException {
       if (log.isDebugEnabled()) log.debug("LongPoll(" + methodResult);
+      final long requestId = HServerR.requstCounter.incrementAndGet();
       if (methodResult != null) {
         this.methodResult = methodResult;
       }
@@ -73,25 +78,29 @@ public class HServerR extends BServerR {
         outp.header.flags |= BMessageHeader.FLAG_RESPONSE;
         outp.store(null); // irgendwas, damit auch der Header in den ByteBuffer
                           // geschrieben wird.
-        this.methodResult = outp.toMessage();
+        this.methodResult = outp.toMessage(requestId);
       }
       if (log.isDebugEnabled()) log.debug(")LongPoll");
     }
 
     public void run() {
       if (log.isDebugEnabled()) log.debug("run(");
+      
+      final long startTime = System.currentTimeMillis();
+      if (log.isInfoEnabled()) log.info("sendr-" + methodResult.header.getTrackingId());
 
       final BAsyncResult<BMessage> asyncResult = new BAsyncResult<BMessage>() {
 
         @Override
         public void setAsyncResult(BMessage msg, Throwable e) {
           if (log.isDebugEnabled()) log.debug("setAsyncResult(" + msg);
+          final long requestId = HServerR.requstCounter.incrementAndGet();
           try {
             if (e != null) {
               BOutput out = transport.getOutput();
               out.header.flags = BMessageHeader.FLAG_RESPONSE;
               out.setException(e);
-              msg = out.toMessage();
+              msg = out.toMessage(requestId);
             }
             sendLongPoll(msg);
           } catch (BException e1) {
@@ -108,6 +117,9 @@ public class HServerR extends BServerR {
         public void setAsyncResult(BMessage msg, Throwable e) {
           if (log.isDebugEnabled()) log.debug("asyncMethod.setAsyncResult(" + msg + ", e=" + e);
           try {
+            
+            long endTime = System.currentTimeMillis();
+            if (log.isInfoEnabled()) log.info("sendr-" + methodResult.header.getTrackingId() + "[" + (endTime-startTime) + "]");
             
             if (e == null) {
               // Execute the method received from server.

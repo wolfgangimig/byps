@@ -41,7 +41,7 @@ public class JSerializer_15 extends JSerializer_Object {
 	  }
     
 		try {
-			BContentStream strm = bin.transport.getWire().getStream(targetId);
+			BContentStream strm = bin.transport.getWire().getStream(targetId.getMessageId(), targetId);
       final String contentType = bin.currentObject.getString("contentType");
       final long contentLength = bin.currentObject.getLong("contentLength");
       final int attachmentCode = bin.currentObject.getInt("attachment");

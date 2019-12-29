@@ -112,7 +112,7 @@ public class HActiveMessages {
 	       
 				HttpServletResponse resp = (HttpServletResponse)arg0.getSuppliedResponse();
 				
-				int status = isLongPoll ? HttpServletResponse.SC_NO_CONTENT : HttpServletResponse.SC_ACCEPTED;
+				int status = isLongPoll ? BExceptionC.RESEND_LONG_POLL : BExceptionC.PROCESSING;
 				resp.setStatus(status);
 				  
 				resp.getOutputStream().close(); 

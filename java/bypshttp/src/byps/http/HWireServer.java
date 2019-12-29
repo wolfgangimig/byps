@@ -121,7 +121,7 @@ public class HWireServer extends BWire {
   }
 
   @Override
-  public BContentStream getStream(BTargetId targetId) throws IOException {
+  public BContentStream getStream(long trackingId, BTargetId targetId) throws IOException {
     if (log.isDebugEnabled()) log.debug("getStream(" + targetId);
     MyIncomingInputStream is = new MyIncomingInputStream(targetId);
     if (log.isDebugEnabled()) log.debug(")getStream=" + is);
@@ -129,7 +129,7 @@ public class HWireServer extends BWire {
   }
 
   @Override
-  public void putStreams(List<BContentStream> streams, BAsyncResult<BMessage> asyncResult) {
+  public void putStreams(long trackingId, List<BContentStream> streams, BAsyncResult<BMessage> asyncResult) {
     if (log.isDebugEnabled()) log.debug("putStreams(");
     try {
       activeMessages.addOutgoingStreams(streams);
@@ -156,7 +156,8 @@ public class HWireServer extends BWire {
       try {
         ByteBuffer buf = null;
         if (msg != null) {
-          putStreams(msg.streams, null);
+          long trackingId = msg.header.getTrackingId();
+          putStreams(trackingId, msg.streams, null);
           buf = msg.buf;
         }
         writeResponse(header.messageId, buf, e);

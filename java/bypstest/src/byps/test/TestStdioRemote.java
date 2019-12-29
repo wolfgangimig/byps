@@ -93,7 +93,7 @@ public class TestStdioRemote {
       
       ByteBuffer request = ByteBuffer.wrap("requesttext".getBytes());
       
-      HHttpRequest httpRequest = client.post("abc-url", request, new BAsyncResult<ByteBuffer>() {
+      HHttpRequest httpRequest = client.post(3, "abc-url", request, new BAsyncResult<ByteBuffer>() {
         public void setAsyncResult(ByteBuffer result, Throwable ex){
           if (ex != null) {
             ex.printStackTrace();

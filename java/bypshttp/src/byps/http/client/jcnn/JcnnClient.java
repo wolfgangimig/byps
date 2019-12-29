@@ -27,23 +27,23 @@ public class JcnnClient implements HHttpClient {
   }
 
   @Override
-  public HHttpRequest get(String url, BAsyncResult<ByteBuffer> asyncResult) {
-    return new JcnnGet(url, asyncResult, cookieManager);
+  public HHttpRequest get(long trackingId, String url, BAsyncResult<ByteBuffer> asyncResult) {
+    return new JcnnGet(trackingId, url, asyncResult, cookieManager);
   }
 
   @Override
-  public HHttpRequest getStream(String url, BAsyncResult<BContentStream> asyncResult) {
-    return new JcnnGetStream(url, asyncResult, cookieManager);
+  public HHttpRequest getStream(long trackingId, String url, BAsyncResult<BContentStream> asyncResult) {
+    return new JcnnGetStream(trackingId, url, asyncResult, cookieManager);
   }
 
   @Override
-  public HHttpRequest post(String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult) {
-    return new JcnnPost(url, buf, asyncResult, cookieManager);
+  public HHttpRequest post(long trackingId, String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult) {
+    return new JcnnPost(trackingId, url, buf, asyncResult, cookieManager);
   }
 
   @Override
-  public HHttpRequest putStream(String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult) {
-    return new JcnnPutStream(url, stream, asyncResult, cookieManager);
+  public HHttpRequest putStream(long trackingId, String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult) {
+    return new JcnnPutStream(trackingId, url, stream, asyncResult, cookieManager);
   }
 
   @Override

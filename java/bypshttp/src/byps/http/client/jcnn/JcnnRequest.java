@@ -1,13 +1,17 @@
 package byps.http.client.jcnn;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.CookieManager;
 import java.net.CookieStore;
 import java.net.HttpCookie;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,8 +21,10 @@ import java.util.concurrent.atomic.AtomicReference;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import byps.BBufferJson;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BWire;
 import byps.http.client.HHttpRequest;
 
 public abstract class JcnnRequest implements HHttpRequest {
@@ -31,6 +37,7 @@ public abstract class JcnnRequest implements HHttpRequest {
   protected int sendRecvTimeoutSeconds;
   protected AtomicBoolean cancelled = new AtomicBoolean();
   protected Map<String,String> requestProperties = new HashMap<String,String>();
+  protected final long trackingId;
   private static Log log = LogFactory.getLog(JcnnRequest.class);
   
   /**
@@ -38,7 +45,8 @@ public abstract class JcnnRequest implements HHttpRequest {
    */
   private int responseCode = -1;
 
-  protected JcnnRequest(String url, CookieManager cookieManager) {
+  protected JcnnRequest(long trackingId, String url, CookieManager cookieManager) {
+    this.trackingId = trackingId;
     this.url = url;
     this.cookieManager = cookieManager;
   }
@@ -155,20 +163,23 @@ public abstract class JcnnRequest implements HHttpRequest {
   }
 
   private Map<String, List<String>> extractCookieHeaders(HttpURLConnection c) {
+    Map<String, List<String>> responseCookies = Collections.emptyMap();
     Map<String, List<String>> responseHeaders = c.getHeaderFields();
-    Map<String, List<String>> responseCookies = new HashMap<String, List<String>>(responseHeaders.size());
-    for (String headerKey : responseHeaders.keySet()) {
-      if (headerKey == null) continue;
-      if (headerKey.equalsIgnoreCase("Set-Cookie2") || headerKey.equalsIgnoreCase("Set-Cookie")) {
-        List<String> cookies = new ArrayList<String>();
-        for (String headerValue : responseHeaders.get(headerKey)) {
-          if (log.isDebugEnabled()) log.debug("response cookie=" + headerValue);
-          if (!headerValue.isEmpty()) {
-            cookies.add(headerValue);
+    if (responseHeaders != null) {
+      responseCookies = new HashMap<String, List<String>>(responseHeaders.size());
+      for (String headerKey : responseHeaders.keySet()) {
+        if (headerKey == null) continue;
+        if (headerKey.equalsIgnoreCase("Set-Cookie2") || headerKey.equalsIgnoreCase("Set-Cookie")) {
+          List<String> cookies = new ArrayList<String>();
+          for (String headerValue : responseHeaders.get(headerKey)) {
+            if (log.isDebugEnabled()) log.debug("response cookie=" + headerValue);
+            if (!headerValue.isEmpty()) {
+              cookies.add(headerValue);
+            }
           }
-        }
-        if (!cookies.isEmpty()) {
-          responseCookies.put(headerKey, cookies);
+          if (!cookies.isEmpty()) {
+            responseCookies.put(headerKey, cookies);
+          }
         }
       }
     }
@@ -197,4 +208,50 @@ public abstract class JcnnRequest implements HHttpRequest {
   
   private Boolean closeConnectionAfterRequest;
   
+  
+  protected ByteBuffer readResponse(HttpURLConnection c) throws IOException {
+    ByteBuffer obuf = null;
+    InputStream is = c.getInputStream();
+    if (is != null) {
+      String enc = c.getHeaderField("Content-Encoding");
+      boolean gzip = enc != null && enc.equals("gzip");
+  
+      if (log.isDebugEnabled()) log.debug("read stream");
+      obuf = BWire.bufferFromStream(is, gzip);
+      if (log.isDebugEnabled()) {
+        log.debug("received #bytes=" + obuf.remaining());
+        obuf.mark();
+        BBufferJson bbuf = new BBufferJson(obuf);
+        log.debug(bbuf.toDetailString());
+        obuf.reset();
+      }
+    }
+    return obuf;
+  }
+  
+  protected void cleanupInputStream(HttpURLConnection conn) {
+    try {
+      InputStream respStrm = conn.getInputStream();
+      if (respStrm != null) {
+        ByteBuffer bbuf = BWire.bufferFromStream(respStrm, false);
+        if (log.isDebugEnabled()) log.debug("Put stream succeeded " + new String(bbuf.array(), StandardCharsets.UTF_8));
+      }
+    }
+    catch (Exception e) {
+      // Ignore exception to continue with cleanup.
+    }
+  }
+
+  protected void cleanupErrorStream(HttpURLConnection conn) {
+    try {
+      InputStream errStrm = conn.getErrorStream();
+      if (errStrm != null) {
+        ByteBuffer bbuf = BWire.bufferFromStream(errStrm, false);
+        if (log.isInfoEnabled()) log.info("Put stream failed " + new String(bbuf.array(), StandardCharsets.UTF_8));
+      }
+    }
+    catch (Exception e) {
+      // Ignore exception to continue with cleanup.
+    }
+  }
 }

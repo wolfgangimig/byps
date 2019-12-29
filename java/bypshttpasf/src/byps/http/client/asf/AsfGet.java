@@ -14,6 +14,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.log4j.NDC;
 
 import byps.BAsyncResult;
 import byps.BBufferJson;
@@ -26,14 +27,14 @@ public class AsfGet extends AsfRequest {
   private static Log log = LogFactory.getLog(AsfGet.class);
   private final BAsyncResult<ByteBuffer> asyncResult;
   
-  protected AsfGet(String url, BAsyncResult<ByteBuffer> asyncResult, CloseableHttpClient httpClient, HttpClientContext context) {
-    super(url, httpClient, context);
+  protected AsfGet(long trackingId, String url, BAsyncResult<ByteBuffer> asyncResult, CloseableHttpClient httpClient, HttpClientContext context) {
+    super(trackingId, url, httpClient, context);
     this.asyncResult = asyncResult;
   }
 
   @Override
   public void run() {
-    
+    NDC.push("asfget-" + trackingId);
     request = new HttpGet(url);
     applyTimeout();
     applyRequestProperties();
@@ -53,34 +54,11 @@ public class AsfGet extends AsfRequest {
 
       statusCode = response.getStatusLine().getStatusCode();
       if (statusCode != HttpURLConnection.HTTP_OK) {
-        throw new IOException("HTTP status " + statusCode);
+        returnException = new BException(statusCode, "Send message failed.");
       }
 
       HttpEntity entity = response.getEntity();
-
-      boolean gzip = false;
-      {
-        Header header = entity.getContentEncoding();
-        if (header != null) {
-          String enc = header.getValue();
-          gzip = enc != null && enc.equals("gzip");
-        }
-      }
-
-      is = response.getEntity().getContent();
-
-      if (log.isDebugEnabled()) log.debug("read stream");
-      ByteBuffer obuf = BWire.bufferFromStream(is, gzip);
-      if (log.isDebugEnabled()) {
-        log.debug("received #bytes=" + obuf.remaining());
-        obuf.mark();
-        BBufferJson bbuf = new BBufferJson(obuf);
-        log.debug(bbuf.toDetailString());
-        obuf.reset();
-      }
-
-      is = null;
-      returnBuffer = obuf;
+      returnBuffer = readEntity(entity);
     }
     catch (SocketException e) {
       if (log.isDebugEnabled()) log.debug("received exception=" + e);
@@ -91,14 +69,6 @@ public class AsfGet extends AsfRequest {
       returnException = new BException(statusCode, "Send message failed, url=" + url, e);
     }
     finally {
-      if (is != null) {
-        try {
-          is.close();
-        }
-        catch (IOException ignored) {
-        }
-      }
-      
       if (response != null) {
         try {
           response.close();
@@ -109,9 +79,10 @@ public class AsfGet extends AsfRequest {
       
       asyncResult.setAsyncResult(returnBuffer, returnException);
       done();
+
+      NDC.pop();
     }
 
-    
   }
 
 

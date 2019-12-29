@@ -30,4 +30,5 @@ public interface HHttpRequest extends Runnable {
    * @param value Header value.
    */
   public void setRequestProperty(String name, String value);
+
 }
