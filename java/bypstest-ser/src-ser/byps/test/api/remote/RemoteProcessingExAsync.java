@@ -11,9 +11,9 @@ import byps.*;
 public interface RemoteProcessingExAsync extends BRemote, 
 	RemoteProcessingEx {
 	/**
-	 * This function sleeps the given number of seconds and returns true.
 	 * @param sleepSeconds Time in seconds to sleep.
 	 * @return true
+	 * This function sleeps the given number of seconds and returns true.
 	 * @throws RemoteException
 	*/
 	// checkpoint byps.gen.j.PrintContext:383

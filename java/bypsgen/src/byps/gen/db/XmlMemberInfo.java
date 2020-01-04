@@ -1,7 +1,7 @@
 package byps.gen.db;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.UnsupportedEncodingException;
-import java.util.List;
+import java.util.Collection;
 
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -17,7 +17,7 @@ import byps.gen.api.TypeInfo;
 public class XmlMemberInfo {
 
 	public String name;
-	public List<CommentInfo> comments;
+	public Collection<CommentInfo> comments;
 	public String typeName;
 	public boolean isTransient;
 	public boolean isStatic;

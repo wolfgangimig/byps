@@ -33,6 +33,7 @@ repositories {
 }
 
 dependencies {
+	compile project(":bypsgen")
 	compile project(":bypshttp")
 	compile project(":bypshttp-shmem")
 	compile project(":bypshttpasf")

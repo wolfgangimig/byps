@@ -1,6 +1,7 @@
 package byps.gen.db;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -38,7 +39,7 @@ public class XmlRemoteInfo implements XmlInfo {
 	
 	@XmlElementWrapper(name = "comments") 
     @XmlElement(name = "comment") 
-	public List<CommentInfo> comments;
+	public Collection<CommentInfo> comments;
 
   public List<String> baseQNames;
   

@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import javax.annotation.processing.RoundEnvironment;
+import javax.lang.model.element.TypeElement;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -35,13 +39,14 @@ import byps.gen.api.SerialInfo;
 import byps.gen.api.TypeInfo;
 import byps.gen.db.ClassDB;
 import byps.gen.db.ConstFieldReader;
+import byps.gen.xml.XmlGeneratorBase;
 
 /**
  * This class converts from javadoc objects to internal objects.
  * The internal representation of serializable classes are stored in a SerialInfo object.
  * The internal representation of interfaces are stored in a RemoteInfo object.
  */
-public class BConvert {
+public class BConvert extends XmlGeneratorBase {
   
   /**
    * Full qualified class name of the session parameter type.
@@ -61,32 +66,6 @@ public class BConvert {
    */
   public static final String TAG_CLIENT_REMOTE = "@BClientRemote";
   
-	/**
-	 * Option: all classes should be serialized.
-	 */
-	public static final int OPT_ALL_SERIALS = 0x1;
-	
-	/**
-	 * Option: functions of all interfaces should be RPC calls.
-	 */
-	public static final int OPT_ALL_REMOTES = 0x2;
-	
-	/**
-	 * Process only classes tagged with @BSerializable 
-	 */
-  public static final int OPT_ONLY_BSERIALS = 0x4;
-  
-  /**
-   * Process only interfaces tagged with @BRemote
-   */
-  public static final int OPT_ONLY_BREMOTES = 0x8;
-  
-	/**
-	 * API Classes must not define members with this names.
-	 */
-	public final static HashSet<String> FORBIDDEN_FIELD_AND_METHOD_NAMES = new HashSet<String>(
-			Arrays.asList("_typeId", "__byps__ret", "__byps__asyncResult", "toJSON"));
-
 	/**
 	 * Evaluate the javadoc objects and create an internal representation of the API.
 	 * @param rdoc javadoc objects.
@@ -203,7 +182,7 @@ public class BConvert {
 	    return taggedWithBRemote;
 	  }
 		
-    // Inherits from byps.Remote?
+	// Inherits from byps.Remote?
     boolean doesImplementBypsRemote = doesImplement(c, byps.Remote.class.getName());
     log.debug("does implement byps.BRemote: " + doesImplementBypsRemote);
     if (doesImplementBypsRemote) {
@@ -301,81 +280,6 @@ public class BConvert {
 		return apiDesc;
 	}
 
-	/**
-	 * Create SerialInfo for collection.
-	 * The collection might be a java.util.List, ArrayList, LinkedList, Map, HashMap, TreeMap, Set, HashSet, TreeSet.
-	 * The collection class definition must have generic arguments. 
-	 * java.lang.Object is a valid argument type.
-	 */
-	private void makeSerialInfoForCollectionType(ErrorInfo errInfo, TypeInfo tinfo) throws GeneratorException {
-		log.debug("makeSerialInfoForCollectionType(" + tinfo);
-		errInfo = errInfo.copy();
-		
-		// Create SerialInfo for List and Map and Set
-		log.debug("isCollectionType=" + tinfo.isCollectionType());
-		if (tinfo.isCollectionType()) {
-			
-			checkSupportedCollection(errInfo, tinfo);
-
-			// List, ArrayList, LinkedList ohne Argumenttype?
-			if (tinfo.typeArgs.size() == 0) {
-				errInfo.msg = "Missing argument types.";
-				throw new GeneratorException(errInfo);
-			}
-			else {
-				// List<?>, List<Integer>, Map<?,?> ... 
-				for (int i = 0; i < tinfo.typeArgs.size(); i++) {
-					TypeInfo ainfo = tinfo.typeArgs.get(i);
-					log.debug("type argument=" + ainfo);
-					if (ainfo.name.equals("?")) {
-						tinfo.typeArgs.set(i, ainfo);
-					}
-				}
-			}
-			
-			if (tinfo.isMapType()) {
-				TypeInfo type = tinfo.typeArgs.get(0);
-				// JavaScript supports only numbers and strings as map keys.
-				if (!type.isPrimitiveType()) {
-					errInfo.typeArg = type.toString();
-					errInfo.msg = "Map types must be specified with a key type of Boolean, Byte, Short, Integer, Long, Float, Double or String.";
-					throw new GeneratorException(errInfo);
-				}
-			}
-			
-			SerialInfo serInfo = classDB.createSerialInfo(tinfo.name, null, 
-			    tinfo.qname, null, "", tinfo.typeArgs,
-					null, tinfo.isEnum, tinfo.isFinal, tinfo.isInline,
-					0L);
-			classDB.add(serInfo);
-		}
-
-		// If tinfo is an array (maybe an array of collections),
-		// generate a SerialInfo for this array type. 
-		log.debug("isArrayType=" + tinfo.isArrayType());
-		if (tinfo.isArrayType()) {
-			
-			// Arrays of generic types are unsupported by the java programming language
-			if (tinfo.typeArgs.size() != 0) {
-
-				// new List<Integer>[2] leads to this compiler error:
-				// Cannot create a generic array of List<Integer>
-				errInfo.msg = "Arrays of collection types are not supported by java. Declare this type without type arguments, e.g. java.util.HashMap instead of java.util.HashMap<Integer,String>.";
-				throw new GeneratorException(errInfo);
-			}
-			
-			SerialInfo sinfo = classDB.createSerialInfo(tinfo.name, null, tinfo.qname, null, 
-					tinfo.dims, tinfo.typeArgs, null, tinfo.isEnum, tinfo.isFinal, tinfo.isInline, 0L);
-			classDB.add(sinfo);
-		}
-		
-		// Walk recursively though the type arguments
-		for (TypeInfo argInfo : tinfo.typeArgs) {
-			makeSerialInfoForCollectionType(errInfo, argInfo);
-		}
-
-		log.debug(")makeSerialInfoForCollectionType");
-	}
 	
 	/**
 	 * Does the class implement the given interface? 
@@ -542,86 +446,6 @@ public class BConvert {
 		return minfo;
 	}
 	
-	/**
-	 * Serialize the fields of the given java object into JSON format.
-	 * The object values are read by reflection.
-	 * @param errInfo
-	 * @param value JSON representation.
-	 * @return
-	 */
-	private String serializeFieldsToJson(ErrorInfo errInfo, Object value) {
-		errInfo = errInfo.copy();
-		StringBuilder sbuf = new StringBuilder();
-		boolean addComma = false;
-		Class<?> clazz = value.getClass();
-		for (java.lang.reflect.Field field : clazz.getDeclaredFields()) {
-			field.setAccessible(true);
-			try {
-				field.get(null);
-			} catch (Exception e) {
-				try {
-					Object fieldValue = field.get(value);
-					if (fieldValue != null) {
-						if (addComma) sbuf.append(","); else addComma = true;
-						sbuf.append("\"").append(field.getName()).append("\":");
-						errInfo.fieldName = field.getName();
-						sbuf.append(serializeObjectToJson(errInfo, fieldValue));
-					}
-					else {
-						Class<?> fclazz = field.getType();
-						if (fclazz.getName().equals("java.lang.String")) {
-							if (addComma) sbuf.append(","); else addComma = true;
-							sbuf.append("\"").append(field.getName()).append("\":\"\"");
-						}
-					}
-				}
-				catch (Exception e2) {}
-			}
-		}
-		return sbuf.toString();
-	}
-	
-	/**
-	 * Serialize an object into JSON format.
-	 * @param errInfo
-	 * @param value
-	 * @return JSON representation of the object.
-	 * @throws GeneratorException
-	 */
-	private String serializeObjectToJson(ErrorInfo errInfo, Object value) throws GeneratorException {
-		errInfo = errInfo.copy();
-		
-		StringBuilder sbuf = new StringBuilder();
-		Class<?> clazz = value.getClass();
-		if (clazz.isArray()) {
-			sbuf.append("[");
-			for (int i = 0; i < Array.getLength(value); i++) {
-				if (i != 0) sbuf.append(",");
-				Object elm = Array.get(value, i);
-				sbuf.append(serializeObjectToJson(errInfo, elm));
-			}
-			sbuf.append("]");
-		}
-		else if (clazz == Character.class) {
-			int ch = (Character)value;
-			if (!Character.isDefined(ch)) {
-				errInfo.msg = "Invalid unicode character";
-				throw new GeneratorException(errInfo);
-			}
-			sbuf.append("\"").append(value).append("\"");
-		}
-		else if (clazz == String.class) {
-			sbuf.append("\"").append(value).append("\"");
-		}
-		else if (clazz.getName().startsWith("java.lang.")) {
-			sbuf.append(value);
-		}
-		else {
-			sbuf.append("{").append(serializeFieldsToJson(errInfo, value)).append("}");
-		}
-		return sbuf.toString();
-	}
-
 	/**
 	 * Convert a javadoc method parameter object into an object of my MemberInfo class.
 	 * @param errInfo
@@ -1063,51 +887,19 @@ public class BConvert {
 		return rinfo;
 	}
 	
-	/**
-	 * Is the given type a supported collection type?
-	 * @param errInfo
-	 * @param tinfo
-	 * @throws GeneratorException
-	 */
-	private void checkSupportedCollection(ErrorInfo errInfo, TypeInfo tinfo) throws GeneratorException {
-		errInfo = errInfo.copy();
-		int p = tinfo.qname.indexOf('<');
-		String qname = p >= 0 ? tinfo.qname.substring(0, p) : tinfo.qname;
-		if (!supportedCollections.contains(qname)) {
-			StringBuilder msg = new StringBuilder();
-			msg.append("Unsupported collection type. ");
-			msg.append("Please use one of this types: ").append(supportedCollections).append(", ");
-			msg.append("e.g. List<Map<Integer,Set<String>>>.");
-			errInfo.msg = msg.toString();
-			throw new GeneratorException(errInfo);
-		}
-	}
-	
-	private final static HashSet<String> supportedCollections = new HashSet<String>(Arrays.asList(
-			"java.util.List", "java.util.ArrayList", 
-			// We do not support LinkedList because we access the elements by index in JSON serialization.
-			"java.util.Map", "java.util.HashMap", "java.util.TreeMap",
-			"java.util.Set", "java.util.HashSet", "java.util.TreeSet"));
-	
 	 /**
    * Constructor
    * @param options Combination of OPT_* constants.
    */
   private BConvert(int options) {
-    this.options = options;
+    super(options);
   }
   
-  /**
-   * Internal representation of the entire API.
-   */
-  private ClassDB classDB;
-
-  /**
-   * Converter options.
-   * Combination of OPT_* constants.
-   */
-	private final int options;
-	
   private static Log log = LogFactory.getLog(BConvert.class);
+
+  @Override
+  public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+    return false;
+  }
   
 }

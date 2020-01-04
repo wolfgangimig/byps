@@ -6,6 +6,10 @@ BYPS Version History
 
 - Allow to replace serializers.
 
+5.29
+
+- BYPS-10: Generate code using annotation processor. JDK 13 compatible.
+
 5.28
 
 - BYPS-1: Generator runs on Java 12.

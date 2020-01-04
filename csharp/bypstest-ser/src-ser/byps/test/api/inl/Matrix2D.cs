@@ -10,6 +10,9 @@ using byps;
 namespace byps.test.api.inl
 {
 	
+	/// <summary>
+	/// AThis class is inline which means it is serialized as value not as object.
+	/// </summary>
 	public sealed class Matrix2D : BSerializable
 	{
 	

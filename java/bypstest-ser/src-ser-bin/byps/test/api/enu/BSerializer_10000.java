@@ -12,7 +12,7 @@ import byps.*;
 // isEnum=false
 // isFinal=false
 // isInline=false
-// #members=5
+// #members=6
 
 // checkpoint byps.gen.j.GenSerStruct:274
 @SuppressWarnings("all")
@@ -36,6 +36,9 @@ public class BSerializer_10000 extends BSerializer {
 		final BBufferBin bbuf = bout.bbuf;
 		bbuf.putInt(obj.planet!=null ? obj.planet.ordinal() : 0);
 		bbuf.putInt(obj.getPlanet2()!=null ? obj.getPlanet2().ordinal() : 0);
+		if (version >= 79400000000000000L) {
+			bbuf.putInt(obj.encoding!=null ? obj.encoding.ordinal() : 0);
+		}
 		bout.writeObj(obj.arrayOfPlanets, false, byps.test.api.BSerializer_1441131650.instance);
 		bout.writeObj(obj.listOfPlanets, false, byps.test.api.BSerializer_819140569.instance);
 		bout.writeObj(obj.mapOfPlanets, false, byps.test.api.BSerializer_493795497.instance);
@@ -50,6 +53,9 @@ public class BSerializer_10000 extends BSerializer {
 		
 		obj.planet = BEnumHelper.fromOrdinal(byps.test.api.enu.EnumPlanets.values(), bbuf.getInt());
 		obj.setPlanet2(BEnumHelper.fromOrdinal(byps.test.api.enu.EnumPlanets.values(), bbuf.getInt()));
+		if (version >= 79400000000000000L) {
+			obj.encoding = BEnumHelper.fromOrdinal(byps.test.api.enu.MyEncoding.values(), bbuf.getInt());
+		}
 		obj.arrayOfPlanets = (byps.test.api.enu.EnumPlanets[])bin.readObj(false, byps.test.api.BSerializer_1441131650.instance);
 		obj.listOfPlanets = (java.util.ArrayList<byps.test.api.enu.EnumPlanets>)bin.readObj(false, byps.test.api.BSerializer_819140569.instance);
 		obj.mapOfPlanets = (java.util.Map<java.lang.String,byps.test.api.enu.EnumPlanets>)bin.readObj(false, byps.test.api.BSerializer_493795497.instance);

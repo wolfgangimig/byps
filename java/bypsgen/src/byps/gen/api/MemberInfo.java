@@ -1,6 +1,5 @@
 package byps.gen.api;
-/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import java.util.List;
+import java.util.Collection;
 
 public class MemberInfo extends ItemInfo implements Comparable<MemberInfo> {
 
@@ -17,7 +16,7 @@ public class MemberInfo extends ItemInfo implements Comparable<MemberInfo> {
 	 */
 	public final String value;
 
-	public MemberInfo(String name, List<CommentInfo> comments, TypeInfo type, 
+	public MemberInfo(String name, Collection<CommentInfo> comments, TypeInfo type, 
 			boolean isPublic, boolean isProtected, boolean isPackage, boolean isPrivate, 
 			boolean isFinal, boolean isStatic, boolean isTransient, long since, String value) {
 		super(name, comments);
@@ -38,7 +37,7 @@ public class MemberInfo extends ItemInfo implements Comparable<MemberInfo> {
 		this(null, null, null, false, false, false, false, false, false, false, 0, null);
 	}
 	
-	private static MemberAccess makeAccess(boolean isPublic, boolean isProtected, boolean isPackage, boolean isPrivate) {
+  private static MemberAccess makeAccess(boolean isPublic, boolean isProtected, boolean isPackage, boolean isPrivate) {
 		MemberAccess a = MemberAccess.PUBLIC;
 		if (isProtected) a = MemberAccess.PROTECTED;
 		else if (isPackage) a = MemberAccess.PACKAGE;

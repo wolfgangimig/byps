@@ -1,13 +1,14 @@
 package byps.gen.api;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 
 public class SerialInfo extends TypeInfo implements Comparable<SerialInfo> {
 	
-	public SerialInfo(String name, List<CommentInfo> comments, String qname, String baseFullName, 
+	public SerialInfo(String name, Collection<CommentInfo> comments, String qname, String baseFullName, 
 			String dims, List<TypeInfo> typeArgs, List<MemberInfo> members,
 			boolean isEnum, boolean isFinal, boolean isInline, long since) {
 		super(name, qname, 
@@ -32,7 +33,7 @@ public class SerialInfo extends TypeInfo implements Comparable<SerialInfo> {
 
 	public List<MemberInfo> members;
 	
-	public final List<CommentInfo> comments;
+	public final Collection<CommentInfo> comments;
 	
 	public final String baseFullName;
 	

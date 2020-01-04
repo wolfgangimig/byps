@@ -1,7 +1,7 @@
 package byps.gen.api;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 
 public class MethodInfo extends ItemInfo {
@@ -21,7 +21,7 @@ public class MethodInfo extends ItemInfo {
 	public final static String METHOD_REQUEST_NAME_PREFIX  = "BRequest_";
 	public final static String METHOD_RESULT_NAME_PREFIX  = "BResult_";
 	
-	public MethodInfo(String name, List<CommentInfo> comments, SerialInfo requestInfo, SerialInfo resultInfo, ArrayList<TypeInfo> exceptions, long since) {
+	public MethodInfo(String name, Collection<CommentInfo> comments, SerialInfo requestInfo, SerialInfo resultInfo, ArrayList<TypeInfo> exceptions, long since) {
 		super(name, comments);
 		this.requestInfo = requestInfo;
 		this.resultInfo = resultInfo;

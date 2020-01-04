@@ -3,8 +3,9 @@ package byps.test.api.inl;
 import java.io.Serializable;
 
 /**
+ * AThis class is inline which means it is serialized as value not as object.
  * @inline
- *
+ * @since 0
  */
 public final class Matrix2D implements Serializable {
 	private static final long serialVersionUID = 7939864403242972411L;

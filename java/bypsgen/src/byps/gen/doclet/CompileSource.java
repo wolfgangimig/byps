@@ -103,7 +103,7 @@ public class CompileSource implements ConstFieldReader {
 		}
 		catch (Throwable e) {
 			ErrorInfo errInfo = new ErrorInfo();
-			errInfo.msg = "Failed to read serialVersionUID.";
+			errInfo.msg = "Failed to read " + fieldName;
 			throw new GeneratorException(errInfo, e);
 		}
     if (log.isDebugEnabled()) log.debug(")getValue=" + value);
@@ -111,11 +111,10 @@ public class CompileSource implements ConstFieldReader {
 	}
 
 	public int compile(String[] opts, String[] sourceDirs) throws GeneratorException {
-    		if (log.isDebugEnabled()) log.debug("compile(opts=" + Arrays.toString(opts) + ", sourceDirs=" + Arrays.toString(sourceDirs));
-    		
-    		System.out.println("Compile Java source, opts=" + Arrays.toString(opts) + ", sourceDirs=" + Arrays.toString(sourceDirs));
+		if (log.isDebugEnabled()) log.debug("compile(opts=" + Arrays.toString(opts) + ", sourceDirs=" + Arrays.toString(sourceDirs));
+		
+		System.out.println("Read constants.");
 
-    
 		List<File> files = findSourceFiles(sourceDirs);
 		if (log.isDebugEnabled()) log.debug("files=" + files);
 		

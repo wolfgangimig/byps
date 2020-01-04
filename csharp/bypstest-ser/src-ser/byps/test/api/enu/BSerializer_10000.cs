@@ -31,6 +31,10 @@ namespace byps.test.api.enu
 			bbuf.putInt((int)obj.Planet);
 			// checkpoint byps.gen.cs.PrintContext:494
 			bbuf.putInt((int)obj.Planet2);
+			if (version >= 79400000000000000L) {
+				// checkpoint byps.gen.cs.PrintContext:494
+				bbuf.putInt((int)obj.Encoding);
+			}
 			// checkpoint byps.gen.cs.PrintContext:494
 			bout.writeObj(obj.ArrayOfPlanets, false, byps.test.api.BSerializer_1441131650.instance);
 			// checkpoint byps.gen.cs.PrintContext:494
@@ -49,6 +53,10 @@ namespace byps.test.api.enu
 			obj.Planet = (byps.test.api.enu.EnumPlanets)bbuf.getInt();
 			// checkpoint byps.gen.cs.PrintContext:449
 			obj.Planet2 = (byps.test.api.enu.EnumPlanets)bbuf.getInt();
+			if (version >= 79400000000000000L) {
+				// checkpoint byps.gen.cs.PrintContext:449
+				obj.Encoding = (byps.test.api.enu.MyEncoding)bbuf.getInt();
+			}
 			// checkpoint byps.gen.cs.PrintContext:449
 			obj.ArrayOfPlanets = (byps.test.api.enu.EnumPlanets[])bin.readObj(false, byps.test.api.BSerializer_1441131650.instance);
 			// checkpoint byps.gen.cs.PrintContext:449

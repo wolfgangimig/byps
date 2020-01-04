@@ -128,7 +128,7 @@ public class ClassDB {
     return tinfo;
   }
 
-  public SerialInfo createSerialInfo(String name, List<CommentInfo> comments, String qname, String baseQname, String dims, List<TypeInfo> typeArgs, List<MemberInfo> members, boolean isEnum,
+  public SerialInfo createSerialInfo(String name, Collection<CommentInfo> comments, String qname, String baseQname, String dims, List<TypeInfo> typeArgs, List<MemberInfo> members, boolean isEnum,
       boolean isFinal, boolean inlineInstance, long since) throws GeneratorException {
     log.debug("createSerialInfo: " + qname + ", baseQname=" + baseQname + ", dims=" + dims + ", typeArgs=" + typeArgs + ", members=" + members + ", inlineInstance=" + inlineInstance + ", isEnum="
         + isEnum);
@@ -136,7 +136,7 @@ public class ClassDB {
     return serInfo;
   }
 
-  public RemoteInfo createRemoteInfo(String name, List<CommentInfo> comments, 
+  public RemoteInfo createRemoteInfo(String name, Collection<CommentInfo> comments, 
       String qname, List<String> baseQNames, List<MethodInfo> methods, 
       String authParamClassName, boolean isClientRemote,
       long since)

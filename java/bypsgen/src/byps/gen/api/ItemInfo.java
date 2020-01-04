@@ -1,6 +1,5 @@
 package byps.gen.api;
-/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import java.util.List;
+import java.util.Collection;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
@@ -11,9 +10,9 @@ public class ItemInfo {
 
 	@XmlElementWrapper(name = "comments") 
     @XmlElement(name = "comment") 
-	public final List<CommentInfo> comments;
+	public final Collection<CommentInfo> comments;
 	
-	public ItemInfo(String name, List<CommentInfo> comments) {
+	public ItemInfo(String name, Collection<CommentInfo> comments) {
 		this.name = name;
 		this.comments = comments;
 	}

@@ -1,6 +1,7 @@
 package byps.gen.api;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class RemoteInfo extends TypeInfo {
@@ -33,7 +34,7 @@ public class RemoteInfo extends TypeInfo {
 
 	public RemoteInfo(
 	    String name, 
-	    List<CommentInfo> comments, 
+	    Collection<CommentInfo> comments, 
 	    String qname, 
 	    List<String> baseQNames,
 	    List<MethodInfo> methods,
@@ -55,7 +56,7 @@ public class RemoteInfo extends TypeInfo {
 	
 	public List<MethodInfo> methods;
 	
-	public final List<CommentInfo> comments;
+	public final Collection<CommentInfo> comments;
 	
   public RemoteInfo getRemoteAsync() {
     RemoteInfo rinfo = new RemoteInfo(

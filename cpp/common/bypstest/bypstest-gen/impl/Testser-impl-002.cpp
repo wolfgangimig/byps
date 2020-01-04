@@ -1324,14 +1324,16 @@ namespace byps { namespace test { namespace api { namespace enu {
 UsePlanets::UsePlanets() {
 	planet = byps::test::api::enu::EnumPlanets::Mercury;
 	planet2 = byps::test::api::enu::EnumPlanets::Mercury;
+	encoding = byps::test::api::enu::MyEncoding::UTF8;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::enu::UsePlanets::UsePlanets(EnumPlanets planet, EnumPlanets planet2, const PArrayEnumPlanets& arrayOfPlanets, const PVectorEnumPlanets& listOfPlanets, const PMapStringEnumPlanets& mapOfPlanets)
+byps::test::api::enu::UsePlanets::UsePlanets(EnumPlanets planet, EnumPlanets planet2, const PArrayEnumPlanets& arrayOfPlanets, const PVectorEnumPlanets& listOfPlanets, const PMapStringEnumPlanets& mapOfPlanets, MyEncoding encoding)
 	: planet(planet)
 	, planet2(planet2)
 	, arrayOfPlanets(arrayOfPlanets)
 	, listOfPlanets(listOfPlanets)
 	, mapOfPlanets(mapOfPlanets)
+	, encoding(encoding)
 	{}
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::enu::UsePlanets::BSerializable_getTypeId() {
@@ -1344,6 +1346,9 @@ void UsePlanets::setPlanet2(EnumPlanets v) {
 void UsePlanets::serialize(BIO& ar, const BVERSION version) {
 	ar & this->planet;
 	ar & this->planet2;
+	if (version >= 79400000000000000) {
+		ar & this->encoding;
+	}
 	ar & this->arrayOfPlanets;
 	ar & this->listOfPlanets;
 	ar & this->mapOfPlanets;
@@ -1468,5 +1473,49 @@ void byps::test::api::inherit::BRequest_FruitService_squeeze::execute(const PRem
 namespace byps { namespace test { namespace api { 
 void BSerializer_1290167289(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::inherit::BRequest_FruitService_squeeze>(bio, pObj, pObjS, pBase);	
+}
+}}}
+namespace byps { namespace test { namespace api { namespace inherit { 
+
+//-------------------------------------------------
+// Implementation of class BRequest_LemonService_pick
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_LemonService_pick::BRequest_LemonService_pick() : BMethodRequest(605543968) {
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::inherit::BRequest_LemonService_pick::BRequest_LemonService_pick(const byps::test::api::auth::PSessionInfo& sess, const ::std::wstring& fromTree)
+	: BMethodRequest(605543968) 
+	, sess(sess)
+	, fromTree(fromTree)
+	{}
+// checkpoint byps.gen.cpp.PrintContext:496
+BTYPEID byps::test::api::inherit::BRequest_LemonService_pick::BSerializable_getTypeId() {
+	return 1022088379; 
+}
+// checkpoint byps.gen.cpp.GenApiClass:876
+void BRequest_LemonService_pick::serialize(BIO& ar, const BVERSION version) {
+	ar & this->fromTree;
+	ar & this->sess;
+}
+void byps::test::api::inherit::BRequest_LemonService_pick::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
+	PLemonService __byps__remoteT = byps_ptr_cast<LemonService>(__byps__remote);
+	__byps__remoteT->pick(sess, fromTree, [__byps__asyncResult](::std::wstring __byps__result, const BException& __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_10(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:933
+namespace byps { namespace test { namespace api { 
+void BSerializer_1022088379(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_ObjS_Template<byps::test::api::inherit::BRequest_LemonService_pick>(bio, pObj, pObjS, pBase);	
 }
 }}}

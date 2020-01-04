@@ -17,5 +17,4 @@ public class CommentInfo {
 	public CommentInfo() {
 		this(null, null);
 	}
-	
 }
