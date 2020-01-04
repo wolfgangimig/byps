@@ -1,6 +1,6 @@
 BYPS Version History
 
-5.28
+5.30
 
 - BYPS-9: Avoid TCP errors when uploading large streams.
 
