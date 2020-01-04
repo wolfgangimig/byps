@@ -1324,14 +1324,16 @@ namespace byps { namespace test { namespace api { namespace enu {
 UsePlanets::UsePlanets() {
 	planet = byps::test::api::enu::EnumPlanets::Mercury;
 	planet2 = byps::test::api::enu::EnumPlanets::Mercury;
+	encoding = byps::test::api::enu::MyEncoding::UTF8;
 }
 // checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::enu::UsePlanets::UsePlanets(EnumPlanets planet, EnumPlanets planet2, const PArrayEnumPlanets& arrayOfPlanets, const PVectorEnumPlanets& listOfPlanets, const PMapStringEnumPlanets& mapOfPlanets)
+byps::test::api::enu::UsePlanets::UsePlanets(EnumPlanets planet, EnumPlanets planet2, const PArrayEnumPlanets& arrayOfPlanets, const PVectorEnumPlanets& listOfPlanets, const PMapStringEnumPlanets& mapOfPlanets, MyEncoding encoding)
 	: planet(planet)
 	, planet2(planet2)
 	, arrayOfPlanets(arrayOfPlanets)
 	, listOfPlanets(listOfPlanets)
 	, mapOfPlanets(mapOfPlanets)
+	, encoding(encoding)
 	{}
 // checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::enu::UsePlanets::BSerializable_getTypeId() {
@@ -1344,6 +1346,9 @@ void UsePlanets::setPlanet2(EnumPlanets v) {
 void UsePlanets::serialize(BIO& ar, const BVERSION version) {
 	ar & this->planet;
 	ar & this->planet2;
+	if (version >= 79400000000000000) {
+		ar & this->encoding;
+	}
 	ar & this->arrayOfPlanets;
 	ar & this->listOfPlanets;
 	ar & this->mapOfPlanets;

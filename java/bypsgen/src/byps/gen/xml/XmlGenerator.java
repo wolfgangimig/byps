@@ -248,10 +248,13 @@ public class XmlGenerator extends XmlGeneratorBase {
     TypeElement serialType = (TypeElement)serialElement;
     String serialName = serialType.getSimpleName().toString();
     String serialQName = serialType.asType().toString();
+    boolean isEnum = isEnum(serialElement.asType());
+    boolean isFinal = serialElement.getModifiers().contains(Modifier.FINAL);
     ErrorInfo errorInfo = new ErrorInfo();
     errorInfo.className = serialQName;
-    
-    if (serialName.equals("UsePlanets")) {
+
+    // DEBUG
+    if (serialName.equals("MyEncoding")) {
       errorInfo.className = serialQName;
     }
     
@@ -260,27 +263,23 @@ public class XmlGenerator extends XmlGeneratorBase {
     ArrayList<MemberInfo> members = new ArrayList<>();
     for (Element fieldElement : serialElement.getEnclosedElements()) {
       
-      if (!fieldElement.getSimpleName().contentEquals("serialVersionUID")) {
+      // Skip static field serialVersionUID
+      if (fieldElement.getSimpleName().contentEquals("serialVersionUID")) continue;
        
-        switch (fieldElement.getKind()) {
-          case FIELD: case ENUM_CONSTANT: {
-            MemberInfo minfo = makeMemberInfo(errorInfo, fieldElement);
-            members.add(minfo);
-            break;
-          }
-          default: 
-            break;
-        }
-       }
+      ElementKind kind = fieldElement.getKind();
+      boolean add = (isEnum && kind == ElementKind.ENUM_CONSTANT)
+          || (!isEnum && kind == ElementKind.FIELD);
       
+      if (add) {
+        MemberInfo minfo = makeMemberInfo(errorInfo, fieldElement);
+        members.add(minfo);
+      }      
     }
 
     List<TypeInfo> argInfos = getTypeArguments(errorInfo, serialElement.asType());
     
     boolean isInline = isInline(commentInfos);
     long since = getSince(commentInfos);
-    boolean isEnum = isEnum(serialElement.asType());
-    boolean isFinal = serialElement.getModifiers().contains(Modifier.FINAL);
 
     String baseQName = "";
     if (!isEnum) {

@@ -18,12 +18,13 @@ namespace byps.test.api.enu
 		public UsePlanets() {
 		}		
 		
-		public UsePlanets(EnumPlanets @planet, EnumPlanets @planet2, EnumPlanets[] @arrayOfPlanets, List<EnumPlanets> @listOfPlanets, IDictionary<String,EnumPlanets> @mapOfPlanets) {
+		public UsePlanets(EnumPlanets @planet, EnumPlanets @planet2, EnumPlanets[] @arrayOfPlanets, List<EnumPlanets> @listOfPlanets, IDictionary<String,EnumPlanets> @mapOfPlanets, MyEncoding @encoding) {
 			this.planetValue = @planet;
 			this.planet2Value = @planet2;
 			this.arrayOfPlanetsValue = @arrayOfPlanets;
 			this.listOfPlanetsValue = @listOfPlanets;
 			this.mapOfPlanetsValue = @mapOfPlanets;
+			this.encodingValue = @encoding;
 		}		
 		
 		public UsePlanets(UsePlanets rhs)
@@ -33,6 +34,7 @@ namespace byps.test.api.enu
 			this.arrayOfPlanetsValue = rhs.arrayOfPlanetsValue;
 			this.listOfPlanetsValue = rhs.listOfPlanetsValue;
 			this.mapOfPlanetsValue = rhs.mapOfPlanetsValue;
+			this.encodingValue = rhs.encodingValue;
 		}		
 		
 		#endregion
@@ -104,6 +106,19 @@ namespace byps.test.api.enu
 		}
 		
 		
+		public MyEncoding Encoding
+		{
+			get
+			{
+				return encodingValue;
+			}
+			set
+			{
+				this.encodingValue = value;
+			}
+		}
+		
+		
 		#endregion
 		
 		#region Fields
@@ -117,6 +132,8 @@ namespace byps.test.api.enu
 		protected List<EnumPlanets> listOfPlanetsValue;
 
 		protected IDictionary<String,EnumPlanets> mapOfPlanetsValue;
+
+		protected MyEncoding encodingValue;
 
 		#endregion
 		

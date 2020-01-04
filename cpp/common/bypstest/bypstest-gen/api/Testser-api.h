@@ -352,6 +352,9 @@ namespace byps {
 				// byps.test.api.enu.EnumPlanets
 				enum EnumPlanets : int32_t; 
 				
+				// byps.test.api.enu.MyEncoding
+				enum MyEncoding : int32_t; 
+				
 				// byps.test.api.enu.UsePlanets
 				class UsePlanets; 
 				typedef byps_ptr< UsePlanets > PUsePlanets; 
@@ -881,6 +884,27 @@ class Point2D : public BSerializable {
 
 // checkpoint byps.gen.cpp.GenApiClass:652
 //-------------------------------------------------
+// MyEncoding
+// typeId=1249996125
+
+namespace byps { namespace test { namespace api { namespace enu { 
+
+
+using namespace ::byps;
+
+enum MyEncoding : int32_t  {
+	UTF8 = 0,
+	UTF16 = 1,
+	UTF16LE = 2,
+	
+};
+
+void operator & (BIO& ar, MyEncoding& e);
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:652
+//-------------------------------------------------
 // EnumPlanets
 // typeId=1375035164
 
@@ -1180,11 +1204,12 @@ class UsePlanets : public BSerializable {
 	public: PArrayEnumPlanets arrayOfPlanets;
 	public: PVectorEnumPlanets listOfPlanets;
 	public: PMapStringEnumPlanets mapOfPlanets;
+	public: MyEncoding encoding;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: UsePlanets();
 	// checkpoint byps.gen.cpp.GenApiClass:535
-	public: UsePlanets(EnumPlanets planet, EnumPlanets planet2, const PArrayEnumPlanets& arrayOfPlanets, const PVectorEnumPlanets& listOfPlanets, const PMapStringEnumPlanets& mapOfPlanets);	
+	public: UsePlanets(EnumPlanets planet, EnumPlanets planet2, const PArrayEnumPlanets& arrayOfPlanets, const PVectorEnumPlanets& listOfPlanets, const PMapStringEnumPlanets& mapOfPlanets, MyEncoding encoding);	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	public: EnumPlanets getPlanet2() { return planet2; }
 	public: void setPlanet2(EnumPlanets v);
@@ -4001,9 +4026,9 @@ using namespace ::byps;
 
 class BApiDescriptor_Testser { 
 	/**
-	 * API serialisation version: 793.0.0.0
+	 * API serialisation version: 794.0.0.0
 	 */
-	public: const static int64_t VERSION = 79300000000000000LL;
+	public: const static int64_t VERSION = 79400000000000000LL;
 	public: static PApiDescriptor instance();
 };
 

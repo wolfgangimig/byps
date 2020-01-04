@@ -18,6 +18,11 @@ public class UsePlanets implements Serializable {
 	public ArrayList<EnumPlanets> listOfPlanets;
 
 	public Map<String, EnumPlanets> mapOfPlanets;
+	
+	/**
+	 * @since 794
+	 */
+	public MyEncoding encoding;
 
 	public EnumPlanets getPlanet2() {
 		return planet2;

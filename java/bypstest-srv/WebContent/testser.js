@@ -30,9 +30,9 @@ byps.test.api.cons = byps.test.api.cons || {};
 */
 byps.test.api.BApiDescriptor_Testser = {
 	/**
-	 * API serialisation version: 793.0.0.0
+	 * API serialisation version: 794.0.0.0
 	 */
-	VERSION : "793.0.0.0",
+	VERSION : "794.0.0.0",
 	
 	/**
 	 * Internal used API Desciptor.
@@ -41,7 +41,7 @@ byps.test.api.BApiDescriptor_Testser = {
 		return new byps.BApiDescriptor(
 			"Testser",
 			"byps.test.api",
-			"793.0.0.0",
+			"794.0.0.0",
 			false, // uniqueObjects
 			new byps.test.api.BRegistry_Testser()
 		);
@@ -197,14 +197,23 @@ byps.test.api.enu.EnumPlanets = function() {
 
 
 /**
+ * @since 794.0.0.0
 */
-byps.test.api.enu.UsePlanets = function(planet, planet2, arrayOfPlanets, listOfPlanets, mapOfPlanets) {
+byps.test.api.enu.MyEncoding = function() {
+	this._typeId = 1249996125;
+};
+
+
+/**
+*/
+byps.test.api.enu.UsePlanets = function(planet, planet2, arrayOfPlanets, listOfPlanets, mapOfPlanets, encoding) {
 	this._typeId = 10000;
 	this.planet = planet || null;
 	this.planet2 = planet2 || null;
 	this.arrayOfPlanets = arrayOfPlanets || null;
 	this.listOfPlanets = listOfPlanets || null;
 	this.mapOfPlanets = mapOfPlanets || null;
+	this.encoding = encoding || null;
 };
 
 
@@ -585,6 +594,12 @@ byps.test.api.enu.EnumPlanets = {
 	Mercury : 0,
 	Venus : 1,
 	Earth : 2
+};
+
+byps.test.api.enu.MyEncoding = {
+	UTF8 : 0,
+	UTF16 : 1,
+	UTF16LE : 2
 };
 
 
@@ -7285,14 +7300,15 @@ byps.test.api.BRegistry_Testser = function() {
 				"planet2":1375035164, // byps.test.api.enu.EnumPlanets
 				"arrayOfPlanets":1441131650, // byps.test.api.enu.EnumPlanets[]
 				"listOfPlanets":819140569, // java.util.ArrayList<byps.test.api.enu.EnumPlanets>
-				"mapOfPlanets":493795497 // java.util.Map<java.lang.String,byps.test.api.enu.EnumPlanets>
+				"mapOfPlanets":493795497, // java.util.Map<java.lang.String,byps.test.api.enu.EnumPlanets>
+				"encoding":1249996125 // byps.test.api.enu.MyEncoding
 			},
 			// checkpoint byps.gen.js.GenRegistry:146
 			// names of inline elements
 			{
 				"arrayOfPlanets":1441131650, // byps.test.api.enu.EnumPlanets[]
 				"listOfPlanets":819140569, // java.util.ArrayList<byps.test.api.enu.EnumPlanets>
-				"mapOfPlanets":493795497 // java.util.Map<java.lang.String,byps.test.api.enu.EnumPlanets>
+				"mapOfPlanets":493795497, // java.util.Map<java.lang.String,byps.test.api.enu.EnumPlanets>
 			},
 			// inlineInstance
 			false

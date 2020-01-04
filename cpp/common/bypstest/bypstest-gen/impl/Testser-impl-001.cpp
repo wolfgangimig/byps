@@ -137,6 +137,17 @@ void BSerializer_588723219(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* 
 	BSerializer_Obj_Template<::byps::BArray4< ::std::wstring > >(bio, pObj, pObjS, pBase);	
 }
 }}}
+
+namespace byps { namespace test { namespace api { namespace enu { 
+
+void operator & (BIO& ar, MyEncoding& e) {
+	int32_t v = static_cast<int32_t>(e);
+	ar & v;
+	if (ar.is_loading) e = static_cast<MyEncoding>(v);
+}
+
+}}}}
+
 // checkpoint byps.gen.cpp.GenApiClass:933
 namespace byps { namespace test { namespace api { 
 void BSerializer_1441131650(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {

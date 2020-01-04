@@ -13,6 +13,7 @@ import byps.BInput;
 import byps.BOutput;
 import byps.BTransport;
 import byps.test.api.enu.EnumPlanets;
+import byps.test.api.enu.MyEncoding;
 import byps.test.api.enu.UsePlanets;
 
 /**
@@ -52,6 +53,7 @@ public class TestSerializeEnum {
 		
 		if (obj.planet == null) obj.planet = EnumPlanets.Mercury;
 		if (obj.getPlanet2() == null) obj.setPlanet2(EnumPlanets.Mercury);
+		if (obj.encoding == null) obj.encoding = MyEncoding.UTF8;
 		
 		if (obj.arrayOfPlanets != null) {
 			for (int i = 0; i < obj.arrayOfPlanets.length; i++) {
@@ -102,6 +104,7 @@ public class TestSerializeEnum {
 		UsePlanets obj = new UsePlanets();
 		obj.planet = EnumPlanets.Earth;
 		obj.setPlanet2(EnumPlanets.Venus);
+		obj.encoding = MyEncoding.UTF16LE;
 		internalTestEnumValues(obj);
 		log.info(")testEnumValues");
 	}
