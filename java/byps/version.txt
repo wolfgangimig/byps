@@ -6,6 +6,8 @@ BYPS Version History
 
 - Allow to replace serializers.
 
+- BYPS-11: Stream with unknown content length was not entirely uploaded if first stream part was less than 10000 bytes.
+
 5.29
 
 - BYPS-10: Generate code using annotation processor. JDK 13 compatible.
