@@ -76,6 +76,20 @@ public class MyRemoteWithAuthentication extends BSkeleton_RemoteWithAuthenticati
       log.info("throw sess=null");
       throw new RemoteException("Parameter sess must not be null.");
     }
+   
+    // Pause the request to check BYPS-12.
+    // BYPS-12: Logout killed all messages.
+    final int BYPS_12_DOIT = 12;
+    if (value == BYPS_12_DOIT) {
+      try {
+        Thread.sleep(5000L);
+      } catch (InterruptedException e) {
+        // Do not Thread.currentThread().interrupt(); 
+        // If this message is cancelled, TestRemoteWithAuthentication.testLogoutDoesNotInterruptOtherMessages 
+        // should receive an exception. 
+        throw new RemoteException(e.toString());
+      }
+    }
     
     int ret = value+1;
     log.info(")doit=" + ret);

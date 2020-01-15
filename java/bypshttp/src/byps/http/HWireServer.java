@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InterruptedIOException;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import org.apache.commons.logging.LogFactory;
 import byps.BAsyncResult;
 import byps.BContentStream;
 import byps.BException;
+import byps.BHashMap;
 import byps.BMessage;
 import byps.BMessageHeader;
 import byps.BTargetId;
@@ -26,6 +28,7 @@ public class HWireServer extends BWire {
 
   private final HWriteResponseHelper writeHelper;
   private final HActiveMessages activeMessages;
+  private final BHashMap<Long, Long> activeMessageIds = new BHashMap<Long, Long>();
   private final HConfig hConfig;
   private final static Log log = LogFactory.getLog(HWireServer.class);
   
@@ -44,10 +47,18 @@ public class HWireServer extends BWire {
   
   public void cancelMessage(long messageId) {
     activeMessages.cancelMessage(messageId);
+    activeMessageIds.remove(messageId);
   }
 
   public void cancelAllMessages() {
-    activeMessages.cancelAllMessages();
+    
+    // BYPS-12: cancel only messages running for this HWireServer. Before, with BYPS-9, 
+    // all messages of all sessions were cancelled.
+    
+    ArrayList<Long> messageIds = new ArrayList<Long>(activeMessageIds.keys());
+    for (Long messageId : messageIds) {
+      cancelMessage(messageId);
+    }
   }
 
   private class MyIncomingInputStream extends BWire.InputStreamWrapper {
@@ -200,6 +211,7 @@ public class HWireServer extends BWire {
       log.debug("writeResponse(messageId=" + messageId + ", obuf=" + obuf + ", exception=" + e);
     }
     
+    activeMessageIds.remove(messageId);
     HRequestContext rctxt = activeMessages.getAndRemoveRequestContext(messageId, HRemoveMessageControl.FINISHED);
     if (log.isDebugEnabled()) log.debug("async context of messageId: " + rctxt);
     
@@ -224,6 +236,7 @@ public class HWireServer extends BWire {
     
     try {
       activeMessages.addMessage(header, rctxt, workerThread);
+      activeMessageIds.put(header.messageId, header.messageId);
       
       boolean pollProcessing = (header.flags & BMessageHeader.FLAG_POLL_PROCESSING) != 0;
       if (!pollProcessing) {
