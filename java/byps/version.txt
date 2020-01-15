@@ -1,11 +1,9 @@
 BYPS Version History
 
-5.29.2
+5.29
 
 - BYPS-12: Logout of one session cancelled all messages of all sessions. 
   This effect was caused by changes in BYPS-9.
-
-5.29
 
 - BYPS-10: Generate code using annotation processor. JDK 13 compatible.
 
