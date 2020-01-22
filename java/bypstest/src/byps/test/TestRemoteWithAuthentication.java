@@ -13,6 +13,7 @@ import byps.BAsyncResult;
 import byps.BAuthentication;
 import byps.BClient;
 import byps.BMessageHeader;
+import byps.BSyncResult;
 import byps.BWire;
 import byps.RemoteException;
 import byps.test.api.BApiDescriptor_Testser;
@@ -241,4 +242,36 @@ public class TestRemoteWithAuthentication {
 
     log.info(")testBypsVersionWithoutSessionId");
   }
+  
+  
+  /**
+   * Check that logout of one session does not interrupt other messages.
+   * BYPS-12
+   * @throws RemoteException
+   */
+  @Test
+  public void testLogoutDoesNotInterruptOtherMessages() throws RemoteException {
+    log.info("testLogoutDoesNotInterruptOtherMessages(");
+    final int BYPS_12_DOIT = 12;
+    
+    // Start a request that is paused for 5s inside the server.
+    BSyncResult<Integer> doitResult = new BSyncResult<>();
+    client.setAuthentication(new MyAuthentication("Fritz", "abc"));
+    client.getRemoteWithAuthentication().doit(BYPS_12_DOIT, doitResult);
+    
+    // During the above request, do a login/logout.
+    // Before BYPS-12, logout of this (other) session caused an exception in the above request.
+    BClient_Testser client2 = TestUtilsHttp.createClient();
+    client2.setAuthentication(new MyAuthentication("Fritz", "abc"));
+    client2.getRemoteWithAuthentication().doit(0);
+    client2.done();
+    
+    // Wait for request result, should least 5s. 
+    int doitValue = doitResult.getResult(10000L);
+    TestUtils.assertEquals(log, "doit value", BYPS_12_DOIT + 1, doitValue);
+    
+    log.info(")testLogoutDoesNotInterruptOtherMessages");
+  }
+  
+
 }
