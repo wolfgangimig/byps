@@ -59,46 +59,6 @@ public class AsfPutStream extends AsfRequest implements HHttpPutStreamHelper.Put
     }
   }
   
-  private void put(CloseableHttpClient client, String baseUrl) {
-    String url = baseUrl;
-    HttpPut put = new HttpPut(url);
-    byte[] bytes = new byte[10*1000*1000];
-    put.setEntity(new ByteArrayEntity(bytes));
-    try (CloseableHttpResponse response = client.execute(put)) {
-      int responseStatus = response.getStatusLine().getStatusCode();
-      readEntity(response.getEntity());
-      if (responseStatus != 200) {
-        log.info("put: url=" + url + ", response.status=" + responseStatus);
-      }
-      asyncResult.setAsyncResult(ByteBuffer.allocate(0), null);
-    }
-    catch (Exception e) {
-      log.error("put: url=" + url + ", response.exception=" + e);
-      asyncResult.setAsyncResult(ByteBuffer.allocate(0), e);
-    }
-  }
-
-  private int putBytes_off(String url, byps.io.ByteArrayInputStream sendBuffer, String contentType, String contentDisposition, boolean lastRetry) throws BException {
-    int responseStatus = 0;
-    HttpPut put = new HttpPut(url);
-    byte[] bytes = new byte[10*1000*1000];
-    put.setEntity(new ByteArrayEntity(bytes));
-    try (CloseableHttpResponse response = httpClient.execute(put)) {
-      responseStatus = response.getStatusLine().getStatusCode();
-      readEntity(response.getEntity());
-      if (responseStatus != 200) {
-        log.info("put: url=" + url + ", response.status=" + responseStatus);
-      }
-      asyncResult.setAsyncResult(ByteBuffer.allocate(0), null);
-    }
-    catch (Exception e) {
-      log.error("put: url=" + url + ", response.exception=" + e);
-      asyncResult.setAsyncResult(ByteBuffer.allocate(0), e);
-    }
-    return responseStatus;
-  }
-
-
   @Override
   public int putBytes(String url, byps.io.ByteArrayInputStream sendBuffer, String contentType, String contentDisposition, boolean lastRetry) throws BException {
    
