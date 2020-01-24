@@ -2,14 +2,13 @@ package byps.gen;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import byps.BException;
-import byps.BVersioning;
-import byps.gen.api.GeneratorException;
 import byps.gen.cpp.GeneratorCpp;
 import byps.gen.cs.GeneratorCS;
 import byps.gen.db.ClassDB;
@@ -36,6 +35,8 @@ public class Main {
   private static EMode mode = EMode.DETECT;
   
   public static void main(String[] args) {
+    
+    System.out.println("bypsgen version=" + getGeneratorVersion());
     
     // Enable printing checkpoints
     CodePrinter.enableCheckpoints(true);
@@ -193,6 +194,17 @@ public class Main {
     }
   }
   
-
+  private static String getGeneratorVersion() {
+    String version = "0.0";
+    try (InputStream istream = Main.class.getResourceAsStream("/byps/version.properties")) {
+      Properties props = new Properties();
+      props.load(istream);
+      version = props.getProperty("version");
+    }
+    catch (IOException e) {
+      log.error("Cannot read version.", e);
+    }
+    return version;
+  }
 
 }

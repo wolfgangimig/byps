@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.29.4
+
+- BYPS-13: Non-static enum members led to errors in bypsgen's compatibility check.
+
 5.29.3
 
 - BYPS-11: Stream with unknown content length was not entirely uploaded if first stream part was less than 10000 bytes.

@@ -1,6 +1,8 @@
 package byps.gen.db;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -163,16 +165,22 @@ public class CompatibleClassDB {
 		if (sinfoP.isEnum) {
 		  
 	    // The old members must be at the same position
-	    for (int i = 0; i < sinfoP.members.size(); i++) {
-	      MemberInfo minfoP = sinfoP.members.get(i);
-	      MemberInfo minfo = i < sinfo.members.size() ? sinfo.members.get(i) : null;
-
+		  // BYPS-13: Only enum constants are taken into account. Other members are ignored, since they are not serialized.
+		  
+		  List<MemberInfo> enumConstantsP = sinfoP.members.stream().filter(m -> m.isFinal && m.isStatic).collect(Collectors.toList());  
+		  List<MemberInfo> enumConstants = sinfo.members.stream().filter(m -> m.isFinal && m.isStatic).collect(Collectors.toList());  
+	    for (int i = 0; i < enumConstantsP.size(); i++) {
+	      
+	      MemberInfo minfoP = enumConstantsP.get(i);
+	      MemberInfo minfo = i < enumConstants.size() ? enumConstants.get(i) : null;
+	      
 	      if (minfo == null) {
 	        viols.add(sinfoP.qname + ": missing member " + minfoP.name);
 	      }
 	      else if (!minfoP.name.equals(minfo.name)) {
 	        viols.add(sinfoP.qname + ": missing member " + minfoP.name + " at position " + (i+1) + " (ordinal value=" + i + ").");
 	      }
+  	      
 	    }
 		}
 		else {
