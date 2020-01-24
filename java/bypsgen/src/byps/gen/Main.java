@@ -36,6 +36,9 @@ public class Main {
   
   public static void main(String[] args) {
     
+    // BYPS-14: suppress generator warning "Illegal reflective access..."
+    System.setProperty("--illegal-access", "debug");
+    
     System.out.println("bypsgen version=" + getGeneratorVersion());
     
     // Enable printing checkpoints
