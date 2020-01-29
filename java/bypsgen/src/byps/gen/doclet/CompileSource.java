@@ -1,6 +1,7 @@
 package byps.gen.doclet;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Field;
@@ -11,6 +12,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.tools.JavaCompiler;
+import javax.tools.JavaFileObject;
+import javax.tools.StandardJavaFileManager;
+import javax.tools.ToolProvider;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -18,8 +24,6 @@ import byps.gen.api.ErrorInfo;
 import byps.gen.api.GeneratorException;
 import byps.gen.api.TypeInfo;
 import byps.gen.db.ConstFieldReader;
-
-import com.sun.tools.javac.Main;
 
 public class CompileSource implements ConstFieldReader {
 	
@@ -118,14 +122,33 @@ public class CompileSource implements ConstFieldReader {
 		List<File> files = findSourceFiles(sourceDirs);
 		if (log.isDebugEnabled()) log.debug("files=" + files);
 		
-		List<String> params = new ArrayList<String>();
-		for (String opt : opts) params.add(opt);
-		for (File file : files) params.add(file.getAbsolutePath());
-		
 		StringWriter sw = new StringWriter();
 		PrintWriter pr = new PrintWriter(sw);
 		
-		int status = Main.compile(params.toArray(new String[0]), pr);
+		JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+		if (compiler == null) {
+		  String classpath = System.getProperty("java.class.path");
+		  boolean hasToolsJar = classpath.contains("tools.jar");
+		  String msg = "Cannot find Java compiler ";
+		  if (hasToolsJar) {
+		    msg += "in classpath=" + classpath;
+		  }
+		  else {
+		    msg += ", missing tools.jar in classpath=" + classpath;
+		  }
+		  throw new GeneratorException(msg);
+		}
+		
+		int status = 1;
+		try (StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null)) {
+      Iterable<? extends JavaFileObject> compilationUnits1 = fileManager.getJavaFileObjectsFromFiles(files);
+      Boolean succ = compiler.getTask(pr, fileManager, null, Arrays.asList(opts), null, compilationUnits1).call();
+      status = (succ != null && succ) ? 0 : 1;
+		}
+		catch (IOException e) {
+		  ErrorInfo errorInfo = new ErrorInfo();
+		  throw new GeneratorException(errorInfo, e);
+		}
 		
 		String msg = sw.toString();
 		if (status != 0) {
