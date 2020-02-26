@@ -3,7 +3,7 @@ apply plugin: 'war'
 
 sourceCompatibility = 1.8
 compileJava.options.encoding = 'UTF-8'
-version = '5.30'
+version = '5.31'
 
 eclipse {
 
