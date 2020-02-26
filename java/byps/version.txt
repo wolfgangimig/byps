@@ -1,6 +1,8 @@
 BYPS Version History
 
-5.30
+5.31
+
+- BYPS-17: Generator for the JSON serialization skips transient fields.
 
 - BYPS-16: Replace commons-logging with slf4j, additionally support logback. 
 
