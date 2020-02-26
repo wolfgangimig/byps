@@ -7,12 +7,12 @@ package byps.test.api;
 
 import byps.*;
 import java.util.*;
-import org.apache.commons.logging.*;
+import org.slf4j.*;
 
 @SuppressWarnings("all")
 public class TestCompatibleApi_Testser {
 
-	private final static Log log = LogFactory.getLog("TestCompatibleApi_Testser.class");
+	private final static Logger log = LoggerFactory.getLogger("TestCompatibleApi_Testser.class");
 	
 	public static void test(BClient bclient) throws Exception {
 		BProtocol protocol = bclient.getTransport().getProtocol();

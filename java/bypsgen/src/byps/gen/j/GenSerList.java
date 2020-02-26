@@ -2,8 +2,8 @@ package byps.gen.j;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBinaryModel;
 import byps.BException;
@@ -14,7 +14,7 @@ import byps.gen.utils.CodePrinter;
 
 
 public class GenSerList {
-	static Log log = LogFactory.getLog(GenSerList.class);
+	static Logger log = LoggerFactory.getLogger(GenSerList.class);
 
 	GenSerList(PrintContext pctxt, SerialInfo serInfo, CodePrinter pr) throws BException {
 		this(pctxt, serInfo, pr, BBinaryModel.MEDIUM);

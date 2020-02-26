@@ -4,8 +4,8 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.Test;
 
 import byps.BException;
@@ -23,7 +23,7 @@ import byps.test.api.inherit.Class3;
 public class TestSerializerClassHierarchy {
 	
 	BTransport transport = TestUtils.createTransport();
-	private Log log = LogFactory.getLog(TestSerializerClassHierarchy.class);
+	private Logger log = LoggerFactory.getLogger(TestSerializerClassHierarchy.class);
 	
 	
 	@Test

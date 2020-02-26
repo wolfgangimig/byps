@@ -17,8 +17,8 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.gen.db.ClassDB;
 import byps.gen.db.ConstFieldReader;
@@ -28,7 +28,7 @@ import byps.gen.xml.XmlGeneratorBase;
 
 public class MainAP extends Main {
   
-  private static Log log = LogFactory.getLog(MainAP.class);
+  private static Logger log = LoggerFactory.getLogger(MainAP.class);
   
   private Context context;
   

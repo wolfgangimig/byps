@@ -12,8 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.TimeZone;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.Test;
 
 import byps.BBinaryModel;
@@ -44,7 +44,7 @@ import junit.framework.Assert;
 public class TestSerializePrimitiveTypes {
 	
 	BTransport transport = TestUtils.createTransport();
-	private Log log = LogFactory.getLog(TestSerializePrimitiveTypes.class);
+	private Logger log = LoggerFactory.getLogger(TestSerializePrimitiveTypes.class);
 	
 	
 	/**

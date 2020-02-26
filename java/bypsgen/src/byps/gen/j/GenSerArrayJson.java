@@ -2,8 +2,8 @@ package byps.gen.j;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBinaryModel;
 import byps.BException;
@@ -19,7 +19,7 @@ public class GenSerArrayJson extends GenSerArray {
 		super(pctxt, serInfo, pr, BBinaryModel.JSON);
 	}
 
-	static Log log = LogFactory.getLog(GenSerArrayJson.class);
+	static Logger log = LoggerFactory.getLogger(GenSerArrayJson.class);
 	
 //	protected void printSize() throws IOException {
 //	}

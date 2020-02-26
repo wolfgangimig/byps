@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * An object of this class sends and receives bytes.
@@ -342,6 +342,6 @@ public class BWire {
   protected SecureRandom rand;
 	protected Object sess;
 	protected int flags;
-	private final static Log log = LogFactory.getLog(BWire.class);
+	private final static Logger log = LoggerFactory.getLogger(BWire.class);
 
 }

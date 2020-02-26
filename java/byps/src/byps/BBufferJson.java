@@ -14,8 +14,8 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 import java.util.TimeZone;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BBufferJson extends BBuffer {
 	
@@ -765,7 +765,7 @@ public class BBufferJson extends BBuffer {
 		if (c != expectedChar) {
 			int pos = eat ? buf.position() : (buf.position()-1);
 			BException e = new BException(BExceptionC.CORRUPT, "Expecting character " + expectedChar + " at position " + pos);
-			log.error(e);
+			log.error(e.getMessage(), e);
 			log.info(this.toDetailString());
 			throw e;
 		}
@@ -800,7 +800,7 @@ public class BBufferJson extends BBuffer {
 					if (c != '\"' && c != '\'' && c != ',') {
 						BException e = new BException(BExceptionC.CORRUPT,
 								"Unexpected character " + c + "(" + Integer.toString((int)c & 0xFFFF) + ") at position " + buf.position() + ", expecting element name or array value.");
-						log.error(e);
+						log.error(e.getMessage(), e);
 						String s = this.toDetailString();
 						log.info(s);
 						throw e;
@@ -809,7 +809,7 @@ public class BBufferJson extends BBuffer {
 					String key = getString();
 					if (key == null) {
 						BException e = new BException(BExceptionC.CORRUPT, "Expecting element name at position " + buf.position());
-						log.error(e);
+						log.error(e.getMessage(), e);
 						log.info(this.toDetailString());
 						throw e;
 					}
@@ -862,7 +862,7 @@ public class BBufferJson extends BBuffer {
 		}
 		else {
 			BException e = new BException(BExceptionC.CORRUPT, "Unexpected character " + c + " at position " + buf.position());
-			log.error(e);
+			log.error(e.getMessage(), e);
 			log.info(this.toString());
 			throw e;
 		}
@@ -934,7 +934,7 @@ public class BBufferJson extends BBuffer {
   }
 
 	
-	private static Log log = LogFactory.getLog(BBufferJson.class);
+	private static Logger log = LoggerFactory.getLogger(BBufferJson.class);
 }
 
 //2,5 times slower for strings with 30 characters.

@@ -18,8 +18,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.BAsyncResult;
@@ -76,7 +76,7 @@ public class HWireClient extends BWire {
                                                                        // multiple
                                                                        // of
                                                                        // CHUNK_SIZE
-  protected final static Log log = LogFactory.getLog(HWireClient.class);
+  protected final static Logger log = LoggerFactory.getLogger(HWireClient.class);
   protected final BHashMap<RequestToCancel, Boolean> openRequestsToCancel = new BHashMap<RequestToCancel, Boolean>();
   // protected final Map<RequestToCancel, Boolean> openRequestsToCancel =
   // Collections.synchronizedMap(new HashMap<RequestToCancel, Boolean>());

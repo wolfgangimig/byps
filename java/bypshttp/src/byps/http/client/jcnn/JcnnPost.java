@@ -8,9 +8,9 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.NDC;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 import byps.BAsyncResult;
 import byps.BBufferJson;
@@ -22,7 +22,7 @@ import byps.BWire.OutputStreamByteCount;
 
 public class JcnnPost extends JcnnRequest {
 
-  private static Log log = LogFactory.getLog(JcnnPost.class);
+  private static Logger log = LoggerFactory.getLogger(JcnnPost.class);
   private final BAsyncResult<ByteBuffer> asyncResult;
   private ByteBuffer buf;
   
@@ -34,7 +34,7 @@ public class JcnnPost extends JcnnRequest {
 
   @Override
   public void run() {
-    NDC.push("jcnnpost-" + trackingId);
+    MDC.put("NDC", "jcnnpost-" + trackingId);
     HttpURLConnection c = null;
     ByteBuffer returnBuffer = null;
     BException returnException = null;
@@ -104,7 +104,7 @@ public class JcnnPost extends JcnnRequest {
 
     asyncResult.setAsyncResult(returnBuffer, returnException);
     
-    NDC.pop();
+    MDC.remove("NDC");
   }
   
 }

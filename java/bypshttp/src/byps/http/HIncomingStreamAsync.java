@@ -8,8 +8,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BContentStream;
 import byps.BException;
@@ -18,7 +18,7 @@ import byps.BTargetId;
 
 public class HIncomingStreamAsync extends BContentStream  {
 
-	private static Log log = LogFactory.getLog(HIncomingStreamAsync.class);
+	private static Logger log = LoggerFactory.getLogger(HIncomingStreamAsync.class);
 	protected InputStream is;
 	protected HRequestContext rctxt;
 	protected final File tempDir;

@@ -5,15 +5,15 @@ import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.nio.ByteBuffer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.log4j.NDC;
 
 import byps.BAsyncResult;
 import byps.BException;
@@ -24,7 +24,7 @@ import byps.io.ByteArrayOutputStream;
 
 public class AsfPost extends AsfRequest {
 
-  private static Log log = LogFactory.getLog(AsfPost.class);
+  private static Logger log = LoggerFactory.getLogger(AsfPost.class);
   private ByteBuffer buf;
   private final BAsyncResult<ByteBuffer> asyncResult;
   
@@ -36,7 +36,7 @@ public class AsfPost extends AsfRequest {
 
   @Override
   public void run() {
-    NDC.push("asfpost-" + trackingId);
+    MDC.put("NDC", "asfpost-" + trackingId);
     request = new HttpPost(url);
     applyTimeout();
     applyRequestProperties();
@@ -102,7 +102,7 @@ public class AsfPost extends AsfRequest {
       
       asyncResult.setAsyncResult(returnBuffer, returnException);
       
-      NDC.pop();
+      MDC.remove("NDC");
     }
 
   }

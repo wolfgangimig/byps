@@ -3,8 +3,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicReference;
 
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class TestRemoteWithAuthentication {
 
   BClient_Testser client;
   RemoteWithAuthenticationAuth remote;
-  private Log log = LogFactory.getLog(TestRemoteStreams.class);
+  private Logger log = LoggerFactory.getLogger(TestRemoteStreams.class);
 
   @Before
   public void setUp() throws RemoteException {
@@ -178,7 +178,7 @@ public class TestRemoteWithAuthentication {
   
   private static class MyAuthentication implements BAuthentication {
     
-    private Log log = LogFactory.getLog("MyAuthentication");
+    private Logger log = LoggerFactory.getLogger("MyAuthentication");
     private String userName;
     private String pwd;
     private SessionInfo sess;

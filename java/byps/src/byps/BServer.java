@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BServer {
 	
@@ -121,6 +121,6 @@ public class BServer {
     return clientR;
   }
   
-	private final static Log log = LogFactory.getLog(BServer.class);
+	private final static Logger log = LoggerFactory.getLogger(BServer.class);
 
 }

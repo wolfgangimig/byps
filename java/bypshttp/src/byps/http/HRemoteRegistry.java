@@ -8,8 +8,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.BAsyncResult;
@@ -36,7 +36,7 @@ public abstract class HRemoteRegistry implements BServerRegistry {
       .newCachedThreadPool(new PoolThreadFactory());
   private final HConfig config;
   private final HTargetIdFactory targetIdFactory;
-  private final static Log log = LogFactory.getLog(HRemoteRegistry.class);
+  private final static Logger log = LoggerFactory.getLogger(HRemoteRegistry.class);
 
   public HRemoteRegistry(HConfig config, HTargetIdFactory targetIdFactory) {
     this.config = config;

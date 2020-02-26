@@ -2,8 +2,8 @@ package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.ArrayList;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BHashMap;
 
@@ -33,7 +33,7 @@ public class HCleanupResources {
 
     @Override
     public void run() {
-      Log log = LogFactory.getLog(HCleanupResources.class);
+      Logger log = LoggerFactory.getLogger(HCleanupResources.class);
       try {
         while (!Thread.interrupted()) {
           Thread.sleep(HConstants.CLEANUP_MILLIS);

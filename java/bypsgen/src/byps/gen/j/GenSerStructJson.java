@@ -3,8 +3,8 @@ package byps.gen.j;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBinaryModel;
 import byps.BRegistry;
@@ -14,7 +14,7 @@ import byps.gen.api.SerialInfo;
 import byps.gen.utils.CodePrinter;
 
 public class GenSerStructJson extends GenSerStruct{
-	static Log log = LogFactory.getLog(GenSerStructJson.class);
+	static Logger log = LoggerFactory.getLogger(GenSerStructJson.class);
 	
 	GenSerStructJson(PrintContext pctxt, SerialInfo serInfo, CodePrinter pr) {
 		super(pctxt, serInfo, pr, BBinaryModel.JSON);

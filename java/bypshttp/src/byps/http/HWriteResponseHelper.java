@@ -7,8 +7,8 @@ import java.nio.ByteBuffer;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBuffer;
 import byps.BException;
@@ -17,7 +17,7 @@ import byps.BMessageHeader;
 
 public class HWriteResponseHelper {
 
-  private final static Log log = LogFactory.getLog(HWriteResponseHelper.class);
+  private final static Logger log = LoggerFactory.getLogger(HWriteResponseHelper.class);
   private HServerListener listener;
 
   public HWriteResponseHelper(HServerListener listener) {

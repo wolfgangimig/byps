@@ -5,8 +5,8 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.security.Principal;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.auth.AuthSchemeProvider;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.Credentials;
@@ -36,7 +36,7 @@ import byps.http.client.HHttpRequest;
  */
 public class AsfClient implements HHttpClient {
 
-  private static Log log = LogFactory.getLog(AsfClient.class);
+  private static Logger log = LoggerFactory.getLogger(AsfClient.class);
   private volatile CloseableHttpClient httpclient;
   private volatile HttpClientContext context;
 

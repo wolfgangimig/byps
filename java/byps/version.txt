@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.30
+
+- BYPS-16: Replace commons-logging with slf4j, additionally support logback. 
+
 5.29.4
 
 - BYPS-13: Non-static enum members led to errors in bypsgen's compatibility check.

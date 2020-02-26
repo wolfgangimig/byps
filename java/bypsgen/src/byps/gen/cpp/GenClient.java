@@ -3,8 +3,8 @@ package byps.gen.cpp;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.gen.api.GeneratorException;
@@ -13,7 +13,7 @@ import byps.gen.utils.CodePrinter;
 import byps.gen.utils.Utils;
 
 public class GenClient {
-  static Log log = LogFactory.getLog(GenClient.class);
+  static Logger log = LoggerFactory.getLogger(GenClient.class);
 
   static void generate(PrintContext pctxt, BApiDescriptor apiDesc) throws IOException {
     log.debug("generate");

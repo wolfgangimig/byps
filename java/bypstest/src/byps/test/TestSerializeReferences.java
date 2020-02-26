@@ -4,8 +4,8 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -22,7 +22,7 @@ import byps.test.api.refs.Node;
 public class TestSerializeReferences {
 	
 	BTransport transport = TestUtils.createTransport();
-	private Log log = LogFactory.getLog(TestSerializeReferences.class);
+	private Logger log = LoggerFactory.getLogger(TestSerializeReferences.class);
 	
 	/**
 	 * Serializes an object with a member that refers to itself.

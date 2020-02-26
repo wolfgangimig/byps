@@ -2,15 +2,15 @@ package byps.gen.js;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.gen.api.SerialInfo;
 import byps.gen.utils.CodePrinter;
 
 class GenConstObject {
 	
-	static Log log = LogFactory.getLog(GenConstObject.class);
+	static Logger log = LoggerFactory.getLogger(GenConstObject.class);
 	
 	static void generate(CustomControl fact, PrintContext pctxt, SerialInfo serInfo) throws IOException {
 		log.debug("generate(" + serInfo);

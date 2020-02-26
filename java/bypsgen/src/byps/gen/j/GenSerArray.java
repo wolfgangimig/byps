@@ -3,8 +3,8 @@ package byps.gen.j;
 import java.io.IOException;
 import java.text.MessageFormat;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBinaryModel;
 import byps.BException;
@@ -14,7 +14,7 @@ import byps.gen.api.TypeInfo;
 import byps.gen.utils.CodePrinter;
 
 public class GenSerArray {
-	static Log log = LogFactory.getLog(GenSerArray.class);
+	static Logger log = LoggerFactory.getLogger(GenSerArray.class);
 
 	protected GenSerArray(PrintContext pctxt, SerialInfo serInfo, CodePrinter pr) {
 		this(pctxt, serInfo, pr, BBinaryModel.MEDIUM);

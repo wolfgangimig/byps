@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.TreeSet;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,7 +28,7 @@ public class TestRemoteSetTypes {
 	
 	BClient_Testser client;
 	RemoteSetTypes remote;
-	private Log log = LogFactory.getLog(TestRemoteSetTypes.class);
+	private Logger log = LoggerFactory.getLogger(TestRemoteSetTypes.class);
 
 	@Before
 	public void setUp() throws RemoteException {

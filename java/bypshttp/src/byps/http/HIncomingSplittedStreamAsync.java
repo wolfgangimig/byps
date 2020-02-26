@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.util.HashMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BContentStream;
 import byps.BException;
@@ -15,7 +15,7 @@ import byps.BTargetId;
 
 public class HIncomingSplittedStreamAsync extends BContentStream {
 
-	private static Log log = LogFactory.getLog(HIncomingSplittedStreamAsync.class);
+	private static Logger log = LoggerFactory.getLogger(HIncomingSplittedStreamAsync.class);
 	protected final File tempDir;
 	protected long readPos;
 	protected long currentPartId;

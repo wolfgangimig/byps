@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BException;
 import byps.BExceptionC;
@@ -18,7 +18,7 @@ import byps.gen.utils.CodePrinter;
 
 public class GeneratorJS implements Generator {
 	
-	Log log = LogFactory.getLog(GeneratorJS.class);
+	Logger log = LoggerFactory.getLogger(GeneratorJS.class);
 
 	public GeneratorJS() {
 	}
