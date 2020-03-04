@@ -15,7 +15,7 @@ public final class BRequest_RemotePrimitiveTypes_setString extends BMethodReques
 
 	public java.lang.String v;
 	
-	public final static long serialVersionUID = 1293977038L;
+	public static final long serialVersionUID = 1293977038L;
 	
 	public int getRemoteId() { return 456456; }
 	

@@ -15,7 +15,7 @@ public final class BRequest_RemoteMapTypes_setBoolean1 extends BMethodRequest im
 
 	public java.util.Map<java.lang.String,java.lang.Boolean> boolean1;
 	
-	public final static long serialVersionUID = 974383083L;
+	public static final long serialVersionUID = 974383083L;
 	
 	public int getRemoteId() { return 664304990; }
 	

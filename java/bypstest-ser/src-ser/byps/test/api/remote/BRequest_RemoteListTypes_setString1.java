@@ -15,7 +15,7 @@ public final class BRequest_RemoteListTypes_setString1 extends BMethodRequest im
 
 	public java.util.List<java.lang.String> string1;
 	
-	public final static long serialVersionUID = 339567886L;
+	public static final long serialVersionUID = 339567886L;
 	
 	public int getRemoteId() { return 1233438138; }
 	

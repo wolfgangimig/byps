@@ -16,13 +16,13 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteProcessingEx extends BSkeleton implements RemoteProcessingExAsync {
 	
-	public final static long serialVersionUID = 790485113L;
+	public static final long serialVersionUID = 790485113L;
 	
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:385
 	public boolean getValueAfterProcessingExceptions(int sleepSeconds) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void getValueAfterProcessingExceptions(int sleepSeconds, final BAsyncResult<Boolean> asyncResult) {
 		try {
 			boolean ret = getValueAfterProcessingExceptions(sleepSeconds);

@@ -7,29 +7,30 @@ package byps.test.api.remote;
 
 import byps.*;
 
-// checkpoint byps.gen.j.GenRemoteStub:164
+// checkpoint byps.gen.j.GenRemoteStub:112
 public class BStub_RemoteProcessingEx extends BStub implements RemoteProcessingExAsync, java.io.Serializable {
 	
-	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 790485113L;
+	// checkpoint byps.gen.j.GenRemoteStub:93
+	public static final long serialVersionUID = 790485113L;
+	protected final BForward_RemoteProcessingEx forwardTo;	
+	
+	@SuppressWarnings("unused") private BStub_RemoteProcessingEx() {
+		this.forwardTo = new BForward_RemoteProcessingEx();
+	}
 	
 	public BStub_RemoteProcessingEx(final BTransport transport) {
-		super(transport);		
+		super(transport);
+		this.forwardTo = new BForward_RemoteProcessingEx(transport);
+		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
-	public boolean getValueAfterProcessingExceptions(int sleepSeconds) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Boolean> asyncResult = new BSyncResult<Boolean>();		
-		getValueAfterProcessingExceptions(sleepSeconds, asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:385
+	public boolean getValueAfterProcessingExceptions(int sleepSeconds) throws RemoteException{
+	  return forwardTo.getValueAfterProcessingExceptions(sleepSeconds);
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void getValueAfterProcessingExceptions(int sleepSeconds, final BAsyncResult<Boolean> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions req = new BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions();		
-		req.sleepSeconds = sleepSeconds;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.getValueAfterProcessingExceptions(sleepSeconds, asyncResult);
 	}
 	
 	

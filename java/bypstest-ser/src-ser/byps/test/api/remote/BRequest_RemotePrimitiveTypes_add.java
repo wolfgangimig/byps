@@ -16,7 +16,7 @@ public final class BRequest_RemotePrimitiveTypes_add extends BMethodRequest impl
 	public int a;
 	public int b;
 	
-	public final static long serialVersionUID = 362528512L;
+	public static final long serialVersionUID = 362528512L;
 	
 	public int getRemoteId() { return 456456; }
 	

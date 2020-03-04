@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_FruitService_squeeze extends BMethodRequest implements Serializable {
 
 	
-	public final static long serialVersionUID = 1290167289L;
+	public static final long serialVersionUID = 1290167289L;
 	
 	public int getRemoteId() { return 715959905; }
 	

@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_EvolveIF_getClient extends BMethodRequest implements Serializable {
 
 	
-	public final static long serialVersionUID = 1212621223L;
+	public static final long serialVersionUID = 1212621223L;
 	
 	public int getRemoteId() { return 15377840; }
 	

@@ -51,7 +51,7 @@ public class BSerializer_1950626768 extends BSerializer {
 		// write
 		final java.io.InputStream[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:327
+			// checkpoint byps.gen.j.PrintContext:329
 			bout.writeObj(a0[i0], false, null);
 		}
 	}

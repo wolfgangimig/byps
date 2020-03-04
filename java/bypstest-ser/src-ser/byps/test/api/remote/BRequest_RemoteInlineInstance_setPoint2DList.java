@@ -15,7 +15,7 @@ public final class BRequest_RemoteInlineInstance_setPoint2DList extends BMethodR
 
 	public java.util.List<byps.test.api.inl.Point2D> pointList;
 	
-	public final static long serialVersionUID = 343422941L;
+	public static final long serialVersionUID = 343422941L;
 	
 	public int getRemoteId() { return 567395951; }
 	

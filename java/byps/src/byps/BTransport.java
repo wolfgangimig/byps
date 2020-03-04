@@ -53,6 +53,7 @@ public class BTransport {
     this.targetId = targetId;
     this.sessionId = rhs.sessionId;
     this.protocol = rhs.getProtocol();
+    this.clientHelperToInjectInBValueClass = rhs.clientHelperToInjectInBValueClass;
     
     // This constructor is called, if a stub maybe from another client is deserialized.
     // We cannot use the same authentication here, because the other client can only 
@@ -63,7 +64,32 @@ public class BTransport {
   
     // Still connected to the server given by rhs.
     this.connectedServerId = rhs.targetId.getServerId();
-}
+  }
+  
+  /**
+   * Initialization to obtain a transport for a BProxy_* class inside a server.
+   * @param rhs Base transport object. 
+   * @param wire Wire object maybe with its own cookie manager.  
+   */
+  public BTransport(BTransport rhs, BWire wire) {
+    
+    // Values that can be copied.
+    this.apiDesc = rhs.apiDesc;
+    this.protocol = rhs.protocol;
+    this.serverRegistry = rhs.serverRegistry;
+    this.targetId = rhs.targetId;
+    this.clientHelperToInjectInBValueClass = rhs.clientHelperToInjectInBValueClass;
+
+    // A new authenticator should be obtained via BTransport.setAuthentication()  
+    // if authentication is required in your scenario.
+    this.authentication = null;
+
+    // BTransport.negotiateProtocolClient should follow this copy constructor
+    // to set user specific session.  
+    this.sessionId = null;
+
+    this.wire = wire;
+  }
   
   public BWire getWire() {
     return wire;

@@ -16,7 +16,7 @@ public final class BRequest_LemonService_pick extends BMethodRequest implements 
 	public byps.test.api.auth.SessionInfo sess;
 	public java.lang.String fromTree;
 	
-	public final static long serialVersionUID = 1022088379L;
+	public static final long serialVersionUID = 1022088379L;
 	
 	public int getRemoteId() { return 605543968; }
 	

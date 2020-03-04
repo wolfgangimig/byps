@@ -17,7 +17,7 @@ public final class BRequest_RemoteArrayTypes23_sendArraysInline extends BMethodR
 	public byps.test.api.inl.Point2D[][][] arr3;
 	public byps.test.api.inl.Point2D[][][][] arr4;
 	
-	public final static long serialVersionUID = 1467243283L;
+	public static final long serialVersionUID = 1467243283L;
 	
 	public int getRemoteId() { return 769717182; }
 	

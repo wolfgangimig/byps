@@ -15,7 +15,7 @@ public final class BRequest_ServerIF_setPartner extends BMethodRequest implement
 
 	public ClientIF client;
 	
-	public final static long serialVersionUID = 1332497686L;
+	public static final long serialVersionUID = 1332497686L;
 	
 	public int getRemoteId() { return 1775199834; }
 	

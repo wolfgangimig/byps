@@ -15,7 +15,7 @@ public final class BRequest_RemoteSetTypes_setObj1 extends BMethodRequest implem
 
 	public java.util.Set<java.lang.Object> obj1;
 	
-	public final static long serialVersionUID = 462464544L;
+	public static final long serialVersionUID = 462464544L;
 	
 	public int getRemoteId() { return 1900796440; }
 	

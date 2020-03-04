@@ -17,7 +17,7 @@ public final class BRequest_RemoteServerCtrl_publishRemote extends BMethodReques
 	public BRemote remote;
 	public boolean fowardToOtherServers;
 	
-	public final static long serialVersionUID = 1543768912L;
+	public static final long serialVersionUID = 1543768912L;
 	
 	public int getRemoteId() { return 1652234479; }
 	

@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteEnums_getPlanet extends BMethodRequest implements Serializable {
 
 	
-	public final static long serialVersionUID = 6352043L;
+	public static final long serialVersionUID = 6352043L;
 	
 	public int getRemoteId() { return 485761455; }
 	

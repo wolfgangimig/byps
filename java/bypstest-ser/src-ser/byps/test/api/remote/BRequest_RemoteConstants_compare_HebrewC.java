@@ -16,7 +16,7 @@ public final class BRequest_RemoteConstants_compare_HebrewC extends BMethodReque
 	public byps.test.api.cons.HebrewZ ALEPH;
 	public byps.test.api.cons.HebrewZ BETH;
 	
-	public final static long serialVersionUID = 1711871378L;
+	public static final long serialVersionUID = 1711871378L;
 	
 	public int getRemoteId() { return 2045242510; }
 	

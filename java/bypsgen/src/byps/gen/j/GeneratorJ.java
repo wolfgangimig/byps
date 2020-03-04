@@ -66,7 +66,9 @@ public class GeneratorJ implements Generator {
       GenRemoteClassAuth.generate(pctxt, rinfo, rinfo.getRemoteAuth());
       
 			GenRemoteStub.generate(pctxt, rinfo);
+			GenRemoteForward.generate(pctxt, rinfo);
 			GenRemoteSkeleton.generate(pctxt, rinfo);
+			GenRemoteProxy.generate(pctxt, rinfo);
 		}		
 	}
 	

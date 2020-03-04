@@ -14,6 +14,6 @@ import java.io.Serializable;
 public final class BResult_65775978 extends BMethodResult<byps.test.api.auth.SessionInfo> implements Serializable {
 
 	
-	public final static long serialVersionUID = 1872312576L;
+	public static final long serialVersionUID = 1872312576L;
 	
 }

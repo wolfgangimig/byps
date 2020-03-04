@@ -15,7 +15,7 @@ public final class BRequest_RemoteInlineInstance_setPoint2DMap extends BMethodRe
 
 	public java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D> pointMap;
 	
-	public final static long serialVersionUID = 127469879L;
+	public static final long serialVersionUID = 127469879L;
 	
 	public int getRemoteId() { return 567395951; }
 	

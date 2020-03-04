@@ -15,7 +15,7 @@ public final class BRequest_RemoteSetTypes_setByte2 extends BMethodRequest imple
 
 	public java.util.Set<byte[]> byte2;
 	
-	public final static long serialVersionUID = 1462808284L;
+	public static final long serialVersionUID = 1462808284L;
 	
 	public int getRemoteId() { return 1900796440; }
 	

@@ -14,6 +14,6 @@ import java.io.Serializable;
 public final class BResult_184101377 extends BMethodResult<byps.test.api.inl.Point2D[]> implements Serializable {
 
 	
-	public final static long serialVersionUID = 748770738L;
+	public static final long serialVersionUID = 748770738L;
 	
 }

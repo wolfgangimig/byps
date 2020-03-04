@@ -17,7 +17,7 @@ public final class BRequest_RemoteArrayTypes23_sendArraysClass extends BMethodRe
 	public byps.test.api.prim.PrimitiveTypes[][][] arr3;
 	public byps.test.api.prim.PrimitiveTypes[][][][] arr4;
 	
-	public final static long serialVersionUID = 330036060L;
+	public static final long serialVersionUID = 330036060L;
 	
 	public int getRemoteId() { return 769717182; }
 	

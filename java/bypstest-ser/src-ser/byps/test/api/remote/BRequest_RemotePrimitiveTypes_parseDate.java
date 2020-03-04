@@ -15,7 +15,7 @@ public final class BRequest_RemotePrimitiveTypes_parseDate extends BMethodReques
 
 	public java.util.Date date;
 	
-	public final static long serialVersionUID = 578007072L;
+	public static final long serialVersionUID = 578007072L;
 	
 	public int getRemoteId() { return 456456; }
 	

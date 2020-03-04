@@ -15,7 +15,7 @@ public final class BRequest_RemoteArrayTypes1dim_setBool extends BMethodRequest 
 
 	public boolean[] v;
 	
-	public final static long serialVersionUID = 201441072L;
+	public static final long serialVersionUID = 201441072L;
 	
 	public int getRemoteId() { return 123123; }
 	

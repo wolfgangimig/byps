@@ -30,6 +30,17 @@ public class BWire {
 	public BWire(int flags) {
 		internalInit(flags);
 	}
+
+	/**
+	 * Copy constructor.
+	 * Copies all members except session context.
+	 * @param rhs Other BWire.
+	 */
+  public BWire(BWire rhs) {
+    this.rand = rhs.rand;
+    this.flags = rhs.flags;
+    this.sess = null;
+  }
 	
 	/**
 	 * Send bytes in buf and receive result in asyncResult.

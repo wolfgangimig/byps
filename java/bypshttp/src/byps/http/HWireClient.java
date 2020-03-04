@@ -137,6 +137,24 @@ public class HWireClient extends BWire {
     
     if (log.isDebugEnabled()) log.debug(")HWireClient");
   }
+  
+  /**
+   * Copy constructor used to create a HWireClient for proxy operation.
+   * @param rhs Other HWireClient
+   */
+  public HWireClient(HWireClient rhs) {
+    super(rhs);
+    this.surl = rhs.surl;
+    this.isMyThreadPool = rhs.threadPool == null;
+    this.threadPool = isMyThreadPool ? Executors.newCachedThreadPool() : rhs.threadPool;
+    this.isDone = rhs.isDone;
+    this.timeoutSecondsClient = rhs.timeoutSecondsClient;
+    this.clientUtilityRequests = rhs.clientUtilityRequests;
+
+    this.httpClient = createHttpClient(surl);
+    this.testAdapter = new HTestAdapter(this);
+    this.stats = new Statistics();
+  }
 
   private static HHttpClient createHttpClient(String url) {
     if (log.isDebugEnabled()) log.debug("createHttpClient(");

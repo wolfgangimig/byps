@@ -15,7 +15,7 @@ public final class BRequest_ServerIF_putStreamsOnClient extends BMethodRequest i
 
 	public java.util.List<java.io.InputStream> streams;
 	
-	public final static long serialVersionUID = 1934886286L;
+	public static final long serialVersionUID = 1934886286L;
 	
 	public int getRemoteId() { return 1775199834; }
 	

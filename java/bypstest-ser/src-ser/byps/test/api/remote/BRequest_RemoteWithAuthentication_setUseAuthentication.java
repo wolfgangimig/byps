@@ -15,7 +15,7 @@ public final class BRequest_RemoteWithAuthentication_setUseAuthentication extend
 
 	public boolean useAuth;
 	
-	public final static long serialVersionUID = 946544530L;
+	public static final long serialVersionUID = 946544530L;
 	
 	public int getRemoteId() { return 1983670399; }
 	

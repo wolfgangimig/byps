@@ -7,188 +7,129 @@ package byps.test.api.remote;
 
 import byps.*;
 
-// checkpoint byps.gen.j.GenRemoteStub:164
+// checkpoint byps.gen.j.GenRemoteStub:112
 public class BStub_RemoteInlineInstance extends BStub implements RemoteInlineInstanceAsync, java.io.Serializable {
 	
-	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 567395951L;
+	// checkpoint byps.gen.j.GenRemoteStub:93
+	public static final long serialVersionUID = 567395951L;
+	protected final BForward_RemoteInlineInstance forwardTo;	
+	
+	@SuppressWarnings("unused") private BStub_RemoteInlineInstance() {
+		this.forwardTo = new BForward_RemoteInlineInstance();
+	}
 	
 	public BStub_RemoteInlineInstance(final BTransport transport) {
-		super(transport);		
+		super(transport);
+		this.forwardTo = new BForward_RemoteInlineInstance(transport);
+		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
-	public void setActor(byps.test.api.inl.Actor act) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		setActor(act, asyncResult);
-		asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:385
+	public void setActor(byps.test.api.inl.Actor act) throws RemoteException{
+	  forwardTo.setActor(act);
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void setActor(byps.test.api.inl.Actor act, final BAsyncResult<Object> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteInlineInstance_setActor req = new BRequest_RemoteInlineInstance_setActor();		
-		req.act = act;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.setActor(act, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
-	public byps.test.api.inl.Actor getActor() throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<byps.test.api.inl.Actor> asyncResult = new BSyncResult<byps.test.api.inl.Actor>();		
-		getActor(asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:385
+	public byps.test.api.inl.Actor getActor() throws RemoteException{
+	  return forwardTo.getActor();
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void getActor(final BAsyncResult<byps.test.api.inl.Actor> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteInlineInstance_getActor req = new BRequest_RemoteInlineInstance_getActor();		
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.getActor(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
-	public void setPoint2DArray1dim(byps.test.api.inl.Point2D[] pointArray) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		setPoint2DArray1dim(pointArray, asyncResult);
-		asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:385
+	public void setPoint2DArray1dim(byps.test.api.inl.Point2D[] pointArray) throws RemoteException{
+	  forwardTo.setPoint2DArray1dim(pointArray);
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void setPoint2DArray1dim(byps.test.api.inl.Point2D[] pointArray, final BAsyncResult<Object> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteInlineInstance_setPoint2DArray1dim req = new BRequest_RemoteInlineInstance_setPoint2DArray1dim();		
-		req.pointArray = pointArray;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.setPoint2DArray1dim(pointArray, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
-	public byps.test.api.inl.Point2D[] getPoint2DArray1dim() throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<byps.test.api.inl.Point2D[]> asyncResult = new BSyncResult<byps.test.api.inl.Point2D[]>();		
-		getPoint2DArray1dim(asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:385
+	public byps.test.api.inl.Point2D[] getPoint2DArray1dim() throws RemoteException{
+	  return forwardTo.getPoint2DArray1dim();
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void getPoint2DArray1dim(final BAsyncResult<byps.test.api.inl.Point2D[]> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteInlineInstance_getPoint2DArray1dim req = new BRequest_RemoteInlineInstance_getPoint2DArray1dim();		
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.getPoint2DArray1dim(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
-	public void setPoint2DArray4dim(byps.test.api.inl.Point2D[][][][] pointArray) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		setPoint2DArray4dim(pointArray, asyncResult);
-		asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:385
+	public void setPoint2DArray4dim(byps.test.api.inl.Point2D[][][][] pointArray) throws RemoteException{
+	  forwardTo.setPoint2DArray4dim(pointArray);
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void setPoint2DArray4dim(byps.test.api.inl.Point2D[][][][] pointArray, final BAsyncResult<Object> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteInlineInstance_setPoint2DArray4dim req = new BRequest_RemoteInlineInstance_setPoint2DArray4dim();		
-		req.pointArray = pointArray;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.setPoint2DArray4dim(pointArray, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
-	public byps.test.api.inl.Point2D[][][][] getPoint2DArray4dim() throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<byps.test.api.inl.Point2D[][][][]> asyncResult = new BSyncResult<byps.test.api.inl.Point2D[][][][]>();		
-		getPoint2DArray4dim(asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:385
+	public byps.test.api.inl.Point2D[][][][] getPoint2DArray4dim() throws RemoteException{
+	  return forwardTo.getPoint2DArray4dim();
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void getPoint2DArray4dim(final BAsyncResult<byps.test.api.inl.Point2D[][][][]> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteInlineInstance_getPoint2DArray4dim req = new BRequest_RemoteInlineInstance_getPoint2DArray4dim();		
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.getPoint2DArray4dim(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
-	public void setPoint2DList(java.util.List<byps.test.api.inl.Point2D> pointList) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		setPoint2DList(pointList, asyncResult);
-		asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:385
+	public void setPoint2DList(java.util.List<byps.test.api.inl.Point2D> pointList) throws RemoteException{
+	  forwardTo.setPoint2DList(pointList);
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void setPoint2DList(java.util.List<byps.test.api.inl.Point2D> pointList, final BAsyncResult<Object> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteInlineInstance_setPoint2DList req = new BRequest_RemoteInlineInstance_setPoint2DList();		
-		req.pointList = pointList;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.setPoint2DList(pointList, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
-	public java.util.List<byps.test.api.inl.Point2D> getPoint2DList() throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<java.util.List<byps.test.api.inl.Point2D>> asyncResult = new BSyncResult<java.util.List<byps.test.api.inl.Point2D>>();		
-		getPoint2DList(asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:385
+	public java.util.List<byps.test.api.inl.Point2D> getPoint2DList() throws RemoteException{
+	  return forwardTo.getPoint2DList();
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void getPoint2DList(final BAsyncResult<java.util.List<byps.test.api.inl.Point2D>> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteInlineInstance_getPoint2DList req = new BRequest_RemoteInlineInstance_getPoint2DList();		
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.getPoint2DList(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
-	public void setPoint2DListList(java.util.List<java.util.List<byps.test.api.inl.Point2D>> pointListList) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		setPoint2DListList(pointListList, asyncResult);
-		asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:385
+	public void setPoint2DListList(java.util.List<java.util.List<byps.test.api.inl.Point2D>> pointListList) throws RemoteException{
+	  forwardTo.setPoint2DListList(pointListList);
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void setPoint2DListList(java.util.List<java.util.List<byps.test.api.inl.Point2D>> pointListList, final BAsyncResult<Object> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteInlineInstance_setPoint2DListList req = new BRequest_RemoteInlineInstance_setPoint2DListList();		
-		req.pointListList = pointListList;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.setPoint2DListList(pointListList, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
-	public java.util.List<java.util.List<byps.test.api.inl.Point2D>> getPoint2DListList() throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<java.util.List<java.util.List<byps.test.api.inl.Point2D>>> asyncResult = new BSyncResult<java.util.List<java.util.List<byps.test.api.inl.Point2D>>>();		
-		getPoint2DListList(asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:385
+	public java.util.List<java.util.List<byps.test.api.inl.Point2D>> getPoint2DListList() throws RemoteException{
+	  return forwardTo.getPoint2DListList();
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void getPoint2DListList(final BAsyncResult<java.util.List<java.util.List<byps.test.api.inl.Point2D>>> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteInlineInstance_getPoint2DListList req = new BRequest_RemoteInlineInstance_getPoint2DListList();		
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.getPoint2DListList(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
-	public void setPoint2DMap(java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D> pointMap) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		setPoint2DMap(pointMap, asyncResult);
-		asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:385
+	public void setPoint2DMap(java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D> pointMap) throws RemoteException{
+	  forwardTo.setPoint2DMap(pointMap);
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void setPoint2DMap(java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D> pointMap, final BAsyncResult<Object> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteInlineInstance_setPoint2DMap req = new BRequest_RemoteInlineInstance_setPoint2DMap();		
-		req.pointMap = pointMap;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.setPoint2DMap(pointMap, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
-	public java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D> getPoint2DMap() throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>> asyncResult = new BSyncResult<java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>>();		
-		getPoint2DMap(asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:385
+	public java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D> getPoint2DMap() throws RemoteException{
+	  return forwardTo.getPoint2DMap();
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void getPoint2DMap(final BAsyncResult<java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteInlineInstance_getPoint2DMap req = new BRequest_RemoteInlineInstance_getPoint2DMap();		
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.getPoint2DMap(asyncResult);
 	}
 	
 	

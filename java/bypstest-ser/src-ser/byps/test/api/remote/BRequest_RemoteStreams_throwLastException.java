@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteStreams_throwLastException extends BMethodRequest implements Serializable {
 
 	
-	public final static long serialVersionUID = 2127402965L;
+	public static final long serialVersionUID = 2127402965L;
 	
 	public int getRemoteId() { return 1043578866; }
 	

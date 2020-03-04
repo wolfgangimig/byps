@@ -15,7 +15,7 @@ public final class BRequest_RemoteInlineInstance_setActor extends BMethodRequest
 
 	public byps.test.api.inl.Actor act;
 	
-	public final static long serialVersionUID = 1162005320L;
+	public static final long serialVersionUID = 1162005320L;
 	
 	public int getRemoteId() { return 567395951; }
 	

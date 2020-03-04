@@ -15,7 +15,7 @@ public final class BRequest_RemoteListTypes_setObj1 extends BMethodRequest imple
 
 	public java.util.List<java.lang.Object> obj1;
 	
-	public final static long serialVersionUID = 136654324L;
+	public static final long serialVersionUID = 136654324L;
 	
 	public int getRemoteId() { return 1233438138; }
 	

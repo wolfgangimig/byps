@@ -15,7 +15,7 @@ public final class BRequest_BioFruitService_certify extends BMethodRequest imple
 
 	public java.lang.String param;
 	
-	public final static long serialVersionUID = 1435417025L;
+	public static final long serialVersionUID = 1435417025L;
 	
 	public int getRemoteId() { return 363642571; }
 	

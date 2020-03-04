@@ -36,7 +36,7 @@ public class JSerializer_1279823631 extends JSerializer_13 {
 	@Override
 	protected void internalWriteKeyValue(final BOutputJson bout, final BBufferJson bbuf, final Object key, final Object value) throws BException {
 		final String keyName = key != null ? (String)key : "";
-		// checkpoint byps.gen.j.PrintContext:346
+		// checkpoint byps.gen.j.PrintContext:348
 		bbuf.putBoolean(keyName, value != null ? (Boolean)value : false);
 	}
 	

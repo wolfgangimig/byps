@@ -15,7 +15,7 @@ public final class BRequest_RemoteSetTypes_setBoolean1 extends BMethodRequest im
 
 	public java.util.Set<java.lang.Boolean> boolean1;
 	
-	public final static long serialVersionUID = 2091396559L;
+	public static final long serialVersionUID = 2091396559L;
 	
 	public int getRemoteId() { return 1900796440; }
 	

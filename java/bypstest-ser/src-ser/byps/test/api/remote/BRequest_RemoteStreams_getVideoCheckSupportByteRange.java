@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteStreams_getVideoCheckSupportByteRange extends BMethodRequest implements Serializable {
 
 	
-	public final static long serialVersionUID = 1006919505L;
+	public static final long serialVersionUID = 1006919505L;
 	
 	public int getRemoteId() { return 1043578866; }
 	

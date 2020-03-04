@@ -15,7 +15,7 @@ public final class BRequest_RemoteSetTypes_setString1 extends BMethodRequest imp
 
 	public java.util.Set<java.lang.String> string1;
 	
-	public final static long serialVersionUID = 753392826L;
+	public static final long serialVersionUID = 753392826L;
 	
 	public int getRemoteId() { return 1900796440; }
 	

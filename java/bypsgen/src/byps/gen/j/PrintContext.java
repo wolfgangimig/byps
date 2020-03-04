@@ -25,7 +25,9 @@ import byps.gen.utils.Utils;
 class PrintContext extends PrintContextBase {
 	
 	public final static String STUB_PREFIX = "BStub_";
+	public final static String FORWARD_PREFIX = "BForward_";
 	public final static String SKELETON_PREFIX = "BSkeleton_";
+	public final static String PROXY_PREFIX = "BProxy_";
 	
 	PrintContext(ClassDB classDB, GeneratorProperties props) throws IOException {
 		super(classDB, props);
@@ -445,21 +447,30 @@ class PrintContext extends PrintContextBase {
 
 		return mpr;
 	}
-
-	public String getStubClassQName(RemoteInfo rinfo, String pack) {
-		String className = "";
-		if (!rinfo.pack.equals(pack)) className += rinfo.pack + ".";
-		className += PrintContext.STUB_PREFIX + rinfo.name;
-		return className;
-	}
 	
-	public String getSkeletonClassQName(RemoteInfo rinfo, String pack) {
-		String className = "";
-		if (!rinfo.pack.equals(pack)) className += rinfo.pack + ".";
-		className += PrintContext.SKELETON_PREFIX + rinfo.name;
-		return className;
+	private String getClientServerClassQName(RemoteInfo rinfo, String pack, String prefix) {
+    String className = "";
+    if (!rinfo.pack.equals(pack)) className += rinfo.pack + ".";
+    className += prefix + rinfo.name;
+    return className;
 	}
 
+  public String getStubClassQName(RemoteInfo rinfo, String pack) {
+    return getClientServerClassQName(rinfo, pack, PrintContext.STUB_PREFIX);
+  }
+  
+  public String getForwardClassQName(RemoteInfo rinfo, String pack) {
+    return getClientServerClassQName(rinfo, pack, PrintContext.FORWARD_PREFIX);
+  }
+  
+  public String getSkeletonClassQName(RemoteInfo rinfo, String pack) {
+    return getClientServerClassQName(rinfo, pack, PrintContext.SKELETON_PREFIX);
+  }
+  
+  public String getProxyClassQName(RemoteInfo rinfo, String pack) {
+    return getClientServerClassQName(rinfo, pack, PrintContext.PROXY_PREFIX);
+  }
+  
 	public void printDoNotModify(CodePrinter pr, Class<?> clazz, String ... lines) {
 		pr.println("/*");
 		if (lines != null) {
@@ -510,6 +521,16 @@ class PrintContext extends PrintContextBase {
   }
 
   public RemoteInfo getBaseRemoteForSkeleton(RemoteInfo rinfo) {
+    RemoteInfo baseRemote = rinfo.getRemoteAsync();
+    return baseRemote;
+  }
+
+  public RemoteInfo getBaseRemoteForProxy(RemoteInfo rinfo) {
+    RemoteInfo baseRemote = rinfo.getRemoteAsync();
+    return baseRemote;
+  }
+
+  public RemoteInfo getBaseRemoteForForward(RemoteInfo rinfo) {
     RemoteInfo baseRemote = rinfo.getRemoteAsync();
     return baseRemote;
   }

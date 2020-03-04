@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.30.0
+
+- BYPS-15: Generate BProxy class for each BSkeleton class to forward method calls.
+
 5.29.4
 
 - BYPS-13: Non-static enum members led to errors in bypsgen's compatibility check.

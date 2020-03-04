@@ -14,6 +14,6 @@ import java.io.Serializable;
 public final class BResult_936607009 extends BMethodResult<java.util.TreeSet<java.lang.Character>> implements Serializable {
 
 	
-	public final static long serialVersionUID = 968248604L;
+	public static final long serialVersionUID = 968248604L;
 	
 }

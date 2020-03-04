@@ -17,7 +17,7 @@ public final class BRequest_RemoteWithAuthentication_login extends BMethodReques
 	public java.lang.String userName;
 	public java.lang.String userPwd;
 	
-	public final static long serialVersionUID = 134687724L;
+	public static final long serialVersionUID = 134687724L;
 	
 	public int getRemoteId() { return 1983670399; }
 	

@@ -31,7 +31,7 @@ public final class BRequest_RemoteConstants_compare_AllTypesC extends BMethodReq
 	public java.lang.String[][][][] arrStrings4;
 	public byps.test.api.cons.AllTypesZ[][] arrAll;
 	
-	public final static long serialVersionUID = 1609344203L;
+	public static final long serialVersionUID = 1609344203L;
 	
 	public int getRemoteId() { return 2045242510; }
 	

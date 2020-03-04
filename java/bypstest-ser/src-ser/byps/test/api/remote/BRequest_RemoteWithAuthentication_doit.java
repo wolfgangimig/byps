@@ -16,7 +16,7 @@ public final class BRequest_RemoteWithAuthentication_doit extends BMethodRequest
 	public byps.test.api.auth.SessionInfo sess;
 	public int value;
 	
-	public final static long serialVersionUID = 1251509013L;
+	public static final long serialVersionUID = 1251509013L;
 	
 	public int getRemoteId() { return 1983670399; }
 	

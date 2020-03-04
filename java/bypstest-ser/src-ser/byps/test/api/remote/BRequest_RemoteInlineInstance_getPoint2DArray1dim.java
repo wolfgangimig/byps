@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteInlineInstance_getPoint2DArray1dim extends BMethodRequest implements Serializable {
 
 	
-	public final static long serialVersionUID = 188393247L;
+	public static final long serialVersionUID = 188393247L;
 	
 	public int getRemoteId() { return 567395951; }
 	

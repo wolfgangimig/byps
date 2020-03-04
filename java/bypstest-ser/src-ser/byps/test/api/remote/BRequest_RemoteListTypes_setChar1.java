@@ -15,7 +15,7 @@ public final class BRequest_RemoteListTypes_setChar1 extends BMethodRequest impl
 
 	public java.util.List<java.lang.Character> char1;
 	
-	public final static long serialVersionUID = 47773161L;
+	public static final long serialVersionUID = 47773161L;
 	
 	public int getRemoteId() { return 1233438138; }
 	

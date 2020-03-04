@@ -15,7 +15,7 @@ public final class BRequest_RemoteStreams_setStreamDoNotMaterialize extends BMet
 
 	public java.io.InputStream stream;
 	
-	public final static long serialVersionUID = 199832593L;
+	public static final long serialVersionUID = 199832593L;
 	
 	public int getRemoteId() { return 1043578866; }
 	

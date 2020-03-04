@@ -15,7 +15,7 @@ public final class BRequest_RemoteListTypes_setFloat1 extends BMethodRequest imp
 
 	public java.util.List<java.lang.Float> float1;
 	
-	public final static long serialVersionUID = 1570952391L;
+	public static final long serialVersionUID = 1570952391L;
 	
 	public int getRemoteId() { return 1233438138; }
 	

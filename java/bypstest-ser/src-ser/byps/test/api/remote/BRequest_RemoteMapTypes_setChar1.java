@@ -15,7 +15,7 @@ public final class BRequest_RemoteMapTypes_setChar1 extends BMethodRequest imple
 
 	public java.util.TreeMap<java.lang.Float,java.lang.Character> char1;
 	
-	public final static long serialVersionUID = 685435889L;
+	public static final long serialVersionUID = 685435889L;
 	
 	public int getRemoteId() { return 664304990; }
 	

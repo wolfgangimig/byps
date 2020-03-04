@@ -1,13 +1,12 @@
 package byps;
 
-/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-
-import byps.BRemote;
-import byps.BTargetId;
-
 public class BStub implements BRemote {
 
 	public final BTransport transport;
+	
+  protected BStub() {
+	  throw new UnsupportedOperationException();
+	}
 	
 	public BStub(BTransport transport) {
 		this.transport = transport;

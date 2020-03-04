@@ -16,7 +16,7 @@ public final class BRequest_RemotePrimitiveTypes_getDeferredValueFromServer exte
 	public int param1;
 	public java.lang.String param2;
 	
-	public final static long serialVersionUID = 547282058L;
+	public static final long serialVersionUID = 547282058L;
 	
 	public int getRemoteId() { return 456456; }
 	

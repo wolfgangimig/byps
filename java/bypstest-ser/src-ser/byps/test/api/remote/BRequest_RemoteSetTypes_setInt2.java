@@ -15,7 +15,7 @@ public final class BRequest_RemoteSetTypes_setInt2 extends BMethodRequest implem
 
 	public java.util.Set<int[]> int2;
 	
-	public final static long serialVersionUID = 462631447L;
+	public static final long serialVersionUID = 462631447L;
 	
 	public int getRemoteId() { return 1900796440; }
 	

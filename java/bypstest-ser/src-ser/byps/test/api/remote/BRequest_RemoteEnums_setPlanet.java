@@ -15,7 +15,7 @@ public final class BRequest_RemoteEnums_setPlanet extends BMethodRequest impleme
 
 	public byps.test.api.enu.EnumPlanets planet;
 	
-	public final static long serialVersionUID = 220969119L;
+	public static final long serialVersionUID = 220969119L;
 	
 	public int getRemoteId() { return 485761455; }
 	

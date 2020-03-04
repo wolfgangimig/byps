@@ -15,7 +15,7 @@ public final class BRequest_ClientIF_incrementInt extends BMethodRequest impleme
 
 	public int a;
 	
-	public final static long serialVersionUID = 1685952420L;
+	public static final long serialVersionUID = 1685952420L;
 	
 	public int getRemoteId() { return 2049072174; }
 	

@@ -15,7 +15,7 @@ public final class BRequest_RemoteMapTypes_setInt2 extends BMethodRequest implem
 
 	public java.util.Map<java.lang.Integer,int[]> int2;
 	
-	public final static long serialVersionUID = 1407399121L;
+	public static final long serialVersionUID = 1407399121L;
 	
 	public int getRemoteId() { return 664304990; }
 	

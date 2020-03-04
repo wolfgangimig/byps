@@ -15,7 +15,7 @@ public final class BRequest_RemoteWithAuthentication_expire extends BMethodReque
 
 	public byps.test.api.auth.SessionInfo sess;
 	
-	public final static long serialVersionUID = 72176172L;
+	public static final long serialVersionUID = 72176172L;
 	
 	public int getRemoteId() { return 1983670399; }
 	

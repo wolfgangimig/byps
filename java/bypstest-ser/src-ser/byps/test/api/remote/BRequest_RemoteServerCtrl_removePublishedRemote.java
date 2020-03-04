@@ -15,7 +15,7 @@ public final class BRequest_RemoteServerCtrl_removePublishedRemote extends BMeth
 
 	public java.lang.String name;
 	
-	public final static long serialVersionUID = 135366859L;
+	public static final long serialVersionUID = 135366859L;
 	
 	public int getRemoteId() { return 1652234479; }
 	

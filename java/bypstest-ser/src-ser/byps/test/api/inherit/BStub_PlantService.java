@@ -7,28 +7,30 @@ package byps.test.api.inherit;
 
 import byps.*;
 
-// checkpoint byps.gen.j.GenRemoteStub:164
+// checkpoint byps.gen.j.GenRemoteStub:112
 public class BStub_PlantService extends BStub implements PlantServiceAuth, java.io.Serializable {
 	
-	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 1954605928L;
+	// checkpoint byps.gen.j.GenRemoteStub:93
+	public static final long serialVersionUID = 1954605928L;
+	protected final BForward_PlantService forwardTo;	
+	
+	@SuppressWarnings("unused") private BStub_PlantService() {
+		this.forwardTo = new BForward_PlantService();
+	}
 	
 	public BStub_PlantService(final BTransport transport) {
-		super(transport);		
+		super(transport);
+		this.forwardTo = new BForward_PlantService(transport);
+		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
-	public java.lang.String grow() throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<String> asyncResult = new BSyncResult<String>();		
-		grow(asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:385
+	public java.lang.String grow() throws RemoteException{
+	  return forwardTo.grow();
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void grow(final BAsyncResult<String> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_PlantService_grow req = new BRequest_PlantService_grow();		
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.grow(asyncResult);
 	}
 	
 	

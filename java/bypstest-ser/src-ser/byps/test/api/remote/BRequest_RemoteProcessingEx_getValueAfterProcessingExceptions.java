@@ -15,7 +15,7 @@ public final class BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions
 
 	public int sleepSeconds;
 	
-	public final static long serialVersionUID = 1155485035L;
+	public static final long serialVersionUID = 1155485035L;
 	
 	public int getRemoteId() { return 790485113; }
 	

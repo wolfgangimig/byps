@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteListTypes_getPrimitiveTypes1 extends BMethodRequest implements Serializable {
 
 	
-	public final static long serialVersionUID = 1679973895L;
+	public static final long serialVersionUID = 1679973895L;
 	
 	public int getRemoteId() { return 1233438138; }
 	

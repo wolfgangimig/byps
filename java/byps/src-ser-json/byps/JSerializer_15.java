@@ -15,7 +15,7 @@ public class JSerializer_15 extends JSerializer_Object {
 	@Override
 	public void internalWrite(final Object obj, final BOutputJson bout, final BBufferJson bbuf) throws BException {
 		InputStream is = (InputStream)obj;
-		BContentStream bstream = bout.createStreamRequest(is);
+		BContentStream bstream = createStreamRequest(bout, is);
 		bout.bbuf.putLong("streamId", bstream.getTargetId().getStreamId());
 		bout.bbuf.putString("targetId", bstream.getTargetId().makeSerializeString(bout.header.bversion));
     bout.bbuf.putLong("contentLength", bstream.getContentLength());
@@ -58,4 +58,7 @@ public class JSerializer_15 extends JSerializer_Object {
 		}
 	}
 
+  public BContentStream createStreamRequest(BOutput bout, InputStream is) throws BException {
+    return bout.createStreamRequest(is);
+  }
 }

@@ -17,7 +17,7 @@ public final class BRequest_RemoteArrayTypes23_sendArraysObject extends BMethodR
 	public java.lang.Object[][][] arr3;
 	public java.lang.Object[][][][] arr4;
 	
-	public final static long serialVersionUID = 1306614381L;
+	public static final long serialVersionUID = 1306614381L;
 	
 	public int getRemoteId() { return 769717182; }
 	

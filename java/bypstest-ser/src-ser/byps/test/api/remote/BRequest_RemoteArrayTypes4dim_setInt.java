@@ -15,7 +15,7 @@ public final class BRequest_RemoteArrayTypes4dim_setInt extends BMethodRequest i
 
 	public int[][][][] v;
 	
-	public final static long serialVersionUID = 1668568460L;
+	public static final long serialVersionUID = 1668568460L;
 	
 	public int getRemoteId() { return 963726955; }
 	

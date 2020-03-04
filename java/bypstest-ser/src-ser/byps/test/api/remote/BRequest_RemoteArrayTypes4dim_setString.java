@@ -15,7 +15,7 @@ public final class BRequest_RemoteArrayTypes4dim_setString extends BMethodReques
 
 	public java.lang.String[][][][] v;
 	
-	public final static long serialVersionUID = 1336614572L;
+	public static final long serialVersionUID = 1336614572L;
 	
 	public int getRemoteId() { return 963726955; }
 	

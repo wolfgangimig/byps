@@ -35,12 +35,9 @@ public class BRegistryCollection extends BRegistry {
   }
 
   @Override
-  public boolean replaceSerializer(BSerializer bser) {
+  public void replaceSerializer(BSerializer bser) {
     for (BRegistry reg : registries) {
-      if (reg.replaceSerializer(bser)) {
-        return true;
-      }
+      reg.replaceSerializer(bser);
     }
-    return false;
   }
 }

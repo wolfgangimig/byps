@@ -16,7 +16,7 @@ public final class BRequest_RemoteStreams_setImages extends BMethodRequest imple
 	public java.util.Map<java.lang.Integer,java.io.InputStream> istrms;
 	public int doNotReadStreamAtKey;
 	
-	public final static long serialVersionUID = 2126615710L;
+	public static final long serialVersionUID = 2126615710L;
 	
 	public int getRemoteId() { return 1043578866; }
 	

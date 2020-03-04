@@ -16,13 +16,13 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_RemoteWithAuthentication extends BSkeleton implements RemoteWithAuthenticationAsync {
 	
-	public final static long serialVersionUID = 1983670399L;
+	public static final long serialVersionUID = 1983670399L;
 	
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:385
 	public void setUseAuthentication(boolean useAuth) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void setUseAuthentication(boolean useAuth, final BAsyncResult<Object> asyncResult) {
 		try {
 			setUseAuthentication(useAuth);
@@ -32,11 +32,11 @@ public class BSkeleton_RemoteWithAuthentication extends BSkeleton implements Rem
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:385
 	public byps.test.api.auth.SessionInfo login(byps.test.api.auth.SessionInfo sess, java.lang.String userName, java.lang.String userPwd) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void login(byps.test.api.auth.SessionInfo sess, java.lang.String userName, java.lang.String userPwd, final BAsyncResult<byps.test.api.auth.SessionInfo> asyncResult) {
 		try {
 			byps.test.api.auth.SessionInfo ret = login(sess, userName, userPwd);
@@ -46,11 +46,11 @@ public class BSkeleton_RemoteWithAuthentication extends BSkeleton implements Rem
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:385
 	public int doit(byps.test.api.auth.SessionInfo sess, int value) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void doit(byps.test.api.auth.SessionInfo sess, int value, final BAsyncResult<Integer> asyncResult) {
 		try {
 			int ret = doit(sess, value);
@@ -60,11 +60,11 @@ public class BSkeleton_RemoteWithAuthentication extends BSkeleton implements Rem
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:385
 	public void expire(byps.test.api.auth.SessionInfo sess) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void expire(byps.test.api.auth.SessionInfo sess, final BAsyncResult<Object> asyncResult) {
 		try {
 			expire(sess);
@@ -74,11 +74,11 @@ public class BSkeleton_RemoteWithAuthentication extends BSkeleton implements Rem
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:385
 	public void setReloginCount(int count) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:429
 	public void setReloginCount(int count, final BAsyncResult<Object> asyncResult) {
 		try {
 			setReloginCount(count);

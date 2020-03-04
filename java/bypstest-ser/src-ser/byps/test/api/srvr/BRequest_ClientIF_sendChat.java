@@ -15,7 +15,7 @@ public final class BRequest_ClientIF_sendChat extends BMethodRequest implements 
 
 	public ChatStructure cs;
 	
-	public final static long serialVersionUID = 41050276L;
+	public static final long serialVersionUID = 41050276L;
 	
 	public int getRemoteId() { return 2049072174; }
 	

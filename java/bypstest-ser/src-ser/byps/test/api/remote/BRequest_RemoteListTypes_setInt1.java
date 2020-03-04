@@ -15,7 +15,7 @@ public final class BRequest_RemoteListTypes_setInt1 extends BMethodRequest imple
 
 	public java.util.List<java.lang.Integer> int1;
 	
-	public final static long serialVersionUID = 136821228L;
+	public static final long serialVersionUID = 136821228L;
 	
 	public int getRemoteId() { return 1233438138; }
 	

@@ -15,7 +15,7 @@ public final class BRequest_RemoteArrayTypes1dim_setDouble extends BMethodReques
 
 	public double[] v;
 	
-	public final static long serialVersionUID = 253910985L;
+	public static final long serialVersionUID = 253910985L;
 	
 	public int getRemoteId() { return 123123; }
 	

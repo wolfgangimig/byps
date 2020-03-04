@@ -15,7 +15,7 @@ public final class BRequest_RemoteMapTypes_setByte2 extends BMethodRequest imple
 
 	public java.util.Map<java.lang.Integer,byte[]> byte2;
 	
-	public final static long serialVersionUID = 685835106L;
+	public static final long serialVersionUID = 685835106L;
 	
 	public int getRemoteId() { return 664304990; }
 	

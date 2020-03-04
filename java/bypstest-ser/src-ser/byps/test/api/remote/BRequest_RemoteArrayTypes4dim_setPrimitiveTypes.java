@@ -15,7 +15,7 @@ public final class BRequest_RemoteArrayTypes4dim_setPrimitiveTypes extends BMeth
 
 	public byps.test.api.prim.PrimitiveTypes[][][][] v;
 	
-	public final static long serialVersionUID = 456924651L;
+	public static final long serialVersionUID = 456924651L;
 	
 	public int getRemoteId() { return 963726955; }
 	

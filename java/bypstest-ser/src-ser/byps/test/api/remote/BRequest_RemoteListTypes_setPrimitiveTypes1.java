@@ -15,7 +15,7 @@ public final class BRequest_RemoteListTypes_setPrimitiveTypes1 extends BMethodRe
 
 	public java.util.List<byps.test.api.prim.PrimitiveTypes> primitiveTypes1;
 	
-	public final static long serialVersionUID = 759940243L;
+	public static final long serialVersionUID = 759940243L;
 	
 	public int getRemoteId() { return 1233438138; }
 	

@@ -14,6 +14,6 @@ import java.io.Serializable;
 public final class BResult_955752991 extends BMethodResult<byps.test.api.srvr.ClientIF> implements Serializable {
 
 	
-	public final static long serialVersionUID = 695494982L;
+	public static final long serialVersionUID = 695494982L;
 	
 }

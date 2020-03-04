@@ -15,7 +15,7 @@ public final class BRequest_RemoteArrayTypes1dim_setDate extends BMethodRequest 
 
 	public java.util.Date[] v;
 	
-	public final static long serialVersionUID = 201394796L;
+	public static final long serialVersionUID = 201394796L;
 	
 	public int getRemoteId() { return 123123; }
 	

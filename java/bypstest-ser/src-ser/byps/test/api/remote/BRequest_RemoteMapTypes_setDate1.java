@@ -15,7 +15,7 @@ public final class BRequest_RemoteMapTypes_setDate1 extends BMethodRequest imple
 
 	public java.util.Map<java.lang.String,java.util.Date> obj1;
 	
-	public final static long serialVersionUID = 684703049L;
+	public static final long serialVersionUID = 684703049L;
 	
 	public int getRemoteId() { return 664304990; }
 	

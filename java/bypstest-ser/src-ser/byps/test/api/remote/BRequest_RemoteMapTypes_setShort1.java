@@ -15,7 +15,7 @@ public final class BRequest_RemoteMapTypes_setShort1 extends BMethodRequest impl
 
 	public java.util.Map<java.lang.Long,java.lang.Short> short1;
 	
-	public final static long serialVersionUID = 684809537L;
+	public static final long serialVersionUID = 684809537L;
 	
 	public int getRemoteId() { return 664304990; }
 	

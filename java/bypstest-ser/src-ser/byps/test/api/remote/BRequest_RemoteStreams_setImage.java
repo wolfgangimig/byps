@@ -15,7 +15,7 @@ public final class BRequest_RemoteStreams_setImage extends BMethodRequest implem
 
 	public java.io.InputStream istrm;
 	
-	public final static long serialVersionUID = 622789839L;
+	public static final long serialVersionUID = 622789839L;
 	
 	public int getRemoteId() { return 1043578866; }
 	

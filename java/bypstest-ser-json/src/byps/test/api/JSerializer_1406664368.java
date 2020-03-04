@@ -46,7 +46,7 @@ public class JSerializer_1406664368 extends JSerializer_Array {
 		final java.util.Date[] a0 = arr;
 		bbuf.beginArray();
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:357
+			// checkpoint byps.gen.j.PrintContext:359
 			bbuf.putDate((java.util.Date)a0[i0]);
 		}
 		bbuf.endArray();

@@ -15,7 +15,7 @@ public final class BRequest_EvolveIF_setEvolve extends BMethodRequest implements
 
 	public Evolve obj;
 	
-	public final static long serialVersionUID = 1064683365L;
+	public static final long serialVersionUID = 1064683365L;
 	
 	public int getRemoteId() { return 15377840; }
 	

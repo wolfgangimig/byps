@@ -15,7 +15,7 @@ public final class BRequest_RemoteMapTypes_setPrimitiveTypes1 extends BMethodReq
 
 	public java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes> primitiveTypes1;
 	
-	public final static long serialVersionUID = 1629134317L;
+	public static final long serialVersionUID = 1629134317L;
 	
 	public int getRemoteId() { return 664304990; }
 	

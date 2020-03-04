@@ -15,7 +15,7 @@ public final class BRequest_ClientIF_getStreams extends BMethodRequest implement
 
 	public int ctrl;
 	
-	public final static long serialVersionUID = 1654980071L;
+	public static final long serialVersionUID = 1654980071L;
 	
 	public int getRemoteId() { return 2049072174; }
 	

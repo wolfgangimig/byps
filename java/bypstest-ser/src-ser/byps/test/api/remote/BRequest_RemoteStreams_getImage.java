@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_RemoteStreams_getImage extends BMethodRequest implements Serializable {
 
 	
-	public final static long serialVersionUID = 61677379L;
+	public static final long serialVersionUID = 61677379L;
 	
 	public int getRemoteId() { return 1043578866; }
 	

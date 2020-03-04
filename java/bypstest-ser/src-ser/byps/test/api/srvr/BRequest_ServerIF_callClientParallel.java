@@ -15,7 +15,7 @@ public final class BRequest_ServerIF_callClientParallel extends BMethodRequest i
 
 	public int v;
 	
-	public final static long serialVersionUID = 772308436L;
+	public static final long serialVersionUID = 772308436L;
 	
 	public int getRemoteId() { return 1775199834; }
 	

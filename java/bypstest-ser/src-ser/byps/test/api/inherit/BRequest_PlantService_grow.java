@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_PlantService_grow extends BMethodRequest implements Serializable {
 
 	
-	public final static long serialVersionUID = 695716901L;
+	public static final long serialVersionUID = 695716901L;
 	
 	public int getRemoteId() { return 1954605928; }
 	

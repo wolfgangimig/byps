@@ -15,7 +15,7 @@ public final class BRequest_RemotePrimitiveTypes_setDouble extends BMethodReques
 
 	public double v;
 	
-	public final static long serialVersionUID = 1727949326L;
+	public static final long serialVersionUID = 1727949326L;
 	
 	public int getRemoteId() { return 456456; }
 	

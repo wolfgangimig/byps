@@ -15,7 +15,7 @@ public final class BRequest_RemoteMapTypes_setFloat1 extends BMethodRequest impl
 
 	public java.util.Map<java.lang.Character,java.lang.Float> float1;
 	
-	public final static long serialVersionUID = 316308321L;
+	public static final long serialVersionUID = 316308321L;
 	
 	public int getRemoteId() { return 664304990; }
 	

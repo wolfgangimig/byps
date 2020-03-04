@@ -15,7 +15,7 @@ public final class BRequest_ServerIF_getClient extends BMethodRequest implements
 
 	public int id;
 	
-	public final static long serialVersionUID = 190669475L;
+	public static final long serialVersionUID = 190669475L;
 	
 	public int getRemoteId() { return 1775199834; }
 	

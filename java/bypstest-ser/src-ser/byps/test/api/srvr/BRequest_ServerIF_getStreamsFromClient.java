@@ -15,7 +15,7 @@ public final class BRequest_ServerIF_getStreamsFromClient extends BMethodRequest
 
 	public boolean materializeOnServer;
 	
-	public final static long serialVersionUID = 1679867754L;
+	public static final long serialVersionUID = 1679867754L;
 	
 	public int getRemoteId() { return 1775199834; }
 	

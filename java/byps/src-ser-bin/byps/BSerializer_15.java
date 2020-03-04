@@ -16,7 +16,7 @@ public class BSerializer_15 extends BSerializer {
   public void write(final Object obj, final BOutput bout1, final long version) throws BException {
     final BOutputBin bout = ((BOutputBin) bout1);
     final InputStream is = (InputStream) obj;
-    final BContentStream bstream = bout.createStreamRequest(is);
+    final BContentStream bstream = createStreamRequest(bout, is);
     final BTargetId targetId = bstream.getTargetId();
     final boolean withProps = bout.header.bversion >= BMessageHeader.BYPS_VERSION_EXTENDED_STREAM_INFORMATION;
 
@@ -68,4 +68,7 @@ public class BSerializer_15 extends BSerializer {
     }
   }
 
+  public BContentStream createStreamRequest(BOutput bout, InputStream is) throws BException {
+    return bout.createStreamRequest(is);
+  }
 }

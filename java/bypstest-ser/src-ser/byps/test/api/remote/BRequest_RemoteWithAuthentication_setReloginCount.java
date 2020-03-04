@@ -15,7 +15,7 @@ public final class BRequest_RemoteWithAuthentication_setReloginCount extends BMe
 
 	public int count;
 	
-	public final static long serialVersionUID = 802968058L;
+	public static final long serialVersionUID = 802968058L;
 	
 	public int getRemoteId() { return 1983670399; }
 	

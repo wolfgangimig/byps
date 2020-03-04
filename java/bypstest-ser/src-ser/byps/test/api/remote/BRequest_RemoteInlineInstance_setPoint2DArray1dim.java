@@ -15,7 +15,7 @@ public final class BRequest_RemoteInlineInstance_setPoint2DArray1dim extends BMe
 
 	public byps.test.api.inl.Point2D[] pointArray;
 	
-	public final static long serialVersionUID = 1355334613L;
+	public static final long serialVersionUID = 1355334613L;
 	
 	public int getRemoteId() { return 567395951; }
 	

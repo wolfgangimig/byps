@@ -15,7 +15,7 @@ public final class BRequest_RemoteReferences_setNode extends BMethodRequest impl
 
 	public byps.test.api.refs.Node v;
 	
-	public final static long serialVersionUID = 693117721L;
+	public static final long serialVersionUID = 693117721L;
 	
 	public int getRemoteId() { return 568637225; }
 	

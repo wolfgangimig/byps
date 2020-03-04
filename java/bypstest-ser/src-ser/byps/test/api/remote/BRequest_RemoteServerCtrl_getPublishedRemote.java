@@ -15,7 +15,7 @@ public final class BRequest_RemoteServerCtrl_getPublishedRemote extends BMethodR
 
 	public java.lang.String name;
 	
-	public final static long serialVersionUID = 648762723L;
+	public static final long serialVersionUID = 648762723L;
 	
 	public int getRemoteId() { return 1652234479; }
 	

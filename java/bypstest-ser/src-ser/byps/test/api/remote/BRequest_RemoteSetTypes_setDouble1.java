@@ -15,7 +15,7 @@ public final class BRequest_RemoteSetTypes_setDouble1 extends BMethodRequest imp
 
 	public java.util.Set<java.lang.Double> double1;
 	
-	public final static long serialVersionUID = 185153786L;
+	public static final long serialVersionUID = 185153786L;
 	
 	public int getRemoteId() { return 1900796440; }
 	

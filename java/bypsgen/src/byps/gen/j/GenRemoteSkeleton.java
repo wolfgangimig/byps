@@ -20,6 +20,11 @@ class GenRemoteSkeleton {
 	static void generate(PrintContext pctxt, RemoteInfo rinfo) throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "generate");
 		log.info("generate " + rinfo.qname);
+		
+    if (rinfo.qname.contains("RemoteWithAuthentication")) {
+      log.info("");
+    }
+
 		CodePrinter pr = pctxt.getPrinterForApiClass(rinfo, PrintContext.SKELETON_PREFIX, true);
 		new GenRemoteSkeleton(pctxt, rinfo, pr).generate();
 		pr.close();
@@ -105,7 +110,7 @@ class GenRemoteSkeleton {
 
 	private void printSerialVersionUID() {
 		//log.debug(GenApiClass.class.getName(), "printSerialVersionUID");
-		pr.println("public final static long serialVersionUID = " + rinfo.typeId + "L;");
+		pr.println("public static final long serialVersionUID = " + rinfo.typeId + "L;");
 		//log.debug(GenApiClass.class.getName(), "printSerialVersionUID");
 	}
 	

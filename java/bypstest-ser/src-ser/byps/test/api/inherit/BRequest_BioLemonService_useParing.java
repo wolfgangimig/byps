@@ -14,7 +14,7 @@ import java.io.Serializable;
 public final class BRequest_BioLemonService_useParing extends BMethodRequest implements Serializable {
 
 	
-	public final static long serialVersionUID = 2108700976L;
+	public static final long serialVersionUID = 2108700976L;
 	
 	public int getRemoteId() { return 474058508; }
 	

@@ -15,7 +15,7 @@ public final class BRequest_RemoteSetTypes_setDate1 extends BMethodRequest imple
 
 	public java.util.Set<java.util.Date> obj1;
 	
-	public final static long serialVersionUID = 1461676227L;
+	public static final long serialVersionUID = 1461676227L;
 	
 	public int getRemoteId() { return 1900796440; }
 	
