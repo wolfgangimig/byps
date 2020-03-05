@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.Test;
 
 import byps.BException;
@@ -27,7 +27,7 @@ import byps.test.api.ver.Evolve2;
  */
 public class TestSerializeDifferentVersions {
 
-	private Log log = LogFactory.getLog(TestSerializeDifferentVersions.class);
+	private Logger log = LoggerFactory.getLogger(TestSerializeDifferentVersions.class);
 
   @Test
   public void testDifferentVersions() throws BException {
@@ -145,7 +145,7 @@ public class TestSerializeDifferentVersions {
 		return ev;
 	}
 	
-	public static void compareEvolve(Log log, Evolve lhs, Evolve rhs, long clientVersion, long serverVersion) {
+	public static void compareEvolve(Logger log, Evolve lhs, Evolve rhs, long clientVersion, long serverVersion) {
 		long negotiatedVersion = Math.min(clientVersion, serverVersion);
 		String msg = clientVersion + "/" + serverVersion + " ";
 		TestUtils.assertEquals(log, msg+"bool1", lhs.bool1, rhs.bool1);

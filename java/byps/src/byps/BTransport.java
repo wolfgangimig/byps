@@ -8,8 +8,8 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BTransport {
 
@@ -367,7 +367,7 @@ public class BTransport {
         else {
           sbuf.append(ret);
         }
-        log.info(sbuf);
+        log.info("{}", sbuf);
       }
     }
 
@@ -792,6 +792,6 @@ public class BTransport {
    */
   protected boolean printRequestIntoLogger = true;
 
-  private final static Log log = LogFactory.getLog(BTransport.class);
+  private final static Logger log = LoggerFactory.getLogger(BTransport.class);
 
 }

@@ -5,15 +5,15 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.log4j.NDC;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
@@ -23,7 +23,7 @@ import byps.BExceptionC;
 
 public class AsfGetStream extends AsfRequest {
 
-  private static Log log = LogFactory.getLog(AsfGetStream.class);
+  private static Logger log = LoggerFactory.getLogger(AsfGetStream.class);
   private final BAsyncResult<BContentStream> asyncResult;
 
   protected AsfGetStream(long trackingId, String url, BAsyncResult<BContentStream> asyncResult, CloseableHttpClient httpClient, HttpClientContext context) {
@@ -33,7 +33,7 @@ public class AsfGetStream extends AsfRequest {
 
   @Override
   public void run() {
-    NDC.push("asfgetstream-" + trackingId);
+    MDC.put("NDC", "asfgetstream-" + trackingId);
     request = new HttpGet(url);
     applyTimeout();
     applyRequestProperties();
@@ -70,7 +70,7 @@ public class AsfGetStream extends AsfRequest {
       BContentStream stream = new MyContentStream(returnException, entity, response);
       asyncResult.setAsyncResult(stream, null);
       
-      NDC.pop();
+      MDC.remove("NDC");
     }
 
   }

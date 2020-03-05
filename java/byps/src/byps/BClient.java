@@ -5,8 +5,8 @@ import java.lang.reflect.Method;
 
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This is the base class for the client side of a subscriber.
@@ -371,6 +371,6 @@ public abstract class BClient {
     return "[" + getClass().getSimpleName() + ", transport=" + transport.toString() + "]";
   }
 	
-  private final static Log log = LogFactory.getLog(BClient.class);
+  private final static Logger log = LoggerFactory.getLogger(BClient.class);
 
 }

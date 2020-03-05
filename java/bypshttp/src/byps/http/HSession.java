@@ -2,8 +2,8 @@ package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.BClient;
@@ -262,6 +262,6 @@ public abstract class HSession
     return ret;
   }
   
-  private final static Log log = LogFactory.getLog(HSession.class);
+  private final static Logger log = LoggerFactory.getLogger(HSession.class);
 
 }

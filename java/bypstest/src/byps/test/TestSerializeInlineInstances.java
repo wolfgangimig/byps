@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.Test;
 
 import byps.BException;
@@ -32,7 +32,7 @@ import byps.test.api.inl.Point2D;
 public class TestSerializeInlineInstances {
 
   BTransport transport = TestUtils.createTransport();
-  private Log log = LogFactory.getLog(TestSerializeInlineInstances.class);
+  private Logger log = LoggerFactory.getLogger(TestSerializeInlineInstances.class);
 
   @Test
   public void testSerializeInlineInstance() throws BException {

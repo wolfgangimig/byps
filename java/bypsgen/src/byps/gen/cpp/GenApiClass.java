@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBinaryModel;
 import byps.BException;
@@ -24,7 +24,7 @@ import byps.gen.utils.Utils;
 
 class GenApiClass {
 	
-	static Log log = LogFactory.getLog(GenApiClass.class);
+	static Logger log = LoggerFactory.getLogger(GenApiClass.class);
 	
 	static void generate(PrintContext pctxt, SerialInfo serInfo) throws IOException {
 		

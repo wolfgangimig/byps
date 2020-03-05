@@ -2,8 +2,8 @@ package byps.http;
 import java.util.concurrent.atomic.AtomicLong;
 
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BAsyncResult;
 import byps.BException;
@@ -264,5 +264,5 @@ public class HServerR extends BServerR {
   protected final long sleepMillisBeforeRetry;
   // protected final Thread workerThread = new WorkerThread();
   // protected LongPoll currentLongPoll_access_sync;
-  private final static Log log = LogFactory.getLog(HServerR.class);
+  private final static Logger log = LoggerFactory.getLogger(HServerR.class);
 }

@@ -3,8 +3,8 @@ package byps.test;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.Date;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,7 +28,7 @@ public class TestRemotePrimitiveTypes {
 	
 	BClient_Testser client;
 	RemotePrimitiveTypesAsync remote;
-	private Log log = LogFactory.getLog(TestRemotePrimitiveTypes.class);
+	private Logger log = LoggerFactory.getLogger(TestRemotePrimitiveTypes.class);
 
 	@Before
 	public void setUp() throws RemoteException {

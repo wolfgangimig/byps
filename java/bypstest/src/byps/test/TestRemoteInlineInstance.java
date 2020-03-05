@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +22,7 @@ public class TestRemoteInlineInstance {
 
 	BClient_Testser client;
 	RemoteInlineInstance remote;
-	private Log log = LogFactory.getLog(TestRemoteInlineInstance.class);
+	private Logger log = LoggerFactory.getLogger(TestRemoteInlineInstance.class);
 
 	@Before
 	public void setUp() throws RemoteException {

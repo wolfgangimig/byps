@@ -2,8 +2,8 @@ package byps.gen.j;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.gen.api.GeneratorException;
 import byps.gen.api.MethodInfo;
@@ -12,7 +12,7 @@ import byps.gen.utils.CodePrinter;
 
 class GenRemoteClassAsync {
 
-  static Log log = LogFactory.getLog(GenRemoteClassAsync.class);
+  static Logger log = LoggerFactory.getLogger(GenRemoteClassAsync.class);
 
   static void generate(PrintContext pctxt, RemoteInfo rinfo, RemoteInfo rinfoAsync) throws IOException {
     // log.debug(GeneratorJ.class.getName(), "generate");

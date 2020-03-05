@@ -27,8 +27,8 @@ import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
 import javax.tools.Diagnostic;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.BVersioning;
@@ -44,7 +44,7 @@ import byps.gen.db.ClassDB;
 import byps.gen.db.ConstFieldReader;
 
 public class XmlGenerator extends XmlGeneratorBase {
-  private static Log log = LogFactory.getLog(XmlGenerator.class);
+  private static Logger log = LoggerFactory.getLogger(XmlGenerator.class);
   private final ConstFieldReader constFieldReader;
   private ProcessingEnvironment penv;
   private Messager messager;

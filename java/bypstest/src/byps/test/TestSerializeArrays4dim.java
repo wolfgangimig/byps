@@ -3,8 +3,8 @@ package byps.test;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.nio.ByteBuffer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.Test;
 
 import byps.BException;
@@ -21,7 +21,7 @@ import byps.test.api.prim.PrimitiveTypes;
  */
 public class TestSerializeArrays4dim {
 	
-	private Log log = LogFactory.getLog(TestSerializeArrays4dim.class);
+	private Logger log = LoggerFactory.getLogger(TestSerializeArrays4dim.class);
 	BTransport transport = TestUtils.createTransport();
 	
 	/**

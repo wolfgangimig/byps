@@ -8,8 +8,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlTransient;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BVersioning;
 import byps.gen.api.CommentInfo;
@@ -110,6 +110,6 @@ public class XmlRemoteInfo implements XmlInfo {
 	}
 
     @XmlTransient
-	private Log log = LogFactory.getLog(XmlRemoteInfo.class);
+	private Logger log = LoggerFactory.getLogger(XmlRemoteInfo.class);
 
 }

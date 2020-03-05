@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.BBinaryModel;
@@ -31,7 +31,7 @@ public class TestUtilsHttp {
 
 	private static final int READ_TIMEOUT = 60;
 
-  private static Log log = LogFactory.getLog(TestUtilsHttp.class);
+  private static Logger log = LoggerFactory.getLogger(TestUtilsHttp.class);
 	
 	//public static String url = "http://www.wilutions.com:7010/bypstest-srv-5.28/bypsservlet";
 	public static String url = "http://localhost:6080/bypstest-srv/bypsservlet";

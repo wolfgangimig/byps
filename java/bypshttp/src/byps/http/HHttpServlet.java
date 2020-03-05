@@ -28,12 +28,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.Appender;
-import org.apache.log4j.FileAppender;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.BAsyncResult;
@@ -54,6 +50,7 @@ import byps.BTargetId;
 import byps.BTransport;
 import byps.BWire;
 import byps.RemoteException;
+import byps.log.LogConfigurator;
 import byps.ureq.BRegistry_BUtilityRequests;
 import byps.ureq.BSkeleton_BUtilityRequests;
 import byps.ureq.JRegistry_BUtilityRequests;
@@ -162,32 +159,6 @@ public abstract class HHttpServlet extends HttpServlet implements
     if (log.isDebugEnabled()) log.debug(")init");
   }
 
-  private void initLogger(HConfig config) {
-
-    String logLevel = config.getValue("bypshttp.log.level", "WARN");
-    String logFile = config.getValue("bypshttp.log.file", null);
-
-    if (logFile != null) {
-      logFile = logFile.replace('/', File.separatorChar);
-
-      Logger rootLogger = Logger.getRootLogger();
-      Appender ap = rootLogger.getAppender("FI");
-      if (ap != null) {
-        FileAppender fap = (FileAppender) ap;
-        fap.setFile(logFile);
-        fap.activateOptions();
-      }
-
-      if (logLevel.equalsIgnoreCase("DEBUG")) rootLogger.setLevel(Level.DEBUG);
-      if (logLevel.equalsIgnoreCase("INFO")) rootLogger.setLevel(Level.INFO);
-      if (logLevel.equalsIgnoreCase("WARN")) rootLogger.setLevel(Level.WARN);
-      if (logLevel.equalsIgnoreCase("ERROR")) rootLogger.setLevel(Level.ERROR);
-
-      if (log.isDebugEnabled()) log.debug("Logger opened.");
-    }
-
-  }
-
   /**
    * Initialization thread
    */
@@ -241,6 +212,19 @@ public abstract class HHttpServlet extends HttpServlet implements
       }
       catch (ServletException e) {
         log.error("Initialization failed.", e);
+      }
+
+    }
+
+
+    private void initLogger(HConfig config) {
+
+      String logLevel = config.getValue("bypshttp.log.level", null);
+
+      if (logLevel != null) {
+        LogConfigurator.setLevel(logLevel);
+
+        if (log.isDebugEnabled()) log.debug("Logger opened.");
       }
 
     }
@@ -1402,7 +1386,7 @@ public abstract class HHttpServlet extends HttpServlet implements
     return ret;
   }
 
-  private static Log log = LogFactory.getLog(HHttpServlet.class);
+  private static Logger log = LoggerFactory.getLogger(HHttpServlet.class);
   private volatile BServerRegistry serverRegistry_use_getServerRegistry;
   private volatile HTargetIdFactory targetIdFact_use_getTargetIdFactory;
   private volatile HActiveMessages activeMessages_use_getActiveMessages;

@@ -19,9 +19,9 @@ import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.lf5.LogLevel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.event.Level;
 
 import byps.BApiDescriptor;
 import byps.BClient;
@@ -68,17 +68,6 @@ public class CoTestProcess {
 
   public static void main(String[] args) {
 
-//    // Log to stdout 
-//    Properties log4jConsole = new Properties();
-//    log4jConsole.setProperty("log4j.rootLogger", "info, A1");
-//    log4jConsole.setProperty("log4j.appender.A1",
-//                             "org.apache.log4j.ConsoleAppender");
-//    log4jConsole.setProperty("log4j.appender.A1.layout",
-//                             "org.apache.log4j.PatternLayout");
-//    log4jConsole.setProperty("log4j.appender.FI.layout.ConversionPattern",
-//                             "%d{ABSOLUTE} %1x %-5p (%F:%L) - %m%n");
-//    PropertyConfigurator.configure(log4jConsole);    
-    
     try {
       int port = 0;
       String surl = "";
@@ -290,12 +279,12 @@ public class CoTestProcess {
 
   private void attachStdStreams(final Process process) {
     final StringBuilder stdoutBuf = new StringBuilder();
-    readStreamInBackground(process.getInputStream(), stdoutBuf, LogLevel.INFO);
+    readStreamInBackground(process.getInputStream(), stdoutBuf, Level.INFO);
     final StringBuilder stderrBuf = new StringBuilder();
-    readStreamInBackground(process.getErrorStream(), stderrBuf, LogLevel.ERROR);
+    readStreamInBackground(process.getErrorStream(), stderrBuf, Level.ERROR);
   }
   
-  private void readStreamInBackground(final InputStream istream, final StringBuilder sbuf, final LogLevel level) {
+  private void readStreamInBackground(final InputStream istream, final StringBuilder sbuf, final Level level) {
     Thread thread = new Thread() {
       public void run() {
         InputStream is = istream;
@@ -306,7 +295,7 @@ public class CoTestProcess {
           int len = -1;
           while ((len = rd.read(buf)) != -1) {
             String s = new String(buf, 0, len);
-            if (level == LogLevel.ERROR) {
+            if (level == Level.ERROR) {
               log.error("other process: " + s);
             }
             else {
@@ -447,7 +436,7 @@ public class CoTestProcess {
     return globalServerInstance;
   }
 
-  private final static Log log = LogFactory.getLog(CoTestProcess.class);
+  private final static Logger log = LoggerFactory.getLogger(CoTestProcess.class);
   private volatile Undertow server;
   private CountDownLatch serverStopped = new CountDownLatch(1);
   private CoTestParams params;

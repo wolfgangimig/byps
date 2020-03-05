@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
@@ -34,7 +34,7 @@ public abstract class AsfRequest implements HHttpRequest {
   protected Map<String,String> requestProperties;
   protected AtomicBoolean cancelled = new AtomicBoolean();
   protected final long trackingId;
-  private static Log log = LogFactory.getLog(AsfRequest.class);
+  private static Logger log = LoggerFactory.getLogger(AsfRequest.class);
   
   /**
    * HTTP status code. 

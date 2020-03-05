@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -48,7 +48,7 @@ public class TestRemoteServerR {
 	
 	BClient_Testser client;
 	ServerIFAsync remote;
-	private Log log = LogFactory.getLog(TestRemoteServerR.class);
+	private Logger log = LoggerFactory.getLogger(TestRemoteServerR.class);
 
 	@Before
 	public void setUp() throws RemoteException {
@@ -742,7 +742,7 @@ public class TestRemoteServerR {
 						TestUtils.assertEquals(log, "stream[" + i + "]", estrm, rstrm);
 					}
 				} catch (IOException e) {
-					log.error(e);
+					log.error(e.getMessage(), e);
 					throw new BException(BExceptionC.IOERROR, "", e);
 				}
 				log.info(")putStreams");
@@ -796,7 +796,7 @@ public class TestRemoteServerR {
 						TestUtils.assertEquals(log, "stream[" + i + "]", estrm, rstrm);
 					}
 				} catch (IOException e) {
-					log.error(e);
+					log.error(e.getMessage(), e);
 					throw new BException(BExceptionC.IOERROR, "", e);
 				}
 				log.info(")putStreams");
@@ -903,7 +903,7 @@ public class TestRemoteServerR {
             TestUtils.assertEquals(log, "stream[" + i + "]="+ estrm, estrm, rstrm);
           }
         } catch (IOException e) {
-          log.error(e);
+          log.error(e.getMessage(), e);
           throw new BException(BExceptionC.IOERROR, "", e);
         }
         log.info(")putStreams");

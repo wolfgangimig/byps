@@ -22,8 +22,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Supplier;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -53,7 +53,7 @@ public class TestRemoteStreams {
 
   BClient_Testser client;
   RemoteStreams remote;
-  private Log log = LogFactory.getLog(TestRemoteStreams.class);
+  private Logger log = LoggerFactory.getLogger(TestRemoteStreams.class);
   Random rand = new Random();
 
   @Before

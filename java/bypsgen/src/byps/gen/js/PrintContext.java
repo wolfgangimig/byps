@@ -5,8 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BException;
 import byps.gen.api.CommentInfo;
@@ -191,6 +191,6 @@ class PrintContext extends PrintContextBase {
 		log.info("Output file for generated JavaScript code:" + destFile);
 	}
 	
-	private Log log = LogFactory.getLog(PrintContext.class);
+	private Logger log = LoggerFactory.getLogger(PrintContext.class);
 
 }

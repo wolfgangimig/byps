@@ -13,12 +13,12 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Random;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AssignUniqueSerialVersionUID {
 	
-	private final Log log = LogFactory.getLog(AssignUniqueSerialVersionUID.class);
+	private final Logger log = LoggerFactory.getLogger(AssignUniqueSerialVersionUID.class);
 	private final Random rand;
 	private final String[] dirs;
 	private final boolean inclSubDirs;
@@ -120,7 +120,7 @@ public class AssignUniqueSerialVersionUID {
 							isValidSerialVersionUID = true;
 						}
 						catch (NumberFormatException e) {
-							log.debug(e);
+							log.debug("{}", e);
 						}
 					}
 					

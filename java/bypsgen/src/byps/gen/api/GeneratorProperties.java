@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.commons.logging.Log;
+import org.slf4j.Logger;
 
 @SuppressWarnings("serial")
 public class GeneratorProperties extends Properties {
@@ -138,7 +138,7 @@ public class GeneratorProperties extends Properties {
 		return map;
 	}
 	
-	public void dump(Log log) {
+	public void dump(Logger log) {
 		ArrayList<String> keys = new ArrayList<String>();
 		for (Object key : this.keySet()) keys.add((String)key);
 		Collections.sort(keys);

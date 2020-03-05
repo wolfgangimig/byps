@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBinaryModel;
 import byps.BRegistry;
@@ -15,7 +15,7 @@ import byps.gen.api.SerialInfo;
 import byps.gen.utils.CodePrinter;
 
 public class GenSerStruct {
-	static Log log = LogFactory.getLog(GenSerStruct.class);
+	static Logger log = LoggerFactory.getLogger(GenSerStruct.class);
 
 	GenSerStruct(PrintContext pctxt, SerialInfo serInfo, CodePrinter pr) {
 		this(pctxt, serInfo, pr, BBinaryModel.MEDIUM);

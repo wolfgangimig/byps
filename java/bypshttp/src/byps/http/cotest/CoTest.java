@@ -1,14 +1,14 @@
 package byps.http.cotest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 
 
 public class CoTest {
   
-  private final static Log log = LogFactory.getLog(CoTest.class);
+  private final static Logger log = LoggerFactory.getLogger(CoTest.class);
   
   public static void test(final BApiDescriptor apiDesc, String bypstest_jar, int port, String logFile) throws Exception {
     CoTestParams params = new CoTestParams();

@@ -8,8 +8,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBinaryModel;
 import byps.gen.api.CommentInfo;
@@ -721,6 +721,6 @@ public class PrintContext extends PrintContextBase {
   public final File dirSer;
   private final HashMap<String,String> packageAliasses = new HashMap<String,String>();
 
-	private Log log = LogFactory.getLog(PrintContext.class);
+	private Logger log = LoggerFactory.getLogger(PrintContext.class);
 
 }

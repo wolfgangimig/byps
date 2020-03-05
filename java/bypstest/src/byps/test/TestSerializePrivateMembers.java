@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.Test;
 
 import byps.BException;
@@ -24,7 +24,7 @@ import byps.test.api.priv.PrivateMembers;
 public class TestSerializePrivateMembers {
 	
 	BTransport transport = TestUtils.createTransport();
-	private Log log = LogFactory.getLog(TestSerializePrivateMembers.class);
+	private Logger log = LoggerFactory.getLogger(TestSerializePrivateMembers.class);
 	
 	
 	@Test

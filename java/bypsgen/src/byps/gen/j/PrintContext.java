@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBinaryModel;
 import byps.BException;
@@ -525,7 +525,7 @@ class PrintContext extends PrintContextBase {
 	public final File dirTest;
 	private boolean generateHashCodeAndEquals;
 	private final boolean generateUtf8Source;
-	private Log log = LogFactory.getLog(PrintContext.class);
+	private Logger log = LoggerFactory.getLogger(PrintContext.class);
 
 
 }

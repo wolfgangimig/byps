@@ -1,14 +1,15 @@
 package byps.gen.xml;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.gen.api.ErrorInfo;
 import byps.gen.api.GeneratorException;
@@ -18,7 +19,7 @@ import byps.gen.db.ClassDB;
 
 public abstract class XmlGeneratorBase extends AbstractProcessor {
   
-  private static Log log = LogFactory.getLog(XmlGeneratorBase.class);
+  private static Logger log = LoggerFactory.getLogger(XmlGeneratorBase.class);
   
   /**
    * Option: all classes should be serialized.
@@ -181,21 +182,32 @@ public abstract class XmlGeneratorBase extends AbstractProcessor {
    * @return
    */
   private String serializeFieldsToJson(ErrorInfo errInfo, Object value) {
+    log.debug("access: {}", value);
     errInfo = errInfo.copy();
     StringBuilder sbuf = new StringBuilder();
     boolean addComma = false;
     Class<?> clazz = value.getClass();
     for (java.lang.reflect.Field field : clazz.getDeclaredFields()) {
       field.setAccessible(true);
+
+      // BYPS-17 do not serialize transient fields
+      if (Modifier.isTransient(field.getModifiers())) {
+        log.debug("do not serialize transient field: {}", field);
+        continue;
+      }
+
       try {
         field.get(null);
       } catch (Exception e) {
         try {
+          log.debug("access field: {}", field);
           Object fieldValue = field.get(value);
+          log.debug("access field value: {}", fieldValue);
           if (fieldValue != null) {
             if (addComma) sbuf.append(","); else addComma = true;
             sbuf.append("\"").append(field.getName()).append("\":");
             errInfo.fieldName = field.getName();
+            log.debug("access field name: {}", errInfo.fieldName);
             sbuf.append(serializeObjectToJson(errInfo, fieldValue));
           }
           else {

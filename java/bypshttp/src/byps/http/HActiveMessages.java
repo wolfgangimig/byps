@@ -12,8 +12,8 @@ import javax.servlet.AsyncEvent;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BContentStream;
 import byps.BContentStreamWrapper;
@@ -38,7 +38,7 @@ public class HActiveMessages {
 	private final BHashMap<Long, BContentStream> incomingStreams = new BHashMap<Long, BContentStream>();
 	private final BHashMap<Long, BContentStream> outgoingStreams = new BHashMap<Long, BContentStream>();
 	
-	private final static Log log = LogFactory.getLog(HActiveMessages.class);
+	private final static Logger log = LoggerFactory.getLogger(HActiveMessages.class);
 	private final File tempDir;
 	
 	public HActiveMessages(File tempDir) {

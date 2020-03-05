@@ -4,15 +4,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * File with reference counter.
  * If the reference counter is decremented to zero, the file is deleted.
  */
 public class HTempFile {
-	private static Log log = LogFactory.getLog(HTempFile.class);
+	private static Logger log = LoggerFactory.getLogger(HTempFile.class);
 	private File file;
 	private AtomicInteger refCount = new AtomicInteger(1);
 	

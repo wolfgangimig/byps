@@ -5,8 +5,8 @@ import java.io.IOException;
 import javax.servlet.AsyncEvent;
 import javax.servlet.AsyncListener;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 abstract class HAsyncErrorListener implements AsyncListener {
 
@@ -29,5 +29,5 @@ abstract class HAsyncErrorListener implements AsyncListener {
 //	public void onError(AsyncEvent arg0) throws IOException {
 //	}
 
-	private final static Log log = LogFactory.getLog(HAsyncErrorListener.class);
+	private final static Logger log = LoggerFactory.getLogger(HAsyncErrorListener.class);
 }

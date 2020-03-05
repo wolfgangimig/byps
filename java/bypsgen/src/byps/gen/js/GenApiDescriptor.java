@@ -3,8 +3,8 @@ package byps.gen.js;
 import java.io.IOException;
 import java.util.HashMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.BBinaryModel;
@@ -15,7 +15,7 @@ import byps.gen.utils.CodePrinter;
 
    
 public class GenApiDescriptor {
-	static Log log = LogFactory.getLog(GenApiDescriptor.class);
+	static Logger log = LoggerFactory.getLogger(GenApiDescriptor.class);
 	
 	static void generate(PrintContext pctxt, BApiDescriptor apiDesc) throws IOException {
 		log.debug("generate(");

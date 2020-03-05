@@ -1,7 +1,7 @@
 package byps.test.servlet;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BException;
 import byps.BExceptionC;
@@ -21,7 +21,7 @@ public class MyRemoteWithAuthentication extends BSkeleton_RemoteWithAuthenticati
   enum EState { INVALID, AUTHENTICATED };
   private EState state = EState.INVALID;
   private MySession mySession;
-  private Log log = LogFactory.getLog(MyRemoteWithAuthentication.class);
+  private Logger log = LoggerFactory.getLogger(MyRemoteWithAuthentication.class);
 
   public MyRemoteWithAuthentication(MySession mySession) {
     this.mySession = mySession;

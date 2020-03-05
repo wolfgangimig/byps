@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
@@ -390,7 +390,7 @@ public class HWireClientR extends BWire {
   private final MapAsyncResults mapAsyncResults = new MapAsyncResults();
   private final PendingMessages pendingMessages = new PendingMessages();
   private final BWire wireServer;
-  private final static Log log = LogFactory.getLog(HWireClientR.class);
+  private final static Logger log = LoggerFactory.getLogger(HWireClientR.class);
   private volatile boolean canceled;
 
   private static class PendingMessages {

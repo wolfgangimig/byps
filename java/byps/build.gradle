@@ -4,7 +4,7 @@ apply plugin: 'eclipse-wtp'
 
 sourceCompatibility = 1.8
 compileJava.options.encoding = 'UTF-8'
-version = '5.30'
+version = '5.31'
 
 sourceSets {
     main {
@@ -40,8 +40,13 @@ repositories {
 dependencies {
 	compile project(":byps-api")
 	compile project(":byps-override")
+
+	// BYPS-16: use slf4j instead of commons-logging
+	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+	// BYPS-16: Support basic configuration of logback and log4j. Byps requires one of 
+	// these frameworks only if you explicitly instruct it to do logging of its own.
+	compileOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+	compileOnly group: 'log4j', name: 'log4j', version: '1.2.17'
 	
-	compile group: 'commons-logging', name: 'commons-logging', version: '1.2'
-	compile group: 'log4j', name: 'log4j', version: '1.2.17'
 }
 

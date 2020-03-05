@@ -9,7 +9,7 @@ import byps.BHashMap;
 @WebListener
 public class HSessionListener implements HttpSessionListener {
 
-  //private final static Log log = LogFactory.getLog(HSessionListener.class);
+  //private final static Logger log = LoggerFactory.getLogger(HSessionListener.class);
   private final static BHashMap<String, HSession> sessions = new BHashMap<String, HSession>();
   
   public HSessionListener() {

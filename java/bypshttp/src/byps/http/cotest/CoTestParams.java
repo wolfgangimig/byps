@@ -1,15 +1,14 @@
 package byps.http.cotest;
 
 import java.lang.reflect.Method;
-import java.util.Properties;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.PropertyConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.BAsyncResult;
 import byps.BClient;
+import byps.log.LogConfigurator;
 
 public class CoTestParams {
   
@@ -45,17 +44,8 @@ public class CoTestParams {
   public void initProcessSite(String apiDescClassName, int port, String url, String logFile) throws Exception {
 
     if (logFile.length() != 0) {
-      Properties log4j = new Properties();
-      log4j.setProperty("log4j.rootLogger", "info, FI");
-      log4j.setProperty("log4j.appender.FI", "org.apache.log4j.DailyRollingFileAppender");
-      log4j.setProperty("log4j.appender.FI.File", logFile);
-      log4j.setProperty("log4j.appender.FI.DatePattern", "'.'yyyy-MM-dd");
-      log4j.setProperty("log4j.appender.FI.layout", "org.apache.log4j.PatternLayout");
-      log4j.setProperty("log4j.appender.FI.layout.ConversionPattern", "%d{ABSOLUTE} %t %1x %-5p (%F:%L) - %m%n");
-      log4j.setProperty("log4j.appender.FI.append", "false");
-      PropertyConfigurator.configure(log4j);
-      
-      Log log = LogFactory.getLog(CoTestProcess.class);
+      LogConfigurator.initFile("info", logFile);
+      Logger log = LoggerFactory.getLogger(CoTestProcess.class);
       log.info("process started");
     }
 

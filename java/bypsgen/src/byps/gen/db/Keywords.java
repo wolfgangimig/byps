@@ -3,12 +3,12 @@ package byps.gen.db;
 import java.util.HashSet;
 import java.util.StringTokenizer;
 
-import org.apache.commons.logging.Log;
+import org.slf4j.Logger;
 
 public class Keywords {
 	
 	
-	public static boolean checkIdentifier(Log log, String errorContext, String ident) {
+	public static boolean checkIdentifier(Logger log, String errorContext, String ident) {
 		boolean ret = false;
 		if (javaKeywords.contains(ident)) {
 			log.error(errorContext + ": found Java keyword \"" + ident + "\"");

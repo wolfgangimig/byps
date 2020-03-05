@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.BAsyncResult;
@@ -51,7 +51,7 @@ import junit.framework.Assert;
 
 public class TestUtils {
 
-	private static Log log = LogFactory.getLog(TestUtils.class);
+	private static Logger log = LoggerFactory.getLogger(TestUtils.class);
 	//public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
 	public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
 	
@@ -188,38 +188,38 @@ public class TestUtils {
 		}
 	}
 	
-	public static void printBuffer(Log log, BBuffer buf) {
+	public static void printBuffer(Logger log, BBuffer buf) {
 		log.info("buffer: \r\n" + buf.toDetailString());
 	}
 	
-	public static void printBuffer(Log log, ByteBuffer buf) {
+	public static void printBuffer(Logger log, ByteBuffer buf) {
 		BBuffer bbuf = BBuffer.create(BBinaryModel.MEDIUM, buf);
 		printBuffer(log, bbuf);
 	}
 	
-	public static void assertEquals(Log log, String msg, Object a, Object b) {
+	public static void assertEquals(Logger log, String msg, Object a, Object b) {
 		internalAssertEquals(log, msg, a, b, new HashSet<Object>());
 	}
 	
-  public static void assertEqualDates(Log log, String msg, Date a, Date b) {
+  public static void assertEqualDates(Logger log, String msg, Date a, Date b) {
     if (a == null) a = new Date(0);
     internalAssertEquals(log, msg, a, b, new HashSet<Object>());
   }
 
-	public static void assertTrue(Log log, String msg, boolean val) {
+	public static void assertTrue(Logger log, String msg, boolean val) {
 		if (!val) {
 			log.error(msg);
 			throw new AssertionError(msg);
 		}
 	}
 	
-	public static void fail(Log log, String msg) {
+	public static void fail(Logger log, String msg) {
 		log.error(msg);
 		throw new AssertionError(msg);
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public static void internalAssertEquals(Log log, String msg, Object a, Object b, Set<Object> alreadyCheckedObjs) {
+	public static void internalAssertEquals(Logger log, String msg, Object a, Object b, Set<Object> alreadyCheckedObjs) {
 		if (a != null) {
 			if (alreadyCheckedObjs.contains(a)) return;
 			alreadyCheckedObjs.add(a);
@@ -693,7 +693,7 @@ public class TestUtils {
 		}
 	}
 
-	public static void assertEquals(Log log, String msg, InputStream estrm, InputStream rstrm) throws IOException {
+	public static void assertEquals(Logger log, String msg, InputStream estrm, InputStream rstrm) throws IOException {
 		if (estrm instanceof BContentStream) {
 			BContentStream ecs = (BContentStream)estrm;
 			if (rstrm instanceof BContentStream) {

@@ -8,14 +8,14 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BException;
 import byps.BExceptionC;
 
 public class HActiveMessage {
-  private final static Log log = LogFactory.getLog(HActiveMessage.class);
+  private final static Logger log = LoggerFactory.getLogger(HActiveMessage.class);
   
   final Long messageId;
   

@@ -4,8 +4,8 @@ package byps;
 
 import java.nio.ByteBuffer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BException;
 
@@ -191,6 +191,6 @@ public class BInputJson extends BInput {
 	protected BJsonObject objectTable;
 	public BJsonObject currentObject;
 	public final BBufferJson bbuf;
-	private final static Log log = LogFactory.getLog(BInputJson.class);
+	private final static Logger log = LoggerFactory.getLogger(BInputJson.class);
 }
 

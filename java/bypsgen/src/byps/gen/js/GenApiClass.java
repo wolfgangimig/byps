@@ -3,8 +3,8 @@ package byps.gen.js;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BRegistry;
 import byps.gen.api.MemberInfo;
@@ -13,7 +13,7 @@ import byps.gen.utils.CodePrinter;
 
 class GenApiClass {
 	
-	static Log log = LogFactory.getLog(GenApiClass.class);
+	static Logger log = LoggerFactory.getLogger(GenApiClass.class);
 	
 	static void generate(CustomControl fact, PrintContext pctxt, SerialInfo serInfo) throws IOException {
 		log.debug("generate(" + serInfo);

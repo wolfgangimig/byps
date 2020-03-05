@@ -14,8 +14,8 @@ import javax.tools.DocumentationTool;
 import javax.tools.JavaFileManager;
 import javax.tools.JavaFileObject;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.javadoc.Doclet;
 import com.sun.javadoc.LanguageVersion;
@@ -78,7 +78,7 @@ public class BDoclet extends Doclet {
   /**
    * Logger
    */
-  private static Log log = LogFactory.getLog(BDoclet.class);
+  private static Logger log = LoggerFactory.getLogger(BDoclet.class);
 
   /**
    * Javadoc start function.

@@ -1,15 +1,14 @@
 package byps.test;
 
-import java.io.ByteArrayInputStream;
 import java.nio.ByteBuffer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.PropertyConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BSyncResult;
 import byps.http.HWireClient;
 import byps.http.client.HHttpClient;
+import byps.log.LogConfigurator;
 
 /**
  * SSO test program 
@@ -17,24 +16,14 @@ import byps.http.client.HHttpClient;
  */
 public class BypsSSO {
   
-  private static Log log = LogFactory.getLog(BypsSSO.class);
+  private static Logger log = LoggerFactory.getLogger(BypsSSO.class);
   
   private static void printSystemProperty(String key) {
     log.info(key + "=" + System.getProperty(key));
   }
   
   private static void initLogger() {
-    StringBuilder log4jConsole = new StringBuilder();
-    log4jConsole.append("log4j.rootLogger = info, A1")
-      .append(System.lineSeparator())
-      .append("log4j.appender.A1 = org.apache.log4j.ConsoleAppender")
-      .append(System.lineSeparator())
-      .append("log4j.appender.A1.layout = org.apache.log4j.PatternLayout")
-      .append(System.lineSeparator())
-      .append("log4j.appender.A1.layout.ConversionPattern = %d{ABSOLUTE} %1x %-5p (%F:%L) - %m%n")
-      .append(System.lineSeparator());
-    ByteArrayInputStream in = new ByteArrayInputStream(log4jConsole.toString().getBytes());
-    PropertyConfigurator.configure(in);
+    LogConfigurator.initConsole("info");
   }
   
   public static void main(String[] args) {

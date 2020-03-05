@@ -6,9 +6,9 @@ import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.NDC;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
@@ -19,7 +19,7 @@ import byps.BWire;
 
 public class JcnnGetStream extends JcnnRequest {
 
-  private static Log log = LogFactory.getLog(JcnnGetStream.class);
+  private static Logger log = LoggerFactory.getLogger(JcnnGetStream.class);
   private final BAsyncResult<BContentStream> asyncResult;
 
   protected JcnnGetStream(long trackingId, String url, BAsyncResult<BContentStream> asyncResult,
@@ -30,7 +30,7 @@ public class JcnnGetStream extends JcnnRequest {
 
   @Override
   public void run() {
-    NDC.push("jcnngetstream-" + trackingId);
+    MDC.put("NDC", "jcnngetstream-" + trackingId);
     
     HttpURLConnection c = null;
     InputStream is = null;
@@ -98,7 +98,7 @@ public class JcnnGetStream extends JcnnRequest {
     stream.setContentDisposition(contentDisposition);
 
     asyncResult.setAsyncResult(stream, null);
-    NDC.pop();
+    MDC.remove("NDC");
   }
 
   private long getContentLengthHeader(HttpURLConnection c) {

@@ -5,8 +5,8 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.nio.ByteBuffer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
@@ -28,7 +28,7 @@ public class HHttpPutStreamHelper {
   private final InputStream stream;
   private final BAsyncResult<ByteBuffer> asyncResult;
   private static final int MAX_STREAM_PART_SIZE = 10*1000*1000; 
-  private static Log log = LogFactory.getLog(HHttpPutStreamHelper.class);
+  private static Logger log = LoggerFactory.getLogger(HHttpPutStreamHelper.class);
   
   public HHttpPutStreamHelper(PutBytes putBytesImpl, String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult) {
     this.putBytesImpl = putBytesImpl;

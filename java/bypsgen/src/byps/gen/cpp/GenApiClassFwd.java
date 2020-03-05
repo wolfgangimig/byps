@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.gen.api.SerialInfo;
 import byps.gen.api.TypeInfo;
@@ -17,7 +17,7 @@ import byps.gen.utils.CodePrinter;
 
 class GenApiClassFwd {
 	
-	static Log log = LogFactory.getLog(GenApiClassFwd.class);
+	static Logger log = LoggerFactory.getLogger(GenApiClassFwd.class);
 	
 	enum EForwardMode { NOTHING, PUBLIC, PRIVATE };
 	

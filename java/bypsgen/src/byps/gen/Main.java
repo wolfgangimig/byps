@@ -6,8 +6,8 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Properties;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.gen.cpp.GeneratorCpp;
 import byps.gen.cs.GeneratorCS;
@@ -24,7 +24,7 @@ import byps.gen.utils.CodePrinter;
 
 public class Main {
 
-  private static Log log = LogFactory.getLog(Main.class);
+  private static Logger log = LoggerFactory.getLogger(Main.class);
   
   public enum EMode {
     DETECT,
@@ -121,7 +121,7 @@ public class Main {
     File fileClassDB = context.getFileClassDB();
     if (fileClassDB != null) {
       log.info("Read previous API definitions from ClassDB file ==============");
-      log.info(fileClassDB);
+      log.info("{}", fileClassDB);
       prevClassDB = XmlClassDB.read(fileClassDB, false);
       log.info("");
     }
