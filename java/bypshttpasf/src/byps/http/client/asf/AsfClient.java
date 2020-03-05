@@ -40,7 +40,6 @@ public class AsfClient implements HHttpClient {
 
   private static Logger log = LoggerFactory.getLogger(AsfClient.class);
   private static final String COOKIE_JSESSIONID = "JSESSIONID";
-  private static Logger log = LoggerFactory.getLogger(AsfClient.class);
   private final CloseableHttpClient httpclient;
   private final HttpClientContext context;
   
