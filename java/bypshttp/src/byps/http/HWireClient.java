@@ -1071,6 +1071,10 @@ public class HWireClient extends BWire {
     return getHttpClient().getHttpSession();
   }
 
+  public void setHttpSession(String httpSession) {
+    getHttpClient().setHttpSession(httpSession);
+  }
+
   private volatile BClient_BUtilityRequests clientUtilityRequests;
   
   public void applyNegotiateForUtilityRequests(BNegotiate nego) throws BException {

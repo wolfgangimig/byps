@@ -2,6 +2,7 @@ package byps.http.client.asf;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpCookie;
 import java.nio.ByteBuffer;
 import java.security.Principal;
 
@@ -15,6 +16,7 @@ import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Lookup;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.impl.auth.SPNegoSchemeFactory;
+import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
@@ -22,6 +24,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.WinHttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.impl.cookie.BasicClientCookie2;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
@@ -36,15 +39,22 @@ import byps.http.client.HHttpRequest;
  */
 public class AsfClient implements HHttpClient {
 
+  private static final String COOKIE_JSESSIONID = "JSESSIONID";
   private static Log log = LogFactory.getLog(AsfClient.class);
-  private volatile CloseableHttpClient httpclient;
-  private volatile HttpClientContext context;
+  private final CloseableHttpClient httpclient;
+  private final HttpClientContext context;
+  
+  /**
+   * Service URL.
+   */
+  private final String url;
 
   public AsfClient(String url) {
     if (log.isDebugEnabled()) log.debug("AsfClient(");
     httpclient = internalCreateHttpClient();
-
     context = internalCreateSSOContext();
+    
+    this.url = url != null ? url : "";
     
     // We do not use this call ... because it needs a lot of time under Notes JVM.
     // httpclient = HttpClients.createSystem();
@@ -160,12 +170,33 @@ public class AsfClient implements HHttpClient {
     org.apache.http.client.CookieStore cookieStore = context.getCookieStore();
     if (cookieStore != null) {
       for (org.apache.http.cookie.Cookie cookie : cookieStore.getCookies()) {
-        if (cookie.getName().equals("JSESSIONID")) {
+        if (cookie.getName().equals(COOKIE_JSESSIONID)) {
           return cookie.getValue();
         }
       }
     }
     return ret;
+  }
+
+  @Override
+  public void setHttpSession(String httpSession) {
+    org.apache.http.client.CookieStore cookieStoreOld = context.getCookieStore();
+    BasicCookieStore cookieStoreNew = new BasicCookieStore();
+    
+    // Copy all cookies except JSESSIONID into new cookie store.
+    if (cookieStoreOld != null) {
+      for (org.apache.http.cookie.Cookie cookie : cookieStoreOld.getCookies()) {
+        if (!cookie.getName().equals(COOKIE_JSESSIONID)) {
+          cookieStoreNew.addCookie(cookie);
+        }
+      }
+    }
+
+    // Add JSESSIONID cookie.
+    BasicClientCookie2 jsessionCookie = new BasicClientCookie2(COOKIE_JSESSIONID, httpSession);
+    cookieStoreNew.addCookie(jsessionCookie);
+    
+    context.setCookieStore(cookieStoreNew);
   }
 
   public static void main(String[] args)  {
@@ -183,5 +214,5 @@ public class AsfClient implements HHttpClient {
       e.printStackTrace();
     }
   }
-  
+
 }

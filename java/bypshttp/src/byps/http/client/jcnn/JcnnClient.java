@@ -13,6 +13,8 @@ import byps.http.client.HHttpRequest;
 
 public class JcnnClient implements HHttpClient {
   
+  private static final String COOKIE_JSESSIONID = "JSESSIONID";
+
   private final CookieManager cookieManager;
   
   public final static int MAX_RETRIES = 1;
@@ -50,11 +52,31 @@ public class JcnnClient implements HHttpClient {
   public String getHttpSession() {
     String ret = "";
     for (HttpCookie cookie : cookieManager.getCookieStore().getCookies()) {
-      if (cookie.getName().equals("JSESSIONID")) {
+      if (cookie.getName().equals(COOKIE_JSESSIONID)) {
         ret = cookie.getValue();
         break;
       }
     }
     return ret;
   }
+
+  @Override
+  public void setHttpSession(String httpSession) {
+    boolean found = false;
+    
+    // Find JSESSIONID and replace value.
+    for (HttpCookie cookie : cookieManager.getCookieStore().getCookies()) {
+      if (cookie.getName().equals(COOKIE_JSESSIONID)) {
+        cookie.setValue(httpSession);
+        found = true;
+        break;
+      }
+    }
+    
+    // Add new cookie if JSESSIONID was not found. 
+    if (!found) {
+      cookieManager.getCookieStore().add(null, new HttpCookie(COOKIE_JSESSIONID, httpSession));
+    }
+  }
+  
 }

@@ -81,5 +81,13 @@ public interface HHttpClient {
    * @return Session ID
    */
   public String getHttpSession();
+
+  /**
+   * Set HTTP session ID.
+   * Sets cookie JSESSIONID to the given value. 
+   * @param httpSession Session cookie.
+   */
+  public void setHttpSession(String httpSession);
+    // BYPS-18: Allow to set HTTP session to support OAuth/SAML
   
 }
