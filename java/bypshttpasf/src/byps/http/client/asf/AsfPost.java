@@ -68,7 +68,7 @@ public class AsfPost extends AsfRequest {
       
       ((HttpPost)request).setEntity(new ByteArrayEntity(content));
       
-      response = httpClient.execute(request);
+      response = httpClient.execute(request, context);
 
       statusCode = response.getStatusLine().getStatusCode();
       if (statusCode != HttpURLConnection.HTTP_OK) {

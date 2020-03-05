@@ -24,7 +24,6 @@ import byps.http.client.HHttpRequest;
 
 public abstract class AsfRequest implements HHttpRequest {
 
-  protected AtomicReference<HttpURLConnection> conn = new AtomicReference<HttpURLConnection>();
   protected final String url;
   protected final CloseableHttpClient httpClient;
   protected final HttpClientContext context;
