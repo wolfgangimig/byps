@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.32
+
+- BYPS-18: Allow to set HTTP session cookie.
+
 5.31
 
 - BYPS-17: Generator for the JSON serialization skips transient fields.
