@@ -42,18 +42,11 @@ public class AsfClient implements HHttpClient {
   private static final String COOKIE_JSESSIONID = "JSESSIONID";
   private final CloseableHttpClient httpclient;
   private final HttpClientContext context;
-  
-  /**
-   * Service URL.
-   */
-  private final String url;
 
   public AsfClient(String url) {
     if (log.isDebugEnabled()) log.debug("AsfClient(");
     httpclient = internalCreateHttpClient();
     context = internalCreateSSOContext();
-    
-    this.url = url != null ? url : "";
     
     // We do not use this call ... because it needs a lot of time under Notes JVM.
     // httpclient = HttpClients.createSystem();
@@ -201,8 +194,8 @@ public class AsfClient implements HHttpClient {
   public static void main(String[] args)  {
     try {
       //String url = "http://srvtdev03:6020/ix-elo90";
-      String url = "http://srvpelo1:6080/ix-lldo_prod";
-      //String url = "http://localhost:8084/ix-elo90";
+      //String url = "http://srvpelo1:6080/ix-lldo_prod";
+      String url = "http://localhost:8084/ix-elo90";
       AsfClient client = new AsfClient(url + "/ix");
       BSyncResult<ByteBuffer> asyncResult = new BSyncResult<ByteBuffer>();
       client.get(4, url + "/bypsauth/auth?streamversion=8&responseformat=html&logout=true", asyncResult).run();
