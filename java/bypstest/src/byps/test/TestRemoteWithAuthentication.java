@@ -1,13 +1,14 @@
 package byps.test;
+import java.net.HttpCookie;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicReference;
 
-/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BAsyncResult;
 import byps.BAuthentication;
@@ -16,6 +17,8 @@ import byps.BMessageHeader;
 import byps.BSyncResult;
 import byps.BWire;
 import byps.RemoteException;
+import byps.http.HConstants;
+import byps.http.HWireClient;
 import byps.test.api.BApiDescriptor_Testser;
 import byps.test.api.BClient_Testser;
 import byps.test.api.auth.SessionInfo;
@@ -64,7 +67,11 @@ public class TestRemoteWithAuthentication {
     log.info("testNoAuthObjectSupplied(");
     
     SessionInfo sess = remote.login("Fritz", "abc");
-    log.info("sess=" + sess);
+    log.info("sess={}", sess);
+    
+    HWireClient hwire = (HWireClient)client.getTransport().getWire();
+    String jsessionId = hwire.getHttpSession();
+    log.info("jsessionId={}", jsessionId);
     
     log.info(")testNoAuthObjectSupplied");
   }
@@ -84,6 +91,19 @@ public class TestRemoteWithAuthentication {
     int ret = remote.doit(1);
     TestUtils.assertEquals(log, "ret", 2, ret);
     
+    // BYPS-18: Test that a session cookie can be read and set.
+    
+    HWireClient hwire = (HWireClient)client.getTransport().getWire();
+    HttpCookie sessionCookie = hwire.getHttpCookie(HConstants.HTTP_COOKIE_JSESSIONID);
+    log.info("sessionCookie={}", sessionCookie);
+    
+    BClient_Testser client2 = TestUtilsHttp.createClientForSession(sessionCookie);
+    HWireClient hwire2 = (HWireClient)client2.getTransport().getWire();
+    
+    HttpCookie sessionCookie2 = hwire2.getHttpCookie(HConstants.HTTP_COOKIE_JSESSIONID);
+    log.info("sessionCookie2={}", sessionCookie2);
+    TestUtils.assertEquals(log, "sessionCookie2", sessionCookie.getValue(), sessionCookie2.getValue());
+
     log.info(")testAuthenticate");
   }
   
@@ -228,7 +248,7 @@ public class TestRemoteWithAuthentication {
     try {
       BMessageHeader.BYPS_VERSION_CURRENT = BMessageHeader.BYPS_VERSION_WITH_SESSIONID-1;
       
-      BClient_Testser client = TestUtilsHttp.createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID, BApiDescriptor_Testser.VERSION, 1);
+      BClient_Testser client = TestUtilsHttp.createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID, BApiDescriptor_Testser.VERSION, 1, null);
       client.start();
       
       client.getRemotePrimitiveTypes().setInt(5);

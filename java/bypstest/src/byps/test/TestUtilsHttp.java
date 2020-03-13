@@ -3,6 +3,7 @@ package byps.test;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpCookie;
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -22,6 +23,8 @@ import byps.RemoteException;
 import byps.http.HConstants;
 import byps.http.HTransportFactoryClient;
 import byps.http.HWireClient;
+import byps.http.client.asf.AsfClientFactory;
+import byps.http.client.jcnn.JcnnClientFactory;
 import byps.test.api.BApiDescriptor_Testser;
 import byps.test.api.BClient_Testser;
 import byps.test.api.BRegistry_Testser;
@@ -38,22 +41,35 @@ public class TestUtilsHttp {
 	public static String url2 = "http://localhost:5080/bypstest-srv/bypsservlet";
 	//public static String url = "http://srvtdev02:8020/bypstest-srv/bypsservlet";
 	
-	static {
-    System.setProperty("byps.http.client.factory", "byps.http.client.asf.AsfClientFactory");
+  /**
+   * Von BYPS unterstützte HTTP client factories. 
+   */
+  private static final String[] HTTP_CLIENT_FACTORIES = new String[] { JcnnClientFactory.class.getName(), AsfClientFactory.class.getName() };
 
+	static {
+    System.setProperty(HWireClient.SYSTEM_PROPERTY_HTTP_CLIENT_FACTORY, HTTP_CLIENT_FACTORIES[0]);
 	}
 	
 	private static Executor tpool = Executors.newCachedThreadPool();
 	
   public static BClient_Testser createClient() throws RemoteException {
-    return createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_CURRENT, BApiDescriptor_Testser.VERSION, 1);
+    return createClient(1);
   }
   
   public static BClient_Testser createClient(int nbOfReverseRequests) throws RemoteException {
-    return createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_CURRENT, BApiDescriptor_Testser.VERSION, nbOfReverseRequests);
+    return createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_CURRENT, BApiDescriptor_Testser.VERSION, nbOfReverseRequests, null);
   }
   
-	public static BClient_Testser createClient(BBinaryModel protocolSpec, int flags, int bypsVersion, long appVersion, int nbOfReverseRequests) throws RemoteException {
+  public static BClient_Testser createClientForSession(HttpCookie sessionCookie) throws RemoteException {
+    return createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_CURRENT, BApiDescriptor_Testser.VERSION, 1, sessionCookie);
+  }
+
+  public static BClient_Testser createClient(BBinaryModel protocolSpec, int flags, int bypsVersion, long appVersion, int nbOfReverseRequests) throws RemoteException {
+    return createClient(protocolSpec, flags, bypsVersion, appVersion, nbOfReverseRequests, null);
+  }
+  
+	public static BClient_Testser createClient(BBinaryModel protocolSpec, int flags, int bypsVersion, long appVersion, 
+	    int nbOfReverseRequests, HttpCookie sessionCookie) throws RemoteException {
 		
 		BRegistry registry = null;
 		
@@ -77,6 +93,8 @@ public class TestUtilsHttp {
 		myDesc.addRegistry(registry);
 
 		HWireClient wire = new HWireClient(url, flags, READ_TIMEOUT, tpool);
+		wire.setHttpCookie(sessionCookie);
+		
 		final BTransportFactory transportFactory = new HTransportFactoryClient(myDesc, wire, nbOfReverseRequests); 
 		
 		BClient_Testser client = BClient_Testser.createClient(transportFactory);
@@ -86,8 +104,7 @@ public class TestUtilsHttp {
 		
 		syncResult.getResult();
 		
-		String jsessionId = wire.getHttpSession();
-		log.info("jsessionId=" + jsessionId);
+		log.info("jsessionId={}", wire.getHttpSession());
 		
 		return client;
 	}
@@ -138,5 +155,5 @@ public class TestUtilsHttp {
 		log.info(")makeTestStreams=" + ret);
 		return ret;
 	}
-	
+
 }

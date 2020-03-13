@@ -50,7 +50,7 @@ public class AsfGet extends AsfRequest {
       request.setHeader("Accept", "application/json, application/byps, text/plain, text/html");
       request.setHeader("Accept-Encoding", "gzip");
 
-      response = httpClient.execute(request, context);
+      response = execute();
 
       statusCode = response.getStatusLine().getStatusCode();
       if (statusCode != HttpURLConnection.HTTP_OK) {

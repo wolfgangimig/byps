@@ -2,7 +2,7 @@ BYPS Version History
 
 5.32
 
-- BYPS-18: Allow to set HTTP session cookie.
+- BYPS-18: Allow to set HTTP session cookie to enable SAML and OAuth for ELO Indexserver. 
 
 5.31
 

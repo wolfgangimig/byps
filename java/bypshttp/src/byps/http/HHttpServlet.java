@@ -563,26 +563,25 @@ public abstract class HHttpServlet extends HttpServlet implements
         .debug("getSessionFromMessageHeaderOrHttpRequest(");
     final BHashMap<String, HSession> sessions = HSessionListener
         .getAllSessions();
-    HSession sess = null;
     HttpSession hsess = request.getSession();
+
+    // BYPS-18: HTTP cookie has precedence over BYPS session header inorder to support
+    // SAML and OAuth in ELO Indexserver.
+
+    // BYPS session from HTTP cookie.
+    HSession sess = getFirstBypsSessionFromHttpSession(hsess);
 
     if (log.isDebugEnabled()) log.debug("header=" + header + ", request.session=" + hsess);
 
-    // New client: sessionId found in message header.
-    if (header != null && header.bversion >= BMessageHeader.BYPS_VERSION_WITH_SESSIONID) {
-      if (log.isDebugEnabled()) log.debug("header.sessionId=" + header.sessionId);
-      sess = sessions.get(header.sessionId);
-      if (log.isDebugEnabled()) log.debug("sess from header, session=" + sess);
-    }
-    // Old client: sessionId found in HTTP cookie.
-    else {
-      if (hsess != null) {
-        sess = getFirstBypsSessionFromHttpSession(hsess);
-        if (log.isDebugEnabled()) log
-            .debug("sess from cookie, session=" + sess);
+    // BYPS session from message header.
+    if (sess == null) {
+      if (header != null && header.bversion >= BMessageHeader.BYPS_VERSION_WITH_SESSIONID) {
+        if (log.isDebugEnabled()) log.debug("header.sessionId=" + header.sessionId);
+        sess = sessions.get(header.sessionId);
+        if (log.isDebugEnabled()) log.debug("sess from header, session=" + sess);
       }
     }
-
+    
     if (sess != null) {
       if (log.isDebugEnabled()) log.debug("sess expired=" + sess.isExpired());
       if (sess.isExpired()) {

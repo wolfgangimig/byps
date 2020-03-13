@@ -3,6 +3,7 @@ package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpCookie;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.nio.ByteBuffer;
@@ -1071,8 +1072,23 @@ public class HWireClient extends BWire {
     return getHttpClient().getHttpSession();
   }
 
-  public void setHttpSession(String httpSession) {
-    getHttpClient().setHttpSession(httpSession);
+  /**
+   * Set HTTP cookie.
+   * Adds or replaces a HTTP cookie.  
+   * @param cookie Session cookie.
+   */
+  public void setHttpCookie(HttpCookie cookie) {
+    getHttpClient().setHttpCookie(cookie);
+  }
+
+  /**
+   * Get HTTP session cookie.
+   * Gets the cookie with the given name. 
+   * @param name Cookie name, e.g. HConstants.HTTP_COOKIE_JSESSIONID
+   * @return Session cookie.
+   */
+  public HttpCookie getHttpCookie(String name) {
+    return getHttpClient().getHttpCookie(name);
   }
 
   private volatile BClient_BUtilityRequests clientUtilityRequests;

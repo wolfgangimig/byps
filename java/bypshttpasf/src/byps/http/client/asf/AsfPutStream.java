@@ -84,7 +84,7 @@ public class AsfPutStream extends AsfRequest implements HHttpPutStreamHelper.Put
     int length = bbuf.remaining();
     ((HttpEntityEnclosingRequestBase)request).setEntity(new ByteArrayEntity(content, offset, length));
 
-    try (CloseableHttpResponse response = httpClient.execute(request, context)) {
+    try (CloseableHttpResponse response = execute()) {
       
       request = null;
       

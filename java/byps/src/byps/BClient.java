@@ -178,7 +178,8 @@ public abstract class BClient {
 	 * @param authentication
 	 */
 	public void setAuthentication(BAuthentication authentication) {
-	  transport.setAuthentication(new ClientAuthentication(authentication)); 
+	  BAuthentication clientAuthentication = authentication != null ? new ClientAuthentication(authentication) : null;
+    transport.setAuthentication(clientAuthentication);
 	}
 	
 	/**

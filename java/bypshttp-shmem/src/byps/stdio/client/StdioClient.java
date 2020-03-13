@@ -2,6 +2,7 @@ package byps.stdio.client;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpCookie;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -100,14 +101,34 @@ public class StdioClient extends StdioCommunication implements HHttpClient {
     }
     return messageId;
   }
-  
+
+  /**
+   * Unsupported function.
+   * @return Throws always an UnsupportedOperationException 
+   */
   @Override
   public String getHttpSession() {
     throw new UnsupportedOperationException("HttpClient.getHttpSession is not supported for stdio communication.");
   }
 
+  /**
+   * Unsupported function.
+   * @param name ignored
+   * @return Throws always an UnsupportedOperationException 
+   */
   @Override
-  public void setHttpSession(String httpSession) {
+  public HttpCookie getHttpCookie(String name) {
+    throw new UnsupportedOperationException("HttpClient.getHttpSession is not supported for stdio communication.");
+  }
+  
+  /**
+   * Unsupported function.
+   * Throws always an UnsupportedOperationException.
+   * @param cookie ignored
+   */
+  @Override
+  public void setHttpCookie(HttpCookie cookie) {
     throw new UnsupportedOperationException("HttpClient.setHttpSession is not supported for stdio communication.");
-  }  
+  }
+  
 }

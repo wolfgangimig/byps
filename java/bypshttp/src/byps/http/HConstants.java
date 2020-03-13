@@ -127,6 +127,13 @@ public class HConstants {
    */
   public static final String RESPONSE_HEADER_KEEP_ALIVE_TIMEOUT = "byps.keepAliveTimeoutSeconds";
 
+  /**
+   * HTTP session cookie name.
+   * BYPS-18.
+   * Use this name as parameter in function {@link HWireClient#getHttpCookie(String)}.
+   */
+  public static final String HTTP_COOKIE_JSESSIONID = "JSESSIONID";
+
   
   static
   {

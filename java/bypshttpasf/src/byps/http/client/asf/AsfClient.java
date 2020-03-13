@@ -2,11 +2,11 @@ package byps.http.client.asf;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpCookie;
 import java.nio.ByteBuffer;
 import java.security.Principal;
+import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.apache.http.auth.AuthSchemeProvider;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.Credentials;
@@ -23,11 +23,14 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.WinHttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.impl.cookie.BasicClientCookie2;
+import org.apache.http.impl.cookie.BasicClientCookie;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
 import byps.BSyncResult;
+import byps.http.HConstants;
 import byps.http.client.HHttpClient;
 import byps.http.client.HHttpRequest;
 
@@ -39,7 +42,6 @@ import byps.http.client.HHttpRequest;
 public class AsfClient implements HHttpClient {
 
   private static Logger log = LoggerFactory.getLogger(AsfClient.class);
-  private static final String COOKIE_JSESSIONID = "JSESSIONID";
   private final CloseableHttpClient httpclient;
   private final HttpClientContext context;
 
@@ -162,33 +164,108 @@ public class AsfClient implements HHttpClient {
     org.apache.http.client.CookieStore cookieStore = context.getCookieStore();
     if (cookieStore != null) {
       for (org.apache.http.cookie.Cookie cookie : cookieStore.getCookies()) {
-        if (cookie.getName().equals(COOKIE_JSESSIONID)) {
-          return cookie.getValue();
+        // JSESSIONID=EDAF441A80ECC88EC4D1414AFCDD1AD0; Path=/ix-elo200; HttpOnly
+        if (cookie.getName().equals(HConstants.HTTP_COOKIE_JSESSIONID) && cookie instanceof BasicClientCookie) {
+          BasicClientCookie bcookie = (BasicClientCookie)cookie;
+          ret = bcookie.getValue();
         }
       }
     }
     return ret;
   }
-
+  
+  /**
+   * {@inheritDoc}
+   */
   @Override
-  public void setHttpSession(String httpSession) {
-    org.apache.http.client.CookieStore cookieStoreOld = context.getCookieStore();
-    BasicCookieStore cookieStoreNew = new BasicCookieStore();
-    
-    // Copy all cookies except JSESSIONID into new cookie store.
-    if (cookieStoreOld != null) {
-      for (org.apache.http.cookie.Cookie cookie : cookieStoreOld.getCookies()) {
-        if (!cookie.getName().equals(COOKIE_JSESSIONID)) {
-          cookieStoreNew.addCookie(cookie);
-        }
-      }
-    }
+  public HttpCookie getHttpCookie(String name) {
+    Optional<org.apache.http.cookie.Cookie> opt = internalFindCookie(name);
+    return opt.map(this::toHttpCookie).orElse(null);
+  }
 
-    // Add JSESSIONID cookie.
-    BasicClientCookie2 jsessionCookie = new BasicClientCookie2(COOKIE_JSESSIONID, httpSession);
-    cookieStoreNew.addCookie(jsessionCookie);
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void setHttpCookie(HttpCookie cookie) {
+    if (cookie != null) {
+
+      if (context.getCookieStore() != null) {
+        
+        // ASF cookie store does not support to remove a cookie.
+        // If the given cookie exists, we create a copy of the cookie store without the cookie. 
+      
+        Optional<org.apache.http.cookie.Cookie> optOldCookie = internalFindCookie(cookie.getName());
+        optOldCookie.ifPresent(oldCookie -> {
+          
+          BasicCookieStore cookieStoreNew = new BasicCookieStore();
+          
+          context.getCookieStore().getCookies().stream()
+            .filter(c -> c != oldCookie)
+            .forEach(cookieStoreNew::addCookie);
+            
+          context.setCookieStore(cookieStoreNew);
+        });
+
+      }
+      else {
+        context.setCookieStore(new BasicCookieStore());
+      }
+      
+      org.apache.http.cookie.Cookie httpCookie = fromHttpCookie(cookie);
+      context.getCookieStore().addCookie(httpCookie);
+    }
+  }
+
+  /**
+   * Find cookie with given name.
+   * @param name cookie name
+   * @return Cookie object
+   */
+  private Optional<org.apache.http.cookie.Cookie> internalFindCookie(String name) {
+    Optional<org.apache.http.cookie.Cookie> ret = Optional.empty();
+  
+    if (context.getCookieStore() != null) {
+      ret = context.getCookieStore().getCookies().stream()
+        .filter(c -> c.getName().equalsIgnoreCase(name)).findFirst();
+    }
     
-    context.setCookieStore(cookieStoreNew);
+    return ret;
+  }
+  
+  /**
+   * Convert ASF cookie into HttpCookie.
+   * Copies domain, path, secure, into HttpCookie.
+   * Always sets attribute HttpOnly.
+   * BYPS-18.
+   * @param apacheCookie ASF cookie
+   * @return HttpCookie
+   */
+  private HttpCookie toHttpCookie(org.apache.http.cookie.Cookie apacheCookie) {
+    HttpCookie cookie = new HttpCookie(apacheCookie.getName(), apacheCookie.getValue());
+    cookie.setDomain(apacheCookie.getDomain());
+    cookie.setPath(apacheCookie.getPath());
+    cookie.setSecure(apacheCookie.isSecure());
+    cookie.setHttpOnly(true);
+    return cookie;
+  }
+
+  /**
+   * Convert HttpCookie into ASF cookie object.
+   * Copies domain, path, secure, HttpOnly into ASF cookie.
+   * BYPS-18.
+   * @param cookie jHttpCookie
+   * @return ASF cookie
+   */
+  private org.apache.http.cookie.Cookie fromHttpCookie(HttpCookie cookie) {
+    BasicClientCookie apacheCookie = new BasicClientCookie(cookie.getName(), cookie.getValue());
+    apacheCookie.setDomain(cookie.getDomain());
+    apacheCookie.setPath(cookie.getPath());
+    apacheCookie.setSecure(cookie.getSecure());
+    if (cookie.isHttpOnly()) {
+      apacheCookie.setAttribute("HttpOnly", null);
+    }
+    return apacheCookie;
   }
 
   public static void main(String[] args)  {

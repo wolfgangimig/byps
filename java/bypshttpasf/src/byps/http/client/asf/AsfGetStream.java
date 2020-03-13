@@ -46,7 +46,7 @@ public class AsfGetStream extends AsfRequest {
 
     try {
       
-      response = httpClient.execute(request, context);
+      response = execute();
 
       statusCode = response.getStatusLine().getStatusCode();
       if (statusCode != HttpURLConnection.HTTP_OK && statusCode != HttpURLConnection.HTTP_PARTIAL) {

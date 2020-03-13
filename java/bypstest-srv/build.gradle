@@ -55,6 +55,8 @@ dependencies {
 	
 	compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '8.0.+'
 	
+	compile("ch.qos.logback:logback-classic:1.2.3")
+	
 }
 
 

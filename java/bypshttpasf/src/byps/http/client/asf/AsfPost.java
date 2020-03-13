@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.apache.http.HttpEntity;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.protocol.HttpClientContext;
@@ -57,18 +58,21 @@ public class AsfPost extends AsfRequest {
         request.setHeader("Content-Encoding", "gzip");
       }
       
-      byte[] content = buf.array();
-      if (isJson || buf.position() != 0) {
+      HttpEntity postEntity = null;
+      if (isJson) {
         buf.mark();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         BWire.bufferToStream(buf, isJson, bos);
-        content = bos.toByteArray();
+        postEntity = new ByteArrayEntity(bos.toByteArray());
         buf.reset();
       }
+      else {
+        postEntity = new ByteArrayEntity(buf.array(), buf.position(), buf.remaining());
+      }
       
-      ((HttpPost)request).setEntity(new ByteArrayEntity(content));
+      ((HttpPost)request).setEntity(postEntity);
       
-      response = httpClient.execute(request, context);
+      response = execute();
 
       statusCode = response.getStatusLine().getStatusCode();
       if (statusCode != HttpURLConnection.HTTP_OK) {
@@ -107,5 +111,4 @@ public class AsfPost extends AsfRequest {
 
   }
 
-  
 }

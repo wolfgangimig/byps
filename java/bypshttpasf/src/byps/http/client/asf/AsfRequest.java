@@ -2,21 +2,22 @@ package byps.http.client.asf;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBufferJson;
 import byps.BWire;
@@ -113,7 +114,7 @@ public abstract class AsfRequest implements HHttpRequest {
           boolean gzip = isEntityGzipEncoded(entity);
           obuf = BWire.bufferFromStream(is, gzip);
           if (log.isDebugEnabled()) {
-            log.debug("received #bytes=" + obuf.remaining());
+            log.debug("received #bytes={}", obuf.remaining());
             obuf.mark();
             BBufferJson bbuf = new BBufferJson(obuf);
             log.debug(bbuf.toDetailString());
@@ -126,5 +127,36 @@ public abstract class AsfRequest implements HHttpRequest {
       }
     }
     return obuf;
+  }
+
+  /**
+   * Execute this request.
+   * @return Response object.
+   */
+  protected CloseableHttpResponse execute() throws IOException {
+    dumpCookiesIntoLog("send.");
+    CloseableHttpResponse ret = httpClient.execute(request, context);
+    dumpCookiesIntoLog("recv.");
+    return ret;
+  }
+
+  /**
+   * Print cookies of current HttpClientContext into log file.
+   * BYPS-18
+   * @param msg Message text before cookie list.
+   */
+  protected void dumpCookiesIntoLog(String msg) {
+    if (log.isDebugEnabled()) {
+      log.debug("{}dumpCookiesIntoLog(", msg);
+      org.apache.http.client.CookieStore cookieStore = context.getCookieStore();
+      if (cookieStore != null) {
+        List<org.apache.http.cookie.Cookie> cookies = cookieStore.getCookies();
+        log.debug("#cookies={}", cookies.size());
+        for (org.apache.http.cookie.Cookie cookie : cookies) {
+          log.debug("cookie={}", cookie);
+        }
+      }
+      log.debug(")dumpCookiesIntoLog");
+    }
   }
 }
