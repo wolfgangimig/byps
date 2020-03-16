@@ -94,7 +94,7 @@ public interface HHttpClient {
   /**
    * Set HTTP cookie.
    * Adds or replaces a HTTP cookie.  
-   * Ensure that at least domain, path, secure and httpOnly is set in the given cookie.  
+   * Ensure that at least name, value, domain, path, secure and httpOnly are set in the given cookie.  
    * @param cookie Session cookie.
    */
   public void setHttpCookie(java.net.HttpCookie cookie);
