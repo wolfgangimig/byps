@@ -235,7 +235,7 @@ public abstract class HSession
   
   public String toString() {
     BServer server = getServer();
-    return "[user=" + remoteUser + ", targetId=" + server.getTargetId() + "]";
+    return "[user=" + remoteUser + ", targetId=" + (server != null ? server.getTargetId() : BTargetId.ZERO) + "]";
   }
   
   public String getRemoteUser() {

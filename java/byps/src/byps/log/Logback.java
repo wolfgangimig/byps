@@ -35,7 +35,7 @@ class Logback implements LogFramework {
     config.append("  <appender name=\"STDOUT\" class=\"ch.qos.logback.core.ConsoleAppender\">")
         .append(System.lineSeparator());
     config.append("    <encoder>").append(System.lineSeparator());
-    config.append("      <pattern>%d{HH:mm:ss.SSS} %X{NDC} %-5level %-28(\\(%logger{0}.java:%L\\)) - %msg%n</pattern>")
+    config.append("      <pattern>%d{HH:mm:ss.SSS} %-5level %-60(%thread %X{NDC} \\(%logger{0}.java:%L\\)) - %msg%n</pattern>")
         .append(System.lineSeparator());
     config.append("    </encoder>").append(System.lineSeparator());
     config.append("  </appender>").append(System.lineSeparator());
@@ -58,8 +58,9 @@ class Logback implements LogFramework {
     config.append("  <appender name=\"FILE\" class=\"ch.qos.logback.core.FileAppender\">")
         .append(System.lineSeparator());
     config.append("    <file>").append(file).append("</file>").append(System.lineSeparator());
+    config.append("    <append>false</append>");
     config.append("    <encoder>").append(System.lineSeparator());
-    config.append("      <pattern>%d{HH:mm:ss.SSS} %X{NDC} %-5level %-28(\\(%logger{0}.java:%L\\)) - %msg%n</pattern>")
+    config.append("      <pattern>%d{HH:mm:ss.SSS} %-5level %-60(%thread %X{NDC} \\(%logger{0}.java:%L\\)) - %msg%n</pattern>")
         .append(System.lineSeparator());
     config.append("    </encoder>").append(System.lineSeparator());
     config.append("  </appender>").append(System.lineSeparator());

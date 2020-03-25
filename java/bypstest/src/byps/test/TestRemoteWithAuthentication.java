@@ -41,7 +41,7 @@ public class TestRemoteWithAuthentication {
     client1.getRemoteWithAuthentication().setUseAuthentication(true);
     client1.done();
     
-    client = TestUtilsHttp.createClient();
+    client = TestUtilsHttp.createClient(1);
     remote = client.getRemoteWithAuthentication();
   }
   
@@ -140,7 +140,7 @@ public class TestRemoteWithAuthentication {
     client.setAuthentication(new MyAuthentication("Fritz", "abc"));
 
     // Login/Re-login
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 3; i++) {
    
       // This method call will fail internally the first time with a BExceptionO.AUTHENTICATION_REQUIRED.
       // Then, BTranpsport invokes MyAuthentication.authenticate and retries the method call.
@@ -238,32 +238,6 @@ public class TestRemoteWithAuthentication {
 
   }
 
-  /**
-   * Check that clients are still supported that do not send a sessionId in the message header.
-   */
-  @Test
-  public void testBypsVersionWithoutSessionId() {
-    log.info("testBypsVersionWithoutSessionId(");
-    
-    try {
-      BMessageHeader.BYPS_VERSION_CURRENT = BMessageHeader.BYPS_VERSION_WITH_SESSIONID-1;
-      
-      BClient_Testser client = TestUtilsHttp.createClient(TestUtils.protocol, BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_ENCRYPTED_TARGETID, BApiDescriptor_Testser.VERSION, 1, null);
-      client.start();
-      
-      client.getRemotePrimitiveTypes().setInt(5);
-      int value = client.getRemotePrimitiveTypes().getInt();
-      TestUtils.assertEquals(log, "int value", 5, value);
-      
-    }
-    catch (Throwable e) {
-      TestUtils.fail(log, e.toString());
-    }
-
-    log.info(")testBypsVersionWithoutSessionId");
-  }
-  
-  
   /**
    * Check that logout of one session does not interrupt other messages.
    * BYPS-12
