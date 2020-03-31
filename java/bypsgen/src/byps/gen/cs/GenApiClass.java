@@ -167,7 +167,14 @@ class GenApiClass {
 			sbuf.append(value);
 		}
 		else if (tinfo.qname.equals("long")) {
-			if (value instanceof Number) value = ((Number)value).longValue();
+			if (value instanceof Number) {
+			  value = ((Number)value).longValue();
+			}
+			else if (value instanceof String) {
+		     String svalue = (String)value;
+		     if (svalue.endsWith(".")) svalue = svalue.substring(0, svalue.length()-1);
+		     value = Long.parseLong(svalue);
+			}
 			sbuf.append(value).append("L");
 		}
 		else if (tinfo.qname.equals("double")) {

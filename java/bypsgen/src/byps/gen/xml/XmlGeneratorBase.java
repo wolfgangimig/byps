@@ -253,6 +253,11 @@ public abstract class XmlGeneratorBase extends AbstractProcessor {
       }
       sbuf.append("\"").append(value).append("\"");
     }
+    else if (clazz == Long.class) {
+      // BYPS-21: Serialize Long values not as number because of rounding issues from Double.
+      // Use String representation in relation to BBufferJson. The value is read with BBufferJson.
+      sbuf.append("\"").append(value).append(".\"");
+    }
     else if (clazz == String.class) {
       sbuf.append("\"").append(value).append("\"");
     }

@@ -18,7 +18,7 @@ namespace byps.test.api.inherit
 		public override int getRemoteId() { return 715959905; }
 		
 		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
-			// checkpoint byps.gen.cs.GenApiClass:406
+			// checkpoint byps.gen.cs.GenApiClass:413
 			try {
 				FruitService __byps__remoteT = (FruitService)__byps__remote;				
 				BAsyncResultSendMethod<String> __byps__outerResult = new BAsyncResultSendMethod<String>(__byps__asyncResult, new byps.test.api.BResult_10());				
