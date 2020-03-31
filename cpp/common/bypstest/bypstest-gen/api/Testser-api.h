@@ -333,6 +333,14 @@ namespace byps {
 				class HebrewZ; 
 				typedef byps_ptr< HebrewZ > PHebrewZ; 
 				
+				// byps.test.api.cons.SordC
+				class SordC; 
+				typedef byps_ptr< SordC > PSordC; 
+				
+				// byps.test.api.cons.SordZ
+				class SordZ; 
+				typedef byps_ptr< SordZ > PSordZ; 
+				
 				// byps.test.api.cons.AllTypesZ[][]
 				typedef ::byps::BArray2< byps::test::api::cons::PAllTypesZ >  BArray2AllTypesZ;
 				typedef byps_ptr< BArray2AllTypesZ > PArray2AllTypesZ;
@@ -1045,7 +1053,7 @@ class AllTypesC : public BSerializable {
 	public: const static wchar_t char2s = L'\u20ac';
 	public: const static int16_t short1s = (int16_t)3;
 	public: const static int32_t int1s = 4;
-	public: const static int64_t long1s = 6148914691236517205LL;
+	public: const static int64_t long1s = 6148914691236517205.LL;
 	public: const static float float1s;
 	public: const static double double1s;
 	public: const static ::std::wstring string1s;
@@ -1183,6 +1191,56 @@ class HebrewZ : public BSerializable {
 	public: virtual BTYPEID BSerializable_getTypeId();
 	public: ::std::wstring getCore() { return core; }
 	public: void setCore(::std::wstring v);
+	// checkpoint byps.gen.cpp.GenApiClass:870
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:652
+//-------------------------------------------------
+// SordC
+// typeId=632707056
+
+namespace byps { namespace test { namespace api { namespace cons { 
+
+using namespace ::byps;
+
+class SordC : public BSerializable {
+	private: static int64_t mbAllMembers;
+	public: const static PSordZ mbAll;
+	
+	// checkpoint byps.gen.cpp.GenApiClass:488
+	public: SordC();
+	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	public: static int64_t getMbAllMembers() { return mbAllMembers; }
+	public: void setMbAllMembers(int64_t v);
+	// checkpoint byps.gen.cpp.GenApiClass:870
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:652
+//-------------------------------------------------
+// SordZ
+// typeId=691830
+
+namespace byps { namespace test { namespace api { namespace cons { 
+
+using namespace ::byps;
+
+class SordZ : public BValueClass {
+	protected: int64_t bset;
+	
+	// checkpoint byps.gen.cpp.GenApiClass:488
+	public: SordZ();
+	// checkpoint byps.gen.cpp.GenApiClass:535
+	public: SordZ(int64_t bset);	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	public: int64_t getBset() { return bset; }
+	public: void setBset(int64_t v);
 	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
 };
@@ -4026,9 +4084,9 @@ using namespace ::byps;
 
 class BApiDescriptor_Testser { 
 	/**
-	 * API serialisation version: 794.0.0.0
+	 * API serialisation version: 795.0.0.0
 	 */
-	public: const static int64_t VERSION = 79400000000000000LL;
+	public: const static int64_t VERSION = 79500000000000000LL;
 	public: static PApiDescriptor instance();
 };
 

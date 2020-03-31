@@ -30,9 +30,9 @@ byps.test.api.cons = byps.test.api.cons || {};
 */
 byps.test.api.BApiDescriptor_Testser = {
 	/**
-	 * API serialisation version: 794.0.0.0
+	 * API serialisation version: 795.0.0.0
 	 */
-	VERSION : "794.0.0.0",
+	VERSION : "795.0.0.0",
 	
 	/**
 	 * Internal used API Desciptor.
@@ -41,7 +41,7 @@ byps.test.api.BApiDescriptor_Testser = {
 		return new byps.BApiDescriptor(
 			"Testser",
 			"byps.test.api",
-			"794.0.0.0",
+			"795.0.0.0",
 			false, // uniqueObjects
 			new byps.test.api.BRegistry_Testser()
 		);
@@ -185,6 +185,26 @@ byps.test.api.cons.HebrewC = function() {
 byps.test.api.cons.HebrewZ = function(core) {
 	this._typeId = 1518668429;
 	this.core = core || "";
+};
+
+
+/**
+ * @author wolfgang
+ * @since 795.0.0.0
+*/
+byps.test.api.cons.SordC = function(mbAllMembers) {
+	this._typeId = 632707056;
+	this.mbAllMembers = mbAllMembers || '0.';
+};
+
+
+/**
+ * @author wolfgang
+ * @since 795.0.0.0
+*/
+byps.test.api.cons.SordZ = function(bset) {
+	this._typeId = 691830;
+	this.bset = bset || '0.';
 };
 
 
@@ -563,7 +583,7 @@ byps.test.api.cons.AllTypesC_Type = function() {
 	this.char2s = '\u20ac';
 	this.short1s = 3;
 	this.int1s = 4;
-	this.long1s = "6148914691236517205.";
+	this.long1s = "6148914691236517205..";
 	this.float1s = 6.8;
 	this.double1s = 7.8;
 	this.string1s = "Aa__\u00b6\u00b6__\u20ac\u20ac__\t\r\n\"\'";
@@ -572,12 +592,12 @@ byps.test.api.cons.AllTypesC_Type = function() {
 	 * The field value cannot be changed, but it's contents could.
 	 * This defines a complex constant.
 	*/
-	this.ALL = new byps.test.api.cons.AllTypesZ(true, 1, 'A', 2, 3, "4.", 5.0, 6.0, "777", new byps.test.api.cons.HebrewZ("\u05d0"), "AQID", [-4,-5], ["a","b"], [new byps.test.api.cons.HebrewZ("\u05d0"),new byps.test.api.cons.HebrewZ("\u05d1")]);
+	this.ALL = new byps.test.api.cons.AllTypesZ(true, 1, 'A', 2, 3, "4..", 5.0, 6.0, "777", new byps.test.api.cons.HebrewZ("\u05d0"), "AQID", [-4,-5], ["a","b"], [new byps.test.api.cons.HebrewZ("\u05d0"),new byps.test.api.cons.HebrewZ("\u05d1")]);
 	this.arrInt = [1,2,3];
 	this.arrInt4 = [[[[1,2],[4,5]],[[11,12],[14,15]]],[[[21,22],[24,25]],[[211,212],[214,215]]]];
 	this.arrStrings = ["s1","s2"];
 	this.arrStrings4 = [[[["s1","s2"]]]];
-	this.arrALL = [[new byps.test.api.cons.AllTypesZ(false, 0, '\u0000', 0, 0, "0.", 0.0, 0.0, "", null, null, null, null, null)],[new byps.test.api.cons.AllTypesZ(true, 1, 'A', 2, 3, "4.", 5.0, 6.0, "777", new byps.test.api.cons.HebrewZ("\u05d0"), "AQID", [-4,-5], ["a","b"], [new byps.test.api.cons.HebrewZ("\u05d0"),new byps.test.api.cons.HebrewZ("\u05d1")])]];
+	this.arrALL = [[new byps.test.api.cons.AllTypesZ(false, 0, '\u0000', 0, 0, "0..", 0.0, 0.0, "", null, null, null, null, null)],[new byps.test.api.cons.AllTypesZ(true, 1, 'A', 2, 3, "4..", 5.0, 6.0, "777", new byps.test.api.cons.HebrewZ("\u05d0"), "AQID", [-4,-5], ["a","b"], [new byps.test.api.cons.HebrewZ("\u05d0"),new byps.test.api.cons.HebrewZ("\u05d1")])]];
 };
 
 byps.test.api.cons.HebrewC_Type = function() {
@@ -585,6 +605,11 @@ byps.test.api.cons.HebrewC_Type = function() {
 	this.beth = "\u05d1";
 	this.ALEPH = new byps.test.api.cons.HebrewZ("\u05d0");
 	this.BETH = new byps.test.api.cons.HebrewZ("\u05d1");
+};
+
+byps.test.api.cons.SordCC_Type = function() {
+	// mbAllMembers // long
+	this.mbAll = new byps.test.api.cons.SordZ("2196631268005773311..");
 };
 
 byps.test.api.enu.EnumPlanets = {
@@ -616,6 +641,12 @@ byps.test.api.cons.AllTypesC = new byps.test.api.cons.AllTypesC_Type();
 /**
 */
 byps.test.api.cons.HebrewC = new byps.test.api.cons.HebrewC_Type();
+
+/**
+ * @author wolfgang
+ * @since 795.0.0.0
+*/
+byps.test.api.cons.SordCC = new byps.test.api.cons.SordCC_Type();
 
 
 /**
@@ -7283,6 +7314,33 @@ byps.test.api.BRegistry_Testser = function() {
 		92445340 : new byps.BSerializerArray(
 			1518668429, // Element type: byps.test.api.cons.HebrewZ
 			1
+		),
+		
+		// byps.test.api.cons.SordC
+		632707056 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:146
+			// names of persistent elements
+			{
+				"mbAllMembers":6, // long
+				"mbAll":691830 // byps.test.api.cons.SordZ
+			},
+			// checkpoint byps.gen.js.GenRegistry:146
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.cons.SordZ
+		691830 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:146
+			// names of persistent elements
+			{
+				"bset":6 // long
+			},
+			// checkpoint byps.gen.js.GenRegistry:146
+			null,
+			// inlineInstance
+			false
 		),
 		
 		// byps.test.api.enu.EnumPlanets[]

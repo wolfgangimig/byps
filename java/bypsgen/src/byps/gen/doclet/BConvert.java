@@ -418,6 +418,11 @@ public class BConvert extends XmlGeneratorBase {
 		
 		long since = getSince(errInfo, field.tags());
 		
+		// FIXME
+		if (name.equalsIgnoreCase("mbAll")) {
+		  log.info("sordz");
+		}
+		
 		// Constant or Enum?
 		String value = null;
 		if (((field.isFinal() && field.isStatic()) || field.isEnumConstant())) {

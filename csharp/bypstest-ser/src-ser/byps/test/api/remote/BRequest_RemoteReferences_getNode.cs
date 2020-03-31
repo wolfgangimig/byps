@@ -18,7 +18,7 @@ namespace byps.test.api.remote
 		public override int getRemoteId() { return 568637225; }
 		
 		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
-			// checkpoint byps.gen.cs.GenApiClass:406
+			// checkpoint byps.gen.cs.GenApiClass:413
 			try {
 				RemoteReferences __byps__remoteT = (RemoteReferences)__byps__remote;				
 				BAsyncResultSendMethod<byps.test.api.refs.Node> __byps__outerResult = new BAsyncResultSendMethod<byps.test.api.refs.Node>(__byps__asyncResult, new byps.test.api.BResult_9001());				
