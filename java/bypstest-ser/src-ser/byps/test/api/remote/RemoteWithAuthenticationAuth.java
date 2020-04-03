@@ -14,9 +14,9 @@ public interface RemoteWithAuthenticationAuth extends BRemote {
 	 * Set authentication flag in MySession.
 	 * @throws RemoteException
 	*/
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:396
 	public void setUseAuthentication(boolean useAuth) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:440
 	public void setUseAuthentication(boolean useAuth, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
@@ -28,9 +28,9 @@ public interface RemoteWithAuthenticationAuth extends BRemote {
 	 * Login.
 	 * @throws RemoteException
 	*/
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:396
 	public byps.test.api.auth.SessionInfo login(java.lang.String userName, java.lang.String userPwd) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:440
 	public void login(java.lang.String userName, java.lang.String userPwd, final BAsyncResult<byps.test.api.auth.SessionInfo> asyncResult) ;
 	
 	/**
@@ -40,9 +40,9 @@ public interface RemoteWithAuthenticationAuth extends BRemote {
 	 * Do something.
 	 * @throws RemoteException
 	*/
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:396
 	public int doit(int value) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:440
 	public void doit(int value, final BAsyncResult<Integer> asyncResult) ;
 	
 	/**
@@ -50,9 +50,9 @@ public interface RemoteWithAuthenticationAuth extends BRemote {
 	 * Logout
 	 * @throws RemoteException
 	*/
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:396
 	public void expire() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:440
 	public void expire(final BAsyncResult<Object> asyncResult) ;
 	
 	/**
@@ -61,9 +61,9 @@ public interface RemoteWithAuthenticationAuth extends BRemote {
 	 * Set the number of login calls nessesary to login the user.
 	 * @throws RemoteException
 	*/
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:396
 	public void setReloginCount(int count) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:440
 	public void setReloginCount(int count, final BAsyncResult<Object> asyncResult) ;
 	
 	

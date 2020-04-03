@@ -343,12 +343,6 @@ public class XmlGenerator extends XmlGeneratorBase {
       Element containingClass = fieldElement.getEnclosingElement();
       TypeInfo containingTypeInfo = makeTypeInfo(errorInfo, containingClass.asType());
       
-      // FIXME
-      if (name.equalsIgnoreCase("mbAll")) {
-        log.info("sordz");
-      }
-
-      
       Object valueObj = classDB.fieldReader.getValue(containingTypeInfo, name);
       if (valueObj != null) {
         if (isEnumConstant) {

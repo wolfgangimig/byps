@@ -1,11 +1,5 @@
 package byps;
 
-/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-
-import byps.BException;
-
-
-
 public abstract class BSerializer {
 	
 	public final int typeId;	
@@ -36,4 +30,12 @@ public abstract class BSerializer {
 	 */
 	public abstract Object read(final Object obj1, final BInput bin1, final long version) throws BException;
 	
+  /**
+   * Assign the BClient object of BInput to the given object.
+   * @param obj Object to be prepared
+   * @param ser Serializer for the object or null
+   * @throws BException
+   */
+	public void prepareForLazyLoading(final Object obj, final BInput bin, final long version) throws BException {
+	}
 }

@@ -18,11 +18,11 @@ public class BSkeleton_RemoteProcessingEx extends BSkeleton implements RemotePro
 	
 	public final static long serialVersionUID = 790485113L;
 	
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:396
 	public boolean getValueAfterProcessingExceptions(int sleepSeconds) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:440
 	public void getValueAfterProcessingExceptions(int sleepSeconds, final BAsyncResult<Boolean> asyncResult) {
 		try {
 			boolean ret = getValueAfterProcessingExceptions(sleepSeconds);

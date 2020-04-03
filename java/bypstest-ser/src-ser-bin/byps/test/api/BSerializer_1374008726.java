@@ -28,7 +28,7 @@ public class BSerializer_1374008726 extends BSerializer {
 		final byte[] arr =  new byte[n0];
 		bin.onObjectCreated(arr);
 		
-		// read
+		
 		final byte[] a0 = arr;
 		bin.bbuf.getArrayByte(a0);
 		
@@ -46,7 +46,7 @@ public class BSerializer_1374008726 extends BSerializer {
 		final int n0 = arr.length;
 		bbuf.putLength(n0);
 		
-		// write
+		
 		final byte[] a0 = arr;
 		bout.bbuf.putArrayByte(a0);
 	}

@@ -22,16 +22,22 @@ public class GenSerStructJson extends GenSerStruct{
 		baseSerializerName = pctxt.getSerializerQName(serInfo.baseInfo, BBinaryModel.JSON);
 	}
 	
-	protected void printPutMember(MemberInfo minfo) throws IOException {
-		//log.debug(GeneratorJ.class.getName(), "printPutMember", minfo);
-		pctxt.printStreamPutMember(pr, BBinaryModel.JSON, "obj.", minfo.name, minfo.name, minfo.access == MemberAccess.PRIVATE, minfo.type);
-		//log.debug(GeneratorJ.class.getName(), "printPutMember");
+	@Override
+	protected void printPutMember(MemberInfo minfo) {
+		try {
+      pctxt.printStreamPutMember(pr, BBinaryModel.JSON, "obj.", minfo.name, minfo.name, minfo.access == MemberAccess.PRIVATE, minfo.type);
+    } catch (IOException e) {
+      throw new IllegalStateException(e);
+    }
 	}
 
-	protected void printGetMember(MemberInfo minfo) throws IOException {
-		//log.debug(GeneratorJ.class.getName(), "printGetMember");
-		pctxt.printStreamGetMember(pr, BBinaryModel.JSON, "obj.", minfo.name, minfo.name, minfo.access == MemberAccess.PRIVATE, minfo.type);
-		//log.debug(GeneratorJ.class.getName(), "printGetMember");
+  @Override
+	protected void printGetMember(MemberInfo minfo) {
+		try {
+      pctxt.printStreamGetMember(pr, BBinaryModel.JSON, "obj.", minfo.name, minfo.name, minfo.access == MemberAccess.PRIVATE, minfo.type);
+    } catch (IOException e) {
+      throw new IllegalStateException(e);
+    }
 	}
 	
 	

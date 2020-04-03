@@ -116,6 +116,28 @@ public class GenSerMap {
 	    pr.endBlock();
 	    pr.println("}");
 	}
+	
+  protected void printPrepareForLazyLoading() {
+    String listType = serInfo.toString("java.util");
+    
+    pr.println("@Override");
+    pr.println("public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {");
+    pr.beginBlock();
+
+    pr.print(listType).print(" map = (").print(listType).print(")obj1;").println();
+
+    pr.print("for (Map.Entry<").print(keyType.toString()).print(",").print(valueType.toString()).print("> obj : map.entrySet()) {").println();
+    pr.beginBlock();
+
+    pctxt.printStreamPrepareMember(pr, bmodel, "obj.", "key", true, keyType);
+    pctxt.printStreamPrepareMember(pr, bmodel, "obj.", "value", true, valueType);
+    
+    pr.endBlock();
+    pr.println("}");
+
+    pr.endBlock();
+    pr.println("}");
+  }
 
 	void generate() throws IOException {
 		//log.debug(GenSerMap.class.getName(), "generateListSerializer");
@@ -151,6 +173,12 @@ public class GenSerMap {
 		printWrite();
 		pr.println();
 		
+    // Does element type contain members that are potentially lazy loaded?
+    if (pctxt.isLazyLoadingType(serInfo)) {
+  		printPrepareForLazyLoading();
+  		pr.println();
+    }
+    
 		pr.endBlock();
 		
 		pr.println("}");

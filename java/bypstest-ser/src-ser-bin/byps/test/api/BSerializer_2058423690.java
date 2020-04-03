@@ -28,7 +28,7 @@ public class BSerializer_2058423690 extends BSerializer {
 		final boolean[] arr =  new boolean[n0];
 		bin.onObjectCreated(arr);
 		
-		// read
+		
 		final boolean[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
 			a0[i0] = bbuf.getBoolean();
@@ -48,10 +48,10 @@ public class BSerializer_2058423690 extends BSerializer {
 		final int n0 = arr.length;
 		bbuf.putLength(n0);
 		
-		// write
+		
 		final boolean[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:357
+			// checkpoint byps.gen.j.PrintContext:370
 			bbuf.putBoolean(a0[i0]);
 		}
 	}

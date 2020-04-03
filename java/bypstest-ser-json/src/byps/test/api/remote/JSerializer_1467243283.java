@@ -14,7 +14,7 @@ import byps.*;
 // isInline=false
 // #members=3
 
-// checkpoint byps.gen.j.GenSerStruct:274
+// checkpoint byps.gen.j.GenSerStruct:304
 @SuppressWarnings("all")
 public class JSerializer_1467243283 extends JSerializer_Object {
 	
@@ -47,6 +47,15 @@ public class JSerializer_1467243283 extends JSerializer_Object {
 		obj.arr4 = (byps.test.api.inl.Point2D[][][][])bin.readObj("arr4", false, byps.test.api.JSerializer_949340697.instance);
 		
 		return obj;
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		final BRequest_RemoteArrayTypes23_sendArraysInline obj = (BRequest_RemoteArrayTypes23_sendArraysInline)(obj1);		
+		bin.prepareForLazyLoading(obj.arr2, byps.test.api.BSerializer_827767075.instance);
+		bin.prepareForLazyLoading(obj.arr3, byps.test.api.BSerializer_915212229.instance);
+		bin.prepareForLazyLoading(obj.arr4, byps.test.api.BSerializer_949340697.instance);
+		
 	}
 	
 }

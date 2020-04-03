@@ -36,8 +36,16 @@ public class JSerializer_1358523233 extends JSerializer_13 {
 	@Override
 	protected void internalWriteKeyValue(final BOutputJson bout, final BBufferJson bbuf, final Object key, final Object value) throws BException {
 		final String keyName = key != null ? key.toString() : "";
-		// checkpoint byps.gen.j.PrintContext:327
+		// checkpoint byps.gen.j.PrintContext:340
 		bout.writeObj(keyName, value, false, byps.test.api.inl.JSerializer_1835035436.instance);
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		Map<java.lang.Integer,byps.test.api.inl.Point2D> map = (Map<java.lang.Integer,byps.test.api.inl.Point2D>)obj1;
+		for (Map.Entry<java.lang.Integer,byps.test.api.inl.Point2D> obj : map.entrySet()) {
+			bin.prepareForLazyLoading(obj.getValue(), byps.test.api.inl.JSerializer_1835035436.instance);
+		}
 	}
 	
 }

@@ -39,9 +39,9 @@ public class BSerializer_493795497 extends BSerializer_13 {
 		int n = map.size();
 		bbuf.putLength(n);
 		for (Map.Entry<java.lang.String,byps.test.api.enu.EnumPlanets> obj : map.entrySet()) {
-			// checkpoint byps.gen.j.PrintContext:346
+			// checkpoint byps.gen.j.PrintContext:359
 			bbuf.putString(obj.getKey() != null ? (String)obj.getKey() : "");
-			// checkpoint byps.gen.j.PrintContext:357
+			// checkpoint byps.gen.j.PrintContext:370
 			bbuf.putInt(obj.getValue() != null ? ((byps.test.api.enu.EnumPlanets)obj.getValue()).ordinal() : 0);
 		}
 	}

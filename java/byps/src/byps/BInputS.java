@@ -5,9 +5,6 @@ package byps;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 
-import byps.BException;
-
-
 public class BInputS extends BInputBin {
 
 	public BInputS(BTransport transport, BMessageHeader header, ByteBuffer buf) {

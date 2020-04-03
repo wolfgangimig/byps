@@ -266,6 +266,19 @@ class PrintContext extends PrintContextBase {
 		}
 	}
 
+  protected void printStreamPrepareMember(CodePrinter pr, BBinaryModel pformat, String objName, String memberName, boolean isPrivate,
+      TypeInfo tinfo) {
+    
+    if (isLazyLoadingType(tinfo)) {
+      String memberGetter = objName + getterForMember(memberName, isPrivate, tinfo);
+      String memberSerializer = getSerializerInstance(tinfo, pformat);
+      CodePrinter mpr = pr.print("bin.prepareForLazyLoading(");
+      mpr.print(memberGetter)
+        .print(", ").print(memberSerializer)
+        .println(");");
+    }
+  }
+
 	public void printStreamGetItem(CodePrinter pr, BBinaryModel pformat, String lhs, TypeInfo tinfo) {
 		printStreamGetItem(pr, pformat, lhs, tinfo, "bin.currentObject", "i0");
 	}
@@ -517,7 +530,37 @@ class PrintContext extends PrintContextBase {
   public String getTestClassName() {
     return "TestCompatibleApi_" + classDB.getApiDescriptor().name;
   }
-  
+
+  /**
+   * Test whether the given type could have data members that might be lazy-loaded.
+   * @param typeInfo TypeInfo
+   * @return true, if lazy loading is possible
+   */
+  public boolean isLazyLoadingType(TypeInfo typeInfo) {
+    boolean ret = false;
+    if (typeInfo == null) {
+      ret = false;
+    }
+    else if (typeInfo.isListType()) {
+      ret = isLazyLoadingType(typeInfo.typeArgs.get(0));
+    }
+    else if (typeInfo.isSetType()) {
+      ret = isLazyLoadingType(typeInfo.typeArgs.get(0));
+    }
+    else if (typeInfo.isMapType()) {
+      ret = isLazyLoadingType(typeInfo.typeArgs.get(0)) || isLazyLoadingType(typeInfo.typeArgs.get(1)); 
+    }
+    else if (typeInfo.isArrayType()) {
+      String elmQName = typeInfo.toStringNoDims("");
+      TypeInfo elmType = classDB.getTypeInfo(elmQName);
+      ret = isLazyLoadingType(elmType);
+    }
+    else {
+      ret = typeInfo.isPointerType();
+    }
+    return ret;
+  }
+
 	public final File dirApi;
 	public final File dirSerBin;
 	public final File dirSerJson;

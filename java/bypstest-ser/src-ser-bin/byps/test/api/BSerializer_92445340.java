@@ -28,7 +28,7 @@ public class BSerializer_92445340 extends BSerializer {
 		final byps.test.api.cons.HebrewZ[] arr =  new byps.test.api.cons.HebrewZ[n0];
 		bin.onObjectCreated(arr);
 		
-		// read
+		
 		final byps.test.api.cons.HebrewZ[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
 			a0[i0] = (byps.test.api.cons.HebrewZ)bin.readObj(false, null);
@@ -48,11 +48,22 @@ public class BSerializer_92445340 extends BSerializer {
 		final int n0 = arr.length;
 		bbuf.putLength(n0);
 		
-		// write
+		
 		final byps.test.api.cons.HebrewZ[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:327
+			// checkpoint byps.gen.j.PrintContext:340
 			bout.writeObj(a0[i0], false, null);
+		}
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		byps.test.api.cons.HebrewZ[] arr = (byps.test.api.cons.HebrewZ[])obj1;
+		final int n0 = arr.length;
+		
+		final byps.test.api.cons.HebrewZ[] a0 = arr;
+		for (int i0 = 0; i0 < n0; i0++) {
+			bin.prepareForLazyLoading(a0[i0], null);
 		}
 	}
 	

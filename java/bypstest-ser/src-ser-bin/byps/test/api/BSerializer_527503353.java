@@ -30,7 +30,7 @@ public class BSerializer_527503353 extends BSerializer {
 		final java.lang.Object[][][] arr =  new java.lang.Object[n2][n1][n0];
 		bin.onObjectCreated(arr);
 		
-		// read
+		
 		final java.lang.Object[][][] a2 = arr;
 		for (int i2 = 0; i2 < n2; i2++) {
 			final java.lang.Object[][] a1 = a2[i2];
@@ -60,15 +60,34 @@ public class BSerializer_527503353 extends BSerializer {
 		bbuf.putLength(n1);
 		bbuf.putLength(n0);
 		
-		// write
+		
 		final java.lang.Object[][][] a2 = arr;
 		for (int i2 = 0; i2 < n2; i2++) {
 			final java.lang.Object[][] a1 = a2[i2];
 			for (int i1 = 0; i1 < n1; i1++) {
 				final java.lang.Object[] a0 = a1[i1];
 				for (int i0 = 0; i0 < n0; i0++) {
-					// checkpoint byps.gen.j.PrintContext:327
+					// checkpoint byps.gen.j.PrintContext:340
 					bout.writeObj(a0[i0], false, null);
+				}
+			}
+		}
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		java.lang.Object[][][] arr = (java.lang.Object[][][])obj1;
+		final int n2 = arr.length;
+		final int n1 = n2!=0 ? arr[0].length : 0;
+		final int n0 = n1!=0 ? arr[0][0].length : 0;
+		
+		final java.lang.Object[][][] a2 = arr;
+		for (int i2 = 0; i2 < n2; i2++) {
+			final java.lang.Object[][] a1 = a2[i2];
+			for (int i1 = 0; i1 < n1; i1++) {
+				final java.lang.Object[] a0 = a1[i1];
+				for (int i0 = 0; i0 < n0; i0++) {
+					bin.prepareForLazyLoading(a0[i0], null);
 				}
 			}
 		}

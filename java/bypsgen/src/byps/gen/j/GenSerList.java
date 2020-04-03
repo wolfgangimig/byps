@@ -119,6 +119,27 @@ public class GenSerList {
 	    pr.println("}");
 	}
 
+  protected void printPrepareForLazyLoading() {
+    String listType = serInfo.toString("java.util");
+    
+    pr.println("@Override");
+    pr.println("public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {");
+    pr.beginBlock();
+
+    pr.print(listType).print(" arr = (").print(listType).print(")obj1;").println();
+
+    pr.print("for (").print(elmType.toString()).print(" obj : arr) {").println();
+    pr.beginBlock();
+
+    pctxt.printStreamPrepareMember(pr, bmodel, "obj", "", false, elmType);
+    
+    pr.endBlock();
+    pr.println("}");
+
+    pr.endBlock();
+    pr.println("}");
+  }
+
 	void generate() throws IOException {
 		//log.debug(GenSerList.class.getName(), "generateListSerializer");
 		
@@ -154,6 +175,12 @@ public class GenSerList {
 		printWrite();
 		pr.println();
 		
+    // Does element type contain members that are potentially lazy loaded?
+    if (pctxt.isLazyLoadingType(serInfo)) {
+  		printPrepareForLazyLoading();
+  		pr.println();
+    }
+    
 		pr.endBlock();
 		
 		pr.println("}");

@@ -14,7 +14,7 @@ import byps.*;
 // isInline=false
 // #members=67
 
-// checkpoint byps.gen.j.GenSerStruct:274
+// checkpoint byps.gen.j.GenSerStruct:304
 @SuppressWarnings("all")
 public class JSerializer_1391985860 extends JSerializer_Object {
 	
@@ -175,6 +175,28 @@ public class JSerializer_1391985860 extends JSerializer_Object {
 		obj.shorts3 = (short[])bin.readObj("shorts3", false, byps.test.api.JSerializer_2067161310.instance);
 		
 		return obj;
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		final Evolve obj = (Evolve)(obj1);		
+		if (version >= 200000000000000L) {
+			if (version >= 300000000000000L) {
+				if (version >= 79300000000000000L) {
+				}
+			}
+		}
+		bin.prepareForLazyLoading(obj.evo1, null);
+		bin.prepareForLazyLoading(obj.obj1, null);
+		if (version >= 200000000000000L) {
+			bin.prepareForLazyLoading(obj.evo2, null);
+			bin.prepareForLazyLoading(obj.obj2, null);
+			if (version >= 300000000000000L) {
+				bin.prepareForLazyLoading(obj.evo3, null);
+				bin.prepareForLazyLoading(obj.obj3, null);
+			}
+		}
+		
 	}
 	
 }

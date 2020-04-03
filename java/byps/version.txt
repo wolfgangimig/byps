@@ -1,5 +1,10 @@
 BYPS Version History
 
+5.34
+
+- BYPS-22: Generate function BSerialier_class.prepareForLazyLoading to assign BValueClass.bypsClient 
+  in a tree of serializable objects. 
+
 5.33
 
 - BYPS-19: Accept BYPS sessions only in conjunction with application server sessions.

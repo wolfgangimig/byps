@@ -13,9 +13,9 @@ public interface BioLemonServiceAuth extends BRemote,
 	byps.test.api.inherit.LemonServiceAuth {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:396
 	public int useParing() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:440
 	public void useParing(final BAsyncResult<Integer> asyncResult) ;
 	
 	

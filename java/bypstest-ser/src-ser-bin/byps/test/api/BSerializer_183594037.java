@@ -28,7 +28,7 @@ public class BSerializer_183594037 extends BSerializer {
 		final java.lang.Object[] arr =  new java.lang.Object[n0];
 		bin.onObjectCreated(arr);
 		
-		// read
+		
 		final java.lang.Object[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
 			a0[i0] = (java.lang.Object)bin.readObj(false, null);
@@ -48,11 +48,22 @@ public class BSerializer_183594037 extends BSerializer {
 		final int n0 = arr.length;
 		bbuf.putLength(n0);
 		
-		// write
+		
 		final java.lang.Object[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:327
+			// checkpoint byps.gen.j.PrintContext:340
 			bout.writeObj(a0[i0], false, null);
+		}
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		java.lang.Object[] arr = (java.lang.Object[])obj1;
+		final int n0 = arr.length;
+		
+		final java.lang.Object[] a0 = arr;
+		for (int i0 = 0; i0 < n0; i0++) {
+			bin.prepareForLazyLoading(a0[i0], null);
 		}
 	}
 	

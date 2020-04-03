@@ -28,7 +28,7 @@ public class BSerializer_1406664368 extends BSerializer {
 		final java.util.Date[] arr =  new java.util.Date[n0];
 		bin.onObjectCreated(arr);
 		
-		// read
+		
 		final java.util.Date[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
 			a0[i0] = bbuf.getDate();
@@ -48,10 +48,10 @@ public class BSerializer_1406664368 extends BSerializer {
 		final int n0 = arr.length;
 		bbuf.putLength(n0);
 		
-		// write
+		
 		final java.util.Date[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:357
+			// checkpoint byps.gen.j.PrintContext:370
 			bbuf.putDate((java.util.Date)a0[i0]);
 		}
 	}

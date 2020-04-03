@@ -31,7 +31,7 @@ public class BSerializer_1516687588 extends BSerializer {
 		final float[][][][] arr =  new float[n3][n2][n1][n0];
 		bin.onObjectCreated(arr);
 		
-		// read
+		
 		final float[][][][] a3 = arr;
 		for (int i3 = 0; i3 < n3; i3++) {
 			final float[][][] a2 = a3[i3];
@@ -66,7 +66,7 @@ public class BSerializer_1516687588 extends BSerializer {
 		bbuf.putLength(n1);
 		bbuf.putLength(n0);
 		
-		// write
+		
 		final float[][][][] a3 = arr;
 		for (int i3 = 0; i3 < n3; i3++) {
 			final float[][][] a2 = a3[i3];
@@ -75,7 +75,7 @@ public class BSerializer_1516687588 extends BSerializer {
 				for (int i1 = 0; i1 < n1; i1++) {
 					final float[] a0 = a1[i1];
 					for (int i0 = 0; i0 < n0; i0++) {
-						// checkpoint byps.gen.j.PrintContext:357
+						// checkpoint byps.gen.j.PrintContext:370
 						bbuf.putFloat(a0[i0]);
 					}
 				}

@@ -14,7 +14,7 @@ import byps.*;
 // isInline=false
 // #members=0
 
-// checkpoint byps.gen.j.GenSerStruct:274
+// checkpoint byps.gen.j.GenSerStruct:304
 @SuppressWarnings("all")
 public class BSerializer_1874292737 extends BSerializer {
 	
@@ -35,6 +35,10 @@ public class BSerializer_1874292737 extends BSerializer {
 		final BRequest_RemoteArrayTypes4dim_getByte obj = (BRequest_RemoteArrayTypes4dim_getByte)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteArrayTypes4dim_getByte()));
 		
 		return obj;
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
 	}
 	
 }

@@ -39,10 +39,18 @@ public class BSerializer_1358523233 extends BSerializer_13 {
 		int n = map.size();
 		bbuf.putLength(n);
 		for (Map.Entry<java.lang.Integer,byps.test.api.inl.Point2D> obj : map.entrySet()) {
-			// checkpoint byps.gen.j.PrintContext:346
+			// checkpoint byps.gen.j.PrintContext:359
 			bbuf.putInt(obj.getKey() != null ? (Integer)obj.getKey() : 0);
-			// checkpoint byps.gen.j.PrintContext:327
+			// checkpoint byps.gen.j.PrintContext:340
 			bout.writeObj(obj.getValue(), false, byps.test.api.inl.BSerializer_1835035436.instance);
+		}
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		Map<java.lang.Integer,byps.test.api.inl.Point2D> map = (Map<java.lang.Integer,byps.test.api.inl.Point2D>)obj1;
+		for (Map.Entry<java.lang.Integer,byps.test.api.inl.Point2D> obj : map.entrySet()) {
+			bin.prepareForLazyLoading(obj.getValue(), byps.test.api.inl.BSerializer_1835035436.instance);
 		}
 	}
 	

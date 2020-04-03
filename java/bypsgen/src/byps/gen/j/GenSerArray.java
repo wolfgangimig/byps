@@ -2,6 +2,7 @@ package byps.gen.j;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.function.Consumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -130,7 +131,7 @@ public class GenSerArray {
 		pr.println("bin.onObjectCreated(arr);");
 		pr.println();
 
-		printReadWriteLoop("arr", false);
+    printReadWriteLoop("arr", this::printReadPrimitiveArray, this::printReadArrayElement);
 		pr.println();
 		
 		pr.println("return arr;");
@@ -163,45 +164,106 @@ public class GenSerArray {
 		//log.debug(GeneratorJ.class.getName(), "printStore");
 	}
 
+  protected void printPrepareForLazyLoading() throws IOException {
+    String listType = serInfo.toString("java.util");
+    
+    pr.println("@Override");
+    pr.println("public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {");
+    pr.beginBlock();
+    
+    pr.print(listType).print(" arr = (").print(listType).print(")obj1;").println();
+
+    int ndims = serInfo.dims.length() / 2;
+    internalPrintLengthVariables(ndims);
+
+    printReadWriteLoop("arr", this::printPreparePrimitiveArray, this::printPrepareArrayElement);
+    
+    pr.endBlock();
+    pr.println("}");
+  }
+  
+  private void printPreparePrimitiveArray() {
+    // lazy loading does not apply for primitive 1dim arrays (byte[], int[], etc.)
+  }
+  
+  private void printPrepareArrayElement(TypeInfo elmTypeAtIndex) {
+    pctxt.printStreamPrepareMember(pr, BBinaryModel.MEDIUM, "a0[i0]", "", false, elmTypeAtIndex);
+  }
+
+  /**
+   * Print definitions for one variable per dimension.
+   * Example for 4 dimensions:
+   * <pre><code>
+   * final int n3 = arr.length;
+   * final int n2 = n3!=0 ? arr[0].length : 0;
+   * final int n1 = n2!=0 ? arr[0][0].length : 0;
+   * final int n0 = n1!=0 ? arr[0][0][0].length : 0;
+   * </code></pre>
+   * @param ndims Number of dimensions
+   */
+  private void internalPrintLengthVariables(int ndims) {
+    
+    StringBuilder subArr = new StringBuilder("arr");
+    for (int i = ndims-1; i >= 0; i--) {
+      String idxVar = "n" + i;
+      CodePrinter mpr = pr.print("final int ").print(idxVar).print(" = ");
+      if (i != ndims-1) {
+        String prevIdxVar = "n" + (i+1); 
+        mpr.print(prevIdxVar).print("!=0 ? ").print(subArr.toString()).print(".length : 0;").println();
+      }
+      else {
+        mpr.print(subArr.toString()).print(".length;").println();
+      }
+      subArr.append("[0]");
+    }
+  }
+
 	protected void internalPrintWriteArray() throws IOException {
 		int ndims = serInfo.dims.length() / 2;
-		// write lengths
+		
 		pr.println("// lengths");
-		String subArr = "arr";
-		for (int i = ndims-1; i >= 0; i--) {
-			String idxVar = "n" + i;
-			CodePrinter mpr = pr.print("final int ").print(idxVar).print(" = ");
-			if (i != ndims-1) {
-				String prevIdxVar = "n" + (i+1); 
-				mpr.print(prevIdxVar).print("!=0 ? ").print(subArr).print(".length : 0;").println();
-			}
-			else {
-				mpr.print(subArr).print(".length;").println();
-			}
-			subArr += "[0]";
-		}
+		internalPrintLengthVariables(ndims);
+		
+		// Print bbuf.putLength()
 		for (int i = ndims-1; i >= 0; i--) {
 			String idxVar = "n" + i;
 			pr.print("bbuf.putLength(").print(idxVar).print(");").println();
 		}
 		pr.println();
 		
-		printReadWriteLoop("arr", true);
+		printReadWriteLoop("arr", this::printWritePrimitiveArray, this::printWriteArrayElement);
 	}
 	
 	protected void printReadWritePrimitiveArray(boolean isWrite) {
-		String elmType = serInfo.toStringNoDims("java.lang");
-		elmType = elmType.substring(0, 1).toUpperCase() + elmType.substring(1);
+		String elmType1Dim = serInfo.toStringNoDims("java.lang");
+		elmType1Dim = elmType1Dim.substring(0, 1).toUpperCase() + elmType1Dim.substring(1);
 		String s = MessageFormat.format("{0}.bbuf.{1}Array{2}(a0);", 
 				isWrite ? "bout" : "bin", 
 				isWrite ? "put" : "get", 
-				elmType);
+				    elmType1Dim);
 		pr.println(s);
 	}
 
-	private void printReadWriteLoop(String varName, boolean isWrite) throws IOException {
+  private void printReadPrimitiveArray() {
+    printReadWritePrimitiveArray(false);
+  }
 
-		pr.println(isWrite ? "// write" : "// read");
+  private void printWritePrimitiveArray() {
+    printReadWritePrimitiveArray(true);
+  }
+
+  private void printReadArrayElement(TypeInfo elmTypeAtIndex) {
+    pctxt.printStreamGetItem(pr,  BBinaryModel.MEDIUM, "a0[i0]", elmTypeAtIndex);
+  }
+  
+  private void printWriteArrayElement(TypeInfo elmTypeAtIndex) {
+    pctxt.printStreamPutItem(pr, BBinaryModel.MEDIUM, "a0[i0]", elmTypeAtIndex);
+  }
+  
+	private void printReadWriteLoop(String varName, Runnable printDo1Dim, Consumer<TypeInfo> printDoArrayElement) throws IOException {
+
+		//pr.println(isWrite ? "// write" : "// read");
+	  pr.println();
 
 		String elmQName = serInfo.toStringNoDims("");
 		TypeInfo elmType = pctxt.classDB.getTypeInfo(elmQName);
@@ -222,8 +284,7 @@ public class GenSerArray {
 		for (int i = ndims-1; i >=0 ; i--) {
 			
 			if (i == 0 && serInfo.isByteArray1dim() ) {
-				//bin.bbuf.getArrayByte(a0);
-				printReadWritePrimitiveArray(isWrite);
+				printDo1Dim.run();
 				break;
 			}
 
@@ -237,16 +298,7 @@ public class GenSerArray {
 			pr.beginBlock();
 
 			if (i == 0) {
-				
-				if (isWrite) { 
-					
-					// bout.writeObj(v, false, false, null);
-					pctxt.printStreamPutItem(pr, BBinaryModel.MEDIUM, "a0[i0]", elmType);
-
-				}
-				else { 
-					pctxt.printStreamGetItem(pr,  BBinaryModel.MEDIUM, "a0[i0]", elmType);
-				}
+			  printDoArrayElement.accept(elmType);
 				break;
 			}
 			
@@ -298,6 +350,12 @@ public class GenSerArray {
 		printWrite();
 		pr.println();
 		
+    // Does element type contain members that are potentially lazy loaded?
+    if (pctxt.isLazyLoadingType(serInfo)) {
+  		printPrepareForLazyLoading();
+  		pr.println();
+    }
+    
 		pr.endBlock();
 		
 		pr.println("}");

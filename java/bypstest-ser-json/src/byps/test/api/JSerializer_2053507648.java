@@ -46,10 +46,21 @@ public class JSerializer_2053507648 extends JSerializer_Array {
 		final byps.test.api.prim.PrimitiveTypes[] a0 = arr;
 		bbuf.beginArray();
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:327
+			// checkpoint byps.gen.j.PrintContext:340
 			bout.writeObj(null, a0[i0], false, null);
 		}
 		bbuf.endArray();
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		byps.test.api.prim.PrimitiveTypes[] arr = (byps.test.api.prim.PrimitiveTypes[])obj1;
+		final int n0 = arr.length;
+		
+		final byps.test.api.prim.PrimitiveTypes[] a0 = arr;
+		for (int i0 = 0; i0 < n0; i0++) {
+			bin.prepareForLazyLoading(a0[i0], null);
+		}
 	}
 	
 }

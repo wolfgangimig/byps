@@ -14,7 +14,7 @@ import byps.*;
 // isInline=false
 // #members=2
 
-// checkpoint byps.gen.j.GenSerStruct:274
+// checkpoint byps.gen.j.GenSerStruct:304
 @SuppressWarnings("all")
 public class JSerializer_632707056 extends JSerializer_Object {
 	
@@ -43,6 +43,12 @@ public class JSerializer_632707056 extends JSerializer_Object {
 		final BJsonObject js = bin.currentObject;
 		
 		return obj;
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		final SordC obj = (SordC)(obj1);		
+		
 	}
 	
 }

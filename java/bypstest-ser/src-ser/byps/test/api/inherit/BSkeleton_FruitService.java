@@ -18,11 +18,11 @@ public class BSkeleton_FruitService extends BSkeleton implements FruitServiceAsy
 	
 	public final static long serialVersionUID = 715959905L;
 	
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:396
 	public java.lang.String grow() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:440
 	public void grow(final BAsyncResult<String> asyncResult) {
 		try {
 			java.lang.String ret = grow();
@@ -32,11 +32,11 @@ public class BSkeleton_FruitService extends BSkeleton implements FruitServiceAsy
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:383
+	// checkpoint byps.gen.j.PrintContext:396
 	public java.lang.String squeeze() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:427
+	// checkpoint byps.gen.j.PrintContext:440
 	public void squeeze(final BAsyncResult<String> asyncResult) {
 		try {
 			java.lang.String ret = squeeze();

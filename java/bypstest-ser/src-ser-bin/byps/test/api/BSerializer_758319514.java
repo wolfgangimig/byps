@@ -31,7 +31,7 @@ public class BSerializer_758319514 extends BSerializer {
 		final byps.test.api.prim.PrimitiveTypes[][][][] arr =  new byps.test.api.prim.PrimitiveTypes[n3][n2][n1][n0];
 		bin.onObjectCreated(arr);
 		
-		// read
+		
 		final byps.test.api.prim.PrimitiveTypes[][][][] a3 = arr;
 		for (int i3 = 0; i3 < n3; i3++) {
 			final byps.test.api.prim.PrimitiveTypes[][][] a2 = a3[i3];
@@ -66,7 +66,7 @@ public class BSerializer_758319514 extends BSerializer {
 		bbuf.putLength(n1);
 		bbuf.putLength(n0);
 		
-		// write
+		
 		final byps.test.api.prim.PrimitiveTypes[][][][] a3 = arr;
 		for (int i3 = 0; i3 < n3; i3++) {
 			final byps.test.api.prim.PrimitiveTypes[][][] a2 = a3[i3];
@@ -75,8 +75,31 @@ public class BSerializer_758319514 extends BSerializer {
 				for (int i1 = 0; i1 < n1; i1++) {
 					final byps.test.api.prim.PrimitiveTypes[] a0 = a1[i1];
 					for (int i0 = 0; i0 < n0; i0++) {
-						// checkpoint byps.gen.j.PrintContext:327
+						// checkpoint byps.gen.j.PrintContext:340
 						bout.writeObj(a0[i0], false, null);
+					}
+				}
+			}
+		}
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		byps.test.api.prim.PrimitiveTypes[][][][] arr = (byps.test.api.prim.PrimitiveTypes[][][][])obj1;
+		final int n3 = arr.length;
+		final int n2 = n3!=0 ? arr[0].length : 0;
+		final int n1 = n2!=0 ? arr[0][0].length : 0;
+		final int n0 = n1!=0 ? arr[0][0][0].length : 0;
+		
+		final byps.test.api.prim.PrimitiveTypes[][][][] a3 = arr;
+		for (int i3 = 0; i3 < n3; i3++) {
+			final byps.test.api.prim.PrimitiveTypes[][][] a2 = a3[i3];
+			for (int i2 = 0; i2 < n2; i2++) {
+				final byps.test.api.prim.PrimitiveTypes[][] a1 = a2[i2];
+				for (int i1 = 0; i1 < n1; i1++) {
+					final byps.test.api.prim.PrimitiveTypes[] a0 = a1[i1];
+					for (int i0 = 0; i0 < n0; i0++) {
+						bin.prepareForLazyLoading(a0[i0], null);
 					}
 				}
 			}

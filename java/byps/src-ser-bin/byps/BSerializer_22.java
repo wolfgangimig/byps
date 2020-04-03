@@ -33,4 +33,13 @@ public class BSerializer_22 extends BSerializer {
 		return obj;
 	}
 
+	@Override
+	public void prepareForLazyLoading(Object obj, BInput bin, long version) throws BException {
+	  
+	  // Assign BClient for lazy loading of members. 
+	  if (obj != null) {
+	    ((BValueClass)obj).setBypsClient(bin.transport.clientHelperToInjectInBValueClass);
+	  }
+	  
+	}
 }

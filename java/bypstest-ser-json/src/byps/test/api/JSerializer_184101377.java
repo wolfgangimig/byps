@@ -46,10 +46,21 @@ public class JSerializer_184101377 extends JSerializer_Array {
 		final byps.test.api.inl.Point2D[] a0 = arr;
 		bbuf.beginArray();
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:327
+			// checkpoint byps.gen.j.PrintContext:340
 			bout.writeObj(null, a0[i0], false, byps.test.api.inl.JSerializer_1835035436.instance);
 		}
 		bbuf.endArray();
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		byps.test.api.inl.Point2D[] arr = (byps.test.api.inl.Point2D[])obj1;
+		final int n0 = arr.length;
+		
+		final byps.test.api.inl.Point2D[] a0 = arr;
+		for (int i0 = 0; i0 < n0; i0++) {
+			bin.prepareForLazyLoading(a0[i0], byps.test.api.inl.BSerializer_1835035436.instance);
+		}
 	}
 	
 }
