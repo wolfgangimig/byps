@@ -3,7 +3,11 @@ package byps;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
 import java.io.InputStream;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class BRegistry {
 
@@ -39,6 +43,8 @@ public abstract class BRegistry {
 
   public final BBinaryModel bmodel;
   
+  private Map<Class<?>, BSerializer> classToSerializer = new ConcurrentHashMap<Class<?>, BSerializer>();
+  
   public BRegistry(BBinaryModel bmodel) {
     this.bmodel = bmodel;
   }
@@ -60,30 +66,28 @@ public abstract class BRegistry {
     throw new IllegalStateException();
   }
 
+  @SuppressWarnings("unchecked")
   protected BSerializer internalGetSerializer(int typeId) throws BException {
     BSerializer ser = null;
     if (typeId >= TYPEID_MIN_USER) {
       BRegisteredSerializer[] ssers = getSortedSerializers();
-      int left = 0, right = ssers.length;
-      while (left <= right) {
-        int idx = (right + left) / 2;
-        
-        BRegisteredSerializer rser = ssers[idx];
-        if (rser.typeId == typeId) {
-          if (rser.instance == null) {
-            Class<?> c;
-            try {
-              c = Class.forName(rser.name);
-              rser.instance = (BSerializer) c.newInstance();
-            } catch (Exception e) {
-              throw new BException(BExceptionC.CORRUPT, "No serializer for typeId=" + typeId);
-            }
+      
+      // BYPS-22: binary search was implemented badly. Replaced by Arrays.binarySearch.
+      
+      int index = Arrays.binarySearch(ssers, BRegisteredSerializer.makeCompareKey(typeId));
+      if (index >= 0) {
+        BRegisteredSerializer rser = ssers[index];
+        if (rser.instance == null) {
+          Class<BSerializer> c;
+          try {
+            c = (Class<BSerializer>)Class.forName(rser.name);
+            Constructor<BSerializer> constr = c.getConstructor();
+            rser.instance = constr.newInstance();
+          } catch (Exception e) {
+            throw new BException(BExceptionC.CORRUPT, "No serializer for typeId=" + typeId);
           }
-          return rser.instance;
         }
-        
-        if (rser.typeId < typeId) left = idx + 1;
-        if (rser.typeId > typeId) right = idx - 1;
+        ser = rser.instance;
       }
     }
     else {
@@ -100,29 +104,35 @@ public abstract class BRegistry {
   
   public BSerializer getSerializer(Object obj, boolean throwEx) throws BException {
     Class<?> clazz = obj.getClass();
-    BSerializer ser = null;
+    BSerializer ser = classToSerializer.get(clazz);
     try {
-      int typeId = 0;
+      
+      if (ser == null) {
 
-      while (clazz != Object.class) {
+        int typeId = 0; 
 
-        if (clazz == InputStream.class) {
-          typeId = BRegistry.TYPEID_STREAM;
-          break;
+        while (clazz != Object.class) {
+  
+          if (clazz == InputStream.class) {
+            typeId = BRegistry.TYPEID_STREAM;
+            break;
+          }
+  
+          try {
+            Field field = clazz.getDeclaredField("serialVersionUID");
+            field.setAccessible(true);
+            long longTypeId = field.getLong(obj);
+            typeId = (int) (longTypeId & getMaxTypeId());
+            break;
+          } catch (NoSuchFieldException e) {
+            clazz = clazz.getSuperclass();
+          }
         }
-
-        try {
-          Field field = clazz.getDeclaredField("serialVersionUID");
-          field.setAccessible(true);
-          long longTypeId = field.getLong(obj);
-          typeId = (int) (longTypeId & getMaxTypeId());
-          break;
-        } catch (NoSuchFieldException e) {
-          clazz = clazz.getSuperclass();
-        }
+      
+        ser = getSerializer(typeId);
+        classToSerializer.put(clazz, ser);
       }
-
-      ser = getSerializer(typeId);
+      
     } catch (Exception e) {
       if (throwEx) {
         throw new BException(BExceptionC.CORRUPT, "No serializer for className=" + clazz.getName() + ". " + "Only classes marked with BSerializable can be serialized as \"Object\" types. "
@@ -162,7 +172,7 @@ public abstract class BRegistry {
     
   }
 
-  protected static class BRegisteredSerializer {
+  protected static class BRegisteredSerializer implements Comparable<BRegisteredSerializer> {
     public int typeId;
     public String name;
     public BSerializer instance;
@@ -170,6 +180,15 @@ public abstract class BRegistry {
     public BRegisteredSerializer(int typeId, String name) {
       this.typeId = typeId;
       this.name = name;
+    }
+
+    @Override
+    public int compareTo(BRegisteredSerializer rhs) {
+      return this.typeId - rhs.typeId;
+    }
+    
+    public static BRegisteredSerializer makeCompareKey(int typeId) {
+      return new BRegisteredSerializer(typeId, "");
     }
   }
 
