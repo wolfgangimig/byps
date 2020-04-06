@@ -7,6 +7,8 @@ BYPS Version History
   Generator arguments OPT_* were ignored.
   Added annotation @BIgnore to allow ignore classes or interfaces.
   Fat JAR for BYPS generator: bypsgen. Write log file bypsgen.log into current directory.
+  
+- BYPS-24: Function HHttpSessionObject.getFirstBysSessionOrNull() re-created. It was removed with BYPS-19 but is in use.
 
 5.33
 
