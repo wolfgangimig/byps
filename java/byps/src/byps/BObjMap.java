@@ -43,6 +43,10 @@ public class BObjMap {
 		return map.toString();
 	}
 	
+	public int size() {
+	  return map.size();
+	}
+	
 	private HashMap<Key, Integer> map = new HashMap<Key, Integer>();
 	private Key kinst = new Key(null);
 }
