@@ -30,6 +30,10 @@ public class HHttpSessionObject {
     return sessions.stream().findFirst();
   }
   
+  public HSession getFirstSessionOrNull() {
+    return getFirstSession().orElse(null);
+  }
+  
   public synchronized boolean isEmpty() {
     return sessions.isEmpty();
   }
