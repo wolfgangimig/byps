@@ -6,6 +6,7 @@ BYPS Version History
   in a tree of serializable objects. 
   Generator arguments OPT_* were ignored.
   Added annotation @BIgnore to allow ignore classes or interfaces.
+  Fat JAR for BYPS generator: bypsgen. Write log file bypsgen.log into current directory.
 
 5.33
 

@@ -5,7 +5,7 @@ apply plugin: 'eclipse'
 
 sourceCompatibility = 1.8
 compileJava.options.encoding = 'UTF-8'
-version = '5.31'
+version = '5.34'
 
 eclipse {
   classpath {
@@ -24,16 +24,23 @@ sourceSets {
             srcDir 'src'
         }
         resources {
-            
+            srcDir 'res'
         }
     }
 }
 
 
 jar {
+    archiveName = "bypsgen.jar"
+
     manifest {
-        attributes 'Implementation-Title': 'BYPS-override',
-                   'Implementation-Version': version
+        attributes 'Implementation-Title': 'BYPS generatore',
+                   'Implementation-Version': version,
+                   'Main-Class': 'byps.gen.Main'
+    }
+ 
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 
