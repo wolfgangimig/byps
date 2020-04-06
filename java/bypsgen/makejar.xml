@@ -5,8 +5,11 @@
 	<property name="javalibdir" value="${libdir}/java" />
 	
     <target name="build">
-    	<delete file="${javalibdir}/bypsgen.jar" />	
+
+    	<copy file="../bypsgen/build/libs/bypsgen.jar" todir="${javalibdir}" overwrite="true" />
     	
+    	<!--
+    	  <delete file="${javalibdir}/bypsgen.jar" /> 
         <jar destfile="${javalibdir}/bypsgen.jar">
             <manifest>
                 <attribute name="Main-Class" value="byps.gen.doclet.BDoclet"/>
@@ -17,6 +20,6 @@
             <fileset dir="../byps-api/bin/main"/>
             <fileset dir="../byps-override/bin/main"/>
         </jar>
-    	
+    	-->
     </target>
 </project>

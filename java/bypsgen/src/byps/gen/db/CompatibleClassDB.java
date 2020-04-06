@@ -42,6 +42,7 @@ public class CompatibleClassDB {
       
 			for (CompatibilityViolation viol : viols) {
 				log.error(viol.msg);
+				System.out.println(viol.msg);
 			}
 		}
 		

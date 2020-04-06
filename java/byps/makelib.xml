@@ -8,6 +8,9 @@
 
 	<target name="build">
 		
+		<!-- BYPS-22: bypsgen as fat jar -->
+		<echo message="Make sure you have executed gradle jar task." />
+		
 		<!-- Java Libs -->
 		<ant dir="../bypsgen" antfile="makejar.xml" />
 		<ant dir="../bypshttp" antfile="makejar.xml" />

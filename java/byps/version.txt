@@ -5,6 +5,8 @@ BYPS Version History
 - BYPS-22: Generate function BSerialier_class.prepareForLazyLoading to assign BValueClass.bypsClient 
   in a tree of serializable objects. 
   Generator arguments OPT_* were ignored.
+  Added annotation @BIgnore to allow ignore classes or interfaces.
+  Fat JAR for BYPS generator: bypsgen. Write log file bypsgen.log into current directory.
   
 - BYPS-24: Function HHttpSessionObject.getFirstBysSessionOrNull() re-created. It was removed with BYPS-19 but is in use.
 
