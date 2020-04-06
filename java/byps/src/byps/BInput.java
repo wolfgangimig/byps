@@ -1,10 +1,7 @@
 package byps;
 
-import java.util.Arrays;
-
-/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-
 import java.util.HashMap;
+import java.util.Map;
 
 
 
@@ -13,7 +10,7 @@ public abstract class BInput {
 	public final BMessageHeader header;
 	public final BTransport transport;
 	public final BRegistry registry;
-	protected final HashMap<Integer,Object> idMap;
+	protected final Map<Integer,Object> idMap;
 	protected Integer currentId;
 	
 	public BInput(BMessageHeader header, BTransport transport, BRegistry registry) {
@@ -21,7 +18,7 @@ public abstract class BInput {
 		this.header = header != null ? header : new BMessageHeader();
 		this.transport = transport;
 		this.registry = registry;
-		this.idMap = new HashMap<Integer,Object>(1000000);
+		this.idMap = new HashMap<Integer,Object>();
 	}
 	
 	public abstract Object load() throws BException;
@@ -49,7 +46,8 @@ public abstract class BInput {
     if (obj != null) {
 
       // Memorize the object to avoid recursion.
-      if (putHashCode(System.identityHashCode(obj))) {
+      Integer dummyValue = Integer.valueOf(0);
+      if (idMap.putIfAbsent(System.identityHashCode(obj), dummyValue) == null) {
 
         // Get serializer object if not supplied.
         if (ser == null) {
@@ -60,37 +58,11 @@ public abstract class BInput {
         ser.prepareForLazyLoading(obj, this, header.version);
       }
     }
+    
+  }
+  
+  public int getNbOfObjects() {
+    return idMap.size();
   }
 	
-  private int[] hashCodes = new int[1000];
-  private int hashCodesLength = 0;
-  
-  private boolean putHashCode(int hc) {
-    
-    int index = Arrays.binarySearch(hashCodes, 0, hashCodesLength, hc);
-    if (index >= 0) return false;
-    
-    // binarySearch returns ((-insertAt) - 1) if the code is not found.
-    
-    int insertAt = - (index + 1);
-    
-    if (hashCodesLength < hashCodes.length) {
-      System.arraycopy(hashCodes, insertAt, hashCodes, insertAt+1, hashCodesLength - insertAt);
-      hashCodes[insertAt] = hc;
-    }
-    else {
-      int[] newArray = new int[hashCodes.length * 2];
-      System.arraycopy(hashCodes, 0, newArray, 0, insertAt);
-      newArray[insertAt] = hc;
-      if (insertAt < hashCodesLength) {
-        System.arraycopy(hashCodes, insertAt, newArray, insertAt+1, hashCodesLength - insertAt);
-      }
-      hashCodes = newArray;
-    }
-    
-    hashCodesLength++;
-    return true;
-  }
-
-  
 }

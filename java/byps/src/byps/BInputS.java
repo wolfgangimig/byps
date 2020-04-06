@@ -3,7 +3,7 @@ package byps;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
 import java.nio.ByteBuffer;
-import java.util.HashMap;
+import java.util.Map;
 
 public class BInputS extends BInputBin {
 
@@ -21,7 +21,7 @@ public class BInputS extends BInputBin {
 			return obj;
 		}
 
-		HashMap<Integer, Object> idMap = isUnique ? null : this.idMap;
+		Map<Integer, Object> idMap = isUnique ? null : this.idMap;
 		
 		int id = bbuf.getPointer();
 		if (id > 0) {
