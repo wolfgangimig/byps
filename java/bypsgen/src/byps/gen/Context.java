@@ -109,11 +109,6 @@ public class Context {
 
   public void parseArgs(String[] args) throws IOException {
     
-    // DEBUG
-    if (args == null || args.length == 0) {
-      args = DebugArgs.bypstest_ser;
-    }
-
     // -------------------------------------------------------------
     // Default properties for code generators.
 

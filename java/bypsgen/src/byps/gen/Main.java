@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,10 +37,21 @@ public class Main {
   
   public static void main(String[] args) {
     
+    // DEBUG
+    if (args == null || args.length == 0) {
+      args = DebugArgs.bypstest_ser;
+    }
+    
     // BYPS-14: suppress generator warning "Illegal reflective access..."
     System.setProperty("--illegal-access", "debug");
     
     System.out.println("bypsgen version=" + getGeneratorVersion());
+    System.out.println("bypsgen logfile=" + new File("bypsgen.log").getAbsolutePath());
+    
+    log.info("bypsgen version={}", getGeneratorVersion());
+    
+    String argsStr = Arrays.asList(args).stream().collect(Collectors.joining(System.lineSeparator()));
+    log.info("args={}{}", System.lineSeparator(), argsStr);
     
     // Enable printing checkpoints
     CodePrinter.enableCheckpoints(true);

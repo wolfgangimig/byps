@@ -76,7 +76,7 @@ public class MainAP extends Main {
 
     System.out.println("Process API classes.");
     
-    int options = XmlGeneratorBase.OPT_ALL_REMOTES | XmlGeneratorBase.OPT_ALL_SERIALS;
+    int options = context.getConvertOptions(); // BYPS-22: take OPT_ values from argument list.
     XmlGenerator xmlGenerator = new XmlGenerator(options, constFieldReader);
 
     List<File> sourceDirs = Arrays.asList(context.getSourceDirs()).stream()
