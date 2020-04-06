@@ -4,6 +4,7 @@ BYPS Version History
 
 - BYPS-22: Generate function BSerialier_class.prepareForLazyLoading to assign BValueClass.bypsClient 
   in a tree of serializable objects. 
+  Generator arguments OPT_* were ignored.
 
 5.33
 

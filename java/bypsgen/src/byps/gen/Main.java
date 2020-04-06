@@ -40,6 +40,10 @@ public class Main {
     System.setProperty("--illegal-access", "debug");
     
     System.out.println("bypsgen version=" + getGeneratorVersion());
+    System.out.println("bypsgen logfile=" + new File("bypsgen.log").getAbsolutePath());
+    
+    log.info("bypsgen version={}", getGeneratorVersion());
+    log.info("args={}", Arrays.toString(args));
     
     // Enable printing checkpoints
     CodePrinter.enableCheckpoints(true);
