@@ -4,6 +4,8 @@ BYPS Version History
 
 - BYPS-22: Generate function BSerialier_class.prepareForLazyLoading to assign BValueClass.bypsClient 
   in a tree of serializable objects. 
+  
+- BYPS-24: Function HHttpSessionObject.getFirstBysSessionOrNull() re-created. It was removed with BYPS-19 but is in use.
 
 5.33
 
