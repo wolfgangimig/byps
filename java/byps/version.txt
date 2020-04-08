@@ -1,8 +1,10 @@
 BYPS Version History
 
-5.34
+5.35
 
 - BYPS-15: Generate BProxy class for each BSkeleton class to forward method calls.
+
+5.34 
 
 - BYPS-22: Generate function BSerialier_class.prepareForLazyLoading to assign BValueClass.bypsClient 
   in a tree of serializable objects. 

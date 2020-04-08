@@ -3,8 +3,8 @@ package byps.gen.j;
 import java.io.IOException;
 import java.util.HashMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BRegistry;
 import byps.gen.api.GeneratorException;
@@ -15,7 +15,7 @@ import byps.gen.utils.CodePrinter;
 
 class GenRemoteProxy {
 	
-	static Log log = LogFactory.getLog(GenRemoteProxy.class);
+  static Logger log = LoggerFactory.getLogger(GenRemoteProxy.class);
 	
 	static void generate(PrintContext pctxt, RemoteInfo rinfo) throws IOException {
 		log.info("generate " + rinfo.qname);
