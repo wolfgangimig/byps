@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class CompatibilityViolations implements Iterable<CompatibilityViolation> {
@@ -25,5 +25,5 @@ public class CompatibilityViolations implements Iterable<CompatibilityViolation>
 	}
 
 	private List<CompatibilityViolation> lst = new ArrayList<CompatibilityViolation>();
-	private Log log = LogFactory.getLog(CompatibilityViolations.class);
+	private Logger log = LoggerFactory.getLogger(CompatibilityViolations.class);
 }

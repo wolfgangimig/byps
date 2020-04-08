@@ -3,6 +3,54 @@ using namespace ::std;
 using namespace ::byps;
 
 // checkpoint byps.gen.cpp.PrintContext:496
+BTYPEID byps::test::api::remote::BStub_RemoteReferences::BSerializable_getTypeId() {
+	return 568637225; 
+}
+namespace byps { namespace test { namespace api { namespace remote { 
+byps::test::api::refs::PNode BStub_RemoteReferences::getNode()  {
+	BSyncResultT< byps::test::api::refs::PNode > syncResult;	
+	getNode([&syncResult](byps::test::api::refs::PNode v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_RemoteReferences::getNode(::std::function< void (byps::test::api::refs::PNode, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteReferences_getNode());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< byps::test::api::refs::PNode, byps::test::api::BResult_9001 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace remote { 
+void BStub_RemoteReferences::setNode(const byps::test::api::refs::PNode& v)  {
+	BSyncResultT< bool > syncResult;	
+	setNode(v, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_RemoteReferences::setNode(const byps::test::api::refs::PNode& v, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_RemoteReferences_setNode(v));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenRemoteStub:224
+namespace byps { namespace test { namespace api { 
+void BSerializer_568637225(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* reserved){
+	BSerializer_16_Template<byps::test::api::remote::BStub_RemoteReferences, 568637225>(bio, pObj, pObjS, reserved);
+}
+}}}
+
+
+
+namespace byps { namespace test { namespace api { namespace remote { 
+BStub_RemoteServerCtrl::BStub_RemoteServerCtrl(PTransport transport) 
+	: BStub(transport) {}
+}}}}
+
+// checkpoint byps.gen.cpp.PrintContext:496
 BTYPEID byps::test::api::remote::BStub_RemoteServerCtrl::BSerializable_getTypeId() {
 	return 1652234479; 
 }
@@ -1067,51 +1115,6 @@ void BStub_EvolveIF::setEvolve(const PEvolve& obj)  {
 void BStub_EvolveIF::setEvolve(const PEvolve& obj, ::std::function< void (bool, BException ex) > asyncResult)  {
 	PMethodRequest req(new BRequest_EvolveIF_setEvolve(obj));
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace ver { 
-PEvolve BStub_EvolveIF::getEvolve()  {
-	BSyncResultT< PEvolve > syncResult;	
-	getEvolve([&syncResult](PEvolve v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_EvolveIF::getEvolve(::std::function< void (PEvolve, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_EvolveIF_getEvolve());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PEvolve, byps::test::api::BResult_1391985860 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace ver { 
-void BStub_EvolveIF::setClient(const PEvolveIF& partner)  {
-	BSyncResultT< bool > syncResult;	
-	setClient(partner, [&syncResult](bool v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	syncResult.getResult();
-}
-void BStub_EvolveIF::setClient(const PEvolveIF& partner, ::std::function< void (bool, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_EvolveIF_setClient(partner));
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace ver { 
-PEvolveIF BStub_EvolveIF::getClient()  {
-	BSyncResultT< PEvolveIF > syncResult;	
-	getClient([&syncResult](PEvolveIF v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_EvolveIF::getClient(::std::function< void (PEvolveIF, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_EvolveIF_getClient());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PEvolveIF, byps::test::api::BResult_564008001 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
 }}}}

@@ -14,9 +14,9 @@ public interface BioLemonServiceAsync extends BRemote,
 	byps.test.api.inherit.LemonServiceAsync {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public int useParing() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void useParing(final BAsyncResult<Integer> asyncResult) ;
 	
 	

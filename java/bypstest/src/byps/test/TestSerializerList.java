@@ -12,8 +12,8 @@ import java.util.TreeSet;
 
 import junit.framework.Assert;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.Test;
 
 import byps.BException;
@@ -31,7 +31,7 @@ import byps.test.api.prim.PrimitiveTypes;
  */
 public class TestSerializerList {
 
-	private Log log = LogFactory.getLog(TestSerializerList.class);
+	private Logger log = LoggerFactory.getLogger(TestSerializerList.class);
 	BTransport transport = TestUtils.createTransport();
 	
 	/**

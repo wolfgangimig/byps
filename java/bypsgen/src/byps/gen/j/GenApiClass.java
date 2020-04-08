@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BException;
 import byps.BJsonObject;
@@ -25,7 +25,7 @@ import byps.gen.utils.Utils;
 
 class GenApiClass {
 	
-	static Log log = LogFactory.getLog(GenApiClass.class);
+	static Logger log = LoggerFactory.getLogger(GenApiClass.class);
 	
 	static void generate(PrintContext pctxt, SerialInfo serInfo) throws IOException {
 		log.debug("generate(" + serInfo);

@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BContentStream;
 import byps.BContentStreamWrapper;
@@ -22,7 +22,7 @@ import byps.test.api.remote.BSkeleton_RemoteStreams;
 
 public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	
-	private Log log = LogFactory.getLog(MyRemoteStreams.class);
+	private Logger log = LoggerFactory.getLogger(MyRemoteStreams.class);
 	private volatile BContentStream imageStream;
 	private volatile Map<Integer, ByteBuffer> mapStreamBytes;
 	private volatile BException lastException;

@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +31,7 @@ public class TestRemoteListTypes {
 	
 	BClient_Testser client;
 	RemoteListTypes remote;
-	private Log log = LogFactory.getLog(TestRemoteListTypes.class);
+	private Logger log = LoggerFactory.getLogger(TestRemoteListTypes.class);
 
 	@Before
 	public void setUp() throws RemoteException {

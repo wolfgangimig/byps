@@ -912,22 +912,72 @@ namespace byps
             }
             return clientUtilityRequests;
         }
+  
+    public String getHttpSession()
+    {
+      Cookie cookie = getHttpCookie(HConstants.HTTP_COOKIE_JSESSIONID);
+      return cookie != null ? cookie.Value : "";
+    }
 
-        public String getHttpSession()
+    /// <summary>
+    /// Get HTTP session cookie.
+    /// </summary>
+    /// <remarks>
+    /// Gets the cookie with the given name.
+    /// </remarks>
+    /// <param name="name">Cookie name, e.g. HConstants.HTTP_COOKIE_JSESSIONID</param>
+    /// <returns>Session cookie.</returns>
+    public Cookie getHttpCookie(String name)
+    {
+      Cookie ret = null;
+      CookieCollection cookies = cookieJar.GetCookies(new Uri(url));
+      foreach (Cookie c in cookies)
+      {
+        if (c.Name.Equals(name))
         {
-            String ret = "";
-            CookieCollection cookies = cookieJar.GetCookies(new Uri(url));
-            foreach (Cookie cookie in cookies)
+          ret = c;
+          break;
+        }
+      }
+      return ret;
+    }
+
+    /// <summary>
+    /// Set HTTP cookie.
+    /// </summary>
+    /// <remarks>
+    /// Adds or replaces a HTTP cookie. Ensure that at least Name, Value, Domain, Path are set in the given cookie.
+    /// </remarks>
+    /// <param name="cookie">Session cookie.</param>
+    public void setHttpCookie(Cookie cookie)
+    {
+      if (cookie != null)
+      {
+        Cookie oldCookie = getHttpCookie(cookie.Name);
+        if (oldCookie != null)
+        {
+          
+          // Since there is no function to remove a cookie, 
+          // create a new container and copy all cookies except the old one.
+
+          Uri uri = new Uri(url);
+          CookieContainer newCookieContainer = new CookieContainer();
+          foreach (Cookie c in cookieJar.GetCookies(uri))
+          {
+            if (!c.Name.Equals(cookie.Name))
             {
-                if (cookie.Name == "JSESSIONID")
-                {
-                    ret = cookie.Value;
-                }
+              newCookieContainer.Add(c);
             }
-            return ret;
+          }
+
+          cookieJar = newCookieContainer;
         }
 
-        protected readonly static long MESSAGEID_CANCEL_ALL_REQUESTS = -1;
+        cookieJar.Add(cookie);
+      }
+    }
+
+    protected readonly static long MESSAGEID_CANCEL_ALL_REQUESTS = -1;
         protected readonly static long MESSAGEID_DISCONNECT = -2;
         protected String url;
 	    protected readonly static int CHUNK_SIZE = 10 * 1000;

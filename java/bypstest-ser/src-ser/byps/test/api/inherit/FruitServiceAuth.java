@@ -12,9 +12,9 @@ public interface FruitServiceAuth extends BRemote,
 	byps.test.api.inherit.PlantServiceAuth {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public java.lang.String squeeze() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void squeeze(final BAsyncResult<String> asyncResult) ;
 	
 	

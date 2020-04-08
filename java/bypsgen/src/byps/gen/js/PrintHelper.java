@@ -2,8 +2,8 @@ package byps.gen.js;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.ArrayList;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BRegistry;
 import byps.gen.api.MemberInfo;
@@ -13,7 +13,7 @@ import byps.gen.api.TypeInfo;
 
 
 public class PrintHelper {
-	static Log log = LogFactory.getLog(PrintHelper.class);
+	static Logger log = LoggerFactory.getLogger(PrintHelper.class);
 	
 	public static String streamGetMember(TypeInfo tinfo) {
 		String fnct = "";

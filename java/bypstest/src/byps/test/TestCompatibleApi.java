@@ -1,7 +1,7 @@
 package byps.test;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.Test;
 
 import byps.http.cotest.CoTest;
@@ -9,7 +9,7 @@ import byps.test.api.BApiDescriptor_Testser;
 
 public class TestCompatibleApi {
   
-  private final static Log log = LogFactory.getLog(TestCompatibleApi.class);
+  private final static Logger log = LoggerFactory.getLogger(TestCompatibleApi.class);
   private final static String logFileOther = "c:/temp/log/jclient-other.log";
 
   public TestCompatibleApi() {

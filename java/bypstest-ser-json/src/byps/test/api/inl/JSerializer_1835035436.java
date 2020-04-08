@@ -14,7 +14,7 @@ import byps.*;
 // isInline=true
 // #members=2
 
-// checkpoint byps.gen.j.GenSerStruct:274
+// checkpoint byps.gen.j.GenSerStruct:304
 @SuppressWarnings("all")
 public class JSerializer_1835035436 extends JSerializer_Object {
 	
@@ -47,6 +47,12 @@ public class JSerializer_1835035436 extends JSerializer_Object {
 			
 		}
 		return obj;
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		final Point2D obj = (Point2D)(obj1);		
+		
 	}
 	
 }

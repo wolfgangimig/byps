@@ -14,7 +14,7 @@ import byps.*;
 // isInline=false
 // #members=1
 
-// checkpoint byps.gen.j.GenSerStruct:274
+// checkpoint byps.gen.j.GenSerStruct:304
 @SuppressWarnings("all")
 public class BSerializer_968248604 extends BSerializer {
 	
@@ -47,6 +47,12 @@ public class BSerializer_968248604 extends BSerializer {
 		obj.result = (java.util.TreeSet<java.lang.Character>)bin.readObj(false, byps.test.api.BSerializer_936607009.instance);
 		
 		return obj;
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		final BResult_936607009 obj = (BResult_936607009)(obj1);		
+		
 	}
 	
 }

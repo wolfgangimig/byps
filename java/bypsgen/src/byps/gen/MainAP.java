@@ -17,8 +17,8 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.gen.db.ClassDB;
 import byps.gen.db.ConstFieldReader;
@@ -28,7 +28,7 @@ import byps.gen.xml.XmlGeneratorBase;
 
 public class MainAP extends Main {
   
-  private static Log log = LogFactory.getLog(MainAP.class);
+  private static Logger log = LoggerFactory.getLogger(MainAP.class);
   
   private Context context;
   
@@ -76,7 +76,7 @@ public class MainAP extends Main {
 
     System.out.println("Process API classes.");
     
-    int options = XmlGeneratorBase.OPT_ALL_REMOTES | XmlGeneratorBase.OPT_ALL_SERIALS;
+    int options = context.getConvertOptions(); // BYPS-22: take OPT_ values from argument list.
     XmlGenerator xmlGenerator = new XmlGenerator(options, constFieldReader);
 
     List<File> sourceDirs = Arrays.asList(context.getSourceDirs()).stream()

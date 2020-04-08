@@ -12,9 +12,9 @@ public interface LemonServiceAuth extends BRemote,
 	byps.test.api.inherit.FruitServiceAuth {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public java.lang.String pick(byps.test.api.auth.SessionInfo sess, java.lang.String fromTree) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void pick(byps.test.api.auth.SessionInfo sess, java.lang.String fromTree, final BAsyncResult<String> asyncResult) ;
 	
 	

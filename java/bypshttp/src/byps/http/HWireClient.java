@@ -3,6 +3,7 @@ package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpCookie;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.nio.ByteBuffer;
@@ -18,8 +19,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.BAsyncResult;
@@ -76,7 +77,7 @@ public class HWireClient extends BWire {
                                                                        // multiple
                                                                        // of
                                                                        // CHUNK_SIZE
-  protected final static Log log = LogFactory.getLog(HWireClient.class);
+  protected final static Logger log = LoggerFactory.getLogger(HWireClient.class);
   protected final BHashMap<RequestToCancel, Boolean> openRequestsToCancel = new BHashMap<RequestToCancel, Boolean>();
   // protected final Map<RequestToCancel, Boolean> openRequestsToCancel =
   // Collections.synchronizedMap(new HashMap<RequestToCancel, Boolean>());
@@ -1087,6 +1088,26 @@ public class HWireClient extends BWire {
 
   public String getHttpSession() {
     return getHttpClient().getHttpSession();
+  }
+
+  /**
+   * Set HTTP cookie.
+   * Adds or replaces a HTTP cookie.  
+   * Ensure that at least name, value, domain, path are set in the given cookie.  
+   * @param cookie Session cookie.
+   */
+  public void setHttpCookie(HttpCookie cookie) {
+    getHttpClient().setHttpCookie(cookie);
+  }
+
+  /**
+   * Get HTTP session cookie.
+   * Gets the cookie with the given name. 
+   * @param name Cookie name, e.g. HConstants.HTTP_COOKIE_JSESSIONID
+   * @return Session cookie.
+   */
+  public HttpCookie getHttpCookie(String name) {
+    return getHttpClient().getHttpCookie(name);
   }
 
   private volatile BClient_BUtilityRequests clientUtilityRequests;

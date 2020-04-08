@@ -3,7 +3,7 @@ apply plugin: 'war'
 
 sourceCompatibility = 1.8
 compileJava.options.encoding = 'UTF-8'
-version = '5.30'
+version = '5.31'
 
 eclipse {
 
@@ -54,6 +54,8 @@ dependencies {
 	compile project(":bypstest-ser-json")
 	
 	compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '8.0.+'
+	
+	compile("ch.qos.logback:logback-classic:1.2.3")
 	
 }
 

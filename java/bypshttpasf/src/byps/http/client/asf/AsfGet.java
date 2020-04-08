@@ -6,15 +6,15 @@ import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.nio.ByteBuffer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.log4j.NDC;
 
 import byps.BAsyncResult;
 import byps.BBufferJson;
@@ -24,7 +24,7 @@ import byps.BWire;
 
 public class AsfGet extends AsfRequest {
 
-  private static Log log = LogFactory.getLog(AsfGet.class);
+  private static Logger log = LoggerFactory.getLogger(AsfGet.class);
   private final BAsyncResult<ByteBuffer> asyncResult;
   
   protected AsfGet(long trackingId, String url, BAsyncResult<ByteBuffer> asyncResult, CloseableHttpClient httpClient, HttpClientContext context) {
@@ -34,7 +34,7 @@ public class AsfGet extends AsfRequest {
 
   @Override
   public void run() {
-    NDC.push("asfget-" + trackingId);
+    MDC.put("NDC", "asfget-" + trackingId);
     request = new HttpGet(url);
     applyTimeout();
     applyRequestProperties();
@@ -50,7 +50,7 @@ public class AsfGet extends AsfRequest {
       request.setHeader("Accept", "application/json, application/byps, text/plain, text/html");
       request.setHeader("Accept-Encoding", "gzip");
 
-      response = httpClient.execute(request, context);
+      response = execute();
 
       statusCode = response.getStatusLine().getStatusCode();
       if (statusCode != HttpURLConnection.HTTP_OK) {
@@ -80,7 +80,7 @@ public class AsfGet extends AsfRequest {
       asyncResult.setAsyncResult(returnBuffer, returnException);
       done();
 
-      NDC.pop();
+      MDC.remove("NDC");
     }
 
   }

@@ -28,7 +28,7 @@ public class BSerializer_1888107655 extends BSerializer {
 		final java.lang.String[] arr =  new java.lang.String[n0];
 		bin.onObjectCreated(arr);
 		
-		// read
+		
 		final java.lang.String[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
 			a0[i0] = bbuf.getString();
@@ -48,10 +48,10 @@ public class BSerializer_1888107655 extends BSerializer {
 		final int n0 = arr.length;
 		bbuf.putLength(n0);
 		
-		// write
+		
 		final java.lang.String[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:348
+			// checkpoint byps.gen.j.PrintContext:359
 			bbuf.putString(a0[i0] != null ? (String)a0[i0] : "");
 		}
 	}

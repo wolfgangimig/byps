@@ -82,7 +82,7 @@ public class JSerializer_2087445849 extends JSerializer_Array {
 					final double[] a0 = a1[i1];
 					bbuf.beginArray();
 					for (int i0 = 0; i0 < n0; i0++) {
-						// checkpoint byps.gen.j.PrintContext:359
+						// checkpoint byps.gen.j.PrintContext:370
 						bbuf.putDouble(a0[i0]);
 					}
 					bbuf.endArray();

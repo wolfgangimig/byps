@@ -14,7 +14,7 @@ import byps.*;
 // isInline=false
 // #members=1
 
-// checkpoint byps.gen.j.GenSerStruct:274
+// checkpoint byps.gen.j.GenSerStruct:304
 @SuppressWarnings("all")
 public class BSerializer_1685952420 extends BSerializer {
 	
@@ -47,6 +47,12 @@ public class BSerializer_1685952420 extends BSerializer {
 		obj.a = bbuf.getInt();
 		
 		return obj;
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		final BRequest_ClientIF_incrementInt obj = (BRequest_ClientIF_incrementInt)(obj1);		
+		
 	}
 	
 }

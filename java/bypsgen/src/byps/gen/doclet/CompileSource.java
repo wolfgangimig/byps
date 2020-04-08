@@ -17,8 +17,8 @@ import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.gen.api.ErrorInfo;
 import byps.gen.api.GeneratorException;
@@ -187,5 +187,5 @@ public class CompileSource implements ConstFieldReader {
 		}
 	}
 	
-	private static Log log = LogFactory.getLog(CompileSource.class);
+	private static Logger log = LoggerFactory.getLogger(CompileSource.class);
 }

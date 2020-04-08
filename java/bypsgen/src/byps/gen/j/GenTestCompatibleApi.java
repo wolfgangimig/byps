@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BRegistry;
 import byps.gen.api.MemberAccess;
@@ -19,7 +19,7 @@ import byps.gen.utils.Utils;
 
 public class GenTestCompatibleApi {
 
-  static Log log = LogFactory.getLog(GenTestCompatibleApi.class);
+  static Logger log = LoggerFactory.getLogger(GenTestCompatibleApi.class);
 
   public static void generate(PrintContext pctxt,
       Collection<SerialInfo> serials, Collection<RemoteInfo> remotes)
@@ -46,7 +46,7 @@ public class GenTestCompatibleApi {
 
     pr.println("import byps.*;");
     pr.println("import java.util.*;");
-    pr.println("import org.apache.commons.logging.*;");
+    pr.println("import org.slf4j.*;");
     pr.println();
 
     String className = pctxt.getTestClassName();
@@ -57,7 +57,7 @@ public class GenTestCompatibleApi {
     
     pr.beginBlock();
 
-    pr.print("private final static Log log = LogFactory.getLog(\"").print(className).println(".class\");");
+    pr.print("private final static Logger log = LoggerFactory.getLogger(\"").print(className).println(".class\");");
     pr.println();
     
     generatePublicTestMethod();

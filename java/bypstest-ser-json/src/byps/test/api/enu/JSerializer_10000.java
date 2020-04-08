@@ -14,7 +14,7 @@ import byps.*;
 // isInline=false
 // #members=6
 
-// checkpoint byps.gen.j.GenSerStruct:274
+// checkpoint byps.gen.j.GenSerStruct:304
 @SuppressWarnings("all")
 public class JSerializer_10000 extends JSerializer_Object {
 	
@@ -53,6 +53,14 @@ public class JSerializer_10000 extends JSerializer_Object {
 		obj.mapOfPlanets = (java.util.Map<java.lang.String,byps.test.api.enu.EnumPlanets>)bin.readObj("mapOfPlanets", false, byps.test.api.JSerializer_493795497.instance);
 		
 		return obj;
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		final UsePlanets obj = (UsePlanets)(obj1);		
+		if (version >= 79400000000000000L) {
+		}
+		
 	}
 	
 }

@@ -3,6 +3,51 @@ using namespace ::std;
 using namespace ::byps;
 
 namespace byps { namespace test { namespace api { namespace ver { 
+PEvolve BStub_EvolveIF::getEvolve()  {
+	BSyncResultT< PEvolve > syncResult;	
+	getEvolve([&syncResult](PEvolve v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_EvolveIF::getEvolve(::std::function< void (PEvolve, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_EvolveIF_getEvolve());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PEvolve, byps::test::api::BResult_1391985860 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace ver { 
+void BStub_EvolveIF::setClient(const PEvolveIF& partner)  {
+	BSyncResultT< bool > syncResult;	
+	setClient(partner, [&syncResult](bool v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	syncResult.getResult();
+}
+void BStub_EvolveIF::setClient(const PEvolveIF& partner, ::std::function< void (bool, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_EvolveIF_setClient(partner));
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< bool, byps::test::api::BResult_19 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace ver { 
+PEvolveIF BStub_EvolveIF::getClient()  {
+	BSyncResultT< PEvolveIF > syncResult;	
+	getClient([&syncResult](PEvolveIF v, BException ex) {
+		syncResult.setAsyncResult(v, ex);
+	});
+	return syncResult.getResult();
+}
+void BStub_EvolveIF::getClient(::std::function< void (PEvolveIF, BException ex) > asyncResult)  {
+	PMethodRequest req(new BRequest_EvolveIF_getClient());
+	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PEvolveIF, byps::test::api::BResult_564008001 >(asyncResult) );
+	transport->sendMethod(req, outerResult);
+}
+}}}}
+
+namespace byps { namespace test { namespace api { namespace ver { 
 void BStub_EvolveIF::sendEvolveToClient()  {
 	BSyncResultT< bool > syncResult;	
 	sendEvolveToClient([&syncResult](bool v, BException ex) {
@@ -138,6 +183,8 @@ byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(byps::test::api::cons::HebrewC), byps::test::api::BSerializer_1770673942, 1770673942);
 	registerClass(typeid(byps::test::api::cons::HebrewZ), byps::test::api::BSerializer_1518668429, 1518668429);
 	registerClass(typeid(::byps::BArray1< byps::test::api::cons::PHebrewZ > ), byps::test::api::BSerializer_92445340, 92445340);
+	registerClass(typeid(byps::test::api::cons::SordC), byps::test::api::BSerializer_632707056, 632707056);
+	registerClass(typeid(byps::test::api::cons::SordZ), byps::test::api::BSerializer_691830, 691830);
 	registerClass(typeid(::byps::BArray1< byps::test::api::enu::EnumPlanets > ), byps::test::api::BSerializer_1441131650, 1441131650);
 	registerClass(typeid(byps::test::api::enu::UsePlanets), byps::test::api::BSerializer_10000, 10000);
 	registerClass(typeid(byps::test::api::inherit::BRequest_BioFruitService_certify), byps::test::api::BSerializer_1435417025, 1435417025);

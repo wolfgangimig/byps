@@ -8,8 +8,8 @@ import java.util.TreeSet;
 
 import junit.framework.Assert;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.Test;
 
 import byps.BException;
@@ -27,7 +27,7 @@ import byps.test.api.set.SetTypes;
  */
 public class TestSerializerSet {
 
-	private Log log = LogFactory.getLog(TestSerializerSet.class);
+	private Logger log = LoggerFactory.getLogger(TestSerializerSet.class);
 	BTransport transport = TestUtils.createTransport();
 	
 	/**

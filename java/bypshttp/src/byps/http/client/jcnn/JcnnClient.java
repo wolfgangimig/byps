@@ -5,9 +5,11 @@ import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.net.HttpCookie;
 import java.nio.ByteBuffer;
+import java.util.Optional;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
+import byps.http.HConstants;
 import byps.http.client.HHttpClient;
 import byps.http.client.HHttpRequest;
 
@@ -46,15 +48,44 @@ public class JcnnClient implements HHttpClient {
     return new JcnnPutStream(trackingId, url, stream, asyncResult, cookieManager);
   }
 
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public String getHttpSession() {
-    String ret = "";
-    for (HttpCookie cookie : cookieManager.getCookieStore().getCookies()) {
-      if (cookie.getName().equals("JSESSIONID")) {
-        ret = cookie.getValue();
-        break;
-      }
-    }
-    return ret;
+    Optional<HttpCookie> opt = internalFindCookie(HConstants.HTTP_COOKIE_JSESSIONID);
+    return opt.map(HttpCookie::getValue).orElse("");
   }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public HttpCookie getHttpCookie(String name) {
+    Optional<HttpCookie> opt = internalFindCookie(name);
+    return opt.orElse(null);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void setHttpCookie(HttpCookie cookie) {
+    if (cookie != null) {
+      Optional<HttpCookie> opt = internalFindCookie(cookie.getName());
+      opt.ifPresent(c -> cookieManager.getCookieStore().remove(null, c));
+      cookieManager.getCookieStore().add(null, cookie);
+    }
+  }
+
+  /**
+   * Find cookie with given name.
+   * @param name cookie name
+   * @return Optional with requested cookie or empty.
+   */
+  private Optional<HttpCookie> internalFindCookie(String name) {
+    return cookieManager.getCookieStore().getCookies().stream()
+      .filter(c -> c.getName().equalsIgnoreCase(name)).findFirst();
+  }
+  
 }

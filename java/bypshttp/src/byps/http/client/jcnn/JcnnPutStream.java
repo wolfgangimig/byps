@@ -10,9 +10,9 @@ import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.NDC;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 import byps.BAsyncResult;
 import byps.BException;
@@ -22,7 +22,7 @@ import byps.http.client.HHttpPutStreamHelper;
 
 public class JcnnPutStream extends JcnnRequest implements HHttpPutStreamHelper.PutBytes {
   
-  private static Log log = LogFactory.getLog(JcnnPutStream.class);
+  private static Logger log = LoggerFactory.getLogger(JcnnPutStream.class);
   private final InputStream stream;
   private final BAsyncResult<ByteBuffer> asyncResult;
   
@@ -44,14 +44,14 @@ public class JcnnPutStream extends JcnnRequest implements HHttpPutStreamHelper.P
 
   @Override
   public void run() {
-    NDC.push("jcnnputstream-" + trackingId);
+    MDC.put("NDC", "jcnnputstream-" + trackingId);
     try {
       HHttpPutStreamHelper helper = new HHttpPutStreamHelper(this, url, stream, asyncResult);
       helper.run();
     }
     finally {
       done();
-      NDC.pop();
+      MDC.remove("NDC");
     }
   }
   

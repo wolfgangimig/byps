@@ -28,7 +28,7 @@ public class BSerializer_1441131650 extends BSerializer {
 		final byps.test.api.enu.EnumPlanets[] arr =  new byps.test.api.enu.EnumPlanets[n0];
 		bin.onObjectCreated(arr);
 		
-		// read
+		
 		final byps.test.api.enu.EnumPlanets[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
 			a0[i0] = BEnumHelper.fromOrdinal(byps.test.api.enu.EnumPlanets.values(), bbuf.getInt());
@@ -48,10 +48,10 @@ public class BSerializer_1441131650 extends BSerializer {
 		final int n0 = arr.length;
 		bbuf.putLength(n0);
 		
-		// write
+		
 		final byps.test.api.enu.EnumPlanets[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:359
+			// checkpoint byps.gen.j.PrintContext:370
 			bbuf.putInt(a0[i0] != null ? ((byps.test.api.enu.EnumPlanets)a0[i0]).ordinal() : 0);
 		}
 	}

@@ -1,8 +1,33 @@
 BYPS Version History
 
-5.30.0
+5.34
 
 - BYPS-15: Generate BProxy class for each BSkeleton class to forward method calls.
+
+- BYPS-22: Generate function BSerialier_class.prepareForLazyLoading to assign BValueClass.bypsClient 
+  in a tree of serializable objects. 
+  Generator arguments OPT_* were ignored.
+  Added annotation @BIgnore to allow ignore classes or interfaces.
+  Fat JAR for BYPS generator: bypsgen. Write log file bypsgen.log into current directory.
+  
+- BYPS-24: Function HHttpSessionObject.getFirstBysSessionOrNull() re-created. It was removed with BYPS-19 but is in use.
+
+5.33
+
+- BYPS-19: Accept BYPS sessions only in conjunction with application server sessions.
+
+- BYPS-21: Generator produced wrong constant value of type long for C# if the value did not
+  fit into a double, e.g. 2196631268005773311L was generated as 2196631268005773312L.
+
+5.32
+
+- BYPS-18: Allow to set HTTP session cookie to enable SAML and OAuth for ELO Indexserver. 
+
+5.31
+
+- BYPS-17: Generator for the JSON serialization skips transient fields.
+
+- BYPS-16: Replace commons-logging with slf4j, additionally support logback. 
 
 5.29.4
 

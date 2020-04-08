@@ -12,16 +12,16 @@ public interface RemoteEnumsAsync extends BRemote,
 	RemoteEnums {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public byps.test.api.enu.EnumPlanets getPlanet() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void getPlanet(final BAsyncResult<byps.test.api.enu.EnumPlanets> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public void setPlanet(byps.test.api.enu.EnumPlanets planet) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void setPlanet(byps.test.api.enu.EnumPlanets planet, final BAsyncResult<Object> asyncResult) ;
 	
 	

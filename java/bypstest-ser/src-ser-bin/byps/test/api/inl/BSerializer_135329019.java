@@ -14,7 +14,7 @@ import byps.*;
 // isInline=true
 // #members=9
 
-// checkpoint byps.gen.j.GenSerStruct:274
+// checkpoint byps.gen.j.GenSerStruct:304
 @SuppressWarnings("all")
 public class BSerializer_135329019 extends BSerializer {
 	
@@ -65,6 +65,12 @@ public class BSerializer_135329019 extends BSerializer {
 			
 		}
 		return obj;
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		final Matrix2D obj = (Matrix2D)(obj1);		
+		
 	}
 	
 }

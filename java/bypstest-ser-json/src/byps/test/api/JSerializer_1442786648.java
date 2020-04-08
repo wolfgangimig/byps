@@ -40,10 +40,18 @@ public class JSerializer_1442786648 extends BSerializer {
 		int n = arr.size();
 		bbuf.beginArray();
 		for (byps.test.api.refs.Node obj : arr) {
-			// checkpoint byps.gen.j.PrintContext:329
+			// checkpoint byps.gen.j.PrintContext:340
 			bout.writeObj(null, obj, false, null);
 		}
 		bbuf.endArray();
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		List<byps.test.api.refs.Node> arr = (List<byps.test.api.refs.Node>)obj1;
+		for (byps.test.api.refs.Node obj : arr) {
+			bin.prepareForLazyLoading(obj, null);
+		}
 	}
 	
 }

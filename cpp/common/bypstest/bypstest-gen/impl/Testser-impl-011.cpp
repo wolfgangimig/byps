@@ -5,6 +5,49 @@ using namespace ::byps;
 namespace byps { namespace test { namespace api { namespace srvr { 
 
 //-------------------------------------------------
+// Implementation of class BRequest_ClientIF_getStreams
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_ClientIF_getStreams::BRequest_ClientIF_getStreams() : BMethodRequest(2049072174) {
+	ctrl = 0;
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::srvr::BRequest_ClientIF_getStreams::BRequest_ClientIF_getStreams(int32_t ctrl)
+	: BMethodRequest(2049072174) 
+	, ctrl(ctrl)
+	{}
+// checkpoint byps.gen.cpp.PrintContext:496
+BTYPEID byps::test::api::srvr::BRequest_ClientIF_getStreams::BSerializable_getTypeId() {
+	return 1654980071; 
+}
+// checkpoint byps.gen.cpp.GenApiClass:876
+void BRequest_ClientIF_getStreams::serialize(BIO& ar, const BVERSION version) {
+	ar & this->ctrl;
+}
+void byps::test::api::srvr::BRequest_ClientIF_getStreams::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
+	PClientIF __byps__remoteT = byps_ptr_cast<ClientIF>(__byps__remote);
+	__byps__remoteT->getStreams(ctrl, [__byps__asyncResult](byps::PVectorInputStream __byps__result, const BException& __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_1218831438(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:933
+namespace byps { namespace test { namespace api { 
+void BSerializer_1654980071(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_ObjS_Template<byps::test::api::srvr::BRequest_ClientIF_getStreams>(bio, pObj, pObjS, pBase);	
+}
+}}}
+namespace byps { namespace test { namespace api { namespace srvr { 
+
+//-------------------------------------------------
 // Implementation of class BRequest_ClientIF_incrementInt
 // Generated from class byps.gen.cpp.GenApiClass
 
@@ -1209,41 +1252,5 @@ void BSerializer_1059148284(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 namespace byps { namespace test { namespace api { 
 void BSerializer_1661807911(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_Obj_Template<::std::vector< wchar_t >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_1555345627(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::vector< double >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_1628501332(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::vector< float >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_181681714(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::vector< int32_t >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_1050216688(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::vector< int64_t >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_1997002548(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::vector< int16_t >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_2123584667(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::vector< ::std::wstring >>(bio, pObj, pObjS, pBase);	
 }
 }}}

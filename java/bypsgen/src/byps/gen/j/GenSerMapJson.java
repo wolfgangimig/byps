@@ -2,8 +2,8 @@ package byps.gen.j;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBinaryModel;
 import byps.BException;
@@ -13,7 +13,7 @@ import byps.gen.api.TypeInfo;
 import byps.gen.utils.CodePrinter;
 
 public class GenSerMapJson extends GenSerMap {
-	static Log log = LogFactory.getLog(GenSerMapJson.class);
+	static Logger log = LoggerFactory.getLogger(GenSerMapJson.class);
 	
 	GenSerMapJson(PrintContext pctxt, SerialInfo serInfo, CodePrinter pr) throws BException {
 		super(pctxt, serInfo, pr, BBinaryModel.JSON);

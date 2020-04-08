@@ -38,8 +38,16 @@ public class BSerializer_484881308 extends BSerializer {
 		int n = arr.size();
 		bbuf.putLength(n);
 		for (byps.test.api.inherit.Class1 obj : arr) {
-			// checkpoint byps.gen.j.PrintContext:329
+			// checkpoint byps.gen.j.PrintContext:340
 			bout.writeObj(obj, false, null);
+		}
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		Set<byps.test.api.inherit.Class1> arr = (Set<byps.test.api.inherit.Class1>)obj1;
+		for (byps.test.api.inherit.Class1 obj : arr) {
+			bin.prepareForLazyLoading(obj, null);
 		}
 	}
 	

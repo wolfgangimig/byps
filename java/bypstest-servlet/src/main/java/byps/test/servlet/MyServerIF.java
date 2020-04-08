@@ -12,8 +12,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BContentStream;
 import byps.BException;
@@ -25,7 +25,7 @@ import byps.test.api.srvr.ClientIF;
 
 public class MyServerIF extends BSkeleton_ServerIF {
 	
-	private Log log = LogFactory.getLog(MyServerIF.class);
+	private Logger log = LoggerFactory.getLogger(MyServerIF.class);
 	private MySession sess;
 	private ClientIF partner;
 	private static Map<Integer, ClientIF> clientMap = new TreeMap<Integer,ClientIF>();
@@ -133,7 +133,7 @@ public class MyServerIF extends BSkeleton_ServerIF {
 						ret.addAndGet(v);
 					}
 					catch (Exception e) {
-						log.error(e);
+						log.error(e.getMessage(), e);
 					}
 				}
 			};

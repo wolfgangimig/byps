@@ -1,10 +1,6 @@
 package byps.http;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.File;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -17,7 +13,7 @@ import javax.naming.NamingException;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 
-import org.apache.log4j.PropertyConfigurator;
+import byps.log.LogConfigurator;
 
 public class HConfigImpl implements HConfig {
 
@@ -186,16 +182,7 @@ public class HConfigImpl implements HConfig {
           logLevel = "INFO";
         }
         
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        PrintWriter pr = new PrintWriter(new OutputStreamWriter(bos));
-        pr.println("log4j.rootLogger=" + logLevel + ", file");
-        pr.println("log4j.appender.file=org.apache.log4j.RollingFileAppender");
-        pr.println("log4j.appender.file.Append=false");
-        pr.println("log4j.appender.file.File=" + logFile);
-        pr.println("log4j.appender.file.layout=org.apache.log4j.PatternLayout");
-        pr.println("log4j.appender.file.layout.ConversionPattern=%d{ABSOLUTE} %t %1x %-5p (%F:%L) - %m%n");
-        pr.close();
-        PropertyConfigurator.configure(new ByteArrayInputStream(bos.toByteArray()));
+        LogConfigurator.initFile(logLevel, logFile);
       }
     }
     catch (Exception e) {

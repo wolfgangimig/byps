@@ -15,8 +15,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.servlet.Servlet;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -59,7 +59,7 @@ public class TestStdioRemote {
    */
   private final static String ECHO_PROGRAM_JAR = "../bypshttp-shmem/build/libs/bypshttp-shmem-all.jar";
 
-  private final static Log log = LogFactory.getLog(TestStdioRemote.class);
+  private final static Logger log = LoggerFactory.getLogger(TestStdioRemote.class);
   private volatile Undertow server;
   private CountDownLatch serverStopped = new CountDownLatch(1);
   private Servlet bypsServlet; 

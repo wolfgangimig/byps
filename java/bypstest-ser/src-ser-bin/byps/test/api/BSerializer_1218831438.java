@@ -38,8 +38,16 @@ public class BSerializer_1218831438 extends BSerializer {
 		int n = arr.size();
 		bbuf.putLength(n);
 		for (java.io.InputStream obj : arr) {
-			// checkpoint byps.gen.j.PrintContext:329
+			// checkpoint byps.gen.j.PrintContext:340
 			bout.writeObj(obj, false, null);
+		}
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		List<java.io.InputStream> arr = (List<java.io.InputStream>)obj1;
+		for (java.io.InputStream obj : arr) {
+			bin.prepareForLazyLoading(obj, null);
 		}
 	}
 	

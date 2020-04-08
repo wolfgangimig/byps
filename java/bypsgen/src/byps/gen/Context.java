@@ -8,11 +8,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Properties;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.PropertyConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.gen.api.ErrorInfo;
 import byps.gen.api.GeneratorException;
@@ -25,10 +23,11 @@ import byps.gen.j.PropertiesJ;
 import byps.gen.js.PropertiesJS;
 import byps.gen.utils.AssignUniqueSerialVersionUID;
 import byps.gen.utils.Utils;
+import byps.log.LogConfigurator;
 
 public class Context {
   
-  private static Log log = LogFactory.getLog(Context.class);
+  private static Logger log = LoggerFactory.getLogger(Context.class);
   
   /**
    * API definition file with the new classes. The API classes found by this run
@@ -110,11 +109,6 @@ public class Context {
 
   public void parseArgs(String[] args) throws IOException {
     
-    // DEBUG
-    if (args == null || args.length == 0) {
-      args = DebugArgs.bypstest_ser;
-    }
-
     // -------------------------------------------------------------
     // Default properties for code generators.
 
@@ -127,11 +121,11 @@ public class Context {
       // logging
       String arg = args[argIdx];
       if (arg.startsWith("-verbose")) {
-        configureLog4j("INFO");
+        LogConfigurator.initConsole("INFO");
         argIdx++;
       }
       else if (arg.startsWith("-debug")) {
-        configureLog4j("DEBUG");
+        LogConfigurator.initConsole("DEBUG");
         argIdx++;
       }
 
@@ -309,15 +303,6 @@ public class Context {
         }
       }
     }
-  }
-
-  public void configureLog4j(String level) {
-    Properties props = new Properties();
-    props.put("log4j.rootLogger", level + ", stdout");
-    props.put("log4j.appender.stdout", "org.apache.log4j.ConsoleAppender");
-    props.put("log4j.appender.stdout.layout", "org.apache.log4j.PatternLayout");
-    props.put("log4j.appender.stdout.layout.ConversionPattern", "%d{ABSOLUTE} %t %1x %-5p (%F:%L) - %m%n");
-    PropertyConfigurator.configure(props);
   }
 
   public File getFileClassDBNew() {

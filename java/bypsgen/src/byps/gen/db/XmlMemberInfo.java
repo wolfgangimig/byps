@@ -5,8 +5,8 @@ import java.util.Collection;
 
 import javax.xml.bind.annotation.XmlTransient;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BVersioning;
 import byps.gen.api.CommentInfo;
@@ -76,5 +76,5 @@ public class XmlMemberInfo {
 	}
 
     @XmlTransient
-	private Log log = LogFactory.getLog(XmlMemberInfo.class);
+	private Logger log = LoggerFactory.getLogger(XmlMemberInfo.class);
 }

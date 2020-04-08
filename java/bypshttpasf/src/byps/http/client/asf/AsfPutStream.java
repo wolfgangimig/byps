@@ -7,8 +7,9 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
@@ -17,7 +18,6 @@ import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.log4j.NDC;
 
 import byps.BAsyncResult;
 import byps.BException;
@@ -26,7 +26,7 @@ import byps.http.client.HHttpPutStreamHelper;
 
 public class AsfPutStream extends AsfRequest implements HHttpPutStreamHelper.PutBytes {
   
-  private static Log log = LogFactory.getLog(AsfPutStream.class);
+  private static Logger log = LoggerFactory.getLogger(AsfPutStream.class);
   private final InputStream stream;
   private final BAsyncResult<ByteBuffer> asyncResult;
 
@@ -48,14 +48,14 @@ public class AsfPutStream extends AsfRequest implements HHttpPutStreamHelper.Put
 
   @Override
   public void run() {
-    NDC.push("asfput-" + trackingId);
+    MDC.put("NDC", "asfput-" + trackingId);
     try {
       HHttpPutStreamHelper helper = new HHttpPutStreamHelper(this, url, stream, asyncResult);
       helper.run();
     }
     finally {
       done();
-      NDC.pop();
+      MDC.remove("NDC");
     }
   }
   
@@ -84,7 +84,7 @@ public class AsfPutStream extends AsfRequest implements HHttpPutStreamHelper.Put
     int length = bbuf.remaining();
     ((HttpEntityEnclosingRequestBase)request).setEntity(new ByteArrayEntity(content, offset, length));
 
-    try (CloseableHttpResponse response = httpClient.execute(request)) {
+    try (CloseableHttpResponse response = execute()) {
       
       request = null;
       

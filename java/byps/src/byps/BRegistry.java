@@ -3,9 +3,11 @@ package byps;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
 import java.io.InputStream;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class BRegistry {
 
@@ -41,6 +43,8 @@ public abstract class BRegistry {
 
   public final BBinaryModel bmodel;
   
+  private Map<Class<?>, BSerializer> classToSerializer = new ConcurrentHashMap<Class<?>, BSerializer>();
+  
   public BRegistry(BBinaryModel bmodel) {
     this.bmodel = bmodel;
   }
@@ -56,63 +60,42 @@ public abstract class BRegistry {
   public final int getMaxTypeId() {
     if (bmodel == BBinaryModel.JSON) return Integer.MAX_VALUE;
     if (bmodel == BBinaryModel.MEDIUM) return Integer.MAX_VALUE;
+    // if (bmodel == BBinaryModel.SMALL) return Short.MAX_VALUE;
+    // if (bmodel == BBinaryModel.TINY) return Byte.MAX_VALUE;
+    // if (bmodel == BBinaryModel.LARGE) return Integer.MAX_VALUE;
     throw new IllegalStateException();
   }
 
-  protected Map<Integer, BRegisteredSerializer> serializerCacheUseGetSerializerCache;
-  
-  private Map<Integer, BRegisteredSerializer> getSerializerCache() {
-    
-    Map<Integer, BRegisteredSerializer> serializerCache = this.serializerCacheUseGetSerializerCache;
-    if (serializerCache == null) {
-      
-      serializerCache = new HashMap<Integer, BRegisteredSerializer>();
-      
-      BSerializer[] builtInSerializers = bmodel == BBinaryModel.JSON ? builtInJsonSerializers : builtInBinarySerializers; 
-      for (BSerializer ser : builtInSerializers) {
-        serializerCache.put(ser.typeId, new BRegisteredSerializer(ser)); 
-      }
-      
-      BRegisteredSerializer[] ssers = getSortedSerializers();
-      for (BRegisteredSerializer sser : ssers) {
-        serializerCache.put(sser.typeId, sser);
-      }
-      
-      this.serializerCacheUseGetSerializerCache = serializerCache;
-    }
-    
-    return serializerCache;
-  }
-  
-  private static final BSerializer[] builtInJsonSerializers = new BSerializer[] {
-    JSerializer_12.instance, JSerializer_13.instance, JSerializer_14.instance, JSerializer_15.instance, JSerializer_20.instance, JSerializer_22.instance
-  };
-    
-  private static final BSerializer[] builtInBinarySerializers = new BSerializer[] {
-    BSerializer_12.instance, BSerializer_13.instance, BSerializer_14.instance, BSerializer_15.instance, BSerializer_20.instance, BSerializer_22.instance
-  };
-    
-
+  @SuppressWarnings("unchecked")
   protected BSerializer internalGetSerializer(int typeId) throws BException {
     BSerializer ser = null;
-
-    BRegisteredSerializer rser = getSerializerCache().get(typeId);
-    if (rser != null) {
-      ser = rser.instance;
-      if (ser == null) {
-        Class<?> c;
-        try {
-          c = Class.forName(rser.name);
-          ser = rser.instance = (BSerializer) c.newInstance();
-        } catch (Exception e) {
-          throw new BException(BExceptionC.CORRUPT, "No serializer for typeId=" + typeId);
+    if (typeId >= TYPEID_MIN_USER) {
+      BRegisteredSerializer[] ssers = getSortedSerializers();
+      
+      // BYPS-22: binary search was implemented badly. Replaced by Arrays.binarySearch.
+      
+      int index = Arrays.binarySearch(ssers, BRegisteredSerializer.makeCompareKey(typeId));
+      if (index >= 0) {
+        BRegisteredSerializer rser = ssers[index];
+        if (rser.instance == null) {
+          Class<BSerializer> c;
+          try {
+            c = (Class<BSerializer>)Class.forName(rser.name);
+            Constructor<BSerializer> constr = c.getConstructor();
+            rser.instance = constr.newInstance();
+          } catch (Exception e) {
+            throw new BException(BExceptionC.CORRUPT, "No serializer for typeId=" + typeId);
+          }
         }
+        ser = rser.instance;
       }
     }
-    
+    else {
+      ser = getBuiltInSerializer(typeId);
+    }
     return ser;
   }
-  
+
   public BSerializer getSerializer(int typeId) throws BException {
     BSerializer ser = internalGetSerializer(typeId);
     if (ser != null) return ser;
@@ -121,29 +104,35 @@ public abstract class BRegistry {
   
   public BSerializer getSerializer(Object obj, boolean throwEx) throws BException {
     Class<?> clazz = obj.getClass();
-    BSerializer ser = null;
+    BSerializer ser = classToSerializer.get(clazz);
     try {
-      int typeId = 0;
+      
+      if (ser == null) {
 
-      while (clazz != Object.class) {
+        int typeId = 0; 
 
-        if (clazz == InputStream.class) {
-          typeId = BRegistry.TYPEID_STREAM;
-          break;
+        while (clazz != Object.class) {
+  
+          if (clazz == InputStream.class) {
+            typeId = BRegistry.TYPEID_STREAM;
+            break;
+          }
+  
+          try {
+            Field field = clazz.getDeclaredField("serialVersionUID");
+            field.setAccessible(true);
+            long longTypeId = field.getLong(obj);
+            typeId = (int) (longTypeId & getMaxTypeId());
+            break;
+          } catch (NoSuchFieldException e) {
+            clazz = clazz.getSuperclass();
+          }
         }
-
-        try {
-          Field field = clazz.getDeclaredField("serialVersionUID");
-          field.setAccessible(true);
-          long longTypeId = field.getLong(obj);
-          typeId = (int) (longTypeId & getMaxTypeId());
-          break;
-        } catch (NoSuchFieldException e) {
-          clazz = clazz.getSuperclass();
-        }
+      
+        ser = getSerializer(typeId);
+        classToSerializer.put(clazz, ser);
       }
-
-      ser = getSerializer(typeId);
+      
     } catch (Exception e) {
       if (throwEx) {
         throw new BException(BExceptionC.CORRUPT, "No serializer for className=" + clazz.getName() + ". " + "Only classes marked with BSerializable can be serialized as \"Object\" types. "
@@ -152,9 +141,38 @@ public abstract class BRegistry {
     }
 
     return ser;
+
+    // else if (obj instanceof BRemote) {
+    // String stubName = makeStubName(clazz.getName());
+    // try {
+    // Class<?> stubClazz = Class.forName(stubName);
+    // Field field = stubClazz.getDeclaredField("serialVersionUID");
+    // field.setAccessible(true);
+    // long longTypeId = field.getLong(null);
+    // int typeId = (int)(longTypeId & maxTypeId);
+    // ser = getSerializer(typeId);
+    // mapClassToSerializer.put(clazz, ser);
+    // } catch (Exception e) {
+    // throw BException.createNoSerializer(clazz.getName(), e);
+    // }
+    // }
+
+    // This function can only be called for objects that inherit from BSerializable.
+    // Other objects cannot be exported anonymously. For those objects, the 
+    // BSerializer object has to be supplied in writeObject.
+    
+    // This limitation is required, because it is not possible to get 
+    // the type information from Generic arguments in Java. 
+    // E.g. you cannot distinguish between List<String> or List<Long> at
+    // runtime.
+    
+    // This function has to work for BRemote respectively BSkeleton too. 
+    // That's why we do not check whether the passed object implements
+    // BSerializable. Only the field serialVersionUID is evaluated.
+    
   }
 
-  protected static class BRegisteredSerializer {
+  protected static class BRegisteredSerializer implements Comparable<BRegisteredSerializer> {
     public int typeId;
     public String name;
     public BSerializer instance;
@@ -164,18 +182,38 @@ public abstract class BRegistry {
       this.name = name;
     }
 
-    public BRegisteredSerializer(BSerializer instance) {
-      this.typeId = instance.typeId;
-      this.name = instance.getClass().getName();
-      this.instance = instance;
+    @Override
+    public int compareTo(BRegisteredSerializer rhs) {
+      return this.typeId - rhs.typeId;
     }
     
-    public String toString() {
-      return name;
+    public static BRegisteredSerializer makeCompareKey(int typeId) {
+      return new BRegisteredSerializer(typeId, "");
     }
   }
 
   protected abstract BRegisteredSerializer[] getSortedSerializers();
+
+  private BSerializer getBuiltInSerializer(int typeId) throws BException {
+    if (bmodel == BBinaryModel.JSON) {
+      if (typeId == TYPEID_LIST) return JSerializer_12.instance;
+      if (typeId == TYPEID_MAP) return JSerializer_13.instance;
+      if (typeId == TYPEID_SET) return JSerializer_14.instance;
+      if (typeId == TYPEID_EXCEPTION) return JSerializer_20.instance;
+      if (typeId == TYPEID_STREAM) return JSerializer_15.instance;
+      if (typeId == TYPEID_VALUECLASS) return JSerializer_22.instance;
+    }
+    else {
+      if (typeId == TYPEID_LIST) return BSerializer_12.instance;
+      if (typeId == TYPEID_MAP) return BSerializer_13.instance;
+      if (typeId == TYPEID_SET) return BSerializer_14.instance;
+      if (typeId == TYPEID_EXCEPTION) return BSerializer_20.instance;
+      if (typeId == TYPEID_STREAM) return BSerializer_15.instance;
+      if (typeId == TYPEID_HTTP_REQUEST) return BSerializer_24.instance;
+      if (typeId == TYPEID_VALUECLASS) return BSerializer_22.instance;
+    }
+    return null;
+  }
 
   public boolean isPointerTypeId(long typeId) {
     if (typeId >= TYPEID_MIN_USER) return true;
@@ -190,8 +228,15 @@ public abstract class BRegistry {
     return false;
   }
 
-  public void replaceSerializer(BSerializer bser) {
-    getSerializerCache().put(bser.typeId, new BRegisteredSerializer(bser));
+  public boolean replaceSerializer(BSerializer bser) {
+    BRegisteredSerializer[] ssers = getSortedSerializers();
+    for (BRegisteredSerializer sser : ssers) {
+      if (sser.typeId == bser.typeId) {
+        sser.instance = bser;
+        return true;
+      }
+    }
+    return false;
   }
   
 }

@@ -5,9 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.gen.cpp.GeneratorCpp;
 import byps.gen.cs.GeneratorCS;
@@ -24,7 +25,7 @@ import byps.gen.utils.CodePrinter;
 
 public class Main {
 
-  private static Log log = LogFactory.getLog(Main.class);
+  private static Logger log = LoggerFactory.getLogger(Main.class);
   
   public enum EMode {
     DETECT,
@@ -36,10 +37,21 @@ public class Main {
   
   public static void main(String[] args) {
     
+    // DEBUG
+    if (args == null || args.length == 0) {
+      args = DebugArgs.bypstest_ser;
+    }
+    
     // BYPS-14: suppress generator warning "Illegal reflective access..."
     System.setProperty("--illegal-access", "debug");
     
     System.out.println("bypsgen version=" + getGeneratorVersion());
+    System.out.println("bypsgen logfile=" + new File("bypsgen.log").getAbsolutePath());
+    
+    log.info("bypsgen version={}", getGeneratorVersion());
+    
+    String argsStr = Arrays.asList(args).stream().collect(Collectors.joining(System.lineSeparator()));
+    log.info("args={}{}", System.lineSeparator(), argsStr);
     
     // Enable printing checkpoints
     CodePrinter.enableCheckpoints(true);
@@ -121,7 +133,7 @@ public class Main {
     File fileClassDB = context.getFileClassDB();
     if (fileClassDB != null) {
       log.info("Read previous API definitions from ClassDB file ==============");
-      log.info(fileClassDB);
+      log.info("{}", fileClassDB);
       prevClassDB = XmlClassDB.read(fileClassDB, false);
       log.info("");
     }

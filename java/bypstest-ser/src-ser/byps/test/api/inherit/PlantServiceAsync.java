@@ -12,9 +12,9 @@ public interface PlantServiceAsync extends BRemote,
 	PlantService {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public java.lang.String grow() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void grow(final BAsyncResult<String> asyncResult) ;
 	
 	

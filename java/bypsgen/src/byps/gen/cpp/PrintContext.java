@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBinaryModel;
 import byps.gen.api.CommentInfo;
@@ -535,7 +535,7 @@ class PrintContext extends PrintContextBase {
 		log.info("Source: " + dirImplC);
 	}
 
-	private Log log = LogFactory.getLog(PrintContext.class);
+	private Logger log = LoggerFactory.getLogger(PrintContext.class);
 	
 	private File dirApi;
 	private File dirImplH;

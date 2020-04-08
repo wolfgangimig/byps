@@ -14,7 +14,7 @@ import byps.*;
 // isInline=false
 // #members=14
 
-// checkpoint byps.gen.j.GenSerStruct:274
+// checkpoint byps.gen.j.GenSerStruct:304
 @SuppressWarnings("all")
 public class JSerializer_142458 extends JSerializer_Object {
 	
@@ -69,6 +69,14 @@ public class JSerializer_142458 extends JSerializer_Object {
 		obj.setString2((java.lang.String[])bin.readObj("string2", true, byps.test.api.JSerializer_1888107655.instance));
 		
 		return obj;
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		final AllTypesZ obj = (AllTypesZ)(obj1);		
+		bin.prepareForLazyLoading(obj.getHebrew1(), null);
+		bin.prepareForLazyLoading(obj.getHebrew2(), byps.test.api.BSerializer_92445340.instance);
+		
 	}
 	
 }

@@ -4,8 +4,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BVersioning;
 import byps.gen.api.GeneratorException;
@@ -42,6 +42,7 @@ public class CompatibleClassDB {
       
 			for (CompatibilityViolation viol : viols) {
 				log.error(viol.msg);
+				System.out.println(viol.msg);
 			}
 		}
 		
@@ -356,7 +357,7 @@ public class CompatibleClassDB {
 		return ret;
 	}
 
-	private Log log = LogFactory.getLog(CompatibleClassDB.class.getName());
+	private Logger log = LoggerFactory.getLogger(CompatibleClassDB.class.getName());
 	private ClassDB prevClassDB;
 	private ClassDB classDB;
 }

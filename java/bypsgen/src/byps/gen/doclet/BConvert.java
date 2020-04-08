@@ -11,8 +11,8 @@ import java.util.Set;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.element.TypeElement;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.Doc;
@@ -417,6 +417,11 @@ public class BConvert extends XmlGeneratorBase {
 		TypeInfo type = makeElementTypeInfo(errInfo, field.type(), errorContext + "." + name);
 		
 		long since = getSince(errInfo, field.tags());
+		
+		// FIXME
+		if (name.equalsIgnoreCase("mbAll")) {
+		  log.info("sordz");
+		}
 		
 		// Constant or Enum?
 		String value = null;
@@ -895,7 +900,7 @@ public class BConvert extends XmlGeneratorBase {
     super(options);
   }
   
-  private static Log log = LogFactory.getLog(BConvert.class);
+  private static Logger log = LoggerFactory.getLogger(BConvert.class);
 
   @Override
   public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {

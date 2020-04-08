@@ -8,7 +8,7 @@ import byps.BValueClass;
 /**
  * Example class with primitive types like boolean, int, String.
  */
-public class PrimitiveTypes extends BValueClass {
+public class PrimitiveTypes extends BValueClass implements InterfaceToIgnore {
 	
 	private static final long serialVersionUID = 1000L;
 	
@@ -74,6 +74,12 @@ public class PrimitiveTypes extends BValueClass {
         + ", longVal=" + longVal + ", floatVal=" + floatVal + ", doubleVal=" + doubleVal + ", stringVal=" + stringVal + ", dateVal=" + dateVal
         //+ ", objVal=" + objVal + ", objVal2=" + objVal2 + ", value=" + value // do not add this members, otherwise testPrimitiveTypesReferenceToSelf causes StackOverflowException. 
         + "]";
+  }
+
+  @Override
+  public void ignoreThisInterface() {
+    // ignore
+    
   }
 	
 	

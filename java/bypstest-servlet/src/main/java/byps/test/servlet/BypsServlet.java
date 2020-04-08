@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.http.HConfig;
@@ -176,7 +176,7 @@ public class BypsServlet extends HHttpServlet {
   protected void initializationFinished() {
   }
   
-  private final Log log = LogFactory.getLog(BypsServlet.class);
+  private final Logger log = LoggerFactory.getLogger(BypsServlet.class);
   private final HConfigImpl config = new HConfigImpl();
 
 }

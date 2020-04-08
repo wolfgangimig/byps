@@ -12,8 +12,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
@@ -30,7 +30,7 @@ public class HWireServer extends BWire {
   private final HActiveMessages activeMessages;
   private final BHashMap<Long, Long> activeMessageIds = new BHashMap<Long, Long>();
   private final HConfig hConfig;
-  private final static Log log = LogFactory.getLog(HWireServer.class);
+  private final static Logger log = LoggerFactory.getLogger(HWireServer.class);
   
   public HWireServer(HConfig hConfig, HActiveMessages activeMessages, HWriteResponseHelper writeHelper) {
     super(FLAG_DEFAULT);

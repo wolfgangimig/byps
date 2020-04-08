@@ -14,7 +14,7 @@ import byps.*;
 // isInline=false
 // #members=1
 
-// checkpoint byps.gen.j.GenSerStruct:274
+// checkpoint byps.gen.j.GenSerStruct:304
 @SuppressWarnings("all")
 public class JSerializer_389860173 extends JSerializer_Object {
 	
@@ -43,6 +43,12 @@ public class JSerializer_389860173 extends JSerializer_Object {
 		obj.v = js.getInt("v");
 		
 		return obj;
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		final BRequest_ServerIF_callClientIncrementInt obj = (BRequest_ServerIF_callClientIncrementInt)(obj1);		
+		
 	}
 	
 }

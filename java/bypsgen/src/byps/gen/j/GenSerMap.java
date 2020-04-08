@@ -2,8 +2,8 @@ package byps.gen.j;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBinaryModel;
 import byps.BException;
@@ -14,7 +14,7 @@ import byps.gen.api.TypeInfo;
 import byps.gen.utils.CodePrinter;
 
 public class GenSerMap {
-	static Log log = LogFactory.getLog(GenSerMap.class);
+	static Logger log = LoggerFactory.getLogger(GenSerMap.class);
 	
 	GenSerMap(PrintContext pctxt, SerialInfo serInfo, CodePrinter pr) throws BException {
 		this(pctxt, serInfo, pr, BBinaryModel.MEDIUM);
@@ -116,6 +116,28 @@ public class GenSerMap {
 	    pr.endBlock();
 	    pr.println("}");
 	}
+	
+  protected void printPrepareForLazyLoading() {
+    String listType = serInfo.toString("java.util");
+    
+    pr.println("@Override");
+    pr.println("public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {");
+    pr.beginBlock();
+
+    pr.print(listType).print(" map = (").print(listType).print(")obj1;").println();
+
+    pr.print("for (Map.Entry<").print(keyType.toString()).print(",").print(valueType.toString()).print("> obj : map.entrySet()) {").println();
+    pr.beginBlock();
+
+    pctxt.printStreamPrepareMember(pr, bmodel, "obj.", "key", true, keyType);
+    pctxt.printStreamPrepareMember(pr, bmodel, "obj.", "value", true, valueType);
+    
+    pr.endBlock();
+    pr.println("}");
+
+    pr.endBlock();
+    pr.println("}");
+  }
 
 	void generate() throws IOException {
 		//log.debug(GenSerMap.class.getName(), "generateListSerializer");
@@ -151,6 +173,12 @@ public class GenSerMap {
 		printWrite();
 		pr.println();
 		
+    // Does element type contain members that are potentially lazy loaded?
+    if (pctxt.isLazyLoadingType(serInfo)) {
+  		printPrepareForLazyLoading();
+  		pr.println();
+    }
+    
 		pr.endBlock();
 		
 		pr.println("}");

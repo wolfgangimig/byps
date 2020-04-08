@@ -7,39 +7,43 @@ package byps.test.api.remote;
 
 import byps.*;
 
-// checkpoint byps.gen.j.GenRemoteStub:112
+// checkpoint byps.gen.j.GenRemoteStub:164
 public class BStub_RemoteReferences extends BStub implements RemoteReferencesAsync, java.io.Serializable {
 	
-	// checkpoint byps.gen.j.GenRemoteStub:93
-	public static final long serialVersionUID = 568637225L;
-	protected final BForward_RemoteReferences forwardTo;	
-	
-	@SuppressWarnings("unused") private BStub_RemoteReferences() {
-		this.forwardTo = new BForward_RemoteReferences();
-	}
+	// checkpoint byps.gen.j.GenRemoteStub:145
+	public final static long serialVersionUID = 568637225L;
 	
 	public BStub_RemoteReferences(final BTransport transport) {
-		super(transport);
-		this.forwardTo = new BForward_RemoteReferences(transport);
-		
+		super(transport);		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
-	public byps.test.api.refs.Node getNode() throws RemoteException{
-	  return forwardTo.getNode();
+	// checkpoint byps.gen.j.PrintContext:396
+	public byps.test.api.refs.Node getNode() throws RemoteException {
+		// checkpoint byps.gen.j.GenRemoteStub:46
+		final BSyncResult<byps.test.api.refs.Node> asyncResult = new BSyncResult<byps.test.api.refs.Node>();		
+		getNode(asyncResult);
+		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void getNode(final BAsyncResult<byps.test.api.refs.Node> asyncResult) {
-	  forwardTo.getNode(asyncResult);
+		// checkpoint byps.gen.j.GenRemoteStub:113
+		BRequest_RemoteReferences_getNode req = new BRequest_RemoteReferences_getNode();		
+		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
-	public void setNode(byps.test.api.refs.Node v) throws RemoteException{
-	  forwardTo.setNode(v);
+	// checkpoint byps.gen.j.PrintContext:396
+	public void setNode(byps.test.api.refs.Node v) throws RemoteException {
+		// checkpoint byps.gen.j.GenRemoteStub:46
+		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
+		setNode(v, asyncResult);
+		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void setNode(byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) {
-	  forwardTo.setNode(v, asyncResult);
+		// checkpoint byps.gen.j.GenRemoteStub:113
+		BRequest_RemoteReferences_setNode req = new BRequest_RemoteReferences_setNode();		
+		req.v = v;
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	

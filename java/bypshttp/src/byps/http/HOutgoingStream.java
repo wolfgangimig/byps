@@ -10,7 +10,7 @@ import byps.BException;
 import byps.BExceptionC;
 
 public class HOutgoingStream extends BContentStreamWrapper {
-	//private Log log = LogFactory.getLog(HOutgoingStream.class);
+	//private Logger log = LoggerFactory.getLogger(HOutgoingStream.class);
 	
 	private final File tempDir;
 	private boolean isOpen;

@@ -14,7 +14,7 @@ import byps.*;
 // isInline=false
 // #members=1
 
-// checkpoint byps.gen.j.GenSerStruct:274
+// checkpoint byps.gen.j.GenSerStruct:304
 @SuppressWarnings("all")
 public class BSerializer_2076960068 extends BSerializer {
 	
@@ -47,6 +47,13 @@ public class BSerializer_2076960068 extends BSerializer {
 		obj.result = (byps.test.api.srvr.ChatStructure)bin.readObj(false, null);
 		
 		return obj;
+	}
+	
+	@Override
+	public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {
+		final BResult_7007 obj = (BResult_7007)(obj1);		
+		bin.prepareForLazyLoading(obj.result, null);
+		
 	}
 	
 }

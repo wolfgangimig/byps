@@ -18,8 +18,8 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBufferJson;
 import byps.BException;
@@ -38,7 +38,7 @@ public abstract class JcnnRequest implements HHttpRequest {
   protected AtomicBoolean cancelled = new AtomicBoolean();
   protected Map<String,String> requestProperties = new HashMap<String,String>();
   protected final long trackingId;
-  private static Log log = LogFactory.getLog(JcnnRequest.class);
+  private static Logger log = LoggerFactory.getLogger(JcnnRequest.class);
   
   /**
    * HTTP status code. 

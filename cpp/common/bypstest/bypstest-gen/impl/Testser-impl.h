@@ -7600,6 +7600,10 @@ void BSerializer_1770673942(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 void BSerializer_1518668429(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.cons.HebrewZ[]
 void BSerializer_92445340(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.cons.SordC
+void BSerializer_632707056(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.cons.SordZ
+void BSerializer_691830(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.enu.EnumPlanets[]
 void BSerializer_1441131650(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.enu.UsePlanets

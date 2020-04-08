@@ -5,8 +5,8 @@ import java.lang.reflect.Method;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.BServer;
@@ -57,6 +57,6 @@ public class CoTestSession extends HSession {
     return server;
   }
 
-  private final Log log = LogFactory.getLog(CoTestSession.class);
+  private final Logger log = LoggerFactory.getLogger(CoTestSession.class);
 }
 

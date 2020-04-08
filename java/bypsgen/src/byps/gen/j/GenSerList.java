@@ -2,8 +2,8 @@ package byps.gen.j;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBinaryModel;
 import byps.BException;
@@ -14,7 +14,7 @@ import byps.gen.utils.CodePrinter;
 
 
 public class GenSerList {
-	static Log log = LogFactory.getLog(GenSerList.class);
+	static Logger log = LoggerFactory.getLogger(GenSerList.class);
 
 	GenSerList(PrintContext pctxt, SerialInfo serInfo, CodePrinter pr) throws BException {
 		this(pctxt, serInfo, pr, BBinaryModel.MEDIUM);
@@ -119,6 +119,27 @@ public class GenSerList {
 	    pr.println("}");
 	}
 
+  protected void printPrepareForLazyLoading() {
+    String listType = serInfo.toString("java.util");
+    
+    pr.println("@Override");
+    pr.println("public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {");
+    pr.beginBlock();
+
+    pr.print(listType).print(" arr = (").print(listType).print(")obj1;").println();
+
+    pr.print("for (").print(elmType.toString()).print(" obj : arr) {").println();
+    pr.beginBlock();
+
+    pctxt.printStreamPrepareMember(pr, bmodel, "obj", "", false, elmType);
+    
+    pr.endBlock();
+    pr.println("}");
+
+    pr.endBlock();
+    pr.println("}");
+  }
+
 	void generate() throws IOException {
 		//log.debug(GenSerList.class.getName(), "generateListSerializer");
 		
@@ -154,6 +175,12 @@ public class GenSerList {
 		printWrite();
 		pr.println();
 		
+    // Does element type contain members that are potentially lazy loaded?
+    if (pctxt.isLazyLoadingType(serInfo)) {
+  		printPrepareForLazyLoading();
+  		pr.println();
+    }
+    
 		pr.endBlock();
 		
 		pr.println("}");

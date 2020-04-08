@@ -12,44 +12,44 @@ public interface RemoteStreamsAsync extends BRemote,
 	RemoteStreams {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public java.io.InputStream getImage() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void getImage(final BAsyncResult<java.io.InputStream> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public void setImage(java.io.InputStream istrm) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void setImage(java.io.InputStream istrm, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public java.util.TreeMap<java.lang.Integer,java.io.InputStream> getImages() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void getImages(final BAsyncResult<java.util.TreeMap<java.lang.Integer,java.io.InputStream>> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public void setImages(java.util.Map<java.lang.Integer,java.io.InputStream> istrms, int doNotReadStreamAtKey) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void setImages(java.util.Map<java.lang.Integer,java.io.InputStream> istrms, int doNotReadStreamAtKey, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public void throwLastException() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void throwLastException(final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public java.io.InputStream getTextStream() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void getTextStream(final BAsyncResult<java.io.InputStream> asyncResult) ;
 	
 	/**
@@ -58,9 +58,9 @@ public interface RemoteStreamsAsync extends BRemote,
 	 * Return a large video stream to be able to test that byte ranges are correctly handled.
 	 * @throws RemoteException
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public java.io.InputStream getVideoCheckSupportByteRange() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void getVideoCheckSupportByteRange(final BAsyncResult<java.io.InputStream> asyncResult) ;
 	
 	/**
@@ -70,9 +70,9 @@ public interface RemoteStreamsAsync extends BRemote,
 	 * Return stream without properties.
 	 * @throws RemoteException
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public java.io.InputStream getStreamDeferedProperies() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void getStreamDeferedProperies(final BAsyncResult<java.io.InputStream> asyncResult) ;
 	
 	/**
@@ -80,18 +80,18 @@ public interface RemoteStreamsAsync extends BRemote,
 	 * Stores a stream reference but does not create an internal copy (does not materialize)
 	 * @throws RemoteException
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public void setStreamDoNotMaterialize(java.io.InputStream stream) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void setStreamDoNotMaterialize(java.io.InputStream stream, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	 * Return stream, do not call BContentStream.cloneStream().
 	 * @throws RemoteException
 	*/
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public java.io.InputStream getStreamDoNotClone() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void getStreamDoNotClone(final BAsyncResult<java.io.InputStream> asyncResult) ;
 	
 	

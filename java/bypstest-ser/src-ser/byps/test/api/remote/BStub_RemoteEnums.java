@@ -7,39 +7,43 @@ package byps.test.api.remote;
 
 import byps.*;
 
-// checkpoint byps.gen.j.GenRemoteStub:112
+// checkpoint byps.gen.j.GenRemoteStub:164
 public class BStub_RemoteEnums extends BStub implements RemoteEnumsAsync, java.io.Serializable {
 	
-	// checkpoint byps.gen.j.GenRemoteStub:93
-	public static final long serialVersionUID = 485761455L;
-	protected final BForward_RemoteEnums forwardTo;	
-	
-	@SuppressWarnings("unused") private BStub_RemoteEnums() {
-		this.forwardTo = new BForward_RemoteEnums();
-	}
+	// checkpoint byps.gen.j.GenRemoteStub:145
+	public final static long serialVersionUID = 485761455L;
 	
 	public BStub_RemoteEnums(final BTransport transport) {
-		super(transport);
-		this.forwardTo = new BForward_RemoteEnums(transport);
-		
+		super(transport);		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
-	public byps.test.api.enu.EnumPlanets getPlanet() throws RemoteException{
-	  return forwardTo.getPlanet();
+	// checkpoint byps.gen.j.PrintContext:396
+	public byps.test.api.enu.EnumPlanets getPlanet() throws RemoteException {
+		// checkpoint byps.gen.j.GenRemoteStub:46
+		final BSyncResult<byps.test.api.enu.EnumPlanets> asyncResult = new BSyncResult<byps.test.api.enu.EnumPlanets>();		
+		getPlanet(asyncResult);
+		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void getPlanet(final BAsyncResult<byps.test.api.enu.EnumPlanets> asyncResult) {
-	  forwardTo.getPlanet(asyncResult);
+		// checkpoint byps.gen.j.GenRemoteStub:113
+		BRequest_RemoteEnums_getPlanet req = new BRequest_RemoteEnums_getPlanet();		
+		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
-	public void setPlanet(byps.test.api.enu.EnumPlanets planet) throws RemoteException{
-	  forwardTo.setPlanet(planet);
+	// checkpoint byps.gen.j.PrintContext:396
+	public void setPlanet(byps.test.api.enu.EnumPlanets planet) throws RemoteException {
+		// checkpoint byps.gen.j.GenRemoteStub:46
+		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
+		setPlanet(planet, asyncResult);
+		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void setPlanet(byps.test.api.enu.EnumPlanets planet, final BAsyncResult<Object> asyncResult) {
-	  forwardTo.setPlanet(planet, asyncResult);
+		// checkpoint byps.gen.j.GenRemoteStub:113
+		BRequest_RemoteEnums_setPlanet req = new BRequest_RemoteEnums_setPlanet();		
+		req.planet = planet;
+		transport.sendMethod(req, asyncResult);
 	}
 	
 	

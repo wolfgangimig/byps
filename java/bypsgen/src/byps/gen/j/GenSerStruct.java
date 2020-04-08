@@ -3,9 +3,10 @@ package byps.gen.j;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BBinaryModel;
 import byps.BRegistry;
@@ -15,7 +16,7 @@ import byps.gen.api.SerialInfo;
 import byps.gen.utils.CodePrinter;
 
 public class GenSerStruct {
-	static Log log = LogFactory.getLog(GenSerStruct.class);
+	static Logger log = LoggerFactory.getLogger(GenSerStruct.class);
 
 	GenSerStruct(PrintContext pctxt, SerialInfo serInfo, CodePrinter pr) {
 		this(pctxt, serInfo, pr, BBinaryModel.MEDIUM);
@@ -113,17 +114,26 @@ public class GenSerStruct {
 		//log.debug(GeneratorJ.class.getName(), "printSkipMember");
 	}
 	
-	protected void printPutMember(MemberInfo minfo) throws IOException {
-		//log.debug(GeneratorJ.class.getName(), "printPutMember", minfo);
-		pctxt.printStreamPutMember(pr, BBinaryModel.MEDIUM, "obj.", minfo.name, minfo.name, minfo.access == MemberAccess.PRIVATE, minfo.type);
-		//log.debug(GeneratorJ.class.getName(), "printPutMember");
+	protected void printPutMember(MemberInfo minfo) {
+		try {
+      pctxt.printStreamPutMember(pr, BBinaryModel.MEDIUM, "obj.", minfo.name, minfo.name, minfo.access == MemberAccess.PRIVATE, minfo.type);
+    } catch (IOException e) {
+      throw new IllegalStateException(e);
+    }
 	}
 
-	protected void printGetMember(MemberInfo minfo) throws IOException {
-		//log.debug(GeneratorJ.class.getName(), "printGetMember");
-		pctxt.printStreamGetMember(pr, BBinaryModel.MEDIUM, "obj.", minfo.name, minfo.name, minfo.access == MemberAccess.PRIVATE, minfo.type);
-		//log.debug(GeneratorJ.class.getName(), "printGetMember");
+	protected void printGetMember(MemberInfo minfo) {
+	  try {
+	    pctxt.printStreamGetMember(pr, BBinaryModel.MEDIUM, "obj.", minfo.name, minfo.name, minfo.access == MemberAccess.PRIVATE, minfo.type);
+	  }
+	  catch (IOException e) {
+	    throw new IllegalStateException(e);
+	  }
 	}
+	
+  protected void printPrepareMember(MemberInfo minfo) {
+    pctxt.printStreamPrepareMember(pr, BBinaryModel.MEDIUM, "obj.", minfo.name, minfo.access == MemberAccess.PRIVATE, minfo.type);
+  }
 	
 	protected void internalPrintCreateObject() {
 		CodePrinter mpr = pr.print("final ").print(serInfo.name).print(" obj = (").print(serInfo.name).print(")(obj1 != null ? ")
@@ -164,8 +174,8 @@ public class GenSerStruct {
 			pr.println("final BBufferBin bbuf = bin.bbuf;");
 			pr.println();
 			
-			printPutGetMembers(serInfo.getTypeMembers(), false);
-			printPutGetMembers(serInfo.getPointerMembers(), false);
+			printPutGetPrepareMembers(serInfo.getTypeMembers(), this::printGetMember);
+			printPutGetPrepareMembers(serInfo.getPointerMembers(), this::printGetMember);
 			pr.println();
 		}
 
@@ -181,7 +191,32 @@ public class GenSerStruct {
 		//log.debug(GeneratorJ.class.getName(), "printRead");
 	}
 
-	protected void printPutGetMembers(List<MemberInfo> members, boolean putNotGet) throws IOException {
+	protected void printPrepareForLazyLoading() throws IOException {
+    
+    pr.println("@Override");
+    pr.println("public void prepareForLazyLoading(final Object obj1, final BInput bin, final long version) throws BException {");
+    pr.beginBlock();
+    
+    if (serInfo.baseInfo != null && !serInfo.baseInfo.isExceptionType()) {
+      pr.println("super.prepareForLazyLoading(obj1, bin, version);");
+    }
+    
+    if (!serInfo.members.isEmpty()) {
+      
+      pr.print("final ").print(serInfo.name).print(" obj = (").print(serInfo.name).print(")(obj1);");
+      pr.println();
+
+      printPutGetPrepareMembers(serInfo.getTypeMembers(), this::printPrepareMember);
+      printPutGetPrepareMembers(serInfo.getPointerMembers(), this::printPrepareMember);
+      
+      pr.println();
+    }
+
+    pr.endBlock();
+    pr.println("}");
+	}
+
+	protected void printPutGetPrepareMembers(List<MemberInfo> members, Consumer<MemberInfo> printDoMember) throws IOException {
 		List<Long> sinceStack = new ArrayList<Long>();
 		
 		for (MemberInfo minfo : members) {
@@ -204,12 +239,7 @@ public class GenSerStruct {
 					}
 				}
 
-				if (putNotGet) {
-					printPutMember(minfo);
-				}
-				else {
-					printGetMember(minfo);
-				}
+				printDoMember.accept(minfo);
 			}
 		}
 		
@@ -219,7 +249,7 @@ public class GenSerStruct {
 		}
 	}
 
-	protected void printWrite() throws IOException {
+  protected void printWrite() throws IOException {
 		//log.debug(GeneratorJ.class.getName(), "printStore");
 
 		pr.println("@Override");
@@ -244,8 +274,8 @@ public class GenSerStruct {
 		pr.println("final BOutputBin bout = (BOutputBin)bout1;");
 		pr.println("final BBufferBin bbuf = bout.bbuf;");
 		
-		printPutGetMembers(serInfo.getTypeMembers(), true);
-		printPutGetMembers(serInfo.getPointerMembers(), true);
+		printPutGetPrepareMembers(serInfo.getTypeMembers(), this::printPutMember);
+		printPutGetPrepareMembers(serInfo.getPointerMembers(), this::printPutMember);
 		
 		pr.endBlock();
 		pr.println("}");
@@ -307,6 +337,12 @@ public class GenSerStruct {
 		printRead();
 		pr.println();
 		
+    // Does element type contain members that are potentially lazy loaded?
+    if (pctxt.isLazyLoadingType(serInfo)) {
+  		printPrepareForLazyLoading();
+  		pr.println();
+    }
+    
 		pr.endBlock();
 		
 		pr.println("}");

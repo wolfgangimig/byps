@@ -16,13 +16,13 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_BioFruitService extends BSkeleton implements BioFruitServiceAsync {
 	
-	public static final long serialVersionUID = 363642571L;
+	public final static long serialVersionUID = 363642571L;
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public java.lang.String squeeze() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void squeeze(final BAsyncResult<String> asyncResult) {
 		try {
 			java.lang.String ret = squeeze();
@@ -32,11 +32,11 @@ public class BSkeleton_BioFruitService extends BSkeleton implements BioFruitServ
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public java.lang.String grow() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void grow(final BAsyncResult<String> asyncResult) {
 		try {
 			java.lang.String ret = grow();
@@ -46,11 +46,11 @@ public class BSkeleton_BioFruitService extends BSkeleton implements BioFruitServ
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:396
 	public boolean certify(java.lang.String param) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:440
 	public void certify(java.lang.String param, final BAsyncResult<Boolean> asyncResult) {
 		try {
 			boolean ret = certify(param);

@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InterruptedIOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BContentStream;
 import byps.BException;
@@ -19,7 +19,7 @@ import byps.BTargetId;
 
 public class HIncomingStreamSync extends BContentStream {
 	
-	private final Log log = LogFactory.getLog(HIncomingStreamSync.class);
+	private final Logger log = LoggerFactory.getLogger(HIncomingStreamSync.class);
 	private final static int NO_BYTES = 0;
 	private final static int FIRST_BYTES = 1;
 	private final static int SECOND_BYTES = 2;

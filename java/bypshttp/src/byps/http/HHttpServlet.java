@@ -16,6 +16,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.servlet.ServletConfig;
@@ -28,12 +29,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.Appender;
-import org.apache.log4j.FileAppender;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.BAsyncResult;
@@ -54,6 +51,7 @@ import byps.BTargetId;
 import byps.BTransport;
 import byps.BWire;
 import byps.RemoteException;
+import byps.log.LogConfigurator;
 import byps.ureq.BRegistry_BUtilityRequests;
 import byps.ureq.BSkeleton_BUtilityRequests;
 import byps.ureq.JRegistry_BUtilityRequests;
@@ -162,32 +160,6 @@ public abstract class HHttpServlet extends HttpServlet implements
     if (log.isDebugEnabled()) log.debug(")init");
   }
 
-  private void initLogger(HConfig config) {
-
-    String logLevel = config.getValue("bypshttp.log.level", "WARN");
-    String logFile = config.getValue("bypshttp.log.file", null);
-
-    if (logFile != null) {
-      logFile = logFile.replace('/', File.separatorChar);
-
-      Logger rootLogger = Logger.getRootLogger();
-      Appender ap = rootLogger.getAppender("FI");
-      if (ap != null) {
-        FileAppender fap = (FileAppender) ap;
-        fap.setFile(logFile);
-        fap.activateOptions();
-      }
-
-      if (logLevel.equalsIgnoreCase("DEBUG")) rootLogger.setLevel(Level.DEBUG);
-      if (logLevel.equalsIgnoreCase("INFO")) rootLogger.setLevel(Level.INFO);
-      if (logLevel.equalsIgnoreCase("WARN")) rootLogger.setLevel(Level.WARN);
-      if (logLevel.equalsIgnoreCase("ERROR")) rootLogger.setLevel(Level.ERROR);
-
-      if (log.isDebugEnabled()) log.debug("Logger opened.");
-    }
-
-  }
-
   /**
    * Initialization thread
    */
@@ -241,6 +213,19 @@ public abstract class HHttpServlet extends HttpServlet implements
       }
       catch (ServletException e) {
         log.error("Initialization failed.", e);
+      }
+
+    }
+
+
+    private void initLogger(HConfig config) {
+
+      String logLevel = config.getValue("bypshttp.log.level", null);
+
+      if (logLevel != null) {
+        LogConfigurator.setLevel(logLevel);
+
+        if (log.isDebugEnabled()) log.debug("Logger opened.");
       }
 
     }
@@ -573,45 +558,32 @@ public abstract class HHttpServlet extends HttpServlet implements
     if (log.isDebugEnabled()) log.debug(")doPostMessage");
   }
 
-  protected HSession getSessionFromMessageHeaderOrHttpRequest(
-      BMessageHeader header, HttpServletRequest request) {
-    if (log.isDebugEnabled()) log
-        .debug("getSessionFromMessageHeaderOrHttpRequest(");
-    final BHashMap<String, HSession> sessions = HSessionListener
-        .getAllSessions();
-    HSession sess = null;
-    HttpSession hsess = request.getSession();
+  protected HSession getSessionFromMessageHeaderOrHttpRequest(BMessageHeader header, HttpServletRequest request) {
+    if (log.isDebugEnabled()) log.debug("getSessionFromMessageHeaderOrHttpRequest(");
 
-    if (log.isDebugEnabled()) log.debug("header=" + header + ", request.session=" + hsess);
+    // Accept BYPS session only in conjunction with HTTP session.
+    // The HTTP session is sent as cookie and can be declared as HttpOnly.
+    // However, it is not sufficient to use only the HTTP session. The same HTTP session 
+    // could be used by different clients: e.g. a Java client application with an integrated web view
+    // so binary and JSON communication is used.
+    // BYPS-19
+    
+    HttpSession httpSession = request.getSession();
+    Optional<HSession> bypsSessionOpt = getBypsSessionFromHttpSession(httpSession, header);
 
-    // New client: sessionId found in message header.
-    if (header != null && header.bversion >= BMessageHeader.BYPS_VERSION_WITH_SESSIONID) {
-      if (log.isDebugEnabled()) log.debug("header.sessionId=" + header.sessionId);
-      sess = sessions.get(header.sessionId);
-      if (log.isDebugEnabled()) log.debug("sess from header, session=" + sess);
-    }
-    // Old client: sessionId found in HTTP cookie.
-    else {
-      if (hsess != null) {
-        sess = getFirstBypsSessionFromHttpSession(hsess);
-        if (log.isDebugEnabled()) log
-            .debug("sess from cookie, session=" + sess);
+    bypsSessionOpt.ifPresent(bypsSession -> {
+      
+      if (bypsSession.isExpired()) {
+        if (log.isDebugEnabled()) log.debug("bypsSession is expired");
+        bypsSession.done(); 
       }
-    }
-
-    if (sess != null) {
-      if (log.isDebugEnabled()) log.debug("sess expired=" + sess.isExpired());
-      if (sess.isExpired()) {
-        sess.done();
-        sess = null;
+      else {
+        bypsSession.touch();
       }
-    }
-
-    if (sess != null) {
-      sess.touch();
-    }
-
-    return sess;
+      
+    });
+    
+    return bypsSessionOpt.orElse(null);
   }
 
   public void doMessage(final HttpServletRequest request,
@@ -906,15 +878,6 @@ public abstract class HHttpServlet extends HttpServlet implements
     HttpSession hsess = request.getSession(true);
     if (log.isDebugEnabled()) log.debug("JSESSIONID=" + hsess.getId());
 
-    // Assign a set of BYPS session objects to the app server's session.
-    hsess.setAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS,
-        new HHttpSessionObject());
-
-    // Constrain the lifetime of the session to 10s. It is extended, if the
-    // session gets authenticated.
-    hsess
-        .setMaxInactiveInterval(HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED);
-
     // Create new BYPS session
     final HTargetIdFactory targetIdFactory = getTargetIdFactory();
     final BTargetId targetId = targetIdFactory.createTargetId();
@@ -923,8 +886,7 @@ public abstract class HHttpServlet extends HttpServlet implements
     if (log.isDebugEnabled()) log.debug("targetId=" + targetId);
 
     // Add session to session map
-    final BHashMap<String, HSession> sessions = HSessionListener
-        .getAllSessions();
+    final BHashMap<String, HSession> sessions = HSessionListener.getAllSessions();
     final String bsessionId = targetId.toSessionId();
     sessions.put(bsessionId, sess);
 
@@ -1376,33 +1338,48 @@ public abstract class HHttpServlet extends HttpServlet implements
   }
 
   /**
-   * Get first BYPS session from application server's session. Old client
+   * Get BYPS session from application server's session. Old client
    * applications do not send the session ID in the BMessageHeader. For this
    * clients, the BYPS session is found in the application server's session.
    * 
-   * @param hsess
-   *          Application server's session.
+   * @param httpSession Application server's session.
+   * @param header BYPS message header.
    * @return BYPS session, or null
    */
-  protected synchronized HSession getFirstBypsSessionFromHttpSession(
-      HttpSession hsess) {
-    HSession ret = null;
+  protected synchronized Optional<HSession> getBypsSessionFromHttpSession(HttpSession httpSession, BMessageHeader header) {
+    if (log.isDebugEnabled()) log.debug("getBypsSessionFromHttpSession(request.session={}, header={}", httpSession, header);
+    Optional<HSession> ret = Optional.empty();
+    
     try {
-      HHttpSessionObject sessObj = (HHttpSessionObject) hsess
-          .getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
-      if (sessObj != null) {
-        ret = sessObj.getFirstSessionOrNull();
+      if (HConstants.HTTP_SESSION_COOKIE_REQUIRED) {
+        
+        // BYPS-19: Obtain BYPS session from Tomcat session 
+        HHttpSessionObject sessObj = (HHttpSessionObject) httpSession.getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
+        if (sessObj != null) {
+          ret = sessObj.getSession(header.sessionId);
+        }
+        
       }
+      else {
+        
+        HSession bypsSession = HSessionListener.getAllSessions().get(header.sessionId);
+        ret = Optional.ofNullable(bypsSession);
+        
+      }
+      
       // Do not invalidate the HTTP session, if no BYPS session could be found.
       // Otherwise, IX manager page looses it's authentication objects.
     }
-    catch (IllegalStateException ignored) {
+    catch (IllegalStateException e) {
       // HttpSession could be already invalidated.
+      if (log.isDebugEnabled()) log.debug("HTTP session might be invalidated.", e);
     }
+    
+    if (log.isDebugEnabled()) log.debug(")getBypsSessionFromHttpSession={}", ret);
     return ret;
   }
 
-  private static Log log = LogFactory.getLog(HHttpServlet.class);
+  private static Logger log = LoggerFactory.getLogger(HHttpServlet.class);
   private volatile BServerRegistry serverRegistry_use_getServerRegistry;
   private volatile HTargetIdFactory targetIdFact_use_getTargetIdFactory;
   private volatile HActiveMessages activeMessages_use_getActiveMessages;

@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BException;
 import byps.BJsonObject;
@@ -25,7 +25,7 @@ import byps.gen.utils.Utils;
 
 class GenApiClass {
 	
-	static Log log = LogFactory.getLog(GenApiClass.class);
+	static Logger log = LoggerFactory.getLogger(GenApiClass.class);
 	
 	static void generate(PrintContext pctxt, SerialInfo serInfo) throws IOException {
 		log.debug("generate(" + serInfo);
@@ -167,7 +167,14 @@ class GenApiClass {
 			sbuf.append(value);
 		}
 		else if (tinfo.qname.equals("long")) {
-			if (value instanceof Number) value = ((Number)value).longValue();
+			if (value instanceof Number) {
+			  value = ((Number)value).longValue();
+			}
+			else if (value instanceof String) {
+		     String svalue = (String)value;
+		     if (svalue.endsWith(".")) svalue = svalue.substring(0, svalue.length()-1);
+		     value = Long.parseLong(svalue);
+			}
 			sbuf.append(value).append("L");
 		}
 		else if (tinfo.qname.equals("double")) {

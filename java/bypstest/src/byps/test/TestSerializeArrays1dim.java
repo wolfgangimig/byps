@@ -5,8 +5,8 @@ import java.nio.ByteBuffer;
 import java.util.Base64;
 import java.util.Date;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.Test;
 
 import byps.BBinaryModel;
@@ -27,7 +27,7 @@ import byps.test.api.prim.PrimitiveTypes;
  */
 public class TestSerializeArrays1dim {
 
-	private Log log = LogFactory.getLog(TestSerializeArrays1dim.class);
+	private Logger log = LoggerFactory.getLogger(TestSerializeArrays1dim.class);
 	BTransport transport = TestUtils.createTransport();
 	
 	/**

@@ -4,8 +4,8 @@ package byps.test;
 import java.util.Date;
 import java.util.HashMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +25,7 @@ public class TestRemoteMapTypes {
 	
 	BClient_Testser client;
 	RemoteMapTypes remote;
-	private Log log = LogFactory.getLog(TestRemoteMapTypes.class);
+	private Logger log = LoggerFactory.getLogger(TestRemoteMapTypes.class);
 
 	@Before
 	public void setUp() throws RemoteException {

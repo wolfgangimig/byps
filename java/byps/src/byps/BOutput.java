@@ -122,6 +122,10 @@ public abstract class BOutput {
 		return bstrm;
 	}
 	
+	public int getNbOfObjects() {
+	  return objMap != null ? objMap.size() : 0;
+	}
+	
 	protected BObjMap objMap;
 	protected List<BContentStream> streams;
 

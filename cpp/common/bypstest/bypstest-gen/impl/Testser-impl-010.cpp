@@ -5,6 +5,48 @@ using namespace ::byps;
 namespace byps { namespace test { namespace api { namespace remote { 
 
 //-------------------------------------------------
+// Implementation of class BRequest_RemoteSetTypes_setChar1
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:489
+BRequest_RemoteSetTypes_setChar1::BRequest_RemoteSetTypes_setChar1() : BMethodRequest(1900796440) {
+}
+// checkpoint byps.gen.cpp.GenApiClass:536
+byps::test::api::remote::BRequest_RemoteSetTypes_setChar1::BRequest_RemoteSetTypes_setChar1(const byps::PSetCharacter& char1)
+	: BMethodRequest(1900796440) 
+	, char1(char1)
+	{}
+// checkpoint byps.gen.cpp.PrintContext:496
+BTYPEID byps::test::api::remote::BRequest_RemoteSetTypes_setChar1::BSerializable_getTypeId() {
+	return 1462409067; 
+}
+// checkpoint byps.gen.cpp.GenApiClass:876
+void BRequest_RemoteSetTypes_setChar1::serialize(BIO& ar, const BVERSION version) {
+	ar & this->char1;
+}
+void byps::test::api::remote::BRequest_RemoteSetTypes_setChar1::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
+	PRemoteSetTypes __byps__remoteT = byps_ptr_cast<RemoteSetTypes>(__byps__remote);
+	__byps__remoteT->setChar1(char1, [__byps__asyncResult](bool __byps__result, const BException& __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_19(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:933
+namespace byps { namespace test { namespace api { 
+void BSerializer_1462409067(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_ObjS_Template<byps::test::api::remote::BRequest_RemoteSetTypes_setChar1>(bio, pObj, pObjS, pBase);	
+}
+}}}
+namespace byps { namespace test { namespace api { namespace remote { 
+
+//-------------------------------------------------
 // Implementation of class BRequest_RemoteSetTypes_setDate1
 // Generated from class byps.gen.cpp.GenApiClass
 
@@ -1083,48 +1125,5 @@ void SetTypes::serialize(BIO& ar, const BVERSION version) {
 namespace byps { namespace test { namespace api { 
 void BSerializer_5001(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_ObjS_Template<byps::test::api::set::SetTypes>(bio, pObj, pObjS, pBase);	
-}
-}}}
-namespace byps { namespace test { namespace api { namespace srvr { 
-
-//-------------------------------------------------
-// Implementation of class BRequest_ClientIF_getStreams
-// Generated from class byps.gen.cpp.GenApiClass
-
-// checkpoint byps.gen.cpp.GenApiClass:489
-BRequest_ClientIF_getStreams::BRequest_ClientIF_getStreams() : BMethodRequest(2049072174) {
-	ctrl = 0;
-}
-// checkpoint byps.gen.cpp.GenApiClass:536
-byps::test::api::srvr::BRequest_ClientIF_getStreams::BRequest_ClientIF_getStreams(int32_t ctrl)
-	: BMethodRequest(2049072174) 
-	, ctrl(ctrl)
-	{}
-// checkpoint byps.gen.cpp.PrintContext:496
-BTYPEID byps::test::api::srvr::BRequest_ClientIF_getStreams::BSerializable_getTypeId() {
-	return 1654980071; 
-}
-// checkpoint byps.gen.cpp.GenApiClass:876
-void BRequest_ClientIF_getStreams::serialize(BIO& ar, const BVERSION version) {
-	ar & this->ctrl;
-}
-void byps::test::api::srvr::BRequest_ClientIF_getStreams::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
-	PClientIF __byps__remoteT = byps_ptr_cast<ClientIF>(__byps__remote);
-	__byps__remoteT->getStreams(ctrl, [__byps__asyncResult](byps::PVectorInputStream __byps__result, const BException& __byps__ex) {
-		if (__byps__ex) {
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
-		}
-		else {
-			PSerializable __byps__methodResult(new BResult_1218831438(__byps__result));
-			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
-		}
-	});
-}
-}}}}
-
-// checkpoint byps.gen.cpp.GenApiClass:933
-namespace byps { namespace test { namespace api { 
-void BSerializer_1654980071(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_ObjS_Template<byps::test::api::srvr::BRequest_ClientIF_getStreams>(bio, pObj, pObjS, pBase);	
 }
 }}}

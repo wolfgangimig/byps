@@ -82,4 +82,22 @@ public interface HHttpClient {
    */
   public String getHttpSession();
   
+  /**
+   * Get HTTP session cookie.
+   * Gets the cookie with the given name. 
+   * @param name Cookie name, e.g. HConstants.HTTP_COOKIE_JSESSIONID
+   * @return Session cookie.
+   */
+  public java.net.HttpCookie getHttpCookie(String name);
+    // BYPS-18: Allow to set HTTP session to support OAuth/SAML
+  
+  /**
+   * Set HTTP cookie.
+   * Adds or replaces a HTTP cookie.  
+   * Ensure that at least name, value, domain, path are set in the given cookie.  
+   * @param cookie Session cookie.
+   */
+  public void setHttpCookie(java.net.HttpCookie cookie);
+    // BYPS-18: Allow to set HTTP session to support OAuth/SAML
+  
 }

@@ -1,16 +1,17 @@
 package byps.http;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class HHttpSessionObject {
 
   private ArrayList<HSession> sessions = new ArrayList<HSession>();
 
-  public void addSession(HSession s) {
+  public synchronized void addSession(HSession s) {
     sessions.add(s);
   }
   
-  public void removeSession(HSession s) {
+  public synchronized void removeSession(HSession s) {
     for (int i = 0; i < sessions.size(); i++) {
       HSession o = sessions.get(i);
       if (o == s) {
@@ -20,11 +21,36 @@ public class HHttpSessionObject {
     }
   }
   
-  public HSession getFirstSessionOrNull() {
-    return sessions.size() != 0 ? sessions.get(0) : null;
+  public synchronized Optional<HSession> getSession(String sessionId) {
+    HSession bypsSession = HSessionListener.getAllSessions().get(sessionId);
+    return sessions.stream().filter(s -> s == bypsSession).findAny();
   }
   
-  public boolean isEmpty() {
-    return sessions.size() == 0;
+  public synchronized Optional<HSession> getFirstSession() {
+    return sessions.stream().findFirst();
+  }
+  
+  public HSession getFirstSessionOrNull() {
+    return getFirstSession().orElse(null);
+  }
+  
+  public synchronized boolean isEmpty() {
+    return sessions.isEmpty();
+  }
+
+  public synchronized int size() {
+    return sessions.size();
+  }
+  
+  public String toString() {
+    StringBuilder sbuf = new StringBuilder();
+    sbuf.append("[");
+    boolean first = true;
+    for (HSession o : sessions) {
+      if (first) first = false; else sbuf.append(","); 
+      sbuf.append(System.identityHashCode(o));
+    }
+    sbuf.append("]");
+    return sbuf.toString();
   }
 }
