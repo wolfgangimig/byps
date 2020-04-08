@@ -25,11 +25,11 @@ public class BProxy_PlantService extends BSkeleton_PlantService implements Plant
 		this(new BForward_PlantService(transport));
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.lang.String grow() throws RemoteException{
 	  return forwardTo.grow();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void grow(final BAsyncResult<String> asyncResult) {
 	  forwardTo.grow(asyncResult);
 	}

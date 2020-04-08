@@ -51,7 +51,7 @@ public class BSerializer_1441131650 extends BSerializer {
 		
 		final byps.test.api.enu.EnumPlanets[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:370
+			// checkpoint byps.gen.j.PrintContext:372
 			bbuf.putInt(a0[i0] != null ? ((byps.test.api.enu.EnumPlanets)a0[i0]).ordinal() : 0);
 		}
 	}

@@ -51,7 +51,7 @@ public class BSerializer_1406664368 extends BSerializer {
 		
 		final java.util.Date[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:370
+			// checkpoint byps.gen.j.PrintContext:372
 			bbuf.putDate((java.util.Date)a0[i0]);
 		}
 	}

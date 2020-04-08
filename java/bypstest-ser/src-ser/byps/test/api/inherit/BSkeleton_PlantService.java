@@ -16,13 +16,13 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_PlantService extends BSkeleton implements PlantServiceAsync {
 	
-	public final static long serialVersionUID = 1954605928L;
+	public static final long serialVersionUID = 1954605928L;
 	
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.lang.String grow() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void grow(final BAsyncResult<String> asyncResult) {
 		try {
 			java.lang.String ret = grow();

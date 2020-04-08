@@ -25,11 +25,11 @@ public class BProxy_RemoteProcessingEx extends BSkeleton_RemoteProcessingEx impl
 		this(new BForward_RemoteProcessingEx(transport));
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public boolean getValueAfterProcessingExceptions(int sleepSeconds) throws RemoteException{
 	  return forwardTo.getValueAfterProcessingExceptions(sleepSeconds);
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getValueAfterProcessingExceptions(int sleepSeconds, final BAsyncResult<Boolean> asyncResult) {
 	  forwardTo.getValueAfterProcessingExceptions(sleepSeconds, asyncResult);
 	}

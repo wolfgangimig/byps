@@ -25,47 +25,47 @@ public class BProxy_EvolveIF extends BSkeleton_EvolveIF implements EvolveIFAsync
 		this(new BForward_EvolveIF(transport));
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void setEvolve(Evolve obj) throws RemoteException{
 	  forwardTo.setEvolve(obj);
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setEvolve(Evolve obj, final BAsyncResult<Object> asyncResult) {
 	  forwardTo.setEvolve(obj, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public Evolve getEvolve() throws RemoteException{
 	  return forwardTo.getEvolve();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getEvolve(final BAsyncResult<Evolve> asyncResult) {
 	  forwardTo.getEvolve(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void setClient(EvolveIF partner) throws RemoteException{
 	  forwardTo.setClient(partner);
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setClient(EvolveIF partner, final BAsyncResult<Object> asyncResult) {
 	  forwardTo.setClient(partner, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public EvolveIF getClient() throws RemoteException{
 	  return forwardTo.getClient();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getClient(final BAsyncResult<EvolveIF> asyncResult) {
 	  forwardTo.getClient(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void sendEvolveToClient() throws RemoteException{
 	  forwardTo.sendEvolveToClient();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void sendEvolveToClient(final BAsyncResult<Object> asyncResult) {
 	  forwardTo.sendEvolveToClient(asyncResult);
 	}

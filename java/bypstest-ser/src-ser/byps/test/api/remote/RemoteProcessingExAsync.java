@@ -16,9 +16,9 @@ public interface RemoteProcessingExAsync extends BRemote,
 	 * This function sleeps the given number of seconds and returns true.
 	 * @throws RemoteException
 	*/
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public boolean getValueAfterProcessingExceptions(int sleepSeconds) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getValueAfterProcessingExceptions(int sleepSeconds, final BAsyncResult<Boolean> asyncResult) ;
 	
 	

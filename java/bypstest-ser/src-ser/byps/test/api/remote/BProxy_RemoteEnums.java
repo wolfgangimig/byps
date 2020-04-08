@@ -25,20 +25,20 @@ public class BProxy_RemoteEnums extends BSkeleton_RemoteEnums implements RemoteE
 		this(new BForward_RemoteEnums(transport));
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public byps.test.api.enu.EnumPlanets getPlanet() throws RemoteException{
 	  return forwardTo.getPlanet();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getPlanet(final BAsyncResult<byps.test.api.enu.EnumPlanets> asyncResult) {
 	  forwardTo.getPlanet(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void setPlanet(byps.test.api.enu.EnumPlanets planet) throws RemoteException{
 	  forwardTo.setPlanet(planet);
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setPlanet(byps.test.api.enu.EnumPlanets planet, final BAsyncResult<Object> asyncResult) {
 	  forwardTo.setPlanet(planet, asyncResult);
 	}

@@ -17,14 +17,14 @@ public class BForward_EvolveIF extends BStub implements EvolveIFAsync {
 		super(transport);		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void setEvolve(Evolve obj) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setEvolve(obj, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setEvolve(Evolve obj, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_EvolveIF_setEvolve req = new BRequest_EvolveIF_setEvolve();		
@@ -32,28 +32,28 @@ public class BForward_EvolveIF extends BStub implements EvolveIFAsync {
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public Evolve getEvolve() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<Evolve> asyncResult = new BSyncResult<Evolve>();		
 		getEvolve(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getEvolve(final BAsyncResult<Evolve> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_EvolveIF_getEvolve req = new BRequest_EvolveIF_getEvolve();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void setClient(EvolveIF partner) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setClient(partner, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setClient(EvolveIF partner, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_EvolveIF_setClient req = new BRequest_EvolveIF_setClient();		
@@ -61,28 +61,28 @@ public class BForward_EvolveIF extends BStub implements EvolveIFAsync {
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public EvolveIF getClient() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<EvolveIF> asyncResult = new BSyncResult<EvolveIF>();		
 		getClient(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getClient(final BAsyncResult<EvolveIF> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_EvolveIF_getClient req = new BRequest_EvolveIF_getClient();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void sendEvolveToClient() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		sendEvolveToClient(asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void sendEvolveToClient(final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_EvolveIF_sendEvolveToClient req = new BRequest_EvolveIF_sendEvolveToClient();		

@@ -7,147 +7,102 @@ package byps.test.api.srvr;
 
 import byps.*;
 
-// checkpoint byps.gen.j.GenRemoteStub:164
+// checkpoint byps.gen.j.GenRemoteStub:112
 public class BStub_ServerIF extends BStub implements ServerIFAsync, java.io.Serializable {
 	
-	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 1775199834L;
+	// checkpoint byps.gen.j.GenRemoteStub:93
+	public static final long serialVersionUID = 1775199834L;
+	protected final BForward_ServerIF forwardTo;	
+	
+	@SuppressWarnings("unused") private BStub_ServerIF() {
+		this.forwardTo = new BForward_ServerIF();
+	}
 	
 	public BStub_ServerIF(final BTransport transport) {
-		super(transport);		
+		super(transport);
+		this.forwardTo = new BForward_ServerIF(transport);
+		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
-	public int callClientIncrementInt(int v) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Integer> asyncResult = new BSyncResult<Integer>();		
-		callClientIncrementInt(v, asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:398
+	public int callClientIncrementInt(int v) throws RemoteException{
+	  return forwardTo.callClientIncrementInt(v);
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void callClientIncrementInt(int v, final BAsyncResult<Integer> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_ServerIF_callClientIncrementInt req = new BRequest_ServerIF_callClientIncrementInt();		
-		req.v = v;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.callClientIncrementInt(v, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
-	public void setPartner(ClientIF client) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		setPartner(client, asyncResult);
-		asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:398
+	public void setPartner(ClientIF client) throws RemoteException{
+	  forwardTo.setPartner(client);
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setPartner(ClientIF client, final BAsyncResult<Object> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_ServerIF_setPartner req = new BRequest_ServerIF_setPartner();		
-		req.client = client;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.setPartner(client, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
-	public ClientIF getPartner() throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<ClientIF> asyncResult = new BSyncResult<ClientIF>();		
-		getPartner(asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:398
+	public ClientIF getPartner() throws RemoteException{
+	  return forwardTo.getPartner();
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getPartner(final BAsyncResult<ClientIF> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_ServerIF_getPartner req = new BRequest_ServerIF_getPartner();		
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.getPartner(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
-	public java.util.List<java.io.InputStream> getStreamsFromClient(boolean materializeOnServer) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<java.util.List<java.io.InputStream>> asyncResult = new BSyncResult<java.util.List<java.io.InputStream>>();		
-		getStreamsFromClient(materializeOnServer, asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:398
+	public java.util.List<java.io.InputStream> getStreamsFromClient(boolean materializeOnServer) throws RemoteException{
+	  return forwardTo.getStreamsFromClient(materializeOnServer);
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getStreamsFromClient(boolean materializeOnServer, final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_ServerIF_getStreamsFromClient req = new BRequest_ServerIF_getStreamsFromClient();		
-		req.materializeOnServer = materializeOnServer;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.getStreamsFromClient(materializeOnServer, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
-	public void putStreamsOnClient(java.util.List<java.io.InputStream> streams) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		putStreamsOnClient(streams, asyncResult);
-		asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:398
+	public void putStreamsOnClient(java.util.List<java.io.InputStream> streams) throws RemoteException{
+	  forwardTo.putStreamsOnClient(streams);
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void putStreamsOnClient(java.util.List<java.io.InputStream> streams, final BAsyncResult<Object> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_ServerIF_putStreamsOnClient req = new BRequest_ServerIF_putStreamsOnClient();		
-		req.streams = streams;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.putStreamsOnClient(streams, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
-	public void registerWithClientMap(int id) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		registerWithClientMap(id, asyncResult);
-		asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:398
+	public void registerWithClientMap(int id) throws RemoteException{
+	  forwardTo.registerWithClientMap(id);
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void registerWithClientMap(int id, final BAsyncResult<Object> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_ServerIF_registerWithClientMap req = new BRequest_ServerIF_registerWithClientMap();		
-		req.id = id;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.registerWithClientMap(id, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
-	public ClientIF getClient(int id) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<ClientIF> asyncResult = new BSyncResult<ClientIF>();		
-		getClient(id, asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:398
+	public ClientIF getClient(int id) throws RemoteException{
+	  return forwardTo.getClient(id);
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getClient(int id, final BAsyncResult<ClientIF> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_ServerIF_getClient req = new BRequest_ServerIF_getClient();		
-		req.id = id;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.getClient(id, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
-	public java.util.Set<java.lang.Integer> getClientIds() throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<java.util.Set<java.lang.Integer>> asyncResult = new BSyncResult<java.util.Set<java.lang.Integer>>();		
-		getClientIds(asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:398
+	public java.util.Set<java.lang.Integer> getClientIds() throws RemoteException{
+	  return forwardTo.getClientIds();
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getClientIds(final BAsyncResult<java.util.Set<java.lang.Integer>> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_ServerIF_getClientIds req = new BRequest_ServerIF_getClientIds();		
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.getClientIds(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
-	public int callClientParallel(int v) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Integer> asyncResult = new BSyncResult<Integer>();		
-		callClientParallel(v, asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:398
+	public int callClientParallel(int v) throws RemoteException{
+	  return forwardTo.callClientParallel(v);
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void callClientParallel(int v, final BAsyncResult<Integer> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_ServerIF_callClientParallel req = new BRequest_ServerIF_callClientParallel();		
-		req.v = v;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.callClientParallel(v, asyncResult);
 	}
 	
 	

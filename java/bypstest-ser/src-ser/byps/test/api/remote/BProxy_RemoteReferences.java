@@ -25,20 +25,20 @@ public class BProxy_RemoteReferences extends BSkeleton_RemoteReferences implemen
 		this(new BForward_RemoteReferences(transport));
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public byps.test.api.refs.Node getNode() throws RemoteException{
 	  return forwardTo.getNode();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getNode(final BAsyncResult<byps.test.api.refs.Node> asyncResult) {
 	  forwardTo.getNode(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void setNode(byps.test.api.refs.Node v) throws RemoteException{
 	  forwardTo.setNode(v);
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setNode(byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) {
 	  forwardTo.setNode(v, asyncResult);
 	}

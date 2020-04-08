@@ -17,14 +17,14 @@ public class BForward_RemoteConstants extends BStub implements RemoteConstantsAs
 		super(transport);		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void compare_HebrewC(byps.test.api.cons.HebrewZ ALEPH, byps.test.api.cons.HebrewZ BETH) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		compare_HebrewC(ALEPH, BETH, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void compare_HebrewC(byps.test.api.cons.HebrewZ ALEPH, byps.test.api.cons.HebrewZ BETH, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_RemoteConstants_compare_HebrewC req = new BRequest_RemoteConstants_compare_HebrewC();		
@@ -33,14 +33,14 @@ public class BForward_RemoteConstants extends BStub implements RemoteConstantsAs
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public boolean compare_AllTypesC(boolean bool1s, boolean bool2s, char char1s, java.lang.String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, java.lang.String string1s, byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[][][][] arrInt4, java.lang.String[] arrStrings, java.lang.String[][][][] arrStrings4, byps.test.api.cons.AllTypesZ[][] arrAll) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<Boolean> asyncResult = new BSyncResult<Boolean>();		
 		compare_AllTypesC(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void compare_AllTypesC(boolean bool1s, boolean bool2s, char char1s, java.lang.String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, java.lang.String string1s, byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[][][][] arrInt4, java.lang.String[] arrStrings, java.lang.String[][][][] arrStrings4, byps.test.api.cons.AllTypesZ[][] arrAll, final BAsyncResult<Boolean> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_RemoteConstants_compare_AllTypesC req = new BRequest_RemoteConstants_compare_AllTypesC();		

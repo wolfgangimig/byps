@@ -17,14 +17,14 @@ public class BForward_ClientIF extends BStub implements ClientIFAsync {
 		super(transport);		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public int incrementInt(int a) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<Integer> asyncResult = new BSyncResult<Integer>();		
 		incrementInt(a, asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void incrementInt(int a, final BAsyncResult<Integer> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_ClientIF_incrementInt req = new BRequest_ClientIF_incrementInt();		
@@ -32,14 +32,14 @@ public class BForward_ClientIF extends BStub implements ClientIFAsync {
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.util.List<java.io.InputStream> getStreams(int ctrl) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<java.util.List<java.io.InputStream>> asyncResult = new BSyncResult<java.util.List<java.io.InputStream>>();		
 		getStreams(ctrl, asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getStreams(int ctrl, final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_ClientIF_getStreams req = new BRequest_ClientIF_getStreams();		
@@ -47,14 +47,14 @@ public class BForward_ClientIF extends BStub implements ClientIFAsync {
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void putStreams(java.util.List<java.io.InputStream> strm, int ctrl) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		putStreams(strm, ctrl, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void putStreams(java.util.List<java.io.InputStream> strm, int ctrl, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_ClientIF_putStreams req = new BRequest_ClientIF_putStreams();		
@@ -63,14 +63,14 @@ public class BForward_ClientIF extends BStub implements ClientIFAsync {
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public ChatStructure sendChat(ChatStructure cs) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<ChatStructure> asyncResult = new BSyncResult<ChatStructure>();		
 		sendChat(cs, asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void sendChat(ChatStructure cs, final BAsyncResult<ChatStructure> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_ClientIF_sendChat req = new BRequest_ClientIF_sendChat();		

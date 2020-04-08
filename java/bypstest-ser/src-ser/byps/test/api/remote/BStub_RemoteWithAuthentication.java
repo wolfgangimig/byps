@@ -7,89 +7,66 @@ package byps.test.api.remote;
 
 import byps.*;
 
-// checkpoint byps.gen.j.GenRemoteStub:164
+// checkpoint byps.gen.j.GenRemoteStub:112
 public class BStub_RemoteWithAuthentication extends BStub implements RemoteWithAuthenticationAuth, java.io.Serializable {
 	
-	// checkpoint byps.gen.j.GenRemoteStub:145
-	public final static long serialVersionUID = 1983670399L;
+	// checkpoint byps.gen.j.GenRemoteStub:93
+	public static final long serialVersionUID = 1983670399L;
+	protected final BForward_RemoteWithAuthentication forwardTo;	
+	
+	@SuppressWarnings("unused") private BStub_RemoteWithAuthentication() {
+		this.forwardTo = new BForward_RemoteWithAuthentication();
+	}
 	
 	public BStub_RemoteWithAuthentication(final BTransport transport) {
-		super(transport);		
+		super(transport);
+		this.forwardTo = new BForward_RemoteWithAuthentication(transport);
+		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
-	public void setUseAuthentication(boolean useAuth) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		setUseAuthentication(useAuth, asyncResult);
-		asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:398
+	public void setUseAuthentication(boolean useAuth) throws RemoteException{
+	  forwardTo.setUseAuthentication(useAuth);
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setUseAuthentication(boolean useAuth, final BAsyncResult<Object> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteWithAuthentication_setUseAuthentication req = new BRequest_RemoteWithAuthentication_setUseAuthentication();		
-		req.useAuth = useAuth;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.setUseAuthentication(useAuth, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
-	public byps.test.api.auth.SessionInfo login(java.lang.String userName, java.lang.String userPwd) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<byps.test.api.auth.SessionInfo> asyncResult = new BSyncResult<byps.test.api.auth.SessionInfo>();		
-		login(userName, userPwd, asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:398
+	public byps.test.api.auth.SessionInfo login(java.lang.String userName, java.lang.String userPwd) throws RemoteException{
+	  return forwardTo.login(null, userName, userPwd);
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void login(java.lang.String userName, java.lang.String userPwd, final BAsyncResult<byps.test.api.auth.SessionInfo> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteWithAuthentication_login req = new BRequest_RemoteWithAuthentication_login();		
-		req.userName = userName;
-		req.userPwd = userPwd;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.login(null, userName, userPwd, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
-	public int doit(int value) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Integer> asyncResult = new BSyncResult<Integer>();		
-		doit(value, asyncResult);
-		return asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:398
+	public int doit(int value) throws RemoteException{
+	  return forwardTo.doit(null, value);
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void doit(int value, final BAsyncResult<Integer> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteWithAuthentication_doit req = new BRequest_RemoteWithAuthentication_doit();		
-		req.value = value;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.doit(null, value, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
-	public void expire() throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		expire(asyncResult);
-		asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:398
+	public void expire() throws RemoteException{
+	  forwardTo.expire(null);
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void expire(final BAsyncResult<Object> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteWithAuthentication_expire req = new BRequest_RemoteWithAuthentication_expire();		
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.expire(null, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
-	public void setReloginCount(int count) throws RemoteException {
-		// checkpoint byps.gen.j.GenRemoteStub:46
-		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
-		setReloginCount(count, asyncResult);
-		asyncResult.getResult();		
+	// checkpoint byps.gen.j.PrintContext:398
+	public void setReloginCount(int count) throws RemoteException{
+	  forwardTo.setReloginCount(count);
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setReloginCount(int count, final BAsyncResult<Object> asyncResult) {
-		// checkpoint byps.gen.j.GenRemoteStub:113
-		BRequest_RemoteWithAuthentication_setReloginCount req = new BRequest_RemoteWithAuthentication_setReloginCount();		
-		req.count = count;
-		transport.sendMethod(req, asyncResult);
+	  forwardTo.setReloginCount(count, asyncResult);
 	}
 	
 	

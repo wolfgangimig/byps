@@ -17,14 +17,14 @@ public class BForward_RemoteServerCtrl extends BStub implements RemoteServerCtrl
 		super(transport);		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		publishRemote(name, remote, fowardToOtherServers, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_RemoteServerCtrl_publishRemote req = new BRequest_RemoteServerCtrl_publishRemote();		
@@ -34,14 +34,14 @@ public class BForward_RemoteServerCtrl extends BStub implements RemoteServerCtrl
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public BRemote getPublishedRemote(java.lang.String name) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<BRemote> asyncResult = new BSyncResult<BRemote>();		
 		getPublishedRemote(name, asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getPublishedRemote(java.lang.String name, final BAsyncResult<BRemote> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_RemoteServerCtrl_getPublishedRemote req = new BRequest_RemoteServerCtrl_getPublishedRemote();		
@@ -49,14 +49,14 @@ public class BForward_RemoteServerCtrl extends BStub implements RemoteServerCtrl
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void removePublishedRemote(java.lang.String name) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		removePublishedRemote(name, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void removePublishedRemote(java.lang.String name, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_RemoteServerCtrl_removePublishedRemote req = new BRequest_RemoteServerCtrl_removePublishedRemote();		

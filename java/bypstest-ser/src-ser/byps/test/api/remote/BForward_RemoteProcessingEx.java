@@ -17,14 +17,14 @@ public class BForward_RemoteProcessingEx extends BStub implements RemoteProcessi
 		super(transport);		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public boolean getValueAfterProcessingExceptions(int sleepSeconds) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<Boolean> asyncResult = new BSyncResult<Boolean>();		
 		getValueAfterProcessingExceptions(sleepSeconds, asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getValueAfterProcessingExceptions(int sleepSeconds, final BAsyncResult<Boolean> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions req = new BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions();		

@@ -51,7 +51,7 @@ public class BSerializer_184101377 extends BSerializer {
 		
 		final byps.test.api.inl.Point2D[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:340
+			// checkpoint byps.gen.j.PrintContext:342
 			bout.writeObj(a0[i0], false, byps.test.api.inl.BSerializer_1835035436.instance);
 		}
 	}

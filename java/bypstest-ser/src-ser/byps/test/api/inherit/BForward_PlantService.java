@@ -17,14 +17,14 @@ public class BForward_PlantService extends BStub implements PlantServiceAsync {
 		super(transport);		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.lang.String grow() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<String> asyncResult = new BSyncResult<String>();		
 		grow(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void grow(final BAsyncResult<String> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_PlantService_grow req = new BRequest_PlantService_grow();		

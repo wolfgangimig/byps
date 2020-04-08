@@ -25,92 +25,92 @@ public class BProxy_RemoteStreams extends BSkeleton_RemoteStreams implements Rem
 		this(new BForward_RemoteStreams(transport));
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.io.InputStream getImage() throws RemoteException{
 	  return forwardTo.getImage();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getImage(final BAsyncResult<java.io.InputStream> asyncResult) {
 	  forwardTo.getImage(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void setImage(java.io.InputStream istrm) throws RemoteException{
 	  forwardTo.setImage(istrm);
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setImage(java.io.InputStream istrm, final BAsyncResult<Object> asyncResult) {
 	  forwardTo.setImage(istrm, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.util.TreeMap<java.lang.Integer,java.io.InputStream> getImages() throws RemoteException{
 	  return forwardTo.getImages();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getImages(final BAsyncResult<java.util.TreeMap<java.lang.Integer,java.io.InputStream>> asyncResult) {
 	  forwardTo.getImages(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void setImages(java.util.Map<java.lang.Integer,java.io.InputStream> istrms, int doNotReadStreamAtKey) throws RemoteException{
 	  forwardTo.setImages(istrms, doNotReadStreamAtKey);
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setImages(java.util.Map<java.lang.Integer,java.io.InputStream> istrms, int doNotReadStreamAtKey, final BAsyncResult<Object> asyncResult) {
 	  forwardTo.setImages(istrms, doNotReadStreamAtKey, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void throwLastException() throws RemoteException{
 	  forwardTo.throwLastException();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void throwLastException(final BAsyncResult<Object> asyncResult) {
 	  forwardTo.throwLastException(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.io.InputStream getTextStream() throws RemoteException{
 	  return forwardTo.getTextStream();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getTextStream(final BAsyncResult<java.io.InputStream> asyncResult) {
 	  forwardTo.getTextStream(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.io.InputStream getVideoCheckSupportByteRange() throws RemoteException{
 	  return forwardTo.getVideoCheckSupportByteRange();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getVideoCheckSupportByteRange(final BAsyncResult<java.io.InputStream> asyncResult) {
 	  forwardTo.getVideoCheckSupportByteRange(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.io.InputStream getStreamDeferedProperies() throws RemoteException{
 	  return forwardTo.getStreamDeferedProperies();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getStreamDeferedProperies(final BAsyncResult<java.io.InputStream> asyncResult) {
 	  forwardTo.getStreamDeferedProperies(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void setStreamDoNotMaterialize(java.io.InputStream stream) throws RemoteException{
 	  forwardTo.setStreamDoNotMaterialize(stream);
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setStreamDoNotMaterialize(java.io.InputStream stream, final BAsyncResult<Object> asyncResult) {
 	  forwardTo.setStreamDoNotMaterialize(stream, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.io.InputStream getStreamDoNotClone() throws RemoteException{
 	  return forwardTo.getStreamDoNotClone();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getStreamDoNotClone(final BAsyncResult<java.io.InputStream> asyncResult) {
 	  forwardTo.getStreamDoNotClone(asyncResult);
 	}

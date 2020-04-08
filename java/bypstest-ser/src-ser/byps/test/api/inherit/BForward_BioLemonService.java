@@ -17,56 +17,56 @@ public class BForward_BioLemonService extends BStub implements BioLemonServiceAs
 		super(transport);		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public int useParing() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<Integer> asyncResult = new BSyncResult<Integer>();		
 		useParing(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void useParing(final BAsyncResult<Integer> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_BioLemonService_useParing req = new BRequest_BioLemonService_useParing();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.lang.String squeeze() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<String> asyncResult = new BSyncResult<String>();		
 		squeeze(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void squeeze(final BAsyncResult<String> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_FruitService_squeeze req = new BRequest_FruitService_squeeze();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.lang.String grow() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<String> asyncResult = new BSyncResult<String>();		
 		grow(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void grow(final BAsyncResult<String> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_PlantService_grow req = new BRequest_PlantService_grow();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.lang.String pick(byps.test.api.auth.SessionInfo sess, java.lang.String fromTree) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<String> asyncResult = new BSyncResult<String>();		
 		pick(sess, fromTree, asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void pick(byps.test.api.auth.SessionInfo sess, java.lang.String fromTree, final BAsyncResult<String> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_LemonService_pick req = new BRequest_LemonService_pick();		
@@ -75,14 +75,14 @@ public class BForward_BioLemonService extends BStub implements BioLemonServiceAs
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public boolean certify(java.lang.String param) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteForward:48
 		final BSyncResult<Boolean> asyncResult = new BSyncResult<Boolean>();		
 		certify(param, asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void certify(java.lang.String param, final BAsyncResult<Boolean> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteForward:109
 		BRequest_BioFruitService_certify req = new BRequest_BioFruitService_certify();		

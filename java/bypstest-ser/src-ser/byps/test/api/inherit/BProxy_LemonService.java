@@ -25,29 +25,29 @@ public class BProxy_LemonService extends BSkeleton_LemonService implements Lemon
 		this(new BForward_LemonService(transport));
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.lang.String pick(byps.test.api.auth.SessionInfo sess, java.lang.String fromTree) throws RemoteException{
 	  return forwardTo.pick(sess, fromTree);
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void pick(byps.test.api.auth.SessionInfo sess, java.lang.String fromTree, final BAsyncResult<String> asyncResult) {
 	  forwardTo.pick(sess, fromTree, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.lang.String squeeze() throws RemoteException{
 	  return forwardTo.squeeze();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void squeeze(final BAsyncResult<String> asyncResult) {
 	  forwardTo.squeeze(asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.lang.String grow() throws RemoteException{
 	  return forwardTo.grow();
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void grow(final BAsyncResult<String> asyncResult) {
 	  forwardTo.grow(asyncResult);
 	}

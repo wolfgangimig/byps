@@ -51,7 +51,7 @@ public class BSerializer_1097129250 extends BSerializer {
 		
 		final long[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:370
+			// checkpoint byps.gen.j.PrintContext:372
 			bbuf.putLong(a0[i0]);
 		}
 	}

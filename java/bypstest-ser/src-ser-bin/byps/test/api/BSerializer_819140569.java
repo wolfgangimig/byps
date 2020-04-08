@@ -38,7 +38,7 @@ public class BSerializer_819140569 extends BSerializer {
 		int n = arr.size();
 		bbuf.putLength(n);
 		for (byps.test.api.enu.EnumPlanets obj : arr) {
-			// checkpoint byps.gen.j.PrintContext:370
+			// checkpoint byps.gen.j.PrintContext:372
 			bbuf.putInt(obj != null ? ((byps.test.api.enu.EnumPlanets)obj).ordinal() : 0);
 		}
 	}

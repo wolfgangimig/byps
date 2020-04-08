@@ -16,13 +16,13 @@ import byps.*;
 @SuppressWarnings("all")
 public class BSkeleton_ClientIF extends BSkeleton implements ClientIFAsync {
 	
-	public final static long serialVersionUID = 2049072174L;
+	public static final long serialVersionUID = 2049072174L;
 	
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public int incrementInt(int a) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void incrementInt(int a, final BAsyncResult<Integer> asyncResult) {
 		try {
 			int ret = incrementInt(a);
@@ -32,11 +32,11 @@ public class BSkeleton_ClientIF extends BSkeleton implements ClientIFAsync {
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public java.util.List<java.io.InputStream> getStreams(int ctrl) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getStreams(int ctrl, final BAsyncResult<java.util.List<java.io.InputStream>> asyncResult) {
 		try {
 			java.util.List<java.io.InputStream> ret = getStreams(ctrl);
@@ -46,11 +46,11 @@ public class BSkeleton_ClientIF extends BSkeleton implements ClientIFAsync {
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public void putStreams(java.util.List<java.io.InputStream> strm, int ctrl) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void putStreams(java.util.List<java.io.InputStream> strm, int ctrl, final BAsyncResult<Object> asyncResult) {
 		try {
 			putStreams(strm, ctrl);
@@ -60,11 +60,11 @@ public class BSkeleton_ClientIF extends BSkeleton implements ClientIFAsync {
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public ChatStructure sendChat(ChatStructure cs) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void sendChat(ChatStructure cs, final BAsyncResult<ChatStructure> asyncResult) {
 		try {
 			ChatStructure ret = sendChat(cs);

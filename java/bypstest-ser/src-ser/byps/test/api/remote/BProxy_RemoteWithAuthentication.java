@@ -25,47 +25,47 @@ public class BProxy_RemoteWithAuthentication extends BSkeleton_RemoteWithAuthent
 		this(new BForward_RemoteWithAuthentication(transport));
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void setUseAuthentication(boolean useAuth) throws RemoteException{
 	  forwardTo.setUseAuthentication(useAuth);
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setUseAuthentication(boolean useAuth, final BAsyncResult<Object> asyncResult) {
 	  forwardTo.setUseAuthentication(useAuth, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public byps.test.api.auth.SessionInfo login(byps.test.api.auth.SessionInfo sess, java.lang.String userName, java.lang.String userPwd) throws RemoteException{
 	  return forwardTo.login(sess, userName, userPwd);
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void login(byps.test.api.auth.SessionInfo sess, java.lang.String userName, java.lang.String userPwd, final BAsyncResult<byps.test.api.auth.SessionInfo> asyncResult) {
 	  forwardTo.login(sess, userName, userPwd, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public int doit(byps.test.api.auth.SessionInfo sess, int value) throws RemoteException{
 	  return forwardTo.doit(sess, value);
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void doit(byps.test.api.auth.SessionInfo sess, int value, final BAsyncResult<Integer> asyncResult) {
 	  forwardTo.doit(sess, value, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void expire(byps.test.api.auth.SessionInfo sess) throws RemoteException{
 	  forwardTo.expire(sess);
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void expire(byps.test.api.auth.SessionInfo sess, final BAsyncResult<Object> asyncResult) {
 	  forwardTo.expire(sess, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:385
+	// checkpoint byps.gen.j.PrintContext:398
 	public void setReloginCount(int count) throws RemoteException{
 	  forwardTo.setReloginCount(count);
 	}
-	// checkpoint byps.gen.j.PrintContext:429
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setReloginCount(int count, final BAsyncResult<Object> asyncResult) {
 	  forwardTo.setReloginCount(count, asyncResult);
 	}
