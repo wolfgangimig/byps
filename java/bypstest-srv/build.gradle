@@ -2,7 +2,14 @@ apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
 
 sourceCompatibility = 1.8
+
 compileJava.options.encoding = 'UTF-8'
+
+// Make sure to compile with a JDK 8
+// If you would coose a JDK >= 9, you run into a NoSuchMethodError: java.nio.ByteBuffer.flip() on Java 8.
+compileJava.options.fork = true
+compileJava.options.forkOptions.executable = "c:\\Program Files\\Java\\jdk1.8.0_201\\bin\\javac.exe"
+
 version = '5.31'
 
 eclipse {
