@@ -41,7 +41,24 @@ public abstract class XmlGeneratorBase extends AbstractProcessor {
    */
   public static final int OPT_ONLY_BREMOTES = 0x8;
  
+  /**
+   * Full qualified class name of the session parameter type.
+   * A remote interface can tagged with this tag in order to omit sending a session
+   * parameter in each function. The BStub class for this remote interface defines
+   * the methods without the session parameter. This parameter is internally supplied
+   * over a BAuthentication implementation in the BClient object. 
+   * 
+   */
+  public static final String TAG_SESSION_PARAM_TYPE = "@BSessionParamType";
   
+  /**
+   * Remote interface for the client side.
+   * This tag means that the interface can be implemented on the client side. 
+   * If the tag is not set, e.g. JavaScript serialization code will not 
+   * contain a BSkeleton class for this interface. 
+   */
+  public static final String TAG_CLIENT_REMOTE = "@BClientRemote";
+
   /**
    * Internal representation of the entire API.
    */

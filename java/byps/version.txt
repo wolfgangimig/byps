@@ -12,6 +12,8 @@ BYPS Version History
 
 - BYPS-26: Node.js could not connect anymore after BYPS-19 since it does not maintain the session cookie. Set 
   system property -Dbyps.http.sessionCookieRequired=false in order to support Node.js.
+  
+- BYPS-25: Removed javadoc references from BYPS generator.
 
 5.33
 

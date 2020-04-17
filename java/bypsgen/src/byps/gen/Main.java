@@ -16,7 +16,6 @@ import byps.gen.db.ClassDB;
 import byps.gen.db.CompatibleClassDB;
 import byps.gen.db.ConstFieldReader;
 import byps.gen.db.XmlClassDB;
-import byps.gen.doclet.BDoclet;
 import byps.gen.doclet.CompileSource;
 import byps.gen.j.GeneratorJ;
 import byps.gen.js.GeneratorJS;
@@ -72,7 +71,6 @@ public class Main {
         new MainAP(context).run();
       }
       else {
-        BDoclet.run(context);
       }
       
     }
