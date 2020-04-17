@@ -10,6 +10,9 @@ BYPS Version History
   
 - BYPS-24: Function HHttpSessionObject.getFirstBysSessionOrNull() re-created. It was removed with BYPS-19 but is in use.
 
+- BYPS-26: Node.js could not connect anymore after BYPS-19 since it does not maintain the session cookie. Set 
+  system property -Dbyps.http.sessionCookieRequired=false in order to support Node.js.
+
 5.33
 
 - BYPS-19: Accept BYPS sessions only in conjunction with application server sessions.

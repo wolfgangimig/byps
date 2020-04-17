@@ -138,9 +138,9 @@ public class HConstants {
    * HTTP session cookie is required. 
    * A HTTP cookie can be assigned as HttpOnly to avoid JavaScript access. 
    * This is a security enhancement if BYPS is used in a web page.
-   * BYPS-19   
+   * BYPS-19, BYPS-26
    */
-  public static final boolean HTTP_SESSION_COOKIE_REQUIRED = true;
+  public static boolean HTTP_SESSION_COOKIE_REQUIRED = true;
   
   static
   {
@@ -151,6 +151,8 @@ public class HConstants {
     
     TIMEOUT_LONGPOLL_MILLIS = getSystemPropertyLong("byps.http.longPollTimeoutSeconds", TIMEOUT_LONGPOLL_MILLIS / 1000) * 1000;
     REQUEST_TIMEOUT_MILLIS = getSystemPropertyLong("byps.http.requestTimeoutSeconds", REQUEST_TIMEOUT_MILLIS / 1000) * 1000;    
+    
+    HTTP_SESSION_COOKIE_REQUIRED = Boolean.parseBoolean(System.getProperty("byps.http.sessionCookieRequired", "true"));
   }
 
   private static long getSystemPropertyLong(String prop, long defaultValue) {
