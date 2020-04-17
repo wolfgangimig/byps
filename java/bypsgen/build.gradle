@@ -46,10 +46,6 @@ jar {
 
 repositories {
     mavenCentral()
-    
-//   flatDir {
-//        dirs 'lib'
-//    }
 }
 
 dependencies {

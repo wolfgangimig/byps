@@ -17,12 +17,12 @@ import byps.gen.api.GeneratorException;
 import byps.gen.api.GeneratorProperties;
 import byps.gen.cpp.PropertiesCpp;
 import byps.gen.cs.PropertiesCS;
-import byps.gen.doclet.BConvert;
 import byps.gen.doclet.CompileSource;
 import byps.gen.j.PropertiesJ;
 import byps.gen.js.PropertiesJS;
 import byps.gen.utils.AssignUniqueSerialVersionUID;
 import byps.gen.utils.Utils;
+import byps.gen.xml.XmlGeneratorBase;
 import byps.log.LogConfigurator;
 
 public class Context {
@@ -161,26 +161,26 @@ public class Context {
 
       // Assume all classes are to be serialized.
       else if (arg.equalsIgnoreCase("-allserials")) {
-        convertOptions |= BConvert.OPT_ALL_SERIALS;
+        convertOptions |= XmlGeneratorBase.OPT_ALL_SERIALS;
         argIdx++;
       }
 
       // If this option is set, subs and skeletons for remote procedure calls
       // are generated for all interfaces.
       else if (arg.equalsIgnoreCase("-allremotes")) {
-        convertOptions |= BConvert.OPT_ALL_REMOTES;
+        convertOptions |= XmlGeneratorBase.OPT_ALL_REMOTES;
         argIdx++;
       }
       
       // Only generate remote procedure calls for interfaces tagged with @BRemote
       else if (arg.equalsIgnoreCase("-onlyBRemotes")) {
-        convertOptions |= BConvert.OPT_ONLY_BREMOTES;
+        convertOptions |= XmlGeneratorBase.OPT_ONLY_BREMOTES;
         argIdx++;
       }
       
       // Only generate serialization code for classes tagged with @BSerializable
       else if (arg.equalsIgnoreCase("-onlyBSerials")) {
-        convertOptions |= BConvert.OPT_ONLY_BSERIALS;
+        convertOptions |= XmlGeneratorBase.OPT_ONLY_BSERIALS;
         argIdx++;
       }
       

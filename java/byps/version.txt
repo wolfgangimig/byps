@@ -10,6 +10,8 @@ BYPS Version History
   
 - BYPS-24: Function HHttpSessionObject.getFirstBysSessionOrNull() re-created. It was removed with BYPS-19 but is in use.
 
+- BYPS-25: Removed javadoc references from BYPS generator.
+
 5.33
 
 - BYPS-19: Accept BYPS sessions only in conjunction with application server sessions.

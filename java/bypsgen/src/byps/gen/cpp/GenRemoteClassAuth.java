@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import byps.gen.api.GeneratorException;
 import byps.gen.api.RemoteInfo;
-import byps.gen.doclet.BConvert;
 
 public class GenRemoteClassAuth extends GenRemoteClass {
 
