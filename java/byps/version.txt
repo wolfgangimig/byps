@@ -5,6 +5,8 @@ BYPS Version History
 - BYPS-26: Node.js could not connect anymore after BYPS-19 since it does not maintain the session cookie. Set 
   system property -Dbyps.http.sessionCookieRequired=false in order to support Node.js.
   
+- BYPS-19a: Fix NPE in HSession(), create HttpSession object if not available. 
+  
 5.34
 
 - BYPS-22: Generate function BSerialier_class.prepareForLazyLoading to assign BValueClass.bypsClient 

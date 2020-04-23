@@ -20,21 +20,31 @@ public class HSessionListener implements HttpSessionListener {
   public static BHashMap<String, HSession> getAllSessions() {
     return sessions;
   }
-
-  @Override
-  public void sessionCreated(HttpSessionEvent sessionEvent) {
-    
-    HttpSession hsess = sessionEvent.getSession();
+  
+  /**
+   * Add an instance of HHttpSessionObject to the Tomcat session.  
+   * @param hsess Tomcat session.
+   * @return HHttpSessionObject
+   */
+  public static HHttpSessionObject initHttpSession(HttpSession hsess) {
+    HHttpSessionObject obj = new HHttpSessionObject();
     
     // BYPS-19: ensure that the HHttpSessionObject is uniquely created for a Tomcat session.  
     
     // Assign a set of BYPS session objects to the app server's session.
-    hsess.setAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS, new HHttpSessionObject());
+    hsess.setAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS, obj);
 
     // Constrain the lifetime of the session to 10s. It is extended, if the
     // session gets authenticated.
     hsess.setMaxInactiveInterval(HConstants.MAX_INACTIVE_SECONDS_BEFORE_AUTHENTICATED);
+    
+    return obj;
+  }
 
+  @Override
+  public void sessionCreated(HttpSessionEvent sessionEvent) {
+    HttpSession hsess = sessionEvent.getSession();
+    initHttpSession(hsess);
   }
 
   @Override
