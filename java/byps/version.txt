@@ -1,5 +1,10 @@
 BYPS Version History
 
+5.36
+
+- BYPS-27: Do not limit session lifetime in HSessinListener because this class is instantiated
+  by all web applications even those that should only use the client side of BYPS.
+
 5.35
 
 - BYPS-26: Node.js could not connect anymore after BYPS-19 since it does not maintain the session cookie. Set 

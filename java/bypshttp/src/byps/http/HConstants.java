@@ -88,9 +88,10 @@ public class HConstants {
    * this key. This key stores a set of session IDs, because several BYPS sessions 
    * could use the same application server's session, e.g. if the several sessions 
    * are opened in the same browser window. 
+   * BYPS-27: Added a version number to be able to distinguish BYPS versions in the session list of Tomcat manager.
    * @see HHttpSessionObject
    */
-  public final static String HTTP_SESSION_BYPS_SESSIONS = "BHttpServlet.Session";
+  public final static String HTTP_SESSION_BYPS_SESSIONS = "BHttpServlet-1.Session";
 
   /**
    * Inactive seconds for non-authenticated session.
