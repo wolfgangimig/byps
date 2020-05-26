@@ -57,10 +57,15 @@ public abstract class HSession
     wireServer = new HWireServer(serverContext.getConfig(), serverContext.getActiveMessages(), writeHelper);
 
     wireClientR = new HWireClientR(wireServer);
+    
+    
 
     // Add this session object to the HttpSession object of the application server.
     // Set the inactive time to the maximum of all attached sessions.
     HHttpSessionObject sessObj = (HHttpSessionObject)hsess.getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
+    if (sessObj == null) {
+      sessObj = HSessionListener.initHttpSession(hsess); 
+    }
     sessObj.addSession(this);
 
     // Shorten the lifetime of the HTTP session, 

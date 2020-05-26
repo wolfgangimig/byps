@@ -2,8 +2,8 @@ apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
 
 sourceCompatibility = 1.8
-compileJava.options.encoding = 'UTF-8'
-version = '5.31'
+
+version = '5.34'
 
 eclipse {
 
@@ -40,10 +40,6 @@ jar {
 
 repositories {
     mavenCentral()
-    
-//   flatDir {
-//        dirs 'lib'
-//    }
 }
 
 dependencies {

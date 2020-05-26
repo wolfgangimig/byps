@@ -1,10 +1,22 @@
 BYPS Version History
 
-5.35
+5.36.1
 
 - BYPS-15: Generate BProxy class for each BSkeleton class to forward method calls.
 
-5.34 
+5.36
+
+- BYPS-27: Do not limit session lifetime in HSessinListener because this class is instantiated
+  by all web applications even those that should only use the client side of BYPS.
+
+5.35
+
+- BYPS-26: Node.js could not connect anymore after BYPS-19 since it does not maintain the session cookie. Set 
+  system property -Dbyps.http.sessionCookieRequired=false in order to support Node.js.
+  
+- BYPS-19a: Fix NPE in HSession(), create HttpSession object if not available. 
+  
+5.34
 
 - BYPS-22: Generate function BSerialier_class.prepareForLazyLoading to assign BValueClass.bypsClient 
   in a tree of serializable objects. 
@@ -13,6 +25,8 @@ BYPS Version History
   Fat JAR for BYPS generator: bypsgen. Write log file bypsgen.log into current directory.
   
 - BYPS-24: Function HHttpSessionObject.getFirstBysSessionOrNull() re-created. It was removed with BYPS-19 but is in use.
+
+- BYPS-25: Removed javadoc references from BYPS generator.
 
 5.33
 

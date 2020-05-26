@@ -88,9 +88,10 @@ public class HConstants {
    * this key. This key stores a set of session IDs, because several BYPS sessions 
    * could use the same application server's session, e.g. if the several sessions 
    * are opened in the same browser window. 
+   * BYPS-27: Added a version number to be able to distinguish BYPS versions in the session list of Tomcat manager.
    * @see HHttpSessionObject
    */
-  public final static String HTTP_SESSION_BYPS_SESSIONS = "BHttpServlet.Session";
+  public final static String HTTP_SESSION_BYPS_SESSIONS = "BHttpServlet-1.Session";
 
   /**
    * Inactive seconds for non-authenticated session.
@@ -138,9 +139,9 @@ public class HConstants {
    * HTTP session cookie is required. 
    * A HTTP cookie can be assigned as HttpOnly to avoid JavaScript access. 
    * This is a security enhancement if BYPS is used in a web page.
-   * BYPS-19   
+   * BYPS-19, BYPS-26
    */
-  public static final boolean HTTP_SESSION_COOKIE_REQUIRED = true;
+  public static boolean HTTP_SESSION_COOKIE_REQUIRED = true;
   
   static
   {
@@ -151,6 +152,8 @@ public class HConstants {
     
     TIMEOUT_LONGPOLL_MILLIS = getSystemPropertyLong("byps.http.longPollTimeoutSeconds", TIMEOUT_LONGPOLL_MILLIS / 1000) * 1000;
     REQUEST_TIMEOUT_MILLIS = getSystemPropertyLong("byps.http.requestTimeoutSeconds", REQUEST_TIMEOUT_MILLIS / 1000) * 1000;    
+    
+    HTTP_SESSION_COOKIE_REQUIRED = Boolean.parseBoolean(System.getProperty("byps.http.sessionCookieRequired", "true"));
   }
 
   private static long getSystemPropertyLong(String prop, long defaultValue) {

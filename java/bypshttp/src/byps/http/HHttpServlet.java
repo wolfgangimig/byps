@@ -1362,6 +1362,8 @@ public abstract class HHttpServlet extends HttpServlet implements
       }
       else {
         
+        // BYPS-26: Node.js does not supply a session cookie. 
+        
         HSession bypsSession = HSessionListener.getAllSessions().get(header.sessionId);
         ret = Optional.ofNullable(bypsSession);
         

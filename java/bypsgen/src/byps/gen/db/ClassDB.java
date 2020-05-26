@@ -27,7 +27,7 @@ import byps.gen.api.MethodInfo;
 import byps.gen.api.RemoteInfo;
 import byps.gen.api.SerialInfo;
 import byps.gen.api.TypeInfo;
-import byps.gen.doclet.BConvert;
+import byps.gen.xml.XmlGeneratorBase;
 
 public class ClassDB {
 
@@ -624,7 +624,7 @@ public class ClassDB {
     // This would be a security risk, because session object 
     // of the caller were transfered to the receiver.
     if (rinfo.isClientRemote && rinfo.getRemoteAuth() != null) {
-      log.error("An interface cannot be tagged with both, " + BConvert.TAG_CLIENT_REMOTE + " and " + BConvert.TAG_SESSION_PARAM_TYPE + ", " + rinfo);
+      log.error("An interface cannot be tagged with both, " + XmlGeneratorBase.TAG_CLIENT_REMOTE + " and " + XmlGeneratorBase.TAG_SESSION_PARAM_TYPE + ", " + rinfo);
       return false;
     }
     
@@ -635,12 +635,12 @@ public class ClassDB {
     String baseRemoteWithAuth = getBaseRemoteUsingAuth(rinfo, baseRemotes);
     if (baseRemoteWithAuth != null) {
       if (rinfo.getRemoteAuth() == null) {
-        log.error("Interface " + rinfo + " must also be tagged with " + BConvert.TAG_SESSION_PARAM_TYPE +" because the base interface " + baseRemoteWithAuth + " is tagged.");
+        log.error("Interface " + rinfo + " must also be tagged with " + XmlGeneratorBase.TAG_SESSION_PARAM_TYPE +" because the base interface " + baseRemoteWithAuth + " is tagged.");
       }
       else {
         String baseAuthParamClassName = getRemoteInfo(baseRemoteWithAuth).authParamClassName;
         if (!baseAuthParamClassName.equals(rinfo.authParamClassName)) {
-          log.error("Interface " + rinfo + " must use the same class for " + BConvert.TAG_SESSION_PARAM_TYPE +" as interface " + baseRemoteWithAuth + ".");
+          log.error("Interface " + rinfo + " must use the same class for " + XmlGeneratorBase.TAG_SESSION_PARAM_TYPE +" as interface " + baseRemoteWithAuth + ".");
         }
       }
     }
