@@ -4,7 +4,7 @@ apply plugin: 'eclipse-wtp'
 
 sourceCompatibility = 1.8
 compileJava.options.encoding = 'UTF-8'
-version = '5.36'
+version = '5.37'
 
 sourceSets {
     main {

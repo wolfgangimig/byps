@@ -1351,12 +1351,13 @@ public abstract class HHttpServlet extends HttpServlet implements
     Optional<HSession> ret = Optional.empty();
     
     try {
-      if (HConstants.HTTP_SESSION_COOKIE_REQUIRED) {
+      if (HConstants.HTTP_SESSION_COOKIE_REQUIRED
+          || header == null) { // BYPS-28: NPE in Upload example of ELOix
         
         // BYPS-19: Obtain BYPS session from Tomcat session 
         HHttpSessionObject sessObj = (HHttpSessionObject) httpSession.getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
         if (sessObj != null) {
-          ret = sessObj.getSession(header.sessionId);
+          ret = header != null ? sessObj.getSession(header.sessionId) : sessObj.getFirstSession();
         }
         
       }

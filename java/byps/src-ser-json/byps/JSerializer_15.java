@@ -2,6 +2,7 @@ package byps;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Set;
 
 
 public class JSerializer_15 extends JSerializer_Object {
@@ -42,15 +43,32 @@ public class JSerializer_15 extends JSerializer_Object {
     
 		try {
 			BContentStream strm = bin.transport.getWire().getStream(targetId.getMessageId(), targetId);
-      final String contentType = bin.currentObject.getString("contentType");
-      final long contentLength = bin.currentObject.getLong("contentLength");
-      final int attachmentCode = bin.currentObject.getInt("attachment");
-      final String fileName = bin.currentObject.getString("fileName");
-      strm.setContentType(contentType);
-      strm.setContentLength(contentLength);
-      strm.setAttachmentCode(attachmentCode);
-      strm.setFileName(fileName);
-		    
+
+			// BYPS-28: If stream is uploaded from browser, most likely its properties are not submitted
+			// in JSON serialization. Instead, the stream properties are transferred as header values and thus
+			// are already available in object strm.
+			final Set<String> keys = bin.currentObject.keys();
+			
+			if (keys.contains("contentType")) {
+        final String contentType = bin.currentObject.getString("contentType");
+        strm.setContentType(contentType);
+			}
+			
+			if (keys.contains("contentLength")) {
+        final long contentLength = bin.currentObject.getLong("contentLength");
+        strm.setContentLength(contentLength);
+			}
+			
+      if (keys.contains("attachment")) {
+        final int attachmentCode = bin.currentObject.getInt("attachment");
+        strm.setAttachmentCode(attachmentCode);
+      }
+      
+      if (keys.contains("fileName")) {
+        final String fileName = bin.currentObject.getString("fileName");
+        strm.setFileName(fileName);
+      }
+      
 			bin.onObjectCreated(strm);
 			return strm;
 		} catch (IOException e) {

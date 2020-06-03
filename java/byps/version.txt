@@ -1,5 +1,10 @@
 BYPS Version History
 
+5.37
+
+- BYPS-28: Upload example of ELOix caused NPE since it does not pass a BMessageHeader during file upload. 
+  The JSESSIONID cookie has to be evaluated to detect the session. 
+
 5.36
 
 - BYPS-27: Do not limit session lifetime in HSessinListener because this class is instantiated

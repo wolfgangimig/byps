@@ -9,6 +9,7 @@ import java.io.InterruptedIOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,6 +18,7 @@ import org.slf4j.LoggerFactory;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
+import byps.BContentStreamProperties;
 import byps.BException;
 import byps.BHashMap;
 import byps.BMessage;
@@ -62,9 +64,40 @@ public class HWireServer extends BWire {
   }
 
   private class MyIncomingInputStream extends BWire.InputStreamWrapper {
+    
+    private AtomicBoolean hasProperties = new AtomicBoolean();
 
     public MyIncomingInputStream(BTargetId targetId) {
       super(targetId);
+    }
+    
+    @Override
+    public void ensureProperties() throws IOException {
+      
+      // BYPS-28: Get properties (contentLength, etc.) from inner stream.
+      
+      if (hasProperties.compareAndSet(false, true)) {
+        BContentStream is = activeMessages.getIncomingStream(targetId);
+        if (log.isDebugEnabled()) log.debug("stream for targetId={}, is={}", targetId, is);
+        if (is == null) {
+          throw new IOException("Timeout while waiting for stream");
+        }
+        this.copyProperties(is);
+      }
+    }
+    
+    @Override
+    public BContentStreamProperties getProperties() {
+      
+      // BYPS-28: Ensure that properties (contentLength, etc.) are available.
+
+      try {
+        ensureProperties();
+        return super.getProperties();
+      }
+      catch (IOException e) {
+        throw new IllegalStateException(e);
+      }
     }
     
     @Override
@@ -75,7 +108,7 @@ public class HWireServer extends BWire {
       
       try {
         BContentStream is = activeMessages.getIncomingStream(targetId);
-        if (log.isDebugEnabled()) log.debug("stream for targetId=" + targetId + ", is=" + is);
+        if (log.isDebugEnabled()) log.debug("stream for targetId={}, is={}", targetId, is);
         if (is == null) {
           throw new IOException("Timeout while waiting for stream");
         }
