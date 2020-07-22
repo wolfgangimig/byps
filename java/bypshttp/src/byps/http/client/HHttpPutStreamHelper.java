@@ -8,6 +8,7 @@ import java.nio.ByteBuffer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import byps.BAsyncContentStream;
 import byps.BAsyncResult;
 import byps.BContentStream;
 import byps.BException;
@@ -46,10 +47,17 @@ public class HHttpPutStreamHelper {
       // Try to get content type and stream length
       String contentType = BContentStream.DEFAULT_CONTENT_TYPE;
       long totalLength = Long.MAX_VALUE;
+      boolean isStreamAsync = false;
       String contentDisposition = "";
       byps.io.ByteArrayInputStream sendBuffer = null;
-      
-      if (stream instanceof BContentStream) {
+
+      if (stream instanceof BAsyncContentStream) {
+        BAsyncContentStream astream = (BAsyncContentStream)stream;
+        contentType = astream.getContentType();
+        contentDisposition = astream.getContentDisposition();
+        isStreamAsync = true;
+      }
+      else if (stream instanceof BContentStream) {
         BContentStream cstream = (BContentStream)stream;
         contentType = cstream.getContentType();
         contentDisposition = cstream.getContentDisposition();
@@ -81,8 +89,11 @@ public class HHttpPutStreamHelper {
         putBytesFromMemory(contentType, totalLength, contentDisposition, sendBuffer, nbOfParts);
       }
       else {
-        
-        putBytesFromStream(contentType, totalLength, contentDisposition, nbOfParts);
+        if (isStreamAsync) {
+          putBytesFromStream(contentType, contentDisposition);
+        } else {
+          putBytesFromStream(contentType, totalLength, contentDisposition, nbOfParts);
+        }
       }
       
     }
@@ -153,6 +164,39 @@ public class HHttpPutStreamHelper {
       
       putBytesRetry(partId, lastPart, totalLength, new byps.io.ByteArrayInputStream(buf, 0, len), contentType, contentDisposition);
     }
+  }
+
+  private void putBytesFromStream(String contentType, String contentDisposition) throws IOException {
+    int bufferSize = MAX_STREAM_PART_SIZE;
+    byte[] buf = new byte[bufferSize];
+
+    boolean lastPart = false;
+    long partId = 0;
+
+    // the amount of data read from stream in a single loop
+    int readBytesCurrent = 0;
+    // the total amount of data read from steam
+    long readBytesTotal = 0;
+
+    // as long as stream does not return -1, upload the data
+    while ((readBytesCurrent = stream.read(buf, 0, buf.length)) >= 0) {
+      if (log.isDebugEnabled()) {
+        log.debug("put partId={}", partId);
+      }
+      putBytesRetry(partId, lastPart, -1, new byps.io.ByteArrayInputStream(buf, 0, readBytesCurrent), contentType,
+          contentDisposition);
+      readBytesTotal += readBytesCurrent;
+      partId++;
+    }
+
+    // last data were read from stream => tell the server about it using empty data
+    // and the flag lastPart = true
+    if (log.isDebugEnabled()) {
+      log.debug("put last partId={}", partId);
+    }
+    lastPart = true;
+    putBytesRetry(partId, lastPart, readBytesTotal, new byps.io.ByteArrayInputStream(buf, 0, 0), contentType,
+        contentDisposition);
   }
 
   private void putBytesFromMemory(String contentType, long totalLength, String contentDisposition,

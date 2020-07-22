@@ -1,5 +1,13 @@
 BYPS Version History
 
+5.38
+
+- BYPS-29: Uploading data to the server required the client to provide 10MB of data in a given time span.
+  In case that time span did not suffice the upload failed. If you expect to run in such a situation you
+  can wrap BAsyncContentStream around your InputStream to continuously upload data in packages that may be
+  smaller than 10MB. Also, after reaching the end of the stream, an extra package must be sent to notify
+  the server about the end. 
+
 5.37
 
 - BYPS-28: Upload example of ELOix caused NPE since it does not pass a BMessageHeader during file upload. 

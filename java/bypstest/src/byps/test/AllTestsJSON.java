@@ -11,6 +11,7 @@ import byps.http.HWireClient;
 
 @RunWith(Suite.class)
 @SuiteClasses({ 
+  TestBAsyncContentStream.class,
 	TestSerializePrimitiveTypes.class, 
 	TestSerializeArrays1dim.class, 
 	TestSerializeArrays4dim.class,
