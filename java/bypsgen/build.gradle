@@ -2,10 +2,11 @@ import org.gradle.plugins.ide.eclipse.model.AccessRule
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'maven'
 
 sourceCompatibility = 1.8
 compileJava.options.encoding = 'UTF-8'
-version = '5.34'
+version = versionFromProperties
 
 eclipse {
   classpath {
@@ -40,7 +41,7 @@ jar {
     }
  
     from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.compileOnly.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 
@@ -49,9 +50,9 @@ repositories {
 }
 
 dependencies {
-	compile project(":byps-api")
-	compile project(":byps-override")
-	compile project(":byps")
+	compileOnly project(":byps-api")
+	compileOnly project(":byps-override")
+	compileOnly project(":byps")
 	
 	// https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime
 	compile group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.1'
@@ -59,4 +60,19 @@ dependencies {
 	compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 }
 
+uploadArchives {
+  repositories {
+    mavenDeployer {
 
+      // put the credentials into ~/.gradle/gradle.properties
+      def mavenUrl = version.endsWith("SNAPSHOT") ? mavenUploadUrlSnapshots : mavenUploadUrl
+      repository(url: mavenUrl) {
+        authentication(userName: mavenUser, password: mavenPassword)
+      }
+      pom.version = version
+      pom.groupId = "byps"
+      pom.artifactId = "bypsgen"
+      pom.packaging = "jar"
+    }
+  }
+}

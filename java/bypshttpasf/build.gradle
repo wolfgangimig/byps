@@ -1,9 +1,10 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'maven'
 
 sourceCompatibility = 1.8
 compileJava.options.encoding = 'UTF-8'
-version = '5.37'
+version = '5.38'
 
 sourceSets {
     main {
@@ -22,6 +23,15 @@ jar {
         attributes 'Implementation-Title': 'BYPS-httpasf',
                    'Implementation-Version': version
     }
+    from (project(":bypshttp").sourceSets.main.output)
+    from (project(":byps").sourceSets.main.output)
+    from (project(":byps-api").sourceSets.main.output)
+    // sources
+    from (project(":bypshttp").sourceSets.main.java)
+    from (project(":bypshttpasf").sourceSets.main.java)
+    from (project(":byps").sourceSets.main.java)
+    from (project(":byps-api").sourceSets.main.java)
+    
 }
 
 repositories {
@@ -33,14 +43,29 @@ repositories {
 }
 
 dependencies {
-	compile project(":byps-api")
-	compile project(":byps-override")
-	compile project(":byps")
-	compile project(':bypshttp')
+	compileOnly project(":byps-api")
+	compileOnly project(":byps-override")
+	compileOnly project(":byps")
+	compileOnly project(':bypshttp')
 	
 	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4+'
 	compile group: 'org.apache.httpcomponents', name: 'httpclient-win', version: '4+'
 	
 }
 
+uploadArchives {
+  repositories {
+    mavenDeployer {
 
+      // put the credentials into ~/.gradle/gradle.properties
+      def mavenUrl = version.endsWith("SNAPSHOT") ? mavenUploadUrlSnapshots : mavenUploadUrl
+      repository(url: mavenUrl) {
+        authentication(userName: mavenUser, password: mavenPassword)
+      } 
+      pom.version = version
+      pom.groupId = "byps"
+      pom.artifactId = "bypshttp"
+      pom.packaging = "jar"
+    }
+  }
+}

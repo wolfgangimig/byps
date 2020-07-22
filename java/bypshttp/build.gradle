@@ -4,7 +4,7 @@ apply plugin: 'eclipse-wtp'
 
 sourceCompatibility = 1.8
 compileJava.options.encoding = 'UTF-8'
-version = '5.37'
+version = versionFromProperties
 
 sourceSets {
     main {
@@ -23,6 +23,10 @@ jar {
         attributes 'Implementation-Title': 'BYPS-http',
                    'Implementation-Version': version
     }
+    //from (project(":bypshttpasf").sourceSets.main.output)
+    from (project(":byps").sourceSets.main.output)
+    from (project(":byps-api").sourceSets.main.output)
+    
 }
 
 repositories {
@@ -34,9 +38,9 @@ repositories {
 }
 
 dependencies {
-	compile project(":byps-api")
-	compile project(":byps-override")
-	compile project(":byps")
+	compileOnly project(":byps-api")
+	compileOnly project(":byps-override")
+	compileOnly project(":byps")
 	
 	compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.3'
 	

@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 
 sourceCompatibility = 1.8
 compileJava.options.encoding = 'UTF-8'
-version = '5.37'
+version = versionFromProperties
 
 sourceSets {
     main {
@@ -33,7 +33,9 @@ repositories {
 }
 
 dependencies {
-	compile project(":bypsgen")
+  compile project(":byps")
+  compile project(":byps-override")
+  compile project(":bypsgen")
 	compile project(":bypshttp")
 	compile project(":bypshttp-shmem")
 	compile project(":bypshttpasf")
