@@ -895,7 +895,7 @@ public abstract class HHttpServlet extends HttpServlet implements
     return sess;
   }
 
-  private HRequestContext createRequestContext(HttpServletRequest request,
+  protected HRequestContext createRequestContext(HttpServletRequest request,
       HttpServletResponse response, boolean async) {
     final HRequestContext rctxt = async ? new HAsyncContext(request.startAsync(
         request, response)) : new HSyncContext(request, response);

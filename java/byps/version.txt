@@ -1,5 +1,7 @@
 BYPS Version History
 
+- BYPS-30: Communication via STDIO from client to server.
+
 5.38
 
 - BYPS-29: Uploading data to the server required the client to provide 10MB of data in a given time span.

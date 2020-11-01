@@ -89,7 +89,12 @@ public class StdioClient extends StdioCommunication implements HHttpClient {
     synchronized(expectingResults) {
       result = expectingResults.remove(messageId);
     }
-    result.setAsyncResult(bbuf, null);
+    if (result != null) { 
+      result.setAsyncResult(bbuf, null);
+    }
+    else {
+      handleException(new IllegalStateException("Unknown message " + messageId));
+    }
   }
 
   private int pushAsyncResult(BAsyncResult<ByteBuffer> asyncResult) {

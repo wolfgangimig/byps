@@ -3,6 +3,7 @@ package byps.stdio.client;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,8 +21,6 @@ public class StdioServletResponse implements HttpServletResponse {
   
   private final StdioServletOutputStream ostream;
   private final BHttpRequest response = new BHttpRequest();
-  private volatile int status;
-  private volatile String statusMessage;
   private volatile PrintWriter writer;
   
   public static interface OnSendResponse {
@@ -50,6 +49,9 @@ public class StdioServletResponse implements HttpServletResponse {
   }
 
   public BHttpRequest getBypsResponse() {
+    if (response.getBody() != null) {
+      response.getBody().flip();
+    }
     return response;
   }
   
@@ -198,10 +200,12 @@ public class StdioServletResponse implements HttpServletResponse {
 
   @Override
   public void sendError(int arg0) throws IOException {
+    setStatus(arg0);
   }
 
   @Override
   public void sendError(int arg0, String arg1) throws IOException {
+    setStatus(arg0, arg1);
   }
 
   @Override
@@ -225,13 +229,16 @@ public class StdioServletResponse implements HttpServletResponse {
 
   @Override
   public void setStatus(int arg0) {
-    status = arg0;
+    setStatus(arg0, null);
   }
 
   @Override
   public void setStatus(int arg0, String arg1) {
-    status = arg0;
-    statusMessage = arg1;
+    setHeader("", Integer.toString(arg0));
+    if (arg1 != null) {
+      ByteBuffer bbuf = ByteBuffer.wrap(arg1.getBytes(StandardCharsets.UTF_8));
+      response.setBody(bbuf);
+    }
   }
 
 

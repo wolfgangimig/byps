@@ -1,6 +1,8 @@
 package byps.stdio.client;
 
 import java.nio.ByteBuffer;
+import java.util.Map;
+import java.util.Optional;
 
 import byps.BException;
 import byps.BHttpRequest;
@@ -63,8 +65,16 @@ public class StdRequest implements HHttpRequest {
   }
 
   protected static BHttpRequest deserializeHttpRequest(BTransport transport, ByteBuffer bbuf) throws BException {
-    BInput bin = transport.getInput(null, bbuf); // hier einen BMessageHeader �bergeben?
+    BInput bin = transport.getInput(null, bbuf); 
     BHttpRequest response = (BHttpRequest)bin.load();
+    int status = Optional.ofNullable(response.getHeaders())
+      .map(headers -> headers.get(""))
+      .map(Integer::parseInt)
+      .orElse(200);
+    
+    if (status < 200 || status >= 300) {
+      throw new BException(status, "");
+    }
     return response;
   }
 

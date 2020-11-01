@@ -7,19 +7,22 @@ import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import javax.servlet.Servlet;
+import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
 import byps.BAsyncResult;
@@ -30,16 +33,19 @@ import byps.BTransportFactory;
 import byps.BWire;
 import byps.RemoteException;
 import byps.http.HHttpServlet;
+import byps.http.HSession;
 import byps.http.HTransportFactoryClient;
 import byps.http.client.HHttpRequest;
 import byps.stdio.client.StdioClient;
 import byps.stdio.client.StdioServer;
+import byps.stdio.client.StdioServlet;
 import byps.stdio.client.StdioWireClient;
 import byps.stdio.common.SendChannel;
 import byps.test.api.BApiDescriptor_Testser;
 import byps.test.api.BClient_Testser;
 import byps.test.api.BRegistry_Testser;
 import byps.test.servlet.BypsServlet;
+import byps.test.servlet.MySession;
 import io.undertow.Handlers;
 import io.undertow.Undertow;
 import io.undertow.server.handlers.PathHandler;
@@ -129,7 +135,10 @@ public class TestStdioRemote {
     StdioClient httpClient = null;
     StdioServer server = null;
     BClient_Testser client;
+    Map<String, String> servletParams = new HashMap<>();
+    HHttpServlet stdioServlet = new StdioBypsServlet(servletParams);
     try {
+      stdioServlet.init();
       
       int bufferSize = 100000;
       PipedOutputStream pipe1_out = new PipedOutputStream();
@@ -138,9 +147,7 @@ public class TestStdioRemote {
       PipedOutputStream pipe2_out = new PipedOutputStream();
       PipedInputStream pipe2_in = new PipedInputStream(pipe2_out, bufferSize);
 
-      server = new StdioServer(pipe1_in, pipe2_out, 
-          StdioServer.MessageHandler.fromServlet((HHttpServlet)bypsServlet), 
-          10);
+      server = new StdioServer(pipe1_in, pipe2_out, stdioServlet, 10);
 
       server.start();
 
@@ -163,6 +170,31 @@ public class TestStdioRemote {
       }
     }
   }
+  
+  private static class StdioBypsServlet extends StdioServlet {
+    private static final long serialVersionUID = 529332757773852251L;
+
+    public StdioBypsServlet(Map<String, String> parameters) {
+      super(parameters);
+    }
+
+    @Override
+    protected HSession createSession(HttpSession hsess, String remoteUser) {
+      if (log.isDebugEnabled()) log.debug("createSession(");
+      if (log.isDebugEnabled()) log.debug("remoteUser=" + remoteUser);
+      
+      HSession sess = new MySession(hsess, remoteUser, this);
+      if (log.isDebugEnabled()) log.debug(")createSession=" + sess);
+      return sess;
+    }
+
+    @Override
+    protected BApiDescriptor getApiDescriptor() {
+      return BApiDescriptor_Testser.instance();
+    }
+    
+    
+  }
 
   /**
    * Test communication via STDIO.
@@ -170,11 +202,15 @@ public class TestStdioRemote {
    */
   @Test
   public void testStdioCommunication() {
-    StdioServer server = null;
+    StdioServer stdioServer = null;
     Process proc1 = null;
     Process proc2 = null;
     BClient_Testser client = null;
+    
+    Map<String, String> servletParams = new HashMap<>();
+    HHttpServlet stdioServlet = new StdioBypsServlet(servletParams);
     try {
+      stdioServlet.init();
       
       // Start helper programs that echo their stdin to stdout.
       // This programs allows to have the client side and server side in this test.
@@ -182,16 +218,18 @@ public class TestStdioRemote {
       proc2 = startEchoProgram();
       
       // Server side reads from proc1 and writes to proc2.
-      server = new StdioServer(proc1.getInputStream(), proc2.getOutputStream(), 
-          StdioServer.MessageHandler.fromServlet((HHttpServlet)bypsServlet), 
-          10);
+      stdioServer = new StdioServer(proc1.getInputStream(), proc2.getOutputStream(), stdioServlet, 10);
 
-      server.start();
+      stdioServer.start();
 
       // Client side reads from proc2 and writes to proc1.
       client = createClient(proc2.getInputStream(), proc1.getOutputStream());
 
-      int nbOfRequests = 100000;
+//      client.getRemoteListTypes().setBoolean1(Arrays.asList(Boolean.TRUE, Boolean.FALSE, Boolean.TRUE));
+//      List<Boolean> list = client.getRemoteListTypes().getBoolean1();
+//      System.out.println("list=" + list);
+
+      int nbOfRequests = 10;
       int nbOfThreads = 10;
       invokeMethod(client, nbOfRequests, nbOfThreads);
       
@@ -203,8 +241,8 @@ public class TestStdioRemote {
       if (client != null) {
         client.done();
       }
-      if (server != null) {
-        server.done();
+      if (stdioServer != null) {
+        stdioServer.done();
       }
       if (proc1 != null) {
         terminateEchoProgram(proc1);

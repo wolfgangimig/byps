@@ -11,34 +11,30 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import byps.BAsyncResult;
 import byps.BHttpRequest;
 import byps.BOutput;
 import byps.BTransport;
 import byps.http.HHttpServlet;
-import byps.stdio.common.StdioChannel;
 
 public class StdioServer extends StdioCommunication {
   
-  private final MessageHandler handler;
+  private final HHttpServlet servlet;
   private final Executor tpool;
   private final BTransport transport;
   private final Random rand = new Random();
   private final StdioHttpSession httpSession = new StdioHttpSession();
   
-  public StdioServer(String programPath, MessageHandler handler, int maxThreads) {
+  public StdioServer(String programPath, HHttpServlet servlet, int maxThreads) {
     super(programPath);
-    this.handler = handler;
+    this.servlet = servlet;
     this.tpool = ensureExecutor(maxThreads);
     this.transport = StdioTransport.createTransport();
   }
   
-  public StdioServer(InputStream system_in, OutputStream system_out, MessageHandler handler, int maxThreads) {
+  public StdioServer(InputStream system_in, OutputStream system_out, HHttpServlet servlet, int maxThreads) {
     super(system_in, system_out);
-    this.handler = handler;
+    this.servlet = servlet;
     this.tpool = ensureExecutor(maxThreads);
     this.transport = StdioTransport.createTransport();
   }
@@ -47,37 +43,6 @@ public class StdioServer extends StdioCommunication {
   public void done() {
     ((ThreadPoolExecutor)this.tpool).shutdown();
     super.done();
-  }
-
-  public static abstract class MessageHandler {
-    
-    public abstract void service(HttpServletRequest request, HttpServletResponse response);
-    public abstract void doMessage(HttpServletRequest request, HttpServletResponse response, ByteBuffer ibuf);
-    
-    public static MessageHandler fromServlet(final HHttpServlet servlet1) {
-      return new MessageHandler() {
-        
-        HHttpServlet servlet = servlet1;
-        
-        @Override
-        public void service(HttpServletRequest request, HttpServletResponse response) {
-          try {
-            servlet.service(request, response);
-          } catch (Exception e) {
-            throw new RuntimeException(e);
-          }
-        }
-        
-        @Override
-        public void doMessage(HttpServletRequest request, HttpServletResponse response, ByteBuffer ibuf) {
-          try {
-            servlet.doMessage(request, response, ibuf);
-          } catch (Exception e) {
-            throw new RuntimeException(e);
-          }
-        }
-      };
-    }
   }
   
   @Override
@@ -129,38 +94,8 @@ public class StdioServer extends StdioCommunication {
       StdioServletResponse servletResponse = new StdioServletResponse(asyncResult);
       
       // Process request
-      if (method == StdioChannel.HTTP_POST) {
-        
-//        ByteBuffer ibuf = httpRequest.getBody();
-//        final BMessageHeader header = new BMessageHeader();
-//        header.read(ibuf);
-//
-//        final BHashMap<String, HSession> sessions = HSessionListener.getAllSessions();
-//        final HSession sess = sessions.get(header.sessionId);
-//        final BServer server = sess.getServer();
-//        final BTransport transport = server.getTransport();
-//        final BMessage msg = new BMessage(header, ibuf, null);
-//        
-//        final BAsyncResult<BMessage> asyncResponse = new BAsyncResult<BMessage>() {
-//          @Override
-//          public void setAsyncResult(BMessage result, Throwable exception) {
-//            BHttpRequest httpResponse = new BHttpRequest();
-//            httpResponse.setBody(result.buf);
-//            asyncResult.setAsyncResult(httpResponse, exception);
-//          }
-//        };
-//
-//        transport.recv(server, msg, asyncResponse);
-        
-        handler.doMessage(servletRequest, servletResponse, httpRequest.getBody());
-        servletResponse.getOutputStream().close();
-        
-      }
-      else {
-        handler.service(servletRequest, servletResponse);
-        servletResponse.getOutputStream().close();
-      }
-        
+      servlet.service(servletRequest, servletResponse);
+      
     } catch (Exception e) {
       
       asyncResult.setAsyncResult(null, e);

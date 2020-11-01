@@ -40,7 +40,8 @@ public class TestStdio {
     void startEchoProgram() {
       try {
         String javaHome = System.getProperty("java.home");
-        File javaExe = new File(new File(javaHome, "bin"), "java.exe");
+        String javaProg = System.getProperty("os.name").toLowerCase().contains("win") ? "java.exe" : "java";
+        File javaExe = new File(new File(javaHome, "bin"), javaProg);
         String echoProgram = Paths.get(".", "build", "libs", "bypshttp-shmem-all.jar").toString();
         ProcessBuilder pbuilder = new ProcessBuilder(javaExe.getAbsolutePath(), "-jar", echoProgram);
         // "d:\\temp\\log\\byps-stdout.txt",
