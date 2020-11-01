@@ -6,13 +6,16 @@ import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import byps.http.HAsyncContext;
 import byps.http.HConfig;
 import byps.http.HConfigImpl;
 import byps.http.HHttpServlet;
 import byps.http.HRequestContext;
 import byps.http.HSyncContext;
 
+/**
+ * A base servlet class for STDIO communication. 
+ *
+ */
 public abstract class StdioServlet extends HHttpServlet {
   
   private static final long serialVersionUID = 8258207507942829770L;
