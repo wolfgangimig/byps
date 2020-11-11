@@ -2,3 +2,4 @@
 /.gradle/
 /bapi_new.xml
 /bypsgen.log
+/gradle.properties
