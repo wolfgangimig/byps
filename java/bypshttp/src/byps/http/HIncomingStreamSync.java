@@ -116,55 +116,22 @@ public class HIncomingStreamSync extends BContentStream {
 	}
 	
 	protected void assignStream(InputStream is) throws IOException {
-	  
-    if (is instanceof HIncomingStreamSync) {
-      HIncomingStreamSync rhs = (HIncomingStreamSync)is;
-      
-      while (!rhs.writeClosed) {
-        try {
-          wait(10 * 1000);
-        } catch (InterruptedException e) {
-          throw new BException(BExceptionC.CANCELLED, "Cannot copy incoming stream", e);
-        }
-      }
-      
-      if (rhs.closed) {
-        throw new BException(BExceptionC.IOERROR, "Cannot copy closed stream");
-      }
-      
-      this.bytesSource = rhs.bytesSource;
-      
-      this.firstBytes = rhs.firstBytes;
-      this.secondBytes = rhs.secondBytes;
-      this.readBuf1 = new byte[1];
-      
-      this.file = rhs.file;
-      if (rhs.file != null) {
-        rhs.file.addref();
-      }
-      
-      this.secondBytesWritePos = rhs.secondBytesWritePos;
+	  if (log.isDebugEnabled()) log.debug("assignStream(");
+		byte[] bytes = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
+		int len = 0;
+		long sum = 0;
+		
+		while ((len = is.read(bytes)) != -1) {
+			write(bytes, 0, len);
+			sum += len;
+		}
+		
+		if (log.isDebugEnabled())log.debug("read #bytes={}", sum);
 
-      this.closed = false;
-      this.writeClosed = true;
-      
-      this.ex = rhs.ex;
-    }
-    else {
-  		byte[] bytes = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
-  		int len = 0;
-  		long sum = 0;
-  		
-  		while ((len = is.read(bytes)) != -1) {
-  			write(bytes, 0, len);
-  			sum += len;
-  		}
-  
-  		writeClose();
+		writeClose();
 
-      setContentLength(sum);
-    }
-    
+    setContentLength(sum);
+    if (log.isDebugEnabled()) log.debug(")assignStream");
 	}
 	
 	@Override

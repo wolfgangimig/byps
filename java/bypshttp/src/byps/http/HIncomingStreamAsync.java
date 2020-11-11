@@ -73,7 +73,7 @@ public class HIncomingStreamAsync extends BContentStream  {
   			while (is.read() != -1) {
   				n++;
   			}
-  		  if (log.isDebugEnabled()) log.debug("have read #bytes=" + n + ", before close");
+  		  log.error("have read #bytes=" + n + ", before close");
 			} 
 			catch (Throwable ignored) { // Observed an NPE during testing
 			}

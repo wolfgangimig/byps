@@ -1,6 +1,11 @@
 BYPS Version History
 
-- BYPS-30: Communication via STDIO from client to server.
+5.39
+
+- BYPS-60: In an environment with HTTPS over VPN connection, it was observed that an uploaded stream 
+  was not completely processed. 
+
+- BYPS-30: Communication via STDIO between client and server.
 
 5.38
 
