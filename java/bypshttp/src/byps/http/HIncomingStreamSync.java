@@ -69,60 +69,72 @@ public class HIncomingStreamSync extends BContentStream {
 	
 	@Override
 	public synchronized long getContentLength() {
-		
+		if (log.isDebugEnabled()) log.debug("getContentLength(");
 	  long ret = super.getContentLength();
-	  if (ret >= 0) {
-	    return ret;
+	  if (ret < 0) {
+	  
+	    if (log.isDebugEnabled()) log.debug("writeClosed={}", writeClosed);
+  		while (!writeClosed) {
+  			try {
+  			  if (log.isDebugEnabled()) log.debug("wait 10s for writeClosed");
+  				wait(10*1000);
+  			} catch (InterruptedException e) {
+  				throw new IllegalStateException("Interrupted", e);
+  			}
+  		}
+  		
+  		if (log.isDebugEnabled()) log.debug("bytesSource={}", bytesSourceToString());
+  		switch (bytesSource) {
+  			case FIRST_BYTES: 
+  			  ret = (long)firstBytes.length; 
+  			  break;
+  			case SECOND_BYTES: 
+  			  ret = (long)secondBytesWritePos; 
+  			  break;
+  			case FILE_BYTES: 
+  			  ret = file.getFile().length(); 
+  			  break;
+  		}
+  		
+  		setContentLength(ret);
 	  }
 	  
-		while (!writeClosed) {
-			try {
-				wait(10*1000);
-			} catch (InterruptedException e) {
-				throw new IllegalStateException("Interrupted", e);
-			}
-		}
-		
-		switch (bytesSource) {
-			case FIRST_BYTES: 
-			  ret = (long)firstBytes.length; 
-			  break;
-			case SECOND_BYTES: 
-			  ret = (long)secondBytesWritePos; 
-			  break;
-			case FILE_BYTES: 
-			  ret = file.getFile().length(); 
-			  break;
-		}
-		
-		setContentLength(ret);
+		if (log.isDebugEnabled()) log.debug(")getContentLength={}", ret);
 		return ret;
 	}
 	
 	protected synchronized void assignBytes(byte[] buf) {
+	  if (log.isDebugEnabled()) log.debug("assignBytes({}", buf, buf != null ? Integer.toString(buf.length) : "null");
 		this.firstBytes = buf;
 		this.bytesSource = FIRST_BYTES;
 		this.readPos = 0;
 		this.writeClosed = true;
+		if (log.isDebugEnabled()) log.debug(")assignBytes");
 	}
 	
 	protected synchronized void assignFile(HTempFile file) {
+	  if (log.isDebugEnabled()) log.debug("assignFile({}", file);
 		this.file = file;
 		this.file.addref();
 		this.bytesSource = FILE_BYTES;
 		this.readPos = 0;
 		this.writeClosed = true;
 		this.setContentLength(file.getFile().length());
+		if (log.isDebugEnabled()) log.debug(")assignFile");
 	}
 	
 	protected void assignStream(InputStream is) throws IOException {
-	  if (log.isDebugEnabled()) log.debug("assignStream(");
+	  if (log.isDebugEnabled()) log.debug("assignStream(is={}", is);
 		byte[] bytes = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
 		int len = 0;
 		long sum = 0;
 		
+		if (log.isDebugEnabled()) log.debug("is.read...");
+		
 		while ((len = is.read(bytes)) != -1) {
+		  if (log.isDebugEnabled()) log.debug("is.read(buf, 0, {})={}", bytes.length, len);
 			write(bytes, 0, len);
+			if (log.isDebugEnabled()) log.debug("this.write(buf, 0, {})", len);
 			sum += len;
 		}
 		
@@ -134,31 +146,63 @@ public class HIncomingStreamSync extends BContentStream {
     if (log.isDebugEnabled()) log.debug(")assignStream");
 	}
 	
+	private  String bytesSourceToString() {
+	  StringBuilder sbuf = new StringBuilder();
+	  sbuf.append("[");
+	  sbuf.append("FIRST_BYTES=");
+	  if (firstBytes != null) {
+	    sbuf.append("#").append(firstBytes.length);
+	  }
+	  else {
+	    sbuf.append("null");
+	  }
+	  sbuf.append(",SECOND_BYTES=");
+    if (secondBytes != null) {
+      sbuf.append("#").append(secondBytes.length);
+    }
+    else {
+      sbuf.append("null");
+    }
+    sbuf.append(",FILE_BYTES=").append(fos);
+    sbuf.append("]");
+    return sbuf.toString();
+	}
+	
 	@Override
 	public synchronized void reset() throws IOException {
+	  if (log.isDebugEnabled())log.debug("reset(");
+	  if (log.isDebugEnabled())log.debug("bytesSource={}", bytesSourceToString());
 	  if (bytesSource == FILE_BYTES) {
 	    if (fis != null) {
+	      if (log.isDebugEnabled())log.debug("fis.reset()");
 	      fis.reset();
 	    }
 	  }
 	  else {
+	    if (log.isDebugEnabled())log.debug("set readPos={} = markPos={}", readPos, markPos);
 	    readPos = markPos;
 	  }
+	  if (log.isDebugEnabled()) log.debug(")reset");
 	}
 	
 	@Override
 	public synchronized void mark(int readlimit) {
+	  if (log.isDebugEnabled())log.debug("mark({}", readlimit);
+	  if (log.isDebugEnabled())log.debug("bytesSource={}", bytesSourceToString());
     if (bytesSource == FILE_BYTES) {
       try {
         ensureFileInputStream();
       } catch (FileNotFoundException e) {
         throw new IllegalStateException(e);
       }
+      if (log.isDebugEnabled())log.debug("fis.mark()");
       fis.mark(readlimit);
     }
     else {
+      if (log.isDebugEnabled())log.debug("set markPos={} = readPos={}", markPos, readPos);
       markPos = readPos;
     }
+    if (log.isDebugEnabled()) log.debug(")mark");
 	}
 	
 	@Override
@@ -172,7 +216,9 @@ public class HIncomingStreamSync extends BContentStream {
 		InputStream is = null;
 		try {
 			is = rctxt.getRequest().getInputStream();
+			if (log.isDebugEnabled()) log.debug("is={}", is);
 
+			if (log.isDebugEnabled()) log.debug("lastPartId={}", lastPartId);
 			if (partId == 0 && lastPartId == 0) {
 				// OK
 			}
@@ -186,10 +232,16 @@ public class HIncomingStreamSync extends BContentStream {
 			
 			byte[] bytes = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
 			int len = 0;
+			long sum = 0;
 			
+			if (log.isDebugEnabled()) log.debug("is.read...");
 			while ((len = is.read(bytes)) != -1) {
+			  if (log.isDebugEnabled()) log.debug("is.read(buf, 0, {})={}", bytes.length, len);
 				write(bytes, 0, len);
+				if (log.isDebugEnabled()) log.debug("this.write(buf, 0, {})", len);
 			}
+			
+			if (log.isDebugEnabled())log.debug("read #bytes={}", sum);
 			
 		}
 		catch (Throwable e) {
@@ -204,11 +256,12 @@ public class HIncomingStreamSync extends BContentStream {
 			}
 			
 			// Received all bytes?
+			if (log.isDebugEnabled())log.debug("received all bytes? lastPart={}", lastPart);
 			if (lastPart) {
 				writeClose();
 			}
 		}
-		if (log.isDebugEnabled()) log.debug(")assignStream");
+		if (log.isDebugEnabled()) log.debug(")addStream");
 	}
 
 	@Override
@@ -227,16 +280,22 @@ public class HIncomingStreamSync extends BContentStream {
 	
 	@Override
 	public BContentStream materialize() throws IOException {
+	  if (log.isDebugEnabled()) log.debug("materialize(");
 		BContentStream is = cloneStream();
 	  
 	  // Materialize closes "this"
+		if (log.isDebugEnabled()) log.debug("this.close()");
 	  this.close();
+	  
+	  if (log.isDebugEnabled()) log.debug(")materialize={}", is);
 		return is;
 	}
 	
 	public BContentStream cloneStream() throws IOException {
+	  if (log.isDebugEnabled()) log.debug("cloneStream(");
 	  HIncomingStreamSync is = new HIncomingStreamSync(this, lifetimeMillis, tempDir);
     is.assignStream(this);
+    if (log.isDebugEnabled()) log.debug(")cloneStream={}", is);
     return is;
 	}
 	
@@ -260,12 +319,16 @@ public class HIncomingStreamSync extends BContentStream {
 	
 	@Override
 	public synchronized int read(byte[] b, int offs, int len) throws IOException {
+	  if (log.isDebugEnabled()) log.debug("read(b={}, offs={}, len={}", b, offs, len);
 		long t1 = System.currentTimeMillis();
 		int bytesRead = -1;
 
+
 		while (true) {
 			
-			if (ex != null) throw ex;
+		  if (log.isDebugEnabled()) log.debug("bytesSource={}, readPos={}, ex={}, closed={}", bytesSourceToString(), readPos, ex != null, closed);
+
+		  if (ex != null) throw ex;
 			if (closed) throw new IOException("Stream closed");
 
 			if (bytesSource == NO_BYTES) {
@@ -304,6 +367,7 @@ public class HIncomingStreamSync extends BContentStream {
 				throw new IllegalStateException("Illegal bytesSource=" + bytesSource);
 			}
 			
+			if (log.isDebugEnabled()) log.debug("writeClosed={}", writeClosed);
 			if (writeClosed) {
 				bytesRead = -1;
 				break;
@@ -328,22 +392,29 @@ public class HIncomingStreamSync extends BContentStream {
 			}
 		}
 		
+		if (log.isDebugEnabled()) log.debug("exctendLifetime()");
 		extendLifetime();
 		
+		if (log.isDebugEnabled()) log.debug(")read={}", bytesRead);
 		return bytesRead;
 	}
 	
 	private InputStream ensureFileInputStream() throws FileNotFoundException {
 	  if (fis == null) {
 	    fis = new BufferedInputStream(new FileInputStream(file.getFile()));
+	    if (log.isDebugEnabled()) log.debug("ensureFileInputStream, file={}", file);
 	  }
 	  return fis;
 	}
 	
 	@Override
 	public synchronized int available() throws IOException {
+	  if (log.isDebugEnabled()) log.debug("available(");
+    if (log.isDebugEnabled()) log.debug("bytesSource={}, readPos={}, ex={}, closed={}", bytesSourceToString(), readPos, ex != null, closed);
+
 		if (ex != null) throw ex;
 		if (closed) throw new IOException("Stream closed");
+		
 		int n = 0;
 		synchronized(HIncomingStreamSync.this) {
 			switch (bytesSource) {
@@ -364,11 +435,16 @@ public class HIncomingStreamSync extends BContentStream {
 			}
 			extendLifetime();
 		}
+		
+		if (log.isDebugEnabled()) log.debug(")available={}", n);
 		return n;
 	}
 
 	@Override
 	public synchronized long skip(long bytesToskip) throws IOException {
+	  if (log.isDebugEnabled()) log.debug("skip(bytesToSkip={}", bytesToskip);
+	  if (log.isDebugEnabled()) log.debug("bytesSource={}, readPos={}, ex={}, closed={}", bytesSourceToString(), readPos, ex != null, closed);
+
 		if (ex != null) throw ex;
 		if (closed) throw new IOException("Stream closed");
 
@@ -405,13 +481,20 @@ public class HIncomingStreamSync extends BContentStream {
 			throw new IllegalStateException("Illegal bytesSource=" + bytesSource);
 		}
 		
+    if (log.isDebugEnabled()) log.debug("bytesSource={}, readPos={}, ex={}, closed={}", bytesSourceToString(), readPos, ex != null, closed);
+
 		extendLifetime();
 
+		if (log.isDebugEnabled()) log.debug(")skip={}", bytesSkipped);
 		return bytesSkipped;
 	}
 	
 	private boolean internalWriteSecondBytes(byte[] bytes, int offs, int len) throws IOException {
+	  if (log.isDebugEnabled()) log.debug("internalWriteSecondBytes(b={}, offs={}, len={}", bytes, offs, len);
 		boolean succ = false;
+		
+		if (log.isDebugEnabled()) log.debug("secondBytes={}, secondBytesWritePos={}, secondBytesCapacity={}", secondBytes, secondBytesWritePos, secondBytesCapacity);
+		
 		if (secondBytesWritePos + len <= secondBytesCapacity) {
 			if (secondBytes == null) {
 				secondBytes = new byte[secondBytesCapacity];
@@ -420,19 +503,29 @@ public class HIncomingStreamSync extends BContentStream {
 			secondBytesWritePos += len;
 			succ = true;
 		}
+		
+    if (log.isDebugEnabled()) log.debug("secondBytes={}, secondBytesWritePos={}, secondBytesCapacity={}", secondBytes, secondBytesWritePos, secondBytesCapacity);
+
+		if (log.isDebugEnabled()) log.debug(")internalWriteSecondBytes={}", succ);
 		return succ;
 	}
 	
 	private void internalWriteFileBytes(byte[] bytes, int offs, int len) throws IOException {
+	  if (log.isDebugEnabled()) log.debug("internalWriteFileBytes(b={}, offs={}, len={}", bytes, offs, len);
 		if (file == null) {
 			file = HTempFile.createTemp(tempDir, targetId.getStreamId());
 			fos = new FileOutputStream(file.getFile());
+			if (log.isDebugEnabled()) log.debug("opened file={}, fos={}", file, fos);
 		}
 		fos.write(bytes, offs, len);
+		if (log.isDebugEnabled()) log.debug(")internalWriteFileBytes");
 	}
 	
 	public synchronized void write(byte[] bytes, int offs, int len) throws IOException {
-		
+	  if (log.isDebugEnabled()) log.debug("write(b={}, offs={}, len={}", bytes, offs, len);
+	  
+    if (log.isDebugEnabled()) log.debug("bytesSource={}, writeClosed={}", bytesSourceToString(), writeClosed);
+
 		try {
 			
 			if (writeClosed) {
@@ -447,6 +540,7 @@ public class HIncomingStreamSync extends BContentStream {
 				bytesSource = FIRST_BYTES;
 			}
 			else if (bytesSource == FIRST_BYTES) {
+			  if (log.isDebugEnabled()) log.debug("write second or file bytes");
 				if (firstBytes.length + len <= secondBytesCapacity) {
 					internalWriteSecondBytes(firstBytes, 0, firstBytes.length);
 					internalWriteSecondBytes(bytes, offs, len);
@@ -461,6 +555,7 @@ public class HIncomingStreamSync extends BContentStream {
 				firstBytes = null;
 			}
 			else if (bytesSource == SECOND_BYTES) {
+			  if (log.isDebugEnabled()) log.debug("write second or file bytes");
 				if (!internalWriteSecondBytes(bytes, offs, len)) {
 					internalWriteFileBytes(secondBytes, 0, secondBytesWritePos);
 					internalWriteFileBytes(bytes, offs, len);
@@ -472,6 +567,7 @@ public class HIncomingStreamSync extends BContentStream {
 				internalWriteFileBytes(bytes, offs, len);
 			}
 			
+			if (log.isDebugEnabled()) log.debug("bytesSource={}, writeClosed={}", bytesSourceToString(), writeClosed);
 		}
 		catch (IOException e) {
 			if (log.isDebugEnabled()) log.debug("exception: ", e);
@@ -479,9 +575,11 @@ public class HIncomingStreamSync extends BContentStream {
 			throw e;
 		}
 		finally {
+		  if (log.isDebugEnabled()) log.debug("this.notifyAll()");
 			this.notifyAll();
 		}
 		
+		if (log.isDebugEnabled()) log.debug(")write");
 	}
 	
 	public synchronized void writeClose() {
@@ -489,6 +587,7 @@ public class HIncomingStreamSync extends BContentStream {
 		writeClosed = true;
 		
 		if (fos != null) {
+		  if (log.isDebugEnabled()) log.debug("fos.close()");
 			try { fos.close(); } catch (IOException ignored) {}
 			fos = null;
 		}

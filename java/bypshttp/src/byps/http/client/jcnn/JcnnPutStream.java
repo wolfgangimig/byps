@@ -57,17 +57,20 @@ public class JcnnPutStream extends JcnnRequest implements HHttpPutStreamHelper.P
   
   @Override
   public int putBytes(String url, byps.io.ByteArrayInputStream sendBuffer, String contentType, String contentDisposition, boolean lastRetry) throws BException {
-    
+    if (log.isDebugEnabled()) log.debug("putBytes(url={}, sendBuffer={}, contentType={}, contentDisposition={}, lastRetry={}");
     HttpURLConnection conn = null;
     OutputStream os = null;
     int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;
     
     try {
       
-      if (isCancelled()) {
+      boolean cancelled = isCancelled();
+      if (log.isDebugEnabled()) log.debug("cancelled={}", cancelled);
+      if (cancelled) {
         throw new BException(BExceptionC.CANCELLED, "");
       }
       
+      if (log.isDebugEnabled()) log.debug("createConnection");
       conn = createConnection(url);
       conn.setDoInput(true);
       conn.setDoOutput(true);
@@ -82,11 +85,16 @@ public class JcnnPutStream extends JcnnRequest implements HHttpPutStreamHelper.P
       
       os = conn.getOutputStream();
       sendBuffer.copyTo(os, sendBuffer.available());
+      
+      if (log.isDebugEnabled()) log.debug("os.close()");
       os.flush();
       os.close();
       os = null;
       
+      if (log.isDebugEnabled()) log.debug("getResponseCode...");
       statusCode = getResponseCode(conn);
+      if (log.isDebugEnabled()) log.debug("statusCode={}", statusCode);
+      
       if (statusCode != HttpURLConnection.HTTP_OK) {
         throw new BException(statusCode, "Put stream failed.");
       }
@@ -111,11 +119,13 @@ public class JcnnPutStream extends JcnnRequest implements HHttpPutStreamHelper.P
      
     }
     
+    if (log.isDebugEnabled()) log.debug(")putBytes");
     return statusCode;
   }
   
 
   private void cleanupConnection(HttpURLConnection conn, OutputStream os) {
+    if (log.isDebugEnabled()) log.debug("clanupConnection(");
     if (conn != null) {
       
       cleanupInputStream(conn);
@@ -124,8 +134,10 @@ public class JcnnPutStream extends JcnnRequest implements HHttpPutStreamHelper.P
 
       cleanupOutputStream(os);
       
+      if (log.isDebugEnabled()) log.debug("conn.disconnect()");
       conn.disconnect();
     }
+    if (log.isDebugEnabled()) log.debug(")clanupConnection");
   }
 
   private void cleanupOutputStream(OutputStream os) {

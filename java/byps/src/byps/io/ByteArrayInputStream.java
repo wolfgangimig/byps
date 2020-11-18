@@ -5,6 +5,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Unsynchronized ByteArrayInputStream.
  */
@@ -27,7 +30,7 @@ public final class ByteArrayInputStream extends InputStream {
   public ByteArrayInputStream(byte[] buf, int offset, int length) {
     bbuf = ByteBuffer.wrap(buf, offset, length);
   }
-  
+
   @Override
   public final int available() {
     return bbuf.remaining();
@@ -37,7 +40,7 @@ public final class ByteArrayInputStream extends InputStream {
   public final int read() {
     if (bbuf.remaining() == 0) return -1;
     byte b = bbuf.get();
-    return ((int)b) & 0xFF;
+    return ((int) b) & 0xFF;
   }
 
   @Override
@@ -53,9 +56,9 @@ public final class ByteArrayInputStream extends InputStream {
   public final long skip(long n) {
     int c = bbuf.remaining();
     if (c == 0) return 0;
-    c = (int)Math.min(n, (long)c);
+    c = (int) Math.min(n, (long) c);
     bbuf.position(bbuf.position() + c);
-    return (long)c;
+    return (long) c;
   }
 
   @Override
@@ -68,15 +71,25 @@ public final class ByteArrayInputStream extends InputStream {
     throw new UnsupportedOperationException();
   }
 
+  private static Logger log = LoggerFactory.getLogger(ByteArrayInputStream.class);
+  
   public void copyTo(OutputStream os, int max) throws IOException {
+    if (log.isDebugEnabled()) log.debug("copyTo(os={}, max={}", os, max);
     byte[] buf = bbuf.array();
     int offset = bbuf.position();
     int length = Math.min(max, bbuf.remaining());
+    if (log.isDebugEnabled()) log.debug("os.write(buf, {}, {})", offset, length);
     os.write(buf, offset, length);
     bbuf.position(offset + length);
+    if (log.isDebugEnabled()) log.debug(")copyTo");
   }
-  
+
   public ByteBuffer getBuffer() {
     return bbuf;
+  }
+
+  @Override
+  public String toString() {
+    return "[bbuf=" + bbuf + "]";
   }
 }

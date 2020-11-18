@@ -128,6 +128,7 @@ public abstract class JcnnRequest implements HHttpRequest {
   }
   
   public void applySession(HHttpRequest req1) {
+    if (log.isDebugEnabled()) log.debug("applySession(");
     JcnnRequest req = (JcnnRequest)req1;
     HttpURLConnection c = req.conn.get();
     if (c != null) {
@@ -141,6 +142,7 @@ public abstract class JcnnRequest implements HHttpRequest {
         if (log.isDebugEnabled()) log.debug("request cookie=" + cookie.toString());
       }
     }
+    if (log.isDebugEnabled()) log.debug(")applySession");
   }
 
   public void saveSession(HHttpRequest req1) {
@@ -234,7 +236,7 @@ public abstract class JcnnRequest implements HHttpRequest {
       InputStream respStrm = conn.getInputStream();
       if (respStrm != null) {
         ByteBuffer bbuf = BWire.bufferFromStream(respStrm, false);
-        if (log.isDebugEnabled()) log.debug("Put stream succeeded " + new String(bbuf.array(), StandardCharsets.UTF_8));
+        if (log.isDebugEnabled()) log.debug("Put stream succeeded " + new String(bbuf.array(), bbuf.position(), bbuf.remaining(), StandardCharsets.UTF_8));
       }
     }
     catch (Exception e) {
@@ -247,7 +249,7 @@ public abstract class JcnnRequest implements HHttpRequest {
       InputStream errStrm = conn.getErrorStream();
       if (errStrm != null) {
         ByteBuffer bbuf = BWire.bufferFromStream(errStrm, false);
-        if (log.isInfoEnabled()) log.info("Put stream failed " + new String(bbuf.array(), StandardCharsets.UTF_8));
+        if (log.isInfoEnabled()) log.info("Put stream failed " + new String(bbuf.array(), bbuf.position(), bbuf.remaining(), StandardCharsets.UTF_8));
       }
     }
     catch (Exception e) {

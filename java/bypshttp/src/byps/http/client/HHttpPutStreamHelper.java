@@ -14,6 +14,7 @@ import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
 import byps.http.client.jcnn.JcnnClient;
+import byps.http.client.jcnn.JcnnPutStream;
 
 public class HHttpPutStreamHelper {
 
@@ -51,6 +52,8 @@ public class HHttpPutStreamHelper {
       String contentDisposition = "";
       byps.io.ByteArrayInputStream sendBuffer = null;
 
+      if (log.isDebugEnabled()) log.debug("stream={}", stream);
+      
       if (stream instanceof BAsyncContentStream) {
         BAsyncContentStream astream = (BAsyncContentStream)stream;
         contentType = astream.getContentType();
@@ -84,6 +87,7 @@ public class HHttpPutStreamHelper {
       long nbOfParts = computeNbOfParts(totalLength);
       if (log.isDebugEnabled()) log.debug("send stream in #parts=" + nbOfParts);
       
+      if (log.isDebugEnabled()) log.debug("sendBuffer={}, isStreamAsync={}", sendBuffer, isStreamAsync);
       if (sendBuffer != null) {
         
         putBytesFromMemory(contentType, totalLength, contentDisposition, sendBuffer, nbOfParts);
@@ -147,20 +151,25 @@ public class HHttpPutStreamHelper {
 
   private void putBytesFromStream(String contentType, long totalLength, String contentDisposition, long nbOfParts)
       throws IOException {
+    if (log.isDebugEnabled()) log.debug("putBytesFromStream(contentType={}, totalLength={}, contentDisposition={}, nbOfParts={}", contentType, totalLength == Long.MAX_VALUE ? "MAX_VALUE" : Long.toString(totalLength), contentDisposition, nbOfParts);
     int bufferSize = MAX_STREAM_PART_SIZE;
     if (totalLength < MAX_STREAM_PART_SIZE) bufferSize = (int)totalLength;
+    if (log.isDebugEnabled()) log.debug("bufferSize={}", totalLength);
     byte[] buf = new byte[bufferSize];
     
     boolean lastPart = false;
     for (long partId = 0; partId < nbOfParts && !lastPart; partId++) {
+      if (log.isDebugEnabled()) log.debug("read partId={}/{} into buffer", partId, nbOfParts);
       
       int len = 0;
       while (len < buf.length) {
         int n = stream.read(buf, len, buf.length - len);
+        if (log.isDebugEnabled()) log.debug("stream.read(buf, {}, {})={}", len, buf.length-len, n);
         if (n < 0) break;
         len += n;
       }
       lastPart = len < MAX_STREAM_PART_SIZE;
+      if (log.isDebugEnabled()) log.debug("lastPart={}", lastPart);
       
       putBytesRetry(partId, lastPart, totalLength, new byps.io.ByteArrayInputStream(buf, 0, len), contentType, contentDisposition);
     }
@@ -233,7 +242,9 @@ public class HHttpPutStreamHelper {
   
   
   private int putBytes(String url, byps.io.ByteArrayInputStream sendBuffer, String contentType, String contentDisposition, boolean lastRetry) throws BException {
-    return putBytesImpl.putBytes(url, sendBuffer, contentType, contentDisposition, lastRetry);
+    int statusCode = putBytesImpl.putBytes(url, sendBuffer, contentType, contentDisposition, lastRetry);
+    if (log.isDebugEnabled()) log.debug("statusCode={}", statusCode);
+    return statusCode;
   }
   
   private boolean isCancelled() {
