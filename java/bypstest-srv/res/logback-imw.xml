@@ -8,7 +8,7 @@
     <file>c:/temp/log/byps-server.log</file>
     <append>false</append>
     <encoder>
-      <pattern>%{HH:mm:ss.SSS} %-5level %-60(%thread %X{NDC} \(%logger{0}.java:%L\)) - %msg%n</pattern>
+      <pattern>%d{HH:mm:ss.SSS} %-5level %-60(%thread %X{NDC} \(%logger{0}.java:%L\)) - %msg%n</pattern>
     </encoder>
   </appender>
 

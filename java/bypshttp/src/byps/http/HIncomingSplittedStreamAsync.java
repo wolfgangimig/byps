@@ -110,17 +110,17 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 	}
 	
 	private int internalRead(byte[] b, int off, int len) throws IOException {
-	  if (log.isDebugEnabled()) log.debug("internalRead(b={}, off={}, len={}", b, off, len);
+	  if (log.isDebugEnabled()) log.debug("internalRead(b, off={}, len={}", off, len);
 		int ret = -1;
 		
 		final long totalLength = getContentLength();
-		if (log.isDebugEnabled()) log.debug("readPos={}, totalLength={}", totalLength);
+		if (log.isDebugEnabled()) log.debug("readPos={}, totalLength={}", readPos, totalLength);
 		
 		if (totalLength == -1 || readPos < totalLength) {
 			
 		  // Get current stream part.
 		  HIncomingStreamAsync streamPart = getCurrentStreamPart(false);
-			if (log.isDebugEnabled()) log.debug("current streamPart={}");
+			if (log.isDebugEnabled()) log.debug("current streamPart={}", streamPart);
 			
 			if (streamPart != null) {
 				ret = b != null ? streamPart.read(b, off, len) : streamPart.read();
@@ -132,7 +132,7 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 				  
 				  // Next stream part.
 					streamPart = getCurrentStreamPart(true);
-					if (log.isDebugEnabled()) log.debug("next streamPart={}");
+					if (log.isDebugEnabled()) log.debug("next streamPart={}", streamPart);
 					if (streamPart == null) break;
 					
 					ret = b != null ? streamPart.read(b, off, len) : streamPart.read();

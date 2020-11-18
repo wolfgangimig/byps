@@ -8,13 +8,19 @@ import java.lang.reflect.Field;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
+import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 
 import org.slf4j.Logger;
@@ -31,10 +37,14 @@ public class CompileSource implements ConstFieldReader {
 
 	public CompileSource(String tempDir, String[] sourceDirs, String classpath) throws GeneratorException {
 		
-		
-		File foutDir = new File(tempDir, "bin");
-		foutDir.mkdirs();
-		
+	  Path outDir = Paths.get(System.getProperty("java.io.tmpdir"), "byps-", new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format (new Date()));
+    File foutDir;
+    try {
+      foutDir = Files.createDirectories(outDir).toFile();
+    } catch (IOException e1) {
+      throw new GeneratorException("Failed to create directory " + outDir);
+    }
+
 		ArrayList<String> params = new ArrayList<String>();
 		
 		params.add("-g:none");
@@ -54,10 +64,7 @@ public class CompileSource implements ConstFieldReader {
 		// BYPS-1: keine Vorgaben für Source-Code-Versionen.
 		// Die erlaubten Werte ändern sich scheinbar mit jeder JDK-Version.
 		
-		params.add("-d");
-		params.add(foutDir.getAbsolutePath());
-		
-		compile(params.toArray(new String[0]), sourceDirs);
+		compile(params.toArray(new String[0]), sourceDirs, foutDir);
 
 		
 		// -classpath erlaubt mir, zus. JARs einzubinden. so kann ich die IX-Klassen �bersetzen.
@@ -114,7 +121,7 @@ public class CompileSource implements ConstFieldReader {
 		return value;
 	}
 
-	public int compile(String[] opts, String[] sourceDirs) throws GeneratorException {
+	public int compile(String[] opts, String[] sourceDirs, File foutDir) throws GeneratorException {
 		if (log.isDebugEnabled()) log.debug("compile(opts=" + Arrays.toString(opts) + ", sourceDirs=" + Arrays.toString(sourceDirs));
 		
 		System.out.println("Read constants.");
@@ -141,9 +148,15 @@ public class CompileSource implements ConstFieldReader {
 		
 		int status = 1;
 		try (StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null)) {
+		  
       Iterable<? extends JavaFileObject> compilationUnits1 = fileManager.getJavaFileObjectsFromFiles(files);
+      
+      // BYPS-31: Ausgabeverzeichnis angeben.
+      fileManager.setLocation(StandardLocation.CLASS_OUTPUT, Arrays.asList(foutDir.getAbsoluteFile()));
+
       Boolean succ = compiler.getTask(pr, fileManager, null, Arrays.asList(opts), null, compilationUnits1).call();
       status = (succ != null && succ) ? 0 : 1;
+      
 		}
 		catch (IOException e) {
 		  ErrorInfo errorInfo = new ErrorInfo();

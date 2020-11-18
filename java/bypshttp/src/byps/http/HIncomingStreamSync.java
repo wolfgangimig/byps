@@ -104,7 +104,7 @@ public class HIncomingStreamSync extends BContentStream {
 	}
 	
 	protected synchronized void assignBytes(byte[] buf) {
-	  if (log.isDebugEnabled()) log.debug("assignBytes({}", buf, buf != null ? Integer.toString(buf.length) : "null");
+	  if (log.isDebugEnabled()) log.debug("assignBytes({}", buf != null ? Integer.toString(buf.length) : "null");
 		this.firstBytes = buf;
 		this.bytesSource = FIRST_BYTES;
 		this.readPos = 0;
@@ -319,7 +319,7 @@ public class HIncomingStreamSync extends BContentStream {
 	
 	@Override
 	public synchronized int read(byte[] b, int offs, int len) throws IOException {
-	  if (log.isDebugEnabled()) log.debug("read(b={}, offs={}, len={}", b, offs, len);
+	  if (log.isDebugEnabled()) log.debug("read(b, offs={}, len={}", offs, len);
 		long t1 = System.currentTimeMillis();
 		int bytesRead = -1;
 
@@ -493,7 +493,7 @@ public class HIncomingStreamSync extends BContentStream {
 	  if (log.isDebugEnabled()) log.debug("internalWriteSecondBytes(b={}, offs={}, len={}", bytes, offs, len);
 		boolean succ = false;
 		
-		if (log.isDebugEnabled()) log.debug("secondBytes={}, secondBytesWritePos={}, secondBytesCapacity={}", secondBytes, secondBytesWritePos, secondBytesCapacity);
+		if (log.isDebugEnabled()) log.debug("secondBytesWritePos={}, secondBytesCapacity={}", secondBytesWritePos, secondBytesCapacity);
 		
 		if (secondBytesWritePos + len <= secondBytesCapacity) {
 			if (secondBytes == null) {
@@ -504,14 +504,14 @@ public class HIncomingStreamSync extends BContentStream {
 			succ = true;
 		}
 		
-    if (log.isDebugEnabled()) log.debug("secondBytes={}, secondBytesWritePos={}, secondBytesCapacity={}", secondBytes, secondBytesWritePos, secondBytesCapacity);
+    if (log.isDebugEnabled()) log.debug("secondBytesWritePos={}, secondBytesCapacity={}", secondBytesWritePos, secondBytesCapacity);
 
 		if (log.isDebugEnabled()) log.debug(")internalWriteSecondBytes={}", succ);
 		return succ;
 	}
 	
 	private void internalWriteFileBytes(byte[] bytes, int offs, int len) throws IOException {
-	  if (log.isDebugEnabled()) log.debug("internalWriteFileBytes(b={}, offs={}, len={}", bytes, offs, len);
+	  if (log.isDebugEnabled()) log.debug("internalWriteFileBytes(bytes, offs={}, len={}", bytes, offs, len);
 		if (file == null) {
 			file = HTempFile.createTemp(tempDir, targetId.getStreamId());
 			fos = new FileOutputStream(file.getFile());
@@ -522,7 +522,7 @@ public class HIncomingStreamSync extends BContentStream {
 	}
 	
 	public synchronized void write(byte[] bytes, int offs, int len) throws IOException {
-	  if (log.isDebugEnabled()) log.debug("write(b={}, offs={}, len={}", bytes, offs, len);
+	  if (log.isDebugEnabled()) log.debug("write(bytes, offs={}, len={}", offs, len);
 	  
     if (log.isDebugEnabled()) log.debug("bytesSource={}, writeClosed={}", bytesSourceToString(), writeClosed);
 
