@@ -1,8 +1,12 @@
 BYPS Version History
 
-5.39
+5.40 
 
 - BYPS-31: bypsgen produced .class files in source directory.
+
+5.39
+
+- BYPS-32: More logging output for processing incoming streams.
 
 - BYPS-30: Communication via STDIO between client and server.
 
