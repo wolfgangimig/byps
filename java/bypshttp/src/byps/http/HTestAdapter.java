@@ -112,7 +112,14 @@ public class HTestAdapter implements BTestAdapter {
 	public final static String VERSION = "version";
 
 	/**
-	 * 
+	 * Reserved.
 	 */
   public static final String TIMEOUT_FOR_PROCESSING = "timeout-for-processing";
+
+  /**
+   * Invalidate HTTP session.
+   * Used to check negotiate call after 401.
+   * BYPS-33
+   */
+  public static final Object INVALIDATE_HTTP_SESSION = "invalidate-http-session";
 }
