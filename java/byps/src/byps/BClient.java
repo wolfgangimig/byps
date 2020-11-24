@@ -46,7 +46,11 @@ public abstract class BClient {
 	protected BClient(BTransport transport, BServerR serverR) {
 		this.transport = transport;
 		this.serverR = serverR;
-		this.setAuthentication(null);
+		
+		// Always set a BAuthentication to initiate protocol negotiation if 
+		// the JSESSIONID cookie is expired.
+		// BYPS-33
+		transport.setAuthentication(new ClientAuthentication(null));
 		
 		// Deserialization injects this weak reference into BValueClass.bypsClient
 		// to allow deferred loading of elements in getter functions of BValueClass objects.
@@ -178,7 +182,7 @@ public abstract class BClient {
 	 * @param authentication
 	 */
 	public void setAuthentication(BAuthentication authentication) {
-	  BAuthentication clientAuthentication = authentication != null ? new ClientAuthentication(authentication) : null;
+	  BAuthentication clientAuthentication = new ClientAuthentication(authentication);
     transport.setAuthentication(clientAuthentication);
 	}
 	

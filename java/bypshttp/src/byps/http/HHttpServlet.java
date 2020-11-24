@@ -1014,6 +1014,16 @@ public abstract class HHttpServlet extends HttpServlet implements
 
       return;
     }
+    
+    // Invalidate HTTP session
+    // BYPS-33: negotiate have to be called after a 401 
+    if (testAdapter.equals(HTestAdapter.INVALIDATE_HTTP_SESSION)) {
+      HttpSession sess = request.getSession(false);
+      if (sess != null) {
+        sess.invalidate();
+      }
+      return;
+    }
 
     response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 

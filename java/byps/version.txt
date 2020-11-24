@@ -1,5 +1,10 @@
 BYPS Version History
 
+5.41
+
+- BYPS-33: Clients received 401 for every request if the HTTP session cookie was expired and 
+  authentication is not required for using the server. This was a side effect of BYPS-19.
+
 5.40 
 
 - BYPS-31: bypsgen produced .class files in source directory.

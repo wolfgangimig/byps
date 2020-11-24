@@ -115,4 +115,10 @@ public class HTestAdapter implements BTestAdapter {
 	 * 
 	 */
   public static final String TIMEOUT_FOR_PROCESSING = "timeout-for-processing";
+
+  /**
+   * Invalidate the HTTP session cookie.
+   * BYPS-33
+   */
+  public static final Object INVALIDATE_HTTP_SESSION = "invalidate-http-session";
 }
