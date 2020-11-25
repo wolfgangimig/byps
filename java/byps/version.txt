@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.42
+
+- BYPS-34: Added jaxb implementation to bypsgen.jar to simplify gradle build scripts.
+
 5.41
 
 - BYPS-33: Clients received 401 for every request if the HTTP session cookie was expired and 
