@@ -1,6 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 sourceCompatibility = 1.8
 compileJava.options.encoding = 'UTF-8'
@@ -53,19 +53,26 @@ dependencies {
 	
 }
 
-uploadArchives {
-  repositories {
-    mavenDeployer {
+publishing {
+  publications {
+     maven(MavenPublication) {
+       groupId 'byps'
+       artifactId = "bypshttp"
+       artifact jar
+    }
+  }
 
-      // put the credentials into ~/.gradle/gradle.properties
+  repositories {
+       // put the credentials into ~/.gradle/gradle.properties
       def mavenUrl = version.endsWith("SNAPSHOT") ? mavenUploadUrlSnapshots : mavenUploadUrl
-      repository(url: mavenUrl) {
-        authentication(userName: mavenUser, password: mavenPassword)
-      } 
-      pom.version = version
-      pom.groupId = "byps"
-      pom.artifactId = "bypshttp"
-      pom.packaging = "jar"
+  
+    maven {
+      url mavenUrl
+      credentials { 
+        username mavenUser 
+        password mavenPassword 
+      }
     }
   }
 }
+
