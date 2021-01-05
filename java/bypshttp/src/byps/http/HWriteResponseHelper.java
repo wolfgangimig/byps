@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.nio.ByteBuffer;
 import java.util.zip.GZIPOutputStream;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -26,13 +27,22 @@ public class HWriteResponseHelper {
     this.listener = listener;
   }
 
-  public void writeResponse(ByteBuffer obuf, Throwable e, HttpServletResponse resp, boolean isAsync) throws IOException {
-    if (log.isDebugEnabled()) log.debug("writeResponse(" + obuf + ", exception=" + e + ", resp=" + resp);
+  public void writeResponse(ByteBuffer obuf, Throwable e, HRequestContext rctxt) throws IOException {
+    if (log.isDebugEnabled()) log.debug("writeResponse(exception={}", e);
 
-    if (resp == null) {
+    if (rctxt == null) {
       if (log.isDebugEnabled()) log.debug(")writeResponse timeout");
       return; // timeout
     }
+    
+    // Detect whether client application accepts GZIP response
+    // BYPS-36
+    HttpServletRequest req = (HttpServletRequest)rctxt.getRequest();
+    String acceptEncoding = req.getHeader("Accept-Encoding");
+    boolean isGZIP = acceptEncoding != null && acceptEncoding.contains("gzip");
+    
+    HttpServletResponse resp = (HttpServletResponse)rctxt.getResponse();
+    boolean isAsync = rctxt.isAsync();
     
     if (listener != null) {
       if (log.isDebugEnabled()) log.debug("call onBefore-listener");
@@ -75,7 +85,8 @@ public class HWriteResponseHelper {
       BOutputStreamByteCount osByteCount = new BOutputStreamByteCount(resp.getOutputStream());
       OutputStream os = osByteCount;
       
-      if (HConstants.GZIP_CONTENT) {
+      // BYPS-36: ZIP response if client accepts gzip.
+      if (isGZIP) {
         resp.setHeader("Content-Encoding", "gzip");
         os = new GZIPOutputStream(osByteCount);
       }
