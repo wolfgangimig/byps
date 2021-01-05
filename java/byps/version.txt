@@ -2,7 +2,8 @@ BYPS Version History
 
 5.43
 
-- BYPS-36: Optionally send all messages compressed with GZIP. See HConstants.GZIP_CONTENT.
+- BYPS-36: Send messages in format application/byps and application/json compressed with GZIP 
+  if client accepts gzip encoding.
 
 5.42
 
