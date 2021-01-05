@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.nio.ByteBuffer;
+import java.util.zip.GZIPOutputStream;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,6 +15,7 @@ import byps.BBuffer;
 import byps.BException;
 import byps.BExceptionC;
 import byps.BMessageHeader;
+import byps.io.BOutputStreamByteCount;
 
 public class HWriteResponseHelper {
 
@@ -70,7 +72,13 @@ public class HWriteResponseHelper {
       boolean isJson = BMessageHeader.detectProtocol(obuf) == BMessageHeader.MAGIC_JSON;
       resp.setContentType(isJson ? "application/json; charset=UTF-8" : "application/byps");
       resp.setContentLength(obuf.remaining());
-      OutputStream os = resp.getOutputStream();
+      BOutputStreamByteCount osByteCount = new BOutputStreamByteCount(resp.getOutputStream());
+      OutputStream os = osByteCount;
+      
+      if (HConstants.GZIP_CONTENT) {
+        resp.setHeader("Content-Encoding", "gzip");
+        os = new GZIPOutputStream(osByteCount);
+      }
 
       if (log.isDebugEnabled()) {
         log.debug("buffer: \r\n" + BBuffer.toDetailString(obuf));
@@ -98,8 +106,8 @@ public class HWriteResponseHelper {
       os.close();
       
       if (listener != null) {
-        if (log.isDebugEnabled()) log.debug("call onAfter-listener");
-        listener.onAfterWriteHttpResponse(obuf.remaining());
+        if (log.isDebugEnabled()) log.debug("call onAfter-listener #bytes={}", osByteCount.getByteCount());
+        listener.onAfterWriteHttpResponse((int)osByteCount.getByteCount());
       }
       
     }

@@ -1,5 +1,9 @@
 BYPS Version History
 
+5.43
+
+- BYPS-36: Optionally send all messages compressed with GZIP. See HConstants.GZIP_CONTENT.
+
 5.42
 
 - BYPS-34: Added jaxb implementation to bypsgen.jar to simplify gradle build scripts.

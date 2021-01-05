@@ -143,6 +143,8 @@ public class HConstants {
    */
   public static boolean HTTP_SESSION_COOKIE_REQUIRED = true;
   
+  public static boolean GZIP_CONTENT = true;
+  
   static
   {
     INCOMING_STREAM_TIMEOUT_MILLIS = getSystemPropertyLong("byps.http.incomingStreamTimeoutSeconds", INCOMING_STREAM_TIMEOUT_MILLIS / 1000) * 1000;
@@ -154,6 +156,8 @@ public class HConstants {
     REQUEST_TIMEOUT_MILLIS = getSystemPropertyLong("byps.http.requestTimeoutSeconds", REQUEST_TIMEOUT_MILLIS / 1000) * 1000;    
     
     HTTP_SESSION_COOKIE_REQUIRED = Boolean.parseBoolean(System.getProperty("byps.http.sessionCookieRequired", "true"));
+  
+    GZIP_CONTENT = Boolean.parseBoolean(System.getProperty("byps.http.gzipContent", "true"));
   }
 
   private static long getSystemPropertyLong(String prop, long defaultValue) {
