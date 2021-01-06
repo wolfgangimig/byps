@@ -5,8 +5,8 @@ package byps;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
-
-import byps.BException;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class BOutputJson extends BOutput {
@@ -172,7 +172,7 @@ public class BOutputJson extends BOutput {
 	}
 
 	protected int nextObjId;
-	protected final ArrayList<Object> objStack = new ArrayList<Object>();
-	protected final ArrayList<BSerializer> serStack = new ArrayList<BSerializer>();
+	protected final List<Object> objStack = new LinkedList<Object>();
+	protected final List<BSerializer> serStack = new LinkedList<BSerializer>();
 	public final BBufferJson bbuf;
 }
