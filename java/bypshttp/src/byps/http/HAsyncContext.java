@@ -1,5 +1,7 @@
 package byps.http;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import javax.servlet.AsyncContext;
 import javax.servlet.AsyncListener;
@@ -21,7 +23,7 @@ public class HAsyncContext implements HRequestContext {
    * would generate an error on stdout or in the log file).
    * BYPS-39
    */
-  private volatile boolean completed;
+  private AtomicInteger completed = new AtomicInteger();
 
   public HAsyncContext(AsyncContext actxt) {
     this.actxt = actxt;
@@ -35,11 +37,10 @@ public class HAsyncContext implements HRequestContext {
   @Override
   public void complete() {
     
-    if (isCompleted()) {
-      if (log.isDebugEnabled()) log.debug("Obsolete call to complete {}", System.identityHashCode(this), new Exception());
+    boolean alreadyCompleted = completed.incrementAndGet() != 1;
+    if (alreadyCompleted) {
+      if (log.isDebugEnabled()) log.debug("Obsolete call #{} to complete {}", completed, System.identityHashCode(this), new Exception());
     }
-    
-    completed = true;
     
     if (log.isDebugEnabled()) log.debug("Complete {}", System.identityHashCode(this));
     actxt.complete();
@@ -72,6 +73,6 @@ public class HAsyncContext implements HRequestContext {
   
   @Override
   public boolean isCompleted() {
-    return completed;
+    return completed.get() != 0;
   }
 }
