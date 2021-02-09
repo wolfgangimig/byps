@@ -923,7 +923,7 @@ public abstract class HHttpServlet extends HttpServlet implements
         final HActiveMessage msg = getActiveMessages().addIncomingStream(
             targetId, rctxt);
 
-        // Session verl�ngern. Wichtig f�r den Upload sehr gro�er Dateien.
+        // Extend session lifetime to allow to upload large files.
         final String sessionId = msg.getSessionId();
         final HSession sess = sessionId != null ? HSessionListener
             .getAllSessions().get(sessionId) : null;
@@ -933,12 +933,17 @@ public abstract class HHttpServlet extends HttpServlet implements
 
       }
       catch (BException e) {
-        int status = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
-        if (e.code == BExceptionC.CANCELLED) {
-          status = HttpServletResponse.SC_NOT_ACCEPTABLE;
+        if (log.isInfoEnabled()) log.info("putStream failed.", e);
+        
+        // BYPS-39: Avoid multiple completions of async request.
+        if (!rctxt.isCompleted()) {
+          int status = HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
+          if (e.code == BExceptionC.CANCELLED) {
+            status = HttpServletResponse.SC_NOT_ACCEPTABLE;
+          }
+          ((HttpServletResponse) rctxt.getResponse()).setStatus(status);
+          rctxt.complete();
         }
-        ((HttpServletResponse) rctxt.getResponse()).setStatus(status);
-        rctxt.complete();
       }
     }
     finally {

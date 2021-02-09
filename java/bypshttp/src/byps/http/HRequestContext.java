@@ -20,4 +20,11 @@ public interface HRequestContext {
 	
 	public boolean isAsync();
 	
+	/**
+	 * Returns true, if the request has been completed.
+	 * BYPS-39
+	 * @return true, if {@link #complete()} has been called.
+	 */
+	public boolean isCompleted();
+	
 }
