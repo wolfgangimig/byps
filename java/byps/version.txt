@@ -5,6 +5,9 @@ BYPS Version History
 - BYPS-39: Avoid obsolete completion of async context in putStream in case of an error.
   Print the error stack trace into the log.
 
+- BYPS-36: Send messages in format application/byps and application/json compressed with GZIP 
+  if client accepts gzip encoding.
+
 5.42
 
 - BYPS-34: Added jaxb implementation to bypsgen.jar to simplify gradle build scripts.
