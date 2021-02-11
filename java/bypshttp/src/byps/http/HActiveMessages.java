@@ -379,15 +379,17 @@ public class HActiveMessages {
   public HActiveMessage addIncomingStream(final BTargetId targetId, final HRequestContext rctxt) throws BException {
     
     final HActiveMessage msg = getOrCreateActiveMessage(targetId.getMessageId());
-    
+
+    // BYPS-39: Trage Stream zuerst im Message-Objekt ein, um Fehlermeldung zu vermeiden, wenn 
+    // dieser Thread längere Zeit keine CPU-Zeit bekommt. 
+    msg.addIncomingStream(targetId.getStreamId());
+
     if (rctxt.isAsync()) {
       addIncomingStreamAsync(targetId, rctxt);
     }
     else {
       addIncomingStreamSync(targetId, rctxt);
     }
-    
-    msg.addIncomingStream(targetId.getStreamId());
     
     return msg;
   }
