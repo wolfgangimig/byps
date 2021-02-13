@@ -26,7 +26,7 @@ public class AsfClientFactory implements HHttpClientFactory {
   public final static String SSO_AUTHENTICATION_SPN = "byps.http.client.asf.spn";
   
   @Override
-  public HHttpClient createHttpClient(String url) {
+  public HHttpClient createHttpClient(String url, int timeoutSeconds) {
     return new AsfClient(url);
   }
 

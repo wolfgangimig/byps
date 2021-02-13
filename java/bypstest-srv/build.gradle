@@ -1,7 +1,7 @@
 apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
 
-sourceCompatibility = 11
+sourceCompatibility = 1.8
 
 def readVersion() {
     File propsFile = new File(projectDir.path + "/../byps/res/byps/version.properties");

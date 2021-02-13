@@ -4,19 +4,21 @@ import java.net.CookieManager;
 import java.net.ProxySelector;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
+import java.net.http.HttpRequest.BodyPublishers;
 import java.nio.ByteBuffer;
 
 import byps.BAsyncResult;
 
-public class HttpGetRequest11 extends HttpRequest11 {
+public class HttpPostRequest11 extends HttpRequest11 {
 
   private final BAsyncResult<ByteBuffer> asyncResult;
+  private final ByteBuffer bbuf;
 
-  protected HttpGetRequest11(HttpClient client, long trackingId, String url, BAsyncResult<ByteBuffer> asyncResult,
+  protected HttpPostRequest11(HttpClient client, long trackingId, String url, ByteBuffer bbuf, BAsyncResult<ByteBuffer> asyncResult,
       CookieManager cookieManager, ProxySelector proxySelector) {
     super(client, trackingId, url, cookieManager, proxySelector);
+    this.bbuf = bbuf;
     this.asyncResult = asyncResult;
   }
 
@@ -36,7 +38,7 @@ public class HttpGetRequest11 extends HttpRequest11 {
 
   protected HttpRequest createRequest() {
     HttpRequest.Builder builder = createRequestBuilder();
-    builder.method("GET", BodyPublishers.noBody());
+    builder.method("POST", BodyPublishers.ofByteArray(bbuf.array()));
     return builder.build();
   }
 
