@@ -1,6 +1,8 @@
 package byps.http.client.jcnn11;
 
 import java.io.InputStream;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.net.HttpCookie;
@@ -52,8 +54,36 @@ public class HttpClient11 implements HHttpClient {
 
   @Override
   public void done() {
+    //shutDownHttpClient(client);
     tpool.shutdownNow();
+    
   }
+  
+  
+  private static void shutDownHttpClient(HttpClient httpClient)
+  {
+    
+//    https://stackoverflow.com/questions/53919721/close-java-http-client
+    // --add-opens java.net.http/jdk.internal.net.http=ALL-UNNAMED
+    
+      try {
+          Field implField = httpClient.getClass().getDeclaredField("impl");
+          implField.setAccessible(true);
+          Object implObj = implField.get(httpClient);
+          Field selmgrField = implObj.getClass().getDeclaredField("selmgr");
+          selmgrField.setAccessible(true);
+          Object selmgrObj = selmgrField.get(implObj);
+          Method shutDownMethod = selmgrObj.getClass().getDeclaredMethod("shutdown");
+          shutDownMethod.setAccessible(true);
+          shutDownMethod.invoke(selmgrObj);
+      }
+      catch (Exception e) {
+          System.out.println("exception " + e.getMessage());
+          e.printStackTrace();
+      }
+
+  }
+
 
   @Override
   public HHttpRequest get(long trackingId, String url, BAsyncResult<ByteBuffer> asyncResult) {

@@ -203,7 +203,7 @@ public abstract class JcnnRequest implements HHttpRequest {
   private boolean isCloseConnectionAfterRequest() {
     if (closeConnectionAfterRequest == null) {
       String s = System.getProperty("de.elo.ix.closeConnectionAfterRequest", "true");
-      closeConnectionAfterRequest = new Boolean(Boolean.parseBoolean(s));
+      closeConnectionAfterRequest = Boolean.parseBoolean(s);
     }
     return closeConnectionAfterRequest.booleanValue();
   }

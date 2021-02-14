@@ -6,6 +6,7 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -35,7 +36,7 @@ import byps.test.api.remote.RemoteArrayTypes4dim;
 public class TestRemoteArrays {
 	
 	BClient_Testser client;
-	private Logger log = LoggerFactory.getLogger(TestRemoteArrays.class);
+	private static final Logger log = LoggerFactory.getLogger(TestRemoteArrays.class);
 
 	@Before
 	public void setUp() throws RemoteException {
@@ -47,6 +48,12 @@ public class TestRemoteArrays {
 		if (client != null) {
 			client.done();
 		}
+		log.debug("done");
+	}
+	
+	@AfterClass
+	public static void afterClass() {
+	  log.debug("done class");
 	}
 	
 	/**
