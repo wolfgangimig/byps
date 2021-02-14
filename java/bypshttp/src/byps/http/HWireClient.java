@@ -900,6 +900,7 @@ public class HWireClient extends BWire {
       }
     }
     
+    // BYPS-42: close Apache HTTP Client 
     httpClient.done();
   }
 

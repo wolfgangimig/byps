@@ -1,5 +1,18 @@
 BYPS Version History
 
+11.43
+
+- BYPS-42: Close Apache HTTP client when transport layer is closed.
+
+- BYPS-40: Provide separate BYPS libraries for Java 8 and 11. BYPS 8.x is for Java 8 and
+  BYPS 11.x is for Java 11+. BYPS 11.x can use java.net.http.HttpClient.
+
+- BYPS-39: Avoid obsolete completion of async context in putStream in case of an error.
+  Print the error stack trace into the log.
+
+- BYPS-36: Send messages in format application/byps and application/json compressed with GZIP 
+  if client accepts gzip encoding.
+
 5.42
 
 - BYPS-34: Added jaxb implementation to bypsgen.jar to simplify gradle build scripts.

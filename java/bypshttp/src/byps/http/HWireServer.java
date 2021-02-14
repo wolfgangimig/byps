@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -256,7 +254,7 @@ public class HWireServer extends BWire {
       throw new IOException("Response already written.");
     }
     else {
-      writeHelper.writeResponse(obuf, e, (HttpServletResponse) rctxt.getResponse(), rctxt.isAsync());
+      writeHelper.writeResponse(obuf, e, rctxt);
       rctxt.complete();
     }
     
@@ -280,7 +278,7 @@ public class HWireServer extends BWire {
     }
     catch (BException e) {
       try {
-        writeHelper.writeResponse(null, e, (HttpServletResponse) rctxt.getResponse(), true);
+        writeHelper.writeResponse(null, e, rctxt);
       }
       catch (IOException e1) {
         if (log.isWarnEnabled()) log.warn("Failed to write error response.", e1);

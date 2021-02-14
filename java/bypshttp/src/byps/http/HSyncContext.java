@@ -45,4 +45,9 @@ public class HSyncContext implements HRequestContext {
 	public boolean isAsync() {
 		return false;
 	}
+	
+	@Override
+	public boolean isCompleted() {
+	  return false;
+	}
 }

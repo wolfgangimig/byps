@@ -94,7 +94,8 @@ namespace bypstest
             String str = "hallo";
             FileInfo file = new FileInfo(Path.GetTempFileName() + " € ß.txt");
             File.WriteAllText(file.FullName, str);
-            Stream istrm = new BContentStreamWrapper(file);
+            BContentStream istrm = new BContentStreamWrapper(file.OpenRead(), "text/plain", file.Length);
+            istrm.FileName = file.Name;
             remote.SetImage(istrm);
             BContentStream istrmR = (BContentStream)remote.GetImage();
 

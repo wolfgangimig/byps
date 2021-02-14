@@ -258,7 +258,9 @@ namespace byps
             }
  
             conn.Accept = "application/json, application/byps, text/plain, text/html";
-            if ((this.flagsVal & BWireFlags.GZIP) != 0) conn.Headers.Add("Accept-Encoding", "gzip");
+
+            // BYPS-36: Accept GZIP for both, json and byps
+            conn.Headers.Add("Accept-Encoding", "gzip");
 
             applySession(conn);
 

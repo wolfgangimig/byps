@@ -26,6 +26,7 @@ import byps.BException;
 import byps.BExceptionC;
 import byps.BWire;
 import byps.http.client.HHttpRequest;
+import byps.io.BInputStreamByteCount;
 
 public abstract class JcnnRequest implements HHttpRequest {
 
@@ -215,13 +216,16 @@ public abstract class JcnnRequest implements HHttpRequest {
     ByteBuffer obuf = null;
     InputStream is = c.getInputStream();
     if (is != null) {
+      
+      BInputStreamByteCount isByteCount = new BInputStreamByteCount(is);
+      
       String enc = c.getHeaderField("Content-Encoding");
       boolean gzip = enc != null && enc.equals("gzip");
   
       if (log.isDebugEnabled()) log.debug("read stream");
-      obuf = BWire.bufferFromStream(is, gzip);
+      obuf = BWire.bufferFromStream(isByteCount, gzip);
       if (log.isDebugEnabled()) {
-        log.debug("received #bytes=" + obuf.remaining());
+        log.debug("received #bytes={}, msg-size={}", isByteCount.getByteCount(), obuf.remaining());
         obuf.mark();
         BBufferJson bbuf = new BBufferJson(obuf);
         log.debug(bbuf.toDetailString());

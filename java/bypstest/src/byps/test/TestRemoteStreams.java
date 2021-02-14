@@ -205,7 +205,7 @@ public class TestRemoteStreams {
     log.info("testRemoteStreamsManyStreams(");
     int nbOfStreams = 10;
 
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < nbOfStreams; i++) {
       internalTestRemoteStreamsManyStreams(nbOfStreams);
     }
 
