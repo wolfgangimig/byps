@@ -55,8 +55,16 @@ public class TestUtils {
 	//public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
 	public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
 	
+	/**
+	 * Test streams with 4 GB content.
+	 * See {@link TestUtilsHttp#makeTestStreams()}
+	 */
 	public static boolean TEST_LARGE_STREAMS = false;
 	
+  /**
+   * Test only one short stream.
+   * See {@link TestUtilsHttp#makeTestStreams()}
+   */
 	public static boolean TEST_ONE_SHORT_STREAM = true;
 	
 	public static BTransport createTransport() {

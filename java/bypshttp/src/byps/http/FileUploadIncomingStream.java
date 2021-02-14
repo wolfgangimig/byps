@@ -35,7 +35,7 @@ class HFileUploadItemIncomingStream extends BContentStreamWrapper {
     HIncomingStreamSync incomingStream = null;
     if (this.fileItem.isInMemory()) {
       incomingStream = new HIncomingStreamSync(targetId, fileItem.getContentType(), fileItem.getSize(), "", lifetimeMillis, tempDir);
-      incomingStream.assignBytes(fileItem.get());
+      incomingStream.assignBytes(fileItem.get(), (int)fileItem.getSize());
     }
     else {
       HTempFile tempFile = null;

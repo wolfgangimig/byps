@@ -58,7 +58,8 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 			  else {
 	        byte[] someBytes = new byte[10];
 	        istrm.mark(10);
-	        istrm.read(someBytes);
+	        istrm.read(someBytes, 0, 5);
+	        istrm.read(someBytes, 0, 5);
 	        istrm.reset();
 	      }
 			  endTime = System.currentTimeMillis();
