@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.ProxySelector;
+import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
@@ -45,17 +46,20 @@ public class HttpPutStreamRequest11 extends HttpRequest11 implements HHttpPutStr
     }
   }
   
-  protected HttpRequest createRequest(InputStream sendBuffer) {
-    HttpRequest.Builder builder = createRequestBuilder();
-    builder.method("PUT", BodyPublishers.ofInputStream(() -> sendBuffer));
+  protected HttpRequest createRequest(String urlPart, ByteArrayInputStream sendBuffer, String contentType, String contentDisposition) {
+    HttpRequest.Builder builder = createRequestBuilderForUri(URI.create(urlPart));
+    ByteBuffer bbuf = sendBuffer.getBuffer();
+    builder.method("PUT", BodyPublishers.ofByteArray(bbuf.array(), bbuf.position(), bbuf.remaining()));
+    builder.header("Content-Type", contentType);
+    builder.header("Content-Disposition", contentDisposition);
     return builder.build();
   }
   
   @Override
-  public int putBytes(String url, ByteArrayInputStream sendBuffer, String contentType, String contentDisposition,
+  public int putBytes(String urlPart, ByteArrayInputStream sendBuffer, String contentType, String contentDisposition,
       boolean lastRetry) throws BException {
     
-    HttpRequest request = createRequest(sendBuffer);
+    HttpRequest request = createRequest(urlPart, sendBuffer, contentType, contentDisposition);
     int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;
     
     try {

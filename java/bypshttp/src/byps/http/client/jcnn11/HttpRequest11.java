@@ -23,6 +23,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Flow.Subscription;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.slf4j.Logger;
@@ -34,17 +35,20 @@ import byps.BExceptionC;
 import byps.http.client.HHttpRequest;
 
 public abstract class HttpRequest11 implements HHttpRequest {
+  
+  private static final int DEFAULT_TIMEOUT_SECONDS = 120; 
 
   protected String url;
   protected final CookieManager cookieManager;
   protected final ProxySelector proxySelector;
-  protected int connectTimeoutSeconds;
-  protected int sendRecvTimeoutSeconds;
+  protected int connectTimeoutSeconds = DEFAULT_TIMEOUT_SECONDS;
+  protected int sendRecvTimeoutSeconds = DEFAULT_TIMEOUT_SECONDS;
   protected final Map<String, String> requestProperties = new HashMap<>();
   protected AtomicReference<BodyHandlerToCancel> cancellableBodyHandler = new AtomicReference<>();
+  protected AtomicBoolean cancelled = new AtomicBoolean();
   protected final long trackingId;
   protected final HttpClient client;
-  private static Logger log = LoggerFactory.getLogger(HttpRequest11.class);
+  private static final Logger log = LoggerFactory.getLogger(HttpRequest11.class);
 
   protected HttpRequest11(HttpClient client, long trackingId, String url, CookieManager cookieManager, ProxySelector proxySelector) {
     this.client = client;
@@ -55,9 +59,13 @@ public abstract class HttpRequest11 implements HHttpRequest {
     if (log.isDebugEnabled()) log.debug("HttpRequest11({}{})", trackingId, url);
   }
 
-   protected HttpRequest.Builder createRequestBuilder() {
-    if (log.isDebugEnabled()) log.debug("createRequestBuilder, url={}, timeout={}s, headers{}", url, sendRecvTimeoutSeconds, requestProperties);
-    HttpRequest.Builder builder = HttpRequest.newBuilder(URI.create(url))
+  protected HttpRequest.Builder createRequestBuilder() {
+    return createRequestBuilderForUri(URI.create(url));
+  }
+
+  protected HttpRequest.Builder createRequestBuilderForUri(URI uri) {
+    if (log.isDebugEnabled()) log.debug("createRequestBuilder, uri={}, timeout={}s, headers{}", uri, sendRecvTimeoutSeconds, requestProperties);
+    HttpRequest.Builder builder = HttpRequest.newBuilder(uri)
         .timeout(Duration.ofSeconds(sendRecvTimeoutSeconds));
     requestProperties.entrySet().forEach(e -> builder.header(e.getKey(), e.getValue()));
     return builder;
@@ -65,20 +73,21 @@ public abstract class HttpRequest11 implements HHttpRequest {
 
   @Override
   public void setTimeouts(int connectTimeoutSeconds, int sendRecvTimeoutSeconds) {
-    this.connectTimeoutSeconds = connectTimeoutSeconds != 0 ? connectTimeoutSeconds : 120;
-    this.sendRecvTimeoutSeconds = sendRecvTimeoutSeconds != 0 ? sendRecvTimeoutSeconds : 120;
+    this.connectTimeoutSeconds = connectTimeoutSeconds != 0 ? connectTimeoutSeconds : DEFAULT_TIMEOUT_SECONDS;
+    this.sendRecvTimeoutSeconds = sendRecvTimeoutSeconds != 0 ? sendRecvTimeoutSeconds : DEFAULT_TIMEOUT_SECONDS;
   }
 
   @Override
   public void cancel() {
     if (log.isDebugEnabled()) log.debug("cancel");
+    cancelled.set(true);
     BodyHandlerToCancel bodyHandler = cancellableBodyHandler.getAndSet(null);
     if (bodyHandler != null) bodyHandler.cancel();
   }
 
   @Override
   public boolean isCancelled() {
-    return cancellableBodyHandler.get() == null;
+    return cancelled.get();
   }
 
   @Override
