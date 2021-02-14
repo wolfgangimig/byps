@@ -81,7 +81,6 @@ public class HWriteResponseHelper {
       if (log.isDebugEnabled()) log.debug("copy to servlet output");
       boolean isJson = BMessageHeader.detectProtocol(obuf) == BMessageHeader.MAGIC_JSON;
       resp.setContentType(isJson ? "application/json; charset=UTF-8" : "application/byps");
-      resp.setContentLength(obuf.remaining());
       BOutputStreamByteCount osByteCount = new BOutputStreamByteCount(resp.getOutputStream());
       OutputStream os = osByteCount;
       
@@ -89,6 +88,10 @@ public class HWriteResponseHelper {
       if (isGZIP) {
         resp.setHeader("Content-Encoding", "gzip");
         os = new GZIPOutputStream(osByteCount);
+      }
+      else {
+        // Content-Length is only known for unzipped data.
+        resp.setContentLength(obuf.remaining());
       }
 
       if (log.isDebugEnabled()) {
