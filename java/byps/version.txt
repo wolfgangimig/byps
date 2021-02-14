@@ -14,7 +14,8 @@ BYPS Version History
   Print the error stack trace into the log.
 
 - BYPS-36: Send messages in format application/byps and application/json compressed with GZIP 
-  if client accepts gzip encoding.
+  if client accepts gzip encoding. Tomcat is responsible to set the correct content-length header for 
+  zipped content.
 
 5.42
 
