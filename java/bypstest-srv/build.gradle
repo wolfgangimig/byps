@@ -6,7 +6,13 @@ sourceCompatibility = 1.8
 def readVersion() {
     File propsFile = new File(projectDir.path + "/../byps/res/byps/version.properties");
     Properties props = new Properties();
-    props.load(propsFile.newDataInputStream());
+    InputStream istream = propsFile.newDataInputStream();
+    try {
+      props.load(istream);
+    }
+    finally {
+      istream.close();
+    }
     return props.getProperty('version');
 }
 ext.versionFromProperties = readVersion()
