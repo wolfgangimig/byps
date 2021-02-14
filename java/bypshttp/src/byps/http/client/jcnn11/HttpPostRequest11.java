@@ -1,11 +1,9 @@
 package byps.http.client.jcnn11;
 
-import java.net.CookieManager;
-import java.net.ProxySelector;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.net.http.HttpRequest.BodyPublishers;
+import java.net.http.HttpResponse;
 import java.nio.ByteBuffer;
 
 import byps.BAsyncResult;
@@ -15,9 +13,8 @@ public class HttpPostRequest11 extends HttpRequest11 {
   private final BAsyncResult<ByteBuffer> asyncResult;
   private final ByteBuffer bbuf;
 
-  protected HttpPostRequest11(HttpClient client, long trackingId, String url, ByteBuffer bbuf, BAsyncResult<ByteBuffer> asyncResult,
-      CookieManager cookieManager, ProxySelector proxySelector) {
-    super(client, trackingId, url, cookieManager, proxySelector);
+  protected HttpPostRequest11(HttpClient client, long trackingId, String url, ByteBuffer bbuf, BAsyncResult<ByteBuffer> asyncResult) {
+    super(client, trackingId, url);
     this.bbuf = bbuf;
     this.asyncResult = asyncResult;
   }

@@ -1,9 +1,7 @@
 package byps.http.client.jcnn11;
 
 import java.io.InputStream;
-import java.net.CookieManager;
 import java.net.HttpURLConnection;
-import java.net.ProxySelector;
 import java.net.http.HttpClient;
 import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
@@ -20,8 +18,8 @@ public class HttpGetStreamRequest11 extends HttpRequest11 {
   private final BAsyncResult<BContentStream> asyncResult;
 
   protected HttpGetStreamRequest11(HttpClient client, long trackingId, String url,
-      BAsyncResult<BContentStream> asyncResult, CookieManager cookieManager, ProxySelector proxySelector) {
-    super(client, trackingId, url, cookieManager, proxySelector);
+      BAsyncResult<BContentStream> asyncResult) {
+    super(client, trackingId, url);
     this.asyncResult = asyncResult;
   }
 

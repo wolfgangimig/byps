@@ -2,9 +2,7 @@ package byps.http.client.jcnn11;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.CookieManager;
 import java.net.HttpURLConnection;
-import java.net.ProxySelector;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -28,8 +26,8 @@ public class HttpPutStreamRequest11 extends HttpRequest11 implements HHttpPutStr
   private final BAsyncResult<ByteBuffer> asyncResult;
   private static final Logger log = LoggerFactory.getLogger(HttpPutStreamRequest11.class);
 
-  protected HttpPutStreamRequest11(HttpClient client, long trackingId, String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult, CookieManager cookieManager, ProxySelector proxySelector) {
-    super(client, trackingId, url, cookieManager, proxySelector);
+  protected HttpPutStreamRequest11(HttpClient client, long trackingId, String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult) {
+    super(client, trackingId, url);
     this.stream = stream;
     this.asyncResult = asyncResult;
   }

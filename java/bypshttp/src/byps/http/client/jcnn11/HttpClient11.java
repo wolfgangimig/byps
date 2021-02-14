@@ -1,17 +1,22 @@
 package byps.http.client.jcnn11;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.net.HttpCookie;
 import java.net.ProxySelector;
+import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpClient.Version;
 import java.nio.ByteBuffer;
 import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -27,7 +32,7 @@ import byps.http.client.HHttpRequest;
 
 public class HttpClient11 implements HHttpClient {
   private static final Logger log = LoggerFactory.getLogger(HttpClient11.class);
-  private final CookieManager cookieManager;
+  private final MyCookieHandler cookieHandler;
   private final ProxySelector proxySelector;
   private final int connectTimeoutSeconds;
   private final HttpClient client;
@@ -36,8 +41,7 @@ public class HttpClient11 implements HHttpClient {
   public static final int MAX_RETRIES = 1;
   
   public HttpClient11(String url, int timeoutSeconds) {
-    cookieManager = new CookieManager(); 
-    cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+    cookieHandler = new MyCookieHandler(URI.create(url)); 
     
     proxySelector = ProxySelector.getDefault();
     connectTimeoutSeconds = timeoutSeconds;
@@ -49,7 +53,7 @@ public class HttpClient11 implements HHttpClient {
     if (log.isDebugEnabled()) log.debug("createHttpClient, connectTimeout={}s", connectTimeoutSeconds);
     return HttpClient.newBuilder().version(Version.HTTP_1_1).followRedirects(Redirect.NORMAL).proxy(proxySelector)
         .executor(tpool)
-        .connectTimeout(Duration.ofSeconds(connectTimeoutSeconds)).cookieHandler(cookieManager).build();
+        .connectTimeout(Duration.ofSeconds(connectTimeoutSeconds)).cookieHandler(cookieHandler).build();
   }
 
   @Override
@@ -59,9 +63,61 @@ public class HttpClient11 implements HHttpClient {
     
   }
   
+  private static class MyCookieHandler extends CookieHandler {
+    
+    CookieManager cookieManager = new CookieManager(); 
+    URI uri;
+    
+    MyCookieHandler(URI uri) {
+      cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+      this.uri = uri;
+    }
+
+    @Override
+    public Map<String, List<String>> get(URI uri, Map<String, List<String>> requestHeaders) throws IOException {
+      Map<String, List<String>> value = cookieManager.get(uri, requestHeaders);
+      return value;
+    }
+
+    @Override
+    public void put(URI uri, Map<String, List<String>> responseHeaders) throws IOException {
+      cookieManager.put(uri, responseHeaders);
+    }
+    
+    String getHttpSession() {
+      Optional<HttpCookie> opt = internalFindCookie(HConstants.HTTP_COOKIE_JSESSIONID);
+      return opt.map(HttpCookie::getValue).orElse("");
+    }
+
+    HttpCookie getHttpCookie(String name) {
+      Optional<HttpCookie> opt = internalFindCookie(name);
+      return opt.orElse(null);
+    }
+
+    void setHttpCookie(HttpCookie cookie) {
+      if (cookie != null) {
+        Optional<HttpCookie> opt = internalFindCookie(cookie.getName());
+        opt.ifPresent(c -> cookieManager.getCookieStore().remove(null, c));
+        cookieManager.getCookieStore().add(uri, cookie);
+      }
+    }
+
+    /**
+     * Find cookie with given name.
+     * @param name cookie name
+     * @return Optional with requested cookie or empty.
+     */
+    Optional<HttpCookie> internalFindCookie(String name) {
+      return cookieManager.getCookieStore().getCookies().stream()
+        .filter(c -> c.getName().equalsIgnoreCase(name)).findFirst();
+    }
+
+  }
   
   private static void shutDownHttpClient(HttpClient httpClient)
   {
+    
+    // causes an Exception on stdout
     
 //    https://stackoverflow.com/questions/53919721/close-java-http-client
     // --add-opens java.net.http/jdk.internal.net.http=ALL-UNNAMED
@@ -87,22 +143,22 @@ public class HttpClient11 implements HHttpClient {
 
   @Override
   public HHttpRequest get(long trackingId, String url, BAsyncResult<ByteBuffer> asyncResult) {
-    return new HttpGetRequest11(client, trackingId, url, asyncResult, cookieManager, proxySelector);
+    return new HttpGetRequest11(client, trackingId, url, asyncResult);
   }
 
   @Override
   public HHttpRequest getStream(long trackingId, String url, BAsyncResult<BContentStream> asyncResult) {
-    return new HttpGetStreamRequest11(client, trackingId, url, asyncResult, cookieManager, proxySelector);
+    return new HttpGetStreamRequest11(client, trackingId, url, asyncResult);
   }
 
   @Override
   public HHttpRequest post(long trackingId, String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult) {
-    return new HttpPostRequest11(client, trackingId, url, buf, asyncResult, cookieManager, proxySelector);
+    return new HttpPostRequest11(client, trackingId, url, buf, asyncResult);
   }
 
   @Override
   public HHttpRequest putStream(long trackingId, String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult) {
-    return new HttpPutStreamRequest11(client, trackingId, url, stream, asyncResult, cookieManager, proxySelector);
+    return new HttpPutStreamRequest11(client, trackingId, url, stream, asyncResult);
   }
 
   /**
@@ -110,8 +166,7 @@ public class HttpClient11 implements HHttpClient {
    */
   @Override
   public String getHttpSession() {
-    Optional<HttpCookie> opt = internalFindCookie(HConstants.HTTP_COOKIE_JSESSIONID);
-    return opt.map(HttpCookie::getValue).orElse("");
+    return cookieHandler.getHttpSession();
   }
 
   /**
@@ -119,8 +174,7 @@ public class HttpClient11 implements HHttpClient {
    */
   @Override
   public HttpCookie getHttpCookie(String name) {
-    Optional<HttpCookie> opt = internalFindCookie(name);
-    return opt.orElse(null);
+    return cookieHandler.getHttpCookie(name);
   }
 
   /**
@@ -128,21 +182,7 @@ public class HttpClient11 implements HHttpClient {
    */
   @Override
   public void setHttpCookie(HttpCookie cookie) {
-    if (cookie != null) {
-      Optional<HttpCookie> opt = internalFindCookie(cookie.getName());
-      opt.ifPresent(c -> cookieManager.getCookieStore().remove(null, c));
-      cookieManager.getCookieStore().add(null, cookie);
-    }
-  }
-
-  /**
-   * Find cookie with given name.
-   * @param name cookie name
-   * @return Optional with requested cookie or empty.
-   */
-  private Optional<HttpCookie> internalFindCookie(String name) {
-    return cookieManager.getCookieStore().getCookies().stream()
-      .filter(c -> c.getName().equalsIgnoreCase(name)).findFirst();
+    cookieHandler.setHttpCookie(cookie);
   }
 
 }

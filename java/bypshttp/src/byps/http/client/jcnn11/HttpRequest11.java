@@ -1,9 +1,7 @@
 package byps.http.client.jcnn11;
 
 import java.io.InputStream;
-import java.net.CookieManager;
 import java.net.HttpURLConnection;
-import java.net.ProxySelector;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.URI;
@@ -39,8 +37,6 @@ public abstract class HttpRequest11 implements HHttpRequest {
   private static final int DEFAULT_TIMEOUT_SECONDS = 120; 
 
   protected String url;
-  protected final CookieManager cookieManager;
-  protected final ProxySelector proxySelector;
   protected int connectTimeoutSeconds = DEFAULT_TIMEOUT_SECONDS;
   protected int sendRecvTimeoutSeconds = DEFAULT_TIMEOUT_SECONDS;
   protected final Map<String, String> requestProperties = new HashMap<>();
@@ -50,12 +46,10 @@ public abstract class HttpRequest11 implements HHttpRequest {
   protected final HttpClient client;
   private static final Logger log = LoggerFactory.getLogger(HttpRequest11.class);
 
-  protected HttpRequest11(HttpClient client, long trackingId, String url, CookieManager cookieManager, ProxySelector proxySelector) {
+  protected HttpRequest11(HttpClient client, long trackingId, String url) {
     this.client = client;
     this.trackingId = trackingId;
     this.url = url;
-    this.cookieManager = cookieManager;
-    this.proxySelector = proxySelector;
     if (log.isDebugEnabled()) log.debug("HttpRequest11({}{})", trackingId, url);
   }
 
