@@ -14,7 +14,6 @@ import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
 import byps.http.client.jcnn.JcnnClient;
-import byps.http.client.jcnn.JcnnPutStream;
 
 public class HHttpPutStreamHelper {
 

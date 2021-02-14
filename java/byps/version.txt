@@ -2,8 +2,11 @@ BYPS Version History
 
 8.43
 
+
 - BYPS-43: Exchange stream several times between server and client failed.
   Technically, HIncomingStreamSync did not reset the stream in function cloneStream.
+
+- BYPS-44: Headers Content-Type and Content-Length were lost during upload for non-BContentStream streams.
 
 - BYPS-42: Close Apache HTTP client when transport layer is closed.
 

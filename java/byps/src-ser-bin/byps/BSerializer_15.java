@@ -57,10 +57,19 @@ public class BSerializer_15 extends BSerializer {
     try {
       BContentStream strm = bin.transport.getWire().getStream(targetId.getMessageId(), targetId);
       bin.onObjectCreated(strm);
-      strm.setContentLength(contentLength);
-      strm.setContentType(contentType);
-      strm.setAttachmentCode(attachmentCode);
-      strm.setFileName(fileName);
+      
+      // Those Stream properties submitted as header values have precedence.
+      // This is because HHttpPutStreamHelper sets Content-Type and Content-Length even for non-BContentStream objects.
+      // BYPS-44
+      
+      if (strm.getContentLength() < 0) {
+        strm.setContentLength(contentLength);
+      }
+      if (strm.getContentType().isEmpty()) {
+        strm.setContentType(contentType);
+        strm.setFileName(fileName);
+        strm.setAttachmentCode(attachmentCode);
+      }
       
       return strm;
     } catch (IOException e) {
