@@ -1,6 +1,9 @@
 BYPS Version History
 
-5.43
+8.43
+
+- BYPS-40: Provide separate BYPS libraries for Java 8 and 11. BYPS 8.x is for Java 8 and
+  BYPS 11.x is for Java 11+. BYPS 11.x can use java.net.http.HttpClient.
 
 - BYPS-39: Avoid obsolete completion of async context in putStream in case of an error.
   Print the error stack trace into the log.

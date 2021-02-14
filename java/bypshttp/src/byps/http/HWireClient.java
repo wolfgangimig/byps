@@ -891,6 +891,8 @@ public class HWireClient extends BWire {
         tp.shutdown();
       }
     }
+    
+    httpClient.done();
   }
 
   protected void addRequest(RequestToCancel robj) {
