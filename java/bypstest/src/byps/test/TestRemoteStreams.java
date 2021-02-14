@@ -11,36 +11,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.TreeMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BContentStream;
 import byps.BContentStreamAsyncCallback;
 import byps.BContentStreamWrapper;
 import byps.BException;
 import byps.BExceptionC;
-import byps.BMessage;
-import byps.BOutput;
-import byps.BTransport;
 import byps.BWire;
 import byps.RemoteException;
 import byps.http.HConstants;
-import byps.http.client.HHttpClient;
-import byps.http.client.asf.AsfClientFactory;
 import byps.test.api.BClient_Testser;
 import byps.test.api.remote.RemoteStreams;
 import junit.framework.Assert;
@@ -585,6 +576,7 @@ public class TestRemoteStreams {
     
     final String text = "abcdef";
     final CountDownLatch waitForFinished= new CountDownLatch(4);
+    AtomicReference<Throwable> lastException = new AtomicReference<>();
 
     remote.setImage(new ByteArrayInputStream(text.getBytes()));
 
@@ -594,26 +586,42 @@ public class TestRemoteStreams {
 
       @Override
       public boolean onReceivedData(byte[] buf, int len) {
-        TestUtils.assertEquals(log, "stream content", text, new String(buf, 0, len));
         waitForFinished.countDown();
+        try {
+          TestUtils.assertEquals(log, "stream content", text, new String(buf, 0, len));
+        }
+        catch (Throwable e) {
+          lastException.set(e);
+        }
         return true;
       }
 
       @Override
       public void onReceivedContentLength(long contentLength) {
-        TestUtils.assertEquals(log, "stream length", text.length(), (int)contentLength);
         waitForFinished.countDown();
-      }
+        try {
+          TestUtils.assertEquals(log, "stream length", text.length(), (int)contentLength);
+        }
+        catch (Throwable e) {
+          lastException.set(e);
+        }
+     }
 
       @Override
       public void onReceivedContentType(String contentType) {
-        TestUtils.assertEquals(log, "stream content type", "application/octet-stream", contentType);
         waitForFinished.countDown();
+        try {
+          TestUtils.assertEquals(log, "stream content type", "application/octet-stream", contentType);
+        }
+        catch (Throwable e) {
+          lastException.set(e);
+        }
       }
 
       @Override
       public void onReceivedException(Throwable ex) {
-        TestUtils.fail(log, "Exception " + ex);
+        while (waitForFinished.getCount() > 1) waitForFinished.countDown();
+        lastException.set(ex);
       }
 
       @Override
@@ -624,10 +632,11 @@ public class TestRemoteStreams {
     });
 
     try {
-      waitForFinished.await(10, TimeUnit.SECONDS);
+      waitForFinished.await(1000, TimeUnit.SECONDS);
     } catch (InterruptedException e) {
     }
     
+    TestUtils.assertTrue(log, "Exception " + lastException, lastException.get() == null);
     TestUtils.assertTrue(log, "Timeout", waitForFinished.getCount() == 0);
     
     log.info(")testRemoteStreamsAsyncCallback");
@@ -635,7 +644,7 @@ public class TestRemoteStreams {
   
   /**
    * A stream returned from the server can be passed as input parameter
-   * to another call to the same server. The stream must not be downloaded/uploaded therefore.
+   * to another call to the same server. The stream must not be downloaded/uploaded therefore.s
    * @throws IOException 
    */
   @Test

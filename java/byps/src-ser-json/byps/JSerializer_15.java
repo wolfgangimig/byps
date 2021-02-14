@@ -49,24 +49,30 @@ public class JSerializer_15 extends JSerializer_Object {
 			// are already available in object strm.
 			final Set<String> keys = bin.currentObject.keys();
 			
-			if (keys.contains("contentType")) {
-        final String contentType = bin.currentObject.getString("contentType");
-        strm.setContentType(contentType);
-			}
+			// Those Stream properties submitted as header values have precedence.
+			// This is because HHttpPutStreamHelper sets Content-Type and Content-Length even for non-BContentStream objects.
+			// BYPS-44
 			
-			if (keys.contains("contentLength")) {
+      if (keys.contains("contentLength") && strm.getContentLength() < 0) {
         final long contentLength = bin.currentObject.getLong("contentLength");
         strm.setContentLength(contentLength);
-			}
-			
-      if (keys.contains("attachment")) {
-        final int attachmentCode = bin.currentObject.getInt("attachment");
-        strm.setAttachmentCode(attachmentCode);
       }
       
-      if (keys.contains("fileName")) {
-        final String fileName = bin.currentObject.getString("fileName");
-        strm.setFileName(fileName);
+      if (strm.getContentType().isEmpty()) {
+  			if (keys.contains("contentType")) {
+          final String contentType = bin.currentObject.getString("contentType");
+          strm.setContentType(contentType);
+  			}
+  			
+        if (keys.contains("attachment")) {
+          final int attachmentCode = bin.currentObject.getInt("attachment");
+          strm.setAttachmentCode(attachmentCode);
+        }
+        
+        if (keys.contains("fileName")) {
+          final String fileName = bin.currentObject.getString("fileName");
+          strm.setFileName(fileName);
+        }
       }
       
 			bin.onObjectCreated(strm);
