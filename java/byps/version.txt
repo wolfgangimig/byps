@@ -1,6 +1,6 @@
 BYPS Version History
 
-11.43
+11.44
 
 
 - BYPS-43: Exchange stream several times between server and client failed.
