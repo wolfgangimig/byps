@@ -55,7 +55,7 @@ public class TestUtils {
 	//public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
 	public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
 	
-	public static boolean TEST_LARGE_STREAMS = true;
+	public static boolean TEST_LARGE_STREAMS = false;
 	
 	public static boolean TEST_ONE_SHORT_STREAM = true;
 	
