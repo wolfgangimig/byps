@@ -2,6 +2,8 @@ BYPS Version History
 
 8.43
 
+- BYPS-44: Headers Content-Type and Content-Length were lost during upload for non-BContentStream streams.
+
 - BYPS-42: Close Apache HTTP client when transport layer is closed.
 
 - BYPS-40: Provide separate BYPS libraries for Java 8 and 11. BYPS 8.x is for Java 8 and
