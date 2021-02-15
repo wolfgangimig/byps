@@ -253,29 +253,31 @@ public class HActiveMessages {
 	 * @param all false: cleanup expired, true: cleanup all
 	 */
 	public void cleanup(final boolean all) {
-		if (log.isDebugEnabled()) log.debug("cleanup(all=" + all);
+		if (log.isDebugEnabled()) log.debug("cleanup(all={}", all);
 		
 		// HashSet for all active incoming streams
-		HashSet<Long> activeIncomingStreamIds = new HashSet<Long>(incomingStreams.keys());
+		HashSet<Long> activeIncomingStreamIds = new HashSet<>(incomingStreams.keys());
+		if (log.isDebugEnabled()) log.debug("activeIncomingStreams={}", activeIncomingStreamIds);
 		
 		// HashSet for referenced incoming streams.
 		// Initialize with outgoing streams because incoming streams might be used in 
 		// return values or sent to other clients.
-		HashSet<Long> referencedIncomingStreamIds = new HashSet<Long>(outgoingStreams.keys());
-		
+		HashSet<Long> referencedIncomingStreamIds = new HashSet<>(outgoingStreams.keys());
+    if (log.isDebugEnabled()) log.debug("referencedIncomingStreamIds={}", referencedIncomingStreamIds);
+
 		// Cleanup messages.
-		ArrayList<HActiveMessage> arr = new ArrayList<HActiveMessage>(activeMessages.values());
+		ArrayList<HActiveMessage> arr = new ArrayList<>(activeMessages.values());
 		for (HActiveMessage msg : arr) {
 		  
 			if (all || msg.checkReferencedStreamIds(activeIncomingStreamIds, referencedIncomingStreamIds)) {
-				if (log.isDebugEnabled()) log.debug("remove message=" + msg);
+				if (log.isDebugEnabled()) log.debug("remove message={}", msg);
 				if (all) msg.cancelMessage();
 				if (all || msg.queryCleanup()) {
 				  activeMessages.remove(msg.messageId);
 				}
 			}
 			else if (log.isDebugEnabled() && !msg.isLongPoll()) {
-	       log.debug("active message=" + msg);
+	       log.debug("active message={}", msg);
 			}
 		}
 		
@@ -434,7 +436,7 @@ public class HActiveMessages {
 
           istrm = new HIncomingSplittedStreamAsync(targetId, contentType, totalLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
             public void close() throws IOException {
-              if (log.isDebugEnabled()) log.debug("close incoming stream " + targetId + "(");
+              if (log.isDebugEnabled()) log.debug("close incoming stream={} (", targetId.getStreamId());
               Long streamId = getTargetId().getStreamId();
               incomingStreams.remove(streamId);
               super.close();
@@ -442,6 +444,7 @@ public class HActiveMessages {
             }
           };
 
+          if (log.isDebugEnabled()) log.debug("put splitted stream={}", targetId.getStreamId());
           incomingStreams.put(targetId.getStreamId(), istrm);
         }
 
@@ -452,7 +455,7 @@ public class HActiveMessages {
 
         istrm = new HIncomingStreamAsync(targetId, contentType, contentLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir, rctxt) {
           public void close() throws IOException {
-            if (log.isDebugEnabled()) log.debug("close incoming stream " + targetId + "(");
+            if (log.isDebugEnabled()) log.debug("close incoming stream={} (", targetId.getStreamId());
             Long streamId = getTargetId().getStreamId();
             incomingStreams.remove(streamId);
             super.close();
@@ -460,6 +463,7 @@ public class HActiveMessages {
           }
         };
         
+        if (log.isDebugEnabled()) log.debug("put stream={}", targetId.getStreamId());
         incomingStreams.put(targetId.getStreamId(), istrm);
       }
 

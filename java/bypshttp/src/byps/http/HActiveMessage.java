@@ -3,7 +3,7 @@ package byps.http;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javax.servlet.http.HttpServletResponse;
@@ -102,18 +102,32 @@ public class HActiveMessage {
   }
   
   private static ArrayList<Long> evalM1AndM2(Collection<Long> m1, Collection<Long> m2) {
-    ArrayList<Long> arr = new ArrayList<Long>();
+    ArrayList<Long> arr = new ArrayList<>();
     for (Long streamId : m1) {
       if (m2.contains(streamId)) arr.add(streamId);
     }
     return arr;
   }
   
-  public synchronized boolean checkReferencedStreamIds(HashSet<Long> allStreamIds, HashSet<Long> referencedStreamIds) {
-    incomingStreams = evalM1AndM2(incomingStreams, allStreamIds);
-    referencedStreamIds.addAll(incomingStreams);
+  public synchronized boolean checkReferencedStreamIds(Set<Long> allStreamIds, Set<Long> referencedStreamIds) {
+
+    // Compute intersection of this sets.
+    ArrayList<Long> newIncomingStreams = evalM1AndM2(incomingStreams, allStreamIds);
+
+    // Replace incoming streams. This removes the streams that are no more found in allStreamIds. 
+    incomingStreams = newIncomingStreams;
+    
+    // Add the referenced streams to the Set.
+    referencedStreamIds.addAll(newIncomingStreams);
+
+    // Return true, if the message is finished. 
+    // This is computed here to avoid call to isFinished from the cleanup thread which would enter a synchronized block again. 
     checkFinished();
-    return isFinished();
+    boolean finished = isFinished();
+    
+    if (log.isDebugEnabled()) log.debug("checkRefrencedStreamIds, messageId={}, incomingStreams={}, newIncomingStreams={}, finished={}", messageId, incomingStreams, newIncomingStreams, finished);
+
+    return finished;
   }
 
   public synchronized boolean isFinished() {
@@ -227,9 +241,16 @@ public class HActiveMessage {
   public String toString() {
     StringBuilder sbuf = new StringBuilder();
     sbuf.append("[").append(messageId);
-    if (workerThread != null) sbuf.append(",").append(workerThread.getName());
-    if (canceled) sbuf.append(",canceled");
-    if (cleanupAtMillis.get() != 0) sbuf.append(",cleanupAt=" + new Date(cleanupAtMillis.get()));
+    
+    // BYPS-45: Add incomingStreams here. 
+    // Should help to find out, why a stream is recognized as "not referenced" although the message is still active.
+    
+    synchronized(this) {
+      if (workerThread != null) sbuf.append(",").append(workerThread.getName());
+      if (incomingStreams != null) sbuf.append(",").append(incomingStreams);
+      if (canceled) sbuf.append(",canceled");
+      if (cleanupAtMillis.get() != 0) sbuf.append(",cleanupAt=" + new Date(cleanupAtMillis.get()));
+    }
     sbuf.append("]");
     return sbuf.toString();
   }
