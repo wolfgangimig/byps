@@ -83,17 +83,26 @@ public class HActiveMessage {
   }
   
   public synchronized void addIncomingStream(Long streamId) throws BException {
+    
     if (isCanceled()) {
       if (log.isDebugEnabled()) log.debug("Message was canceled");
       throw new BException(BExceptionC.CANCELLED, "Message was canceled");
     }
+    
     if (isFinished()) {
-      if (log.isDebugEnabled()) log.debug("Message was finished");
-      throw new BException(BExceptionC.CANCELLED, "Message was finished");
+      if (log.isDebugEnabled()) log.debug("Message was finished, ignore incoming stream={}", streamId);
+      
+      // BYPS-45, BYPS-39: Werfe keine Exception, wenn die Nachricht schon verarbeitet ist. 
+      // Möglicherweise hat dieser Thread länger keine CPU-Zeit bekommen und die 
+      // Nachricht ist schon fertig. Für diesen Fall muss ich hier nicht mehr vermerken,
+      // dass der Stream noch in Verwendung ist.
+      
+    }
+    else {
+      if (log.isDebugEnabled()) log.debug("add incoming stream={}", streamId);
+      incomingStreams.add(streamId);
     }
     
-    if (log.isDebugEnabled()) log.debug("add incoming stream " + streamId);
-    incomingStreams.add(streamId);
   }
   
   public synchronized void removeAllIncomingStreams() {
@@ -111,6 +120,8 @@ public class HActiveMessage {
   
   public synchronized boolean checkReferencedStreamIds(Set<Long> allStreamIds, Set<Long> referencedStreamIds) {
 
+    ArrayList<Long> oldIncomingStreams = incomingStreams;
+        
     // Compute intersection of this sets.
     ArrayList<Long> newIncomingStreams = evalM1AndM2(incomingStreams, allStreamIds);
 
@@ -125,7 +136,7 @@ public class HActiveMessage {
     checkFinished();
     boolean finished = isFinished();
     
-    if (log.isDebugEnabled()) log.debug("checkRefrencedStreamIds, messageId={}, incomingStreams={}, newIncomingStreams={}, finished={}", messageId, incomingStreams, newIncomingStreams, finished);
+    if (log.isDebugEnabled()) log.debug("checkRefrencedStreamIds, messageId={}, oldIncomingStreams={}, newIncomingStreams={}, finished={}", messageId, oldIncomingStreams, newIncomingStreams, finished);
 
     return finished;
   }
