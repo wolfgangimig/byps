@@ -59,7 +59,7 @@ public class TestUtils {
 	 * Test streams with 4 GB content.
 	 * See {@link TestUtilsHttp#makeTestStreams()}
 	 */
-	public static boolean TEST_LARGE_STREAMS = true;
+	public static boolean TEST_LARGE_STREAMS = false;
 	
   /**
    * Test only one short stream.

@@ -185,6 +185,25 @@ public class TestRemoteStreams {
     log.info(")testRemoteStreamsOneStreamChunked");
   }
 
+  @Test
+  public void testRemoteStreamsConcurrent() throws InterruptedException, IOException {
+    log.info("testRemoteStreamsConcurrent(");
+
+    String str = "hello";
+    InputStream istrm = new ByteArrayInputStream(str.getBytes());
+    remote.setImage(istrm);
+
+    InputStream istrmR = remote.getImage();
+    ByteBuffer buf = BWire.bufferFromStream(istrmR);
+    String strR = new String(buf.array(), buf.position(), buf.remaining());
+    TestUtils.assertEquals(log, "stream", str, strR);
+
+    remote.setImage(null);
+    TestUtils.checkTempDirEmpty(client);
+
+    log.info(")testRemoteStreamsConcurrent");
+  }
+
   /**
    * Send and receive many streams.
    * 

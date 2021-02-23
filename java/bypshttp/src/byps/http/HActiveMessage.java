@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BHashMap;
 
 public class HActiveMessage {
   private final static Logger log = LoggerFactory.getLogger(HActiveMessage.class);
@@ -82,7 +84,7 @@ public class HActiveMessage {
     if (log.isDebugEnabled()) log.debug("assigned rctxt=" + rctxt + ", workerThread=" + workerThread);
   }
   
-  public synchronized void addIncomingStream(Long streamId) throws BException {
+  public synchronized void addIncomingStream(Long streamId, BContentStream stream, BHashMap<Long, BContentStream> allIncomingStreams) throws BException {
     
     if (isCanceled()) {
       if (log.isDebugEnabled()) log.debug("Message was canceled");
@@ -101,6 +103,7 @@ public class HActiveMessage {
     else {
       if (log.isDebugEnabled()) log.debug("add incoming stream={}", streamId);
       incomingStreams.add(streamId);
+      allIncomingStreams.put(streamId, stream);
     }
     
   }

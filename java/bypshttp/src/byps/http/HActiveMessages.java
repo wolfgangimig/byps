@@ -380,29 +380,20 @@ public class HActiveMessages {
 
   public HActiveMessage addIncomingStream(final BTargetId targetId, final HRequestContext rctxt) throws BException {
     
-    final HActiveMessage msg = getOrCreateActiveMessage(targetId.getMessageId());
+    HActiveMessage msg = getOrCreateActiveMessage(targetId.getMessageId());
 
     if (rctxt.isAsync()) {
-      addIncomingStreamAsync(targetId, rctxt);
+      addIncomingStreamAsync(msg, targetId, rctxt);
     }
     else {
-      addIncomingStreamSync(targetId, rctxt);
+      addIncomingStreamSync(msg, targetId, rctxt);
     }
-    
-    // BYPS-45: Der Stream zuerst in der "globalen" incomingStreams-Map eingetragen werden
-    // (was in addIncomingStream... erfolgt).
-    // Andernfalls - wenn er zuerst in der HActiveMessage eingetragen wird - 
-    // kann es dazu kommen, dass er zu früh im cleanup-Thread freigegeben wird. 
-    // Das passiert, wenn der cleanup-Thread zwischen den beiden Eintragungen losläuft.
-    // Mit dieser Änderung hab ich BYPS-39 wieder rückgängig gemacht, s. HActiveMessage.addIncomingStream.
-
-    msg.addIncomingStream(targetId.getStreamId());
     
     return msg;
   }
 
-  private void addIncomingStreamAsync(final BTargetId targetId, HRequestContext rctxt) throws BException {
-    if (log.isDebugEnabled()) log.debug("addIncomingStreamAsync(targetId=" + targetId + ", rctxt=" + rctxt);
+  private void addIncomingStreamAsync(final HActiveMessage msg, final BTargetId targetId, HRequestContext rctxt) throws BException {
+    if (log.isDebugEnabled()) log.debug("addIncomingStreamAsync(targetId={}, rctxt={}", targetId, rctxt);
 
     try {
       final HttpServletRequest request = (HttpServletRequest) (rctxt.getRequest());
@@ -449,8 +440,10 @@ public class HActiveMessages {
             }
           };
 
+          // BYPS-45: Add stream to the map of all streams and to the map of the messages' streams in a synchronized block.
+          // It has to be done 'at the same time' to have a consistent state in the cleanup thread.
           if (log.isDebugEnabled()) log.debug("put splitted stream={}", targetId.getStreamId());
-          incomingStreams.put(targetId.getStreamId(), istrm);
+          msg.addIncomingStream(targetId.getStreamId(), istrm, incomingStreams);
         }
 
         ((HIncomingSplittedStreamAsync) istrm).addStream(partId, contentLength, isLastPart, rctxt);
@@ -468,8 +461,9 @@ public class HActiveMessages {
           }
         };
         
+        // BYPS-45: see above
         if (log.isDebugEnabled()) log.debug("put stream={}", targetId.getStreamId());
-        incomingStreams.put(targetId.getStreamId(), istrm);
+        msg.addIncomingStream(targetId.getStreamId(), istrm, incomingStreams);
       }
 
       synchronized(this) {
@@ -483,12 +477,12 @@ public class HActiveMessages {
     if (log.isDebugEnabled()) log.debug(")addIncomingStreamAsync");
   }
 
-  private void addIncomingStreamSync(final BTargetId targetId, final HRequestContext rctxt) throws BException {
-    if (log.isDebugEnabled()) log.debug("addIncomingStreamSync(" + targetId);
+  private void addIncomingStreamSync(final HActiveMessage msg, final BTargetId targetId, final HRequestContext rctxt) throws BException {
+    if (log.isDebugEnabled()) log.debug("addIncomingStreamSync({}", targetId);
     
     // Create or get HIncomingStream object in synchronized function.
     final HttpServletRequest request = (HttpServletRequest) (rctxt.getRequest());
-    final HIncomingStreamSync istrm = addIncomingStreamSync2(targetId, request);
+    final HIncomingStreamSync istrm = addIncomingStreamSync2(msg, targetId, request);
     
     final String partIdStr = request.getParameter("partid");
     final long partId = partIdStr != null && partIdStr.length() != 0 ? Long.parseLong(partIdStr) : 0;
@@ -504,8 +498,8 @@ public class HActiveMessages {
     if (log.isDebugEnabled()) log.debug(")addIncomingStreamSync");
   }
   
-  private HIncomingStreamSync addIncomingStreamSync2(final BTargetId targetId, HttpServletRequest request) throws BException {
-    if (log.isDebugEnabled()) log.debug("addIncomingStreamSync2(" + targetId);
+  private HIncomingStreamSync addIncomingStreamSync2(final HActiveMessage msg, final BTargetId targetId, HttpServletRequest request) throws BException {
+    if (log.isDebugEnabled()) log.debug("addIncomingStreamSync2({}", targetId);
     
     HIncomingStreamSync istrm = null;
     
@@ -539,8 +533,9 @@ public class HActiveMessages {
           }
         };
 
-        if (log.isDebugEnabled()) log.debug("put incoming stream into map, targetId=" + targetId);
-        incomingStreams.put(targetId.getStreamId(), istrm);
+        // BYPS-45: see addIncomingStreamAsync
+        if (log.isDebugEnabled()) log.debug("put incoming stream into map, targetId={}", targetId);
+        msg.addIncomingStream(targetId.getStreamId(), istrm, incomingStreams);
       }
 
       // Notify threads waiting to read this stream
@@ -552,7 +547,7 @@ public class HActiveMessages {
       throw new BException(BExceptionC.IOERROR, "Failed to add incoming stream", e);
     }
 
-    if (log.isDebugEnabled()) log.debug(")addIncomingStreamSync2=" + istrm);
+    if (log.isDebugEnabled()) log.debug(")addIncomingStreamSync2={}", istrm);
     return istrm;
   }
 
