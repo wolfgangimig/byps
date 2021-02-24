@@ -2,8 +2,9 @@ package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,15 +18,13 @@ import byps.BExceptionC;
 import byps.BHashMap;
 
 public class HActiveMessage {
-  private final static Logger log = LoggerFactory.getLogger(HActiveMessage.class);
+  private static final Logger log = LoggerFactory.getLogger(HActiveMessage.class);
   
   final Long messageId;
   
   private boolean waitingForRequestContext;
   private HRequestContext rctxtMessage;
-//  private HashMap<Long, BContentStream> incomingStreams;
-//  private HashMap<Long, BContentStream> outgoingStreams;
-  private ArrayList<Long> incomingStreams = new ArrayList<Long>();
+  private List<BContentStream> incomingStreams = new ArrayList<>();
   private Thread workerThread;
   private volatile boolean canceled;
   private volatile String sessionId;
@@ -102,48 +101,19 @@ public class HActiveMessage {
     }
     else {
       if (log.isDebugEnabled()) log.debug("add incoming stream={}", streamId);
-      incomingStreams.add(streamId);
+      incomingStreams.add(stream);
       allIncomingStreams.put(streamId, stream);
     }
     
   }
   
-  public synchronized void removeAllIncomingStreams() {
-    incomingStreams.clear();
+  public synchronized void closeAllIncomingStreams() {
+    Collection<BContentStream> streams = incomingStreams;
+    incomingStreams = Collections.emptyList();
+    streams.forEach(BContentStream::setExpired);
     checkFinished();
   }
   
-  private static ArrayList<Long> evalM1AndM2(Collection<Long> m1, Collection<Long> m2) {
-    ArrayList<Long> arr = new ArrayList<>();
-    for (Long streamId : m1) {
-      if (m2.contains(streamId)) arr.add(streamId);
-    }
-    return arr;
-  }
-  
-  public synchronized boolean checkReferencedStreamIds(Set<Long> allStreamIds, Set<Long> referencedStreamIds) {
-
-    ArrayList<Long> oldIncomingStreams = incomingStreams;
-        
-    // Compute intersection of this sets.
-    ArrayList<Long> newIncomingStreams = evalM1AndM2(incomingStreams, allStreamIds);
-
-    // Replace incoming streams. This removes the streams that are no more found in allStreamIds. 
-    incomingStreams = newIncomingStreams;
-    
-    // Add the referenced streams to the Set.
-    referencedStreamIds.addAll(newIncomingStreams);
-
-    // Return true, if the message is finished. 
-    // This is computed here to avoid call to isFinished from the cleanup thread which would enter a synchronized block again. 
-    checkFinished();
-    boolean finished = isFinished();
-    
-    if (log.isDebugEnabled()) log.debug("checkRefrencedStreamIds, messageId={}, oldIncomingStreams={}, newIncomingStreams={}, finished={}", messageId, oldIncomingStreams, newIncomingStreams, finished);
-
-    return finished;
-  }
-
   public synchronized boolean isFinished() {
     boolean finished = !waitingForRequestContext && rctxtMessage == null;
     return finished;
@@ -244,7 +214,9 @@ public class HActiveMessage {
       rctxtMessage = null;
     }
 
-    incomingStreams.clear();
+    // Set streams expired. The cleanup thread will close them in the next run.
+    // BYPS-45
+    incomingStreams.forEach(BContentStream::setExpired);
     
     checkFinished();
     

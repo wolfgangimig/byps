@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 /**
  * BContentStream is an InputStream with content type and content length.
@@ -207,6 +208,16 @@ public abstract class BContentStream extends InputStream {
 	}
 	
 	/**
+	 * Set the stream expired.
+	 * This function is called on the server side if the associated message is finished. 
+	 * It ensures that the stream is closed and removed after some time.
+	 */
+	public void setExpired() {
+	  // BYPS-45
+	  bestBefore = 0;
+	}
+	
+	/**
 	 * Extends the lifetime.
 	 * This function is only used on the provider side.
 	 */
@@ -305,18 +316,22 @@ public abstract class BContentStream extends InputStream {
 	    
 	    if (fileName.isEmpty()) {
 	      p = value.indexOf("filename=");
-		  if (p >= 0) {
-		    int b = p + 9;
-		    int e = value.indexOf(';', b);
-		    if (e == -1) e = value.length();
-		    fileName = value.substring(b, e);
-	        fileName = fileName.trim();
-	        if (fileName.startsWith("\"") && fileName.endsWith("\"")) fileName = fileName.substring(1, fileName.length()-1);
-            try {
-	          fileName = URLDecoder.decode(fileName, "ISO-8859-1");
-            } catch (UnsupportedEncodingException e1) {
-            }
+  		  if (p >= 0) {
+  		    int b = p + 9;
+  		    int e = value.indexOf(';', b);
+  		    if (e == -1) e = value.length();
+  		    fileName = value.substring(b, e);
+          fileName = fileName.trim();
+          if (fileName.startsWith("\"") && fileName.endsWith("\"")) {
+            fileName = fileName.substring(1, fileName.length()-1);
           }
+          try {
+            fileName = URLDecoder.decode(fileName, "ISO-8859-1");
+          } catch (UnsupportedEncodingException e1) {
+            // Charset is surely available 
+          }
+
+  		  }
 	    }
 	  }
 	  
@@ -419,6 +434,7 @@ public abstract class BContentStream extends InputStream {
   
   @Override
   public void close() throws IOException {
+    setExpired();
     super.close();
   }
   

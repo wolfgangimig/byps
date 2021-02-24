@@ -47,7 +47,7 @@ public class TestUtilsHttp {
   private static final String[] HTTP_CLIENT_FACTORIES = new String[] { JcnnClientFactory.class.getName(), AsfClientFactory.class.getName() };
 
 	static {
-    System.setProperty(HWireClient.SYSTEM_PROPERTY_HTTP_CLIENT_FACTORY, HTTP_CLIENT_FACTORIES[1]);
+    System.setProperty(HWireClient.SYSTEM_PROPERTY_HTTP_CLIENT_FACTORY, HTTP_CLIENT_FACTORIES[0]);
 	}
 	
 	private static Executor tpool = Executors.newCachedThreadPool();

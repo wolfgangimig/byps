@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.AsyncEvent;
 import javax.servlet.http.HttpServletRequest;
@@ -239,14 +239,13 @@ public class HActiveMessages {
 	 * @param messageId
 	 */
 	public void closeMessageIncomingStreams(final Long messageId) {
-		if (log.isDebugEnabled()) log.debug("closeMessageIncomingStreams(" + messageId);
+		if (log.isDebugEnabled()) log.debug("closeMessageIncomingStreams({}", messageId);
 		HActiveMessage msg = activeMessages.get(messageId);
 		if (msg != null) {
-			msg.removeAllIncomingStreams();
+		  msg.closeAllIncomingStreams();
 		}
 		if (log.isDebugEnabled()) log.debug(")closeMessageIncomingStreams");
 	}
-	
 	
 	/**
 	 * Cleanup expired messages and close expired streams.
@@ -255,21 +254,11 @@ public class HActiveMessages {
 	public void cleanup(final boolean all) {
 		if (log.isDebugEnabled()) log.debug("cleanup(all={}", all);
 		
-		// HashSet for all active incoming streams
-		HashSet<Long> activeIncomingStreamIds = new HashSet<>(incomingStreams.keys());
-		if (log.isDebugEnabled()) log.debug("activeIncomingStreams={}", activeIncomingStreamIds);
-		
-		// HashSet for referenced incoming streams.
-		// Initialize with outgoing streams because incoming streams might be used in 
-		// return values or sent to other clients.
-		HashSet<Long> referencedIncomingStreamIds = new HashSet<>(outgoingStreams.keys());
-    if (log.isDebugEnabled()) log.debug("referencedIncomingStreamIds={}", referencedIncomingStreamIds);
-
 		// Cleanup messages.
 		ArrayList<HActiveMessage> arr = new ArrayList<>(activeMessages.values());
 		for (HActiveMessage msg : arr) {
 		  
-			if (all || msg.checkReferencedStreamIds(activeIncomingStreamIds, referencedIncomingStreamIds)) {
+			if (all || msg.isFinished()) {
 				if (log.isDebugEnabled()) log.debug("remove message={}", msg);
 				if (all) msg.cancelMessage();
 				if (all || msg.queryCleanup()) {
@@ -283,51 +272,39 @@ public class HActiveMessages {
 		
 		// Cleanup expired or not referenced incoming streams
     if (log.isDebugEnabled()) log.debug("cleanup incoming streams");
-		for (Long streamId : activeIncomingStreamIds) {
-			BContentStream stream = incomingStreams.get(streamId);
-			if (stream == null) continue;
-			
-			if (log.isDebugEnabled()) log.debug("stream=" + stream + ", expired=" + stream.isExpired() + ", referenced=" + referencedIncomingStreamIds.contains(streamId));
-			
-		  if (all || stream.isExpired() || !referencedIncomingStreamIds.contains(streamId)) {
-		    try {
-		      if (log.isDebugEnabled()) log.debug("close/remove");
-		      stream.close(); // removes from incomingStreams or outgoingStreams
-		      incomingStreams.remove(streamId);
-		    }
-		    catch (Throwable e) {
-		      log.debug("Failed to close stream=" + stream, e);
-		    }
-		  }
-      else {
-        if (log.isDebugEnabled()) log.debug("active incoming stream=" + stream);
-      }
-		}
+    cleanupExpiredStreams(incomingStreams.values(), all);
 		
 		// Cleanup expired outgoing streams.
 		// And cleanup expired upload streams.
     if (log.isDebugEnabled()) log.debug("cleanup outgoing streams");
-		ArrayList<BContentStream> ostreams = new ArrayList<BContentStream>(outgoingStreams.values());
-    for (BContentStream stream : ostreams) {
-      if (log.isDebugEnabled()) log.debug("stream=" + stream + ", expired=" + stream.isExpired());
-      if (all || stream.isExpired()) {
-        try {
-          if (log.isDebugEnabled()) log.debug("close/remove");
-          stream.close(); // removes from incomingStreams or outgoingStreams
-          outgoingStreams.remove(stream.getTargetId().getStreamId());
-        }
-        catch (Throwable e) {
-          log.debug("Failed to close stream=" + stream, e);
-        }
-      }
-      else {
-        if (log.isDebugEnabled()) log.debug("active outgoing stream=" + stream);
-      }
-    }
+    cleanupExpiredStreams(outgoingStreams.values(), all);
 		
 		if (log.isDebugEnabled()) log.debug(")cleanup");
 	}
 	
+	/**
+	 * Close expired streams.
+	 * @param streams Streams
+	 * @param all If true, all streams are closed - not only the expired streams.
+	 */
+	private void cleanupExpiredStreams(Collection<BContentStream> streams, boolean all) {
+	  streams = new ArrayList<>(streams);
+	  streams.stream().filter(s -> all || s.isExpired()).forEach(this::quietCloseStream);
+	}
+	
+	 /**
+   * Close stream, catch Exception.
+   * @param stream Stream to close
+   */
+  private void quietCloseStream(BContentStream stream) {
+    if (log.isDebugEnabled()) log.debug("close stream={}", stream.getTargetId());
+    try {
+      stream.close();
+    } catch (IOException e) {
+      if (log.isDebugEnabled()) log.debug("failed to close stream={}", stream.getTargetId(), e);
+    }
+  }
+  
 	/**
 	 * Returns the IDs of the messages.
 	 * @param inclLongPolls

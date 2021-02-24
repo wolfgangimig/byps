@@ -186,22 +186,23 @@ public class TestRemoteStreams {
   }
 
   @Test
-  public void testRemoteStreamsConcurrent() throws InterruptedException, IOException {
-    log.info("testRemoteStreamsConcurrent(");
+  public void testRemoteStreamsCleanup() throws InterruptedException, IOException {
+    log.info("testRemoteStreamsCleanup(");
+    
+    Map<Integer, InputStream> streams = new TreeMap<Integer, InputStream>();
+    for (int i = 0; i < 3; i++) {
+      byte[] bytes = new byte[1];
+      ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+      InputStream istrm = new BContentStreamWrapper(bis, "application/octet-stream", bytes.length);
+      streams.put(i, istrm);
+    }
+    streams.put(999, null);
+    
+    remote.setImages(streams, -1);
 
-    String str = "hello";
-    InputStream istrm = new ByteArrayInputStream(str.getBytes());
-    remote.setImage(istrm);
-
-    InputStream istrmR = remote.getImage();
-    ByteBuffer buf = BWire.bufferFromStream(istrmR);
-    String strR = new String(buf.array(), buf.position(), buf.remaining());
-    TestUtils.assertEquals(log, "stream", str, strR);
-
-    remote.setImage(null);
     TestUtils.checkTempDirEmpty(client);
 
-    log.info(")testRemoteStreamsConcurrent");
+    log.info(")testRemoteStreamsCleanup");
   }
 
   /**
@@ -823,8 +824,10 @@ public class TestRemoteStreams {
     final int NB_OF_PARALLEL_DOWNLOADS = 10;
     try {
       for (int i = 0; i < NB_OF_DOWNLOADS/NB_OF_PARALLEL_DOWNLOADS; i++) {
+        final int downloadIndex = i;
         CompletableFuture[] completableFutures = new CompletableFuture[NB_OF_PARALLEL_DOWNLOADS];
         for (int j = 0; j < completableFutures.length; j++) {
+          final int parallelIndex = j;
           completableFutures[j] = CompletableFuture.supplyAsync(new Supplier<Object>() {
             public Object get() {
               try {
@@ -833,6 +836,7 @@ public class TestRemoteStreams {
                 istrmR.close();
               }
               catch (Exception e) {
+                log.error("Failed to download i={}, j={}", downloadIndex, parallelIndex, e);
                 throw new IllegalStateException(e);
               }
               return true;
