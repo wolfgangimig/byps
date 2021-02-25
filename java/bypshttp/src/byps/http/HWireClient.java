@@ -150,12 +150,17 @@ public class HWireClient extends BWire {
     String factName = System.getProperty(SYSTEM_PROPERTY_HTTP_CLIENT_FACTORY);
     if (log.isDebugEnabled()) log.debug("factory from system.properties[" + SYSTEM_PROPERTY_HTTP_CLIENT_FACTORY + "]=" + factName);
     if (factName == null || factName.isEmpty()) {
-      String sversion = System.getProperty("java.version", "");
-      int p = sversion.indexOf('.');
-      String mversion = p >= 0 ? sversion.substring(0, p) : "1";
-      int javaVersion = Integer.parseInt(mversion);
-      boolean fact11 = javaVersion >= 11;
-      factName = fact11 ? JcnnClientFactory11.class.getName() : JcnnClientFactory.class.getName();
+      
+      // Do not activate HttpClient from Java 11. Intensive tests required.
+      // BYPS-40
+//      String sversion = System.getProperty("java.version", "");
+//      int p = sversion.indexOf('.');
+//      String mversion = p >= 0 ? sversion.substring(0, p) : "1";
+//      int javaVersion = Integer.parseInt(mversion);
+//      boolean fact11 = javaVersion >= 11;
+//      factName = fact11 ? JcnnClientFactory11.class.getName() : JcnnClientFactory.class.getName();
+      
+      factName = JcnnClientFactory.class.getName();
     }
 
     // Create a client factory object
