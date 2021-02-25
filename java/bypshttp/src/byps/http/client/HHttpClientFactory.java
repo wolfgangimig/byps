@@ -7,8 +7,9 @@ public interface HHttpClientFactory {
    * 
    * @param url
    *          URL, only server and port is required.
+   * @param timeoutSeconds Connection timeout seconds.
    * @return
    */
-  HHttpClient createHttpClient(String url);
+  HHttpClient createHttpClient(String url, int timeoutSeconds);
 
 }

@@ -18,7 +18,7 @@ public class TestSSO {
     System.setProperty("sun.security.krb5.debug", "true");
 
     AsfClientFactory httpClientFactory = new AsfClientFactory();
-    HHttpClient client = httpClientFactory.createHttpClient("");
+    HHttpClient client = httpClientFactory.createHttpClient("", 0);
     
     //String url = "http://localhost:8084/ix-elo100/ixlogin?streamversion=900990000000000&responseformat=html&logout=true";
     String url = "http://srvpelo1:8080/ix-lldo_prod/ixlogin?streamversion=8&responseformat=html&logout=true";

@@ -6,7 +6,7 @@ import byps.http.client.HHttpClientFactory;
 public class StdioClientFactory implements HHttpClientFactory {
   
   @Override
-  public HHttpClient createHttpClient(String programPath) {
+  public HHttpClient createHttpClient(String programPath, int timeoutSeconds) {
     return new StdioClient(programPath);
   }
 
