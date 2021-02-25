@@ -2,6 +2,9 @@ BYPS Version History
 
 11.43
 
+- BYPS-43: Exchange stream several times between server and client failed.
+  Technically, HIncomingStreamSync did not reset the stream in function cloneStream.
+
 - BYPS-44: Headers Content-Type and Content-Length were lost during upload for non-BContentStream streams.
 
 - BYPS-42: Close Apache HTTP client when transport layer is closed.
@@ -9,7 +12,7 @@ BYPS Version History
 - BYPS-40: Provide separate BYPS libraries for Java 8 and 11. BYPS 8.x is for Java 8 and
   BYPS 11.x is for Java 11+. BYPS 11.x can use java.net.http.HttpClient.
 
-- BYPS-39: Avoid obsolete completion of async context in putStream in case of an error.
+- BYPS-39, BYPS-45: Avoid obsolete completion of async context in putStream in case of an error.
   Print the error stack trace into the log.
 
 - BYPS-36: Send messages in format application/byps and application/json compressed with GZIP 

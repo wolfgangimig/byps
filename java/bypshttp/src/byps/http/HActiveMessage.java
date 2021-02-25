@@ -2,8 +2,9 @@ package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javax.servlet.http.HttpServletResponse;
@@ -11,19 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
+import byps.BHashMap;
 
 public class HActiveMessage {
-  private final static Logger log = LoggerFactory.getLogger(HActiveMessage.class);
+  private static final Logger log = LoggerFactory.getLogger(HActiveMessage.class);
   
   final Long messageId;
   
   private boolean waitingForRequestContext;
   private HRequestContext rctxtMessage;
-//  private HashMap<Long, BContentStream> incomingStreams;
-//  private HashMap<Long, BContentStream> outgoingStreams;
-  private ArrayList<Long> incomingStreams = new ArrayList<Long>();
+  private List<BContentStream> incomingStreams = new ArrayList<>();
   private Thread workerThread;
   private volatile boolean canceled;
   private volatile String sessionId;
@@ -82,40 +83,37 @@ public class HActiveMessage {
     if (log.isDebugEnabled()) log.debug("assigned rctxt=" + rctxt + ", workerThread=" + workerThread);
   }
   
-  public synchronized void addIncomingStream(Long streamId) throws BException {
+  public synchronized void addIncomingStream(Long streamId, BContentStream stream, BHashMap<Long, BContentStream> allIncomingStreams) throws BException {
+    
     if (isCanceled()) {
       if (log.isDebugEnabled()) log.debug("Message was canceled");
       throw new BException(BExceptionC.CANCELLED, "Message was canceled");
     }
+    
     if (isFinished()) {
-      if (log.isDebugEnabled()) log.debug("Message was finished");
-      throw new BException(BExceptionC.CANCELLED, "Message was finished");
+      if (log.isDebugEnabled()) log.debug("Message was finished, ignore incoming stream={}", streamId);
+      
+      // BYPS-45, BYPS-39: Werfe keine Exception, wenn die Nachricht schon verarbeitet ist. 
+      // Möglicherweise hat dieser Thread länger keine CPU-Zeit bekommen und die 
+      // Nachricht ist schon fertig. Für diesen Fall muss ich hier nicht mehr vermerken,
+      // dass der Stream noch in Verwendung ist.
+      
+    }
+    else {
+      if (log.isDebugEnabled()) log.debug("add incoming stream={}", streamId);
+      incomingStreams.add(stream);
+      allIncomingStreams.put(streamId, stream);
     }
     
-    if (log.isDebugEnabled()) log.debug("add incoming stream " + streamId);
-    incomingStreams.add(streamId);
   }
   
-  public synchronized void removeAllIncomingStreams() {
-    incomingStreams.clear();
+  public synchronized void closeAllIncomingStreams() {
+    Collection<BContentStream> streams = incomingStreams;
+    incomingStreams = Collections.emptyList();
+    streams.forEach(BContentStream::setExpired);
     checkFinished();
   }
   
-  private static ArrayList<Long> evalM1AndM2(Collection<Long> m1, Collection<Long> m2) {
-    ArrayList<Long> arr = new ArrayList<Long>();
-    for (Long streamId : m1) {
-      if (m2.contains(streamId)) arr.add(streamId);
-    }
-    return arr;
-  }
-  
-  public synchronized boolean checkReferencedStreamIds(HashSet<Long> allStreamIds, HashSet<Long> referencedStreamIds) {
-    incomingStreams = evalM1AndM2(incomingStreams, allStreamIds);
-    referencedStreamIds.addAll(incomingStreams);
-    checkFinished();
-    return isFinished();
-  }
-
   public synchronized boolean isFinished() {
     boolean finished = !waitingForRequestContext && rctxtMessage == null;
     return finished;
@@ -216,7 +214,9 @@ public class HActiveMessage {
       rctxtMessage = null;
     }
 
-    incomingStreams.clear();
+    // Set streams expired. The cleanup thread will close them in the next run.
+    // BYPS-45
+    incomingStreams.forEach(BContentStream::setExpired);
     
     checkFinished();
     
@@ -227,9 +227,16 @@ public class HActiveMessage {
   public String toString() {
     StringBuilder sbuf = new StringBuilder();
     sbuf.append("[").append(messageId);
-    if (workerThread != null) sbuf.append(",").append(workerThread.getName());
-    if (canceled) sbuf.append(",canceled");
-    if (cleanupAtMillis.get() != 0) sbuf.append(",cleanupAt=" + new Date(cleanupAtMillis.get()));
+    
+    // BYPS-45: Add incomingStreams here. 
+    // Should help to find out, why a stream is recognized as "not referenced" although the message is still active.
+    
+    synchronized(this) {
+      if (workerThread != null) sbuf.append(",").append(workerThread.getName());
+      if (incomingStreams != null) sbuf.append(",").append(incomingStreams);
+      if (canceled) sbuf.append(",canceled");
+      if (cleanupAtMillis.get() != 0) sbuf.append(",cleanupAt=" + new Date(cleanupAtMillis.get()));
+    }
     sbuf.append("]");
     return sbuf.toString();
   }

@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.AsyncEvent;
 import javax.servlet.http.HttpServletRequest;
@@ -239,93 +239,72 @@ public class HActiveMessages {
 	 * @param messageId
 	 */
 	public void closeMessageIncomingStreams(final Long messageId) {
-		if (log.isDebugEnabled()) log.debug("closeMessageIncomingStreams(" + messageId);
+		if (log.isDebugEnabled()) log.debug("closeMessageIncomingStreams({}", messageId);
 		HActiveMessage msg = activeMessages.get(messageId);
 		if (msg != null) {
-			msg.removeAllIncomingStreams();
+		  msg.closeAllIncomingStreams();
 		}
 		if (log.isDebugEnabled()) log.debug(")closeMessageIncomingStreams");
 	}
-	
 	
 	/**
 	 * Cleanup expired messages and close expired streams.
 	 * @param all false: cleanup expired, true: cleanup all
 	 */
 	public void cleanup(final boolean all) {
-		if (log.isDebugEnabled()) log.debug("cleanup(all=" + all);
-		
-		// HashSet for all active incoming streams
-		HashSet<Long> activeIncomingStreamIds = new HashSet<Long>(incomingStreams.keys());
-		
-		// HashSet for referenced incoming streams.
-		// Initialize with outgoing streams because incoming streams might be used in 
-		// return values or sent to other clients.
-		HashSet<Long> referencedIncomingStreamIds = new HashSet<Long>(outgoingStreams.keys());
+		if (log.isDebugEnabled()) log.debug("cleanup(all={}", all);
 		
 		// Cleanup messages.
-		ArrayList<HActiveMessage> arr = new ArrayList<HActiveMessage>(activeMessages.values());
+		ArrayList<HActiveMessage> arr = new ArrayList<>(activeMessages.values());
 		for (HActiveMessage msg : arr) {
 		  
-			if (all || msg.checkReferencedStreamIds(activeIncomingStreamIds, referencedIncomingStreamIds)) {
-				if (log.isDebugEnabled()) log.debug("remove message=" + msg);
+			if (all || msg.isFinished()) {
+				if (log.isDebugEnabled()) log.debug("remove message={}", msg);
 				if (all) msg.cancelMessage();
 				if (all || msg.queryCleanup()) {
 				  activeMessages.remove(msg.messageId);
 				}
 			}
 			else if (log.isDebugEnabled() && !msg.isLongPoll()) {
-	       log.debug("active message=" + msg);
+	       log.debug("active message={}", msg);
 			}
 		}
 		
 		// Cleanup expired or not referenced incoming streams
     if (log.isDebugEnabled()) log.debug("cleanup incoming streams");
-		for (Long streamId : activeIncomingStreamIds) {
-			BContentStream stream = incomingStreams.get(streamId);
-			if (stream == null) continue;
-			
-			if (log.isDebugEnabled()) log.debug("stream=" + stream + ", expired=" + stream.isExpired() + ", referenced=" + referencedIncomingStreamIds.contains(streamId));
-			
-		  if (all || stream.isExpired() || !referencedIncomingStreamIds.contains(streamId)) {
-		    try {
-		      if (log.isDebugEnabled()) log.debug("close/remove");
-		      stream.close(); // removes from incomingStreams or outgoingStreams
-		      incomingStreams.remove(streamId);
-		    }
-		    catch (Throwable e) {
-		      log.debug("Failed to close stream=" + stream, e);
-		    }
-		  }
-      else {
-        if (log.isDebugEnabled()) log.debug("active incoming stream=" + stream);
-      }
-		}
+    cleanupExpiredStreams(incomingStreams.values(), all);
 		
 		// Cleanup expired outgoing streams.
 		// And cleanup expired upload streams.
     if (log.isDebugEnabled()) log.debug("cleanup outgoing streams");
-		ArrayList<BContentStream> ostreams = new ArrayList<BContentStream>(outgoingStreams.values());
-    for (BContentStream stream : ostreams) {
-      if (log.isDebugEnabled()) log.debug("stream=" + stream + ", expired=" + stream.isExpired());
-      if (all || stream.isExpired()) {
-        try {
-          if (log.isDebugEnabled()) log.debug("close/remove");
-          stream.close(); // removes from incomingStreams or outgoingStreams
-          outgoingStreams.remove(stream.getTargetId().getStreamId());
-        }
-        catch (Throwable e) {
-          log.debug("Failed to close stream=" + stream, e);
-        }
-      }
-      else {
-        if (log.isDebugEnabled()) log.debug("active outgoing stream=" + stream);
-      }
-    }
+    cleanupExpiredStreams(outgoingStreams.values(), all);
 		
 		if (log.isDebugEnabled()) log.debug(")cleanup");
 	}
 	
+	/**
+	 * Close expired streams.
+	 * @param streams Streams
+	 * @param all If true, all streams are closed - not only the expired streams.
+	 */
+	private void cleanupExpiredStreams(Collection<BContentStream> streams, boolean all) {
+	  streams = new ArrayList<>(streams);
+	  streams.stream().filter(s -> all || s.isExpired()).forEach(this::quietCloseStream);
+	}
+	
+	 /**
+   * Close stream, catch Exception.
+   * @param stream Stream to close
+   */
+  private void quietCloseStream(BContentStream stream) {
+    if (log.isDebugEnabled()) log.debug("close stream={}", stream.getTargetId());
+    try {
+      stream.close();
+    } catch (IOException e) {
+      if (log.isDebugEnabled()) log.debug("failed to close stream={}", stream.getTargetId(), e);
+    }
+  }
+  
 	/**
 	 * Returns the IDs of the messages.
 	 * @param inclLongPolls
@@ -378,24 +357,20 @@ public class HActiveMessages {
 
   public HActiveMessage addIncomingStream(final BTargetId targetId, final HRequestContext rctxt) throws BException {
     
-    final HActiveMessage msg = getOrCreateActiveMessage(targetId.getMessageId());
-
-    // BYPS-39: Trage Stream zuerst im Message-Objekt ein, um Fehlermeldung zu vermeiden, wenn 
-    // dieser Thread längere Zeit keine CPU-Zeit bekommt. 
-    msg.addIncomingStream(targetId.getStreamId());
+    HActiveMessage msg = getOrCreateActiveMessage(targetId.getMessageId());
 
     if (rctxt.isAsync()) {
-      addIncomingStreamAsync(targetId, rctxt);
+      addIncomingStreamAsync(msg, targetId, rctxt);
     }
     else {
-      addIncomingStreamSync(targetId, rctxt);
+      addIncomingStreamSync(msg, targetId, rctxt);
     }
     
     return msg;
   }
 
-  private void addIncomingStreamAsync(final BTargetId targetId, HRequestContext rctxt) throws BException {
-    if (log.isDebugEnabled()) log.debug("addIncomingStreamAsync(targetId=" + targetId + ", rctxt=" + rctxt);
+  private void addIncomingStreamAsync(final HActiveMessage msg, final BTargetId targetId, HRequestContext rctxt) throws BException {
+    if (log.isDebugEnabled()) log.debug("addIncomingStreamAsync(targetId={}, rctxt={}", targetId, rctxt);
 
     try {
       final HttpServletRequest request = (HttpServletRequest) (rctxt.getRequest());
@@ -434,7 +409,7 @@ public class HActiveMessages {
 
           istrm = new HIncomingSplittedStreamAsync(targetId, contentType, totalLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir) {
             public void close() throws IOException {
-              if (log.isDebugEnabled()) log.debug("close incoming stream " + targetId + "(");
+              if (log.isDebugEnabled()) log.debug("close incoming stream={} (", targetId.getStreamId());
               Long streamId = getTargetId().getStreamId();
               incomingStreams.remove(streamId);
               super.close();
@@ -442,7 +417,10 @@ public class HActiveMessages {
             }
           };
 
-          incomingStreams.put(targetId.getStreamId(), istrm);
+          // BYPS-45: Add stream to the map of all streams and to the map of the messages' streams in a synchronized block.
+          // It has to be done 'at the same time' to have a consistent state in the cleanup thread.
+          if (log.isDebugEnabled()) log.debug("put splitted stream={}", targetId.getStreamId());
+          msg.addIncomingStream(targetId.getStreamId(), istrm, incomingStreams);
         }
 
         ((HIncomingSplittedStreamAsync) istrm).addStream(partId, contentLength, isLastPart, rctxt);
@@ -452,7 +430,7 @@ public class HActiveMessages {
 
         istrm = new HIncomingStreamAsync(targetId, contentType, contentLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir, rctxt) {
           public void close() throws IOException {
-            if (log.isDebugEnabled()) log.debug("close incoming stream " + targetId + "(");
+            if (log.isDebugEnabled()) log.debug("close incoming stream={} (", targetId.getStreamId());
             Long streamId = getTargetId().getStreamId();
             incomingStreams.remove(streamId);
             super.close();
@@ -460,7 +438,9 @@ public class HActiveMessages {
           }
         };
         
-        incomingStreams.put(targetId.getStreamId(), istrm);
+        // BYPS-45: see above
+        if (log.isDebugEnabled()) log.debug("put stream={}", targetId.getStreamId());
+        msg.addIncomingStream(targetId.getStreamId(), istrm, incomingStreams);
       }
 
       synchronized(this) {
@@ -474,12 +454,12 @@ public class HActiveMessages {
     if (log.isDebugEnabled()) log.debug(")addIncomingStreamAsync");
   }
 
-  private void addIncomingStreamSync(final BTargetId targetId, final HRequestContext rctxt) throws BException {
-    if (log.isDebugEnabled()) log.debug("addIncomingStreamSync(" + targetId);
+  private void addIncomingStreamSync(final HActiveMessage msg, final BTargetId targetId, final HRequestContext rctxt) throws BException {
+    if (log.isDebugEnabled()) log.debug("addIncomingStreamSync({}", targetId);
     
     // Create or get HIncomingStream object in synchronized function.
     final HttpServletRequest request = (HttpServletRequest) (rctxt.getRequest());
-    final HIncomingStreamSync istrm = addIncomingStreamSync2(targetId, request);
+    final HIncomingStreamSync istrm = addIncomingStreamSync2(msg, targetId, request);
     
     final String partIdStr = request.getParameter("partid");
     final long partId = partIdStr != null && partIdStr.length() != 0 ? Long.parseLong(partIdStr) : 0;
@@ -495,8 +475,8 @@ public class HActiveMessages {
     if (log.isDebugEnabled()) log.debug(")addIncomingStreamSync");
   }
   
-  private HIncomingStreamSync addIncomingStreamSync2(final BTargetId targetId, HttpServletRequest request) throws BException {
-    if (log.isDebugEnabled()) log.debug("addIncomingStreamSync2(" + targetId);
+  private HIncomingStreamSync addIncomingStreamSync2(final HActiveMessage msg, final BTargetId targetId, HttpServletRequest request) throws BException {
+    if (log.isDebugEnabled()) log.debug("addIncomingStreamSync2({}", targetId);
     
     HIncomingStreamSync istrm = null;
     
@@ -530,8 +510,9 @@ public class HActiveMessages {
           }
         };
 
-        if (log.isDebugEnabled()) log.debug("put incoming stream into map, targetId=" + targetId);
-        incomingStreams.put(targetId.getStreamId(), istrm);
+        // BYPS-45: see addIncomingStreamAsync
+        if (log.isDebugEnabled()) log.debug("put incoming stream into map, targetId={}", targetId);
+        msg.addIncomingStream(targetId.getStreamId(), istrm, incomingStreams);
       }
 
       // Notify threads waiting to read this stream
@@ -543,7 +524,7 @@ public class HActiveMessages {
       throw new BException(BExceptionC.IOERROR, "Failed to add incoming stream", e);
     }
 
-    if (log.isDebugEnabled()) log.debug(")addIncomingStreamSync2=" + istrm);
+    if (log.isDebugEnabled()) log.debug(")addIncomingStreamSync2={}", istrm);
     return istrm;
   }
 

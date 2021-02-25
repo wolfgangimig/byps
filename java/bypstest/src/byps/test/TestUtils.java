@@ -65,7 +65,7 @@ public class TestUtils {
    * Test only one short stream.
    * See {@link TestUtilsHttp#makeTestStreams()}
    */
-	public static boolean TEST_ONE_SHORT_STREAM = true;
+	public static boolean TEST_ONE_SHORT_STREAM = false;
 	
 	public static BTransport createTransport() {
 		return createTransport(BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_CURRENT, 0);

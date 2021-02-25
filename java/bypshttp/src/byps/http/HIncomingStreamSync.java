@@ -103,10 +103,11 @@ public class HIncomingStreamSync extends BContentStream {
 		return ret;
 	}
 	
-	protected synchronized void assignBytes(byte[] buf) {
+	protected synchronized void assignBytes(byte[] buf, int len) {
 	  if (log.isDebugEnabled()) log.debug("assignBytes({}", buf != null ? Integer.toString(buf.length) : "null");
-		this.firstBytes = buf;
-		this.bytesSource = FIRST_BYTES;
+		this.secondBytes = buf;
+		this.secondBytesWritePos = len; // used in getContentLength() to determine the stream length
+		this.bytesSource = SECOND_BYTES;
 		this.readPos = 0;
 		this.writeClosed = true;
 		if (log.isDebugEnabled()) log.debug(")assignBytes");
@@ -143,6 +144,7 @@ public class HIncomingStreamSync extends BContentStream {
 		writeClose();
 
     setContentLength(sum);
+    
     if (log.isDebugEnabled()) log.debug(")assignStream");
 	}
 	
@@ -293,8 +295,45 @@ public class HIncomingStreamSync extends BContentStream {
 	
 	public BContentStream cloneStream() throws IOException {
 	  if (log.isDebugEnabled()) log.debug("cloneStream(");
+	  
 	  HIncomingStreamSync is = new HIncomingStreamSync(this, lifetimeMillis, tempDir);
-    is.assignStream(this);
+	  
+    switch (bytesSource) {
+      case FIRST_BYTES: 
+        is.assignBytes(firstBytes, firstBytes.length);
+        break;
+      case SECOND_BYTES: 
+        is.assignBytes(secondBytes, secondBytesWritePos);
+        break;
+      case FILE_BYTES: 
+        is.assignFile(file);
+        break;
+      case NO_BYTES:
+      default:
+        is.writeClose();
+        break;
+    }
+	  
+//    is.assignStream(this);
+//    
+//    // Reset this stream to the start position.
+//    // BYPS-43
+//    if (bytesSource == FILE_BYTES) {
+//      if (fis != null) {
+//        try {
+//          fis.close();
+//        }
+//        catch (IOException e) {
+//          // ignored
+//        }
+//        fis = null;
+//      }
+//    }
+//    else {
+//      markPos = 0;
+//      readPos = 0;
+//    }
+    
     if (log.isDebugEnabled()) log.debug(")cloneStream={}", is);
     return is;
 	}

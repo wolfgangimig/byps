@@ -185,6 +185,26 @@ public class TestRemoteStreams {
     log.info(")testRemoteStreamsOneStreamChunked");
   }
 
+  @Test
+  public void testRemoteStreamsCleanup() throws InterruptedException, IOException {
+    log.info("testRemoteStreamsCleanup(");
+    
+    Map<Integer, InputStream> streams = new TreeMap<Integer, InputStream>();
+    for (int i = 0; i < 3; i++) {
+      byte[] bytes = new byte[1];
+      ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+      InputStream istrm = new BContentStreamWrapper(bis, "application/octet-stream", bytes.length);
+      streams.put(i, istrm);
+    }
+    streams.put(999, null);
+    
+    remote.setImages(streams, -1);
+
+    TestUtils.checkTempDirEmpty(client);
+
+    log.info(")testRemoteStreamsCleanup");
+  }
+
   /**
    * Send and receive many streams.
    * 
@@ -656,10 +676,17 @@ public class TestRemoteStreams {
     for (int i = 0; i < streams.size(); i++) {
     
       InputStream istrm = streams.get(i);
+      log.info("stream[{}]={}", i, istrm);
       
+      // Send stream to server. Server will make a temp copy in memory or in file system.
+      log.info("setImage");
       remote.setImage(istrm);
       
+      // Get stream from server.
+      log.info("getImage");
       InputStream strmFromServer = remote.getImage();
+      
+      // Wrap stream to catch when it is opened.
       BContentStream streamFailOpen = new BContentStreamWrapper((BContentStream)strmFromServer, 0L) {
         @Override
         protected InputStream openStream() throws IOException {
@@ -668,8 +695,12 @@ public class TestRemoteStreams {
         }
       };
       
+      // Handle the stream back to the server. 
+      // The stream must not be opened here because it is not transferred.
+      log.info("setImage");
       remote.setImage(streamFailOpen);
       
+      // Read stream from server and check content.
       for (int j = 0; j < 2; j++) {
         ArrayList<InputStream> estreams = TestUtilsHttp.makeTestStreams();
         InputStream estrm = estreams.get(i);
@@ -677,6 +708,7 @@ public class TestRemoteStreams {
         TestUtils.assertEquals(log, "stream[" + i + "]=" + estrm, estrm, rstrm);
       }
       
+      // Release stream in server and remove temp file.
       remote.setImage(null);
       TestUtils.checkTempDirEmpty(client);
     }
@@ -792,8 +824,10 @@ public class TestRemoteStreams {
     final int NB_OF_PARALLEL_DOWNLOADS = 10;
     try {
       for (int i = 0; i < NB_OF_DOWNLOADS/NB_OF_PARALLEL_DOWNLOADS; i++) {
+        final int downloadIndex = i;
         CompletableFuture[] completableFutures = new CompletableFuture[NB_OF_PARALLEL_DOWNLOADS];
         for (int j = 0; j < completableFutures.length; j++) {
+          final int parallelIndex = j;
           completableFutures[j] = CompletableFuture.supplyAsync(new Supplier<Object>() {
             public Object get() {
               try {
@@ -802,6 +836,7 @@ public class TestRemoteStreams {
                 istrmR.close();
               }
               catch (Exception e) {
+                log.error("Failed to download i={}, j={}", downloadIndex, parallelIndex, e);
                 throw new IllegalStateException(e);
               }
               return true;

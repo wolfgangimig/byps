@@ -141,10 +141,19 @@ public class HHttpPutStreamHelper {
   }
 
   private long computeNbOfParts(long totalLength) {
-    long nbOfParts = totalLength / MAX_STREAM_PART_SIZE;
-    if ((totalLength % MAX_STREAM_PART_SIZE) != 0) {
-      nbOfParts++;
+    
+    // Return at least 1 part even if the content to be written is empty.
+    // Otherwise an exception  [BYPS:408][Wait for stream=... timed out... is thrown.
+    // BYPS-43
+    long nbOfParts = 1;
+    
+    if (totalLength != 0) {
+      nbOfParts = totalLength / MAX_STREAM_PART_SIZE;
+      if ((totalLength % MAX_STREAM_PART_SIZE) != 0) {
+        nbOfParts++;
+      }
     }
+    
     return nbOfParts;
   }
 

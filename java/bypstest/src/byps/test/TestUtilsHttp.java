@@ -130,7 +130,7 @@ public class TestUtilsHttp {
 		log.info("makeTestStreams(");
 		ArrayList<InputStream> ret = new ArrayList<InputStream>();
 		if (TestUtils.TEST_ONE_SHORT_STREAM) {
-	    ret.add(new TestUtils.MyContentStream(11, true));		  
+	    ret.add(new TestUtils.MyContentStream(11, false));		  
 		}
 		else {
       ret.add(new TestUtils.MyContentStream(HConstants.INCOMING_STREAM_BUFFER+1, true));
