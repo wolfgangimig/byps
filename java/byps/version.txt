@@ -1,10 +1,11 @@
 BYPS Version History
 
-8.45
+
+11.45
 
 - BYPS-45: Content-Length=Long.MAX has to be interpreted as unknown stream size. 
 
-8.43
+11.44
 
 - BYPS-43: Exchange stream several times between server and client failed.
   Technically, HIncomingStreamSync did not reset the stream in function cloneStream.
