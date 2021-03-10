@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 import javax.servlet.AsyncEvent;
 import javax.servlet.http.HttpServletRequest;
@@ -378,12 +377,20 @@ public class HActiveMessages {
       final String contentDisposition = request.getHeader("Content-Disposition");
       final String contentLengthStr = request.getHeader("Content-Length");
       final long contentLength = contentLengthStr != null && contentLengthStr.length() != 0 ? Long.parseLong(contentLengthStr) : -1L;
-      final String totalLengthStr = request.getParameter("total");
-      final long totalLength = totalLengthStr != null && totalLengthStr.length() != 0 ? Long.parseLong(totalLengthStr) : -1L;
       final String partIdStr = request.getParameter("partid");
       final long partId = partIdStr != null && partIdStr.length() != 0 ? Long.parseLong(partIdStr) : -1L;
       final String lastPartStr = request.getParameter("last");
       final boolean isLastPart = lastPartStr != null && lastPartStr.length() != 0 ? (Integer.valueOf(lastPartStr) != 0) : true;
+      
+      // BYPS-47: A value of Long.MAX for totalLength also means that the stream size is unknown.
+      final String totalLengthStr = request.getParameter("total");
+      long totalLength = -1L;
+      if (totalLengthStr != null && !totalLengthStr.isEmpty()) {
+        totalLength = Long.parseLong(totalLengthStr);
+        if (totalLength == Long.MAX_VALUE) {
+          totalLength = -1L;
+        }
+      }
 
       HAsyncErrorListener alsn = new HAsyncErrorListener() {
         @Override
