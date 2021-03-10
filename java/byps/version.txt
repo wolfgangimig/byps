@@ -1,5 +1,9 @@
 BYPS Version History
 
+8.45
+
+- BYPS-45: Content-Length=Long.MAX has to be interpreted as unknown stream size. 
+
 8.43
 
 - BYPS-43: Exchange stream several times between server and client failed.
