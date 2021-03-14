@@ -193,8 +193,15 @@ public abstract class BContentStream extends InputStream {
    * @see {@link #materialize()}
    */
   public static BContentStream materialize(InputStream is) throws IOException {
+    if (is == null) return null;
     if (!(is instanceof BContentStream)) throw new IOException("InputStream cannot be materialized.");
-    return ((BContentStream)is).materialize();
+    try {
+      return ((BContentStream)is).materialize();
+    }
+    finally {
+      // BYPS-48: close stream to release PUT request.
+      is.close();
+    }
   }
   
 	/**

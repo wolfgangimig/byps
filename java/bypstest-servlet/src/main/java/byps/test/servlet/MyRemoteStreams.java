@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -26,6 +27,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	private volatile BContentStream imageStream;
 	private volatile Map<Integer, ByteBuffer> mapStreamBytes;
 	private volatile BException lastException;
+	private static final Map<Long, InputStream> sharedStreams = Collections.synchronizedMap(new HashMap<>());
 	
 	void done() {
 		closeImageStream();
@@ -237,5 +239,20 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
       throw new BException(BExceptionC.INTERNAL, e.toString());
     }
 	  return stream;
+	}
+	
+	@Override
+	public InputStream getSharedStream(long id) throws RemoteException {
+	  return sharedStreams.remove(id);
+	}
+	
+	@Override
+	public void putSharedStream(long id, InputStream stream) throws RemoteException {
+	  try {
+	    stream = BContentStream.materialize(stream);
+      sharedStreams.put(id, stream);
+    } catch (IOException e) {
+      throw new RemoteException(e.toString());
+    }
 	}
 }

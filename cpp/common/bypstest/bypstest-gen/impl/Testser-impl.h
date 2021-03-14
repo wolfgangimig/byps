@@ -6648,6 +6648,30 @@ class BRequest_RemoteStreams_getImages : public BMethodRequest {
 
 // checkpoint byps.gen.cpp.GenApiClass:652
 //-------------------------------------------------
+// BRequest_RemoteStreams_getSharedStream
+// typeId=1652400477
+
+namespace byps { namespace test { namespace api { namespace remote { 
+
+using namespace ::byps;
+
+class BRequest_RemoteStreams_getSharedStream : public BMethodRequest {
+	public: int64_t id;
+	
+	// checkpoint byps.gen.cpp.GenApiClass:488
+	public: BRequest_RemoteStreams_getSharedStream();
+	// checkpoint byps.gen.cpp.GenApiClass:535
+	public: BRequest_RemoteStreams_getSharedStream(int64_t id);	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	// checkpoint byps.gen.cpp.GenApiClass:870
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:652
+//-------------------------------------------------
 // BRequest_RemoteStreams_getStreamDeferedProperies
 // typeId=1205766796
 
@@ -6726,6 +6750,31 @@ class BRequest_RemoteStreams_getVideoCheckSupportByteRange : public BMethodReque
 	// checkpoint byps.gen.cpp.GenApiClass:488
 	public: BRequest_RemoteStreams_getVideoCheckSupportByteRange();
 	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	// checkpoint byps.gen.cpp.GenApiClass:870
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:652
+//-------------------------------------------------
+// BRequest_RemoteStreams_putSharedStream
+// typeId=468339492
+
+namespace byps { namespace test { namespace api { namespace remote { 
+
+using namespace ::byps;
+
+class BRequest_RemoteStreams_putSharedStream : public BMethodRequest {
+	public: int64_t id;
+	public: PContentStream stream;
+	
+	// checkpoint byps.gen.cpp.GenApiClass:488
+	public: BRequest_RemoteStreams_putSharedStream();
+	// checkpoint byps.gen.cpp.GenApiClass:535
+	public: BRequest_RemoteStreams_putSharedStream(int64_t id, const PContentStream& stream);	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	// checkpoint byps.gen.cpp.GenApiClass:870
 	public: void serialize(BIO& ar, const BVERSION version);
@@ -8062,6 +8111,8 @@ void BSerializer_753392826(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* 
 void BSerializer_61677379(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteStreams_getImages
 void BSerializer_1911998634(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteStreams_getSharedStream
+void BSerializer_1652400477(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteStreams_getStreamDeferedProperies
 void BSerializer_1205766796(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteStreams_getStreamDoNotClone
@@ -8070,6 +8121,8 @@ void BSerializer_692369677(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* 
 void BSerializer_818823403(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteStreams_getVideoCheckSupportByteRange
 void BSerializer_1006919505(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemoteStreams_putSharedStream
+void BSerializer_468339492(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteStreams_setImage
 void BSerializer_622789839(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemoteStreams_setImages

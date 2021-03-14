@@ -1,4 +1,7 @@
 package byps.test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -9,11 +12,15 @@ import java.io.InterruptedIOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
@@ -716,6 +723,106 @@ public class TestRemoteStreams {
     log.info(")testHandoverStream");
   }
 
+  /**
+   * Handover streams from one client to another.
+   * BYPS-48
+   * @throws IOException 
+   * @throws InterruptedException 
+   */
+  @Test
+  public void testHandoverStreamBetweenClients() throws IOException, InterruptedException {
+    log.info("testHandoverStreamBetweenClients(");
+    
+    int nbOfThreads = 100;
+    CountDownLatch cdl = new CountDownLatch(nbOfThreads);
+    List<String> errors = Collections.synchronizedList(new ArrayList<>());
+    
+    // Create second client.
+    BClient_Testser client2 = TestUtilsHttp.createClient();
+    RemoteStreams remote2 = client2.getRemoteStreams();
+    
+    // Handover streams between clients in several parallel threads.
+    ThreadPoolExecutor tpool = (ThreadPoolExecutor)Executors.newFixedThreadPool(nbOfThreads);
+    for (int threadId = 0; threadId < nbOfThreads; threadId++) {
+      long threadIdL = threadId + 1L;
+      tpool.execute(() ->  handoverSharedStreams(remote2, threadIdL, cdl, errors));
+    }
+    
+    // Wait for threads.
+    boolean timeout = !cdl.await(2, TimeUnit.MINUTES);
+    log.info("timeout={}, cdl={}", timeout, cdl.getCount());
+    
+    tpool.shutdown();
+    
+    errors.forEach(e -> log.error("Error {}", e));
+    assertEquals("errors", 0, errors.size());
+    
+    assertTrue("timeout", !timeout);
+    
+    log.info(")testHandoverStreamBetweenClients");
+  }
+  
+  /**
+   * Create streams for {@link #testHandoverStreamBetweenClients()}.
+   * @return Streams
+   */
+  private ArrayList<InputStream> makeHandoverTestStreams() {
+    ArrayList<InputStream> ret = new ArrayList<>();
+    ret.add(new TestUtils.MyContentStream(1001, true));
+    ret.add(new TestUtils.MyContentStream(1002, true));
+    ret.add(new TestUtils.MyContentStream(1003, true));
+    ret.add(new TestUtils.MyContentStream(11, true));
+    ret.add(new TestUtils.MyContentStream(0, true));
+    ret.add(new TestUtils.MyContentStream(1, true));
+    return ret;
+  }
+
+  /**
+   * Handover streams between clients.
+   * @param remote2 Interface of second client
+   * @param threadId Thread-ID to create stream IDs
+   * @param cdl Counter for running threads
+   * @param errors Out parameter to return errors
+   */
+  private void handoverSharedStreams(RemoteStreams remote2, long threadId, CountDownLatch cdl, List<String> errors) {
+    try {
+      ArrayList<InputStream> streams = makeHandoverTestStreams();
+      for (int i = 0; i < streams.size(); i++) {
+        long streamId = threadId * 1000 + i;
+        InputStream istream = streams.get(i);
+        log.info("stream[{}]={}", i, istream);
+        handoverSharedStream(remote2, streamId, istream, i);
+      }
+    }
+    catch (Throwable e) {
+      log.error("handoverSharedStreams failed.", e);
+      errors.add(e.toString());
+    }
+    finally {
+      cdl.countDown();
+    }
+  }
+
+  /**
+   * Handover stream between clients.
+   * @param remote2 Interface of second client
+   * @param streamId Stream ID for internal mapping
+   * @param istream Stream
+   * @param index Index of stream in the list of streams
+   * @throws IOException
+   */
+  private void handoverSharedStream(RemoteStreams remote2, long streamId, InputStream istream, int index)
+      throws IOException {
+    InputStream estrm = makeHandoverTestStreams().get(index);
+    
+    log.info("setImage");
+    remote.putSharedStream(streamId, istream);
+    
+    // Check content
+    InputStream rstrm = remote2.getSharedStream(streamId);
+    TestUtils.assertEquals(log, "stream[" + index + "]=" + estrm, estrm, rstrm);
+  }
+  
   /**
    * Test with a stream class which properties are unavailable until the stream is opened.
    * @throws IOException 

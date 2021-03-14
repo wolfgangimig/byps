@@ -161,5 +161,36 @@ public class BStub_RemoteStreams extends BStub implements RemoteStreamsAsync, ja
 		transport.sendMethod(req, asyncResult);
 	}
 	
+	// checkpoint byps.gen.j.PrintContext:396
+	public void putSharedStream(long id, java.io.InputStream stream) throws RemoteException {
+		// checkpoint byps.gen.j.GenRemoteStub:46
+		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
+		putSharedStream(id, stream, asyncResult);
+		asyncResult.getResult();		
+	}
+	// checkpoint byps.gen.j.PrintContext:440
+	public void putSharedStream(long id, java.io.InputStream stream, final BAsyncResult<Object> asyncResult) {
+		// checkpoint byps.gen.j.GenRemoteStub:113
+		BRequest_RemoteStreams_putSharedStream req = new BRequest_RemoteStreams_putSharedStream();		
+		req.id = id;
+		req.stream = stream;
+		transport.sendMethod(req, asyncResult);
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:396
+	public java.io.InputStream getSharedStream(long id) throws RemoteException {
+		// checkpoint byps.gen.j.GenRemoteStub:46
+		final BSyncResult<java.io.InputStream> asyncResult = new BSyncResult<java.io.InputStream>();		
+		getSharedStream(id, asyncResult);
+		return asyncResult.getResult();		
+	}
+	// checkpoint byps.gen.j.PrintContext:440
+	public void getSharedStream(long id, final BAsyncResult<java.io.InputStream> asyncResult) {
+		// checkpoint byps.gen.j.GenRemoteStub:113
+		BRequest_RemoteStreams_getSharedStream req = new BRequest_RemoteStreams_getSharedStream();		
+		req.id = id;
+		transport.sendMethod(req, asyncResult);
+	}
+	
 	
 }

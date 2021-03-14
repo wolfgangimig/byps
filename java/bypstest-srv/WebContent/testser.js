@@ -3152,6 +3152,34 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getStreamDoNotClone = functio
 	return ret;
 };
 
+// checkpoint byps.gen.js.PrintContext:133
+/**
+ * @param id Stream ID
+ * @param stream Stream
+ * Store a stream reference shared by several clients.
+ * @throws RemoteException
+*/
+byps.test.api.remote.BStub_RemoteStreams.prototype.putSharedStream = function(id, stream, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 468339492, id : id, stream : stream };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
+// checkpoint byps.gen.js.PrintContext:133
+/**
+ * @param id Stream ID
+ * @return Stream
+ * Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.
+ * @throws RemoteException
+*/
+byps.test.api.remote.BStub_RemoteStreams.prototype.getSharedStream = function(id, __byps__asyncResult) {
+	// checkpoint byps.gen.js.GenRemoteStub:40
+	var req =  { _typeId : 1652400477, id : id };
+	var ret = this.transport.sendMethod(req, __byps__asyncResult);
+	return ret;
+};
+
 /**
  * @BSessionParamType byps.test.api.auth.SessionInfo
  * This interface is an example for using the authentication mechanism.
@@ -5376,6 +5404,24 @@ byps.test.api.BServer_Testser = function(transport) {
 				534004416, // _typeId of result class
 				function(remote, methodObj, methodResult) {
 					remote.async_getStreamDoNotClone(methodResult);
+				}
+			],
+			
+			// Method putSharedStream
+			468339492 : [ // _typeId of request class
+				1043578866, // _typeId of remote interface
+				534004412, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_putSharedStream(methodObj.id, methodObj.stream, methodResult);
+				}
+			],
+			
+			// Method getSharedStream
+			1652400477 : [ // _typeId of request class
+				1043578866, // _typeId of remote interface
+				534004416, // _typeId of result class
+				function(remote, methodObj, methodResult) {
+					remote.async_getSharedStream(methodObj.id, methodResult);
 				}
 			],
 		
@@ -10384,6 +10430,19 @@ byps.test.api.BRegistry_Testser = function() {
 			false
 		),
 		
+		// byps.test.api.remote.BRequest_RemoteStreams_getSharedStream
+		1652400477 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:146
+			// names of persistent elements
+			{
+				"id":6 // long
+			},
+			// checkpoint byps.gen.js.GenRegistry:146
+			null,
+			// inlineInstance
+			false
+		),
+		
 		// byps.test.api.remote.BRequest_RemoteStreams_getStreamDeferedProperies
 		1205766796 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:146
@@ -10418,6 +10477,20 @@ byps.test.api.BRegistry_Testser = function() {
 		1006919505 : new byps.BSerializer(
 			// checkpoint byps.gen.js.GenRegistry:146
 			null,
+			// checkpoint byps.gen.js.GenRegistry:146
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.remote.BRequest_RemoteStreams_putSharedStream
+		468339492 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:146
+			// names of persistent elements
+			{
+				"id":6, // long
+				"stream":15 // java.io.InputStream
+			},
 			// checkpoint byps.gen.js.GenRegistry:146
 			null,
 			// inlineInstance

@@ -314,26 +314,6 @@ public class HIncomingStreamSync extends BContentStream {
         break;
     }
 	  
-//    is.assignStream(this);
-//    
-//    // Reset this stream to the start position.
-//    // BYPS-43
-//    if (bytesSource == FILE_BYTES) {
-//      if (fis != null) {
-//        try {
-//          fis.close();
-//        }
-//        catch (IOException e) {
-//          // ignored
-//        }
-//        fis = null;
-//      }
-//    }
-//    else {
-//      markPos = 0;
-//      readPos = 0;
-//    }
-    
     if (log.isDebugEnabled()) log.debug(")cloneStream={}", is);
     return is;
 	}
