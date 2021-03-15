@@ -199,7 +199,7 @@ public abstract class BContentStream extends InputStream {
       return ((BContentStream)is).materialize();
     }
     finally {
-      // BYPS-48: close stream to release PUT request.
+      // BYPS-48: close stream to ensure that a PUT request is released.
       is.close();
     }
   }

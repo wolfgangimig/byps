@@ -81,7 +81,9 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 			  if (nextPart) currentPartId++;
 			  if (currentPartId < maxPartId) {
   				currentStreamPart = streamParts.get(currentPartId);
-  				if (log.isDebugEnabled()) log.debug("currentStreamPart={}, currentPartId={}, maxPartId={}", currentStreamPart, currentPartId, maxPartId);
+  				if (log.isDebugEnabled()) { log.debug("currentStreamPart={}, currentPartId={}, maxPartId={}", currentStreamPart, currentPartId, maxPartId); }
+  				
+  				// Wait for stream part.
   		    while (currentStreamPart == null) {
   					try {
   					  if (log.isDebugEnabled()) log.debug("wait(timeout={}", timeout);
@@ -115,7 +117,7 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 		
 		final long totalLength = getContentLength();
 		if (log.isDebugEnabled()) log.debug("readPos={}, totalLength={}", readPos, totalLength);
-		
+
 		if (totalLength == -1 || readPos < totalLength) {
 			
 		  // Get current stream part.
@@ -127,6 +129,7 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 				if (log.isDebugEnabled()) log.debug("streamPart.read()={}", ret);
 				while (ret == -1) {
 				  
+				  // Closing the stream also releases the PUT request that submits the part.
 				  if (log.isDebugEnabled()) log.debug("streamPart.close()");
 				  streamPart.close();
 				  
@@ -140,6 +143,14 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 				}
 			}
 		}
+		else if (readPos == totalLength) {
+      // BYPS-48: if readPos == totalLength, the current stream part should be closed.
+      HIncomingStreamAsync streamPart = getCurrentStreamPart(false);
+      if (log.isDebugEnabled()) log.debug("current streamPart={}", streamPart);
+      if (streamPart != null) {
+        streamPart.close();
+      }
+    }
 		
 		if (ret != -1) {
 			readPos += ret;

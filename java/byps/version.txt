@@ -1,5 +1,10 @@
 BYPS Version History
 
+8.46
+
+- BYPS-48: Make sure to close the stream in BContentStream.materialize to release the PUT request after 
+  all bytes have been read. 
+
 8.45
 
 - BYPS-47: Content-Length=Long.MAX has to be interpreted as unknown stream size. 
