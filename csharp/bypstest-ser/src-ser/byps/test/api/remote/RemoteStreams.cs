@@ -87,6 +87,26 @@ namespace byps.test.api.remote
 		/// </summary>
 		Task<System.IO.Stream> GetStreamDoNotCloneAsync();
 		
+		/// <summary>
+		/// Store a stream reference shared by several clients.
+		/// </summary>
+		void PutSharedStream(long id, System.IO.Stream stream);
+		void PutSharedStream(long id, System.IO.Stream stream, BAsyncResult<Object> asyncResult) ;
+		/// <summary>
+		/// Store a stream reference shared by several clients.
+		/// </summary>
+		Task PutSharedStreamAsync(long id, System.IO.Stream stream);
+		
+		/// <summary>
+		/// Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.
+		/// </summary>
+		System.IO.Stream GetSharedStream(long id);
+		void GetSharedStream(long id, BAsyncResult<System.IO.Stream> asyncResult) ;
+		/// <summary>
+		/// Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.
+		/// </summary>
+		Task<System.IO.Stream> GetSharedStreamAsync(long id);
+		
 		
 	}
 }  // end namespace

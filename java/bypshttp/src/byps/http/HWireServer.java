@@ -152,6 +152,15 @@ public class HWireServer extends BWire {
       // Reset stream IDs. 
       // Otherwise the stream would not be sent, see BOutput.createStreamRequest.
       ret.setTargetId(BTargetId.ZERO);
+      
+      // BYPS-48: Close stream to release PUT request.
+      try {
+        stream.close();
+      }
+      catch (IOException ex) {
+        // Stream was materialized and an exception in close() should not break further execution.
+        log.debug("Failed to close stream after materialized.", ex);
+      }
 
       if (log.isDebugEnabled()) log.debug(")cloneInputStream=" + ret);
       return ret;

@@ -9,19 +9,48 @@ import java.io.InputStream;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.function.UnaryOperator;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import byps.BAsyncContentStream;
+import byps.RemoteException;
+import byps.test.api.BClient_Testser;
+import byps.test.api.remote.RemoteStreams;
 
+/**
+ * Test class for {@link BAsyncContentStream}.
+ */
 public class TestBAsyncContentStream {
 
-  /**
-   * Test class for {@link BAsyncContentStream}.
-   */
   private static final Logger log = LoggerFactory.getLogger(TestBAsyncContentStream.class);
+
+  BClient_Testser client;
+  RemoteStreams remote;
+  ExecutorService threadPool = Executors.newFixedThreadPool(1);
+  
+  @Before
+  public void setUp() throws RemoteException {
+    client = TestUtilsHttp.createClient();
+    TestUtils.purgeServerTempDir(client);
+    remote = client.getRemoteStreams();
+    
+    // it may take too much time to start the first thread => warm up the thread
+    // pool
+    threadPool.execute(() -> log.info("warm up thread"));
+  }
+
+  @After
+  public void tearDown() {
+    if (client != null) {
+      client.done();
+    }
+    threadPool.shutdown();
+  }
 
   /**
    * This test ensures that the provided timeouts are met and the stream does not
@@ -29,22 +58,46 @@ public class TestBAsyncContentStream {
    */
   @Test
   public void testDelayedStream() throws IOException {
-    // it may take too much time to start the first thread => warm up the thread
-    // pool
-    ExecutorService threadPool = Executors.newFixedThreadPool(1);
-    threadPool.execute(() -> log.info("warm up thread"));
+    UnaryOperator<InputStream> sendReceive = stream -> stream;
+    internalTestDelayedStreams(sendReceive);
+  }
 
+  /**
+   * Check sending asynchronous streams to server.
+   * BYPS-48 
+   * @throws IOException
+   */
+  @Test
+  public void testPutDelayedStream() throws IOException {
+    UnaryOperator<InputStream> sendReceive = stream -> {
+      try {
+        remote.setImage(stream);
+        return remote.getImage();
+      }
+      catch (Exception e) {
+        throw new IllegalStateException(e);
+      }
+    };
+    internalTestDelayedStreams(sendReceive);
+  } 
+  
+  /**
+   * Execute several cases that uses BAsyncContentStream.
+   * @param sendReceive The internally generated async stream is passed to this function before it is read.
+   * @throws IOException
+   */
+  private void internalTestDelayedStreams(UnaryOperator<InputStream> sendReceive) throws IOException {
     // produce data faster than consuming it
-    testDelayedStream(50, 30, 2000, 500, threadPool);
+    testDelayedStream(50, 30, 2000, 500, sendReceive, threadPool);
     // produce data at the same rate as consuming it
-    testDelayedStream(10, 10, 2000, 500, threadPool);
+    testDelayedStream(10, 10, 2000, 500, sendReceive, threadPool);
     // produce data way faster than consuming it
-    testDelayedStream(100, 10, 2000, 500, threadPool);
+    testDelayedStream(100, 10, 2000, 500, sendReceive, threadPool);
     // produce data way slower than consuming it
-    testDelayedStream(10, 100, 2000, 500, threadPool);
+    testDelayedStream(10, 100, 2000, 500, sendReceive, threadPool);
     // use a more conventional buffer size so the total amount of data is not a
     // whole-numer multiple of the buffer size
-    testDelayedStream(10, 10, 2000, 1024, threadPool);
+    testDelayedStream(10, 10, 2000, 1024, sendReceive, threadPool);
   }
 
   /**
@@ -61,9 +114,13 @@ public class TestBAsyncContentStream {
    * @param packageSize
    *          Amount of data the inner InputStream returns for each call of
    *          read(...).
+   * @param sendReceive 
+   *          This function is called before the BAsyncContentStream is read.
    * @throws IOException
    */
-  void testDelayedStream(int readTimeout, int writeTimeout, int totalBytes, int packageSize, ExecutorService threadPool)
+  void testDelayedStream(int readTimeout, int writeTimeout, int totalBytes, int packageSize, 
+      UnaryOperator<InputStream> sendReceive,
+      ExecutorService threadPool)
       throws IOException {
     // generate test data
     byte[] bytes = new byte[totalBytes];
@@ -75,7 +132,10 @@ public class TestBAsyncContentStream {
     // test the BAsyncContentStream
     try (BAsyncContentStream testInputStream = new BAsyncContentStream(dummyInputStream, "", -1, readTimeout,
         TimeUnit.MILLISECONDS, 1024, threadPool)) {
-      byte[] result = readAllBytes(testInputStream, readTimeout);
+      
+      InputStream inputStreamR = sendReceive.apply(testInputStream);
+      
+      byte[] result = readAllBytes(inputStreamR, readTimeout);
       // ensure that we read the data as we expected it
       assertArrayEquals(bytes, result);
     }

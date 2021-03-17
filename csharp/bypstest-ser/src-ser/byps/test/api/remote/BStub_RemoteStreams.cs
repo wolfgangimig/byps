@@ -181,6 +181,44 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
+		public virtual void PutSharedStream(long id, System.IO.Stream stream) {
+			BSyncResult<Object> asyncResult = new BSyncResult<Object>();			
+			PutSharedStream(id, stream, BAsyncResultHelper.ToDelegate<Object>(asyncResult));
+			asyncResult.GetResult();			
+		}
+		public virtual void PutSharedStream(long id, System.IO.Stream stream, BAsyncResult<Object> asyncResult) {
+			BRequest_RemoteStreams_putSharedStream req = new BRequest_RemoteStreams_putSharedStream();			
+			req.idValue = id;
+			req.streamValue = stream;
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task PutSharedStreamAsync(long id, System.IO.Stream stream){
+			BRequest_RemoteStreams_putSharedStream req = new BRequest_RemoteStreams_putSharedStream();			
+			req.idValue = id;
+			req.streamValue = stream;
+			Task<Object> task = Task<Object>.Factory.FromAsync(transport.BeginSend<Object>, transport.EndSend<Object>, req, null);
+			await task;
+		}
+		
+		public virtual System.IO.Stream GetSharedStream(long id) {
+			BSyncResult<System.IO.Stream> asyncResult = new BSyncResult<System.IO.Stream>();			
+			GetSharedStream(id, BAsyncResultHelper.ToDelegate<System.IO.Stream>(asyncResult));
+			return asyncResult.GetResult();			
+		}
+		public virtual void GetSharedStream(long id, BAsyncResult<System.IO.Stream> asyncResult) {
+			BRequest_RemoteStreams_getSharedStream req = new BRequest_RemoteStreams_getSharedStream();			
+			req.idValue = id;
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task<System.IO.Stream> GetSharedStreamAsync(long id){
+			BRequest_RemoteStreams_getSharedStream req = new BRequest_RemoteStreams_getSharedStream();			
+			req.idValue = id;
+			Task<System.IO.Stream> task = Task<System.IO.Stream>.Factory.FromAsync(transport.BeginSend<System.IO.Stream>, transport.EndSend<System.IO.Stream>, req, null);
+			return await task;
+		}
+		
 		
 	}
 }

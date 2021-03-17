@@ -50,4 +50,22 @@ public interface RemoteStreams extends BRemote {
 	 * @throws RemoteException
 	 */
 	public InputStream getStreamDoNotClone() throws RemoteException;
+	
+	/**
+	 * Store a stream reference shared by several clients.
+	 * BYPS-48
+	 * @param id Stream ID
+	 * @param stream Stream
+	 * @throws RemoteException
+	 */
+	public void putSharedStream(long id, InputStream stream) throws RemoteException;
+	
+	/**
+	 * Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.
+	 * BYPS-48
+	 * @param id Stream ID
+	 * @return Stream
+	 * @throws RemoteException
+	 */
+	public InputStream getSharedStream(long id) throws RemoteException;
 }

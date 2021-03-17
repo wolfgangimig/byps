@@ -1,5 +1,9 @@
 BYPS Version History
 
+11.46
+
+- BYPS-48: Make sure to close the stream in BContentStream.materialize to release the PUT request after 
+  all bytes have been read. 
 
 11.45
 

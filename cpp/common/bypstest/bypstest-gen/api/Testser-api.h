@@ -3669,6 +3669,18 @@ class RemoteStreams : public virtual BRemote {
 	public: virtual PContentStream getStreamDoNotClone()  = 0;
 	public: virtual void getStreamDoNotClone(::std::function< void (PContentStream, BException ex) > asyncResult)  = 0;
 	
+	/// <summary>
+	/// Store a stream reference shared by several clients.
+	/// </summary>
+	public: virtual void putSharedStream(int64_t id, const PContentStream& stream)  = 0;
+	public: virtual void putSharedStream(int64_t id, const PContentStream& stream, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
+	
+	/// <summary>
+	/// Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.
+	/// </summary>
+	public: virtual PContentStream getSharedStream(int64_t id)  = 0;
+	public: virtual void getSharedStream(int64_t id, ::std::function< void (PContentStream, BException ex) > asyncResult)  = 0;
+	
 	
 };
 
@@ -3708,6 +3720,10 @@ class BStub_RemoteStreams : public BStub, public virtual RemoteStreams {
 	public: virtual void setStreamDoNotMaterialize(const PContentStream& stream, ::std::function< void (bool, BException ex) > asyncResult) ;
 	public: virtual PContentStream getStreamDoNotClone() ;
 	public: virtual void getStreamDoNotClone(::std::function< void (PContentStream, BException ex) > asyncResult) ;
+	public: virtual void putSharedStream(int64_t id, const PContentStream& stream) ;
+	public: virtual void putSharedStream(int64_t id, const PContentStream& stream, ::std::function< void (bool, BException ex) > asyncResult) ;
+	public: virtual PContentStream getSharedStream(int64_t id) ;
+	public: virtual void getSharedStream(int64_t id, ::std::function< void (PContentStream, BException ex) > asyncResult) ;
 	
 };
 }}}}

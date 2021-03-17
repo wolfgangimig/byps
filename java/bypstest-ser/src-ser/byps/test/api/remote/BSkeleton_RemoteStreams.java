@@ -158,5 +158,33 @@ public class BSkeleton_RemoteStreams extends BSkeleton implements RemoteStreamsA
 		}
 	}
 	
+	// checkpoint byps.gen.j.PrintContext:396
+	public void putSharedStream(long id, java.io.InputStream stream) throws RemoteException {
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+	}
+	// checkpoint byps.gen.j.PrintContext:440
+	public void putSharedStream(long id, java.io.InputStream stream, final BAsyncResult<Object> asyncResult) {
+		try {
+			putSharedStream(id, stream);
+			asyncResult.setAsyncResult(null, null);
+		} catch (Throwable e) {
+			asyncResult.setAsyncResult(null, e);
+		}
+	}
+	
+	// checkpoint byps.gen.j.PrintContext:396
+	public java.io.InputStream getSharedStream(long id) throws RemoteException {
+		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
+	}
+	// checkpoint byps.gen.j.PrintContext:440
+	public void getSharedStream(long id, final BAsyncResult<java.io.InputStream> asyncResult) {
+		try {
+			java.io.InputStream ret = getSharedStream(id);
+			asyncResult.setAsyncResult(ret, null);
+		} catch (Throwable e) {
+			asyncResult.setAsyncResult(null, e);
+		}
+	}
+	
 	
 }

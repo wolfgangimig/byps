@@ -94,5 +94,27 @@ public interface RemoteStreamsAsync extends BRemote,
 	// checkpoint byps.gen.j.PrintContext:440
 	public void getStreamDoNotClone(final BAsyncResult<java.io.InputStream> asyncResult) ;
 	
+	/**
+	 * @param id Stream ID
+	 * @param stream Stream
+	 * Store a stream reference shared by several clients.
+	 * @throws RemoteException
+	*/
+	// checkpoint byps.gen.j.PrintContext:396
+	public void putSharedStream(long id, java.io.InputStream stream) throws RemoteException;
+	// checkpoint byps.gen.j.PrintContext:440
+	public void putSharedStream(long id, java.io.InputStream stream, final BAsyncResult<Object> asyncResult) ;
+	
+	/**
+	 * @param id Stream ID
+	 * @return Stream
+	 * Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.
+	 * @throws RemoteException
+	*/
+	// checkpoint byps.gen.j.PrintContext:396
+	public java.io.InputStream getSharedStream(long id) throws RemoteException;
+	// checkpoint byps.gen.j.PrintContext:440
+	public void getSharedStream(long id, final BAsyncResult<java.io.InputStream> asyncResult) ;
+	
 	
 }
