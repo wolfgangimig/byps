@@ -1,15 +1,18 @@
 BYPS Version History
 
-11.46
+8.46
+
+- BYPS-49: Manage Java 8 version in master branch. Currently, java.net.http.HttpClient is not
+  worth for tracking two release branches.
 
 - BYPS-48: Make sure to close the stream in BContentStream.materialize to release the PUT request after 
   all bytes have been read. 
-
-11.45
+  
+8.45
 
 - BYPS-47: Content-Length=Long.MAX has to be interpreted as unknown stream size. 
 
-11.44
+8.43
 
 - BYPS-43: Exchange stream several times between server and client failed.
   Technically, HIncomingStreamSync did not reset the stream in function cloneStream.

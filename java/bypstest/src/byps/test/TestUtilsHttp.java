@@ -25,7 +25,6 @@ import byps.http.HTransportFactoryClient;
 import byps.http.HWireClient;
 import byps.http.client.asf.AsfClientFactory;
 import byps.http.client.jcnn.JcnnClientFactory;
-import byps.http.client.jcnn11.JcnnClientFactory11;
 import byps.test.api.BApiDescriptor_Testser;
 import byps.test.api.BClient_Testser;
 import byps.test.api.BRegistry_Testser;
@@ -45,8 +44,7 @@ public class TestUtilsHttp {
   /**
    * Von BYPS unterstützte HTTP client factories. 
    */
-  private static final String[] HTTP_CLIENT_FACTORIES = new String[] { 
-      JcnnClientFactory.class.getName(), JcnnClientFactory11.class.getName(), AsfClientFactory.class.getName() };
+  private static final String[] HTTP_CLIENT_FACTORIES = new String[] { JcnnClientFactory.class.getName(), AsfClientFactory.class.getName() };
 
 	static {
     System.setProperty(HWireClient.SYSTEM_PROPERTY_HTTP_CLIENT_FACTORY, HTTP_CLIENT_FACTORIES[0]);
@@ -55,7 +53,7 @@ public class TestUtilsHttp {
 	private static Executor tpool = Executors.newCachedThreadPool();
 	
   public static BClient_Testser createClient() throws RemoteException {
-    return createClient(0);
+    return createClient(1);
   }
   
   public static BClient_Testser createClient(int nbOfReverseRequests) throws RemoteException {

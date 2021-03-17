@@ -49,3 +49,9 @@ dependencies {
 	compileOnly group: 'log4j', name: 'log4j', version: '1.2.17'
 	
 }
+
+// BYPS-40: Separate versions for Java 8 and 11+.
+if(JavaVersion.current() != JavaVersion.VERSION_1_8){
+	print("Java=" + JavaVersion.current());
+    throw new GradleException("This build must be run with JDK 8")
+}
