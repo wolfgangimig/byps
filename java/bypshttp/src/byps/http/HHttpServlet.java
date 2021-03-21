@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.Reader;
+import java.io.Writer;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -18,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -32,6 +36,9 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import byps.BApiDescriptor;
 import byps.BAsyncResult;
 import byps.BBuffer;
@@ -43,7 +50,9 @@ import byps.BExceptionC;
 import byps.BHashMap;
 import byps.BMessage;
 import byps.BMessageHeader;
+import byps.BMethodRequest;
 import byps.BProtocol;
+import byps.BRemote;
 import byps.BServer;
 import byps.BServerRegistry;
 import byps.BSyncResult;
@@ -51,6 +60,7 @@ import byps.BTargetId;
 import byps.BTransport;
 import byps.BWire;
 import byps.RemoteException;
+import byps.http.rest.HRestExecutor;
 import byps.log.LogConfigurator;
 import byps.ureq.BRegistry_BUtilityRequests;
 import byps.ureq.BSkeleton_BUtilityRequests;
@@ -289,12 +299,57 @@ public abstract class HHttpServlet extends HttpServlet implements
     else if (request.getParameter("putstream") != null) {
       doPut(request, response);
     }
+    // Execute if REST call.
+    // A REST call follows the URI format .../rest/interface-name/function-name.
+    // BYPS-51
+    else if (isRestCall(request)) {
+      doRest(request, response);
+    }
     else {
       doPostMessage(request, response);
     }
     if (log.isDebugEnabled()) log.debug(")doPost");
   }
-
+  
+  /**
+   * Execute as REST call if request URI contains 'rest'.
+   * BYPS-51
+   * @param request Request
+   * @param response Response
+   */
+  protected void doRest(HttpServletRequest request, HttpServletResponse response) {
+    
+    // Check for valid session.
+    BMessageHeader header = null;
+    HSession sess = getSessionFromMessageHeaderOrHttpRequest(header, request);
+    if (sess == null) {
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+      return;
+    }
+    
+    // Execute REST call.
+    HRestExecutor rest = createRestExecutor();
+    rest.doRest(sess, request, response);
+  }
+  
+  /**
+   * Check whether the request is a REST call.
+   * @param request Request
+   * @return true, if REST call
+   */
+  protected boolean isRestCall(HttpServletRequest request) {
+    String requestUri = request.getRequestURI();
+    return requestUri.contains("/rest");
+  }
+  
+  /**
+   * Create helper object to execute REST calls.
+   * @return {@link HRestExecutor}
+   */
+  protected HRestExecutor createRestExecutor() {
+    return new HRestExecutor(getConfig(), getHtmlUploadMaxSize());
+  }
+  
   private void sendOutgoingStream(BContentStream is, HttpServletResponse response, HRangeRequest rangeRequest) throws IOException {
     if (log.isDebugEnabled()) log.debug("sendOutgoingStream(stream=" + is);
 
@@ -1089,7 +1144,7 @@ public abstract class HHttpServlet extends HttpServlet implements
         final BTargetId targetId = new BTargetId(getConfig().getMyServerId(),
             0, streamId);
         getActiveMessages().addIncomingUploadStream(
-            new HFileUploadItemIncomingStream(item, targetId, getConfig()
+            new HFileUploadIncomingStream(item, targetId, getConfig()
                 .getTempDir()));
 
       }

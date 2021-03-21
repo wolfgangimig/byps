@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 
 /**
  * BContentStream is an InputStream with content type and content length.
@@ -60,7 +59,7 @@ public abstract class BContentStream extends InputStream {
 	 * @param contentType
 	 * @param contentLength
 	 */
-	public BContentStream(String contentType, long contentLength) {
+  protected BContentStream(String contentType, long contentLength) {
 		this.lifetimeMillis = 0;
 		this.properties_access_getProperties = new BContentStreamProperties(contentType, contentLength, "", ATTACHMENT);
 		extendLifetime();
@@ -72,7 +71,7 @@ public abstract class BContentStream extends InputStream {
 	 * @param contentLength
 	 * @param lifetimeMillis
 	 */
-	public BContentStream(String contentType, long contentLength, long lifetimeMillis) {
+	protected BContentStream(String contentType, long contentLength, long lifetimeMillis) {
 		this.lifetimeMillis = lifetimeMillis;
     this.properties_access_getProperties = new BContentStreamProperties(contentType, contentLength, "", ATTACHMENT);
 		extendLifetime();
@@ -83,7 +82,7 @@ public abstract class BContentStream extends InputStream {
 	 * Copies the stream properties (contentType, etc.).
 	 * @param rhs
 	 */
-	public BContentStream(BContentStream rhs, long lifetimeMillis) {
+	protected BContentStream(BContentStream rhs, long lifetimeMillis) {
 		this.lifetimeMillis = lifetimeMillis;
 		copyProperties(rhs);
 		extendLifetime();
@@ -101,12 +100,20 @@ public abstract class BContentStream extends InputStream {
   }
   
   /**
-	 * Default constructor.
-	 */
-	public BContentStream() {
-		this.lifetimeMillis = 0;
-	}
-	
+   * Default constructor.
+   */
+  protected BContentStream() {
+    this(0);
+  }
+  
+  /**
+   * Construtor.
+   * @param lifetimeMillis 
+   */
+  protected BContentStream(long lifetimeMillis) {
+    this.lifetimeMillis = lifetimeMillis;
+  }
+  
 	/**
 	 * Ensure that stream properties are valid.
 	 * This function ensures, that the properties contentType, contentLength, attachmentCode and fileName
@@ -187,6 +194,7 @@ public abstract class BContentStream extends InputStream {
   
   /**
    * Write stream data into buffer or temporary file.
+   * If the passed stream <code>is</code> is not also the returned stream it is closed before the function returns.
    * @param is stream to be materialized.
    * @return materialized stream.
    * @throws IOException
@@ -195,13 +203,18 @@ public abstract class BContentStream extends InputStream {
   public static BContentStream materialize(InputStream is) throws IOException {
     if (is == null) return null;
     if (!(is instanceof BContentStream)) throw new IOException("InputStream cannot be materialized.");
+    BContentStream ret = null;
     try {
-      return ((BContentStream)is).materialize();
+      ret = ((BContentStream)is).materialize(); 
     }
     finally {
-      // BYPS-48: close stream to ensure that a PUT request is released.
-      is.close();
+      // BYPS-50: RestIncomingStream.materialize() might return itself. 
+      if (is != ret) {
+        // BYPS-48: close stream to ensure that a PUT request is released.
+        is.close();
+      }
     }
+    return ret;
   }
   
 	/**

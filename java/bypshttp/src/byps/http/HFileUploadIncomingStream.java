@@ -1,7 +1,9 @@
 package byps.http;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.apache.commons.fileupload.FileItem;
 
@@ -9,19 +11,44 @@ import byps.BContentStream;
 import byps.BContentStreamWrapper;
 import byps.BTargetId;
 
-class HFileUploadItemIncomingStream extends BContentStreamWrapper {
+/**
+ * Incoming stream as wrapper for Apache Commons File Upload.
+ *
+ */
+public class HFileUploadIncomingStream extends BContentStreamWrapper {
 
+  /**
+   * Apache file upload item.
+   */
   private final FileItem fileItem;
+  /**
+   * Directory used to backup a DiskFileItem if the stream is materialized.
+   */
   private final File tempDir;
 
-  HFileUploadItemIncomingStream(FileItem fileItem, BTargetId targetId, File tempDir) throws IOException {
-    super(fileItem.getInputStream(), fileItem.getContentType(), fileItem.getSize(), HConstants.REQUEST_TIMEOUT_MILLIS);
+  /**
+   * Constructor.
+   * @param fileItem Apache file item
+   * @param targetId BTargetId to allow management in {@link HActiveMessages#addIncomingStream(BTargetId, HRequestContext)}.
+   * @param tempDir Directory for temporary files
+   */
+  public HFileUploadIncomingStream(FileItem fileItem, BTargetId targetId, File tempDir) {
+    super(HConstants.REQUEST_TIMEOUT_MILLIS);
     this.fileItem = fileItem;
     this.targetId = targetId;
     this.tempDir = tempDir;
     this.setFileName(fileItem.getName());
     this.setContentType(fileItem.getContentType());
     this.setContentLength(fileItem.getSize());
+  }
+  
+  @Override
+  protected InputStream openStream() throws IOException {
+    InputStream inner = fileItem.getInputStream();
+    if (!fileItem.isInMemory()) {
+      inner = new BufferedInputStream(inner);
+    }
+    return inner;
   }
 
   @Override

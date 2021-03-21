@@ -54,6 +54,56 @@ public class BServer {
 	  return remotes.get(remoteId);
 	}
 	
+	/**
+	 * Result class for {@link #findRemote}.
+	 *
+	 */
+	public static class FindRemoteResult {
+	  
+	  /**
+	   * Interface implementation.
+	   */
+	  public final BSkeleton remoteImpl;
+	  /**
+	   * Interface class.
+	   */
+	  public final Class<?> remoteIntefaceClass;
+	  
+	  /**
+	   * 
+	   * @param remoteImpl
+	   * @param remoteIntefaceClass
+	   */
+    private FindRemoteResult(BSkeleton remoteImpl, Class<?> remoteIntefaceClass) {
+      this.remoteImpl = remoteImpl;
+      this.remoteIntefaceClass = remoteIntefaceClass;
+    }
+	}
+	
+	/**
+	 * Find remote interface by interface name.
+	 * Finds the registered interface implementation with the given name. 
+	 * @param interfaceName Interface name without package and suffix Async.
+	 * @return Implementation or null, if interface not found.
+	 */
+	public FindRemoteResult findRemote(String interfaceName) {
+	  String interfaceNameAsync = interfaceName + "Async";
+	  for (BSkeleton remote : remotes.values()) {
+	    Class<?> remoteClass = remote.getClass();
+	    while (remoteClass != Object.class) {
+  	    Class<?>[] interfs = remoteClass.getInterfaces();
+  	    for (Class<?> interf : interfs) {
+  	      String simpleName = interf.getSimpleName();
+  	      if (simpleName.equals(interfaceName) || simpleName.equals(interfaceNameAsync)) {
+  	        return new FindRemoteResult(remote, interf);
+  	      }
+  	    }
+  	    remoteClass = remoteClass.getSuperclass();
+	    }
+	  }
+	  return null;
+	}
+	
 	public BProtocol negotiate(BTargetId targetId, ByteBuffer in, final BAsyncResult<ByteBuffer> asyncResult) throws Throwable {
 		if (log.isDebugEnabled()) log.debug("negotiate(");
 		BProtocol protocol = transport.negotiateProtocolServer(targetId, in, asyncResult);

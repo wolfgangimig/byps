@@ -110,7 +110,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	public InputStream getImage() throws RemoteException {
 		if (log.isDebugEnabled()) log.debug("getImage()=" + imageStream);
 		try {
-      BContentStream ret = imageStream.cloneStream();
+      InputStream ret = imageStream != null ? imageStream.cloneStream() : null;
       return ret;
     } catch (IOException e) {
       throw new RemoteException("Failed to clone stream.", e);

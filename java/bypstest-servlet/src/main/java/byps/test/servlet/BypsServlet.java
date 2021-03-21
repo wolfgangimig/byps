@@ -3,7 +3,12 @@ package byps.test.servlet;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.Collection;
+import java.util.Optional;
 
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
+import byps.BMessageHeader;
 import byps.http.HConfig;
 import byps.http.HConfigImpl;
 import byps.http.HConstants;
@@ -41,7 +47,7 @@ loadOnStartup = 1,
 // because some browsers initiate the HTTP authentication handshake in each request. By convention,
 // see HWireClient.getServletPathForNegotiationAndAuthentication(), the serlet path is 
 // [servlet-name]auth/auth.
-urlPatterns = { "/bypsservlet", "/bypsservletauth/auth" },
+urlPatterns = { "/bypsservlet", "/bypsservletauth/auth", "/bypsservlet/rest/*" },
 
 // never true in production environments
 initParams = { @WebInitParam(name = "testAdapterEnabled", value = "true") 
@@ -176,6 +182,16 @@ public class BypsServlet extends HHttpServlet {
   protected void initializationFinished() {
   }
   
+  @Override
+  protected HSession getSessionFromMessageHeaderOrHttpRequest(BMessageHeader header, HttpServletRequest request) {
+    if (log.isDebugEnabled()) log.debug("getSessionFromMessageHeaderOrHttpRequest(");
+    HSession sess = super.getSessionFromMessageHeaderOrHttpRequest(header, request);
+    if (sess == null) {
+      sess = createSession(request.getSession(), "Unauthorized");
+    }
+    return sess;
+  }
+
   private final Logger log = LoggerFactory.getLogger(BypsServlet.class);
   private final HConfigImpl config = new HConfigImpl();
 

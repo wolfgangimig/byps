@@ -38,9 +38,17 @@ public class BContentStreamWrapper extends BContentStream {
 	/**
 	 * Default constructor.
 	 */
-	public BContentStreamWrapper() {
-	}
-	
+  public BContentStreamWrapper() {
+  }
+  
+  /**
+   * Constructor used if inner stream is provided in {@link #openStream()}.
+   * @param lifetimeMillis
+   */
+  protected BContentStreamWrapper(long lifetimeMillis) {
+    super(lifetimeMillis);
+  }
+  
   public BContentStreamWrapper(InputStream innerStream) {
     this(innerStream, "", -1L, 0L);
   }
@@ -176,14 +184,7 @@ public class BContentStreamWrapper extends BContentStream {
   @Override
   public BContentStream materialize() throws IOException {
     InputStream is = ensureStream();
-    if (is instanceof BContentStream) {
-      BContentStream ret = ((BContentStream)is).materialize();
-      this.close();
-      return ret;
-    }
-    else {
-      return super.materialize();
-    }
+    return BContentStream.materialize(is);
   }
   
 //	@Override
