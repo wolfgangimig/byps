@@ -3672,12 +3672,18 @@ class RemoteStreams : public virtual BRemote {
 	/// <summary>
 	/// Store a stream reference shared by several clients.
 	/// </summary>
+	/// <remarks>
+	/// BYPS-48
+	/// </remarks>
 	public: virtual void putSharedStream(int64_t id, const PContentStream& stream)  = 0;
 	public: virtual void putSharedStream(int64_t id, const PContentStream& stream, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	
 	/// <summary>
 	/// Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.
 	/// </summary>
+	/// <remarks>
+	/// BYPS-48
+	/// </remarks>
 	public: virtual PContentStream getSharedStream(int64_t id)  = 0;
 	public: virtual void getSharedStream(int64_t id, ::std::function< void (PContentStream, BException ex) > asyncResult)  = 0;
 	

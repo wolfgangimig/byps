@@ -20,6 +20,7 @@ import byps.gen.cs.PropertiesCS;
 import byps.gen.doclet.CompileSource;
 import byps.gen.j.PropertiesJ;
 import byps.gen.js.PropertiesJS;
+import byps.gen.rest.PropertiesRest;
 import byps.gen.utils.AssignUniqueSerialVersionUID;
 import byps.gen.utils.Utils;
 import byps.gen.xml.XmlGeneratorBase;
@@ -59,6 +60,12 @@ public class Context {
    * Generator properties for JavaScript code generator.
    */
   private PropertiesJS propsJS;
+
+  /**
+   * Generator properties for OpenAPI/REST generator.
+   * BYPS-50
+   */
+  private PropertiesRest propsRest;
 
   /**
    * Directories with the source files of the API.
@@ -182,6 +189,11 @@ public class Context {
       else if (arg.equalsIgnoreCase("-onlyBSerials")) {
         convertOptions |= XmlGeneratorBase.OPT_ONLY_BSERIALS;
         argIdx++;
+      }
+      
+      else if (arg.equalsIgnoreCase(PropertiesRest.DEST_DIR)) {
+        if (propsRest == null) propsRest = new PropertiesRest(defaultProps);
+        argIdx = propsRest.addArgs(args, argIdx);
       }
       
       // Options starting with -- are passed to the javadoc tool.
@@ -367,6 +379,10 @@ public class Context {
 
   public void setExitCode(int exitCode) {
     this.exitCode = exitCode;
+  }
+
+  public PropertiesRest getPropsRest() {
+    return propsRest;
   }
 
   

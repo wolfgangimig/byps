@@ -3156,6 +3156,7 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getStreamDoNotClone = functio
 /**
  * @param id Stream ID
  * @param stream Stream
+ * BYPS-48
  * Store a stream reference shared by several clients.
  * @throws RemoteException
 */
@@ -3169,6 +3170,7 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.putSharedStream = function(id
 // checkpoint byps.gen.js.PrintContext:133
 /**
  * @param id Stream ID
+ * BYPS-48
  * @return Stream
  * Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.
  * @throws RemoteException

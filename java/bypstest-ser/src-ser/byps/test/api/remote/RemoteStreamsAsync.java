@@ -97,6 +97,7 @@ public interface RemoteStreamsAsync extends BRemote,
 	/**
 	 * @param id Stream ID
 	 * @param stream Stream
+	 * BYPS-48
 	 * Store a stream reference shared by several clients.
 	 * @throws RemoteException
 	*/
@@ -107,6 +108,7 @@ public interface RemoteStreamsAsync extends BRemote,
 	
 	/**
 	 * @param id Stream ID
+	 * BYPS-48
 	 * @return Stream
 	 * Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.
 	 * @throws RemoteException

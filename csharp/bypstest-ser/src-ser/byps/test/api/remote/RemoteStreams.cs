@@ -90,21 +90,33 @@ namespace byps.test.api.remote
 		/// <summary>
 		/// Store a stream reference shared by several clients.
 		/// </summary>
+		/// <remarks>
+		/// BYPS-48
+		/// </remarks>
 		void PutSharedStream(long id, System.IO.Stream stream);
 		void PutSharedStream(long id, System.IO.Stream stream, BAsyncResult<Object> asyncResult) ;
 		/// <summary>
 		/// Store a stream reference shared by several clients.
 		/// </summary>
+		/// <remarks>
+		/// BYPS-48
+		/// </remarks>
 		Task PutSharedStreamAsync(long id, System.IO.Stream stream);
 		
 		/// <summary>
 		/// Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.
 		/// </summary>
+		/// <remarks>
+		/// BYPS-48
+		/// </remarks>
 		System.IO.Stream GetSharedStream(long id);
 		void GetSharedStream(long id, BAsyncResult<System.IO.Stream> asyncResult) ;
 		/// <summary>
 		/// Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.
 		/// </summary>
+		/// <remarks>
+		/// BYPS-48
+		/// </remarks>
 		Task<System.IO.Stream> GetSharedStreamAsync(long id);
 		
 		

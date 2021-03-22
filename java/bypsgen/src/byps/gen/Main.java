@@ -19,6 +19,7 @@ import byps.gen.db.XmlClassDB;
 import byps.gen.doclet.CompileSource;
 import byps.gen.j.GeneratorJ;
 import byps.gen.js.GeneratorJS;
+import byps.gen.rest.GeneratorOpenAPI;
 import byps.gen.utils.AssignUniqueSerialVersionUID;
 import byps.gen.utils.CodePrinter;
 
@@ -203,6 +204,13 @@ public class Main {
       log.info("Generate JavaScript code ==============");
       GeneratorJS gen = new GeneratorJS();
       gen.build(jdocClassDB, context.getPropsJS());
+      log.info("");
+    }
+    
+    if (context.getPropsRest() != null) {
+      log.info("Generate OpenAPI/REST ============");
+      GeneratorOpenAPI gen = new GeneratorOpenAPI();
+      gen.build(jdocClassDB, context.getPropsRest());
       log.info("");
     }
   }
