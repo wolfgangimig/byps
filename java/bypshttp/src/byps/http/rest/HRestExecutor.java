@@ -185,8 +185,8 @@ public class HRestExecutor {
     
     // Initialize builder for JSON response.
     GsonBuilder builder = new GsonBuilder();
-    JsonSerializer<InputStream> streamSerializer = new StreamSerializer(sess);
-    builder.registerTypeAdapter(InputStream.class, streamSerializer);
+    builder.registerTypeAdapter(InputStream.class, new StreamSerializer(sess));
+    builder.registerTypeAdapter(byte[].class, new BytesSerializer());
     if (log.isDebugEnabled()) builder.setPrettyPrinting();
     Gson gson = builder.create();
     
@@ -337,8 +337,8 @@ public class HRestExecutor {
     
     // Initialize deserialization
     GsonBuilder builder = new GsonBuilder();
-    JsonDeserializer<InputStream> streamSerializer = new StreamDeserializer(streamItems);
-    builder.registerTypeAdapter(InputStream.class, streamSerializer);
+    builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(streamItems));
+    builder.registerTypeAdapter(byte[].class, new BytesDeserializer());
     
     // Assign the multipart fields to the method parameters 
     for (FileItem item : items) {

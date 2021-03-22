@@ -1,7 +1,6 @@
 package byps.gen.rest;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -29,7 +28,10 @@ import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.media.ArraySchema;
 import io.swagger.v3.oas.models.media.BinarySchema;
+import io.swagger.v3.oas.models.media.IntegerSchema;
+import io.swagger.v3.oas.models.media.NumberSchema;
 import io.swagger.v3.oas.models.media.Schema;
+import io.swagger.v3.oas.models.media.StringSchema;
 
 /**
  * Generates an OpenAPI document.
@@ -37,6 +39,7 @@ import io.swagger.v3.oas.models.media.Schema;
  * https://github.com/swagger-api/swagger-core/blob/master/modules/swagger-models/src/test/java/io/swagger/test/SimpleBuilderTest.java
  *
  */
+@SuppressWarnings("rawtypes")
 public class GeneratorOpenAPI implements Generator {
   
   Logger log = LoggerFactory.getLogger(GeneratorOpenAPI.class);
@@ -48,8 +51,7 @@ public class GeneratorOpenAPI implements Generator {
   private OpenAPI openApi;
   
   private Map<String, Schema> schemas = new HashMap<>();
-
-
+  
   @Override
   public void build(ClassDB classDB, GeneratorProperties props) throws IOException {
     
@@ -69,9 +71,11 @@ public class GeneratorOpenAPI implements Generator {
     write();
   }
   
-  private void write() throws FileNotFoundException, IOException {
+  private void write() throws IOException {
     File openapiFile = pctxt.getOpenAPIFile();
     GsonBuilder builder = new GsonBuilder();
+    builder.registerTypeAdapter(boolean.class, new BooleanSerializer());
+    builder.registerTypeAdapter(Boolean.class, new BooleanSerializer());
     builder.setPrettyPrinting();
     Gson gson = builder.create();
     try (Writer writer = new OutputStreamWriter(new FileOutputStream(openapiFile), StandardCharsets.UTF_8)) {
@@ -84,28 +88,69 @@ public class GeneratorOpenAPI implements Generator {
   }
   
   private String toSchemaName(TypeInfo typeInfo) {
-    return typeInfo.name;
+    String name = typeInfo.name;
+    int ndims = typeInfo.dims.length() / 2;
+    if (ndims != 0) {
+      String sdims = ndims > 1 ? Integer.toString(ndims) : "";
+      name = "Array" + sdims + "Of" + typeInfo.name;
+    }
+    return name;
   }
   
   private Schema toSchemaRef(TypeInfo typeInfo) {
-    if (typeInfo.isPrimitiveType()) {
-      return toSchemaForPrimitiveType(typeInfo);
+    Schema ref = null;
+    if (typeInfo.isArrayType()) {
+      if (typeInfo.dims.length() > 2) {
+        ref = toComponentsSchemaRef(typeInfo);
+      }
+      else {
+        ref = toArraySchema(typeInfo);
+      }
+    }
+    else if (typeInfo.isPrimitiveType()) {
+      ref = toSchemaForPrimitiveType(typeInfo);
     }
     else {
-      return new Schema().$ref("#/components/schemas/" + toSchemaName(typeInfo));
+      ref = toComponentsSchemaRef(typeInfo);
     }
+    return ref;
+  }
+  
+  private Schema toComponentsSchemaRef(TypeInfo typeInfo) {
+    
+    // Make sure that the referenced schema exists.
+    if (getSchema(typeInfo) == null) {
+      toSchema(typeInfo);
+    }
+    
+    return new Schema().$ref("#/components/schemas/" + toSchemaName(typeInfo));
   }
   
   private Schema toSchema(TypeInfo typeInfo) {
     
     System.out.println(typeInfo);
     
-    String schemaName = typeInfo.name;
-    Schema schema = schemas.get(schemaName);
+    if (typeInfo.name.equals("ArrayTypes4dim")) {
+      System.out.println("stop");
+    }
+    
+    Schema schema = getSchema(typeInfo);
     if (schema != null) return toSchemaRef(typeInfo);
     
-    if (typeInfo.isPrimitiveType()) {
+    if (typeInfo.isArrayType()) {
+      schema = toArraySchema(typeInfo);
+    }
+    else if (typeInfo.isPrimitiveType()) {
       schema = toSchemaForPrimitiveType(typeInfo);    
+    }
+    else if (typeInfo.isAnyType()) {
+      schema = toSchemaForPrimitiveType(typeInfo);    
+    }
+    else if (typeInfo.isStreamType()) {
+      schema = toSchemaForStream(typeInfo);    
+    }
+    else if (!(typeInfo instanceof SerialInfo)) {
+      schema = new StringSchema();
     }
     else {
       
@@ -115,7 +160,7 @@ public class GeneratorOpenAPI implements Generator {
       schema = new Schema<>();
       schema.description(description);
 
-      schemas.put(schemaName, schema);
+      putSchema(typeInfo, schema);
 
       for (MemberInfo member : serInfo.members) {
         schema.addProperties(member.name, toSchemaRef(member.type));
@@ -126,22 +171,64 @@ public class GeneratorOpenAPI implements Generator {
     return schema;
   }
   
+  private Schema toSchemaForStream(TypeInfo typeInfo) {
+    Schema schema = new Schema<>();
+    schema.addProperties("name", new StringSchema());
+    schema.addProperties("url", new StringSchema());
+    putSchema(typeInfo, schema);
+    return schema;
+  }
+
+  private void putSchema(TypeInfo typeInfo, Schema schema) {
+    schemas.put(toSchemaName(typeInfo), schema);
+  }
+  
+  private Schema getSchema(TypeInfo typeInfo) {
+    return schemas.get(toSchemaName(typeInfo));
+  }
+  
   private Schema toSchemaForPrimitiveType(TypeInfo typeInfo) {
     Schema schema = null;
     if (typeInfo.isByteArray1dim()) {
       schema = new BinarySchema();
     }
-    else if (typeInfo.isArrayType()) {
-      schema = toArraySchema(typeInfo); 
+    else if (equalsOneOf(typeInfo.name, "int", "Integer")) {
+      schema = new IntegerSchema();
+    }
+    else if (equalsOneOf(typeInfo.name, "long", "Long")) {
+      schema = new IntegerSchema().format("int64");
+    }
+    else if (equalsOneOf(typeInfo.name, "float", "Float")) {
+      schema = new NumberSchema().format("float");
+    }
+    else if (equalsOneOf(typeInfo.name, "double", "Double")) {
+      schema = new NumberSchema().format("double");
+    }
+    else {
+      schema = new StringSchema();
     }
     return schema;
   }
   
+  private boolean equalsOneOf(String lhs, String ... rhs) {
+    for (String r : rhs) {
+      if (lhs.equals(r)) return true;
+    }
+    return false;
+  }
+  
   private Schema toArraySchema(TypeInfo typeInfo) {
-    TypeInfo itemType = new TypeInfo(typeInfo.name, typeInfo.qname, "", 
+    String schemaName = toSchemaName(typeInfo);
+    
+    TypeInfo itemType = new TypeInfo(typeInfo.name, typeInfo.qname, 
+        typeInfo.dims.substring(2), 
         null, typeInfo.isEnum, typeInfo.isFinal, typeInfo.isInline);
-    Schema itemSchema = toSchema(itemType); 
-    return new ArraySchema().items(itemSchema);
+    
+    Schema itemSchema = toSchemaRef(itemType); 
+    Schema arraySchema = new ArraySchema().items(itemSchema);
+    
+    schemas.put(schemaName, arraySchema);
+    return arraySchema;
   }
 
   private String getSchemaDescription(SerialInfo serInfo) {

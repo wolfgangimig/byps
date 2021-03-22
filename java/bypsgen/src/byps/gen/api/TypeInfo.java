@@ -297,6 +297,10 @@ public class TypeInfo {
 		return false;
 	}
 	
+	public boolean isStreamType() {
+	  return qname.equals("java.io.InputStream");
+	}
+	
 	public boolean isInheritable() {
 		if (isInline) return false;
 		if (isEnum) return false;

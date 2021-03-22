@@ -10,3862 +10,3054 @@
       "BResult_1633500852": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteArrayTypes1dim_getPrimitiveTypes": {
-        "exampleSetFlag": false
+      "ArrayOfbyte": {
+        "type": "array"
       },
+      "BRequest_RemoteArrayTypes1dim_getPrimitiveTypes": {},
+      "ArrayList": {},
       "BRequest_RemoteSetTypes_setInt2": {
         "properties": {
           "int2": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
-      },
-      "ArrayList": {
-        "exampleSetFlag": false
+        }
       },
       "BResult_2052431866": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteSetTypes_setInt1": {
         "properties": {
           "int1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_673917574": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1361632968": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "ArrayTypes4dim": {
         "properties": {
           "boolean4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofboolean"
           },
           "byte4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofbyte"
           },
           "char4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofchar"
           },
           "short4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofshort"
           },
           "int4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofint"
           },
           "long4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Oflong"
           },
           "float4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Offloat"
           },
           "double4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofdouble"
           },
           "string4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfString"
           },
           "primitiveTypes4": {
-            "$ref": "#/components/schemas/PrimitiveTypes",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfPrimitiveTypes"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteSetTypes_setObj1": {
         "properties": {
           "obj1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "TreeSet": {
-        "exampleSetFlag": false
-      },
+      "TreeSet": {},
       "BResult_2028443792": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1752158699": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemotePrimitiveTypes_getLong": {
-        "exampleSetFlag": false
+      "Array2Ofboolean": {
+        "type": "array"
       },
+      "BRequest_RemotePrimitiveTypes_getLong": {},
       "BRequest_RemoteListTypes_setChar1": {
         "properties": {
           "char1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1279823631": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteArrayTypes4dim_setChar": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofchar"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemotePrimitiveTypes_setLong": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int64"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteArrayTypes4dim_getDate": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteArrayTypes4dim_getDate": {},
       "BRequest_RemoteInlineInstance_setPoint2DList": {
         "properties": {
           "pointList": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteMapTypes_getBoolean1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteMapTypes_getBoolean1": {},
       "BResult_1375035164": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/EnumPlanets",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/EnumPlanets"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BStub_RemoteArrayTypes4dim": {
-        "exampleSetFlag": false
+      "Array2OfPoint2D": {
+        "type": "array"
       },
+      "BStub_RemoteArrayTypes4dim": {},
       "BRequest_RemoteArrayTypes1dim_setDouble": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteServerCtrl_removePublishedRemote": {
         "properties": {
           "name": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "Set": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteArrayTypes4dim_getPrimitiveTypes": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteListTypes_getChar1": {
-        "exampleSetFlag": false
-      },
+      "Set": {},
+      "BRequest_RemoteArrayTypes4dim_getPrimitiveTypes": {},
+      "BRequest_RemoteListTypes_getChar1": {},
       "BRequest_RemoteArrayTypes23_sendArraysInline": {
         "properties": {
           "arr2": {
-            "$ref": "#/components/schemas/Point2D",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array2OfPoint2D"
           },
           "arr3": {
-            "$ref": "#/components/schemas/Point2D",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array3OfPoint2D"
           },
           "arr4": {
-            "$ref": "#/components/schemas/Point2D",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfPoint2D"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteArrayTypes23_sendArraysString": {
         "properties": {
           "arr2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array2OfString"
           },
           "arr3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array3OfString"
           },
           "arr4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfString"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemotePrimitiveTypes_voidFunctionVoid": {
-        "exampleSetFlag": false
+      "BRequest_RemotePrimitiveTypes_voidFunctionVoid": {},
+      "ArrayOfObject": {
+        "type": "array"
+      },
+      "Array3Ofint": {
+        "type": "array"
       },
       "BResult_1406124761": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_ServerIF_getClientIds": {
-        "exampleSetFlag": false
+      "BRequest_ServerIF_getClientIds": {},
+      "ArrayOfdouble": {
+        "type": "array"
       },
-      "BRequest_RemoteSetTypes_getObj1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteSetTypes_getObj1": {},
       "AllTypesZ": {
         "properties": {
           "bool1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "byte1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "char1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "short1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "int1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "long1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int64"
           },
           "float1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "double1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "double"
           },
           "string1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "hebrew1": {
-            "$ref": "#/components/schemas/HebrewZ",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/HebrewZ"
           },
           "byte2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "int2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "string2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "hebrew2": {
-            "$ref": "#/components/schemas/HebrewZ",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteArrayTypes4dim_getChar": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteSetTypes_getInt1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteArrayTypes4dim_getChar": {},
+      "BRequest_RemoteSetTypes_getInt1": {},
       "EnumPlanets": {
         "properties": {
           "Mercury": {
-            "$ref": "#/components/schemas/EnumPlanets",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/EnumPlanets"
           },
           "Venus": {
-            "$ref": "#/components/schemas/EnumPlanets",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/EnumPlanets"
           },
           "Earth": {
-            "$ref": "#/components/schemas/EnumPlanets",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/EnumPlanets"
           }
         },
-        "description": "Sample enum.",
-        "exampleSetFlag": false
+        "description": "Sample enum."
       },
-      "BRequest_PlantService_grow": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteInlineInstance_getPoint2DArray4dim": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteSetTypes_getInt2": {
-        "exampleSetFlag": false
-      },
+      "BRequest_PlantService_grow": {},
+      "BRequest_RemoteInlineInstance_getPoint2DArray4dim": {},
+      "BRequest_RemoteSetTypes_getInt2": {},
       "BRequest_RemoteMapTypes_setString1": {
         "properties": {
           "string1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1628501332": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_EvolveIF_getEvolve": {
-        "exampleSetFlag": false
-      },
+      "BRequest_EvolveIF_getEvolve": {},
       "BRequest_RemoteArrayTypes4dim_setPrimitiveTypes": {
         "properties": {
           "v": {
-            "$ref": "#/components/schemas/PrimitiveTypes",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfPrimitiveTypes"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteArrayTypes1dim_getObject": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteArrayTypes1dim_getObject": {},
       "BRequest_RemoteArrayTypes4dim_setDate": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfDate"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteServerCtrl_publishRemote": {
         "properties": {
           "name": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "remote": {
-            "$ref": "#/components/schemas/BRemote",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/BRemote"
           },
           "fowardToOtherServers": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_ClientIF_incrementInt": {
         "properties": {
           "a": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "ArrayOfEnumPlanets": {
+        "type": "array"
       },
       "AllTypesC": {
         "properties": {
           "bool1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "bool2s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "byte1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "char1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "stringNull": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "char2s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "short1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "int1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "long1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int64"
           },
           "float1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "double1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "double"
           },
           "string1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "ALL": {
-            "$ref": "#/components/schemas/AllTypesZ",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/AllTypesZ"
           },
           "arrInt": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "arrInt4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofint"
           },
           "arrStrings": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "arrStrings4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfString"
           },
           "arrALL": {
-            "$ref": "#/components/schemas/AllTypesZ",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array2OfAllTypesZ"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_936607009": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/TreeSet",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/TreeSet"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BStub_RemoteListTypes": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemotePrimitiveTypes_getDouble": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteArrayTypes1dim_getByte": {
-        "exampleSetFlag": false
-      },
+      "BStub_RemoteListTypes": {},
+      "BRequest_RemotePrimitiveTypes_getDouble": {},
+      "BRequest_RemoteArrayTypes1dim_getByte": {},
       "BResult_1487265161": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "SordC": {
         "properties": {
           "mbAllMembers": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int64"
           },
           "mbAll": {
-            "$ref": "#/components/schemas/SordZ",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/SordZ"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteMapTypes_getDate1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteMapTypes_getDate1": {},
       "BRequest_ServerIF_registerWithClientMap": {
         "properties": {
           "id": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "Point2D": {
         "properties": {
           "x": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "y": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
         },
-        "description": "Example for an inline class.",
-        "exampleSetFlag": false
+        "description": "Example for an inline class."
+      },
+      "Array4OfObject": {
+        "type": "array"
       },
       "BRequest_EvolveIF_setEvolve": {
         "properties": {
           "obj": {
-            "$ref": "#/components/schemas/Evolve",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Evolve"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteArrayTypes1dim_setDate": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "List": {
-        "exampleSetFlag": false
-      },
+      "List": {},
       "BResult_2087445849": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofdouble"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "HashSet": {
-        "exampleSetFlag": false
-      },
+      "HashSet": {},
       "BResult_39910537": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofint"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteArrayTypes4dim_getShort": {
-        "exampleSetFlag": false
+      "BRequest_RemoteArrayTypes4dim_getShort": {},
+      "Array4Oflong": {
+        "type": "array"
       },
       "SordZ": {
         "properties": {
           "bset": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int64"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1859644668": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofshort"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "Array4Ofshort": {
+        "type": "array"
       },
       "ChatStructure": {
         "properties": {
           "msg": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "sentAt": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "double"
           },
           "receivedAt": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "double"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1617670280": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1516687588": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Offloat"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteMapTypes_getPrimitiveTypes1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteMapTypes_getPrimitiveTypes1": {},
       "BRequest_RemoteWithAuthentication_login": {
         "properties": {
           "sess": {
-            "$ref": "#/components/schemas/SessionInfo",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/SessionInfo"
           },
           "userName": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "userPwd": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "Array2Offloat": {
+        "type": "array"
       },
       "BRequest_RemoteArrayTypes1dim_setShort": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteListTypes_setFloat1": {
         "properties": {
           "float1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteListTypes_getByte1": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteListTypes_getByte2": {
-        "exampleSetFlag": false
+      "BRequest_RemoteListTypes_getByte1": {},
+      "BRequest_RemoteListTypes_getByte2": {},
+      "Array2Oflong": {
+        "type": "array"
       },
       "BResult_1633750383": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BStub_FruitService": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteSetTypes_getChar1": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteStreams_getStreamDeferedProperies": {
-        "exampleSetFlag": false
-      },
+      "BStub_FruitService": {},
+      "BRequest_RemoteSetTypes_getChar1": {},
+      "BRequest_RemoteStreams_getStreamDeferedProperies": {},
       "BRequest_RemoteWithAuthentication_setReloginCount": {
         "properties": {
           "count": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BStub_RemoteStreams": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteArrayTypes4dim_getObject": {
-        "exampleSetFlag": false
-      },
+      "BStub_RemoteStreams": {},
+      "BRequest_RemoteArrayTypes4dim_getObject": {},
       "BRequest_RemoteWithAuthentication_doit": {
         "properties": {
           "sess": {
-            "$ref": "#/components/schemas/SessionInfo",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/SessionInfo"
           },
           "value": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "Array2OfString": {
+        "type": "array"
       },
       "BRequest_ClientIF_getStreams": {
         "properties": {
           "ctrl": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_7007": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/ChatStructure",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/ChatStructure"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions": {
         "properties": {
           "sleepSeconds": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteListTypes_setShort1": {
         "properties": {
           "short1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteArrayTypes1dim_setChar": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_945713488": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofboolean"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "ArrayOfHebrewZ": {
+        "type": "array"
       },
       "BResult_1097129250": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_8789515": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/TreeMap",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/TreeMap"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_2067161310": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1366799209": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_171948703": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Actor",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Actor"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_124584219": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfObject"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "Array2Ofint": {
+        "type": "array"
       },
       "BRequest_RemoteWithAuthentication_setUseAuthentication": {
         "properties": {
           "useAuth": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteStreams_getImage": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteStreams_getImage": {},
       "BResult_1746702954": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteSetTypes_getBoolean1": {
-        "exampleSetFlag": false
+      "ArrayOfshort": {
+        "type": "array"
       },
+      "BRequest_RemoteSetTypes_getBoolean1": {},
       "BResult_1799280818": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteMapTypes_getLong1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteMapTypes_getLong1": {},
       "BRequest_RemoteInlineInstance_setPoint2DListList": {
         "properties": {
           "pointListList": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteListTypes_getDouble1": {
-        "exampleSetFlag": false
+      "BRequest_RemoteListTypes_getDouble1": {},
+      "Array4Ofbyte": {
+        "type": "array"
       },
       "BRequest_RemoteArrayTypes1dim_setObject": {
         "properties": {
           "v": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteArrayTypes4dim_setDouble": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofdouble"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "Map": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteArrayTypes1dim_getInt": {
-        "exampleSetFlag": false
-      },
+      "Map": {},
+      "BRequest_RemoteArrayTypes1dim_getInt": {},
       "BResult_94341197": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteMapTypes_getObj1": {
-        "exampleSetFlag": false
-      },
-      "BStub_RemoteArrayTypes23": {
-        "exampleSetFlag": false
-      },
-      "BRequest_EvolveIF_sendEvolveToClient": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteMapTypes_getObj1": {},
+      "BStub_RemoteArrayTypes23": {},
+      "BRequest_EvolveIF_sendEvolveToClient": {},
       "BRequest_RemoteArrayTypes1dim_setByte": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteMapTypes_getInt1": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteMapTypes_getInt2": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteMapTypes_getInt1": {},
+      "BRequest_RemoteMapTypes_getInt2": {},
       "BResult_1596367810": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_476459792": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/TreeMap",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/TreeMap"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteListTypes_getLong1": {
-        "exampleSetFlag": false
+      "BRequest_RemoteListTypes_getLong1": {},
+      "Array3OfObject": {
+        "type": "array"
       },
       "PrivateMembers": {
         "properties": {
           "boolVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "byteVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "charVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "shortVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "intVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "longVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int64"
           },
           "floatVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "doubleVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "double"
           },
           "stringVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "primitiveTypes": {
-            "$ref": "#/components/schemas/PrimitiveTypes",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/PrimitiveTypes"
           },
           "arrBool": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "arrInt": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "arrString": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "arrPrimitiveTypes": {
-            "$ref": "#/components/schemas/PrimitiveTypes",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "listBool": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "listInt": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "listString": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "listPrimitiveTypes": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "mapIntListString": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "protInt": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "pprotInt": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
         },
-        "description": "Example class with private and protected members",
-        "exampleSetFlag": false
+        "description": "Example class with private and protected members"
       },
       "BRequest_RemotePrimitiveTypes_setShort": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteSetTypes_setDate1": {
         "properties": {
           "obj1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemotePrimitiveTypes_getShort": {
-        "exampleSetFlag": false
+      "Array3Ofdouble": {
+        "type": "array"
       },
-      "BStub_EvolveIF": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemotePrimitiveTypes_getShort": {},
+      "BStub_EvolveIF": {},
       "BRequest_RemotePrimitiveTypes_sendAllTypes": {
         "properties": {
           "b": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "c": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "i": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "l": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int64"
           },
           "f": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "d": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "double"
           },
           "str": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "pt": {
-            "$ref": "#/components/schemas/PrimitiveTypes",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/PrimitiveTypes"
           },
           "o": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Object"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1347703734": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteListTypes_getObj1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteListTypes_getObj1": {},
       "BResult_1059148284": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteSetTypes_getDate1": {
-        "exampleSetFlag": false
+      "Array3Ofbyte": {
+        "type": "array"
       },
-      "BRequest_RemoteListTypes_getInt2": {
-        "exampleSetFlag": false
+      "Array3Ofshort": {
+        "type": "array"
       },
-      "BRequest_RemoteListTypes_getInt1": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteListTypes_getInt4": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteListTypes_getInt3": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteSetTypes_getDate1": {},
+      "BRequest_RemoteListTypes_getInt2": {},
+      "BRequest_RemoteListTypes_getInt1": {},
+      "BRequest_RemoteListTypes_getInt4": {},
+      "BRequest_RemoteListTypes_getInt3": {},
       "MapTypes": {
         "properties": {
           "boolean1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "byte1": {
-            "$ref": "#/components/schemas/HashMap",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/HashMap"
           },
           "char1": {
-            "$ref": "#/components/schemas/TreeMap",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/TreeMap"
           },
           "short1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "int1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "long1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "float1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "double1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "string1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "primitiveTypes1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "byte2": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "int2": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "obj1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "date1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "Class1Collections": {
         "properties": {
           "list1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "map1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "set1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemotePrimitiveTypes_getDate": {
-        "exampleSetFlag": false
+      "BRequest_RemotePrimitiveTypes_getDate": {},
+      "BRequest_RemoteArrayTypes4dim_getLong": {},
+      "Array4OfString": {
+        "type": "array"
       },
-      "BRequest_RemoteArrayTypes4dim_getLong": {
-        "exampleSetFlag": false
+      "ArrayOfPoint2D": {
+        "type": "array"
       },
-      "HashMap": {
-        "exampleSetFlag": false
+      "HashMap": {},
+      "BRequest_RemoteMapTypes_getDouble1": {},
+      "BStub_LemonService": {},
+      "Array4OfPrimitiveTypes": {
+        "type": "array"
       },
-      "BRequest_RemoteMapTypes_getDouble1": {
-        "exampleSetFlag": false
+      "BStub_RemotePrimitiveTypes": {},
+      "BRequest_RemoteArrayTypes4dim_getString": {},
+      "ArrayOfPrimitiveTypes": {
+        "type": "array"
       },
-      "BStub_LemonService": {
-        "exampleSetFlag": false
-      },
-      "BStub_RemotePrimitiveTypes": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteArrayTypes4dim_getString": {
-        "exampleSetFlag": false
+      "Array4Ofdouble": {
+        "type": "array"
       },
       "BRequest_RemoteSetTypes_setString1": {
         "properties": {
           "string1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1997002548": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1374008726": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteStreams_getTextStream": {
-        "exampleSetFlag": false
-      },
-      "BStub_RemoteMapTypes": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteStreams_getTextStream": {},
+      "BStub_RemoteMapTypes": {},
       "Class1": {
         "properties": {
           "int1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "nextClass1": {
-            "$ref": "#/components/schemas/Class1",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Class1"
           }
         },
-        "description": "Base class for ...",
-        "exampleSetFlag": false
+        "description": "Base class for ..."
       },
       "BResult_1831201218": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "Class2": {
         "properties": {
           "int2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "Class3": {
         "properties": {
           "int3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteMapTypes_setByte2": {
         "properties": {
           "byte2": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteStreams_putSharedStream": {
         "properties": {
           "id": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int64"
           },
           "stream": {
-            "$ref": "#/components/schemas/InputStream",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/InputStream"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteMapTypes_setByte1": {
         "properties": {
           "byte1": {
-            "$ref": "#/components/schemas/HashMap",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/HashMap"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemotePrimitiveTypes_setByte": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BStub_ClientIF": {
-        "exampleSetFlag": false
-      },
+      "BStub_ClientIF": {},
       "BRequest_RemoteInlineInstance_setPoint2DArray1dim": {
         "properties": {
           "pointArray": {
-            "$ref": "#/components/schemas/Point2D",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "Throwable": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemotePrimitiveTypes_getBool": {
-        "exampleSetFlag": false
-      },
+      "Throwable": {},
+      "BRequest_RemotePrimitiveTypes_getBool": {},
       "BRequest_RemoteSetTypes_setBoolean1": {
         "properties": {
           "boolean1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteArrayTypes1dim_setInt": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemotePrimitiveTypes_getChar": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemotePrimitiveTypes_getChar": {},
       "BRequest_RemoteListTypes_setByte1": {
         "properties": {
           "byte1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteListTypes_setByte2": {
         "properties": {
           "byte2": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1050216688": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemotePrimitiveTypes_setDouble": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "double"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteArrayTypes4dim_setByte": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofbyte"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1888107655": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteInlineInstance_getPoint2DList": {
-        "exampleSetFlag": false
-      },
-      "BRequest_ServerIF_getPartner": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteInlineInstance_getPoint2DList": {},
+      "BRequest_ServerIF_getPartner": {},
       "BRequest_RemoteArrayTypes1dim_setFloat": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "Evolve": {
         "properties": {
           "bool1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "byte1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "char1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "short1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "int1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "long1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int64"
           },
           "float1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "double1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "double"
           },
           "bools1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "bytes1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "chars1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "shorts1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "ints1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "longs1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "floats1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "doubles1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "str1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "obj1": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Object"
           },
           "evo1": {
-            "$ref": "#/components/schemas/Evolve2",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Evolve2"
           },
           "list1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "set1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           },
           "map1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "bool2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "byte2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "char2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "short2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "int2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "long2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int64"
           },
           "float2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "double2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "double"
           },
           "bools2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "bytes2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "chars2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "shorts2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "ints2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "longs2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "floats2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "doubles2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "str2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "obj2": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Object"
           },
           "evo2": {
-            "$ref": "#/components/schemas/Evolve2",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Evolve2"
           },
           "list2": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "set2": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           },
           "map2": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "bool3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "byte3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "char3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "short3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "int3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "long3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int64"
           },
           "float3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "double3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "double"
           },
           "bools3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "bytes3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "chars3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "shorts3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "ints3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "longs3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "floats3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "doubles3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "str3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "obj3": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Object"
           },
           "evo3": {
-            "$ref": "#/components/schemas/Evolve2",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Evolve2"
           },
           "list3": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "set3": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           },
           "map3": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "since793": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
         },
-        "description": "Example class with elements that belong to different versions.",
-        "exampleSetFlag": false
+        "description": "Example class with elements that belong to different versions."
       },
-      "BRequest_RemoteArrayTypes4dim_getBool": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteArrayTypes4dim_getBool": {},
       "BResult_1710660846": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_846419204": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Oflong"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1218831438": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "ArrayTypes1dim": {
         "properties": {
           "boolean1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "byte1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "char1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "short1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "int1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "long1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "float1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "double1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "string1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "date1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "primitiveTypes1": {
-            "$ref": "#/components/schemas/PrimitiveTypes",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "Array4Ofint": {
+        "type": "array"
       },
       "BResult_601099730": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1493282670": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteSetTypes_setLong1": {
         "properties": {
           "long1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteConstants_compare_AllTypesC": {
         "properties": {
           "bool1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "bool2s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "char1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "stringNull": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "char2s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "short1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "int1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "long1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int64"
           },
           "float1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "double1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "double"
           },
           "string1s": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "ALL": {
-            "$ref": "#/components/schemas/AllTypesZ",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/AllTypesZ"
           },
           "arrInt": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "arrInt4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofint"
           },
           "arrStrings": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "arrStrings4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfString"
           },
           "arrAll": {
-            "$ref": "#/components/schemas/AllTypesZ",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array2OfAllTypesZ"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_769021986": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofchar"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "Node": {
         "properties": {
           "next": {
-            "$ref": "#/components/schemas/Node",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Node"
           },
           "me": {
-            "$ref": "#/components/schemas/Node",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Node"
           },
           "mapOfNodes": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "listOfNodes": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteArrayTypes1dim_getFloat": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteArrayTypes1dim_getFloat": {},
       "BResult_1488550492": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteArrayTypes1dim_getLong": {
-        "exampleSetFlag": false
+      "Array3Oflong": {
+        "type": "array"
       },
-      "BRequest_RemoteMapTypes_getChar1": {
-        "exampleSetFlag": false
+      "Array2Ofdouble": {
+        "type": "array"
       },
-      "BStub_RemoteReferences": {
-        "exampleSetFlag": false
+      "Array2OfAllTypesZ": {
+        "type": "array"
       },
+      "BRequest_RemoteArrayTypes1dim_getLong": {},
+      "BRequest_RemoteMapTypes_getChar1": {},
+      "BStub_RemoteReferences": {},
       "Actor": {
         "properties": {
           "shape": {
-            "$ref": "#/components/schemas/Point2D",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "position": {
-            "$ref": "#/components/schemas/Matrix2D",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Matrix2D"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_766441794": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemotePrimitiveTypes_getObject": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemotePrimitiveTypes_getObject": {},
       "BRequest_RemoteServerCtrl_getPublishedRemote": {
         "properties": {
           "name": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemotePrimitiveTypes_makeDate": {
         "properties": {
           "year": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "month": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "day": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "hour": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "minute": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "second": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "millisecond": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_EvolveIF_getClient": {
-        "exampleSetFlag": false
+      "ArrayOfInputStream": {
+        "type": "array"
       },
+      "BRequest_EvolveIF_getClient": {},
       "BResult_1555345627": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteMapTypes_setChar1": {
         "properties": {
           "char1": {
-            "$ref": "#/components/schemas/TreeMap",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/TreeMap"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemotePrimitiveTypes_getFloat": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemotePrimitiveTypes_getFloat": {},
       "HebrewZ": {
         "properties": {
           "core": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "HebrewC": {
         "properties": {
           "aleph": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "beth": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "ALEPH": {
-            "$ref": "#/components/schemas/HebrewZ",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/HebrewZ"
           },
           "BETH": {
-            "$ref": "#/components/schemas/HebrewZ",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/HebrewZ"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_BioLemonService_useParing": {
-        "exampleSetFlag": false
+      "Array2OfObject": {
+        "type": "array"
       },
+      "Array3OfString": {
+        "type": "array"
+      },
+      "BRequest_BioLemonService_useParing": {},
       "BRequest_RemotePrimitiveTypes_parseDate": {
         "properties": {
           "date": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BStub_RemoteProcessingEx": {
-        "exampleSetFlag": false
+      "Array4Ofboolean": {
+        "type": "array"
+      },
+      "BStub_RemoteProcessingEx": {},
+      "Array4Offloat": {
+        "type": "array"
       },
       "BRequest_ServerIF_getClient": {
         "properties": {
           "id": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "SessionInfo": {
         "properties": {
           "sessionID": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
         },
-        "description": "Example for a session class.",
-        "exampleSetFlag": false
+        "description": "Example for a session class."
       },
       "BResult_1973996106": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "Array2Ofbyte": {
+        "type": "array"
+      },
+      "Array2Ofshort": {
+        "type": "array"
+      },
+      "ArrayOfint": {
+        "type": "array"
       },
       "BRequest_RemoteArrayTypes1dim_setString": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_51898890": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfDate"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1823330785": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteMapTypes_getString1": {
-        "exampleSetFlag": false
+      "Array3OfPrimitiveTypes": {
+        "type": "array"
       },
+      "Array4OfPoint2D": {
+        "type": "array"
+      },
+      "BRequest_RemoteMapTypes_getString1": {},
       "BResult_1359468275": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteStreams_setStreamDoNotMaterialize": {
         "properties": {
           "stream": {
-            "$ref": "#/components/schemas/InputStream",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/InputStream"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BStub_RemoteInlineInstance": {
-        "exampleSetFlag": false
-      },
-      "BValueClass": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteArrayTypes4dim_getDouble": {
-        "exampleSetFlag": false
+      "BStub_RemoteInlineInstance": {},
+      "BValueClass": {},
+      "BRequest_RemoteArrayTypes4dim_getDouble": {},
+      "Array4OfDate": {
+        "type": "array"
       },
       "BResult_1365696060": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteMapTypes_setPrimitiveTypes1": {
         "properties": {
           "primitiveTypes1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteMapTypes_setBoolean1": {
         "properties": {
           "boolean1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteSetTypes_getString1": {
-        "exampleSetFlag": false
+      "BRequest_RemoteSetTypes_getString1": {},
+      "ArrayOffloat": {
+        "type": "array"
       },
       "BRequest_RemoteMapTypes_setDouble1": {
         "properties": {
           "double1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteMapTypes_setShort1": {
         "properties": {
           "short1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_19": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_ServerIF_callClientIncrementInt": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_16": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/BRemote",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/BRemote"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_15": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/InputStream",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/InputStream"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteMapTypes_getByte1": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteMapTypes_getByte2": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteMapTypes_getByte1": {},
+      "BRequest_RemoteMapTypes_getByte2": {},
       "BResult_17": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1000": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/PrimitiveTypes",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/PrimitiveTypes"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_12": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_14": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_21": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Object"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteSetTypes_setFloat1": {
         "properties": {
           "float1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_ClientIF_sendChat": {
         "properties": {
           "cs": {
-            "$ref": "#/components/schemas/ChatStructure",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/ChatStructure"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemotePrimitiveTypes_add": {
         "properties": {
           "a": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "b": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_65775978": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/SessionInfo",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/SessionInfo"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteArrayTypes4dim_setString": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfString"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteReferences_getNode": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteReferences_getNode": {},
       "BResult_181681714": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1972793385": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/HashMap",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/HashMap"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteArrayTypes4dim_setInt": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofint"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_31512998": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/HashSet",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/HashSet"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_2053507648": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/PrimitiveTypes",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteListTypes_setPrimitiveTypes1": {
         "properties": {
           "primitiveTypes1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteInlineInstance_getPoint2DMap": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteArrayTypes4dim_getInt": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteInlineInstance_getPoint2DMap": {},
+      "BRequest_RemoteArrayTypes4dim_getInt": {},
       "BRequest_LemonService_pick": {
         "properties": {
           "sess": {
-            "$ref": "#/components/schemas/SessionInfo",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/SessionInfo"
           },
           "fromTree": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_564008001": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/EvolveIF",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/EvolveIF"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteSetTypes_setShort1": {
         "properties": {
           "short1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_10": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteMapTypes_setFloat1": {
         "properties": {
           "float1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1174971318": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1457164460": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteSetTypes_setDouble1": {
         "properties": {
           "double1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteInlineInstance_getPoint2DArray1dim": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteArrayTypes1dim_getBool": {
-        "exampleSetFlag": false
-      },
-      "BStub_RemoteEnums": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteInlineInstance_getActor": {
-        "exampleSetFlag": false
-      },
-      "BRequest_FruitService_squeeze": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteInlineInstance_getPoint2DArray1dim": {},
+      "BRequest_RemoteArrayTypes1dim_getBool": {},
+      "BStub_RemoteEnums": {},
+      "BRequest_RemoteInlineInstance_getActor": {},
+      "BRequest_FruitService_squeeze": {},
       "UsePlanets": {
         "properties": {
           "planet": {
-            "$ref": "#/components/schemas/EnumPlanets",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/EnumPlanets"
           },
           "planet2": {
-            "$ref": "#/components/schemas/EnumPlanets",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/EnumPlanets"
           },
           "arrayOfPlanets": {
-            "$ref": "#/components/schemas/EnumPlanets",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "listOfPlanets": {
-            "$ref": "#/components/schemas/ArrayList",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/ArrayList"
           },
           "mapOfPlanets": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "encoding": {
-            "$ref": "#/components/schemas/MyEncoding",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/MyEncoding"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteStreams_setImage": {
         "properties": {
           "istrm": {
-            "$ref": "#/components/schemas/InputStream",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/InputStream"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1391985860": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Evolve",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Evolve"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_BioFruitService_certify": {
         "properties": {
           "param": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteArrayTypes1dim_getChar": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteArrayTypes1dim_getChar": {},
       "BRequest_RemoteStreams_getSharedStream": {
         "properties": {
           "id": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int64"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteArrayTypes1dim_getString": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteSetTypes_getLong1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteArrayTypes1dim_getString": {},
+      "BRequest_RemoteSetTypes_getLong1": {},
       "BResult_1898022288": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "InputStream": {
-        "exampleSetFlag": false
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
       },
       "BResult_949340697": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Point2D",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfPoint2D"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_184101377": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Point2D",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteReferences_setNode": {
         "properties": {
           "v": {
-            "$ref": "#/components/schemas/Node",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Node"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteInlineInstance_getPoint2DListList": {
-        "exampleSetFlag": false
+      "ArrayOfboolean": {
+        "type": "array"
       },
+      "BRequest_RemoteInlineInstance_getPoint2DListList": {},
       "BResult_1201775504": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofbyte"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "SetTypes": {
         "properties": {
           "boolean1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           },
           "byte1": {
-            "$ref": "#/components/schemas/HashSet",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/HashSet"
           },
           "char1": {
-            "$ref": "#/components/schemas/TreeSet",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/TreeSet"
           },
           "short1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           },
           "int1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           },
           "long1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           },
           "float1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           },
           "double1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           },
           "string1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           },
           "primitiveTypes1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           },
           "byte2": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           },
           "int2": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           },
           "obj1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           },
           "date1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "ArrayOfString": {
+        "type": "array"
       },
       "BResult_1358523233": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteArrayTypes4dim_setFloat": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Offloat"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_EvolveIF_setClient": {
         "properties": {
           "partner": {
-            "$ref": "#/components/schemas/EvolveIF",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/EvolveIF"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteArrayTypes1dim_getDouble": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemotePrimitiveTypes_getString": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteListTypes_getDate1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteArrayTypes1dim_getDouble": {},
+      "BRequest_RemotePrimitiveTypes_getString": {},
+      "BRequest_RemoteListTypes_getDate1": {},
       "BRequest_ServerIF_setPartner": {
         "properties": {
           "client": {
-            "$ref": "#/components/schemas/ClientIF",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/ClientIF"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteStreams_throwLastException": {
-        "exampleSetFlag": false
-      },
-      "BStub_BioFruitService": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteStreams_throwLastException": {},
+      "BStub_BioFruitService": {},
       "BRequest_RemotePrimitiveTypes_setChar": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteListTypes_getPrimitiveTypes1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteListTypes_getPrimitiveTypes1": {},
       "BRequest_RemoteSetTypes_setPrimitiveTypes1": {
         "properties": {
           "primitiveTypes1": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_ServerIF_getStreamsFromClient": {
         "properties": {
           "materializeOnServer": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteListTypes_getFloat1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteListTypes_getFloat1": {},
       "BRequest_RemoteStreams_setImages": {
         "properties": {
           "istrms": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           },
           "doNotReadStreamAtKey": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteListTypes_getBoolean1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteListTypes_getBoolean1": {},
       "BRequest_RemoteListTypes_setDouble1": {
         "properties": {
           "double1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_758319514": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/PrimitiveTypes",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfPrimitiveTypes"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteListTypes_getString1": {
-        "exampleSetFlag": false
+      "Array2OfDate": {
+        "type": "array"
+      },
+      "BRequest_RemoteListTypes_getString1": {},
+      "Array3OfPoint2D": {
+        "type": "array"
+      },
+      "Array3Ofchar": {
+        "type": "array"
       },
       "BRequest_RemoteEnums_setPlanet": {
         "properties": {
           "planet": {
-            "$ref": "#/components/schemas/EnumPlanets",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/EnumPlanets"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BStub_RemoteArrayTypes1dim": {
-        "exampleSetFlag": false
-      },
+      "BStub_RemoteArrayTypes1dim": {},
       "BRequest_RemoteArrayTypes23_sendArraysInt": {
         "properties": {
           "arr2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array2Ofint"
           },
           "arr3": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array3Ofint"
           },
           "arr4": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofint"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemotePrimitiveTypes_getDeferredValueFromServer": {
         "properties": {
           "param1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "param2": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BStub_RemoteConstants": {
-        "exampleSetFlag": false
-      },
-      "BStub_ServerIF": {
-        "exampleSetFlag": false
-      },
+      "BStub_RemoteConstants": {},
+      "BStub_ServerIF": {},
       "BResult_1406664368": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "Array2OfPrimitiveTypes": {
+        "type": "array"
       },
       "BRequest_RemoteConstants_compare_HebrewC": {
         "properties": {
           "ALEPH": {
-            "$ref": "#/components/schemas/HebrewZ",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/HebrewZ"
           },
           "BETH": {
-            "$ref": "#/components/schemas/HebrewZ",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/HebrewZ"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteListTypes_setString1": {
         "properties": {
           "string1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteMapTypes_setLong1": {
         "properties": {
           "long1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteStreams_getStreamDoNotClone": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteStreams_getStreamDoNotClone": {},
       "BRequest_RemoteArrayTypes23_sendArraysObject": {
         "properties": {
           "arr2": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array2OfObject"
           },
           "arr3": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array3OfObject"
           },
           "arr4": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfObject"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "Object": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteListTypes_getShort1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteListTypes_getShort1": {},
       "BRequest_ServerIF_putStreamsOnClient": {
         "properties": {
           "streams": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "PrimitiveTypes": {
         "properties": {
           "boolVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "byteVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "charVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "shortVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "intVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           },
           "longVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int64"
           },
           "floatVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "doubleVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "double"
           },
           "stringVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "dateVal": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "objVal": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Object"
           },
           "objVal2": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Object"
           },
           "value": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "temp": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Object"
           },
           "deferredValue": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
         },
-        "description": "Example class with primitive types like boolean, int, String.",
-        "exampleSetFlag": false
+        "description": "Example class with primitive types like boolean, int, String."
       },
-      "BRequest_RemoteMapTypes_getFloat1": {
-        "exampleSetFlag": false
+      "Array3Offloat": {
+        "type": "array"
       },
+      "BRequest_RemoteMapTypes_getFloat1": {},
       "BRequest_RemotePrimitiveTypes_setObject": {
         "properties": {
           "v": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Object"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteArrayTypes4dim_setLong": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Oflong"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteSetTypes_setByte1": {
         "properties": {
           "byte1": {
-            "$ref": "#/components/schemas/HashSet",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/HashSet"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteSetTypes_setByte2": {
         "properties": {
           "byte2": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteArrayTypes23_sendArraysClass": {
         "properties": {
           "arr2": {
-            "$ref": "#/components/schemas/PrimitiveTypes",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array2OfPrimitiveTypes"
           },
           "arr3": {
-            "$ref": "#/components/schemas/PrimitiveTypes",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array3OfPrimitiveTypes"
           },
           "arr4": {
-            "$ref": "#/components/schemas/PrimitiveTypes",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfPrimitiveTypes"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "ArrayOfDate": {
+        "type": "array"
       },
       "BRequest_RemoteListTypes_setInt1": {
         "properties": {
           "int1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteListTypes_setInt2": {
         "properties": {
           "int2": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteListTypes_setInt3": {
         "properties": {
           "int3": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteListTypes_setLong1": {
         "properties": {
           "long1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteListTypes_setInt4": {
         "properties": {
           "int4": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "ArrayOfAllTypesZ": {
+        "type": "array"
       },
       "BRequest_RemotePrimitiveTypes_setDate": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteWithAuthentication_expire": {
         "properties": {
           "sess": {
-            "$ref": "#/components/schemas/SessionInfo",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/SessionInfo"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteInlineInstance_setPoint2DArray4dim": {
         "properties": {
           "pointArray": {
-            "$ref": "#/components/schemas/Point2D",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfPoint2D"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteMapTypes_getShort1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteMapTypes_getShort1": {},
       "BRequest_RemoteListTypes_setObj1": {
         "properties": {
           "obj1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_183594037": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteSetTypes_getByte2": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteSetTypes_getByte1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteSetTypes_getByte2": {},
+      "BRequest_RemoteSetTypes_getByte1": {},
       "BRequest_RemoteArrayTypes1dim_setBool": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BStub_BioLemonService": {
-        "exampleSetFlag": false
+      "BStub_BioLemonService": {},
+      "TreeMap": {},
+      "ArrayOflong": {
+        "type": "array"
       },
-      "TreeMap": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemotePrimitiveTypes_throwException": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemotePrimitiveTypes_throwException": {},
       "MyEncoding": {
         "properties": {
           "UTF8": {
-            "$ref": "#/components/schemas/MyEncoding",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/MyEncoding"
           },
           "UTF16": {
-            "$ref": "#/components/schemas/MyEncoding",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/MyEncoding"
           },
           "UTF16LE": {
-            "$ref": "#/components/schemas/MyEncoding",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/MyEncoding"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteArrayTypes1dim_getDate": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteArrayTypes1dim_getDate": {},
       "BRequest_RemoteInlineInstance_setPoint2DMap": {
         "properties": {
           "pointMap": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_8": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "double"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_3": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteStreams_getVideoCheckSupportByteRange": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteStreams_getVideoCheckSupportByteRange": {},
       "BResult_2": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteArrayTypes4dim_getByte": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteArrayTypes4dim_getByte": {},
       "BResult_7": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           }
-        },
-        "exampleSetFlag": false
-      },
-      "BResult_6": {
-        "properties": {
-          "result": {
-            "type": "string",
-            "exampleSetFlag": false
-          }
-        },
-        "exampleSetFlag": false
+        }
       },
       "Evolve2": {
         "properties": {
           "n1": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "BResult_6": {
+        "properties": {
+          "result": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
       },
       "BResult_5": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_4": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_9001": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Node",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Node"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteSetTypes_getShort1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteSetTypes_getShort1": {},
       "Matrix2D": {
         "properties": {
           "_11": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "_12": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "_13": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "_21": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "_22": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "_23": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "_31": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "_32": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           },
           "_33": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           }
         },
-        "description": "AThis class is inline which means it is serialized as value not as object.",
-        "exampleSetFlag": false
+        "description": "AThis class is inline which means it is serialized as value not as object."
       },
       "BRequest_RemotePrimitiveTypes_setBool": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteMapTypes_setInt2": {
         "properties": {
           "int2": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteMapTypes_setInt1": {
         "properties": {
           "int1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "Stream1": {
         "properties": {
           "is1": {
-            "$ref": "#/components/schemas/InputStream",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/InputStream"
           },
           "contentType": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           },
           "arrStream": {
-            "$ref": "#/components/schemas/InputStream",
-            "exampleSetFlag": false
+            "type": "array"
           },
           "listStream": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "mapStream": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteMapTypes_setObj1": {
         "properties": {
           "obj1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemotePrimitiveTypes_getByte": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemotePrimitiveTypes_getByte": {},
       "BRequest_RemoteMapTypes_setDate1": {
         "properties": {
           "obj1": {
-            "$ref": "#/components/schemas/Map",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Map"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteSetTypes_getDouble1": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteSetTypes_getDouble1": {},
       "BRequest_RemoteInlineInstance_setActor": {
         "properties": {
           "act": {
-            "$ref": "#/components/schemas/Actor",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Actor"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BStub_RemoteSetTypes": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteArrayTypes1dim_getShort": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemoteSetTypes_getPrimitiveTypes1": {
-        "exampleSetFlag": false
-      },
+      "BStub_RemoteSetTypes": {},
+      "BRequest_RemoteArrayTypes1dim_getShort": {},
+      "BRequest_RemoteSetTypes_getPrimitiveTypes1": {},
       "BRequest_RemoteArrayTypes4dim_setObject": {
         "properties": {
           "v": {
-            "$ref": "#/components/schemas/Object",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfObject"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BStub_RemoteWithAuthentication": {
-        "exampleSetFlag": false
+      "BStub_RemoteWithAuthentication": {},
+      "Array3OfDate": {
+        "type": "array"
       },
       "BRequest_RemoteArrayTypes4dim_setBool": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofboolean"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemotePrimitiveTypes_setInt": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "Array2Ofchar": {
+        "type": "array"
       },
       "ListTypes": {
         "properties": {
           "boolean1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "byte1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "char1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "short1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "int1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "long1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "float1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "double1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "string1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "date1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "primitiveTypes1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "byte2": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "int2": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "int4": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "obj1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemotePrimitiveTypes_getInt": {
-        "exampleSetFlag": false
+      "BRequest_RemotePrimitiveTypes_getInt": {},
+      "ArrayOfchar": {
+        "type": "array"
       },
       "BRequest_RemotePrimitiveTypes_setString": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "string"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteListTypes_setBoolean1": {
         "properties": {
           "boolean1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_ServerIF_callClientParallel": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteArrayTypes4dim_setShort": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4Ofshort"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteStreams_getImages": {
-        "exampleSetFlag": false
+      "BRequest_RemoteStreams_getImages": {},
+      "Array4Ofchar": {
+        "type": "array"
       },
       "BRequest_RemotePrimitiveTypes_setFloat": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "number",
+            "format": "float"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteSetTypes_setChar1": {
         "properties": {
           "char1": {
-            "$ref": "#/components/schemas/TreeSet",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/TreeSet"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BRequest_RemoteArrayTypes1dim_setLong": {
         "properties": {
           "v": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_955752991": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/ClientIF",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/ClientIF"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1661807911": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1320560671": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_2064980445": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1888799711": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteSetTypes_getFloat1": {
-        "exampleSetFlag": false
-      },
-      "BRequest_RemotePrimitiveTypes_getPrimitiveTypes": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteSetTypes_getFloat1": {},
+      "BRequest_RemotePrimitiveTypes_getPrimitiveTypes": {},
       "BResult_2123584667": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BStub_PlantService": {
-        "exampleSetFlag": false
-      },
+      "BStub_PlantService": {},
       "BRequest_RemotePrimitiveTypes_setPrimitiveTypes": {
         "properties": {
           "v": {
-            "$ref": "#/components/schemas/PrimitiveTypes",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/PrimitiveTypes"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "Exception": {
-        "exampleSetFlag": false
-      },
+      "Exception": {},
       "BRequest_RemoteArrayTypes1dim_setPrimitiveTypes": {
         "properties": {
           "v": {
-            "$ref": "#/components/schemas/PrimitiveTypes",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "ListListTypes": {
         "properties": {
           "int2": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "int3": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "int24": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteEnums_getPlanet": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteEnums_getPlanet": {},
       "BResult_1097919350": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Set",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Set"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_100361105": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_2058423690": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "array"
           }
-        },
-        "exampleSetFlag": false
+        }
+      },
+      "Array3Ofboolean": {
+        "type": "array"
       },
       "BRequest_ClientIF_putStreams": {
         "properties": {
           "strm": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           },
           "ctrl": {
-            "type": "string",
-            "exampleSetFlag": false
+            "type": "integer",
+            "format": "int32"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
       "BResult_1504867122": {
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BStub_RemoteServerCtrl": {
-        "exampleSetFlag": false
-      },
+      "BStub_RemoteServerCtrl": {},
       "BResult_588723219": {
         "properties": {
           "result": {
-            "type": "string",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/Array4OfString"
           }
-        },
-        "exampleSetFlag": false
+        }
       },
-      "BRequest_RemoteArrayTypes4dim_getFloat": {
-        "exampleSetFlag": false
-      },
+      "BRequest_RemoteArrayTypes4dim_getFloat": {},
       "BRequest_RemoteListTypes_setDate1": {
         "properties": {
           "obj1": {
-            "$ref": "#/components/schemas/List",
-            "exampleSetFlag": false
+            "$ref": "#/components/schemas/List"
           }
-        },
-        "exampleSetFlag": false
+        }
       }
     }
   }
