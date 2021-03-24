@@ -14,6 +14,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
 import byps.BContentStream;
+import byps.gen.RestConstants;
 
 /**
  * Gson deserializer class for InputStream.
@@ -51,11 +52,16 @@ class StreamDeserializer implements JsonDeserializer<InputStream> {
     
     InputStream ret = null;
     
+    // Expecting a JSON object as:
+    // {
+    //   "file" : "file[0]"
+    // }
+    
     if (json.isJsonObject()) {
       JsonObject obj = json.getAsJsonObject();
-      JsonElement elm = obj.get("name");
-      if (log.isDebugEnabled()) log.debug("stream name={}", elm);
-      if (json.isJsonPrimitive()) {
+      JsonElement elm = obj.get(RestConstants.UPLOAD_ITEM_NAME);
+      if (log.isDebugEnabled()) log.debug("stream.{}={}", RestConstants.UPLOAD_ITEM_NAME, elm);
+      if (elm != null && elm.isJsonPrimitive()) {
         String fieldName = elm.getAsString();
         ret = streamItems.get(fieldName);
       }

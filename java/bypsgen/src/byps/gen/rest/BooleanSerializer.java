@@ -15,6 +15,10 @@ public class BooleanSerializer implements JsonSerializer<Boolean> {
     if (src != null && src) {
       ret = new JsonPrimitive(true);
     }
+    else {
+      // skip
+      ret = null;
+    }
     return ret;
   }
 

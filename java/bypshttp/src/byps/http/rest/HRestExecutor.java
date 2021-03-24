@@ -8,9 +8,11 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Type;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,8 +26,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonSerializer;
+import com.google.gson.reflect.TypeToken;
 
 import byps.BContentStream;
 import byps.BMethodRequest;
@@ -133,6 +134,7 @@ public class HRestExecutor {
     BMethodRequest method = null;
     try {
       boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+      if (log.isDebugEnabled()) log.debug("contentType={}, isMultipart={}", request.getContentType(), isMultipart);
       if (isMultipart) {
         method = buildMethodFromMultiPart(sess, request, requestClass);
       }
@@ -143,6 +145,7 @@ public class HRestExecutor {
     catch (Exception e) {
       log.error("Cannot instantiate method object for request={}", requestClass, e);
       response.setStatus(HttpServletResponse.SC_BAD_REQUEST); 
+      return;
     }
     
     // Execute the request object and write the response.
@@ -281,6 +284,8 @@ public class HRestExecutor {
       
       // Deserialize
       GsonBuilder builder = new GsonBuilder();
+      builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(Collections.emptyMap()));
+      builder.registerTypeAdapter(byte[].class, new BytesDeserializer());
       Gson gson = builder.create();
       method = (BMethodRequest)gson.fromJson(innerReader, requestClass);
     }
@@ -322,67 +327,125 @@ public class HRestExecutor {
     // Set overall request size constraint
     upload.setSizeMax(maxUploadFileSize);
 
-    // Construct an empty request object
-    Object brequest = requestClass.getConstructor().newInstance();
-    
     // Parse the request
     List<FileItem> items = upload.parseRequest(request);
     if (log.isDebugEnabled()) log.debug("received #items={}", items.size());
     
-    // Collect the streams provided in the request.
+    // Collect the streams provided in the request and map them to "file==file[0], file[1], ...".
     // This map is used during deserialization to assign the stream objects referenced in the method parameters.
-    Map<String, BContentStream> streamItems = items.stream().filter(item -> !item.isFormField())
-        .collect(Collectors.toMap(FileItem::getFieldName, item -> toBypsStream(sess, item)));
-    if (log.isDebugEnabled()) log.debug("#streams={}", streamItems.size());
+    Map<String, BContentStream> streams = mapFieldNamesToStreams(sess, items);
+    if (log.isDebugEnabled()) log.debug("#streams={}", streams.size());
     
     // Initialize deserialization
     GsonBuilder builder = new GsonBuilder();
-    builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(streamItems));
+    builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(streams));
     builder.registerTypeAdapter(byte[].class, new BytesDeserializer());
     
-    // Assign the multipart fields to the method parameters 
+    // Construct a JSON string for the BMethodRequest with the given form fields.
+    // Gson does not deserialize a generic class in gson.fromJson if the class is given as Class<?> object.
+    // Hence, deserialization field by field does not allow to use generic method parameters.
+    // The BMethodRequest class is not a generic class and therefore it is correctly deserialized by Gson. 
+    // Event its generic members are correctly deserialized - magic. 
+    StringBuilder sbuf = new StringBuilder();
+    sbuf.append("{");
+    boolean addComma = false;
     for (FileItem item : items) {
-      assignFieldToMethodParam(requestClass, brequest, streamItems, builder, item);
+      if (item.isFormField()) {
+        // Print the field and its value into the buffer
+        addComma = appendFieldToJsonString(requestClass, item, addComma, sbuf);
+      }
     }
+    sbuf.append("}");
+    
+    // Deserialize the BMethodRequest
+    Gson gson = builder.create();
+    BMethodRequest brequest = (BMethodRequest)gson.fromJson(sbuf.toString(), requestClass);
 
     if (log.isDebugEnabled()) log.debug(")buildMethodForMultiPart={}", brequest);
-    return (BMethodRequest)brequest;
+    return brequest;
   }
 
   /**
-   * Assign field to method object.
-   * @param requestClass Method class
-   * @param brequest Method object 
-   * @param streamItems Streams provided in multipart/form-data request
-   * @param builder GsonBuilder to serialize field value
-   * @param item Field
+   * Print multipart field and its value into the string buffer.
+   * @param requestClass BMethodRequest class
+   * @param item 
+   * @param addComma
+   * @param sbuf
+   * @return
    * @throws NoSuchFieldException
-   * @throws IllegalAccessException
    */
-  private void assignFieldToMethodParam(Class<?> requestClass, Object brequest, Map<String, BContentStream> streamItems,
-      GsonBuilder builder, FileItem item) throws NoSuchFieldException, IllegalAccessException {
+  private boolean appendFieldToJsonString(Class<?> requestClass, FileItem item, boolean addComma,
+      StringBuilder sbuf) throws NoSuchFieldException {
     
-    // Provide reflection object to assign the method field
-    String fieldName = item.getFieldName();
-    Field field = requestClass.getDeclaredField(fieldName);
-    Class<?> fieldClass = field.getType();
-    if (log.isDebugEnabled()) log.debug("provide fieldName={}, fieldClass={}", fieldName, fieldClass);
+    final String BS = "\"";
+
+    if (addComma) sbuf.append(","); else addComma = true;
+    sbuf.append(BS).append(item.getFieldName()).append(BS).append(":");
     
-    if (item.isFormField()) {
-      // Non-streams can be JSON objects and have to be deserialized
-      Gson gson = builder.create();
-      String json = item.getString();
-      if (log.isDebugEnabled()) log.debug("deserialize json={}", json);
-      Object fieldValue = gson.fromJson(json, fieldClass);
-      if (log.isDebugEnabled()) log.debug("assign fieldName={}, value={}", fieldName, fieldValue);
-      field.set(brequest, fieldValue);
+    Field field = requestClass.getDeclaredField(item.getFieldName());
+    Class<?> fieldType = field.getType();
+    String itemString = item.getString();
+    if (itemString == null) itemString = "";
+    
+    if (fieldType == String.class) {
+      sbuf.append(BS).append(itemString).append(BS);
+    }
+    else if (fieldType == boolean.class || fieldType == Boolean.class) {
+      if (itemString.isEmpty()) itemString = "false";
+      sbuf.append(itemString);
+    }
+    else if (fieldType == int.class || fieldType == long.class || fieldType == float.class || fieldType == double.class || Number.class.isAssignableFrom(fieldType)) {
+      if (itemString.isEmpty()) itemString = "0";
+      sbuf.append(itemString);
     }
     else {
-      BContentStream stream = streamItems.get(fieldName);
-      if (log.isDebugEnabled()) log.debug("assign fieldName={}, value={}", fieldName, stream);
-      field.set(brequest, stream);
+      sbuf.append(itemString);
     }
+    return addComma;
   }
-  
+
+  /**
+   * Build a map of field names to upload streams.
+   * 
+   * If field names are repeatedly used, the mapping is as 'file', 'file[0]', 'file[1]', ...
+   * The value of InputStream objects in the message have to reference the streams by this names, see {@link StreamDeserializer}.
+   * 
+   * @param sess
+   * @param items
+   * @return
+   */
+  private Map<String, BContentStream> mapFieldNamesToStreams(HSession sess, List<FileItem> items) {
+    Map<String, BContentStream> streams = new HashMap<>();
+    
+    // Map for field names and how often they are repeated.
+    Map<String, Integer> nameAndCount = new HashMap<>();
+    
+    // Loop over stream items (non-form-field items)
+    items.stream().filter(item -> !item.isFormField()).forEach(item -> {
+      
+      // Field name is usually 'file'
+      String name = item.getFieldName();
+      Integer count = nameAndCount.get(name);
+      
+      if (count == null) {
+        // First use of 'file' -> map 'file' to stream and 'file[0]' to stream
+        count = 0;
+        BContentStream bstream = toBypsStream(sess, item);
+        streams.put(name, bstream);
+        streams.put(name + "[0]", bstream);
+      }
+      else {
+        // Additional use of 'file', increment usage count, map 'file[count]' to stream
+        count++;
+        BContentStream bstream = toBypsStream(sess, item);
+        streams.put(name + "[" + count + "]", bstream);
+      }
+      
+      nameAndCount.put(name, count);
+      
+    });
+    
+    return streams;
+  }
 
 }

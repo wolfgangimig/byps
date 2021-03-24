@@ -10,6 +10,7 @@ import java.util.Base64;
 import java.util.Collection;
 import java.util.Optional;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -191,6 +192,28 @@ public class BypsServlet extends HHttpServlet {
     }
     return sess;
   }
+  
+  @Override
+  protected void service(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+   
+    
+    
+    super.service(request, response);
+  }
+  
+  @Override
+  protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    setAccessControlHeaders(resp);
+    resp.setStatus(200);
+  }
+  
+  private void setAccessControlHeaders(HttpServletResponse resp) {
+    resp.setHeader("Access-Control-Allow-Origin", "*");
+    resp.setHeader("Access-Control-Allow-Methods", "GET, POST,PUT,DELETE,OPTIONS");
+    resp.setHeader("Access-Control-Allow-Headers", "*");
+}
+
 
   private final Logger log = LoggerFactory.getLogger(BypsServlet.class);
   private final HConfigImpl config = new HConfigImpl();
