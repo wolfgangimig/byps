@@ -8,7 +8,6 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Type;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +25,6 @@ import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 import byps.BContentStream;
 import byps.BMethodRequest;
@@ -174,7 +172,7 @@ public class HRestExecutor {
     if (log.isDebugEnabled()) log.debug(")toBypsStream={}", stream);
     return stream;
   }
-
+  
   /**
    * Execute the call and write the response.
    * @param sess BYPS session
@@ -188,44 +186,46 @@ public class HRestExecutor {
     
     // Initialize builder for JSON response.
     GsonBuilder builder = new GsonBuilder();
-    builder.registerTypeAdapter(InputStream.class, new StreamSerializer(sess));
     builder.registerTypeAdapter(byte[].class, new BytesSerializer());
     if (log.isDebugEnabled()) builder.setPrettyPrinting();
-    Gson gson = builder.create();
     
-    // For debug logging, write into a StringWriter.
-    Writer innerWriter = writer;
-    if (log.isDebugEnabled()) {
-      innerWriter = new StringWriter();
-    }
-
+    // The response must not been written into the output (writer) directly
+    // to be able to send a different response in case of an error during 
+    // JSON serialization.
+    Writer innerWriter = new StringWriter();
+    
     try {
       // Execute
       if (log.isDebugEnabled()) log.debug("executeMethod {}", method);
       BSyncResult<Object> syncResult = new BSyncResult<>();
       method.execute(remote, syncResult);
       
-      // Wait for result and serialize it
+      // Wait for result and replace InputStreams with BStreamReference
       if (log.isDebugEnabled()) log.debug("get result and serialize");
       Object result = syncResult.getResult();
+      TransformObject.transformBeforeSerializeToJson(sess, result);
+      
+      // Serialize to JSON
+      Gson gson = builder.create();
       gson.toJson(result, innerWriter);
     }
     catch (Throwable e) {
       // Serialize error result
-      if (log.isDebugEnabled()) log.debug("serialize error result", e);
+      log.error("serialize error result", e);
       ExceptionResult result = new ExceptionResult(e);
+      Gson gson = builder.create();
       gson.toJson(result, innerWriter);
     }
-    
+
+    // Print JSON into provided Writer
+    String jsonResponse = innerWriter.toString();
+    writer.append(jsonResponse);
+
     // For debug logging, print the JSON response into the log and copy the response to the provided Writer.
     if (log.isDebugEnabled()) {
-      String jsonResponse = innerWriter.toString();
       log.debug("jsonResponse={}", jsonResponse);
-      
-      // Print JSON into provided Writer
-      writer.append(jsonResponse);
     }
-    
+
     if (log.isDebugEnabled()) log.debug(")executeMethod");
   }
 
@@ -376,31 +376,39 @@ public class HRestExecutor {
    */
   private boolean appendFieldToJsonString(Class<?> requestClass, FileItem item, boolean addComma,
       StringBuilder sbuf) throws NoSuchFieldException {
+    if (log.isDebugEnabled()) log.debug("appendFieldToJsonString(requestClass={}, field.name={}", requestClass, item.getFieldName());
+
+    // An unassigned stream item (upload item with no file) is interpreted by 
+    // Apache FileUpload as FileItem.isFormField()=true. This item must be skipped
+    // here because there is no corresponding field in the request class.
+    String itemString = item.getString();
+    if (log.isDebugEnabled()) log.debug("fieldAsString={}", itemString);
+    if (itemString == null || itemString.isEmpty()) return addComma;
     
     final String BS = "\"";
 
     if (addComma) sbuf.append(","); else addComma = true;
     sbuf.append(BS).append(item.getFieldName()).append(BS).append(":");
     
+    if (log.isDebugEnabled()) log.debug("get field via reflection, field={}", item.getFieldName());
     Field field = requestClass.getDeclaredField(item.getFieldName());
     Class<?> fieldType = field.getType();
-    String itemString = item.getString();
-    if (itemString == null) itemString = "";
+    if (log.isDebugEnabled()) log.debug("fieldType={}", fieldType);
     
     if (fieldType == String.class) {
       sbuf.append(BS).append(itemString).append(BS);
     }
     else if (fieldType == boolean.class || fieldType == Boolean.class) {
-      if (itemString.isEmpty()) itemString = "false";
       sbuf.append(itemString);
     }
     else if (fieldType == int.class || fieldType == long.class || fieldType == float.class || fieldType == double.class || Number.class.isAssignableFrom(fieldType)) {
-      if (itemString.isEmpty()) itemString = "0";
       sbuf.append(itemString);
     }
     else {
       sbuf.append(itemString);
     }
+    
+    if (log.isDebugEnabled()) log.debug(")appendFieldToJsonString={}", addComma);
     return addComma;
   }
 

@@ -196,9 +196,7 @@ public class BypsServlet extends HHttpServlet {
   @Override
   protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-   
-    
-    
+    setAccessControlHeaders(response);
     super.service(request, response);
   }
   
@@ -210,7 +208,7 @@ public class BypsServlet extends HHttpServlet {
   
   private void setAccessControlHeaders(HttpServletResponse resp) {
     resp.setHeader("Access-Control-Allow-Origin", "*");
-    resp.setHeader("Access-Control-Allow-Methods", "GET, POST,PUT,DELETE,OPTIONS");
+    resp.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
     resp.setHeader("Access-Control-Allow-Headers", "*");
 }
 

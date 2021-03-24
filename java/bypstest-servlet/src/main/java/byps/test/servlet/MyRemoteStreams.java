@@ -243,7 +243,8 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	
 	@Override
 	public InputStream getSharedStream(long id) throws RemoteException {
-	  return sharedStreams.remove(id);
+	  InputStream ret = sharedStreams.remove(id);
+	  return ret;
 	}
 	
 	@Override
