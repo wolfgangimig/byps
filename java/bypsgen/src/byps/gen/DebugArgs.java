@@ -10,6 +10,7 @@ public class DebugArgs {
   public static String[] bypstest_ser = new String[] {
       
   "-genrest.openapi-dir", "../bypstest-api",
+  "-genrest.auth-basic", 
 
   "-genj.dir-ser", "../bypstest-ser/src-ser", "-genj.dir-ser-bin", "../bypstest-ser/src-ser-bin", "-genj.dir-ser-json", "../bypstest-ser-json/src",
   "-genj.dir-test", "../bypstest-ser/src-test",

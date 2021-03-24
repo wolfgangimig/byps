@@ -8,6 +8,7 @@ import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -52,6 +53,10 @@ import io.swagger.v3.oas.models.media.StringSchema;
 import io.swagger.v3.oas.models.parameters.RequestBody;
 import io.swagger.v3.oas.models.responses.ApiResponse;
 import io.swagger.v3.oas.models.responses.ApiResponses;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
+import io.swagger.v3.oas.models.security.SecurityScheme.In;
+import io.swagger.v3.oas.models.security.SecurityScheme.Type;
 import io.swagger.v3.oas.models.servers.Server;
 
 /**
@@ -73,6 +78,8 @@ public class GeneratorOpenAPI implements Generator {
   
   private Map<String, PathItem> paths = new TreeMap<>();
   
+  private Map<String, SecurityScheme> securitySchemes = new TreeMap<>();
+  
   @Override
   public void build(ClassDB classDB, GeneratorProperties props) throws IOException {
     
@@ -82,10 +89,11 @@ public class GeneratorOpenAPI implements Generator {
     openApi.info(createInfo(classDB));
     openApi.servers(createServers());
     
+    
     for (SerialInfo serInfo : classDB.getSerials()) {
       toSchema(serInfo);
     }
-    openApi.components(new Components().schemas(SchemaN.toComponentSchemas(schemas)));
+    openApi.components(new Components().securitySchemes(createSecuritySchemes()).schemas(SchemaN.toComponentSchemas(schemas)));
     
     for (RemoteInfo remoteInfo : classDB.getRemotes()) {
       remoteInfo.methods.forEach(m -> toPath(remoteInfo.name, m));
@@ -97,6 +105,20 @@ public class GeneratorOpenAPI implements Generator {
     write();
   }
   
+  private Map<String, SecurityScheme> createSecuritySchemes() {
+    if (pctxt.props.containsKey(PropertiesRest.AUTHENTICATION_SCHEME_BASIC)) { 
+      securitySchemes.put("basic", new SecurityScheme().type(Type.HTTP).scheme("basic"));
+    }
+    if (pctxt.props.containsKey(PropertiesRest.AUTHENTICATION_SCHEME_BEARER)) {
+      securitySchemes.put("bearer", new SecurityScheme().type(Type.HTTP).scheme("bearer"));
+    }
+    if (pctxt.props.containsKey(PropertiesRest.AUTHENTICATION_SCHEME_API_KEY)) {
+      String headerName = pctxt.props.getProperty(PropertiesRest.AUTHENTICATION_SCHEME_API_KEY, "X-API-KEY");
+      securitySchemes.put("apiKey", new SecurityScheme().type(Type.APIKEY).in(In.HEADER).name(headerName));
+    }
+    return securitySchemes;
+  }
+
   private List<Server> createServers() {
     Server server = new Server();
     server.url("/rest");
@@ -115,9 +137,7 @@ public class GeneratorOpenAPI implements Generator {
     op.operationId(remoteName + "_" + methodInfo.name);
     op.addTagsItem(remoteName);
     
-//    SecurityRequirement security = new SecurityRequirement();
-//    security.addList("Basic");
-//    op.security(Arrays.asList(security));
+    op.security(getSecurityRequirements());
     
     addRequestBodies(methodInfo, op);
     
@@ -126,6 +146,12 @@ public class GeneratorOpenAPI implements Generator {
     pathItem.post(op);
     
     paths.put(uri, pathItem);
+  }
+  
+  private List<SecurityRequirement> getSecurityRequirements() {
+    SecurityRequirement security = new SecurityRequirement();
+    securitySchemes.keySet().forEach(security::addList);
+    return Arrays.asList(security);
   }
 
   private void addResponses(MethodInfo methodInfo, Operation op) {
@@ -200,6 +226,7 @@ public class GeneratorOpenAPI implements Generator {
     builder.registerTypeAdapter(boolean.class, new BooleanSerializer());
     builder.registerTypeAdapter(Boolean.class, new BooleanSerializer());
     builder.registerTypeAdapter(ArraySchema.class, new ArraySchemaSerializer());
+    builder.registerTypeAdapter(SecurityScheme.Type.class, new SecuritySchemeTypeSerializer());
     builder.setPrettyPrinting();
     Gson gson = builder.create();
     try (Writer writer = new OutputStreamWriter(new FileOutputStream(openapiFile), StandardCharsets.UTF_8)) {

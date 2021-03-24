@@ -160,6 +160,12 @@ public class Context {
         argIdx = propsJS.addArgs(args, argIdx);
       }
 
+      // REST generator option?
+      else if (arg.startsWith(PropertiesRest.OPT_PREFIX)) {
+        if (propsRest == null) propsRest = new PropertiesRest(defaultProps);
+        argIdx = propsRest.addArgs(args, argIdx);
+      }
+
       // reserved
       else if (arg.equals(GeneratorProperties.CHANGED_MEMBERS)) {
         defaultProps.put(GeneratorProperties.CHANGED_MEMBERS, "true");
@@ -189,11 +195,6 @@ public class Context {
       else if (arg.equalsIgnoreCase("-onlyBSerials")) {
         convertOptions |= XmlGeneratorBase.OPT_ONLY_BSERIALS;
         argIdx++;
-      }
-      
-      else if (arg.equalsIgnoreCase(PropertiesRest.DEST_DIR)) {
-        if (propsRest == null) propsRest = new PropertiesRest(defaultProps);
-        argIdx = propsRest.addArgs(args, argIdx);
       }
       
       // Options starting with -- are passed to the javadoc tool.
