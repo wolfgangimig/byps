@@ -2,6 +2,8 @@ BYPS Version History
 
 8.46
 
+- BYPS-52: Fix a async bug which had lead to BAsyncContentStream.read() never returning -1 when forwarding small inputStreams with it
+
 - BYPS-49: Manage Java 8 version in master branch. Currently, java.net.http.HttpClient is not
   worth for tracking two release branches.
 

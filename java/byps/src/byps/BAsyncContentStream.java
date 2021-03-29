@@ -59,13 +59,15 @@ public class BAsyncContentStream extends BContentStream {
 
   /**
    * Position of the first byte in {@link #buffer} that was not read yet.
+   * volatile due to async writes and reads
    */
-  private int bufferReadOffset;
+  private volatile int bufferReadOffset;
 
   /**
    * Amount of data remaining in {@link #buffer}.
+   * volatile due to async writes and reads
    */
-  private int bufferRemaining;
+  private volatile int bufferRemaining;
 
   /**
    * {@link Future} that holds a reference to a pending read-request (to the
@@ -209,8 +211,11 @@ public class BAsyncContentStream extends BContentStream {
       // get Data from the pending request...
       if (pending != null) {
         read = pending.get(timeout, timeoutUnit);
-        if (log.isTraceEnabled())
-          log.trace("read {} bytes [{}]", read, b[offset]);
+        //BYPS-52: clear PendingRequest synchronously after get() to avoid dangling requests due to concurrent variable changes
+        this.pendingRequest = null;
+        if (log.isTraceEnabled()) {
+          log.trace("pendingRequest finished, read {} bytes [{}]", read, b[offset]);
+        }
       }
 
       // ... and return them to the caller.
@@ -276,7 +281,6 @@ public class BAsyncContentStream extends BContentStream {
       log.trace("readBuffered: {} bytes", read);
     this.bufferReadOffset = 0;
     this.bufferRemaining = read;
-    this.pendingRequest = null;
     return read;
   }
 
