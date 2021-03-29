@@ -211,10 +211,11 @@ public class BAsyncContentStream extends BContentStream {
       // get Data from the pending request...
       if (pending != null) {
         read = pending.get(timeout, timeoutUnit);
-        if (log.isTraceEnabled())
-          log.trace("read {} bytes [{}]", read, b[offset]);
         //BYPS-52: clear PendingRequest synchronously after get() to avoid dangling requests due to concurrent variable changes
         this.pendingRequest = null;
+        if (log.isTraceEnabled()) {
+          log.trace("pendingRequest finished, read {} bytes [{}]", read, b[offset]);
+        }
       }
 
       // ... and return them to the caller.
