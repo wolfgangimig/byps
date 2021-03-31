@@ -1,5 +1,11 @@
 BYPS Version History
 
+8.47
+
+- BYPS-53: Do not solely rely on System.identityHashCode(Object) to uniquely identify an object.
+  Fixes ClassCastExceptions when deserializing very large objects containing tens of thousands
+  other objects.
+
 8.46
 
 - BYPS-48: Make sure to close the stream in BContentStream.materialize to release the PUT request after 
