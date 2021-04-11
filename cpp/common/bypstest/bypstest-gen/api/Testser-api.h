@@ -2209,6 +2209,36 @@ using namespace ::byps;
 /// </summary>
 class RemoteArrayTypes1dim : public virtual BRemote {
 	
+	/// <summary>
+	/// Checks in an uploaded document.
+	/// </summary>
+	/// <remarks>
+	/// <p>
+	/// See <code>checkinDocBegin</code>, if you want to checkin new document or attachment version(s).
+	/// </p>
+	/// <p>
+	/// Changing the document or attachment work version, version number, comment, flags or status:
+	/// <code><br/><br/>
+	/// Document doc = new Document();<br/>
+	/// doc.objId = an object ID or GUID<br/>
+	/// doc.docs = new DocVersion[] {new DocVersion()};<br/>
+	/// doc.docs[0].id = a document ID;<br/>
+	/// doc.docs[0].workVersion = true;<br/>
+	/// doc.docs[0].version = "2.0";<br/>
+	/// doc.docs[0].comment = "new comment";<br/>
+	/// doc.docs[0].milestone = true;<br/>
+	/// doc.docs[0].deleted = false;<br/>
+	/// ix.checkinDocEnd(ci, null, null, doc, LOCK.NO);<br/>
+	/// </code>
+	/// </p>
+	/// <p>
+	/// If the supplied sord has <code>sord.type==LBT_DOCUMENT</code>, sord.type will be detected from
+	/// the file extension of the given work version.
+	/// </p>
+	/// <p>
+	/// If the document is only to be unlocked, see <code>checkinSord</code>.
+	/// </p>
+	/// </remarks>
 	public: virtual void setBool(const PArrayBoolean& v)  = 0;
 	public: virtual void setBool(const PArrayBoolean& v, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
 	

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import byps.gen.api.rest.RestInfo;
+
 public class RemoteInfo extends TypeInfo {
 	
 	public final static String STUB_NAME_PREFIX = "BStub_";
@@ -30,6 +32,11 @@ public class RemoteInfo extends TypeInfo {
 	 */
 	public final List<String> baseQNames = new ArrayList<String>();
 	
+	/**
+	 * BYPS-50
+	 */
+	public final RestInfo restInfo;
+	
 	public final long since;
 
 	public RemoteInfo(
@@ -40,6 +47,7 @@ public class RemoteInfo extends TypeInfo {
 	    List<MethodInfo> methods,
 	    String authParamClassName, 
 	    boolean isClientRemote,
+	    RestInfo restInfo,
 	    long since) {
 		super(name, qname, "", null, false, false, false);
 		this.methods = methods;
@@ -47,11 +55,12 @@ public class RemoteInfo extends TypeInfo {
 		this.authParamClassName = authParamClassName;
 		this.isClientRemote = isClientRemote;
 		if (baseQNames != null) this.baseQNames.addAll(baseQNames);
+		this.restInfo = restInfo;
 		this.since = since;
 	}
 
 	public RemoteInfo() {
-		this(null, null, null, null, null, null, false, 0L);
+		this(null, null, null, null, null, null, false, RestInfo.NULL, 0L);
 	}
 	
 	public List<MethodInfo> methods;
@@ -67,6 +76,7 @@ public class RemoteInfo extends TypeInfo {
         methods, 
         null, 
         isClientRemote,
+        restInfo,
         since);
     rinfo.typeId = this.typeId;
     return rinfo;
@@ -89,6 +99,7 @@ public class RemoteInfo extends TypeInfo {
         methods, 
         authParamClassName, 
         isClientRemote,
+        restInfo,
         since);
     rinfo.typeId = this.typeId;
     return rinfo;
@@ -102,6 +113,7 @@ public class RemoteInfo extends TypeInfo {
         methods, 
         null, 
         isClientRemote, 
+        restInfo,
         since);
     rinfo.typeId = this.typeId;
     return rinfo;

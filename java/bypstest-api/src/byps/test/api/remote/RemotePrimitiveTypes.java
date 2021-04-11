@@ -2,6 +2,9 @@ package byps.test.api.remote;
 
 import java.util.Date;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+
 import byps.BRemote;
 import byps.RemoteException;
 import byps.test.api.prim.PrimitiveTypes;
@@ -43,6 +46,8 @@ public interface RemotePrimitiveTypes extends BRemote {
 
 	public void sendAllTypes(boolean b, char c, short s, int i, long l, float f, double d, String str, PrimitiveTypes pt, Object o) throws RemoteException;
 	
+	@GET
+	@Path("primitiveadd")
 	public int add(int a, int b) throws RemoteException;
 	
 	public Date makeDate(int year, int month, int day, int hour, int minute, int second, int millisecond) throws RemoteException;

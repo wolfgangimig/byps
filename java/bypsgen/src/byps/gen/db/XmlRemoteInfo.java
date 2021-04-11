@@ -18,6 +18,7 @@ import byps.gen.api.MethodInfo;
 import byps.gen.api.RemoteInfo;
 import byps.gen.api.SerialInfo;
 import byps.gen.api.TypeInfo;
+import byps.gen.api.rest.RestInfo;
 
 public class XmlRemoteInfo implements XmlInfo {
 	
@@ -42,6 +43,12 @@ public class XmlRemoteInfo implements XmlInfo {
 	public Collection<CommentInfo> comments;
 
   public List<String> baseQNames;
+
+  /**
+   * 
+   * BYPS-50
+   */
+  public RestInfo restInfo;
   
   public String since;
 	
@@ -74,7 +81,7 @@ public class XmlRemoteInfo implements XmlInfo {
 
 		RemoteInfo remoteInfo = classDB.createRemoteInfo(t.name, 
 		    comments, t.qname, baseQNames, 
-		    null, authParamClassName, isClientRemote,
+		    null, authParamClassName, isClientRemote, restInfo,
 		    BVersioning.stringToLong(since));
 		xmlClassDB.pushUpdate(this);
 		

@@ -3,12 +3,7 @@ package byps.test.servlet;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.Collection;
-import java.util.Optional;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -29,7 +24,9 @@ import byps.http.HFileUploadItem;
 import byps.http.HHttpServlet;
 import byps.http.HSession;
 import byps.http.HTestAdapter;
+import byps.rest.RestOperations;
 import byps.test.api.BApiDescriptor_Testser;
+import byps.test.api.RestOperations_Testser;
 
 /**
  * Servlet implementation class BypsServlet
@@ -172,6 +169,11 @@ public class BypsServlet extends HHttpServlet {
   @Override
   protected BApiDescriptor getApiDescriptor() {
     return BApiDescriptor_Testser.instance();
+  }
+  
+  @Override
+  protected RestOperations getRestOperations() {
+    return RestOperations_Testser.instance();
   }
 
   @Override

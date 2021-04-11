@@ -48,6 +48,9 @@ dependencies {
 	compileOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 	compileOnly group: 'log4j', name: 'log4j', version: '1.2.17'
 	
+	// https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
+ 	compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
+
 }
 
 // BYPS-40: Separate versions for Java 8 and 11+.

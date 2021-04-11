@@ -9,7 +9,8 @@ public class DebugArgs {
   @SuppressWarnings("unused")
   public static String[] bypstest_ser = new String[] {
       
-  "-genrest.openapi-dir", "../bypstest-api",
+  "-genrest.openapi-file", "../bypstest-ser/res/openapi.json",
+  "-genrest.src-dir", "../bypstest-ser/src-ser",
   "-genrest.auth-basic", 
 
   "-genj.dir-ser", "../bypstest-ser/src-ser", "-genj.dir-ser-bin", "../bypstest-ser/src-ser-bin", "-genj.dir-ser-json", "../bypstest-ser-json/src",

@@ -80,6 +80,7 @@ public class Main {
       if (context.getExitCode() == 0) {
         context.setExitCode(1);
       }
+      System.err.println("Code generation failed: " + ex);
     }
     
     System.out.println("Finished, exit code=" + context.getExitCode());

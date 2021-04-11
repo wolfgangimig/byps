@@ -3,6 +3,8 @@ package byps.gen.api;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import byps.gen.api.rest.RestInfo;
+
 
 public class MethodInfo extends ItemInfo {
 	
@@ -16,16 +18,19 @@ public class MethodInfo extends ItemInfo {
 	
 	public RemoteInfo remoteInfo;
 	
+	public final RestInfo restInfo;
+	
 	public final long since;
 	
 	public final static String METHOD_REQUEST_NAME_PREFIX  = "BRequest_";
 	public final static String METHOD_RESULT_NAME_PREFIX  = "BResult_";
 	
-	public MethodInfo(String name, Collection<CommentInfo> comments, SerialInfo requestInfo, SerialInfo resultInfo, ArrayList<TypeInfo> exceptions, long since) {
+	public MethodInfo(String name, Collection<CommentInfo> comments, SerialInfo requestInfo, SerialInfo resultInfo, ArrayList<TypeInfo> exceptions, RestInfo restInfo, long since) {
 		super(name, comments);
 		this.requestInfo = requestInfo;
 		this.resultInfo = resultInfo;
 		this.exceptions = exceptions != null ? exceptions : new ArrayList<TypeInfo>();
+		this.restInfo = restInfo;
 		this.since = since;
 	}
 

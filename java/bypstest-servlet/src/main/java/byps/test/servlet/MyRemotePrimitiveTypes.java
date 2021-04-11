@@ -210,4 +210,9 @@ public class MyRemotePrimitiveTypes extends BSkeleton_RemotePrimitiveTypes {
   public void getDeferredValueFromServer(int param1, String param2, BAsyncResult<Integer> asyncResult) {
     asyncResult.setAsyncResult(intVal, null); 
   }
+	
+	@Override
+	  public int add(int a, int b) throws RemoteException {
+	    return a + b;
+	  }
 }

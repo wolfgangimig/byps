@@ -8,10 +8,14 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,10 +36,12 @@ import byps.BRemote;
 import byps.BServer;
 import byps.BSyncResult;
 import byps.BTargetId;
+import byps.gen.RestConstants;
 import byps.http.HConfig;
 import byps.http.HConstants;
 import byps.http.HFileUploadIncomingStream;
 import byps.http.HSession;
+import byps.rest.RestOperations;
 
 /**
  * Execute REST call.
@@ -61,12 +67,18 @@ public class HRestExecutor {
   private final long maxUploadFileSize;
   
   /**
+   * Map of REST operations.
+   */
+  private final RestOperations operations;
+  
+  /**
    * Constructor.
    * @param config Server configuration
    * @param maxUploadFileSize Limit of upload file size, -1 means no limit.
    */
-  public HRestExecutor(HConfig config, long maxUploadFileSize) {
+  public HRestExecutor(HConfig config, RestOperations operations, long maxUploadFileSize) {
     this.config = config;
+    this.operations = operations;
     this.maxUploadFileSize = maxUploadFileSize;
   }
 
@@ -84,25 +96,18 @@ public class HRestExecutor {
     int indexRest = requestUri.indexOf("/rest");
     if (indexRest == -1) return;
     
-    // Find index of interface name in URI
-    int indexInterfaceName = requestUri.indexOf('/', indexRest + 1);
-    if (indexInterfaceName == -1) {
-      log.info("Missing interface name in REST request={}, use .../rest/interface-name/function-name.", requestUri);
+    // Find operation associated to REST path
+    String restPath = requestUri.substring(indexRest + "/rest".length());
+    RestOperations.Operation operation = operations.getOperation(request.getMethod(), restPath);
+    if (operation == null) {
+      log.info("No REST operation associated to path={}", restPath);
       response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
       return;
     }
     
-    // Find index of function name in URI
-    int indexFunctionName = requestUri.indexOf('/', indexInterfaceName + 1);
-    if (indexFunctionName == -1) {
-      log.info("Missing function name in REST request={}, use .../rest/interface-name/function-name.", requestUri);
-      response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-      return;
-    }
-    
-    // Extract interface and function name from URI
-    String interfaceName = requestUri.substring(indexInterfaceName+1, indexFunctionName);
-    String functionName = requestUri.substring(indexFunctionName+1);
+    // Get interface and function name from operation
+    String interfaceName = operation.interfaceName;
+    String functionName = operation.functionName;
     if (log.isDebugEnabled()) log.debug("interfaceName={}, functionName={}", interfaceName, functionName);
     
     // Find the interface implementation registered with the BServer.
@@ -131,13 +136,18 @@ public class HRestExecutor {
     // Create an instance of the request class and assign its parameters.
     BMethodRequest method = null;
     try {
-      boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-      if (log.isDebugEnabled()) log.debug("contentType={}, isMultipart={}", request.getContentType(), isMultipart);
-      if (isMultipart) {
-        method = buildMethodFromMultiPart(sess, request, requestClass);
+      if (request.getMethod().equalsIgnoreCase("post")) {
+        boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+        if (log.isDebugEnabled()) log.debug("contentType={}, isMultipart={}", request.getContentType(), isMultipart);
+        if (isMultipart) {
+          method = buildMethodFromMultiPart(sess, request, requestClass);
+        }
+        else {
+          method = buildMethodFromJsonBody(request, requestClass);
+        }
       }
       else {
-        method = buildMethodFromJsonBody(request, requestClass);
+        method = buildMethodFromQueryParams(request, requestClass); 
       }
     }
     catch (Exception e) {
@@ -148,6 +158,7 @@ public class HRestExecutor {
     
     // Execute the request object and write the response.
     response.setContentType("application/json");
+    response.setCharacterEncoding(StandardCharsets.UTF_8.name());
     try (Writer writer = response.getWriter()) {
       executeMethod(sess, remote, method, writer);
     }
@@ -174,6 +185,16 @@ public class HRestExecutor {
   }
   
   /**
+   * Create GsonBuilder to serialize response.
+   * @return GsonBuilder
+   */
+  protected GsonBuilder createResponseBuilder() {
+    GsonBuilder builder = new GsonBuilder();
+    builder.registerTypeAdapter(byte[].class, new BytesSerializer());
+    return builder;
+  }
+  
+  /**
    * Execute the call and write the response.
    * @param sess BYPS session
    * @param remote Interface implementation
@@ -185,8 +206,7 @@ public class HRestExecutor {
     if (log.isDebugEnabled()) log.debug("executeMethod(");
     
     // Initialize builder for JSON response.
-    GsonBuilder builder = new GsonBuilder();
-    builder.registerTypeAdapter(byte[].class, new BytesSerializer());
+    GsonBuilder builder = createResponseBuilder();
     if (log.isDebugEnabled()) builder.setPrettyPrinting();
     
     // The response must not been written into the output (writer) directly
@@ -341,27 +361,71 @@ public class HRestExecutor {
     builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(streams));
     builder.registerTypeAdapter(byte[].class, new BytesDeserializer());
     
-    // Construct a JSON string for the BMethodRequest with the given form fields.
-    // Gson does not deserialize a generic class in gson.fromJson if the class is given as Class<?> object.
-    // Hence, deserialization field by field does not allow to use generic method parameters.
-    // The BMethodRequest class is not a generic class and therefore it is correctly deserialized by Gson. 
-    // Event its generic members are correctly deserialized - magic. 
-    StringBuilder sbuf = new StringBuilder();
-    sbuf.append("{");
-    boolean addComma = false;
-    for (FileItem item : items) {
-      if (item.isFormField()) {
-        // Print the field and its value into the buffer
-        addComma = appendFieldToJsonString(requestClass, item, addComma, sbuf);
-      }
+    List<FileItem> formFields = items.stream().filter(item -> item.isFormField()).collect(Collectors.toList());
+    String jsonData = "";
+    Optional<FileItem> dataField = formFields.stream().filter(item -> item.getFieldName().equals(RestConstants.MULTIPART_DATA_PARAM_NAME)).findAny();
+    
+    if (formFields.isEmpty()) {
+      // Bad request
+      throw new IllegalStateException("Missing form fields in multipart/form-data. At least field " + RestConstants.MULTIPART_DATA_PARAM_NAME + " must be available.");
     }
-    sbuf.append("}");
+    else if (dataField.isPresent()) {
+      // Only one form field with BRequest_ object
+      // See GeneratorOpenAPI.toRequestMediaTypeMultipartFormData
+      jsonData = dataField.get().getString();
+    }
+    else {
+      // For each parameter one form field.
+      // See GeneratorOpenAPI.toRequestMediaTypeMultipartFormData
+      
+      // Construct a JSON string for the BMethodRequest with the given form fields.
+      // Gson does not deserialize a generic class in gson.fromJson if the class is given as Class<?> object.
+      // Hence, deserialization field by field does not allow to use generic method parameters.
+      // The BMethodRequest class is not a generic class and therefore it is correctly deserialized by Gson. 
+      // Event its generic members are correctly deserialized - magic. 
+      StringBuilder sbuf = new StringBuilder();
+      sbuf.append("{");
+      boolean addComma = false;
+      for (FileItem item : items) {
+        if (item.isFormField()) {
+          // Print the field and its value into the buffer
+          addComma = appendFieldToJsonString(requestClass, item, addComma, sbuf);
+        }
+      }
+      sbuf.append("}");
+      jsonData = sbuf.toString();
+    }
     
     // Deserialize the BMethodRequest
     Gson gson = builder.create();
-    BMethodRequest brequest = (BMethodRequest)gson.fromJson(sbuf.toString(), requestClass);
+    BMethodRequest brequest = (BMethodRequest)gson.fromJson(jsonData, requestClass);
 
     if (log.isDebugEnabled()) log.debug(")buildMethodForMultiPart={}", brequest);
+    return brequest;
+  }
+  
+  private BMethodRequest buildMethodFromQueryParams(HttpServletRequest request, Class<?> requestClass) throws NoSuchFieldException {
+    StringBuilder sbuf = new StringBuilder();
+    sbuf.append("{");
+    boolean addComma = false;
+
+    Enumeration<String> paramNames = request.getParameterNames();
+    while (paramNames.hasMoreElements()) {
+      String paramName = paramNames.nextElement();
+      String paramValue = request.getParameter(paramName);
+      addComma = addFieldValueToJsonString(requestClass, addComma, sbuf, paramName, paramValue);
+    }
+  
+    sbuf.append("}");
+    String jsonData = sbuf.toString();
+  
+    // Deserialize the BMethodRequest
+    // Initialize deserialization
+    GsonBuilder builder = new GsonBuilder();
+    builder.registerTypeAdapter(byte[].class, new BytesDeserializer());
+    Gson gson = builder.create();
+    BMethodRequest brequest = (BMethodRequest)gson.fromJson(jsonData, requestClass);
+
     return brequest;
   }
 
@@ -378,6 +442,8 @@ public class HRestExecutor {
       StringBuilder sbuf) throws NoSuchFieldException {
     if (log.isDebugEnabled()) log.debug("appendFieldToJsonString(requestClass={}, field.name={}", requestClass, item.getFieldName());
 
+    String fieldName = item.getFieldName();
+    
     // An unassigned stream item (upload item with no file) is interpreted by 
     // Apache FileUpload as FileItem.isFormField()=true. This item must be skipped
     // here because there is no corresponding field in the request class.
@@ -385,13 +451,21 @@ public class HRestExecutor {
     if (log.isDebugEnabled()) log.debug("fieldAsString={}", itemString);
     if (itemString == null || itemString.isEmpty()) return addComma;
     
+    addComma = addFieldValueToJsonString(requestClass, addComma, sbuf, fieldName, itemString);
+    
+    if (log.isDebugEnabled()) log.debug(")appendFieldToJsonString={}", addComma);
+    return addComma;
+  }
+
+  private boolean addFieldValueToJsonString(Class<?> requestClass, boolean addComma, StringBuilder sbuf, String fieldName, String itemString)
+      throws NoSuchFieldException {
     final String BS = "\"";
 
     if (addComma) sbuf.append(","); else addComma = true;
-    sbuf.append(BS).append(item.getFieldName()).append(BS).append(":");
+    sbuf.append(BS).append(fieldName).append(BS).append(":");
     
-    if (log.isDebugEnabled()) log.debug("get field via reflection, field={}", item.getFieldName());
-    Field field = requestClass.getDeclaredField(item.getFieldName());
+    if (log.isDebugEnabled()) log.debug("get field via reflection, field={}", fieldName);
+    Field field = requestClass.getDeclaredField(fieldName);
     Class<?> fieldType = field.getType();
     if (log.isDebugEnabled()) log.debug("fieldType={}", fieldType);
     
@@ -407,8 +481,6 @@ public class HRestExecutor {
     else {
       sbuf.append(itemString);
     }
-    
-    if (log.isDebugEnabled()) log.debug(")appendFieldToJsonString={}", addComma);
     return addComma;
   }
 

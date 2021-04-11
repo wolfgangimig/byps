@@ -18,10 +18,22 @@ class PrintContext extends PrintContextBase {
   }
   
   public File getOpenAPIFile() {
-	  String sdir = props.getProperty(PropertiesRest.DEST_DIR, System.getProperty("java.io.tmpdir"));
-	  File dir = new File(sdir);
-	  dir.mkdirs();
-	  return new File(dir, PropertiesRest.OPENAPI_FILENAME);
+	  File file = props.getMandatoryPropertyFile(PropertiesRest.OPENAPI_PATH);
+	  file.getParentFile().mkdirs();
+	  return file;
   }
 
+  public File getRestOperationsFile(String simpleClassName) {
+    File dir = props.getMandatoryPropertyFile(PropertiesRest.SRC_DIR);
+    String subDir = classDB.getApiDescriptor().basePackage.replace('.', File.separatorChar);
+    dir = new File(dir, subDir);
+    dir.mkdirs();
+    return new File(dir, simpleClassName + ".java");
+  }
+
+  public String getServerUrl() {
+    String url = props.getOptionalPropertyString(PropertiesRest.SERVER_URL, "/rest");
+    return url;
+  }
+  
 }

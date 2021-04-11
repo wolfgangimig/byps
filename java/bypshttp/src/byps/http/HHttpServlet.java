@@ -7,9 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.io.Reader;
-import java.io.Writer;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -21,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.stream.Collectors;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -36,9 +32,6 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import byps.BApiDescriptor;
 import byps.BAsyncResult;
 import byps.BBuffer;
@@ -50,9 +43,7 @@ import byps.BExceptionC;
 import byps.BHashMap;
 import byps.BMessage;
 import byps.BMessageHeader;
-import byps.BMethodRequest;
 import byps.BProtocol;
-import byps.BRemote;
 import byps.BServer;
 import byps.BServerRegistry;
 import byps.BSyncResult;
@@ -62,6 +53,7 @@ import byps.BWire;
 import byps.RemoteException;
 import byps.http.rest.HRestExecutor;
 import byps.log.LogConfigurator;
+import byps.rest.RestOperations;
 import byps.ureq.BRegistry_BUtilityRequests;
 import byps.ureq.BSkeleton_BUtilityRequests;
 import byps.ureq.JRegistry_BUtilityRequests;
@@ -117,6 +109,16 @@ public abstract class HHttpServlet extends HttpServlet implements
    * @return API descriptor
    */
   protected abstract BApiDescriptor getApiDescriptor();
+  
+  /**
+   * Get REST operations.
+   * 
+   * BYPS-50
+   * @return Map of REST operations
+   */
+  protected RestOperations getRestOperations() {
+    return RestOperations.EMPTY;
+  }
 
   // /////////////////////////////////////////////////
   // Begin implementation of HServerContext
@@ -252,6 +254,20 @@ public abstract class HHttpServlet extends HttpServlet implements
     }
     if (log.isDebugEnabled()) log.debug(")done");
   }
+  
+  @Override
+  protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    // Execute if REST call.
+    // A REST call follows the URI format .../rest/interface-name/function-name.
+    // BYPS-51
+    if (isRestCall(request)) {
+      doRest(request, response);
+      return;
+    }
+    
+    super.doDelete(request, response);
+  }
 
   /**
    * Streams are sent by HTTP PUT.
@@ -347,7 +363,7 @@ public abstract class HHttpServlet extends HttpServlet implements
    * @return {@link HRestExecutor}
    */
   protected HRestExecutor createRestExecutor() {
-    return new HRestExecutor(getConfig(), getHtmlUploadMaxSize());
+    return new HRestExecutor(getConfig(), getRestOperations(), getHtmlUploadMaxSize());
   }
   
   private void sendOutgoingStream(BContentStream is, HttpServletResponse response, HRangeRequest rangeRequest) throws IOException {
@@ -483,6 +499,14 @@ public abstract class HHttpServlet extends HttpServlet implements
       return;
     }
 
+    // Execute if REST call.
+    // A REST call follows the URI format .../rest/interface-name/function-name.
+    // BYPS-51
+    if (isRestCall(request)) {
+      doRest(request, response);
+      return;
+    }
+    
     // Get stream or old utility request
 
     // Parameter messageid

@@ -14,15 +14,25 @@ public class PropertiesRest extends GeneratorProperties {
   public final static String OPT_PREFIX = "-genrest.";
 
   /**
-	 * Destination directory for openapi.json file.
+	 * Destination path for openapi.json file.
 	 */
-	public final static String DEST_DIR = OPT_PREFIX + "openapi-dir";
+	public final static String OPENAPI_PATH = OPT_PREFIX + "openapi-file";
 
 	/**
 	 * File name for openapi.json. 
 	 */
 	public final static String OPENAPI_FILENAME = "openapi.json";
 	
+  /**
+   * Destination directory for operations file.
+   */
+  public final static String SRC_DIR = OPT_PREFIX + "src-dir";
+  
+  /**
+   * URL for OpenAPI servers entry.
+   */
+  public final static String SERVER_URL = OPT_PREFIX + "server-url";
+
 	/**
 	 * Set this option if BASIC authentication is supported.
 	 */
@@ -39,7 +49,7 @@ public class PropertiesRest extends GeneratorProperties {
    * The following parameter must define the header name.
    */
   public final static String AUTHENTICATION_SCHEME_API_KEY = OPT_PREFIX + "auth-api-key";
-	
+
   @Override
   public int addArgs(String[] args, int idx) throws GeneratorException {
     String key = args[idx];

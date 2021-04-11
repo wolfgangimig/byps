@@ -36,6 +36,8 @@ public class XmlMethodInfo implements XmlInfo {
 	@XmlTransient
 	MethodInfo methodInfo;
 	
+	public XmlRestInfo restInfo;
+	
 	public static XmlMethodInfo fromValue(ClassDB classDB, MethodInfo m) {
 		XmlMethodInfo x = new XmlMethodInfo();
 		x.name = m.name;
@@ -43,6 +45,7 @@ public class XmlMethodInfo implements XmlInfo {
 		x.resultTypeName = m.resultInfo.toXmlTypeName();
 		x.remoteName = m.remoteInfo.toXmlTypeName();
 		x.comments = m.comments;
+		x.restInfo = XmlRestInfo.fromValue(m.restInfo);
 		x.since = BVersioning.longToString(m.since);
 		
 		x.exceptionTypeNames = new ArrayList<String>();
@@ -79,6 +82,7 @@ public class XmlMethodInfo implements XmlInfo {
 		    requestInfo, 
 		    resultInfo, 
 		    exceptions,
+		    XmlRestInfo.toValue(restInfo),
 		    BVersioning.stringToLong(since));
 		
 		requestInfo.methodInfo = methodInfo;

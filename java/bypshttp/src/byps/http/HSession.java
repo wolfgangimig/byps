@@ -1,4 +1,6 @@
 package byps.http;
+import java.util.Optional;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import javax.servlet.http.HttpSession;
 
@@ -26,7 +28,7 @@ public abstract class HSession
 //implements Serializable, don't know how to serialize this class. Don't know how to resolve the dependencies to other objects.
 {
 
-  protected final HttpSession httpSess;
+  protected final Optional<HttpSession> httpSess;
   protected final HServerContext serverContext;
   protected final HWriteResponseHelper writeHelper;
   protected final HWireServer wireServer;
@@ -39,16 +41,16 @@ public abstract class HSession
   
   /**
    * Construtor
-   * @param hsess HTTP session object, can be null.
+   * @param httpSessionOrNull HTTP session object, can be null.
    * @param remoteUser Authenticated user, supplied from HttpSerlvetRequest.getRemoteUser(), can be null.
    * @param tempDir Temporary directory for storing streams, can be null.
    * @param serverRegistry Registry for BStub objects of all subscribers.
    * @param listener Listener for events triggered during processing.
    */
-  public HSession(HttpSession hsess, String remoteUser, HServerContext serverContext) {
+  public HSession(HttpSession httpSessionOrNull, String remoteUser, HServerContext serverContext) {
     if (log.isDebugEnabled())
       log.debug("HSession(");
-    this.httpSess = hsess;
+    this.httpSess = Optional.ofNullable(httpSessionOrNull);
     this.serverContext = serverContext;
     this.remoteUser = remoteUser;
 
@@ -62,12 +64,14 @@ public abstract class HSession
 
     // Add this session object to the HttpSession object of the application server.
     // Set the inactive time to the maximum of all attached sessions.
-    HHttpSessionObject sessObj = (HHttpSessionObject)hsess.getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
-    if (sessObj == null) {
-      sessObj = HSessionListener.initHttpSession(hsess); 
-    }
-    sessObj.addSession(this);
-
+    httpSess.ifPresent(hsess -> {
+      HHttpSessionObject sessObj = (HHttpSessionObject)hsess.getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
+      if (sessObj == null) {
+        sessObj = HSessionListener.initHttpSession(hsess); 
+      }
+      sessObj.addSession(this);
+    });
+    
     // Shorten the lifetime of the HTTP session, 
     // if there is no authenticated user.
     int inactiveSeconds = (remoteUser == null || remoteUser.length() == 0) ?
@@ -90,10 +94,12 @@ public abstract class HSession
     
     // The HttpSession inactive time must be the maximum 
     // of all attached sessions.
-    int inactiveSeconds = httpSess.getMaxInactiveInterval();
-    if (inactiveSeconds < v) {
-      httpSess.setMaxInactiveInterval(v);
-    }
+    httpSess.ifPresent(hsess -> {
+      int inactiveSeconds = hsess.getMaxInactiveInterval();
+      if (inactiveSeconds < v) {
+        hsess.setMaxInactiveInterval(v);
+      }
+    });
   }
   
   /**
@@ -124,16 +130,18 @@ public abstract class HSession
 
       // Remove the BYPS session from the application server's session object.
       // If no other BYPS session is attached, invalidate the server's session.
-      try {
-        HHttpSessionObject sessObj = (HHttpSessionObject)httpSess.getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
-        sessObj.removeSession(this);
-        if (sessObj.isEmpty()) {
-          httpSess.invalidate();
+      httpSess.ifPresent(hsess -> {
+        try {
+          HHttpSessionObject sessObj = (HHttpSessionObject)hsess.getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
+          sessObj.removeSession(this);
+          if (sessObj.isEmpty()) {
+            hsess.invalidate();
+          }
         }
-      }
-      catch (Throwable e) {
-        // assume HttpSession already invalidated.
-      }
+        catch (Throwable e) {
+          // assume HttpSession already invalidated.
+        }
+      });
       
       // HWireServer.done() could interrupt the current thread.
       // Delete the interrupt signal that might be set in this function.

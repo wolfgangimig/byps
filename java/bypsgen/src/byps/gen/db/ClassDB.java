@@ -27,6 +27,7 @@ import byps.gen.api.MethodInfo;
 import byps.gen.api.RemoteInfo;
 import byps.gen.api.SerialInfo;
 import byps.gen.api.TypeInfo;
+import byps.gen.api.rest.RestInfo;
 import byps.gen.xml.XmlGeneratorBase;
 
 public class ClassDB {
@@ -138,7 +139,7 @@ public class ClassDB {
 
   public RemoteInfo createRemoteInfo(String name, Collection<CommentInfo> comments, 
       String qname, List<String> baseQNames, List<MethodInfo> methods, 
-      String authParamClassName, boolean isClientRemote,
+      String authParamClassName, boolean isClientRemote, RestInfo restInfo,
       long since)
       throws GeneratorException {
 
@@ -149,6 +150,7 @@ public class ClassDB {
         methods, 
         authParamClassName, 
         isClientRemote, 
+        restInfo,
         since);
     
     if (methods != null) {

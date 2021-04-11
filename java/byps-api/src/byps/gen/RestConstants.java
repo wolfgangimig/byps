@@ -18,6 +18,8 @@ public class RestConstants {
    */
   public static final String UPLOAD_ITEM_NAME = "file";
   
+  public static final String MULTIPART_DATA_PARAM_NAME = "data";
+  
   /**
    * InputStream fields are replaced by this class name in the OpenAPI document.
    */

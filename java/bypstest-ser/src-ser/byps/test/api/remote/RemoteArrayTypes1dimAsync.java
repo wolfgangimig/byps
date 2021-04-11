@@ -11,6 +11,43 @@ import byps.*;
 public interface RemoteArrayTypes1dimAsync extends BRemote, 
 	RemoteArrayTypes1dim {
 	/**
+	 * @consumes multipart/form-data
+	 * @param ci ClientInfo object with language, country and ticket
+	 * @param sord Indexing information or null.
+	 * @param sordZ Elements of <code>sord</code> to be stored into the database.
+	 * @param document Document object previously returned from <code>checkinDocBegin</code>
+	 * @param unlockZ Unlock the object.
+	 * <p>
+	 * See <code>checkinDocBegin</code>, if you want to checkin new document or attachment version(s).
+	 * </p>
+	 * <p>
+	 * Changing the document or attachment work version, version number, comment, flags or status:
+	 * <code><br/><br/>
+	 * Document doc = new Document();<br/>
+	 * doc.objId = an object ID or GUID<br/>
+	 * doc.docs = new DocVersion[] {new DocVersion()};<br/>
+	 * doc.docs[0].id = a document ID;<br/>
+	 * doc.docs[0].workVersion = true;<br/>
+	 * doc.docs[0].version = "2.0";<br/>
+	 * doc.docs[0].comment = "new comment";<br/>
+	 * doc.docs[0].milestone = true;<br/>
+	 * doc.docs[0].deleted = false;<br/>
+	 * ix.checkinDocEnd(ci, null, null, doc, LOCK.NO);<br/>
+	 * </code>
+	 * </p>
+	 * <p>
+	 * If the supplied sord has <code>sord.type==LBT_DOCUMENT</code>, sord.type will be detected from
+	 * the file extension of the given work version.
+	 * </p>
+	 * <p>
+	 * If the document is only to be unlocked, see <code>checkinSord</code>.
+	 * </p>
+	 * @return Complete Document information - in particular the document ID.
+	 * @see SordC SordC
+	 * @see #checkinDocBegin checkinDocBegin
+	 * @see #checkinDocsEnd checkinDocsEnd
+	 * Checks in an uploaded document.
+	 * @throws RemoteException Exception with message text of format "[ELOIX:number] text". The number is one of the constants defined in IXExceptionC. Exception with message text of format "[ELOIX:number] text".
 	*/
 	// checkpoint byps.gen.j.PrintContext:396
 	public void setBool(boolean[] v) throws RemoteException;

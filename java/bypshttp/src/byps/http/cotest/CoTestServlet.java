@@ -13,6 +13,7 @@ import byps.http.HConfigImpl;
 import byps.http.HHttpServlet;
 import byps.http.HSession;
 import byps.http.HTestAdapter;
+import byps.rest.RestOperations;
 
 /**
  * Servlet implementation class 
@@ -34,7 +35,7 @@ public class CoTestServlet extends HHttpServlet {
     protected BApiDescriptor getApiDescriptor() {
       return CoTestProcess.getGlobalServerInstance().getApiDesc();
     }
-
+    
     @Override
     public HConfig getConfig() {
       return config;

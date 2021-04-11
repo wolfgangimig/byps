@@ -1,18 +1,20 @@
 package byps.gen.rest;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +32,10 @@ import byps.gen.api.MethodInfo;
 import byps.gen.api.RemoteInfo;
 import byps.gen.api.SerialInfo;
 import byps.gen.api.TypeInfo;
+import byps.gen.api.rest.RestInfo;
+import byps.gen.api.rest.RestMethod;
 import byps.gen.db.ClassDB;
+import byps.gen.utils.CodePrinter;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Operation;
@@ -50,6 +55,7 @@ import io.swagger.v3.oas.models.media.NumberSchema;
 import io.swagger.v3.oas.models.media.ObjectSchema;
 import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.oas.models.media.StringSchema;
+import io.swagger.v3.oas.models.parameters.Parameter;
 import io.swagger.v3.oas.models.parameters.RequestBody;
 import io.swagger.v3.oas.models.responses.ApiResponse;
 import io.swagger.v3.oas.models.responses.ApiResponses;
@@ -96,13 +102,14 @@ public class GeneratorOpenAPI implements Generator {
     openApi.components(new Components().securitySchemes(createSecuritySchemes()).schemas(SchemaN.toComponentSchemas(schemas)));
     
     for (RemoteInfo remoteInfo : classDB.getRemotes()) {
-      remoteInfo.methods.forEach(m -> toPath(remoteInfo.name, m));
+      remoteInfo.methods.forEach(m -> toPath(m));
     }
     Paths oaiPaths = new Paths();
     paths.entrySet().forEach(e -> oaiPaths.addPathItem(e.getKey(), e.getValue()));
     openApi.paths(oaiPaths);
     
     write();
+    writeRestOperationsClass();
   }
   
   private Map<String, SecurityScheme> createSecuritySchemes() {
@@ -116,39 +123,77 @@ public class GeneratorOpenAPI implements Generator {
       String headerName = pctxt.props.getProperty(PropertiesRest.AUTHENTICATION_SCHEME_API_KEY, "X-API-KEY");
       securitySchemes.put("apiKey", new SecurityScheme().type(Type.APIKEY).in(In.HEADER).name(headerName));
     }
-    return securitySchemes;
+    return securitySchemes.isEmpty() ? null : securitySchemes;
   }
 
   private List<Server> createServers() {
     Server server = new Server();
-    server.url("/rest");
+    String url = pctxt.getServerUrl();
+    server.url(url);
     server.description("Production Endpoint");
     return Arrays.asList(server);
   }
 
-  private void toPath(String remoteName, MethodInfo methodInfo) {
-    String uri = "/" + remoteName + "/" + methodInfo.name;
+  private void toPath(MethodInfo methodInfo) {
     
-    PathItem pathItem = new PathItem();
-    pathItem.summary(getCommentSummary(methodInfo.comments));
-    pathItem.description(getCommentRemarks(methodInfo.comments, () -> "Interface " + remoteName + ", method " + methodInfo.name));
+    RemoteInfo remoteInfo = methodInfo.remoteInfo;
+    String remotePath = remoteInfo.name;
+    if (remoteInfo.restInfo != null && remoteInfo.restInfo.getPath() != null) {
+      remotePath = remoteInfo.restInfo.getPath();
+    }
+    
+    String methodPath = methodInfo.name;
+    if (methodInfo.restInfo != null && methodInfo.restInfo.getPath() != null) {
+      methodPath = methodInfo.restInfo.getPath();
+    }
+    
+    if (methodPath == null) {
+      System.out.println("methodpath");
+    }
+    
+    String uri = "/" + remotePath + "/" + methodPath;
+    
+    PathItem pathItem = paths.get(uri);
+    if (pathItem == null) {
+      pathItem = new PathItem();
+      pathItem.summary(getCommentSummary(methodInfo.comments));
+      pathItem.description(getCommentRemarks(methodInfo.comments, () -> "Interface " + remoteInfo + ", method " + methodInfo.name));
+    }
  
-    Operation op = new Operation();
-    op.operationId(remoteName + "_" + methodInfo.name);
-    op.addTagsItem(remoteName);
-    
-    op.security(getSecurityRequirements());
-    
-    addRequestBodies(methodInfo, op);
-    
-    addResponses(methodInfo, op);
-    
-    pathItem.post(op);
+    toOperation(remoteInfo, methodInfo, remotePath, pathItem);
     
     paths.put(uri, pathItem);
   }
+
+  private void toOperation(RemoteInfo remoteInfo, MethodInfo methodInfo, String tag, PathItem pathItem) {
+    Operation op = new Operation();
+    op.operationId(remoteInfo.name + "_" + methodInfo.name);
+    op.addTagsItem(tag);
+    
+    op.security(getSecurityRequirements());
+    
+    addResponses(methodInfo, op);
+    
+    RestMethod restMethod = methodInfo.restInfo != null && methodInfo.restInfo.getMethod() != null ? methodInfo.restInfo.getMethod() : RestMethod.POST;
+    switch (restMethod) {
+      case GET: 
+        pathItem.get(op); 
+        addRequestParams(methodInfo, op);
+      break;
+      case DELETE: 
+        pathItem.delete(op); 
+        addRequestParams(methodInfo, op);
+      break;
+      default: {
+        pathItem.post(op); 
+        addRequestBodies(methodInfo, op);
+        break;
+      }
+    }
+  }
   
   private List<SecurityRequirement> getSecurityRequirements() {
+    if (securitySchemes.isEmpty()) return null;
     SecurityRequirement security = new SecurityRequirement();
     securitySchemes.keySet().forEach(security::addList);
     return Arrays.asList(security);
@@ -161,7 +206,8 @@ public class GeneratorOpenAPI implements Generator {
     response200.description("Success");
     
     Content content = new Content();
-    content.addMediaType("application/json", toResponseMediaType(methodInfo));
+    String contentType = RestInfo.getProducesOrDefault(methodInfo.restInfo);
+    content.addMediaType(contentType, toResponseMediaType(methodInfo));
     response200.content(content);
     
     responses.addApiResponse("200", response200);
@@ -171,9 +217,12 @@ public class GeneratorOpenAPI implements Generator {
 
   private void addRequestBodies(MethodInfo methodInfo, Operation op) {
     Content content = new Content();
-    addRequestBodyMultipartFormData(content, methodInfo);
     
-    if (System.getProperty("byps.gen.rest.create-post", "false").equals("true")) {
+    String contentType = RestInfo.getConsumesOrDefault(methodInfo.restInfo);
+    if (contentType.equalsIgnoreCase(javax.ws.rs.core.MediaType.MULTIPART_FORM_DATA)) {
+      addRequestBodyMultipartFormData(content, methodInfo);
+    }
+    else {
       addRequestBodyApplicationJson(content, methodInfo);
     }
     
@@ -201,10 +250,14 @@ public class GeneratorOpenAPI implements Generator {
     MediaType mediaType = new MediaType();
     
     Schema requestSchema = new ObjectSchema();
-    for (MemberInfo param : m.requestInfo.members) {
-      SchemaN paramSchema = toSchemaRef(param.type);
-      requestSchema.addProperties(param.name, paramSchema.getSchema());
-    }
+    
+    SchemaN paramsSchema = toSchemaRef(m.requestInfo);
+    requestSchema.addProperties(RestConstants.MULTIPART_DATA_PARAM_NAME, paramsSchema.getSchema());
+    
+//    for (MemberInfo param : m.requestInfo.members) {
+//      SchemaN paramSchema = toSchemaRef(param.type);
+//      requestSchema.addProperties(param.name, paramSchema.getSchema());
+//    }
     
     ArraySchema streams = new ArraySchema().items(new FileSchema());
     requestSchema.addProperties(RestConstants.UPLOAD_ITEM_NAME, streams);
@@ -218,6 +271,18 @@ public class GeneratorOpenAPI implements Generator {
     SchemaN responseSchema = toSchemaRef(m.resultInfo);
     mediaType.schema(responseSchema.getSchema());
     return mediaType;
+  }
+  
+  private void addRequestParams(MethodInfo m, Operation op) {
+    for (MemberInfo param : m.requestInfo.members) {
+      SchemaN paramSchema = toSchemaRef(param.type);
+      Parameter paramItem = new Parameter();
+      paramItem.name(param.name);
+      if (param.comments != null) paramItem.description(param.comments.stream().map(c -> c.text).collect(Collectors.joining()));
+      paramItem.schema(paramSchema.getSchema());
+      paramItem.in("query");
+      op.addParametersItem(paramItem);
+    }
   }
 
   private void write() throws IOException {
@@ -233,7 +298,62 @@ public class GeneratorOpenAPI implements Generator {
       gson.toJson(openApi, writer);
     }
   }
+
+  private void writeRestOperationsClass() throws IOException {
+    String simpleClassName = "RestOperations_" + pctxt.classDB.getApiDescriptor().name;
+    File restOperationsClass = pctxt.getRestOperationsFile(simpleClassName);
+    try (OutputStream fos = new FileOutputStream(restOperationsClass)) {
+      CodePrinter pr = new CodePrinter(fos, true);
+      
+      String pack = pctxt.classDB.getApiDescriptor().basePackage;
+      pr.print("package ").print(pack).print(";").println();
+      
+      pr.println("// GENERATED code, do not modify");
+      
+      pr.println("import java.util.*;");
+      pr.println("import byps.*;");
+      pr.println("import byps.rest.*;");
+      pr.println();
+      
+      pr.print("public class ").print(simpleClassName).println(" extends RestOperations {");
+      pr.beginBlock();
+      
+      pr.println("public static RestOperations instance() {");
+      pr.beginBlock();
+      pr.println("return instance;");
+      pr.endBlock();
+      pr.println("}");
+      
+      pr.print("private static final RestOperations instance = new ").print(simpleClassName).println("();");
+      
+      pr.print("private ").print(simpleClassName).println("() {");
+      
+      pr.beginBlock();
+      openApi.getPaths().entrySet().forEach(e -> printOperationRequest(pr, e.getKey(), e.getValue()));
+      pr.endBlock();
+      
+      pr.println("}");
+      pr.endBlock();
+      
+      pr.println("}");
+      pr.close();
+    }
+  }
   
+  private void printOperationRequest(CodePrinter pr, String path, PathItem item) {
+    printAddOperation(pr, path, item.getGet(), "get");
+    printAddOperation(pr, path, item.getPost(), "post");
+    printAddOperation(pr, path, item.getDelete(), "delete");
+  }
+
+  private void printAddOperation(CodePrinter pr, String path, Operation op, String method) {
+    if (op == null) return;
+    String operationId = op.getOperationId();
+    pr.print("add(\"").print(method).print("\", \"").print(path)
+      .print("\", new Operation(\"").print(operationId).print("\"));")
+      .println();
+  }
+
   private Info createInfo(ClassDB classDB) {
     Info info = new Info();
     info.title(classDB.getApiDescriptor().name);

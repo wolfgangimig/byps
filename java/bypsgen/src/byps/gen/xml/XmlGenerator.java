@@ -26,6 +26,12 @@ import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
 import javax.tools.Diagnostic;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +47,8 @@ import byps.gen.api.MethodInfo;
 import byps.gen.api.RemoteInfo;
 import byps.gen.api.SerialInfo;
 import byps.gen.api.TypeInfo;
+import byps.gen.api.rest.RestInfo;
+import byps.gen.api.rest.RestMethod;
 import byps.gen.db.ClassDB;
 import byps.gen.db.ConstFieldReader;
 
@@ -403,6 +411,10 @@ public class XmlGenerator extends XmlGeneratorBase {
         .map(e -> makeMethodInfo(errorInfo, remoteName, remoteQName, e))
         .collect(Collectors.toList());
     
+    RestInfo restInfo = new RestInfo();
+    restInfo.applyComments(commentInfos);
+    restInfo.path(remoteElement.getAnnotation(Path.class));
+    
     String sessionParamTypeName = getSessionParamType(commentInfos);
     boolean isClientRemote = isClientRemote(commentInfos);
     long since = getSince(commentInfos);
@@ -411,7 +423,7 @@ public class XmlGenerator extends XmlGeneratorBase {
         commentInfos, 
         remoteQName, baseQNames, 
         minfos, sessionParamTypeName, 
-        isClientRemote, since);
+        isClientRemote, restInfo, since);
 
     classDB.createStubForRemote(rinfo);
 
@@ -443,10 +455,18 @@ public class XmlGenerator extends XmlGeneratorBase {
 
     ArrayList<TypeInfo> exceptions = getMethodExceptions(errorInfo, methodElement);
     
+    // REST-Annotations 
+    // BYPS-50
+    RestInfo restInfo = new RestInfo();
+    restInfo.applyComments(commentInfos);
+    restInfo.get(methodElement.getAnnotation(GET.class)).post(methodElement.getAnnotation(POST.class)).delet(methodElement.getAnnotation(DELETE.class));
+    restInfo.path(methodElement.getAnnotation(Path.class));
+    restInfo.consumes(methodElement.getAnnotation(Consumes.class)).produces(methodElement.getAnnotation(Produces.class));
+
     return new MethodInfo(
         name, commentInfos, 
         requestInfo, resultInfo, 
-        exceptions, since); 
+        exceptions, restInfo, since); 
   }
   
   private boolean isRemoteException(TypeMirror type) {

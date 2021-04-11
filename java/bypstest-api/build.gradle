@@ -12,7 +12,6 @@ sourceSets {
             srcDir 'src'
         }
         resources {
-            
         }
     }
 }
