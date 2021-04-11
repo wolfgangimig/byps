@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "/rest",
+      "url": "http://localhost:6080/bypstest-srv/bypsservlet/rest",
       "description": "Production Endpoint"
     }
   ],
@@ -937,6 +937,11 @@
                     }
                   }
                 }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes1dim_setBool"
               }
             }
           }
@@ -7377,7 +7382,7 @@
     },
     "/RemoteStreams/getSharedStream": {
       "summary": "Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.",
-      "description": "BYPS-48",
+      "description": "BYPS-48\n \n REST-Request:\n  {\n   \"id\": 123\n  }\n \n REST-Rückgabe:\n  {\n    \"result\": {\n      \"url\": \"getstream?serverid\u003d0\u0026messageid\u003d0\u0026streamid\u003d8044761703127587673\"\n    }\n  }\n Stream abrufen mit GET-Request auf: http://localhost:6080/bypstest-srv/bypsservlet/rest/getstream?serverid\u003d0\u0026messageid\u003d0\u0026streamid\u003d8044761703127587673",
       "post": {
         "tags": [
           "RemoteStreams"
@@ -7556,7 +7561,7 @@
     },
     "/RemoteStreams/putSharedStream": {
       "summary": "Store a stream reference shared by several clients.",
-      "description": "BYPS-48",
+      "description": "BYPS-48\n \n REST-Request, data\u003d\n {\n   \"id\" : \"123\",\n   \"stream\" : {\n     \"file\" : \"file[0]\"\n   }\n }",
       "post": {
         "tags": [
           "RemoteStreams"
@@ -7564,6 +7569,23 @@
         "operationId": "RemoteStreams_putSharedStream",
         "requestBody": {
           "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/BRequest_RemoteStreams_putSharedStream"
+                  },
+                  "file": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              }
+            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/BRequest_RemoteStreams_putSharedStream"
@@ -8265,14 +8287,6 @@
           }
         }
       },
-      "BRequest_RemoteSetTypes_setInt1": {
-        "type": "object",
-        "properties": {
-          "int1": {
-            "$ref": "#/components/schemas/SetOfInteger"
-          }
-        }
-      },
       "BResult_2052431866": {
         "type": "object",
         "properties": {
@@ -8285,11 +8299,38 @@
           }
         }
       },
+      "BRequest_RemoteSetTypes_setInt1": {
+        "type": "object",
+        "properties": {
+          "int1": {
+            "$ref": "#/components/schemas/SetOfInteger"
+          }
+        }
+      },
       "BResult_673917574": {
         "type": "object",
         "properties": {
           "result": {
             "$ref": "#/components/schemas/SetOfPrimitiveTypes"
+          },
+          "exception": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      },
+      "RemoteInlineInstance": {
+        "type": "object"
+      },
+      "BResult_1361632968": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           "exception": {
             "type": "string",
@@ -8331,25 +8372,6 @@
             "$ref": "#/components/schemas/Array4OfPrimitiveTypes"
           }
         }
-      },
-      "BResult_1361632968": {
-        "type": "object",
-        "properties": {
-          "result": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          "exception": {
-            "type": "string",
-            "description": "Error message"
-          }
-        }
-      },
-      "RemoteInlineInstance": {
-        "type": "object"
       },
       "BRequest_RemoteSetTypes_setObj1": {
         "type": "object",
@@ -8399,6 +8421,12 @@
           }
         }
       },
+      "SetOfClass1": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Class1"
+        }
+      },
       "Array2Ofboolean": {
         "type": "array",
         "items": {
@@ -8406,12 +8434,6 @@
           "items": {
             "type": "boolean"
           }
-        }
-      },
-      "SetOfClass1": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Class1"
         }
       },
       "BRequest_RemotePrimitiveTypes_getLong": {
@@ -8437,14 +8459,6 @@
           }
         }
       },
-      "BRequest_RemoteArrayTypes4dim_setChar": {
-        "type": "object",
-        "properties": {
-          "v": {
-            "$ref": "#/components/schemas/Array4Ofchar"
-          }
-        }
-      },
       "BRequest_RemotePrimitiveTypes_setLong": {
         "type": "object",
         "properties": {
@@ -8454,8 +8468,13 @@
           }
         }
       },
-      "BRequest_RemoteArrayTypes4dim_getDate": {
-        "type": "object"
+      "BRequest_RemoteArrayTypes4dim_setChar": {
+        "type": "object",
+        "properties": {
+          "v": {
+            "$ref": "#/components/schemas/Array4Ofchar"
+          }
+        }
       },
       "BRequest_RemoteInlineInstance_setPoint2DList": {
         "type": "object",
@@ -8465,17 +8484,11 @@
           }
         }
       },
-      "BRequest_RemoteMapTypes_getBoolean1": {
+      "BRequest_RemoteArrayTypes4dim_getDate": {
         "type": "object"
       },
-      "Array2OfPoint2D": {
-        "type": "array",
-        "items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/components/schemas/Point2D"
-          }
-        }
+      "BRequest_RemoteMapTypes_getBoolean1": {
+        "type": "object"
       },
       "BResult_1375035164": {
         "type": "object",
@@ -8486,6 +8499,15 @@
           "exception": {
             "type": "string",
             "description": "Error message"
+          }
+        }
+      },
+      "Array2OfPoint2D": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Point2D"
           }
         }
       },
@@ -8510,6 +8532,14 @@
           "$ref": "#/components/schemas/Node"
         }
       },
+      "BRequest_RemoteServerCtrl_removePublishedRemote": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
       "BRequest_RemoteArrayTypes1dim_setDouble": {
         "type": "object",
         "properties": {
@@ -8522,36 +8552,14 @@
           }
         }
       },
-      "BRequest_RemoteServerCtrl_removePublishedRemote": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          }
-        }
+      "LemonService": {
+        "type": "object"
       },
       "BRequest_RemoteArrayTypes4dim_getPrimitiveTypes": {
         "type": "object"
       },
-      "LemonService": {
-        "type": "object"
-      },
       "BRequest_RemoteListTypes_getChar1": {
         "type": "object"
-      },
-      "BRequest_RemoteArrayTypes23_sendArraysInline": {
-        "type": "object",
-        "properties": {
-          "arr2": {
-            "$ref": "#/components/schemas/Array2OfPoint2D"
-          },
-          "arr3": {
-            "$ref": "#/components/schemas/Array3OfPoint2D"
-          },
-          "arr4": {
-            "$ref": "#/components/schemas/Array4OfPoint2D"
-          }
-        }
       },
       "BRequest_RemoteArrayTypes23_sendArraysString": {
         "type": "object",
@@ -8567,19 +8575,33 @@
           }
         }
       },
+      "BRequest_RemoteArrayTypes23_sendArraysInline": {
+        "type": "object",
+        "properties": {
+          "arr2": {
+            "$ref": "#/components/schemas/Array2OfPoint2D"
+          },
+          "arr3": {
+            "$ref": "#/components/schemas/Array3OfPoint2D"
+          },
+          "arr4": {
+            "$ref": "#/components/schemas/Array4OfPoint2D"
+          }
+        }
+      },
       "BRequest_RemotePrimitiveTypes_voidFunctionVoid": {
         "type": "object"
-      },
-      "Array3Ofint": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Array2Ofint"
-        }
       },
       "ArrayOfObject": {
         "type": "array",
         "items": {
           "type": "string"
+        }
+      },
+      "Array3Ofint": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Array2Ofint"
         }
       },
       "MapToFloat": {
@@ -8604,15 +8626,15 @@
       "BRequest_ServerIF_getClientIds": {
         "type": "object"
       },
+      "BRequest_RemoteSetTypes_getObj1": {
+        "type": "object"
+      },
       "ArrayOfdouble": {
         "type": "array",
         "items": {
           "type": "number",
           "format": "double"
         }
-      },
-      "BRequest_RemoteSetTypes_getObj1": {
-        "type": "object"
       },
       "AllTypesZ": {
         "type": "object",
@@ -8687,14 +8709,12 @@
       "BRequest_RemoteSetTypes_getInt1": {
         "type": "object"
       },
-      "BRequest_PlantService_grow": {
-        "type": "object"
-      },
-      "BRequest_RemoteInlineInstance_getPoint2DArray4dim": {
-        "type": "object"
-      },
-      "BRequest_RemoteSetTypes_getInt2": {
-        "type": "object"
+      "MapToInteger": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer",
+          "format": "int32"
+        }
       },
       "EnumPlanets": {
         "type": "object",
@@ -8711,24 +8731,26 @@
         },
         "description": "Sample enum."
       },
-      "MapToInteger": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "integer",
-          "format": "int32"
-        }
+      "BRequest_RemoteSetTypes_getInt2": {
+        "type": "object"
       },
-      "ArrayListOfEnumPlanets": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/EnumPlanets"
-        }
+      "BRequest_RemoteInlineInstance_getPoint2DArray4dim": {
+        "type": "object"
+      },
+      "BRequest_PlantService_grow": {
+        "type": "object"
       },
       "SetOfDouble": {
         "type": "array",
         "items": {
           "type": "number",
           "format": "double"
+        }
+      },
+      "ArrayListOfEnumPlanets": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/EnumPlanets"
         }
       },
       "ListOfMapToListOfTreeSetOfInteger": {
@@ -8748,6 +8770,16 @@
       "RemoteEnums": {
         "type": "object"
       },
+      "MapToArrayOfint": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
       "BResult_1628501332": {
         "type": "object",
         "properties": {
@@ -8760,18 +8792,15 @@
           }
         }
       },
-      "MapToArrayOfint": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "array",
-          "items": {
-            "type": "integer",
-            "format": "int32"
-          }
-        }
-      },
       "BRequest_EvolveIF_getEvolve": {
         "type": "object"
+      },
+      "ListOfDate": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "date-time"
+        }
       },
       "BRequest_RemoteArrayTypes4dim_setPrimitiveTypes": {
         "type": "object",
@@ -8781,23 +8810,8 @@
           }
         }
       },
-      "ListOfDate": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "format": "date-time"
-        }
-      },
       "BRequest_RemoteArrayTypes1dim_getObject": {
         "type": "object"
-      },
-      "BRequest_RemoteArrayTypes4dim_setDate": {
-        "type": "object",
-        "properties": {
-          "v": {
-            "$ref": "#/components/schemas/Array4OfDate"
-          }
-        }
       },
       "MapToEnumPlanets": {
         "type": "object",
@@ -8805,12 +8819,11 @@
           "$ref": "#/components/schemas/EnumPlanets"
         }
       },
-      "BRequest_ClientIF_incrementInt": {
+      "BRequest_RemoteArrayTypes4dim_setDate": {
         "type": "object",
         "properties": {
-          "a": {
-            "type": "integer",
-            "format": "int32"
+          "v": {
+            "$ref": "#/components/schemas/Array4OfDate"
           }
         }
       },
@@ -8828,10 +8841,13 @@
           }
         }
       },
-      "ListOfClass1": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Class1"
+      "BRequest_ClientIF_incrementInt": {
+        "type": "object",
+        "properties": {
+          "a": {
+            "type": "integer",
+            "format": "int32"
+          }
         }
       },
       "ListOfDouble": {
@@ -8839,6 +8855,12 @@
         "items": {
           "type": "number",
           "format": "double"
+        }
+      },
+      "ListOfClass1": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Class1"
         }
       },
       "ArrayOfEnumPlanets": {
@@ -8986,18 +9008,18 @@
         },
         "description": "Example for an inline class."
       },
-      "Array4OfObject": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Array3OfObject"
-        }
-      },
       "BRequest_EvolveIF_setEvolve": {
         "type": "object",
         "properties": {
           "obj": {
             "$ref": "#/components/schemas/Evolve"
           }
+        }
+      },
+      "Array4OfObject": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Array3OfObject"
         }
       },
       "BRequest_RemoteArrayTypes1dim_setDate": {
@@ -9152,15 +9174,11 @@
           }
         }
       },
-      "BRequest_RemoteArrayTypes1dim_setShort": {
+      "MapToLong": {
         "type": "object",
-        "properties": {
-          "v": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
+        "additionalProperties": {
+          "type": "integer",
+          "format": "int64"
         }
       },
       "BRequest_RemoteListTypes_setFloat1": {
@@ -9171,11 +9189,15 @@
           }
         }
       },
-      "MapToLong": {
+      "BRequest_RemoteArrayTypes1dim_setShort": {
         "type": "object",
-        "additionalProperties": {
-          "type": "integer",
-          "format": "int64"
+        "properties": {
+          "v": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         }
       },
       "BRequest_RemoteListTypes_getByte1": {
@@ -9231,9 +9253,6 @@
           }
         }
       },
-      "BRequest_RemoteArrayTypes4dim_getObject": {
-        "type": "object"
-      },
       "BRequest_RemoteWithAuthentication_doit": {
         "type": "object",
         "properties": {
@@ -9245,6 +9264,9 @@
             "format": "int32"
           }
         }
+      },
+      "BRequest_RemoteArrayTypes4dim_getObject": {
+        "type": "object"
       },
       "BStreamReference": {
         "type": "object",
@@ -9278,6 +9300,9 @@
           }
         }
       },
+      "RemoteArrayTypes23": {
+        "type": "object"
+      },
       "BResult_7007": {
         "type": "object",
         "properties": {
@@ -9290,8 +9315,11 @@
           }
         }
       },
-      "RemoteArrayTypes23": {
-        "type": "object"
+      "SetOfShort": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
       },
       "BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions": {
         "type": "object",
@@ -9300,12 +9328,6 @@
             "type": "integer",
             "format": "int32"
           }
-        }
-      },
-      "SetOfShort": {
-        "type": "array",
-        "items": {
-          "type": "string"
         }
       },
       "RemoteProcessingEx": {
@@ -9405,11 +9427,11 @@
           "format": "int32"
         }
       },
-      "BResult_1366799209": {
+      "BResult_171948703": {
         "type": "object",
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/MapToDate"
+            "$ref": "#/components/schemas/Actor"
           },
           "exception": {
             "type": "string",
@@ -9417,11 +9439,11 @@
           }
         }
       },
-      "BResult_171948703": {
+      "BResult_1366799209": {
         "type": "object",
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Actor"
+            "$ref": "#/components/schemas/MapToDate"
           },
           "exception": {
             "type": "string",
@@ -9484,14 +9506,14 @@
       "RemoteReferences": {
         "type": "object"
       },
+      "BRequest_RemoteSetTypes_getBoolean1": {
+        "type": "object"
+      },
       "ArrayOfshort": {
         "type": "array",
         "items": {
           "type": "string"
         }
-      },
-      "BRequest_RemoteSetTypes_getBoolean1": {
-        "type": "object"
       },
       "BResult_1799280818": {
         "type": "object",
@@ -9516,9 +9538,6 @@
           }
         }
       },
-      "BRequest_RemoteListTypes_getDouble1": {
-        "type": "object"
-      },
       "ListOfByte": {
         "type": "array",
         "items": {
@@ -9526,10 +9545,15 @@
           "format": "int32"
         }
       },
-      "Array4Ofbyte": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Array3Ofbyte"
+      "BRequest_RemoteListTypes_getDouble1": {
+        "type": "object"
+      },
+      "BRequest_RemoteArrayTypes4dim_setDouble": {
+        "type": "object",
+        "properties": {
+          "v": {
+            "$ref": "#/components/schemas/Array4Ofdouble"
+          }
         }
       },
       "BRequest_RemoteArrayTypes1dim_setObject": {
@@ -9543,12 +9567,10 @@
           }
         }
       },
-      "BRequest_RemoteArrayTypes4dim_setDouble": {
-        "type": "object",
-        "properties": {
-          "v": {
-            "$ref": "#/components/schemas/Array4Ofdouble"
-          }
+      "Array4Ofbyte": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Array3Ofbyte"
         }
       },
       "SetOfLong": {
@@ -9579,6 +9601,9 @@
       "BRequest_EvolveIF_sendEvolveToClient": {
         "type": "object"
       },
+      "BRequest_RemoteMapTypes_getInt1": {
+        "type": "object"
+      },
       "BRequest_RemoteArrayTypes1dim_setByte": {
         "type": "object",
         "properties": {
@@ -9591,17 +9616,14 @@
           }
         }
       },
-      "BRequest_RemoteMapTypes_getInt1": {
-        "type": "object"
-      },
       "BRequest_RemoteMapTypes_getInt2": {
         "type": "object"
       },
-      "BResult_1596367810": {
+      "BResult_476459792": {
         "type": "object",
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/ListOfPrimitiveTypes"
+            "$ref": "#/components/schemas/TreeMapToBStreamReference"
           },
           "exception": {
             "type": "string",
@@ -9609,11 +9631,11 @@
           }
         }
       },
-      "BResult_476459792": {
+      "BResult_1596367810": {
         "type": "object",
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/TreeMapToBStreamReference"
+            "$ref": "#/components/schemas/ListOfPrimitiveTypes"
           },
           "exception": {
             "type": "string",
@@ -9629,25 +9651,6 @@
         "items": {
           "$ref": "#/components/schemas/Array2OfObject"
         }
-      },
-      "BRequest_RemotePrimitiveTypes_setShort": {
-        "type": "object",
-        "properties": {
-          "v": {
-            "type": "string"
-          }
-        }
-      },
-      "BRequest_RemoteSetTypes_setDate1": {
-        "type": "object",
-        "properties": {
-          "obj1": {
-            "$ref": "#/components/schemas/SetOfDate"
-          }
-        }
-      },
-      "PlantService": {
-        "type": "object"
       },
       "PrivateMembers": {
         "type": "object",
@@ -9739,6 +9742,25 @@
         },
         "description": "Example class with private and protected members"
       },
+      "PlantService": {
+        "type": "object"
+      },
+      "BRequest_RemoteSetTypes_setDate1": {
+        "type": "object",
+        "properties": {
+          "obj1": {
+            "$ref": "#/components/schemas/SetOfDate"
+          }
+        }
+      },
+      "BRequest_RemotePrimitiveTypes_setShort": {
+        "type": "object",
+        "properties": {
+          "v": {
+            "type": "string"
+          }
+        }
+      },
       "Array3Ofdouble": {
         "type": "array",
         "items": {
@@ -9821,14 +9843,14 @@
           "$ref": "#/components/schemas/Array2Ofbyte"
         }
       },
+      "BRequest_RemoteSetTypes_getDate1": {
+        "type": "object"
+      },
       "Array3Ofshort": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Array2Ofshort"
         }
-      },
-      "BRequest_RemoteSetTypes_getDate1": {
-        "type": "object"
       },
       "BRequest_RemoteListTypes_getInt2": {
         "type": "object"
@@ -9930,17 +9952,17 @@
       "BRequest_RemoteMapTypes_getDouble1": {
         "type": "object"
       },
-      "Array4OfPrimitiveTypes": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Array3OfPrimitiveTypes"
-        }
-      },
       "ListOfCharacter": {
         "type": "array",
         "items": {
           "type": "integer",
           "format": "int32"
+        }
+      },
+      "Array4OfPrimitiveTypes": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Array3OfPrimitiveTypes"
         }
       },
       "BRequest_RemoteArrayTypes4dim_getString": {
@@ -10016,6 +10038,15 @@
         },
         "description": "Base class for ..."
       },
+      "Class2": {
+        "type": "object",
+        "properties": {
+          "int2": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
       "BResult_1831201218": {
         "type": "object",
         "properties": {
@@ -10025,15 +10056,6 @@
           "exception": {
             "type": "string",
             "description": "Error message"
-          }
-        }
-      },
-      "Class2": {
-        "type": "object",
-        "properties": {
-          "int2": {
-            "type": "integer",
-            "format": "int32"
           }
         }
       },
@@ -10049,14 +10071,6 @@
       "FruitService": {
         "type": "object"
       },
-      "BRequest_RemoteMapTypes_setByte2": {
-        "type": "object",
-        "properties": {
-          "byte2": {
-            "$ref": "#/components/schemas/MapToArrayOfbyte"
-          }
-        }
-      },
       "BRequest_RemoteStreams_putSharedStream": {
         "type": "object",
         "properties": {
@@ -10066,6 +10080,14 @@
           },
           "stream": {
             "$ref": "#/components/schemas/BStreamReference"
+          }
+        }
+      },
+      "BRequest_RemoteMapTypes_setByte2": {
+        "type": "object",
+        "properties": {
+          "byte2": {
+            "$ref": "#/components/schemas/MapToArrayOfbyte"
           }
         }
       },
@@ -10086,6 +10108,9 @@
           }
         }
       },
+      "Throwable": {
+        "type": "object"
+      },
       "BRequest_RemoteInlineInstance_setPoint2DArray1dim": {
         "type": "object",
         "properties": {
@@ -10096,9 +10121,6 @@
             }
           }
         }
-      },
-      "Throwable": {
-        "type": "object"
       },
       "BRequest_RemotePrimitiveTypes_getBool": {
         "type": "object"
@@ -10120,6 +10142,12 @@
           "$ref": "#/components/schemas/Class1"
         }
       },
+      "ListOfBStreamReference": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BStreamReference"
+        }
+      },
       "BRequest_RemoteArrayTypes1dim_setInt": {
         "type": "object",
         "properties": {
@@ -10130,12 +10158,6 @@
               "format": "int32"
             }
           }
-        }
-      },
-      "ListOfBStreamReference": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/BStreamReference"
         }
       },
       "ServerIF": {
@@ -10181,19 +10203,19 @@
           }
         }
       },
+      "SetOfFloat": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "format": "float"
+        }
+      },
       "BRequest_RemoteArrayTypes4dim_setByte": {
         "type": "object",
         "properties": {
           "v": {
             "$ref": "#/components/schemas/Array4Ofbyte"
           }
-        }
-      },
-      "SetOfFloat": {
-        "type": "array",
-        "items": {
-          "type": "number",
-          "format": "float"
         }
       },
       "BResult_1888107655": {
@@ -10551,11 +10573,11 @@
       "BRequest_RemoteArrayTypes4dim_getBool": {
         "type": "object"
       },
-      "BResult_1710660846": {
+      "BResult_846419204": {
         "type": "object",
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/MapToString"
+            "$ref": "#/components/schemas/Array4Oflong"
           },
           "exception": {
             "type": "string",
@@ -10563,11 +10585,11 @@
           }
         }
       },
-      "BResult_846419204": {
+      "BResult_1710660846": {
         "type": "object",
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/Array4Oflong"
+            "$ref": "#/components/schemas/MapToString"
           },
           "exception": {
             "type": "string",
@@ -10689,14 +10711,6 @@
           }
         }
       },
-      "BRequest_RemoteSetTypes_setLong1": {
-        "type": "object",
-        "properties": {
-          "long1": {
-            "$ref": "#/components/schemas/SetOfLong"
-          }
-        }
-      },
       "BResult_1493282670": {
         "type": "object",
         "properties": {
@@ -10706,6 +10720,14 @@
           "exception": {
             "type": "string",
             "description": "Error message"
+          }
+        }
+      },
+      "BRequest_RemoteSetTypes_setLong1": {
+        "type": "object",
+        "properties": {
+          "long1": {
+            "$ref": "#/components/schemas/SetOfLong"
           }
         }
       },
@@ -10828,6 +10850,13 @@
           "$ref": "#/components/schemas/Array2Oflong"
         }
       },
+      "MapToDate": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
       "Array2Ofdouble": {
         "type": "array",
         "items": {
@@ -10838,12 +10867,8 @@
           }
         }
       },
-      "MapToDate": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string",
-          "format": "date-time"
-        }
+      "BRequest_RemoteArrayTypes1dim_getLong": {
+        "type": "object"
       },
       "Array2OfAllTypesZ": {
         "type": "array",
@@ -10853,9 +10878,6 @@
             "$ref": "#/components/schemas/AllTypesZ"
           }
         }
-      },
-      "BRequest_RemoteArrayTypes1dim_getLong": {
-        "type": "object"
       },
       "MapToListOfString": {
         "type": "object",
@@ -10896,10 +10918,10 @@
           }
         }
       },
-      "BRequest_RemotePrimitiveTypes_getObject": {
+      "EvolveIF": {
         "type": "object"
       },
-      "EvolveIF": {
+      "BRequest_RemotePrimitiveTypes_getObject": {
         "type": "object"
       },
       "BRequest_RemoteServerCtrl_getPublishedRemote": {
@@ -10947,14 +10969,14 @@
         "type": "string",
         "description": "Unsupported schema"
       },
+      "BRequest_EvolveIF_getClient": {
+        "type": "object"
+      },
       "ArrayOfInputStream": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/BStreamReference"
         }
-      },
-      "BRequest_EvolveIF_getClient": {
-        "type": "object"
       },
       "BResult_1555345627": {
         "type": "object",
@@ -11043,28 +11065,22 @@
           "$ref": "#/components/schemas/Node"
         }
       },
-      "Array4Ofboolean": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Array3Ofboolean"
-        }
-      },
       "MapToListOfTreeSetOfInteger": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/ListOfTreeSetOfInteger"
         }
       },
+      "Array4Ofboolean": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Array3Ofboolean"
+        }
+      },
       "ListOfListOfInteger": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/ListOfInteger"
-        }
-      },
-      "Array4Offloat": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Array3Offloat"
         }
       },
       "BRequest_ServerIF_getClient": {
@@ -11074,6 +11090,12 @@
             "type": "integer",
             "format": "int32"
           }
+        }
+      },
+      "Array4Offloat": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Array3Offloat"
         }
       },
       "SessionInfo": {
@@ -11130,6 +11152,12 @@
           "format": "int32"
         }
       },
+      "MapToObject": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
       "BRequest_RemoteArrayTypes1dim_setString": {
         "type": "object",
         "properties": {
@@ -11139,12 +11167,6 @@
               "type": "string"
             }
           }
-        }
-      },
-      "MapToObject": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
         }
       },
       "BResult_51898890": {
@@ -11159,19 +11181,7 @@
           }
         }
       },
-      "Array3OfPrimitiveTypes": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Array2OfPrimitiveTypes"
-        }
-      },
-      "Array4OfPoint2D": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Array3OfPoint2D"
-        }
-      },
-      "BRequest_RemoteMapTypes_getString1": {
+      "RemoteServerCtrl": {
         "type": "object"
       },
       "BResult_1823330785": {
@@ -11186,8 +11196,20 @@
           }
         }
       },
-      "RemoteServerCtrl": {
+      "BRequest_RemoteMapTypes_getString1": {
         "type": "object"
+      },
+      "Array4OfPoint2D": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Array3OfPoint2D"
+        }
+      },
+      "Array3OfPrimitiveTypes": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Array2OfPrimitiveTypes"
+        }
       },
       "BResult_1359468275": {
         "type": "object",
@@ -11259,19 +11281,19 @@
       "BRequest_RemoteSetTypes_getString1": {
         "type": "object"
       },
-      "ArrayOffloat": {
-        "type": "array",
-        "items": {
-          "type": "number",
-          "format": "float"
-        }
-      },
       "BRequest_RemoteMapTypes_setDouble1": {
         "type": "object",
         "properties": {
           "double1": {
             "$ref": "#/components/schemas/MapToDouble"
           }
+        }
+      },
+      "ArrayOffloat": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "format": "float"
         }
       },
       "BRequest_RemoteMapTypes_setShort1": {
@@ -11312,9 +11334,6 @@
           }
         }
       },
-      "BRequest_RemoteMapTypes_getByte1": {
-        "type": "object"
-      },
       "BResult_15": {
         "type": "object",
         "properties": {
@@ -11326,6 +11345,9 @@
             "description": "Error message"
           }
         }
+      },
+      "BRequest_RemoteMapTypes_getByte1": {
+        "type": "object"
       },
       "BRequest_RemoteMapTypes_getByte2": {
         "type": "object"
@@ -11343,11 +11365,11 @@
           }
         }
       },
-      "BResult_1000": {
+      "BResult_12": {
         "type": "object",
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/PrimitiveTypes"
+            "$ref": "#/components/schemas/ListOfObject"
           },
           "exception": {
             "type": "string",
@@ -11355,11 +11377,11 @@
           }
         }
       },
-      "BResult_12": {
+      "BResult_1000": {
         "type": "object",
         "properties": {
           "result": {
-            "$ref": "#/components/schemas/ListOfObject"
+            "$ref": "#/components/schemas/PrimitiveTypes"
           },
           "exception": {
             "type": "string",
@@ -11391,19 +11413,19 @@
           }
         }
       },
-      "BRequest_ClientIF_sendChat": {
-        "type": "object",
-        "properties": {
-          "cs": {
-            "$ref": "#/components/schemas/ChatStructure"
-          }
-        }
-      },
       "BRequest_RemoteSetTypes_setFloat1": {
         "type": "object",
         "properties": {
           "float1": {
             "$ref": "#/components/schemas/SetOfFloat"
+          }
+        }
+      },
+      "BRequest_ClientIF_sendChat": {
+        "type": "object",
+        "properties": {
+          "cs": {
+            "$ref": "#/components/schemas/ChatStructure"
           }
         }
       },
@@ -11420,14 +11442,6 @@
           }
         }
       },
-      "BRequest_RemoteArrayTypes4dim_setString": {
-        "type": "object",
-        "properties": {
-          "v": {
-            "$ref": "#/components/schemas/Array4OfString"
-          }
-        }
-      },
       "BResult_65775978": {
         "type": "object",
         "properties": {
@@ -11440,14 +11454,26 @@
           }
         }
       },
-      "BRequest_RemoteReferences_getNode": {
-        "type": "object"
-      },
-      "BRequest_RemoteArrayTypes4dim_setInt": {
+      "BRequest_RemoteArrayTypes4dim_setString": {
         "type": "object",
         "properties": {
           "v": {
-            "$ref": "#/components/schemas/Array4Ofint"
+            "$ref": "#/components/schemas/Array4OfString"
+          }
+        }
+      },
+      "BRequest_RemoteReferences_getNode": {
+        "type": "object"
+      },
+      "BResult_1972793385": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/HashMapToByte"
+          },
+          "exception": {
+            "type": "string",
+            "description": "Error message"
           }
         }
       },
@@ -11463,15 +11489,11 @@
           }
         }
       },
-      "BResult_1972793385": {
+      "BRequest_RemoteArrayTypes4dim_setInt": {
         "type": "object",
         "properties": {
-          "result": {
-            "$ref": "#/components/schemas/HashMapToByte"
-          },
-          "exception": {
-            "type": "string",
-            "description": "Error message"
+          "v": {
+            "$ref": "#/components/schemas/Array4Ofint"
           }
         }
       },
@@ -11510,10 +11532,10 @@
           }
         }
       },
-      "BRequest_RemoteInlineInstance_getPoint2DMap": {
+      "RemoteWithAuthentication": {
         "type": "object"
       },
-      "RemoteWithAuthentication": {
+      "BRequest_RemoteInlineInstance_getPoint2DMap": {
         "type": "object"
       },
       "BRequest_RemoteArrayTypes4dim_getInt": {
@@ -11530,14 +11552,6 @@
           }
         }
       },
-      "BRequest_RemoteSetTypes_setShort1": {
-        "type": "object",
-        "properties": {
-          "short1": {
-            "$ref": "#/components/schemas/SetOfShort"
-          }
-        }
-      },
       "BResult_564008001": {
         "type": "object",
         "properties": {
@@ -11547,6 +11561,14 @@
           "exception": {
             "type": "string",
             "description": "Error message"
+          }
+        }
+      },
+      "BRequest_RemoteSetTypes_setShort1": {
+        "type": "object",
+        "properties": {
+          "short1": {
+            "$ref": "#/components/schemas/SetOfShort"
           }
         }
       },
@@ -11660,6 +11682,9 @@
           }
         }
       },
+      "BRequest_RemoteArrayTypes1dim_getChar": {
+        "type": "object"
+      },
       "BRequest_BioFruitService_certify": {
         "type": "object",
         "properties": {
@@ -11667,9 +11692,6 @@
             "type": "string"
           }
         }
-      },
-      "BRequest_RemoteArrayTypes1dim_getChar": {
-        "type": "object"
       },
       "BRequest_RemoteStreams_getSharedStream": {
         "type": "object",
@@ -11704,6 +11726,12 @@
           }
         }
       },
+      "SetOfObject": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
       "BResult_949340697": {
         "type": "object",
         "properties": {
@@ -11714,12 +11742,6 @@
             "type": "string",
             "description": "Error message"
           }
-        }
-      },
-      "SetOfObject": {
-        "type": "array",
-        "items": {
-          "type": "string"
         }
       },
       "BResult_184101377": {
@@ -11813,24 +11835,16 @@
           }
         }
       },
-      "ArrayOfString": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
-      },
       "ListOfListOfArray4Ofint": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/ListOfArray4Ofint"
         }
       },
-      "BRequest_RemoteArrayTypes4dim_setFloat": {
-        "type": "object",
-        "properties": {
-          "v": {
-            "$ref": "#/components/schemas/Array4Offloat"
-          }
+      "ArrayOfString": {
+        "type": "array",
+        "items": {
+          "type": "string"
         }
       },
       "BResult_1358523233": {
@@ -11842,6 +11856,14 @@
           "exception": {
             "type": "string",
             "description": "Error message"
+          }
+        }
+      },
+      "BRequest_RemoteArrayTypes4dim_setFloat": {
+        "type": "object",
+        "properties": {
+          "v": {
+            "$ref": "#/components/schemas/Array4Offloat"
           }
         }
       },
@@ -11859,9 +11881,6 @@
       "BRequest_RemotePrimitiveTypes_getString": {
         "type": "object"
       },
-      "BRequest_RemoteListTypes_getDate1": {
-        "type": "object"
-      },
       "BRequest_ServerIF_setPartner": {
         "type": "object",
         "properties": {
@@ -11869,6 +11888,9 @@
             "$ref": "#/components/schemas/ClientIF"
           }
         }
+      },
+      "BRequest_RemoteListTypes_getDate1": {
+        "type": "object"
       },
       "BRequest_RemoteStreams_throwLastException": {
         "type": "object"
@@ -11917,9 +11939,6 @@
           }
         }
       },
-      "BRequest_RemoteListTypes_getFloat1": {
-        "type": "object"
-      },
       "BRequest_RemoteStreams_setImages": {
         "type": "object",
         "properties": {
@@ -11932,7 +11951,7 @@
           }
         }
       },
-      "BRequest_RemoteListTypes_getBoolean1": {
+      "BRequest_RemoteListTypes_getFloat1": {
         "type": "object"
       },
       "BRequest_RemoteListTypes_setDouble1": {
@@ -11942,6 +11961,9 @@
             "$ref": "#/components/schemas/ListOfDouble"
           }
         }
+      },
+      "BRequest_RemoteListTypes_getBoolean1": {
+        "type": "object"
       },
       "BResult_758319514": {
         "type": "object",
@@ -12040,12 +12062,11 @@
           }
         }
       },
-      "Array2OfPrimitiveTypes": {
-        "type": "array",
-        "items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/components/schemas/PrimitiveTypes"
+      "BRequest_RemoteListTypes_setString1": {
+        "type": "object",
+        "properties": {
+          "string1": {
+            "$ref": "#/components/schemas/ListOfString"
           }
         }
       },
@@ -12060,13 +12081,17 @@
           }
         }
       },
-      "BRequest_RemoteListTypes_setString1": {
-        "type": "object",
-        "properties": {
-          "string1": {
-            "$ref": "#/components/schemas/ListOfString"
+      "Array2OfPrimitiveTypes": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/PrimitiveTypes"
           }
         }
+      },
+      "BRequest_RemoteStreams_getStreamDoNotClone": {
+        "type": "object"
       },
       "BRequest_RemoteMapTypes_setLong1": {
         "type": "object",
@@ -12075,9 +12100,6 @@
             "$ref": "#/components/schemas/MapToLong"
           }
         }
-      },
-      "BRequest_RemoteStreams_getStreamDoNotClone": {
-        "type": "object"
       },
       "BRequest_RemoteArrayTypes23_sendArraysObject": {
         "type": "object",
@@ -12102,12 +12124,6 @@
           "streams": {
             "$ref": "#/components/schemas/ListOfBStreamReference"
           }
-        }
-      },
-      "Array3Offloat": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Array2Offloat"
         }
       },
       "PrimitiveTypes": {
@@ -12169,8 +12185,11 @@
         },
         "description": "Example class with primitive types like boolean, int, String."
       },
-      "BRequest_RemoteMapTypes_getFloat1": {
-        "type": "object"
+      "Array3Offloat": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Array2Offloat"
+        }
       },
       "BRequest_RemotePrimitiveTypes_setObject": {
         "type": "object",
@@ -12180,19 +12199,22 @@
           }
         }
       },
-      "BRequest_RemoteArrayTypes4dim_setLong": {
-        "type": "object",
-        "properties": {
-          "v": {
-            "$ref": "#/components/schemas/Array4Oflong"
-          }
-        }
+      "BRequest_RemoteMapTypes_getFloat1": {
+        "type": "object"
       },
       "BRequest_RemoteSetTypes_setByte1": {
         "type": "object",
         "properties": {
           "byte1": {
             "$ref": "#/components/schemas/HashSetOfByte"
+          }
+        }
+      },
+      "BRequest_RemoteArrayTypes4dim_setLong": {
+        "type": "object",
+        "properties": {
+          "v": {
+            "$ref": "#/components/schemas/Array4Oflong"
           }
         }
       },
@@ -12241,19 +12263,19 @@
           }
         }
       },
-      "BRequest_RemoteListTypes_setInt3": {
-        "type": "object",
-        "properties": {
-          "int3": {
-            "$ref": "#/components/schemas/ListOfListOfInteger"
-          }
-        }
-      },
       "BRequest_RemoteListTypes_setLong1": {
         "type": "object",
         "properties": {
           "long1": {
             "$ref": "#/components/schemas/ListOfLong"
+          }
+        }
+      },
+      "BRequest_RemoteListTypes_setInt3": {
+        "type": "object",
+        "properties": {
+          "int3": {
+            "$ref": "#/components/schemas/ListOfListOfInteger"
           }
         }
       },
@@ -12265,12 +12287,6 @@
           }
         }
       },
-      "ArrayOfAllTypesZ": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/AllTypesZ"
-        }
-      },
       "BRequest_RemotePrimitiveTypes_setDate": {
         "type": "object",
         "properties": {
@@ -12278,6 +12294,12 @@
             "type": "string",
             "format": "date-time"
           }
+        }
+      },
+      "ArrayOfAllTypesZ": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/AllTypesZ"
         }
       },
       "BRequest_RemoteWithAuthentication_expire": {
@@ -12288,21 +12310,21 @@
           }
         }
       },
+      "ListOfString": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "BRequest_RemoteMapTypes_getShort1": {
+        "type": "object"
+      },
       "BRequest_RemoteInlineInstance_setPoint2DArray4dim": {
         "type": "object",
         "properties": {
           "pointArray": {
             "$ref": "#/components/schemas/Array4OfPoint2D"
           }
-        }
-      },
-      "BRequest_RemoteMapTypes_getShort1": {
-        "type": "object"
-      },
-      "ListOfString": {
-        "type": "array",
-        "items": {
-          "type": "string"
         }
       },
       "BRequest_RemoteListTypes_setObj1": {
@@ -12314,9 +12336,6 @@
         }
       },
       "RemoteArrayTypes1dim": {
-        "type": "object"
-      },
-      "BRequest_RemoteSetTypes_getByte2": {
         "type": "object"
       },
       "BResult_183594037": {
@@ -12333,6 +12352,9 @@
             "description": "Error message"
           }
         }
+      },
+      "BRequest_RemoteSetTypes_getByte2": {
+        "type": "object"
       },
       "BRequest_RemoteSetTypes_getByte1": {
         "type": "object"
@@ -12399,9 +12421,6 @@
           }
         }
       },
-      "BRequest_RemoteStreams_getVideoCheckSupportByteRange": {
-        "type": "object"
-      },
       "BResult_3": {
         "type": "object",
         "properties": {
@@ -12413,6 +12432,9 @@
             "description": "Error message"
           }
         }
+      },
+      "BRequest_RemoteStreams_getVideoCheckSupportByteRange": {
+        "type": "object"
       },
       "BResult_2": {
         "type": "object",
@@ -12455,6 +12477,15 @@
           }
         }
       },
+      "Evolve2": {
+        "type": "object",
+        "properties": {
+          "n1": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
       "BResult_6": {
         "type": "object",
         "properties": {
@@ -12468,32 +12499,7 @@
           }
         }
       },
-      "Evolve2": {
-        "type": "object",
-        "properties": {
-          "n1": {
-            "type": "integer",
-            "format": "int32"
-          }
-        }
-      },
       "BResult_5": {
-        "type": "object",
-        "properties": {
-          "result": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "exception": {
-            "type": "string",
-            "description": "Error message"
-          }
-        }
-      },
-      "BRequest_RemoteSetTypes_getShort1": {
-        "type": "object"
-      },
-      "BResult_4": {
         "type": "object",
         "properties": {
           "result": {
@@ -12517,6 +12523,22 @@
             "description": "Error message"
           }
         }
+      },
+      "BResult_4": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "exception": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      },
+      "BRequest_RemoteSetTypes_getShort1": {
+        "type": "object"
       },
       "Matrix2D": {
         "type": "object",
@@ -12567,18 +12589,18 @@
           "format": "int32"
         }
       },
+      "ListOfTreeSetOfInteger": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/TreeSetOfInteger"
+        }
+      },
       "BRequest_RemotePrimitiveTypes_setBool": {
         "type": "object",
         "properties": {
           "v": {
             "type": "boolean"
           }
-        }
-      },
-      "ListOfTreeSetOfInteger": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/TreeSetOfInteger"
         }
       },
       "BRequest_RemoteMapTypes_setInt2": {
@@ -12638,6 +12660,9 @@
       "BRequest_RemotePrimitiveTypes_getByte": {
         "type": "object"
       },
+      "BRequest_RemoteSetTypes_getDouble1": {
+        "type": "object"
+      },
       "BRequest_RemoteMapTypes_setDate1": {
         "type": "object",
         "properties": {
@@ -12645,9 +12670,6 @@
             "$ref": "#/components/schemas/MapToDate"
           }
         }
-      },
-      "BRequest_RemoteSetTypes_getDouble1": {
-        "type": "object"
       },
       "RemoteListTypes": {
         "type": "object"
@@ -12680,10 +12702,13 @@
           "$ref": "#/components/schemas/BStreamReference"
         }
       },
-      "Array3OfDate": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Array2OfDate"
+      "BRequest_RemotePrimitiveTypes_setInt": {
+        "type": "object",
+        "properties": {
+          "v": {
+            "type": "integer",
+            "format": "int32"
+          }
         }
       },
       "BRequest_RemoteArrayTypes4dim_setBool": {
@@ -12694,13 +12719,10 @@
           }
         }
       },
-      "BRequest_RemotePrimitiveTypes_setInt": {
-        "type": "object",
-        "properties": {
-          "v": {
-            "type": "integer",
-            "format": "int32"
-          }
+      "Array3OfDate": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Array2OfDate"
         }
       },
       "Array2Ofchar": {
@@ -12721,16 +12743,6 @@
       },
       "ClientIF": {
         "type": "object"
-      },
-      "BRequest_RemotePrimitiveTypes_getInt": {
-        "type": "object"
-      },
-      "ListOfLong": {
-        "type": "array",
-        "items": {
-          "type": "integer",
-          "format": "int64"
-        }
       },
       "ListTypes": {
         "type": "object",
@@ -12782,6 +12794,16 @@
           }
         }
       },
+      "ListOfLong": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "BRequest_RemotePrimitiveTypes_getInt": {
+        "type": "object"
+      },
       "ArrayOfchar": {
         "type": "array",
         "items": {
@@ -12827,6 +12849,9 @@
           }
         }
       },
+      "BRequest_RemoteStreams_getImages": {
+        "type": "object"
+      },
       "BRequest_RemoteArrayTypes4dim_setShort": {
         "type": "object",
         "properties": {
@@ -12835,19 +12860,10 @@
           }
         }
       },
-      "BRequest_RemoteStreams_getImages": {
-        "type": "object"
-      },
       "TreeMapToBStreamReference": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/BStreamReference"
-        }
-      },
-      "Array4Ofchar": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Array3Ofchar"
         }
       },
       "BRequest_RemotePrimitiveTypes_setFloat": {
@@ -12859,6 +12875,15 @@
           }
         }
       },
+      "Array4Ofchar": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Array3Ofchar"
+        }
+      },
+      "RemoteSetTypes": {
+        "type": "object"
+      },
       "MapToArrayOfbyte": {
         "type": "object",
         "additionalProperties": {
@@ -12868,9 +12893,6 @@
             "format": "int32"
           }
         }
-      },
-      "RemoteSetTypes": {
-        "type": "object"
       },
       "BRequest_RemoteSetTypes_setChar1": {
         "type": "object",
@@ -12935,18 +12957,18 @@
           }
         }
       },
-      "HashMapToByte": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "integer",
-          "format": "int32"
-        }
-      },
       "SetOfDate": {
         "type": "array",
         "items": {
           "type": "string",
           "format": "date-time"
+        }
+      },
+      "HashMapToByte": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer",
+          "format": "int32"
         }
       },
       "BioFruitService": {
@@ -13045,14 +13067,13 @@
           }
         }
       },
-      "BResult_100361105": {
+      "BResult_2058423690": {
         "type": "object",
         "properties": {
           "result": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int32"
+              "type": "boolean"
             }
           },
           "exception": {
@@ -13061,13 +13082,14 @@
           }
         }
       },
-      "BResult_2058423690": {
+      "BResult_100361105": {
         "type": "object",
         "properties": {
           "result": {
             "type": "array",
             "items": {
-              "type": "boolean"
+              "type": "integer",
+              "format": "int32"
             }
           },
           "exception": {
@@ -13094,6 +13116,12 @@
           }
         }
       },
+      "ListOfObject": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
       "BResult_1504867122": {
         "type": "object",
         "properties": {
@@ -13106,15 +13134,6 @@
           }
         }
       },
-      "ListOfObject": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
-      },
-      "BRequest_RemoteArrayTypes4dim_getFloat": {
-        "type": "object"
-      },
       "BResult_588723219": {
         "type": "object",
         "properties": {
@@ -13126,6 +13145,9 @@
             "description": "Error message"
           }
         }
+      },
+      "BRequest_RemoteArrayTypes4dim_getFloat": {
+        "type": "object"
       },
       "BRequest_RemoteListTypes_setDate1": {
         "type": "object",

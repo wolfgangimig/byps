@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ import byps.BBuffer;
 import byps.BBufferJson;
 import byps.BClient;
 import byps.BContentStream;
+import byps.BContentStreamWrapper;
 import byps.BException;
 import byps.BExceptionC;
 import byps.BHashMap;
@@ -317,9 +319,14 @@ public abstract class HHttpServlet extends HttpServlet implements
     }
     // Execute if REST call.
     // A REST call follows the URI format .../rest/interface-name/function-name.
-    // BYPS-51
+    // BYPS-50
     else if (isRestCall(request)) {
       doRest(request, response);
+    }
+    // If the URI is like .../rest/putstream, a stream should be uploaded.
+    // BYPS-51
+    else if (isRestPutStream(request)) {
+      doRestPutStream(request, response);
     }
     else {
       doPostMessage(request, response);
@@ -349,13 +356,76 @@ public abstract class HHttpServlet extends HttpServlet implements
   }
   
   /**
+   * Handle a stream upload for REST.
+   * @param request
+   * @param response
+   * @throws IOException
+   */
+  protected void doRestPutStream(HttpServletRequest request, HttpServletResponse response) {
+    if (log.isDebugEnabled()) log.debug("doRestPutStream(");
+    
+    // The request must include a valid session.
+    BMessageHeader header = null;
+    final HSession sess = getSessionFromMessageHeaderOrHttpRequest(header, request);
+    if (sess == null) {
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+      return;
+    }
+    
+    try {
+
+      // Wrap stream into a BContentStream
+      InputStream istream = request.getInputStream();
+      long contentLength = request.getContentLengthLong();
+      String contentType = request.getContentType();
+      BContentStream stream = new BContentStreamWrapper(istream, contentType, contentLength);
+      
+      // Generate a random streamId and assign a BTargetId to the stream.
+      long messageId = 0;
+      long streamId = sess.getServer().getTransport().getWire().makeMessageId();
+      BTargetId targetId = new BTargetId(getConfig().getMyServerId(), messageId, streamId);
+      stream.setTargetId(targetId);
+      
+      // Add the stream to the map of streams.
+      log.info("Add uploaded stream, targetId={}, contentLength={}, contentType={}", targetId, contentLength, contentType);
+      getActiveMessages().addIncomingUploadStream(stream);
+      
+      // Return the streamId in the response body.
+      response.setStatus(HttpServletResponse.SC_OK);
+      try (Writer writer = response.getWriter()) {
+        writer.append(Long.toString(streamId));
+      }
+    }
+    catch (IOException e) {
+      log.warn("Failed to add uploaded stream.", e);
+      response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+    }
+
+    if (log.isDebugEnabled()) log.debug(")doRestPutStream");
+  }
+  
+  /**
    * Check whether the request is a REST call.
+   * BYPS-50
    * @param request Request
    * @return true, if REST call
    */
   protected boolean isRestCall(HttpServletRequest request) {
     String requestUri = request.getRequestURI();
-    return requestUri.contains("/rest");
+    return requestUri.contains("/rest")
+        && !requestUri.contains("/rest/getstream")
+        && !requestUri.contains("/rest/putstream");
+  }
+  
+  /**
+   * Check whether the request is a REST call that uploads a stream.
+   * BYPS-50
+   * @param request Request
+   * @return true, if REST call
+   */
+  protected boolean isRestPutStream(HttpServletRequest request) {
+    String requestUri = request.getRequestURI();
+    return requestUri.contains("/rest/putstream");
   }
   
   /**

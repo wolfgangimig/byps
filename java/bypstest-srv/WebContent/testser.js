@@ -3087,6 +3087,8 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getImage = function(__byps__a
 
 // checkpoint byps.gen.js.PrintContext:133
 /**
+ * @param istrm
+ * @throws RemoteException
 */
 byps.test.api.remote.BStub_RemoteStreams.prototype.setImage = function(istrm, __byps__asyncResult) {
 	// checkpoint byps.gen.js.GenRemoteStub:40
@@ -3191,9 +3193,19 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getStreamDoNotClone = functio
 
 // checkpoint byps.gen.js.PrintContext:133
 /**
+ * @consumes multipart/form-data
+ * @consumes application/json
  * @param id Stream ID
  * @param stream Stream
  * BYPS-48
+ * 
+ * REST-Request, data=
+ * {
+ * "id" : "123",
+ * "stream" : {
+ * "file" : "file[0]"
+ * }
+ * }
  * Store a stream reference shared by several clients.
  * @throws RemoteException
 */
@@ -3208,6 +3220,19 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.putSharedStream = function(id
 /**
  * @param id Stream ID
  * BYPS-48
+ * 
+ * REST-Request:
+ * {
+ * "id": 123
+ * }
+ * 
+ * REST-Rückgabe:
+ * {
+ * "result": {
+ * "url": "getstream?serverid=0&messageid=0&streamid=8044761703127587673"
+ * }
+ * }
+ * Stream abrufen mit GET-Request auf: http://localhost:6080/bypstest-srv/bypsservlet/rest/getstream?serverid=0&messageid=0&streamid=8044761703127587673
  * @return Stream
  * Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.
  * @throws RemoteException

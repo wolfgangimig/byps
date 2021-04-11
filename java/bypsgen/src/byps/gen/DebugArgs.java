@@ -12,6 +12,7 @@ public class DebugArgs {
   "-genrest.openapi-file", "../bypstest-ser/res/openapi.json",
   "-genrest.src-dir", "../bypstest-ser/src-ser",
   "-genrest.auth-basic", 
+  "-genrest.server-url", "http://localhost:6080/bypstest-srv/bypsservlet/rest",
 
   "-genj.dir-ser", "../bypstest-ser/src-ser", "-genj.dir-ser-bin", "../bypstest-ser/src-ser-bin", "-genj.dir-ser-json", "../bypstest-ser-json/src",
   "-genj.dir-test", "../bypstest-ser/src-test",

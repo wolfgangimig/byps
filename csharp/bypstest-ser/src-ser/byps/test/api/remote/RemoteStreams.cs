@@ -92,6 +92,14 @@ namespace byps.test.api.remote
 		/// </summary>
 		/// <remarks>
 		/// BYPS-48
+		/// 
+		/// REST-Request, data=
+		/// {
+		/// "id" : "123",
+		/// "stream" : {
+		/// "file" : "file[0]"
+		/// }
+		/// }
 		/// </remarks>
 		void PutSharedStream(long id, System.IO.Stream stream);
 		void PutSharedStream(long id, System.IO.Stream stream, BAsyncResult<Object> asyncResult) ;
@@ -100,6 +108,14 @@ namespace byps.test.api.remote
 		/// </summary>
 		/// <remarks>
 		/// BYPS-48
+		/// 
+		/// REST-Request, data=
+		/// {
+		/// "id" : "123",
+		/// "stream" : {
+		/// "file" : "file[0]"
+		/// }
+		/// }
 		/// </remarks>
 		Task PutSharedStreamAsync(long id, System.IO.Stream stream);
 		
@@ -108,6 +124,19 @@ namespace byps.test.api.remote
 		/// </summary>
 		/// <remarks>
 		/// BYPS-48
+		/// 
+		/// REST-Request:
+		/// {
+		/// "id": 123
+		/// }
+		/// 
+		/// REST-Rückgabe:
+		/// {
+		/// "result": {
+		/// "url": "getstream?serverid=0&messageid=0&streamid=8044761703127587673"
+		/// }
+		/// }
+		/// Stream abrufen mit GET-Request auf: http://localhost:6080/bypstest-srv/bypsservlet/rest/getstream?serverid=0&messageid=0&streamid=8044761703127587673
 		/// </remarks>
 		System.IO.Stream GetSharedStream(long id);
 		void GetSharedStream(long id, BAsyncResult<System.IO.Stream> asyncResult) ;
@@ -116,6 +145,19 @@ namespace byps.test.api.remote
 		/// </summary>
 		/// <remarks>
 		/// BYPS-48
+		/// 
+		/// REST-Request:
+		/// {
+		/// "id": 123
+		/// }
+		/// 
+		/// REST-Rückgabe:
+		/// {
+		/// "result": {
+		/// "url": "getstream?serverid=0&messageid=0&streamid=8044761703127587673"
+		/// }
+		/// }
+		/// Stream abrufen mit GET-Request auf: http://localhost:6080/bypstest-srv/bypsservlet/rest/getstream?serverid=0&messageid=0&streamid=8044761703127587673
 		/// </remarks>
 		Task<System.IO.Stream> GetSharedStreamAsync(long id);
 		

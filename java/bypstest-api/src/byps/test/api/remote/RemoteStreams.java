@@ -11,6 +11,10 @@ public interface RemoteStreams extends BRemote {
 
 	public InputStream getImage() throws RemoteException;
 	
+	/**
+	 * @param istrm
+	 * @throws RemoteException
+	 */
 	public void setImage(InputStream istrm) throws RemoteException;
 	
 	public TreeMap<Integer, InputStream> getImages() throws RemoteException;
@@ -54,6 +58,16 @@ public interface RemoteStreams extends BRemote {
 	/**
 	 * Store a stream reference shared by several clients.
 	 * BYPS-48
+	 * 
+	 * REST-Request, data=
+	 * {
+   *   "id" : "123",
+   *   "stream" : {
+   *     "file" : "file[0]"
+   *   }
+   * }
+   * @consumes multipart/form-data
+   * @consumes application/json
 	 * @param id Stream ID
 	 * @param stream Stream
 	 * @throws RemoteException
@@ -63,6 +77,19 @@ public interface RemoteStreams extends BRemote {
 	/**
 	 * Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.
 	 * BYPS-48
+	 * 
+	 * REST-Request:
+	 *  {
+   *   "id": 123
+   *  }
+	 * 
+	 * REST-Rückgabe:
+	 *  {
+   *    "result": {
+   *      "url": "getstream?serverid=0&messageid=0&streamid=8044761703127587673"
+   *    }
+   *  }
+	 * Stream abrufen mit GET-Request auf: http://localhost:6080/bypstest-srv/bypsservlet/rest/getstream?serverid=0&messageid=0&streamid=8044761703127587673
 	 * @param id Stream ID
 	 * @return Stream
 	 * @throws RemoteException

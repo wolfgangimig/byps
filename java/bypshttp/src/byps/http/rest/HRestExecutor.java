@@ -5,16 +5,17 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.io.UncheckedIOException;
 import java.io.Writer;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +38,7 @@ import byps.BServer;
 import byps.BSyncResult;
 import byps.BTargetId;
 import byps.gen.RestConstants;
+import byps.http.HActiveMessages;
 import byps.http.HConfig;
 import byps.http.HConstants;
 import byps.http.HFileUploadIncomingStream;
@@ -143,7 +145,7 @@ public class HRestExecutor {
           method = buildMethodFromMultiPart(sess, request, requestClass);
         }
         else {
-          method = buildMethodFromJsonBody(request, requestClass);
+          method = buildMethodFromJsonBody(sess, request, requestClass);
         }
       }
       else {
@@ -269,6 +271,7 @@ public class HRestExecutor {
   /**
    * Read the request into an object of the given request class. 
    * The request body must be text (JSON) and cannot contain streams. 
+   * @param sess BYPS session
    * @param request HTTP request
    * @param requestClass Request class
    * @return Request object
@@ -280,7 +283,7 @@ public class HRestExecutor {
    * @throws NoSuchMethodException
    * @throws SecurityException
    */
-  protected BMethodRequest buildMethodFromJsonBody(HttpServletRequest request, Class<?> requestClass) throws IOException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+  protected BMethodRequest buildMethodFromJsonBody(HSession sess, HttpServletRequest request, Class<?> requestClass) throws IOException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
     if (log.isDebugEnabled()) log.debug("buildMethodFromJsonBody(");
     BMethodRequest method = null;
     
@@ -302,9 +305,12 @@ public class HRestExecutor {
         innerReader = new StringReader(jsonRequest);
       }
       
+      // Function that returns the stream associated to a streamId
+      Function<String, BContentStream> getStream = makeProviderForUploadedStream(sess);
+      
       // Deserialize
       GsonBuilder builder = new GsonBuilder();
-      builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(Collections.emptyMap()));
+      builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(getStream));
       builder.registerTypeAdapter(byte[].class, new BytesDeserializer());
       Gson gson = builder.create();
       method = (BMethodRequest)gson.fromJson(innerReader, requestClass);
@@ -317,6 +323,28 @@ public class HRestExecutor {
     
     if (log.isDebugEnabled()) log.debug(")buildMethodFromJsonBody={}", method);
     return method;
+  }
+  
+  /**
+   * Create a function object that returns a stream for a given streamId.
+   * The stream must have been uploaded via HHttpServlet.doRestPutStream
+   * @param sess BYPS session
+   * @return Function
+   */
+  private Function<String, BContentStream> makeProviderForUploadedStream(HSession sess) {
+    return streamId -> 
+    {
+      try {
+        if (log.isDebugEnabled()) log.debug("makeProviderForUploadedStream.apply(streamId={}", streamId);
+        HActiveMessages activeMessages = sess.getServerContext().getActiveMessages();
+        BContentStream stream = activeMessages.getIncomingOrOutgoingStream(Long.parseLong(streamId), HConstants.INCOMING_STREAM_TIMEOUT_MILLIS);
+        if (log.isDebugEnabled()) log.debug(")makeProviderForUploadedStream.apply={}", stream);
+        return stream;
+      }
+      catch (IOException e) {
+        throw new UncheckedIOException("Failed to get incoming stream, streamId=" + streamId, e);
+      }
+    };
   }
   
   /**
@@ -355,10 +383,11 @@ public class HRestExecutor {
     // This map is used during deserialization to assign the stream objects referenced in the method parameters.
     Map<String, BContentStream> streams = mapFieldNamesToStreams(sess, items);
     if (log.isDebugEnabled()) log.debug("#streams={}", streams.size());
+    Function<String, BContentStream> getStream = streamId -> streams.get(streamId);
     
     // Initialize deserialization
     GsonBuilder builder = new GsonBuilder();
-    builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(streams));
+    builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(getStream));
     builder.registerTypeAdapter(byte[].class, new BytesDeserializer());
     
     List<FileItem> formFields = items.stream().filter(item -> item.isFormField()).collect(Collectors.toList());

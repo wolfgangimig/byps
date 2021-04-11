@@ -141,7 +141,7 @@ class TransformObject {
     wire.putStreams(trackingId, Arrays.asList(bstream), null);
     
     // URL to download the content.
-    String url = "?serverid=" + serverId + "&messageid=" + messageId + "&streamid=" + streamId;
+    String url = "getstream?serverid=" + serverId + "&messageid=" + messageId + "&streamid=" + streamId;
     BStreamReference bstreamRef = new BStreamReference();
     bstreamRef.setUrl(url);
     

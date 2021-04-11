@@ -27,7 +27,7 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	private volatile BContentStream imageStream;
 	private volatile Map<Integer, ByteBuffer> mapStreamBytes;
 	private volatile BException lastException;
-	private static final Map<Long, InputStream> sharedStreams = Collections.synchronizedMap(new HashMap<>());
+	private static final Map<Long, BContentStream> sharedStreams = Collections.synchronizedMap(new HashMap<>());
 	
 	void done() {
 		closeImageStream();
@@ -243,15 +243,19 @@ public class MyRemoteStreams extends BSkeleton_RemoteStreams {
 	
 	@Override
 	public InputStream getSharedStream(long id) throws RemoteException {
-	  InputStream ret = sharedStreams.remove(id);
-	  return ret;
+	  BContentStream ret = sharedStreams.get(id);
+	  try {
+      return ret != null ? ret.cloneStream() : null;
+    } catch (IOException e) {
+      throw new BException(BExceptionC.INTERNAL, e.toString());
+    }
 	}
 	
 	@Override
 	public void putSharedStream(long id, InputStream stream) throws RemoteException {
 	  try {
-	    stream = BContentStream.materialize(stream);
-      sharedStreams.put(id, stream);
+	    BContentStream bstream = BContentStream.materialize(stream);
+      sharedStreams.put(id, bstream);
     } catch (IOException e) {
       throw new RemoteException(e.toString());
     }

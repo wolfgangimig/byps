@@ -3704,6 +3704,14 @@ class RemoteStreams : public virtual BRemote {
 	/// </summary>
 	/// <remarks>
 	/// BYPS-48
+	/// 
+	/// REST-Request, data=
+	/// {
+	/// "id" : "123",
+	/// "stream" : {
+	/// "file" : "file[0]"
+	/// }
+	/// }
 	/// </remarks>
 	public: virtual void putSharedStream(int64_t id, const PContentStream& stream)  = 0;
 	public: virtual void putSharedStream(int64_t id, const PContentStream& stream, ::std::function< void (bool, BException ex) > asyncResult)  = 0;
@@ -3713,6 +3721,19 @@ class RemoteStreams : public virtual BRemote {
 	/// </summary>
 	/// <remarks>
 	/// BYPS-48
+	/// 
+	/// REST-Request:
+	/// {
+	/// "id": 123
+	/// }
+	/// 
+	/// REST-Rückgabe:
+	/// {
+	/// "result": {
+	/// "url": "getstream?serverid=0&messageid=0&streamid=8044761703127587673"
+	/// }
+	/// }
+	/// Stream abrufen mit GET-Request auf: http://localhost:6080/bypstest-srv/bypsservlet/rest/getstream?serverid=0&messageid=0&streamid=8044761703127587673
 	/// </remarks>
 	public: virtual PContentStream getSharedStream(int64_t id)  = 0;
 	public: virtual void getSharedStream(int64_t id, ::std::function< void (PContentStream, BException ex) > asyncResult)  = 0;

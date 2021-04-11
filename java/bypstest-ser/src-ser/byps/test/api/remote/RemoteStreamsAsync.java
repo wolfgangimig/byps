@@ -18,6 +18,8 @@ public interface RemoteStreamsAsync extends BRemote,
 	public void getImage(final BAsyncResult<java.io.InputStream> asyncResult) ;
 	
 	/**
+	 * @param istrm
+	 * @throws RemoteException
 	*/
 	// checkpoint byps.gen.j.PrintContext:396
 	public void setImage(java.io.InputStream istrm) throws RemoteException;
@@ -95,9 +97,19 @@ public interface RemoteStreamsAsync extends BRemote,
 	public void getStreamDoNotClone(final BAsyncResult<java.io.InputStream> asyncResult) ;
 	
 	/**
+	 * @consumes multipart/form-data
+	 * @consumes application/json
 	 * @param id Stream ID
 	 * @param stream Stream
 	 * BYPS-48
+	 * 
+	 * REST-Request, data=
+	 * {
+	 * "id" : "123",
+	 * "stream" : {
+	 * "file" : "file[0]"
+	 * }
+	 * }
 	 * Store a stream reference shared by several clients.
 	 * @throws RemoteException
 	*/
@@ -109,6 +121,19 @@ public interface RemoteStreamsAsync extends BRemote,
 	/**
 	 * @param id Stream ID
 	 * BYPS-48
+	 * 
+	 * REST-Request:
+	 * {
+	 * "id": 123
+	 * }
+	 * 
+	 * REST-Rückgabe:
+	 * {
+	 * "result": {
+	 * "url": "getstream?serverid=0&messageid=0&streamid=8044761703127587673"
+	 * }
+	 * }
+	 * Stream abrufen mit GET-Request auf: http://localhost:6080/bypstest-srv/bypsservlet/rest/getstream?serverid=0&messageid=0&streamid=8044761703127587673
 	 * @return Stream
 	 * Get a shared stream previously sent by {@link #putSharedStream(long, InputStream)}.
 	 * @throws RemoteException

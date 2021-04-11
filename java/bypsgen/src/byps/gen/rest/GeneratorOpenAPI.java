@@ -1,7 +1,6 @@
 package byps.gen.rest;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -222,9 +221,8 @@ public class GeneratorOpenAPI implements Generator {
     if (contentType.equalsIgnoreCase(javax.ws.rs.core.MediaType.MULTIPART_FORM_DATA)) {
       addRequestBodyMultipartFormData(content, methodInfo);
     }
-    else {
-      addRequestBodyApplicationJson(content, methodInfo);
-    }
+    
+    addRequestBodyApplicationJson(content, methodInfo);
     
     op.requestBody(new RequestBody().content(content));
   }

@@ -2,7 +2,7 @@ package byps.http.rest;
 
 import java.io.InputStream;
 import java.lang.reflect.Type;
-import java.util.Map;
+import java.util.function.Function;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,16 +33,16 @@ class StreamDeserializer implements JsonDeserializer<InputStream> {
   private static final Logger log = LoggerFactory.getLogger(StreamDeserializer.class);
   
   /**
-   * Map of streams in multipart/form-data request.
+   * Function that returns a stream for a given field name.
    */
-  private final Map<String, BContentStream> streamItems;
+  private final Function<String, BContentStream> getStream;
   
   /**
    * Constructor.
-   * @param streamItems Streams provided in the multipart/form-data request.
+   * @param getStream Function that returns the stream for a given field name.
    */
-  StreamDeserializer(Map<String, BContentStream> streamItems) {
-    this.streamItems = streamItems;
+  StreamDeserializer(Function<String, BContentStream> getStream) {
+    this.getStream = getStream;
   }
   
   @Override
@@ -63,7 +63,7 @@ class StreamDeserializer implements JsonDeserializer<InputStream> {
       if (log.isDebugEnabled()) log.debug("stream.{}={}", RestConstants.UPLOAD_ITEM_NAME, elm);
       if (elm != null && elm.isJsonPrimitive()) {
         String fieldName = elm.getAsString();
-        ret = streamItems.get(fieldName);
+        ret = getStream.apply(fieldName);
       }
     }
     
