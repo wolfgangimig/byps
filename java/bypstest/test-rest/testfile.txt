@@ -1,0 +1,186 @@
+15:27:56,832 main   INFO  (TestSerializeEnum.java:103) - testEnumValues(
+15:27:56,954 main   INFO  (TestUtils.java:192) - buffer: 
+
+String json = "{"header":{"error":0,"flags":1,"bversion":3,"targetId":"","messageId":"6006637927230149648.","sessionId":"00000000000000000000000000000000"},"objectTable":[null,{"_typeId":10000,"planet":2,"planet2":1,"encoding":2}]}";
+
+var json = {
+  "header":{
+    "error":0,
+    "flags":1,
+    "bversion":3,
+    "targetId":"",
+    "messageId":"6006637927230149648.",
+    "sessionId":"00000000000000000000000000000000"
+  },
+  "objectTable":[
+    null,{
+      "_typeId":10000,
+      "planet":2,
+      "planet2":1,
+      "encoding":2
+    }
+  ]
+};
+15:27:56,986 main   INFO  (TestUtils.java:465) - assertEquals: .serialVersionUID, a=10000, b=10000, true
+15:27:56,986 main   INFO  (TestUtils.java:465) - assertEquals: .planet, a=Earth, b=Earth, true
+15:27:56,986 main   INFO  (TestUtils.java:465) - assertEquals: .planet2, a=Venus, b=Venus, true
+15:27:56,986 main   INFO  (TestUtils.java:465) - assertEquals: .arrayOfPlanets, a=null, b=null, true
+15:27:56,986 main   INFO  (TestUtils.java:465) - assertEquals: .listOfPlanets, a=null, b=null, true
+15:27:56,987 main   INFO  (TestUtils.java:465) - assertEquals: .mapOfPlanets, a=null, b=null, true
+15:27:56,987 main   INFO  (TestUtils.java:465) - assertEquals: .encoding, a=UTF16LE, b=UTF16LE, true
+15:27:56,987 main   INFO  (TestUtils.java:465) - assertEquals: , a=byps.test.api.enu.UsePlanets@3ec300f1, b=byps.test.api.enu.UsePlanets@17c386de, true
+15:27:56,987 main   INFO  (TestSerializeEnum.java:109) - )testEnumValues
+15:27:56,988 main   INFO  (TestSerializeEnum.java:137) - testArrayOfEnums(
+15:27:56,989 main   INFO  (TestUtils.java:192) - buffer: 
+
+String json = "{"header":{"error":0,"flags":1,"bversion":3,"targetId":"","messageId":"4300999865498389968.","sessionId":"00000000000000000000000000000000"},"objectTable":[null,{"_typeId":10000,"planet":0,"planet2":0,"encoding":0,"arrayOfPlanets":{"*i":-2}},[0,2,0,1]]}";
+
+var json = {
+  "header":{
+    "error":0,
+    "flags":1,
+    "bversion":3,
+    "targetId":"",
+    "messageId":"4300999865498389968.",
+    "sessionId":"00000000000000000000000000000000"
+  },
+  "objectTable":[
+    null,{
+      "_typeId":10000,
+      "planet":0,
+      "planet2":0,
+      "encoding":0,
+      "arrayOfPlanets":{
+        "*i":-2
+      }
+    },[
+      0,
+      2,
+      0,
+      1
+    ]
+  ]
+};
+15:27:56,989 main   INFO  (TestUtils.java:465) - assertEquals: .serialVersionUID, a=10000, b=10000, true
+15:27:56,989 main   INFO  (TestUtils.java:465) - assertEquals: .planet, a=Mercury, b=Mercury, true
+15:27:56,990 main   INFO  (TestUtils.java:465) - assertEquals: .arrayOfPlanets[1], a=Earth, b=Earth, true
+15:27:56,991 main   INFO  (TestUtils.java:465) - assertEquals: .arrayOfPlanets[3], a=Venus, b=Venus, true
+15:27:56,991 main   INFO  (TestUtils.java:465) - assertEquals: .arrayOfPlanets, a=[Lbyps.test.api.enu.EnumPlanets;@780cb77, b=[Lbyps.test.api.enu.EnumPlanets;@358c99f5, true
+15:27:56,991 main   INFO  (TestUtils.java:465) - assertEquals: .listOfPlanets, a=null, b=null, true
+15:27:56,992 main   INFO  (TestUtils.java:465) - assertEquals: .mapOfPlanets, a=null, b=null, true
+15:27:56,992 main   INFO  (TestUtils.java:465) - assertEquals: .encoding, a=UTF8, b=UTF8, true
+15:27:56,992 main   INFO  (TestUtils.java:465) - assertEquals: , a=byps.test.api.enu.UsePlanets@16aa0a0a, b=byps.test.api.enu.UsePlanets@48524010, true
+15:27:56,992 main   INFO  (TestSerializeEnum.java:145) - )testArrayOfEnums
+15:27:56,992 main   INFO  (TestSerializeEnum.java:119) - testListOfEnums(
+15:27:56,993 main   INFO  (TestUtils.java:192) - buffer: 
+
+String json = "{"header":{"error":0,"flags":1,"bversion":3,"targetId":"","messageId":"2068331028136328032.","sessionId":"00000000000000000000000000000000"},"objectTable":[null,{"_typeId":10000,"planet":0,"planet2":0,"encoding":0,"listOfPlanets":{"*i":-2}},[0,2,0,1]]}";
+
+var json = {
+  "header":{
+    "error":0,
+    "flags":1,
+    "bversion":3,
+    "targetId":"",
+    "messageId":"2068331028136328032.",
+    "sessionId":"00000000000000000000000000000000"
+  },
+  "objectTable":[
+    null,{
+      "_typeId":10000,
+      "planet":0,
+      "planet2":0,
+      "encoding":0,
+      "listOfPlanets":{
+        "*i":-2
+      }
+    },[
+      0,
+      2,
+      0,
+      1
+    ]
+  ]
+};
+15:27:56,993 main   INFO  (TestUtils.java:465) - assertEquals: .serialVersionUID, a=10000, b=10000, true
+15:27:56,994 main   INFO  (TestUtils.java:465) - assertEquals: .planet, a=Mercury, b=Mercury, true
+15:27:56,994 main   INFO  (TestUtils.java:465) - assertEquals: .arrayOfPlanets, a=null, b=null, true
+15:27:56,994 main   INFO  (TestUtils.java:465) - assertEquals: .listOfPlanets[1], a=Earth, b=Earth, true
+15:27:56,994 main   INFO  (TestUtils.java:465) - assertEquals: .listOfPlanets[3], a=Venus, b=Venus, true
+15:27:56,994 main   INFO  (TestUtils.java:465) - assertEquals: .listOfPlanets, a=[Mercury, Earth, Mercury, Venus], b=[Mercury, Earth, Mercury, Venus], true
+15:27:56,997 main   INFO  (TestUtils.java:465) - assertEquals: .mapOfPlanets, a=null, b=null, true
+15:27:56,997 main   INFO  (TestUtils.java:465) - assertEquals: .encoding, a=UTF8, b=UTF8, true
+15:27:56,997 main   INFO  (TestUtils.java:465) - assertEquals: , a=byps.test.api.enu.UsePlanets@4b168fa9, b=byps.test.api.enu.UsePlanets@23282c25, true
+15:27:56,997 main   INFO  (TestSerializeEnum.java:127) - )testListOfEnums
+15:27:56,997 main   INFO  (TestSerializeEnum.java:36) - testEnumNullValues(
+15:27:56,998 main   INFO  (TestUtils.java:192) - buffer: 
+
+String json = "{"header":{"error":0,"flags":1,"bversion":3,"targetId":"","messageId":"5504464799924653610.","sessionId":"00000000000000000000000000000000"},"objectTable":[null,{"_typeId":10000,"planet":0,"planet2":0,"encoding":0}]}";
+
+var json = {
+  "header":{
+    "error":0,
+    "flags":1,
+    "bversion":3,
+    "targetId":"",
+    "messageId":"5504464799924653610.",
+    "sessionId":"00000000000000000000000000000000"
+  },
+  "objectTable":[
+    null,{
+      "_typeId":10000,
+      "planet":0,
+      "planet2":0,
+      "encoding":0
+    }
+  ]
+};
+15:27:56,998 main   INFO  (TestUtils.java:465) - assertEquals: .serialVersionUID, a=10000, b=10000, true
+15:27:56,998 main   INFO  (TestUtils.java:465) - assertEquals: .planet, a=Mercury, b=Mercury, true
+15:27:56,998 main   INFO  (TestUtils.java:465) - assertEquals: .arrayOfPlanets, a=null, b=null, true
+15:27:56,998 main   INFO  (TestUtils.java:465) - assertEquals: .listOfPlanets, a=null, b=null, true
+15:27:56,998 main   INFO  (TestUtils.java:465) - assertEquals: .mapOfPlanets, a=null, b=null, true
+15:27:56,998 main   INFO  (TestUtils.java:465) - assertEquals: .encoding, a=UTF8, b=UTF8, true
+15:27:56,999 main   INFO  (TestUtils.java:465) - assertEquals: , a=byps.test.api.enu.UsePlanets@7920ba90, b=byps.test.api.enu.UsePlanets@6b419da, true
+15:27:56,999 main   INFO  (TestSerializeEnum.java:39) - )testEnumNullValues
+15:27:56,999 main   INFO  (TestSerializeEnum.java:155) - testMapOfEnums(
+15:27:56,999 main   INFO  (TestUtils.java:192) - buffer: 
+
+String json = "{"header":{"error":0,"flags":1,"bversion":3,"targetId":"","messageId":"1398006926183833788.","sessionId":"00000000000000000000000000000000"},"objectTable":[null,{"_typeId":10000,"planet":0,"planet2":0,"encoding":0,"mapOfPlanets":{"*i":-2}},{"zero":0,"3-Venus":1,"2-Mercury":0,"1-Earth":2}]}";
+
+var json = {
+  "header":{
+    "error":0,
+    "flags":1,
+    "bversion":3,
+    "targetId":"",
+    "messageId":"1398006926183833788.",
+    "sessionId":"00000000000000000000000000000000"
+  },
+  "objectTable":[
+    null,{
+      "_typeId":10000,
+      "planet":0,
+      "planet2":0,
+      "encoding":0,
+      "mapOfPlanets":{
+        "*i":-2
+      }
+    },{
+      "zero":0,
+      "3-Venus":1,
+      "2-Mercury":0,
+      "1-Earth":2
+    }
+  ]
+};
+15:27:57,000 main   INFO  (TestUtils.java:465) - assertEquals: .serialVersionUID, a=10000, b=10000, true
+15:27:57,000 main   INFO  (TestUtils.java:465) - assertEquals: .planet, a=Mercury, b=Mercury, true
+15:27:57,000 main   INFO  (TestUtils.java:465) - assertEquals: .arrayOfPlanets, a=null, b=null, true
+15:27:57,000 main   INFO  (TestUtils.java:465) - assertEquals: .listOfPlanets, a=null, b=null, true
+15:27:57,000 main   INFO  (TestUtils.java:465) - assertEquals: .mapOfPlanets[3-Venus], a=Venus, b=Venus, true
+15:27:57,000 main   INFO  (TestUtils.java:465) - assertEquals: .mapOfPlanets[1-Earth], a=Earth, b=Earth, true
+15:27:57,000 main   INFO  (TestUtils.java:465) - assertEquals: .mapOfPlanets, a={zero=Mercury, 3-Venus=Venus, 2-Mercury=Mercury, 1-Earth=Earth}, b={zero=Mercury, 3-Venus=Venus, 2-Mercury=Mercury, 1-Earth=Earth}, true
+15:27:57,001 main   INFO  (TestUtils.java:465) - assertEquals: .encoding, a=UTF8, b=UTF8, true
+15:27:57,001 main   INFO  (TestUtils.java:465) - assertEquals: , a=byps.test.api.enu.UsePlanets@3b2da18f, b=byps.test.api.enu.UsePlanets@258e2e41, true
+15:27:57,001 main   INFO  (TestSerializeEnum.java:180) - )testMapOfEnums

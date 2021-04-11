@@ -373,21 +373,22 @@ public abstract class HHttpServlet extends HttpServlet implements
     }
     
     try {
-
-      // Wrap stream into a BContentStream
-      InputStream istream = request.getInputStream();
-      long contentLength = request.getContentLengthLong();
-      String contentType = request.getContentType();
-      BContentStream stream = new BContentStreamWrapper(istream, contentType, contentLength);
-      
       // Generate a random streamId and assign a BTargetId to the stream.
       long messageId = 0;
       long streamId = sess.getServer().getTransport().getWire().makeMessageId();
       BTargetId targetId = new BTargetId(getConfig().getMyServerId(), messageId, streamId);
-      stream.setTargetId(targetId);
+      
+      // Wrap stream into a BContentStream
+      long contentLength = request.getContentLengthLong();
+      String contentType = request.getContentType();
+      String contentDisposition = request.getHeader("Content-Disposition");
+      File tempDir = sess.getServerContext().getConfig().getTempDir();
+      log.info("Add uploaded stream, targetId={}, contentLength={}, contentType={}", targetId, contentLength, contentType);
+      
+      HIncomingStreamSync stream = new HIncomingStreamSync(targetId, contentType, contentLength, contentDisposition, HConstants.INCOMING_STREAM_TIMEOUT_MILLIS, tempDir);
+      stream.assignStream(request.getInputStream());
       
       // Add the stream to the map of streams.
-      log.info("Add uploaded stream, targetId={}, contentLength={}, contentType={}", targetId, contentLength, contentType);
       getActiveMessages().addIncomingUploadStream(stream);
       
       // Return the streamId in the response body.
