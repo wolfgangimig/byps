@@ -190,12 +190,28 @@ public class HRestExecutor {
    * Create GsonBuilder to serialize response.
    * @return GsonBuilder
    */
-  protected GsonBuilder createResponseBuilder() {
+  protected GsonBuilder createSerializationBuilder(HSession sess) {
     GsonBuilder builder = new GsonBuilder();
     builder.registerTypeAdapter(byte[].class, new BytesSerializer());
     return builder;
   }
-  
+
+  /**
+   * Create GsonBuilder to deserialize request.
+   * @param sess 
+   * @return GsonBuilder
+   */
+  protected GsonBuilder createDeserializationBuilder(HSession sess) {
+    GsonBuilder builder = new GsonBuilder();
+    
+    // Function that returns the stream associated to a streamId
+    Function<String, BContentStream> getStream = makeProviderForUploadedStream(sess);
+    
+    builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(getStream));
+    builder.registerTypeAdapter(byte[].class, new BytesDeserializer());
+    return builder;
+  }
+
   /**
    * Execute the call and write the response.
    * @param sess BYPS session
@@ -208,7 +224,7 @@ public class HRestExecutor {
     if (log.isDebugEnabled()) log.debug("executeMethod(");
     
     // Initialize builder for JSON response.
-    GsonBuilder builder = createResponseBuilder();
+    GsonBuilder builder = createSerializationBuilder(sess);
     if (log.isDebugEnabled()) builder.setPrettyPrinting();
     
     // The response must not been written into the output (writer) directly
@@ -305,13 +321,8 @@ public class HRestExecutor {
         innerReader = new StringReader(jsonRequest);
       }
       
-      // Function that returns the stream associated to a streamId
-      Function<String, BContentStream> getStream = makeProviderForUploadedStream(sess);
-      
       // Deserialize
-      GsonBuilder builder = new GsonBuilder();
-      builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(getStream));
-      builder.registerTypeAdapter(byte[].class, new BytesDeserializer());
+      GsonBuilder builder = createDeserializationBuilder(sess);
       Gson gson = builder.create();
       method = (BMethodRequest)gson.fromJson(innerReader, requestClass);
     }
