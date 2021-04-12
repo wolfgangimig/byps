@@ -81,7 +81,7 @@ const restcall = function(path, obj) {
 		.then(rdata => {
 	    	const obj = JSON.parse(rdata);
 			if (obj.exception) throw obj.exception;
-			return obj;
+			return obj.result;
 		});
 }
 
@@ -90,9 +90,40 @@ const upload = function(fileName, contentType) {
 	return post("putstream", buffer, contentType);
 }
 
-const download = function(streamId, fileName) {
-	const 
-}
+const download = function(path, fileName) {
+
+	return new Promise((resolve, reject) => {
+
+	    const request = Object.assign({}, options);
+	    request.path = basePath + path;
+	    request.method = "GET";
+    
+    	const req = http.request(request, res => {
+
+    		if (res.statusCode == 200) {
+	    		try { 
+	    			const file = fs.createWriteStream(fileName);
+	    			res.pipe(file);
+	    			file.on('finish', function() {
+	    			  resolve(fileName);
+	    			});
+	    		}
+	    		catch (ex) {
+	    			reject(ex);
+	    		}
+	    	}
+	    	else {
+	    		reject(new Error('HTTP ' + res.statusCode));
+	    	}	
+    	});
+    	
+	    req.on('error', ex => {
+	      reject(ex);
+	    });
+	    
+	    req.end();
+    });
+};
 
 
 const putSharedStream = function(id, streamId) {
@@ -107,14 +138,29 @@ const putSharedStream = function(id, streamId) {
 	return restcall('RemoteStreams/putSharedStream', data); 
 };
 
+const getSharedStream = function(id) {
+	
+	const data = {
+		id : id
+	};
+
+	return restcall('RemoteStreams/getSharedStream', data);
+};
+
+
 (async () => {
   
 	const streamId = await upload("testfile.txt", "plain/text"); 
 	console.log('streamId=' + streamId);
 
 	const putResult = await putSharedStream(123, streamId);
-	console.log('putSharedStream=' + putResult);
+	console.log('putSharedStream=' + JSON.stringify(putResult));
 	
+	const getResult = await getSharedStream(123);
+	console.log('getSharedStream=' + JSON.stringify(getResult));
+  
+  	const fileName = await download(getResult.url, "testfile-out.txt");
+  	console.log('download=' + fileName);
   
 })();
 
