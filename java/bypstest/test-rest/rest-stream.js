@@ -1,4 +1,5 @@
 const http = require('http');
+const FormData = require('form-data');
 const fs = require('fs');
 
 const basePath = '/bypstest-srv/bypsservlet/rest/';
@@ -25,11 +26,16 @@ var CONST = {};
 const post = function(path, data, contentType) {
 
   return new Promise((resolve, reject) => {
-    
+
+	const isFormData = contentType && contentType == 'multipart/form-data';
+	
     const request = Object.assign({}, options);
     request.path = basePath + path;
     request.headers['content-type'] = contentType || 'application/json';
-    
+	if (isFormData) {
+		Object.assign(request.headers, data.getHeaders());
+	}
+
     const req = http.request(request, res => {
       let rdata = '';
     
@@ -69,15 +75,41 @@ const post = function(path, data, contentType) {
       reject(ex);
     });
     
-    req.write(data);
-    req.end();
+	if (isFormData) {
+		data.pipe(req);
+	}
+	else {
+		req.write(data);
+		req.end();
+	}
   });
   
 };
 
-const restcall = function(path, obj) {
+const restcall = function(path, obj, streams) {
 
-	return post(path, JSON.stringify(obj))
+	const contentType = streams ? 'multipart/form-data' : 'application/json';
+	const jsObj = JSON.stringify(obj);
+	
+	var data = null;
+	
+	if (streams) {
+		data = new FormData();
+		data.append('data', jsObj);
+		if (Array.isArray(streams)) {
+			for (var i = 0; i < streams.length; i++) {
+				data.append('file[' + i + ']', streams[i], 'file.dat');
+			}	
+		}
+		else {
+			data.append('file', streams, 'file.dat');
+		}
+	}
+	else {
+		data = jsObj;
+	}
+
+	return post(path, data, contentType)
 		.then(rdata => {
 	    	const obj = JSON.parse(rdata);
 			if (obj.exception) throw obj.exception;
@@ -87,7 +119,7 @@ const restcall = function(path, obj) {
 
 const upload = function(fileName, contentType) {
 	const buffer = fs.readFileSync(fileName);
-	return post("putstream", buffer, contentType);
+	return post("putstream", buffer, contentType || 'application/octet-stream');
 }
 
 const download = function(path, fileName) {
@@ -126,7 +158,7 @@ const download = function(path, fileName) {
 };
 
 
-const putSharedStream = function(id, streamId) {
+const putSharedStream = function(id, streamId, streams) {
 
 	const data = {
 	  id : id,
@@ -135,7 +167,7 @@ const putSharedStream = function(id, streamId) {
 	  }
 	};
 	
-	return restcall('RemoteStreams/putSharedStream', data); 
+	return restcall('RemoteStreams/putSharedStream', data, streams); 
 };
 
 const getSharedStream = function(id) {
@@ -149,13 +181,18 @@ const getSharedStream = function(id) {
 
 
 (async () => {
-  
-	const streamId = await upload("testfile.txt", "plain/text"); 
-	console.log('streamId=' + streamId);
 
-	const putResult = await putSharedStream(123, streamId);
-	console.log('putSharedStream=' + JSON.stringify(putResult));
-	
+	var useFormData = false;
+
+	if (useFormData) {
+		const stream = await fs.createReadStream("testfile.txt");
+		await putSharedStream(123, "file", stream);
+	}
+	else {
+		const streamId = await upload("testfile.txt", "plain/text"); 
+		await putSharedStream(123, streamId);
+	}
+
 	const getResult = await getSharedStream(123);
 	console.log('getSharedStream=' + JSON.stringify(getResult));
   
