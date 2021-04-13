@@ -1,5 +1,6 @@
 package byps.http.rest;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
@@ -10,6 +11,7 @@ import java.io.Writer;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -42,6 +44,8 @@ import byps.http.HActiveMessages;
 import byps.http.HConfig;
 import byps.http.HConstants;
 import byps.http.HFileUploadIncomingStream;
+import byps.http.HIncomingStreamSync;
+import byps.http.HServerContext;
 import byps.http.HSession;
 import byps.rest.RestOperations;
 
@@ -149,7 +153,7 @@ public class HRestExecutor {
         }
       }
       else {
-        method = buildMethodFromQueryParams(request, requestClass); 
+        method = buildMethodFromQueryParams(sess, request, requestClass); 
       }
     }
     catch (Exception e) {
@@ -169,6 +173,42 @@ public class HRestExecutor {
     }
     
     if (log.isDebugEnabled()) log.debug(")doRest");
+  }
+  
+  public void doRestPutStream(final HSession sess, HttpServletRequest request, HttpServletResponse response) {
+    BServer server = sess.getServer();
+    HServerContext serverContext = sess.getServerContext();
+    HConfig config = serverContext.getConfig();
+    
+    try {
+      // Generate a random streamId and assign a BTargetId to the stream.
+      long messageId = 0;
+      long streamId = server.getTransport().getWire().makeMessageId();
+      BTargetId targetId = new BTargetId(config.getMyServerId(), messageId, streamId);
+      
+      // Wrap stream into a BContentStream
+      long contentLength = request.getContentLengthLong();
+      String contentType = request.getContentType();
+      String contentDisposition = request.getHeader("Content-Disposition");
+      File tempDir = config.getTempDir();
+      log.info("Add uploaded stream, targetId={}, contentLength={}, contentType={}", targetId, contentLength, contentType);
+      
+      HIncomingStreamSync stream = new HIncomingStreamSync(targetId, contentType, contentLength, contentDisposition, HConstants.INCOMING_STREAM_TIMEOUT_MILLIS, tempDir);
+      stream.assignStream(request.getInputStream());
+      
+      // Add the stream to the map of streams.
+      serverContext.getActiveMessages().addIncomingUploadStream(stream);
+      
+      // Return the streamId in the response body.
+      response.setStatus(HttpServletResponse.SC_OK);
+      try (Writer writer = response.getWriter()) {
+        writer.append(Long.toString(streamId));
+      }
+    }
+    catch (IOException e) {
+      log.warn("Failed to add uploaded stream.", e);
+      response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+    }
   }
   
   /**
@@ -198,18 +238,21 @@ public class HRestExecutor {
 
   /**
    * Create GsonBuilder to deserialize request.
-   * @param sess 
+   * @param sess
+   * @param getStream  
    * @return GsonBuilder
    */
-  protected GsonBuilder createDeserializationBuilder(HSession sess) {
+  protected GsonBuilder createDeserializationBuilder(HSession sess, Function<String, BContentStream> getStream) {
     GsonBuilder builder = new GsonBuilder();
     
-    // Function that returns the stream associated to a streamId
-    Function<String, BContentStream> getStream = makeProviderForUploadedStream(sess);
-    
     builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(getStream));
-    builder.registerTypeAdapter(byte[].class, new BytesDeserializer());
+    builder.registerTypeAdapter(byte[].class, new BytesSerializer());
     return builder;
+  }
+  
+  
+  protected TransformObjectBeforeSerialization getTransformObjectBeforeSerialization(HSession sess) {
+    return new TransformObjectBeforeSerialization(sess, Collections.emptySet());
   }
 
   /**
@@ -241,7 +284,9 @@ public class HRestExecutor {
       // Wait for result and replace InputStreams with BStreamReference
       if (log.isDebugEnabled()) log.debug("get result and serialize");
       Object result = syncResult.getResult();
-      TransformObject.transformBeforeSerializeToJson(sess, result);
+      
+      TransformObjectBeforeSerialization trafo = getTransformObjectBeforeSerialization(sess);
+      trafo.transformObject(result);
       
       // Serialize to JSON
       Gson gson = builder.create();
@@ -321,8 +366,11 @@ public class HRestExecutor {
         innerReader = new StringReader(jsonRequest);
       }
       
+      // Function that returns the stream associated to a streamId
+      Function<String, BContentStream> getStream = makeProviderForUploadedStream(sess);
+
       // Deserialize
-      GsonBuilder builder = createDeserializationBuilder(sess);
+      GsonBuilder builder = createDeserializationBuilder(sess, getStream);
       Gson gson = builder.create();
       method = (BMethodRequest)gson.fromJson(innerReader, requestClass);
     }
@@ -397,9 +445,7 @@ public class HRestExecutor {
     Function<String, BContentStream> getStream = streamId -> streams.get(streamId);
     
     // Initialize deserialization
-    GsonBuilder builder = new GsonBuilder();
-    builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(getStream));
-    builder.registerTypeAdapter(byte[].class, new BytesDeserializer());
+    GsonBuilder builder = createDeserializationBuilder(sess, getStream);
     
     List<FileItem> formFields = items.stream().filter(item -> item.isFormField()).collect(Collectors.toList());
     String jsonData = "";
@@ -444,7 +490,7 @@ public class HRestExecutor {
     return brequest;
   }
   
-  private BMethodRequest buildMethodFromQueryParams(HttpServletRequest request, Class<?> requestClass) throws NoSuchFieldException {
+  private BMethodRequest buildMethodFromQueryParams(HSession sess, HttpServletRequest request, Class<?> requestClass) throws NoSuchFieldException {
     StringBuilder sbuf = new StringBuilder();
     sbuf.append("{");
     boolean addComma = false;
@@ -461,8 +507,7 @@ public class HRestExecutor {
   
     // Deserialize the BMethodRequest
     // Initialize deserialization
-    GsonBuilder builder = new GsonBuilder();
-    builder.registerTypeAdapter(byte[].class, new BytesDeserializer());
+    GsonBuilder builder = createDeserializationBuilder(sess, streamId -> null);
     Gson gson = builder.create();
     BMethodRequest brequest = (BMethodRequest)gson.fromJson(jsonData, requestClass);
 

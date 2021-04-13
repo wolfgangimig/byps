@@ -45,7 +45,7 @@ public class HIncomingStreamSync extends BContentStream {
 
 	private File tempDir;
 	
-	protected HIncomingStreamSync(BTargetId targetId, String contentType, long contentLength, String contentDisposition, long lifetimeMillis, File tempDir) {
+	public HIncomingStreamSync(BTargetId targetId, String contentType, long contentLength, String contentDisposition, long lifetimeMillis, File tempDir) {
 		super(contentType, contentLength, lifetimeMillis);
 		this.setTargetId(targetId);
 		this.tempDir = tempDir;
@@ -124,7 +124,7 @@ public class HIncomingStreamSync extends BContentStream {
 		if (log.isDebugEnabled()) log.debug(")assignFile");
 	}
 	
-	protected void assignStream(InputStream is) throws IOException {
+	public void assignStream(InputStream is) throws IOException {
 	  if (log.isDebugEnabled()) log.debug("assignStream(is={}", is);
 		byte[] bytes = new byte[HConstants.DEFAULT_BYTE_BUFFER_SIZE];
 		int len = 0;

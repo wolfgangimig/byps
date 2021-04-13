@@ -1,10 +1,15 @@
 package byps.http.rest;
 
 import java.io.InputStream;
+import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.sql.Date;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import byps.BContentStream;
@@ -22,7 +27,7 @@ import byps.rest.BStreamReference;
  * Furthermore the InputStream is added to the HActiveMessages.  
  *
  */
-class TransformObject {
+public class TransformObjectBeforeSerialization {
   
   /**
    * BYPS Session used to provide streams for download.  
@@ -34,40 +39,58 @@ class TransformObject {
    * Helps to avoid endless loop in recursion.
    */
   private Set<Key> visitedObjects = new HashSet<>();
+  
+  /**
+   * Fields of this names do not required transformation.
+   */
+  private Set<String> skipFields = new HashSet<>();
 
   /**
    * Transform the given object before it is serialized with Gson.
    * 
    * This function replaces InputStream objects with BStreamReference objects.
    * 
-   * @param sess BYPS session
    * @param object Object  
    */
-  static void transformBeforeSerializeToJson(HSession sess, Object object) {
-    new TransformObject(sess).transformFields(object);
+  protected void transformObject(Object object) {
+    transformFields(object);
   }
 
   /**
    * Constructor.
    * @param sess BYPS session
+   * @param skipFields Fields of this names do not require trafo
    */
-  private TransformObject(HSession sess) {
+  public TransformObjectBeforeSerialization(HSession sess, Set<String> skipFields) {
     this.sess = sess;
+    this.skipFields = skipFields;
   }
 
   /**
    * Transform fields of the given object.
    * @param object Object
    */
-  private void transformFields(Object object) {
+  protected void transformFields(Object object) {
     if (visit(object)) {
       Class<?> objectClass = object.getClass();
-      while (objectClass != Object.class) {
-        Field[] fields = objectClass.getDeclaredFields();
-        for (Field field : fields) {
-          transformField(object, field);
+      
+      if (objectClass.isArray()) {
+        int length = Array.getLength(object);
+        for (int i = 0; i < length; i++) {
+          Object elm = Array.get(object, i);
+          if (isTransformField(elm)) {
+            transformFields(elm);
+          }
         }
-        objectClass = objectClass.getSuperclass();
+      }
+      else {
+        while (objectClass != Object.class) {
+          Field[] fields = objectClass.getDeclaredFields();
+          for (Field field : fields) {
+            transformField(object, field);
+          }
+          objectClass = objectClass.getSuperclass();
+        }
       }
     }
   }
@@ -77,30 +100,31 @@ class TransformObject {
    * @param object
    * @param field
    */
-  private void transformField(Object object, Field field) {
+  protected void transformField(Object object, Field field) {
     try {
       
       // final, static, transient fields are skipped.
       int modifiers = field.getModifiers();
-      if ((modifiers & (Modifier.FINAL|Modifier.TRANSIENT|Modifier.STATIC)) == 0) {
+      if ((modifiers & (Modifier.FINAL|Modifier.TRANSIENT|Modifier.STATIC)) != 0) return;
+      
+      // Field name to exclude?
+      if (skipFields.contains(field.getName())) return;
         
-        // Get field value.
-        field.setAccessible(true);
-        Object fieldObject = field.get(object);
+      // Get field value.
+      field.setAccessible(true);
+      Object fieldObject = field.get(object);
+      if (isTransformField(fieldObject)) {
         
-        // Check if not already processed or null.
-        if (visit(fieldObject)) {
-          
-          // transform InputStream or go to the field's fields
-          Class<?> fieldClass = fieldObject.getClass();
-          if (InputStream.class.isAssignableFrom(fieldClass)) {
-            transformInputStream(object, (InputStream)fieldObject, field);
-          }
-          else {
-            transformFields(fieldObject);
-          }
+        // transform InputStream or go to the field's fields
+        Class<?> fieldClass = fieldObject.getClass();
+        if (InputStream.class.isAssignableFrom(fieldClass)) {
+          transformInputStream(object, (InputStream)fieldObject, field);
+        }
+        else {
+          transformFields(fieldObject);
         }
       }
+      
     }
     catch (IllegalArgumentException | IllegalAccessException e) {
       throw new IllegalStateException(e);
@@ -115,7 +139,7 @@ class TransformObject {
    * @throws IllegalArgumentException
    * @throws IllegalAccessException
    */
-  private void transformInputStream(Object object, InputStream istream, Field field) throws IllegalArgumentException, IllegalAccessException {
+  protected void transformInputStream(Object object, InputStream istream, Field field) throws IllegalArgumentException, IllegalAccessException {
 
     // Provide the stream as BContentStream
     BContentStream bstream = null;
@@ -154,7 +178,7 @@ class TransformObject {
    * 
    *
    */
-  private static class Key {
+  protected static class Key {
     private Object object;
     
     Key(Object object) {
@@ -177,14 +201,29 @@ class TransformObject {
    * @param object Object 
    * @return true, if object has not already been transformed.
    */
-  private boolean visit(Object object) {
+  protected boolean visit(Object object) {
     if (object == null) return false;
+    if (!(object instanceof Serializable)) return false;
     Key key = new Key(object);
     boolean ret = visitedObjects.contains(key);
     if (!ret) {
       visitedObjects.add(key);
     }
     return !ret;
+  }
+  
+  /**
+   * Test whether the given field value might have to be transformed.
+   * @param fieldObject value
+   * @return true, if might have to be transformed
+   */
+  protected boolean isTransformField(Object fieldObject) {
+    if (fieldObject == null) return false;
+    Class<?> clazz = fieldObject.getClass();
+    if (clazz.isPrimitive()) return false;
+    if (Number.class.isAssignableFrom(clazz)) return false;
+    if (Boolean.class == clazz || String.class == clazz || Date.class == clazz) return false;
+    return true;
   }
 
 }

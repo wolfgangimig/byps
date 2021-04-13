@@ -372,39 +372,12 @@ public abstract class HHttpServlet extends HttpServlet implements
       return;
     }
     
-    try {
-      // Generate a random streamId and assign a BTargetId to the stream.
-      long messageId = 0;
-      long streamId = sess.getServer().getTransport().getWire().makeMessageId();
-      BTargetId targetId = new BTargetId(getConfig().getMyServerId(), messageId, streamId);
-      
-      // Wrap stream into a BContentStream
-      long contentLength = request.getContentLengthLong();
-      String contentType = request.getContentType();
-      String contentDisposition = request.getHeader("Content-Disposition");
-      File tempDir = sess.getServerContext().getConfig().getTempDir();
-      log.info("Add uploaded stream, targetId={}, contentLength={}, contentType={}", targetId, contentLength, contentType);
-      
-      HIncomingStreamSync stream = new HIncomingStreamSync(targetId, contentType, contentLength, contentDisposition, HConstants.INCOMING_STREAM_TIMEOUT_MILLIS, tempDir);
-      stream.assignStream(request.getInputStream());
-      
-      // Add the stream to the map of streams.
-      getActiveMessages().addIncomingUploadStream(stream);
-      
-      // Return the streamId in the response body.
-      response.setStatus(HttpServletResponse.SC_OK);
-      try (Writer writer = response.getWriter()) {
-        writer.append(Long.toString(streamId));
-      }
-    }
-    catch (IOException e) {
-      log.warn("Failed to add uploaded stream.", e);
-      response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-    }
+    HRestExecutor rest = createRestExecutor();
+    rest.doRestPutStream(sess, request, response);
 
     if (log.isDebugEnabled()) log.debug(")doRestPutStream");
   }
-  
+
   /**
    * Check whether the request is a REST call.
    * BYPS-50
