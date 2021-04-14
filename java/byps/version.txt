@@ -4,6 +4,12 @@ BYPS Version History
 
 - BYPS-50: Provide REST calls for BYPS APIs and generate OpenAPI documentation. 
 
+8.47
+
+- BYPS-53: Do not solely rely on System.identityHashCode(Object) to uniquely identify an object.
+  Fixes ClassCastExceptions when deserializing very large objects containing tens of thousands
+  other objects.
+
 8.46
 
 - BYPS-49: Manage Java 8 version in master branch. Currently, java.net.http.HttpClient is not
