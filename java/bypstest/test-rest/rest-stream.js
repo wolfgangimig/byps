@@ -182,7 +182,7 @@ const getSharedStream = function(id) {
 
 (async () => {
 
-	var useFormData = false;
+	var useFormData = true;
 
 	if (useFormData) {
 		const stream = await fs.createReadStream("testfile.txt");

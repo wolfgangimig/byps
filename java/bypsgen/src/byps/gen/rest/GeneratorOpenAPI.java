@@ -220,11 +220,15 @@ public class GeneratorOpenAPI implements Generator {
     String contentType = RestInfo.getConsumesOrDefault(methodInfo.restInfo);
     if (contentType.equalsIgnoreCase(javax.ws.rs.core.MediaType.MULTIPART_FORM_DATA)) {
       addRequestBodyMultipartFormData(content, methodInfo);
+      op.requestBody(new RequestBody().content(content));
+    }
+    else {
+      if (!methodInfo.requestInfo.members.isEmpty()) {
+        addRequestBodyApplicationJson(content, methodInfo);
+        op.requestBody(new RequestBody().content(content));
+      }
     }
     
-    addRequestBodyApplicationJson(content, methodInfo);
-    
-    op.requestBody(new RequestBody().content(content));
   }
 
   private void addRequestBodyMultipartFormData(Content content, MethodInfo methodInfo) {
@@ -239,23 +243,33 @@ public class GeneratorOpenAPI implements Generator {
 
   private MediaType toRequestMediaTypeApplicationJson(MethodInfo methodInfo) {
     MediaType mediaType = new MediaType();
-    SchemaN requestSchema = toSchemaRef(methodInfo.requestInfo);
-    mediaType.schema(requestSchema.getSchema());
+    
+    Schema requestSchema = new ObjectSchema();
+    
+//  SchemaN paramsSchema = toSchemaRef(m.requestInfo);
+//  requestSchema.addProperties(RestConstants.MULTIPART_DATA_PARAM_NAME, paramsSchema.getSchema());
+  
+    for (MemberInfo param : methodInfo.requestInfo.members) {
+      SchemaN paramSchema = toSchemaRef(param.type);
+      requestSchema.addProperties(param.name, paramSchema.getSchema());
+    }
+    
+    mediaType.schema(requestSchema);
     return mediaType;
   }
 
-  private MediaType toRequestMediaTypeMultipartFormData(MethodInfo m) {
+  private MediaType toRequestMediaTypeMultipartFormData(MethodInfo methodInfo) {
     MediaType mediaType = new MediaType();
     
     Schema requestSchema = new ObjectSchema();
     
-    SchemaN paramsSchema = toSchemaRef(m.requestInfo);
-    requestSchema.addProperties(RestConstants.MULTIPART_DATA_PARAM_NAME, paramsSchema.getSchema());
+//    SchemaN paramsSchema = toSchemaRef(m.requestInfo);
+//    requestSchema.addProperties(RestConstants.MULTIPART_DATA_PARAM_NAME, paramsSchema.getSchema());
     
-//    for (MemberInfo param : m.requestInfo.members) {
-//      SchemaN paramSchema = toSchemaRef(param.type);
-//      requestSchema.addProperties(param.name, paramSchema.getSchema());
-//    }
+    for (MemberInfo param : methodInfo.requestInfo.members) {
+      SchemaN paramSchema = toSchemaRef(param.type);
+      requestSchema.addProperties(param.name, paramSchema.getSchema());
+    }
     
     ArraySchema streams = new ArraySchema().items(new FileSchema());
     requestSchema.addProperties(RestConstants.UPLOAD_ITEM_NAME, streams);
