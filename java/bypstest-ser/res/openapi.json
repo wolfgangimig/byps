@@ -22,12 +22,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "param": {
-                    "type": "string"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_BioFruitService_certify"
               }
             }
           }
@@ -88,13 +83,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "ctrl": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_ClientIF_getStreams"
               }
             }
           }
@@ -129,13 +118,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "a": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_ClientIF_incrementInt"
               }
             }
           }
@@ -170,16 +153,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "strm": {
-                    "$ref": "#/components/schemas/ListOfBStreamReference"
-                  },
-                  "ctrl": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_ClientIF_putStreams"
               }
             }
           }
@@ -214,12 +188,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "cs": {
-                    "$ref": "#/components/schemas/ChatStructure"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_ClientIF_sendChat"
               }
             }
           }
@@ -332,12 +301,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "partner": {
-                    "$ref": "#/components/schemas/EvolveIF"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_EvolveIF_setClient"
               }
             }
           }
@@ -372,12 +336,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "obj": {
-                    "$ref": "#/components/schemas/Evolve"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_EvolveIF_setEvolve"
               }
             }
           }
@@ -438,15 +397,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "sess": {
-                    "$ref": "#/components/schemas/SessionInfo"
-                  },
-                  "fromTree": {
-                    "type": "string"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_LemonService_pick"
               }
             }
           }
@@ -822,11 +773,8 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "v": {
-                    "type": "array",
-                    "items": {
-                      "type": "boolean"
-                    }
+                  "data": {
+                    "$ref": "#/components/schemas/BRequest_RemoteArrayTypes1dim_setBool"
                   },
                   "file": {
                     "type": "array",
@@ -870,16 +818,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "array",
-                    "items": {
-                      "type": "integer",
-                      "format": "int32"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes1dim_setByte"
               }
             }
           }
@@ -914,16 +853,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "array",
-                    "items": {
-                      "type": "integer",
-                      "format": "int32"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes1dim_setChar"
               }
             }
           }
@@ -958,16 +888,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "format": "date-time"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes1dim_setDate"
               }
             }
           }
@@ -1002,16 +923,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "array",
-                    "items": {
-                      "type": "number",
-                      "format": "double"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes1dim_setDouble"
               }
             }
           }
@@ -1046,16 +958,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "array",
-                    "items": {
-                      "type": "number",
-                      "format": "float"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes1dim_setFloat"
               }
             }
           }
@@ -1090,16 +993,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "array",
-                    "items": {
-                      "type": "integer",
-                      "format": "int32"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes1dim_setInt"
               }
             }
           }
@@ -1134,16 +1028,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "array",
-                    "items": {
-                      "type": "integer",
-                      "format": "int64"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes1dim_setLong"
               }
             }
           }
@@ -1178,15 +1063,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes1dim_setObject"
               }
             }
           }
@@ -1221,15 +1098,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/PrimitiveTypes"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes1dim_setPrimitiveTypes"
               }
             }
           }
@@ -1264,15 +1133,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes1dim_setShort"
               }
             }
           }
@@ -1307,15 +1168,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes1dim_setString"
               }
             }
           }
@@ -1350,18 +1203,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "arr2": {
-                    "$ref": "#/components/schemas/Array2OfPrimitiveTypes"
-                  },
-                  "arr3": {
-                    "$ref": "#/components/schemas/Array3OfPrimitiveTypes"
-                  },
-                  "arr4": {
-                    "$ref": "#/components/schemas/Array4OfPrimitiveTypes"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes23_sendArraysClass"
               }
             }
           }
@@ -1396,18 +1238,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "arr2": {
-                    "$ref": "#/components/schemas/Array2OfPoint2D"
-                  },
-                  "arr3": {
-                    "$ref": "#/components/schemas/Array3OfPoint2D"
-                  },
-                  "arr4": {
-                    "$ref": "#/components/schemas/Array4OfPoint2D"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes23_sendArraysInline"
               }
             }
           }
@@ -1442,18 +1273,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "arr2": {
-                    "$ref": "#/components/schemas/Array2Ofint"
-                  },
-                  "arr3": {
-                    "$ref": "#/components/schemas/Array3Ofint"
-                  },
-                  "arr4": {
-                    "$ref": "#/components/schemas/Array4Ofint"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes23_sendArraysInt"
               }
             }
           }
@@ -1488,18 +1308,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "arr2": {
-                    "$ref": "#/components/schemas/Array2OfObject"
-                  },
-                  "arr3": {
-                    "$ref": "#/components/schemas/Array3OfObject"
-                  },
-                  "arr4": {
-                    "$ref": "#/components/schemas/Array4OfObject"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes23_sendArraysObject"
               }
             }
           }
@@ -1534,18 +1343,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "arr2": {
-                    "$ref": "#/components/schemas/Array2OfString"
-                  },
-                  "arr3": {
-                    "$ref": "#/components/schemas/Array3OfString"
-                  },
-                  "arr4": {
-                    "$ref": "#/components/schemas/Array4OfString"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes23_sendArraysString"
               }
             }
           }
@@ -1892,12 +1690,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "$ref": "#/components/schemas/Array4Ofboolean"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes4dim_setBool"
               }
             }
           }
@@ -1932,12 +1725,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "$ref": "#/components/schemas/Array4Ofbyte"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes4dim_setByte"
               }
             }
           }
@@ -1972,12 +1760,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "$ref": "#/components/schemas/Array4Ofchar"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes4dim_setChar"
               }
             }
           }
@@ -2012,12 +1795,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "$ref": "#/components/schemas/Array4OfDate"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes4dim_setDate"
               }
             }
           }
@@ -2052,12 +1830,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "$ref": "#/components/schemas/Array4Ofdouble"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes4dim_setDouble"
               }
             }
           }
@@ -2092,12 +1865,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "$ref": "#/components/schemas/Array4Offloat"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes4dim_setFloat"
               }
             }
           }
@@ -2132,12 +1900,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "$ref": "#/components/schemas/Array4Ofint"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes4dim_setInt"
               }
             }
           }
@@ -2172,12 +1935,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "$ref": "#/components/schemas/Array4Oflong"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes4dim_setLong"
               }
             }
           }
@@ -2212,12 +1970,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "$ref": "#/components/schemas/Array4OfObject"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes4dim_setObject"
               }
             }
           }
@@ -2252,12 +2005,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "$ref": "#/components/schemas/Array4OfPrimitiveTypes"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes4dim_setPrimitiveTypes"
               }
             }
           }
@@ -2292,12 +2040,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "$ref": "#/components/schemas/Array4Ofshort"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes4dim_setShort"
               }
             }
           }
@@ -2332,12 +2075,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "$ref": "#/components/schemas/Array4OfString"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes4dim_setString"
               }
             }
           }
@@ -2372,73 +2110,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "bool1s": {
-                    "type": "boolean"
-                  },
-                  "bool2s": {
-                    "type": "boolean"
-                  },
-                  "char1s": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "stringNull": {
-                    "type": "string"
-                  },
-                  "char2s": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "short1s": {
-                    "type": "string"
-                  },
-                  "int1s": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "long1s": {
-                    "type": "integer",
-                    "format": "int64"
-                  },
-                  "float1s": {
-                    "type": "number",
-                    "format": "float"
-                  },
-                  "double1s": {
-                    "type": "number",
-                    "format": "double"
-                  },
-                  "string1s": {
-                    "type": "string"
-                  },
-                  "ALL": {
-                    "$ref": "#/components/schemas/AllTypesZ"
-                  },
-                  "arrInt": {
-                    "type": "array",
-                    "items": {
-                      "type": "integer",
-                      "format": "int32"
-                    }
-                  },
-                  "arrInt4": {
-                    "$ref": "#/components/schemas/Array4Ofint"
-                  },
-                  "arrStrings": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "arrStrings4": {
-                    "$ref": "#/components/schemas/Array4OfString"
-                  },
-                  "arrAll": {
-                    "$ref": "#/components/schemas/Array2OfAllTypesZ"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteConstants_compare_AllTypesC"
               }
             }
           }
@@ -2473,15 +2145,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "ALEPH": {
-                    "$ref": "#/components/schemas/HebrewZ"
-                  },
-                  "BETH": {
-                    "$ref": "#/components/schemas/HebrewZ"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteConstants_compare_HebrewC"
               }
             }
           }
@@ -2542,12 +2206,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "planet": {
-                    "$ref": "#/components/schemas/EnumPlanets"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteEnums_setPlanet"
               }
             }
           }
@@ -2738,12 +2397,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "act": {
-                    "$ref": "#/components/schemas/Actor"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteInlineInstance_setActor"
               }
             }
           }
@@ -2778,15 +2432,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "pointArray": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Point2D"
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteInlineInstance_setPoint2DArray1dim"
               }
             }
           }
@@ -2821,12 +2467,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "pointArray": {
-                    "$ref": "#/components/schemas/Array4OfPoint2D"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteInlineInstance_setPoint2DArray4dim"
               }
             }
           }
@@ -2861,12 +2502,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "pointList": {
-                    "$ref": "#/components/schemas/ListOfPoint2D"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteInlineInstance_setPoint2DList"
               }
             }
           }
@@ -2901,12 +2537,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "pointListList": {
-                    "$ref": "#/components/schemas/ListOfListOfPoint2D"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteInlineInstance_setPoint2DListList"
               }
             }
           }
@@ -2941,12 +2572,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "pointMap": {
-                    "$ref": "#/components/schemas/MapToPoint2D"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteInlineInstance_setPoint2DMap"
               }
             }
           }
@@ -3397,12 +3023,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "boolean1": {
-                    "$ref": "#/components/schemas/ListOfBoolean"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setBoolean1"
               }
             }
           }
@@ -3437,12 +3058,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "byte1": {
-                    "$ref": "#/components/schemas/ListOfByte"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setByte1"
               }
             }
           }
@@ -3477,12 +3093,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "byte2": {
-                    "$ref": "#/components/schemas/ListOfArrayOfbyte"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setByte2"
               }
             }
           }
@@ -3517,12 +3128,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "char1": {
-                    "$ref": "#/components/schemas/ListOfCharacter"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setChar1"
               }
             }
           }
@@ -3557,12 +3163,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "obj1": {
-                    "$ref": "#/components/schemas/ListOfDate"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setDate1"
               }
             }
           }
@@ -3597,12 +3198,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "double1": {
-                    "$ref": "#/components/schemas/ListOfDouble"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setDouble1"
               }
             }
           }
@@ -3637,12 +3233,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "float1": {
-                    "$ref": "#/components/schemas/ListOfFloat"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setFloat1"
               }
             }
           }
@@ -3677,12 +3268,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "int1": {
-                    "$ref": "#/components/schemas/ListOfInteger"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setInt1"
               }
             }
           }
@@ -3717,12 +3303,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "int2": {
-                    "$ref": "#/components/schemas/ListOfArrayOfint"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setInt2"
               }
             }
           }
@@ -3757,12 +3338,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "int3": {
-                    "$ref": "#/components/schemas/ListOfListOfInteger"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setInt3"
               }
             }
           }
@@ -3797,12 +3373,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "int4": {
-                    "$ref": "#/components/schemas/ListOfMapToListOfTreeSetOfInteger"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setInt4"
               }
             }
           }
@@ -3837,12 +3408,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "long1": {
-                    "$ref": "#/components/schemas/ListOfLong"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setLong1"
               }
             }
           }
@@ -3877,12 +3443,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "obj1": {
-                    "$ref": "#/components/schemas/ListOfObject"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setObj1"
               }
             }
           }
@@ -3917,12 +3478,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "primitiveTypes1": {
-                    "$ref": "#/components/schemas/ListOfPrimitiveTypes"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setPrimitiveTypes1"
               }
             }
           }
@@ -3957,12 +3513,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "short1": {
-                    "$ref": "#/components/schemas/ListOfShort"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setShort1"
               }
             }
           }
@@ -3997,12 +3548,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "string1": {
-                    "$ref": "#/components/schemas/ListOfString"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteListTypes_setString1"
               }
             }
           }
@@ -4401,12 +3947,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "boolean1": {
-                    "$ref": "#/components/schemas/MapToBoolean"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteMapTypes_setBoolean1"
               }
             }
           }
@@ -4441,12 +3982,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "byte1": {
-                    "$ref": "#/components/schemas/HashMapToByte"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteMapTypes_setByte1"
               }
             }
           }
@@ -4481,12 +4017,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "byte2": {
-                    "$ref": "#/components/schemas/MapToArrayOfbyte"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteMapTypes_setByte2"
               }
             }
           }
@@ -4521,12 +4052,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "char1": {
-                    "$ref": "#/components/schemas/TreeMapToCharacter"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteMapTypes_setChar1"
               }
             }
           }
@@ -4561,12 +4087,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "obj1": {
-                    "$ref": "#/components/schemas/MapToDate"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteMapTypes_setDate1"
               }
             }
           }
@@ -4601,12 +4122,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "double1": {
-                    "$ref": "#/components/schemas/MapToDouble"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteMapTypes_setDouble1"
               }
             }
           }
@@ -4641,12 +4157,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "float1": {
-                    "$ref": "#/components/schemas/MapToFloat"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteMapTypes_setFloat1"
               }
             }
           }
@@ -4681,12 +4192,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "int1": {
-                    "$ref": "#/components/schemas/MapToInteger"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteMapTypes_setInt1"
               }
             }
           }
@@ -4721,12 +4227,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "int2": {
-                    "$ref": "#/components/schemas/MapToArrayOfint"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteMapTypes_setInt2"
               }
             }
           }
@@ -4761,12 +4262,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "long1": {
-                    "$ref": "#/components/schemas/MapToLong"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteMapTypes_setLong1"
               }
             }
           }
@@ -4801,12 +4297,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "obj1": {
-                    "$ref": "#/components/schemas/MapToObject"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteMapTypes_setObj1"
               }
             }
           }
@@ -4841,12 +4332,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "primitiveTypes1": {
-                    "$ref": "#/components/schemas/MapToPrimitiveTypes"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteMapTypes_setPrimitiveTypes1"
               }
             }
           }
@@ -4881,12 +4367,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "short1": {
-                    "$ref": "#/components/schemas/MapToShort"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteMapTypes_setShort1"
               }
             }
           }
@@ -4921,12 +4402,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "string1": {
-                    "$ref": "#/components/schemas/MapToString"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteMapTypes_setString1"
               }
             }
           }
@@ -5065,16 +4541,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "param1": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "param2": {
-                    "type": "string"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_getDeferredValueFromServer"
               }
             }
           }
@@ -5317,37 +4784,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "year": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "month": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "day": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "hour": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "minute": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "second": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "millisecond": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_makeDate"
               }
             }
           }
@@ -5382,13 +4819,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "date": {
-                    "type": "string",
-                    "format": "date-time"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_parseDate"
               }
             }
           }
@@ -5467,44 +4898,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "b": {
-                    "type": "boolean"
-                  },
-                  "c": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "s": {
-                    "type": "string"
-                  },
-                  "i": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "l": {
-                    "type": "integer",
-                    "format": "int64"
-                  },
-                  "f": {
-                    "type": "number",
-                    "format": "float"
-                  },
-                  "d": {
-                    "type": "number",
-                    "format": "double"
-                  },
-                  "str": {
-                    "type": "string"
-                  },
-                  "pt": {
-                    "$ref": "#/components/schemas/PrimitiveTypes"
-                  },
-                  "o": {
-                    "type": "string"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_sendAllTypes"
               }
             }
           }
@@ -5539,12 +4933,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "boolean"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_setBool"
               }
             }
           }
@@ -5579,13 +4968,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_setByte"
               }
             }
           }
@@ -5620,13 +5003,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_setChar"
               }
             }
           }
@@ -5661,13 +5038,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "string",
-                    "format": "date-time"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_setDate"
               }
             }
           }
@@ -5702,13 +5073,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "number",
-                    "format": "double"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_setDouble"
               }
             }
           }
@@ -5743,13 +5108,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "number",
-                    "format": "float"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_setFloat"
               }
             }
           }
@@ -5784,13 +5143,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_setInt"
               }
             }
           }
@@ -5825,13 +5178,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "integer",
-                    "format": "int64"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_setLong"
               }
             }
           }
@@ -5866,12 +5213,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "string"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_setObject"
               }
             }
           }
@@ -5906,12 +5248,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "$ref": "#/components/schemas/PrimitiveTypes"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_setPrimitiveTypes"
               }
             }
           }
@@ -5946,12 +5283,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "string"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_setShort"
               }
             }
           }
@@ -5986,12 +5318,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "string"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemotePrimitiveTypes_setString"
               }
             }
           }
@@ -6079,13 +5406,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "sleepSeconds": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions"
               }
             }
           }
@@ -6146,12 +5467,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "$ref": "#/components/schemas/Node"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteReferences_setNode"
               }
             }
           }
@@ -6186,12 +5502,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteServerCtrl_getPublishedRemote"
               }
             }
           }
@@ -6226,18 +5537,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "remote": {
-                    "$ref": "#/components/schemas/BRemote"
-                  },
-                  "fowardToOtherServers": {
-                    "type": "boolean"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteServerCtrl_publishRemote"
               }
             }
           }
@@ -6272,12 +5572,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteServerCtrl_removePublishedRemote"
               }
             }
           }
@@ -6676,12 +5971,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "boolean1": {
-                    "$ref": "#/components/schemas/SetOfBoolean"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteSetTypes_setBoolean1"
               }
             }
           }
@@ -6716,12 +6006,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "byte1": {
-                    "$ref": "#/components/schemas/HashSetOfByte"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteSetTypes_setByte1"
               }
             }
           }
@@ -6756,12 +6041,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "byte2": {
-                    "$ref": "#/components/schemas/SetOfArrayOfbyte"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteSetTypes_setByte2"
               }
             }
           }
@@ -6796,12 +6076,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "char1": {
-                    "$ref": "#/components/schemas/TreeSetOfCharacter"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteSetTypes_setChar1"
               }
             }
           }
@@ -6836,12 +6111,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "obj1": {
-                    "$ref": "#/components/schemas/SetOfDate"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteSetTypes_setDate1"
               }
             }
           }
@@ -6876,12 +6146,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "double1": {
-                    "$ref": "#/components/schemas/SetOfDouble"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteSetTypes_setDouble1"
               }
             }
           }
@@ -6916,12 +6181,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "float1": {
-                    "$ref": "#/components/schemas/SetOfFloat"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteSetTypes_setFloat1"
               }
             }
           }
@@ -6956,12 +6216,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "int1": {
-                    "$ref": "#/components/schemas/SetOfInteger"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteSetTypes_setInt1"
               }
             }
           }
@@ -6996,12 +6251,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "int2": {
-                    "$ref": "#/components/schemas/SetOfArrayOfint"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteSetTypes_setInt2"
               }
             }
           }
@@ -7036,12 +6286,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "long1": {
-                    "$ref": "#/components/schemas/SetOfLong"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteSetTypes_setLong1"
               }
             }
           }
@@ -7076,12 +6321,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "obj1": {
-                    "$ref": "#/components/schemas/SetOfObject"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteSetTypes_setObj1"
               }
             }
           }
@@ -7116,12 +6356,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "primitiveTypes1": {
-                    "$ref": "#/components/schemas/SetOfPrimitiveTypes"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteSetTypes_setPrimitiveTypes1"
               }
             }
           }
@@ -7156,12 +6391,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "short1": {
-                    "$ref": "#/components/schemas/SetOfShort"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteSetTypes_setShort1"
               }
             }
           }
@@ -7196,12 +6426,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "string1": {
-                    "$ref": "#/components/schemas/SetOfString"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteSetTypes_setString1"
               }
             }
           }
@@ -7289,13 +6514,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "integer",
-                    "format": "int64"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteStreams_getSharedStream"
               }
             }
           }
@@ -7440,12 +6659,8 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "id": {
-                    "type": "integer",
-                    "format": "int64"
-                  },
-                  "stream": {
-                    "$ref": "#/components/schemas/BStreamReference"
+                  "data": {
+                    "$ref": "#/components/schemas/BRequest_RemoteStreams_putSharedStream"
                   },
                   "file": {
                     "type": "array",
@@ -7489,12 +6704,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "istrm": {
-                    "$ref": "#/components/schemas/BStreamReference"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteStreams_setImage"
               }
             }
           }
@@ -7529,16 +6739,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "istrms": {
-                    "$ref": "#/components/schemas/MapToBStreamReference"
-                  },
-                  "doNotReadStreamAtKey": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteStreams_setImages"
               }
             }
           }
@@ -7574,12 +6775,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "stream": {
-                    "$ref": "#/components/schemas/BStreamReference"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteStreams_setStreamDoNotMaterialize"
               }
             }
           }
@@ -7641,16 +6837,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "sess": {
-                    "$ref": "#/components/schemas/SessionInfo"
-                  },
-                  "value": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteWithAuthentication_doit"
               }
             }
           }
@@ -7686,12 +6873,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "sess": {
-                    "$ref": "#/components/schemas/SessionInfo"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteWithAuthentication_expire"
               }
             }
           }
@@ -7727,18 +6909,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "sess": {
-                    "$ref": "#/components/schemas/SessionInfo"
-                  },
-                  "userName": {
-                    "type": "string"
-                  },
-                  "userPwd": {
-                    "type": "string"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteWithAuthentication_login"
               }
             }
           }
@@ -7774,13 +6945,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "count": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteWithAuthentication_setReloginCount"
               }
             }
           }
@@ -7816,12 +6981,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "useAuth": {
-                    "type": "boolean"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_RemoteWithAuthentication_setUseAuthentication"
               }
             }
           }
@@ -7856,13 +7016,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_ServerIF_callClientIncrementInt"
               }
             }
           }
@@ -7897,13 +7051,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "v": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_ServerIF_callClientParallel"
               }
             }
           }
@@ -7938,13 +7086,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_ServerIF_getClient"
               }
             }
           }
@@ -8031,12 +7173,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "materializeOnServer": {
-                    "type": "boolean"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_ServerIF_getStreamsFromClient"
               }
             }
           }
@@ -8071,12 +7208,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "streams": {
-                    "$ref": "#/components/schemas/ListOfBStreamReference"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_ServerIF_putStreamsOnClient"
               }
             }
           }
@@ -8111,13 +7243,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_ServerIF_registerWithClientMap"
               }
             }
           }
@@ -8152,12 +7278,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "client": {
-                    "$ref": "#/components/schemas/ClientIF"
-                  }
-                }
+                "$ref": "#/components/schemas/BRequest_ServerIF_setPartner"
               }
             }
           }

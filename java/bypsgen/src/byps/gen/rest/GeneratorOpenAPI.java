@@ -222,11 +222,10 @@ public class GeneratorOpenAPI implements Generator {
       addRequestBodyMultipartFormData(content, methodInfo);
       op.requestBody(new RequestBody().content(content));
     }
-    else {
-      if (!methodInfo.requestInfo.members.isEmpty()) {
-        addRequestBodyApplicationJson(content, methodInfo);
-        op.requestBody(new RequestBody().content(content));
-      }
+    
+    if (!methodInfo.requestInfo.members.isEmpty()) {
+      addRequestBodyApplicationJson(content, methodInfo);
+      op.requestBody(new RequestBody().content(content));
     }
     
   }
@@ -241,36 +240,41 @@ public class GeneratorOpenAPI implements Generator {
     content.addMediaType("application/json", mediaType);
   }
 
+  private final boolean requestClassAsSchema = true;
+
+  private Schema toRequestSchemaMediaType(MethodInfo methodInfo) {
+    Schema requestSchema = new ObjectSchema();
+    if (requestClassAsSchema) {
+      SchemaN paramsSchema = toSchemaRef(methodInfo.requestInfo);
+      requestSchema.addProperties(RestConstants.MULTIPART_DATA_PARAM_NAME, paramsSchema.getSchema());
+    }
+    else {
+      for (MemberInfo param : methodInfo.requestInfo.members) {
+        SchemaN paramSchema = toSchemaRef(param.type);
+        requestSchema.addProperties(param.name, paramSchema.getSchema());
+      }
+    }
+    return requestSchema;
+  }
+
   private MediaType toRequestMediaTypeApplicationJson(MethodInfo methodInfo) {
     MediaType mediaType = new MediaType();
     
-    Schema requestSchema = new ObjectSchema();
-    
-//  SchemaN paramsSchema = toSchemaRef(m.requestInfo);
-//  requestSchema.addProperties(RestConstants.MULTIPART_DATA_PARAM_NAME, paramsSchema.getSchema());
-  
-    for (MemberInfo param : methodInfo.requestInfo.members) {
-      SchemaN paramSchema = toSchemaRef(param.type);
-      requestSchema.addProperties(param.name, paramSchema.getSchema());
-    }
+    SchemaN paramsSchema = toSchemaRef(methodInfo.requestInfo);
+    Schema requestSchema = paramsSchema.getSchema();
     
     mediaType.schema(requestSchema);
     return mediaType;
   }
-
+  
   private MediaType toRequestMediaTypeMultipartFormData(MethodInfo methodInfo) {
     MediaType mediaType = new MediaType();
     
     Schema requestSchema = new ObjectSchema();
     
-//    SchemaN paramsSchema = toSchemaRef(m.requestInfo);
-//    requestSchema.addProperties(RestConstants.MULTIPART_DATA_PARAM_NAME, paramsSchema.getSchema());
-    
-    for (MemberInfo param : methodInfo.requestInfo.members) {
-      SchemaN paramSchema = toSchemaRef(param.type);
-      requestSchema.addProperties(param.name, paramSchema.getSchema());
-    }
-    
+    SchemaN paramsSchema = toSchemaRef(methodInfo.requestInfo);
+    requestSchema.addProperties(RestConstants.MULTIPART_DATA_PARAM_NAME, paramsSchema.getSchema());
+
     ArraySchema streams = new ArraySchema().items(new FileSchema());
     requestSchema.addProperties(RestConstants.UPLOAD_ITEM_NAME, streams);
     
