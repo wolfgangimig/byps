@@ -319,7 +319,7 @@ public class GeneratorOpenAPI implements Generator {
     String simpleClassName = "RestOperations_" + pctxt.classDB.getApiDescriptor().name;
     File restOperationsClass = pctxt.getRestOperationsFile(simpleClassName);
     try (OutputStream fos = new FileOutputStream(restOperationsClass)) {
-      CodePrinter pr = new CodePrinter(fos, true);
+      CodePrinter pr = new CodePrinter(fos, false);
       
       String pack = pctxt.classDB.getApiDescriptor().basePackage;
       pr.print("package ").print(pack).print(";").println();
