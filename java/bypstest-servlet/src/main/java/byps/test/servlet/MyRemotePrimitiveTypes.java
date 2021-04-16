@@ -14,18 +14,18 @@ import byps.test.api.remote.BSkeleton_RemotePrimitiveTypes;
 
 public class MyRemotePrimitiveTypes extends BSkeleton_RemotePrimitiveTypes {
 	
-	public boolean boolVal;
-	public byte byteVal;
-	public char charVal;
-	public short shortVal;
-	public int intVal;
-	public long longVal;
-	public float floatVal;
-	public double doubleVal;
-	public String stringVal;
-	public Object objectVal;
-	public PrimitiveTypes primitiveTypesVal;
-	public Date dateVal;
+	public static boolean boolVal;
+	public static byte byteVal;
+	public static char charVal;
+	public static short shortVal;
+	public static int intVal;
+	public static long longVal = Long.MAX_VALUE;
+	public static float floatVal;
+	public static double doubleVal;
+	public static String stringVal;
+	public static Object objectVal;
+	public static PrimitiveTypes primitiveTypesVal;
+	public static Date dateVal;
 
 	public void setBool(boolean v) throws RemoteException {
 		this.boolVal = v;

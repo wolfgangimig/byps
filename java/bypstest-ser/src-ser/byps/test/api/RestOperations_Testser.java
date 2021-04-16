@@ -1,4 +1,4 @@
-﻿package byps.test.api;
+package byps.test.api;
 // GENERATED code, do not modify
 import java.util.*;
 import byps.*;

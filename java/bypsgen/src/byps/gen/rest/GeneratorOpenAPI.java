@@ -459,13 +459,13 @@ public class GeneratorOpenAPI implements Generator {
     }
     else if (typeInfo instanceof RemoteInfo) {
       RemoteInfo remoteInfo = (RemoteInfo)typeInfo;
-      String description = getCommentSummary(remoteInfo.comments);
+      String description = getDescription(remoteInfo.comments);
       schema = new SchemaN(typeInfo.name, new StringSchema().description(description));
     }
     else if (typeInfo instanceof SerialInfo) {
       
       SerialInfo serInfo = (SerialInfo)typeInfo;
-      String description = getCommentSummary(serInfo.comments);
+      String description = getDescription(serInfo.comments);
 
       Schema schemaO = new ObjectSchema();
       schemaO.description(description);
@@ -474,7 +474,11 @@ public class GeneratorOpenAPI implements Generator {
       putSchema(schema);
 
       serInfo.members.stream().filter(member -> !member.type.isVoidType())
-        .forEach(member -> schemaO.addProperties(member.name, toSchemaRef(member.type).getSchema()));
+        .forEach(member -> {
+          Schema memberSchema = toSchemaRef(member.type).getSchema();
+          String memberDescription = getDescription(member.comments);
+          schemaO.addProperties(member.name, memberSchema.description(memberDescription));
+        });
       
       if (serInfo.name.startsWith("BResult_")) {
         schemaO.addProperties("exception", new StringSchema().description("Error message"));
@@ -565,7 +569,11 @@ public class GeneratorOpenAPI implements Generator {
       schema = new IntegerSchema();
     }
     else if (equalsOneOf(typeInfo.name, "long", "Long")) {
-      schema = new IntegerSchema().format("int64");
+      //schema = new IntegerSchema().format("int64");
+      
+      // 64bit Integers loose Bit 53 to 63 in JavaScript's JSON.parse.
+      // That's why Long-Values have to be serialized as Strings.
+      schema = new StringSchema();
     }
     else if (equalsOneOf(typeInfo.name, "float", "Float")) {
       schema = new NumberSchema().format("float");
@@ -604,13 +612,29 @@ public class GeneratorOpenAPI implements Generator {
   }
 
   private String getCommentSummary(Collection<CommentInfo> comments) {
+    if (comments == null) return null;
     String summary = comments.stream().filter(c -> c.kind.equals(CommentInfo.KIND_SUMMARY)).map(c -> c.text).findFirst().orElse("");
     return (summary != null && !summary.isEmpty()) ? summary : null;
   }
   
   private String getCommentRemarks(Collection<CommentInfo> comments, Supplier<String> defaultValue) {
+    if (comments == null) return null;
     String value = comments.stream().filter(c -> c.kind.equals(CommentInfo.KIND_REMARKS)).map(c -> c.text).findFirst().orElse("");
     return (value != null && !value.isEmpty()) ? value : defaultValue.get();
   }
   
+  private String getDescription(Collection<CommentInfo> comments) {
+    String summary = getCommentSummary(comments);
+    String remarks = getCommentRemarks(comments, () -> null);
+    if (summary == null && remarks == null) return null;
+    StringBuilder sbuf = new StringBuilder();
+    if (summary != null) {
+      sbuf.append(summary);
+    }
+    if (remarks != null) {
+      if (sbuf.length() != 0) sbuf.append("\n");
+      sbuf.append(remarks);
+    }
+    return sbuf.toString();
+  }
 }

@@ -233,6 +233,8 @@ public class HRestExecutor {
   protected GsonBuilder createSerializationBuilder(HSession sess) {
     GsonBuilder builder = new GsonBuilder();
     builder.registerTypeAdapter(byte[].class, new BytesSerializer());
+    builder.registerTypeAdapter(long.class, new Int64Serializer());
+    builder.registerTypeAdapter(Long.class, new Int64Serializer());
     return builder;
   }
 
@@ -247,6 +249,8 @@ public class HRestExecutor {
     
     builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(getStream));
     builder.registerTypeAdapter(byte[].class, new BytesSerializer());
+    builder.registerTypeAdapter(long.class, new Int64Serializer());
+    builder.registerTypeAdapter(Long.class, new Int64Serializer());
     return builder;
   }
   

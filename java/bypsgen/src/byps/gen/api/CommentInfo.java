@@ -11,7 +11,7 @@ public class CommentInfo {
 	public CommentInfo(String kind, String text) {
 		super();
 		this.kind = kind;
-		this.text = text;
+		this.text = text != null ? text.trim() : null;
 	}
 	
 	public CommentInfo() {

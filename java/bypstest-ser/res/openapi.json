@@ -785,6 +785,11 @@
                   }
                 }
               }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BRequest_RemoteArrayTypes1dim_setBool"
+              }
             }
           }
         },
@@ -6671,6 +6676,11 @@
                   }
                 }
               }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BRequest_RemoteStreams_putSharedStream"
+              }
             }
           }
         },
@@ -7525,8 +7535,7 @@
         "type": "object",
         "properties": {
           "v": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           }
         }
       },
@@ -7712,8 +7721,7 @@
             "format": "int32"
           },
           "long1": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           "float1": {
             "type": "number",
@@ -7776,6 +7784,7 @@
         "type": "object",
         "properties": {
           "Mercury": {
+            "description": "... is the closest planet to the Sun ...",
             "$ref": "#/components/schemas/EnumPlanets"
           },
           "Venus": {
@@ -7945,6 +7954,7 @@
           },
           "char2s": {
             "type": "integer",
+            "description": "This constant holds the currency symbol for Euro.\nIt is defined \"final static\" and thus cannot be changed.",
             "format": "int32"
           },
           "short1s": {
@@ -7955,8 +7965,7 @@
             "format": "int32"
           },
           "long1s": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           "float1s": {
             "type": "number",
@@ -7970,6 +7979,7 @@
             "type": "string"
           },
           "ALL": {
+            "description": "This defines a complex constant.\nIt is an instance of the class AllTypesZ.\n The field value cannot be changed, but it\u0027s contents could.",
             "$ref": "#/components/schemas/AllTypesZ"
           },
           "arrInt": {
@@ -8030,8 +8040,7 @@
         "type": "object",
         "properties": {
           "mbAllMembers": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           "mbAll": {
             "$ref": "#/components/schemas/SordZ"
@@ -8060,7 +8069,7 @@
             "type": "string"
           }
         },
-        "description": "Example for an inline class."
+        "description": "Example for an inline class.\nFinal classes cannot be evolved or derived.\n Objects of final classes are serialized without \n the overhead of type and reference information. \n This optimization is especially useful in the case of \n large arrays of small objects being serialized."
       },
       "Array4OfObject": {
         "type": "array",
@@ -8132,8 +8141,7 @@
         "type": "object",
         "properties": {
           "bset": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           }
         }
       },
@@ -8250,8 +8258,7 @@
       "MapToLong": {
         "type": "object",
         "additionalProperties": {
-          "type": "integer",
-          "format": "int64"
+          "type": "string"
         }
       },
       "BRequest_RemoteListTypes_getByte1": {
@@ -8265,8 +8272,7 @@
         "items": {
           "type": "array",
           "items": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           }
         }
       },
@@ -8437,8 +8443,7 @@
           "result": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           },
           "exception": {
@@ -8630,8 +8635,7 @@
       "SetOfLong": {
         "type": "array",
         "items": {
-          "type": "integer",
-          "format": "int64"
+          "type": "string"
         }
       },
       "BRequest_RemoteArrayTypes1dim_getInt": {
@@ -8747,8 +8751,7 @@
             "format": "int32"
           },
           "longVal": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           "floatVal": {
             "type": "number",
@@ -8842,8 +8845,7 @@
             "format": "int32"
           },
           "l": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           "f": {
             "type": "number",
@@ -9137,8 +9139,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           "stream": {
             "$ref": "#/components/schemas/BStreamReference"
@@ -9330,8 +9331,7 @@
             "format": "int32"
           },
           "long1": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           "float1": {
             "type": "number",
@@ -9377,8 +9377,7 @@
           "longs1": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           },
           "floats1": {
@@ -9432,8 +9431,7 @@
             "format": "int32"
           },
           "long2": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           "float2": {
             "type": "number",
@@ -9479,8 +9477,7 @@
           "longs2": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           },
           "floats2": {
@@ -9534,8 +9531,7 @@
             "format": "int32"
           },
           "long3": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           "float3": {
             "type": "number",
@@ -9581,8 +9577,7 @@
           "longs3": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           },
           "floats3": {
@@ -9702,8 +9697,7 @@
           "long1": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           },
           "float1": {
@@ -9813,8 +9807,7 @@
             "format": "int32"
           },
           "long1s": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           "float1s": {
             "type": "number",
@@ -10751,8 +10744,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           }
         }
       },
@@ -11190,14 +11182,17 @@
         "type": "object",
         "properties": {
           "boolVal": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Boolean value.\nSerialized as one byte with value 1 for true and value 0 for false."
           },
           "byteVal": {
             "type": "integer",
+            "description": "One byte.",
             "format": "int32"
           },
           "charVal": {
             "type": "integer",
+            "description": "One wide (2 byte) character.\nSerialized as short integer in binary serialization and as string when serializing in JSON format.",
             "format": "int32"
           },
           "shortVal": {
@@ -11208,8 +11203,7 @@
             "format": "int32"
           },
           "longVal": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           "floatVal": {
             "type": "number",
@@ -11227,19 +11221,22 @@
             "format": "date-time"
           },
           "objVal": {
-            "type": "string"
+            "type": "string",
+            "description": "This element can refer a an arbitrary type that implements Serializable.\nIt cannot hold an array, List, ArrayList, etc."
           },
           "objVal2": {
             "type": "string"
           },
           "value": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "In CSharp, value is a keyword in property setter functions.\nBut it must not be a problem to name a member by value."
           },
           "temp": {
             "type": "string"
           },
           "deferredValue": {
             "type": "integer",
+            "description": "This value is read in its getter function.",
             "format": "int32"
           }
         },
@@ -11427,8 +11424,7 @@
       "ArrayOflong": {
         "type": "array",
         "items": {
-          "type": "integer",
-          "format": "int64"
+          "type": "string"
         }
       },
       "BRequest_RemotePrimitiveTypes_throwException": {
@@ -11535,8 +11531,7 @@
         "type": "object",
         "properties": {
           "result": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
           },
           "exception": {
             "type": "string",
@@ -11804,8 +11799,7 @@
       "ListOfLong": {
         "type": "array",
         "items": {
-          "type": "integer",
-          "format": "int64"
+          "type": "string"
         }
       },
       "ListTypes": {
@@ -11962,8 +11956,7 @@
           "v": {
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           }
         }
