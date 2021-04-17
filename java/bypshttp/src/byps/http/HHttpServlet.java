@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -39,7 +38,6 @@ import byps.BBuffer;
 import byps.BBufferJson;
 import byps.BClient;
 import byps.BContentStream;
-import byps.BContentStreamWrapper;
 import byps.BException;
 import byps.BExceptionC;
 import byps.BHashMap;
@@ -325,8 +323,8 @@ public abstract class HHttpServlet extends HttpServlet implements
     }
     // If the URI is like .../rest/putstream, a stream should be uploaded.
     // BYPS-51
-    else if (isRestPutStream(request)) {
-      doRestPutStream(request, response);
+    else if (isRestUpload(request)) {
+      doRestUpload(request, response);
     }
     else {
       doPostMessage(request, response);
@@ -361,8 +359,8 @@ public abstract class HHttpServlet extends HttpServlet implements
    * @param response
    * @throws IOException
    */
-  protected void doRestPutStream(HttpServletRequest request, HttpServletResponse response) {
-    if (log.isDebugEnabled()) log.debug("doRestPutStream(");
+  protected void doRestUpload(HttpServletRequest request, HttpServletResponse response) {
+    if (log.isDebugEnabled()) log.debug("doRestUpload(");
     
     // The request must include a valid session.
     BMessageHeader header = null;
@@ -373,9 +371,9 @@ public abstract class HHttpServlet extends HttpServlet implements
     }
     
     HRestExecutor rest = createRestExecutor();
-    rest.doRestPutStream(sess, request, response);
+    rest.doRestUpload(sess, request, response);
 
-    if (log.isDebugEnabled()) log.debug(")doRestPutStream");
+    if (log.isDebugEnabled()) log.debug(")doRestUpload");
   }
 
   /**
@@ -388,7 +386,7 @@ public abstract class HHttpServlet extends HttpServlet implements
     String requestUri = request.getRequestURI();
     return requestUri.contains("/rest")
         && !requestUri.contains("/rest/getstream")
-        && !requestUri.contains("/rest/putstream");
+        && !requestUri.contains("/rest/BUtility/upload");
   }
   
   /**
@@ -397,9 +395,9 @@ public abstract class HHttpServlet extends HttpServlet implements
    * @param request Request
    * @return true, if REST call
    */
-  protected boolean isRestPutStream(HttpServletRequest request) {
+  protected boolean isRestUpload(HttpServletRequest request) {
     String requestUri = request.getRequestURI();
-    return requestUri.contains("/rest/putstream");
+    return requestUri.contains("/rest/BUtility/upload");
   }
   
   /**

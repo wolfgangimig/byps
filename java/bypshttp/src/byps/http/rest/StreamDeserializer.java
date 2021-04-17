@@ -50,22 +50,22 @@ class StreamDeserializer implements JsonDeserializer<InputStream> {
       throws JsonParseException {
     if (log.isDebugEnabled()) log.debug("deserialize({}", json);
     
-    InputStream ret = null;
+    String streamId = null;
     
-    // Expecting a JSON object as:
+    // Expecting a BStreamReference object as:
     // {
-    //   "file" : "file[0]"
+    //   "streamId" : "file[0]"
     // }
     
     if (json.isJsonObject()) {
       JsonObject obj = json.getAsJsonObject();
-      JsonElement elm = obj.get(RestConstants.UPLOAD_ITEM_NAME);
-      if (log.isDebugEnabled()) log.debug("stream.{}={}", RestConstants.UPLOAD_ITEM_NAME, elm);
+      JsonElement elm = obj.get("streamId");
       if (elm != null && elm.isJsonPrimitive()) {
-        String fieldName = elm.getAsString();
-        ret = getStream.apply(fieldName);
+        streamId = elm.getAsString();
       }
     }
+    
+    InputStream ret = streamId != null ? getStream.apply(streamId) : null;
     
     if (log.isDebugEnabled()) log.debug(")deserialize");
     return ret;

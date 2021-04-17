@@ -3,10 +3,23 @@ package byps.rest;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * Represents a BContentStream in REST calls.
+ * 
+ *
+ */
 public class BStreamReference extends InputStream {
   
-  private String file;
+  /**
+   * Stream ID.
+   * ID of a previously uploaded Stream by '.../rest/putstream'.
+   * Or the field name in a multipart/form-data request.
+   */
+  private String streamId;
   
+  /**
+   * Download URL.
+   */
   private String url;
   
   @Override
@@ -14,12 +27,12 @@ public class BStreamReference extends InputStream {
     throw new UnsupportedOperationException();
   }
 
-  public String getFile() {
-    return file;
+  public String getStreamId() {
+    return streamId;
   }
 
-  public void setFile(String file) {
-    this.file = file;
+  public void setStreamId(String file) {
+    this.streamId = file;
   }
 
   public String getUrl() {

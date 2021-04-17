@@ -119,7 +119,12 @@ const restcall = function(path, obj, streams) {
 
 const upload = function(fileName, contentType) {
 	const buffer = fs.readFileSync(fileName);
-	return post("putstream", buffer, contentType || 'application/octet-stream');
+	return post("BUtility/upload", buffer, contentType || 'application/octet-stream')
+		.then(rdata => {
+			const obj = JSON.parse(rdata);
+			if (obj.exception) throw obj.exception;
+			return obj.result;
+		});
 }
 
 const download = function(path, fileName) {
@@ -158,16 +163,14 @@ const download = function(path, fileName) {
 };
 
 
-const putSharedStream = function(id, streamId, streams) {
+const putSharedStream = function(id, streamReference, file) {
 
 	const data = {
 	  id : id,
-	  stream : {
-	    file : streamId
-	  }
+	  stream : streamReference
 	};
 	
-	return restcall('RemoteStreams/putSharedStream', data, streams); 
+	return restcall('RemoteStreams/putSharedStream', data, file); 
 };
 
 const getSharedStream = function(id) {
@@ -182,21 +185,24 @@ const getSharedStream = function(id) {
 
 (async () => {
 
-	var useFormData = true;
+	var useFormData = false;
 
 	if (useFormData) {
 		const stream = await fs.createReadStream("testfile.txt");
-		await putSharedStream(123, "file", stream);
+		const streamReference = {
+			streamId: 'file'
+		};
+		await putSharedStream(123, streamReference, stream);
 	}
 	else {
-		const streamId = await upload("testfile.txt", "plain/text"); 
-		await putSharedStream(123, streamId);
+		const streamRef = await upload("testfile.txt", "plain/text"); 
+		await putSharedStream(123, streamRef);
 	}
 
-	const getResult = await getSharedStream(123);
-	console.log('getSharedStream=' + JSON.stringify(getResult));
+	const streamRef = await getSharedStream(123);
+	console.log('getSharedStream=' + JSON.stringify(streamRef));
   
-  	const fileName = await download(getResult.url, "testfile-out.txt");
+  	const fileName = await download(streamRef.url, "testfile-out.txt");
   	console.log('download=' + fileName);
   
 })();

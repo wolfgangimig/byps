@@ -48,7 +48,7 @@ public class PropertiesRest extends GeneratorProperties {
    * 
    * The following parameter must define the header name.
    */
-  public final static String AUTHENTICATION_SCHEME_API_KEY = OPT_PREFIX + "auth-api-key";
+  public final static String AUTHENTICATION_SCHEME_API_KEY = OPT_PREFIX + "auth-apikey";
 
   @Override
   public int addArgs(String[] args, int idx) throws GeneratorException {
@@ -57,6 +57,11 @@ public class PropertiesRest extends GeneratorProperties {
       case AUTHENTICATION_SCHEME_BASIC:
       case AUTHENTICATION_SCHEME_BEARER:
         put(key, "true");
+        idx++;
+        break;
+      case AUTHENTICATION_SCHEME_API_KEY:
+        String apiKey = args[++idx];
+        put(key, apiKey);
         idx++;
         break;
       default:

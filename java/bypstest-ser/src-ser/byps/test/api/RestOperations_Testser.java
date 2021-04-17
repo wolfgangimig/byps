@@ -10,6 +10,7 @@ public class RestOperations_Testser extends RestOperations {
 	}
 	private static final RestOperations instance = new RestOperations_Testser();
 	private RestOperations_Testser() {
+		add("post", "/BUtility/upload", new Operation("BUtility_upload"));
 		add("post", "/BioFruitService/certify", new Operation("BioFruitService_certify"));
 		add("post", "/BioLemonService/useParing", new Operation("BioLemonService_useParing"));
 		add("post", "/ClientIF/getStreams", new Operation("ClientIF_getStreams"));

@@ -7,6 +7,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.UncheckedIOException;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.MediaType;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -47,7 +49,9 @@ import byps.http.HFileUploadIncomingStream;
 import byps.http.HIncomingStreamSync;
 import byps.http.HServerContext;
 import byps.http.HSession;
+import byps.rest.BStreamReference;
 import byps.rest.RestOperations;
+import byps.ureq.BResult_19;
 
 /**
  * Execute REST call.
@@ -106,8 +110,8 @@ public class HRestExecutor {
     String restPath = requestUri.substring(indexRest + "/rest".length());
     RestOperations.Operation operation = operations.getOperation(request.getMethod(), restPath);
     if (operation == null) {
-      log.info("No REST operation associated to path={}", restPath);
-      response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+      log.warn("No REST operation associated to path={}", restPath);
+      response.setStatus(HttpServletResponse.SC_NOT_FOUND);
       return;
     }
     
@@ -119,7 +123,7 @@ public class HRestExecutor {
     // Find the interface implementation registered with the BServer.
     BServer.FindRemoteResult findResult = sess.getServer().findRemote(interfaceName);
     if (findResult == null) {
-      log.info("Inteface={} is not implemented. Be aware of the case-sensitive search used to lookup the implementation.", requestUri);
+      log.warn("Inteface={} is not implemented. Be aware of the case-sensitive search used to lookup the implementation.", requestUri);
       response.setStatus(HttpServletResponse.SC_NOT_FOUND);
       return;
     }
@@ -134,7 +138,7 @@ public class HRestExecutor {
       requestClass = Class.forName(remotePackage + "." + requestClassName);
     }
     catch (ClassNotFoundException e) {
-      log.info("Function={} is not a member of interface={}. Be aware of the case-sensitive search used to find the function.", functionName, requestClassName);
+      log.warn("Function={} is not a member of interface={}. Be aware of the case-sensitive search used to find the function.", functionName, requestClassName);
       response.setStatus(HttpServletResponse.SC_NOT_FOUND); 
       return;
     }
@@ -175,7 +179,7 @@ public class HRestExecutor {
     if (log.isDebugEnabled()) log.debug(")doRest");
   }
   
-  public void doRestPutStream(final HSession sess, HttpServletRequest request, HttpServletResponse response) {
+  public void doRestUpload(final HSession sess, HttpServletRequest request, HttpServletResponse response) {
     BServer server = sess.getServer();
     HServerContext serverContext = sess.getServerContext();
     HConfig config = serverContext.getConfig();
@@ -199,15 +203,28 @@ public class HRestExecutor {
       // Add the stream to the map of streams.
       serverContext.getActiveMessages().addIncomingUploadStream(stream);
       
-      // Return the streamId in the response body.
+      // Return the streamId as BStreamReference.file the response body.
       response.setStatus(HttpServletResponse.SC_OK);
+      response.setContentType(MediaType.APPLICATION_JSON);
+      
+      BResult_BUtility_upload result = new BResult_BUtility_upload(streamId);
+      GsonBuilder builder = createSerializationBuilder(sess);
+      Gson gson = builder.create();
       try (Writer writer = response.getWriter()) {
-        writer.append(Long.toString(streamId));
+        gson.toJson(result, result.getClass(), writer);
       }
     }
     catch (IOException e) {
       log.warn("Failed to add uploaded stream.", e);
       response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+    }
+  }
+  
+  private static class BResult_BUtility_upload {
+    BStreamReference result;
+    BResult_BUtility_upload(long streamId) {
+      result = new BStreamReference();
+      result.setStreamId(Long.toString(streamId));
     }
   }
   
@@ -425,8 +442,9 @@ public class HRestExecutor {
    * @throws SecurityException
    * @throws FileUploadException
    * @throws NoSuchFieldException
+   * @throws UnsupportedEncodingException 
    */
-  protected BMethodRequest buildMethodFromMultiPart(HSession sess, HttpServletRequest request, Class<?> requestClass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, FileUploadException, NoSuchFieldException {
+  protected BMethodRequest buildMethodFromMultiPart(HSession sess, HttpServletRequest request, Class<?> requestClass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, FileUploadException, NoSuchFieldException, UnsupportedEncodingException {
     if (log.isDebugEnabled()) log.debug("buildMethodForMultiPart(");
     
     // Create a factory for disk-based file items
@@ -440,12 +458,12 @@ public class HRestExecutor {
 
     // Parse the request
     List<FileItem> items = upload.parseRequest(request);
-    if (log.isDebugEnabled()) log.debug("received #items={}", items.size());
+    if (log.isDebugEnabled()) log.debug("received items={}", items.stream().map(FileItem::getFieldName).collect(Collectors.toList()));
     
     // Collect the streams provided in the request and map them to "file==file[0], file[1], ...".
     // This map is used during deserialization to assign the stream objects referenced in the method parameters.
     Map<String, BContentStream> streams = mapFieldNamesToStreams(sess, items);
-    if (log.isDebugEnabled()) log.debug("#streams={}", streams.size());
+    if (log.isDebugEnabled()) log.debug("streams={}", streams.keySet());
     Function<String, BContentStream> getStream = streamId -> streams.get(streamId);
     
     // Initialize deserialization
@@ -453,16 +471,21 @@ public class HRestExecutor {
     
     List<FileItem> formFields = items.stream().filter(item -> item.isFormField()).collect(Collectors.toList());
     String jsonData = "";
-    Optional<FileItem> dataField = formFields.stream().filter(item -> item.getFieldName().equals(RestConstants.MULTIPART_DATA_PARAM_NAME)).findAny();
     
-    if (formFields.isEmpty()) {
-      // Bad request
-      throw new IllegalStateException("Missing form fields in multipart/form-data. At least field " + RestConstants.MULTIPART_DATA_PARAM_NAME + " must be available.");
-    }
-    else if (dataField.isPresent()) {
+    // Field "data" contains the parameters as JSON object.
+    // If using the browser's FormData.append("data", blob), it is recognized as stream field 
+    // not as form field.
+    Optional<FileItem> dataField = items.stream().filter(item -> item.getFieldName().equals(RestConstants.MULTIPART_DATA_PARAM_NAME)).findAny();
+    
+    if (dataField.isPresent()) {
       // Only one form field with BRequest_ object
       // See GeneratorOpenAPI.toRequestMediaTypeMultipartFormData
-      jsonData = dataField.get().getString();
+      jsonData = dataField.get().getString(StandardCharsets.UTF_8.name());
+      if (log.isDebugEnabled()) log.debug("jsonData={}", jsonData);
+    }
+    else if (formFields.isEmpty()) {
+      // Bad request
+      throw new IllegalStateException("Missing form fields in multipart/form-data. At least field " + RestConstants.MULTIPART_DATA_PARAM_NAME + " must be available.");
     }
     else {
       // For each parameter one form field.
@@ -484,6 +507,7 @@ public class HRestExecutor {
       }
       sbuf.append("}");
       jsonData = sbuf.toString();
+      if (log.isDebugEnabled()) log.debug("jsonData={}", jsonData);
     }
     
     // Deserialize the BMethodRequest
@@ -526,9 +550,10 @@ public class HRestExecutor {
    * @param sbuf
    * @return
    * @throws NoSuchFieldException
+   * @throws UnsupportedEncodingException 
    */
   private boolean appendFieldToJsonString(Class<?> requestClass, FileItem item, boolean addComma,
-      StringBuilder sbuf) throws NoSuchFieldException {
+      StringBuilder sbuf) throws NoSuchFieldException, UnsupportedEncodingException {
     if (log.isDebugEnabled()) log.debug("appendFieldToJsonString(requestClass={}, field.name={}", requestClass, item.getFieldName());
 
     String fieldName = item.getFieldName();
@@ -536,7 +561,7 @@ public class HRestExecutor {
     // An unassigned stream item (upload item with no file) is interpreted by 
     // Apache FileUpload as FileItem.isFormField()=true. This item must be skipped
     // here because there is no corresponding field in the request class.
-    String itemString = item.getString();
+    String itemString = item.getString(StandardCharsets.UTF_8.name());
     if (log.isDebugEnabled()) log.debug("fieldAsString={}", itemString);
     if (itemString == null || itemString.isEmpty()) return addComma;
     
