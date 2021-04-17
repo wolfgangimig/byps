@@ -3,12 +3,15 @@ package byps.gen.rest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -35,6 +38,7 @@ import byps.gen.api.rest.RestInfo;
 import byps.gen.api.rest.RestMethod;
 import byps.gen.db.ClassDB;
 import byps.gen.utils.CodePrinter;
+import byps.rest.BStreamReference;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Operation;
@@ -98,11 +102,17 @@ public class GeneratorOpenAPI implements Generator {
     for (SerialInfo serInfo : classDB.getSerials()) {
       toSchema(serInfo);
     }
+    
+    toSchema(createSerialInfoForUploadResult());
+    
     openApi.components(new Components().securitySchemes(createSecuritySchemes()).schemas(SchemaN.toComponentSchemas(schemas)));
     
     for (RemoteInfo remoteInfo : classDB.getRemotes()) {
       remoteInfo.methods.forEach(m -> toPath(m));
     }
+    
+    createPathItemForUpload();
+    
     Paths oaiPaths = new Paths();
     paths.entrySet().forEach(e -> oaiPaths.addPathItem(e.getKey(), e.getValue()));
     openApi.paths(oaiPaths);
@@ -110,6 +120,77 @@ public class GeneratorOpenAPI implements Generator {
     write();
     writeRestOperationsClass();
   }
+  
+  private PathItem createPathItemForUpload() {
+    PathItem pathItem = new PathItem();
+    pathItem.summary("Upload file.");
+    
+    String uri = "/BUtility/upload";
+    
+    Operation op = new Operation();
+    op.operationId("BUtility_upload");
+    op.addTagsItem("BUtility");
+    
+    op.security(getSecurityRequirements());
+    
+    {
+      ApiResponses responses = new ApiResponses();
+      ApiResponse response200 = new ApiResponse();
+      response200.description("Success");
+      
+      Content content = new Content();
+      MediaType mediaType = new MediaType();
+      Schema responseSchema = new Schema().$ref("#/components/schemas/BResult_BUtility_upload");
+      mediaType.schema(responseSchema);
+      content.addMediaType("application/json", mediaType);
+      response200.content(content);
+      
+      responses.addApiResponse("200", response200);
+    
+      op.responses(responses);
+    }
+    
+    {
+      Content content = new Content();
+      MediaType mediaType = new MediaType();
+      mediaType.schema(new BinarySchema());
+      content.addMediaType("application/octet-stream", mediaType);
+      op.requestBody(new RequestBody().content(content));
+    }
+    
+    pathItem.post(op); 
+    
+    paths.put(uri, pathItem);
+    
+    return pathItem;
+  }
+  
+  private SerialInfo createSerialInfoForUploadResult() {
+    String name = "BResult_BUtility_upload";
+    String qname = "byps." + name;
+    String baseFullName = "";
+    String dims = "";
+    List<TypeInfo> typeArgs = Collections.emptyList();
+    List<MemberInfo> members = new ArrayList<MemberInfo>();
+    boolean isEnum = false;
+    boolean isFinal = false;
+    boolean isInline = false;
+    long since = 0;
+    
+    TypeInfo streamRefType = new TypeInfo(BStreamReference.class.getSimpleName(), 
+        BStreamReference.class.getCanonicalName(), "", null, false, false, false);
+    MemberInfo streamRefMember = new MemberInfo("result", streamRefType);
+    members.add(streamRefMember);
+    
+    Collection<CommentInfo> comments = Arrays.asList();
+    SerialInfo uploadResult = new SerialInfo(name, 
+        comments, qname, baseFullName, 
+        dims, typeArgs, members,
+        isEnum, isFinal, isInline, since);
+    return uploadResult;
+  }
+  
+  
   
   private Map<String, SecurityScheme> createSecuritySchemes() {
     if (pctxt.props.containsKey(PropertiesRest.AUTHENTICATION_SCHEME_BASIC)) { 
@@ -119,8 +200,12 @@ public class GeneratorOpenAPI implements Generator {
       securitySchemes.put("bearer", new SecurityScheme().type(Type.HTTP).scheme("bearer"));
     }
     if (pctxt.props.containsKey(PropertiesRest.AUTHENTICATION_SCHEME_API_KEY)) {
-      String headerName = pctxt.props.getProperty(PropertiesRest.AUTHENTICATION_SCHEME_API_KEY, "X-API-KEY");
-      securitySchemes.put("apiKey", new SecurityScheme().type(Type.APIKEY).in(In.HEADER).name(headerName));
+      String apiKey = pctxt.props.getProperty(PropertiesRest.AUTHENTICATION_SCHEME_API_KEY, "header:X-API-KEY");
+      String[] values = apiKey.split("\\:"); 
+      String keyIn = values[0];
+      String keyName = values[1];
+      SecurityScheme.In in = SecurityScheme.In.valueOf(keyIn.toUpperCase());
+      securitySchemes.put("apiKey", new SecurityScheme().type(Type.APIKEY).in(in).name(keyName));
     }
     return securitySchemes.isEmpty() ? null : securitySchemes;
   }
@@ -308,6 +393,7 @@ public class GeneratorOpenAPI implements Generator {
     builder.registerTypeAdapter(Boolean.class, new BooleanSerializer());
     builder.registerTypeAdapter(ArraySchema.class, new ArraySchemaSerializer());
     builder.registerTypeAdapter(SecurityScheme.Type.class, new SecuritySchemeTypeSerializer());
+    builder.registerTypeAdapter(SecurityScheme.In.class, new SecuritySchemeInSerializer());
     builder.setPrettyPrinting();
     Gson gson = builder.create();
     try (Writer writer = new OutputStreamWriter(new FileOutputStream(openapiFile), StandardCharsets.UTF_8)) {
@@ -535,7 +621,7 @@ public class GeneratorOpenAPI implements Generator {
 
   private SchemaN toSchemaForStream(TypeInfo typeInfo) {
     Schema schema = new ObjectSchema();
-    schema.addProperties("file", new StringSchema());
+    schema.addProperties("streamId", new StringSchema());
     schema.addProperties("url", new StringSchema());
     String name = toSchemaName(typeInfo);
     SchemaN schemaN = new SchemaN(name, schema);
