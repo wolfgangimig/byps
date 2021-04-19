@@ -3,6 +3,7 @@ package byps.http.rest;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -51,7 +52,6 @@ import byps.http.HServerContext;
 import byps.http.HSession;
 import byps.rest.BStreamReference;
 import byps.rest.RestOperations;
-import byps.ureq.BResult_19;
 
 /**
  * Execute REST call.
@@ -68,37 +68,57 @@ public class HRestExecutor {
    * Server configuration.
    * Provides temp directory and server ID.
    */
-  private final HConfig config;
+  protected final HConfig config;
   
   /**
    * Limit of upload file size.
    * Value -1 means no limit.
    */
-  private final long maxUploadFileSize;
+  protected final long maxUploadFileSize;
   
   /**
    * Map of REST operations.
    */
-  private final RestOperations operations;
+  protected final RestOperations operations;
+  
+  /**
+   * BYPS session.
+   */
+  protected final HSession sess;
+  
+  /**
+   * HTTP Request.
+   */
+  protected final HttpServletRequest request;
+  
+  /**
+   * HTTP Response.
+   */
+  protected final HttpServletResponse response;
   
   /**
    * Constructor.
    * @param config Server configuration
+   * @param operations Map of Path to Operation
    * @param maxUploadFileSize Limit of upload file size, -1 means no limit.
-   */
-  public HRestExecutor(HConfig config, RestOperations operations, long maxUploadFileSize) {
-    this.config = config;
-    this.operations = operations;
-    this.maxUploadFileSize = maxUploadFileSize;
-  }
-
-  /**
-   * Execute the REST call.
    * @param sess Session
    * @param request Request
    * @param response Response
    */
-  public void doRest(HSession sess, HttpServletRequest request, HttpServletResponse response) {
+  public HRestExecutor(HConfig config, RestOperations operations, long maxUploadFileSize,
+      HSession sess, HttpServletRequest request, HttpServletResponse response) {
+    this.config = config;
+    this.operations = operations;
+    this.maxUploadFileSize = maxUploadFileSize;
+    this.sess = sess;
+    this.request = request;
+    this.response = response;
+  }
+
+  /**
+   * Execute the REST call.
+   */
+  public void doRest() {
     if (log.isDebugEnabled()) log.debug("doRest({}", request.getRequestURI());
     
     // Find /rest in URI 
@@ -150,14 +170,14 @@ public class HRestExecutor {
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         if (log.isDebugEnabled()) log.debug("contentType={}, isMultipart={}", request.getContentType(), isMultipart);
         if (isMultipart) {
-          method = buildMethodFromMultiPart(sess, request, requestClass);
+          method = buildMethodFromMultiPart(requestClass);
         }
         else {
-          method = buildMethodFromJsonBody(sess, request, requestClass);
+          method = buildMethodFromJsonBody(requestClass);
         }
       }
       else {
-        method = buildMethodFromQueryParams(sess, request, requestClass); 
+        method = buildMethodFromQueryParams(requestClass); 
       }
     }
     catch (Exception e) {
@@ -170,7 +190,7 @@ public class HRestExecutor {
     response.setContentType("application/json");
     response.setCharacterEncoding(StandardCharsets.UTF_8.name());
     try (Writer writer = response.getWriter()) {
-      executeMethod(sess, remote, method, writer);
+      executeMethod(remote, method, writer);
     }
     catch (IOException e) {
       log.error("Failed to write response.", e);
@@ -179,7 +199,10 @@ public class HRestExecutor {
     if (log.isDebugEnabled()) log.debug(")doRest");
   }
   
-  public void doRestUpload(final HSession sess, HttpServletRequest request, HttpServletResponse response) {
+  /**
+   * Upload stream into temporary storage.
+   */
+  public void doRestUpload() {
     BServer server = sess.getServer();
     HServerContext serverContext = sess.getServerContext();
     HConfig config = serverContext.getConfig();
@@ -208,7 +231,7 @@ public class HRestExecutor {
       response.setContentType(MediaType.APPLICATION_JSON);
       
       BResult_BUtility_upload result = new BResult_BUtility_upload(streamId);
-      GsonBuilder builder = createSerializationBuilder(sess);
+      GsonBuilder builder = createSerializationBuilder();
       Gson gson = builder.create();
       try (Writer writer = response.getWriter()) {
         gson.toJson(result, result.getClass(), writer);
@@ -247,7 +270,7 @@ public class HRestExecutor {
    * Create GsonBuilder to serialize response.
    * @return GsonBuilder
    */
-  protected GsonBuilder createSerializationBuilder(HSession sess) {
+  protected GsonBuilder createSerializationBuilder() {
     GsonBuilder builder = new GsonBuilder();
     builder.registerTypeAdapter(byte[].class, new BytesSerializer());
     builder.registerTypeAdapter(long.class, new Int64Serializer());
@@ -257,11 +280,11 @@ public class HRestExecutor {
 
   /**
    * Create GsonBuilder to deserialize request.
-   * @param sess
+   * @param context
    * @param getStream  
    * @return GsonBuilder
    */
-  protected GsonBuilder createDeserializationBuilder(HSession sess, Function<String, BContentStream> getStream) {
+  protected GsonBuilder createDeserializationBuilder(Function<String, BContentStream> getStream) {
     GsonBuilder builder = new GsonBuilder();
     
     builder.registerTypeAdapter(InputStream.class, new StreamDeserializer(getStream));
@@ -272,23 +295,23 @@ public class HRestExecutor {
   }
   
   
-  protected TransformObjectBeforeSerialization getTransformObjectBeforeSerialization(HSession sess) {
-    return new TransformObjectBeforeSerialization(sess, Collections.emptySet());
+  protected TransformObjectBeforeSerialization getTransformObjectBeforeSerialization() {
+    return new TransformObjectBeforeSerialization(this, Collections.emptySet());
   }
 
   /**
    * Execute the call and write the response.
-   * @param sess BYPS session
+   * @param context Context
    * @param remote Interface implementation
    * @param method Method object
    * @param writer Response is printed into this Writer
    * @throws IOException 
    */
-  protected void executeMethod(HSession sess, BRemote remote, BMethodRequest method, Writer writer) throws IOException {
+  protected void executeMethod(BRemote remote, BMethodRequest method, Writer writer) throws IOException {
     if (log.isDebugEnabled()) log.debug("executeMethod(");
     
     // Initialize builder for JSON response.
-    GsonBuilder builder = createSerializationBuilder(sess);
+    GsonBuilder builder = createSerializationBuilder();
     if (log.isDebugEnabled()) builder.setPrettyPrinting();
     
     // The response must not been written into the output (writer) directly
@@ -306,7 +329,7 @@ public class HRestExecutor {
       if (log.isDebugEnabled()) log.debug("get result and serialize");
       Object result = syncResult.getResult();
       
-      TransformObjectBeforeSerialization trafo = getTransformObjectBeforeSerialization(sess);
+      TransformObjectBeforeSerialization trafo = getTransformObjectBeforeSerialization();
       trafo.transformObject(result);
       
       // Serialize to JSON
@@ -353,8 +376,6 @@ public class HRestExecutor {
   /**
    * Read the request into an object of the given request class. 
    * The request body must be text (JSON) and cannot contain streams. 
-   * @param sess BYPS session
-   * @param request HTTP request
    * @param requestClass Request class
    * @return Request object
    * @throws IOException
@@ -365,11 +386,11 @@ public class HRestExecutor {
    * @throws NoSuchMethodException
    * @throws SecurityException
    */
-  protected BMethodRequest buildMethodFromJsonBody(HSession sess, HttpServletRequest request, Class<?> requestClass) throws IOException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+  protected BMethodRequest buildMethodFromJsonBody(Class<?> requestClass) throws IOException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
     if (log.isDebugEnabled()) log.debug("buildMethodFromJsonBody(");
     BMethodRequest method = null;
     
-    try (Reader reader = request.getReader()) {
+    try (Reader reader = new InputStreamReader(request.getInputStream(), StandardCharsets.UTF_8)) {
       
       // For debug logging, print the request into the log file. 
       Reader innerReader = reader;
@@ -388,10 +409,10 @@ public class HRestExecutor {
       }
       
       // Function that returns the stream associated to a streamId
-      Function<String, BContentStream> getStream = makeProviderForUploadedStream(sess);
+      Function<String, BContentStream> getStream = makeProviderForUploadedStream();
 
       // Deserialize
-      GsonBuilder builder = createDeserializationBuilder(sess, getStream);
+      GsonBuilder builder = createDeserializationBuilder(getStream);
       Gson gson = builder.create();
       method = (BMethodRequest)gson.fromJson(innerReader, requestClass);
     }
@@ -408,10 +429,9 @@ public class HRestExecutor {
   /**
    * Create a function object that returns a stream for a given streamId.
    * The stream must have been uploaded via HHttpServlet.doRestPutStream
-   * @param sess BYPS session
    * @return Function
    */
-  private Function<String, BContentStream> makeProviderForUploadedStream(HSession sess) {
+  private Function<String, BContentStream> makeProviderForUploadedStream() {
     return streamId -> 
     {
       try {
@@ -430,8 +450,7 @@ public class HRestExecutor {
   /**
    * Read the request into an object of the given request class. 
    * The request body must be multipart/form-data and might contain streams.
-   * @param sess BYPS session
-   * @param request HTTP request
+   * @param context Context
    * @param requestClass Request class
    * @return Request object
    * @throws InstantiationException
@@ -444,7 +463,7 @@ public class HRestExecutor {
    * @throws NoSuchFieldException
    * @throws UnsupportedEncodingException 
    */
-  protected BMethodRequest buildMethodFromMultiPart(HSession sess, HttpServletRequest request, Class<?> requestClass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, FileUploadException, NoSuchFieldException, UnsupportedEncodingException {
+  protected BMethodRequest buildMethodFromMultiPart(Class<?> requestClass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, FileUploadException, NoSuchFieldException, UnsupportedEncodingException {
     if (log.isDebugEnabled()) log.debug("buildMethodForMultiPart(");
     
     // Create a factory for disk-based file items
@@ -462,12 +481,12 @@ public class HRestExecutor {
     
     // Collect the streams provided in the request and map them to "file==file[0], file[1], ...".
     // This map is used during deserialization to assign the stream objects referenced in the method parameters.
-    Map<String, BContentStream> streams = mapFieldNamesToStreams(sess, items);
+    Map<String, BContentStream> streams = mapFieldNamesToStreams(items);
     if (log.isDebugEnabled()) log.debug("streams={}", streams.keySet());
     Function<String, BContentStream> getStream = streamId -> streams.get(streamId);
     
     // Initialize deserialization
-    GsonBuilder builder = createDeserializationBuilder(sess, getStream);
+    GsonBuilder builder = createDeserializationBuilder(getStream);
     
     List<FileItem> formFields = items.stream().filter(item -> item.isFormField()).collect(Collectors.toList());
     String jsonData = "";
@@ -518,7 +537,13 @@ public class HRestExecutor {
     return brequest;
   }
   
-  private BMethodRequest buildMethodFromQueryParams(HSession sess, HttpServletRequest request, Class<?> requestClass) throws NoSuchFieldException {
+  /**
+   * Build method object for GET request.
+   * @param requestClass
+   * @return Method object
+   * @throws NoSuchFieldException
+   */
+  private BMethodRequest buildMethodFromQueryParams(Class<?> requestClass) throws NoSuchFieldException {
     StringBuilder sbuf = new StringBuilder();
     sbuf.append("{");
     boolean addComma = false;
@@ -535,7 +560,7 @@ public class HRestExecutor {
   
     // Deserialize the BMethodRequest
     // Initialize deserialization
-    GsonBuilder builder = createDeserializationBuilder(sess, streamId -> null);
+    GsonBuilder builder = createDeserializationBuilder(streamId -> null);
     Gson gson = builder.create();
     BMethodRequest brequest = (BMethodRequest)gson.fromJson(jsonData, requestClass);
 
@@ -604,11 +629,10 @@ public class HRestExecutor {
    * If field names are repeatedly used, the mapping is as 'file', 'file[0]', 'file[1]', ...
    * The value of InputStream objects in the message have to reference the streams by this names, see {@link StreamDeserializer}.
    * 
-   * @param sess
    * @param items
    * @return
    */
-  private Map<String, BContentStream> mapFieldNamesToStreams(HSession sess, List<FileItem> items) {
+  private Map<String, BContentStream> mapFieldNamesToStreams(List<FileItem> items) {
     Map<String, BContentStream> streams = new HashMap<>();
     
     // Map for field names and how often they are repeated.
@@ -640,6 +664,10 @@ public class HRestExecutor {
     });
     
     return streams;
+  }
+
+  public HSession getSession() {
+    return sess;
   }
 
 }

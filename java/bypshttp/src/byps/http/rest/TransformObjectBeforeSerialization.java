@@ -7,9 +7,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.sql.Date;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import byps.BContentStream;
@@ -17,7 +15,6 @@ import byps.BContentStreamWrapper;
 import byps.BTargetId;
 import byps.BTransport;
 import byps.BWire;
-import byps.http.HSession;
 import byps.rest.BStreamReference;
 
 /**
@@ -30,9 +27,9 @@ import byps.rest.BStreamReference;
 public class TransformObjectBeforeSerialization {
   
   /**
-   * BYPS Session used to provide streams for download.  
+   * Executor with BYPS Session used to provide streams for download.  
    */
-  private HSession sess;
+  private HRestExecutor executor;
   
   /**
    * Already visited objects.
@@ -58,11 +55,11 @@ public class TransformObjectBeforeSerialization {
 
   /**
    * Constructor.
-   * @param sess BYPS session
+   * @param executor HRestExecutor
    * @param skipFields Fields of this names do not require trafo
    */
-  public TransformObjectBeforeSerialization(HSession sess, Set<String> skipFields) {
-    this.sess = sess;
+  public TransformObjectBeforeSerialization(HRestExecutor executor, Set<String> skipFields) {
+    this.executor = executor;
     this.skipFields = skipFields;
   }
 
@@ -150,7 +147,7 @@ public class TransformObjectBeforeSerialization {
       bstream = new BContentStreamWrapper(istream);
     }
     
-    BTransport transport = sess.getServer().getTransport();
+    BTransport transport = executor.getSession().getServer().getTransport();
     BWire wire = transport.getWire();
 
     // Create a BTargetId to be able to manage the stream in HActiveMessages

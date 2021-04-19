@@ -349,8 +349,8 @@ public abstract class HHttpServlet extends HttpServlet implements
     }
     
     // Execute REST call.
-    HRestExecutor rest = createRestExecutor();
-    rest.doRest(sess, request, response);
+    HRestExecutor rest = createRestExecutor(sess, request, response);
+    rest.doRest();
   }
   
   /**
@@ -370,8 +370,8 @@ public abstract class HHttpServlet extends HttpServlet implements
       return;
     }
     
-    HRestExecutor rest = createRestExecutor();
-    rest.doRestUpload(sess, request, response);
+    HRestExecutor rest = createRestExecutor(sess, request, response);
+    rest.doRestUpload();
 
     if (log.isDebugEnabled()) log.debug(")doRestUpload");
   }
@@ -404,8 +404,8 @@ public abstract class HHttpServlet extends HttpServlet implements
    * Create helper object to execute REST calls.
    * @return {@link HRestExecutor}
    */
-  protected HRestExecutor createRestExecutor() {
-    return new HRestExecutor(getConfig(), getRestOperations(), getHtmlUploadMaxSize());
+  protected HRestExecutor createRestExecutor(HSession sess, HttpServletRequest request, HttpServletResponse response) {
+    return new HRestExecutor(getConfig(), getRestOperations(), getHtmlUploadMaxSize(), sess, request, response);
   }
   
   private void sendOutgoingStream(BContentStream is, HttpServletResponse response, HRangeRequest rangeRequest) throws IOException {
