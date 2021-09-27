@@ -27,7 +27,7 @@ namespace byps.test.api.remote
 			BRequest_RemoteListTypes_setInt3 obj = (BRequest_RemoteListTypes_setInt3)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bout.writeObj(obj.int3Value, false, byps.test.api.BSerializer_1746702954.instance);
 		}
 		
@@ -37,7 +37,7 @@ namespace byps.test.api.remote
 			BRequest_RemoteListTypes_setInt3 obj = (BRequest_RemoteListTypes_setInt3)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteListTypes_setInt3()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.int3Value = (IList<IList<int>>)bin.readObj(false, null);
 			
 			return obj;

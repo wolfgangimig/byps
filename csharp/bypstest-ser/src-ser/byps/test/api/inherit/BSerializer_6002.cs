@@ -28,7 +28,7 @@ namespace byps.test.api.inherit
 			Class2 obj = (Class2)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bbuf.putInt(obj.Int2);
 		}
 		
@@ -39,7 +39,7 @@ namespace byps.test.api.inherit
 			
 			base.read(obj, bin1, version);			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.Int2 = bbuf.getInt();
 			
 			return obj;

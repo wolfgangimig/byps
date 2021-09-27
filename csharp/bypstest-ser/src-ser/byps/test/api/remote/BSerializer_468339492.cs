@@ -27,9 +27,9 @@ namespace byps.test.api.remote
 			BRequest_RemoteStreams_putSharedStream obj = (BRequest_RemoteStreams_putSharedStream)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bbuf.putLong(obj.idValue);
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bout.writeObj(obj.streamValue, false, null);
 		}
 		
@@ -39,9 +39,9 @@ namespace byps.test.api.remote
 			BRequest_RemoteStreams_putSharedStream obj = (BRequest_RemoteStreams_putSharedStream)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteStreams_putSharedStream()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.idValue = bbuf.getLong();
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.streamValue = (System.IO.Stream)bin.readObj(false, null);
 			
 			return obj;

@@ -22,6 +22,7 @@ import byps.gen.js.GeneratorJS;
 import byps.gen.rest.GeneratorOpenAPI;
 import byps.gen.utils.AssignUniqueSerialVersionUID;
 import byps.gen.utils.CodePrinter;
+import byps.log.LogConfigurator;
 
 public class Main {
 
@@ -47,6 +48,9 @@ public class Main {
     
     System.out.println("bypsgen version=" + getGeneratorVersion());
     System.out.println("bypsgen logfile=" + new File("bypsgen.log").getAbsolutePath());
+    
+    Arrays.asList(System.getProperty("java.class.path").split(System.getProperty("path.separator")))
+      .forEach(c -> System.out.println("bypsgen classpath+=" + c));
     
     log.info("bypsgen version={}", getGeneratorVersion());
     

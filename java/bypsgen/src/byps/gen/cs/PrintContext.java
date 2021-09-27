@@ -354,6 +354,10 @@ public class PrintContext extends PrintContextBase {
 		if (((PropertiesCS)props).isUppercaseFirstLetter()) {
 			name = Utils.firstCharToUpper(name);
 		}
+		
+		// BYPS-56: Elementvariablen benötigen Escape-Zeichen, wenn sie Schlüsselwort enthalten.
+		name = makeValidParamName(name);
+		
 		return name;
 	}
 	

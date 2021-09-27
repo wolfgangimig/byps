@@ -244,15 +244,16 @@ class GenApiClass {
 		boolean first = true;
 		sbuf.append("new ").append(sinfo.toString(serInfo.pack)).append("(");
 		for (MemberInfo minfo : sinfo.members) {
+		  Object value = params.get(minfo.name);
 			if (minfo.isStatic) continue;
 			if (!first) sbuf.append(", "); else first = false; 
 			if (minfo.type.dims.length() != 0) {
-				sbuf.append(makeNewArrayInstance(minfo.type, (BJsonObject)params.get(minfo.name)));
-			} else if (minfo.type.isPointerType()) {
-				sbuf.append(makeNewInstance(minfo.type, (BJsonObject)params.get(minfo.name)));
+				sbuf.append(makeNewArrayInstance(minfo.type, (BJsonObject)value));
+			} else if (value instanceof BJsonObject) {
+				sbuf.append(makeNewInstance(minfo.type, (BJsonObject)value));
 			}
 			else {
-				sbuf.append(printConstValue(minfo.type, params.get(minfo.name)));
+				sbuf.append(printConstValue(minfo.type, value));
 			}
 		}
 		sbuf.append(")");

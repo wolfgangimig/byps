@@ -1,5 +1,9 @@
 BYPS Version History
 
+9.03
+
+- BYPS-56: Escape C# member variable if it is named by a keyword (e.g. "namespace").  
+
 9.00
 
 - BYPS-50: Provide REST calls for BYPS APIs and generate OpenAPI documentation. 

@@ -27,7 +27,7 @@ namespace byps.test.api.remote
 			BRequest_RemoteArrayTypes4dim_setString obj = (BRequest_RemoteArrayTypes4dim_setString)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bout.writeObj(obj.vValue, true, byps.test.api.BSerializer_588723219.instance);
 		}
 		
@@ -37,7 +37,7 @@ namespace byps.test.api.remote
 			BRequest_RemoteArrayTypes4dim_setString obj = (BRequest_RemoteArrayTypes4dim_setString)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteArrayTypes4dim_setString()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.vValue = (String[,,,])bin.readObj(false, byps.test.api.BSerializer_588723219.instance);
 			
 			return obj;

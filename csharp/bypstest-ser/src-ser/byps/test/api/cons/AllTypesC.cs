@@ -77,7 +77,7 @@ namespace byps.test.api.cons
 
 		public readonly static String[,,,] ArrStrings4 = new String[,,,]{{{{"s1","s2"}}}};
 
-		public readonly static AllTypesZ[,] ArrALL = new AllTypesZ[,]{{new AllTypesZ(false, (byte)0, '\0', (short)0, 0, 0L, 0.0f, 0.0, "", null, null, null, null, null)},{new AllTypesZ(true, (byte)1, 'A', (short)2, 3, 4L, 5.0f, 6.0, "777", new HebrewZ("\u05d0"), new byte[]{(byte)1,(byte)2,(byte)3}, new int[]{-4,-5}, new String[]{"a","b"}, new HebrewZ[]{new HebrewZ("\u05d0"),new HebrewZ("\u05d1")})}};
+		public readonly static AllTypesZ[,] ArrALL = new AllTypesZ[,]{{new AllTypesZ(false, (byte)0, '\0', (short)0, 0, 0L, 0.0f, 0.0, "", , null, null, null, null)},{new AllTypesZ(true, (byte)1, 'A', (short)2, 3, 4L, 5.0f, 6.0, "777", new HebrewZ("\u05d0"), new byte[]{(byte)1,(byte)2,(byte)3}, new int[]{-4,-5}, new String[]{"a","b"}, new HebrewZ[]{new HebrewZ("\u05d0"),new HebrewZ("\u05d1")})}};
 
 		#endregion
 		

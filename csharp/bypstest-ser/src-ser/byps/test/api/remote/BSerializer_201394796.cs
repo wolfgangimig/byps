@@ -27,7 +27,7 @@ namespace byps.test.api.remote
 			BRequest_RemoteArrayTypes1dim_setDate obj = (BRequest_RemoteArrayTypes1dim_setDate)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bout.writeObj(obj.vValue, false, byps.test.api.BSerializer_1406664368.instance);
 		}
 		
@@ -37,7 +37,7 @@ namespace byps.test.api.remote
 			BRequest_RemoteArrayTypes1dim_setDate obj = (BRequest_RemoteArrayTypes1dim_setDate)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteArrayTypes1dim_setDate()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.vValue = (DateTime[])bin.readObj(false, byps.test.api.BSerializer_1406664368.instance);
 			
 			return obj;

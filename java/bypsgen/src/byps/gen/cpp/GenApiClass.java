@@ -245,10 +245,10 @@ class GenApiClass {
 			else if (tinfo.qname.equals("float")) {
 				mpr = mpr.print(path).print(value + "f");
 			}
-			else if (tinfo.isPointerType() && (value instanceof BJsonObject)) {
+			else if (value instanceof BJsonObject) {
 				mpr = makeNewInstance(mpr, path, tinfo, (BJsonObject)value);
 			}
-			else if (value != null) {
+			else if (value instanceof String) {
 				BJsonObject js = BJsonObject.fromString((String)value);
 				mpr = makeNewInstance(mpr, path, tinfo, js);
 			}
