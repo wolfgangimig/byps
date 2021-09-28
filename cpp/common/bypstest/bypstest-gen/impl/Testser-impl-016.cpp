@@ -318,6 +318,8 @@ byps::test::api::BRegistry_Testser::BRegistry_Testser()
 	registerClass(typeid(byps::test::api::cons::AllTypesC), byps::test::api::BSerializer_930294276, 930294276);
 	registerClass(typeid(byps::test::api::cons::AllTypesZ), byps::test::api::BSerializer_142458, 142458);
 	registerClass(typeid(::byps::BArray2< byps::test::api::cons::PAllTypesZ > ), byps::test::api::BSerializer_81775365, 81775365);
+	registerClass(typeid(byps::test::api::cons::ConfigResultOption), byps::test::api::BSerializer_1292137034, 1292137034);
+	registerClass(typeid(byps::test::api::cons::ConfigResultOptionC), byps::test::api::BSerializer_114832566, 114832566);
 	registerClass(typeid(byps::test::api::cons::HebrewC), byps::test::api::BSerializer_1770673942, 1770673942);
 	registerClass(typeid(byps::test::api::cons::HebrewZ), byps::test::api::BSerializer_1518668429, 1518668429);
 	registerClass(typeid(::byps::BArray1< byps::test::api::cons::PHebrewZ > ), byps::test::api::BSerializer_92445340, 92445340);

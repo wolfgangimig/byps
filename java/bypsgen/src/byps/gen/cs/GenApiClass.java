@@ -180,9 +180,13 @@ class GenApiClass {
 		else if (tinfo.qname.equals("double")) {
 			sbuf.append(value);
 		}
-		else if (tinfo.qname.equals("float")) {
-			sbuf.append(value).append("f");
-		}
+    else if (tinfo.qname.equals("float")) {
+      sbuf.append(value).append("f");
+    }
+    else if (tinfo.isEnum) {
+      // BYPS-57: Behandlung von Enum-Werten in Konstantenobjekten. 
+      sbuf.append(tinfo.name).append(".").append(value);
+    }
 		else if (tinfo.isPointerType() && (value instanceof BJsonObject)) {
 			sbuf.append(makeNewInstance(tinfo, (BJsonObject)value));
 		}
@@ -251,6 +255,8 @@ class GenApiClass {
 				sbuf.append(makeNewArrayInstance(minfo.type, (BJsonObject)value));
 			} else if (value instanceof BJsonObject) {
 				sbuf.append(makeNewInstance(minfo.type, (BJsonObject)value));
+      } else if (value == null) {
+        sbuf.append("null");
 			}
 			else {
 				sbuf.append(printConstValue(minfo.type, value));

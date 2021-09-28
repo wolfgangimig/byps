@@ -11,7 +11,7 @@ public class SordC implements Serializable {
 
   private static final long serialVersionUID = 632707056;
 
-  private static long mbAllMembers = 2196631268005773311L;
+  private static final long mbAllMembers = 2196631268005773311L;
   
   public static final SordZ mbAll = new SordZ(mbAllMembers);
 

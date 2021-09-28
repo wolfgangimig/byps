@@ -17,13 +17,13 @@ namespace byps.test.api.remote
 		
 		public override int getRemoteId() { return 1983670399; }
 		
-		// checkpoint byps.gen.cs.GenApiClass:480
+		// checkpoint byps.gen.cs.GenApiClass:485
 		public override void setSession(Object __byps__sess) {
 			sessValue = (byps.test.api.auth.SessionInfo)__byps__sess;
 		}
 		
 		public override void execute(BRemote __byps__remote, BAsyncResultIF<Object> __byps__asyncResult) {
-			// checkpoint byps.gen.cs.GenApiClass:414
+			// checkpoint byps.gen.cs.GenApiClass:419
 			try {
 				RemoteWithAuthentication __byps__remoteT = (RemoteWithAuthentication)__byps__remote;				
 				BAsyncResultSendMethod<Object> __byps__outerResult = new BAsyncResultSendMethod<Object>(__byps__asyncResult, new byps.test.api.BResult_19());				

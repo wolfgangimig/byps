@@ -1,5 +1,10 @@
 BYPS Version History
 
+9.04
+
+- BYPS-57: Enum member used in a class that itself is used as a constant object caused NPE in generator.
+  C++ generator printed long values with invalid suffix. 
+
 9.03
 
 - BYPS-56: Escape C# member variable if it is named by a keyword (e.g. "namespace").  

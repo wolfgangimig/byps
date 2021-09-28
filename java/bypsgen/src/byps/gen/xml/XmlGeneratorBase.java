@@ -278,6 +278,11 @@ public abstract class XmlGeneratorBase extends AbstractProcessor {
     else if (clazz == String.class) {
       sbuf.append("\"").append(value).append("\"");
     }
+    else if (clazz.isEnum()) {
+      // BYPS-57: fix NPE in generator for enum constants
+      String svalue = value != null ? value.toString() : clazz.getEnumConstants()[0].toString();
+      sbuf.append("\"").append(svalue).append("\"");
+    }
     else if (clazz.getName().startsWith("java.lang.")) {
       sbuf.append(value);
     }

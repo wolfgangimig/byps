@@ -8,9 +8,9 @@ namespace byps.test.api
 	public class BApiDescriptor_Testser { 
 	
 		/**
-		 * API serialisation version: 795.0.0.0
+		 * API serialisation version: 796.0.0.0
 		 */
-		public const long VERSION = 79500000000000000L;
+		public const long VERSION = 79600000000000000L;
 		
 		public readonly static BApiDescriptor instance = new BApiDescriptor(
 			"Testser",

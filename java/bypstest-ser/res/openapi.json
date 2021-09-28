@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Testser",
-    "version": "795.0.0.0"
+    "version": "796.0.0.0"
   },
   "servers": [
     {
@@ -9276,6 +9276,20 @@
           "$ref": "#/components/schemas/Array3OfString"
         }
       },
+      "ConfigResultOptionC": {
+        "type": "object",
+        "properties": {
+          "DEFAULT_1": {
+            "$ref": "#/components/schemas/ConfigResultOption"
+          },
+          "DEFAULT_2": {
+            "$ref": "#/components/schemas/ConfigResultOption"
+          },
+          "DEFAULT_3": {
+            "$ref": "#/components/schemas/ConfigResultOption"
+          }
+        }
+      },
       "ArrayOfPoint2D": {
         "type": "array",
         "items": {
@@ -9938,6 +9952,17 @@
           "exception": {
             "type": "string",
             "description": "Error message"
+          }
+        }
+      },
+      "ConfigResultOption": {
+        "type": "object",
+        "properties": {
+          "groupingType": {
+            "$ref": "#/components/schemas/GroupingType"
+          },
+          "string1": {
+            "type": "string"
           }
         }
       },
@@ -11549,6 +11574,20 @@
         "properties": {
           "byte1": {
             "$ref": "#/components/schemas/HashSetOfByte"
+          }
+        }
+      },
+      "GroupingType": {
+        "type": "object",
+        "properties": {
+          "LEGACY": {
+            "$ref": "#/components/schemas/GroupingType"
+          },
+          "BY_KEY": {
+            "$ref": "#/components/schemas/GroupingType"
+          },
+          "BY_GROUP": {
+            "$ref": "#/components/schemas/GroupingType"
           }
         }
       },

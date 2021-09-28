@@ -30,9 +30,9 @@ byps.test.api.cons = byps.test.api.cons || {};
 */
 byps.test.api.BApiDescriptor_Testser = {
 	/**
-	 * API serialisation version: 795.0.0.0
+	 * API serialisation version: 796.0.0.0
 	 */
-	VERSION : "795.0.0.0",
+	VERSION : "796.0.0.0",
 	
 	/**
 	 * Internal used API Desciptor.
@@ -41,7 +41,7 @@ byps.test.api.BApiDescriptor_Testser = {
 		return new byps.BApiDescriptor(
 			"Testser",
 			"byps.test.api",
-			"795.0.0.0",
+			"796.0.0.0",
 			false, // uniqueObjects
 			new byps.test.api.BRegistry_Testser()
 		);
@@ -174,6 +174,32 @@ byps.test.api.cons.AllTypesZ = function(bool1, byte1, char1, short1, int1, long1
 
 
 /**
+ * @since 796.0.0.0
+*/
+byps.test.api.cons.ConfigResultOption = function(groupingType, string1) {
+	this._typeId = 1292137034;
+	this.groupingType = groupingType || null;
+	this.string1 = string1 || "";
+};
+
+
+/**
+ * @since 796.0.0.0
+*/
+byps.test.api.cons.ConfigResultOptionC = function() {
+	this._typeId = 114832566;
+};
+
+
+/**
+ * @since 796.0.0.0
+*/
+byps.test.api.cons.GroupingType = function() {
+	this._typeId = 1697186498;
+};
+
+
+/**
 */
 byps.test.api.cons.HebrewC = function() {
 	this._typeId = 1770673942;
@@ -192,9 +218,8 @@ byps.test.api.cons.HebrewZ = function(core) {
  * @author wolfgang
  * @since 795.0.0.0
 */
-byps.test.api.cons.SordC = function(mbAllMembers) {
+byps.test.api.cons.SordC = function() {
 	this._typeId = 632707056;
-	this.mbAllMembers = mbAllMembers || '0.';
 };
 
 
@@ -600,6 +625,18 @@ byps.test.api.cons.AllTypesC_Type = function() {
 	this.arrALL = [[new byps.test.api.cons.AllTypesZ(false, 0, '\u0000', 0, 0, "0..", 0.0, 0.0, "", null, null, null, null, null)],[new byps.test.api.cons.AllTypesZ(true, 1, 'A', 2, 3, "4..", 5.0, 6.0, "777", new byps.test.api.cons.HebrewZ("\u05d0"), "AQID", [-4,-5], ["a","b"], [new byps.test.api.cons.HebrewZ("\u05d0"),new byps.test.api.cons.HebrewZ("\u05d1")])]];
 };
 
+byps.test.api.cons.ConfigResultOptionC_Type = function() {
+	this.DEFAULT_1 = new byps.test.api.cons.ConfigResultOption(byps.test.api.cons.GroupingType.BY_KEY, "");
+	this.DEFAULT_2 = new byps.test.api.cons.ConfigResultOption(byps.test.api.cons.GroupingType.BY_KEY, "default2");
+	this.DEFAULT_3 = new byps.test.api.cons.ConfigResultOption(byps.test.api.cons.GroupingType.LEGACY, "default3");
+};
+
+byps.test.api.cons.GroupingType = {
+	LEGACY : 0,
+	BY_KEY : 1,
+	BY_GROUP : 2
+};
+
 byps.test.api.cons.HebrewC_Type = function() {
 	this.aleph = "\u05d0";
 	this.beth = "\u05d1";
@@ -607,8 +644,8 @@ byps.test.api.cons.HebrewC_Type = function() {
 	this.BETH = new byps.test.api.cons.HebrewZ("\u05d1");
 };
 
-byps.test.api.cons.SordCC_Type = function() {
-	// mbAllMembers // long
+byps.test.api.cons.SordC_Type = function() {
+	this.mbAllMembers = "2196631268005773311..";
 	this.mbAll = new byps.test.api.cons.SordZ("2196631268005773311..");
 };
 
@@ -639,6 +676,11 @@ byps.test.api.enu.MyEncoding = {
 byps.test.api.cons.AllTypesC = new byps.test.api.cons.AllTypesC_Type();
 
 /**
+ * @since 796.0.0.0
+*/
+byps.test.api.cons.ConfigResultOptionC = new byps.test.api.cons.ConfigResultOptionC_Type();
+
+/**
 */
 byps.test.api.cons.HebrewC = new byps.test.api.cons.HebrewC_Type();
 
@@ -646,7 +688,7 @@ byps.test.api.cons.HebrewC = new byps.test.api.cons.HebrewC_Type();
  * @author wolfgang
  * @since 795.0.0.0
 */
-byps.test.api.cons.SordCC = new byps.test.api.cons.SordCC_Type();
+byps.test.api.cons.SordC = new byps.test.api.cons.SordC_Type();
 
 
 /**
@@ -7389,6 +7431,35 @@ byps.test.api.BRegistry_Testser = function() {
 		81775365 : new byps.BSerializerArray(
 			142458, // Element type: byps.test.api.cons.AllTypesZ
 			2
+		),
+		
+		// byps.test.api.cons.ConfigResultOption
+		1292137034 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:146
+			// names of persistent elements
+			{
+				"groupingType":1697186498, // byps.test.api.cons.GroupingType
+				"string1":10 // java.lang.String
+			},
+			// checkpoint byps.gen.js.GenRegistry:146
+			null,
+			// inlineInstance
+			false
+		),
+		
+		// byps.test.api.cons.ConfigResultOptionC
+		114832566 : new byps.BSerializer(
+			// checkpoint byps.gen.js.GenRegistry:146
+			// names of persistent elements
+			{
+				"DEFAULT_1":1292137034, // byps.test.api.cons.ConfigResultOption
+				"DEFAULT_2":1292137034, // byps.test.api.cons.ConfigResultOption
+				"DEFAULT_3":1292137034 // byps.test.api.cons.ConfigResultOption
+			},
+			// checkpoint byps.gen.js.GenRegistry:146
+			null,
+			// inlineInstance
+			false
 		),
 		
 		// byps.test.api.cons.HebrewC
