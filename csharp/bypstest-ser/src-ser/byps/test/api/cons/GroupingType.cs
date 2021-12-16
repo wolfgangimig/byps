@@ -10,6 +10,9 @@ using byps;
 namespace byps.test.api.cons
 {
 	
+	/// <summary>
+	/// Zum Testen von BYPS-57.
+	/// </summary>
 	public enum GroupingType
 	{
 		LEGACY, // ordinal=0

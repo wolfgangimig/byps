@@ -9288,7 +9288,8 @@
           "DEFAULT_3": {
             "$ref": "#/components/schemas/ConfigResultOption"
           }
-        }
+        },
+        "description": "Zum Prüfen von BYPS-57."
       },
       "ArrayOfPoint2D": {
         "type": "array",
@@ -9964,7 +9965,8 @@
           "string1": {
             "type": "string"
           }
-        }
+        },
+        "description": "Zum Prüfen von BYPS-57."
       },
       "ArrayTypes1dim": {
         "type": "object",
@@ -11589,7 +11591,8 @@
           "BY_GROUP": {
             "$ref": "#/components/schemas/GroupingType"
           }
-        }
+        },
+        "description": "Zum Testen von BYPS-57."
       },
       "BRequest_RemoteSetTypes_setByte2": {
         "type": "object",

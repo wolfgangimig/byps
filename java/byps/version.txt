@@ -1,5 +1,9 @@
 BYPS Version History
 
+9.05
+
+- BYPS-58: Avoid multiple declarations of mbAllMembers in constant classes.
+
 9.04
 
 - BYPS-57: Enum member used in a class that itself is used as a constant object caused NPE in generator.

@@ -10,6 +10,9 @@ using byps;
 namespace byps.test.api.cons
 {
 	
+	/// <summary>
+	/// Zum Prüfen von BYPS-57.
+	/// </summary>
 	public class ConfigResultOptionC : BValueClass, BSerializable
 	{
 	

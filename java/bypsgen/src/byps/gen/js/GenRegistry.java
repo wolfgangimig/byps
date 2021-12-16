@@ -1,7 +1,8 @@
 package byps.gen.js;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -133,9 +134,9 @@ public class GenRegistry {
 	   return false;
 	}
 	
-	private void collectMembersInclusiveInheritedMembers(SerialInfo serInfo, ArrayList<MemberInfo> allMembers) {
+	private void collectMembersInclusiveInheritedMembers(SerialInfo serInfo, Map<String, MemberInfo> allMembers) {
 		if (serInfo != null) {
-			allMembers.addAll(serInfo.members);
+			serInfo.members.forEach(m -> allMembers.put(m.name, m));
 			collectMembersInclusiveInheritedMembers(serInfo.baseInfo, allMembers);
 		}
 	}
@@ -145,11 +146,11 @@ public class GenRegistry {
 		
 		pr.checkpoint();
 		
-		ArrayList<MemberInfo> allMembers = new ArrayList<MemberInfo>();
+		Map<String, MemberInfo> allMembers = new HashMap<>();
 		collectMembersInclusiveInheritedMembers(serInfo, allMembers);
 
-		for (int i = 0; i < allMembers.size(); i++) {
-			MemberInfo minfo = allMembers.get(i);
+		int nbOfMembers = allMembers.size(); 
+		for (MemberInfo minfo : allMembers.values()) {
 			
 			if (minfo.isTransient) continue;
       //if (minfo.isStatic) continue; 
@@ -167,7 +168,7 @@ public class GenRegistry {
 			}
 			
 			CodePrinter mpr = pr.print("\"").print(minfo.name).print("\":").print(minfo.type.typeId);
-			if (i != allMembers.size()-1) mpr = mpr.print(",");
+			if (--nbOfMembers != 0) mpr = mpr.print(",");
 			mpr.print(" // ").print(minfo.type.toString());
 			mpr.println();
 			
