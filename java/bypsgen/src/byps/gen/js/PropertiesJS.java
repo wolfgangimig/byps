@@ -9,6 +9,7 @@ public class PropertiesJS extends GeneratorProperties {
 	public final static String OPT_PREFIX = "-genjs.";
 	public final static String DEST_FILE = "-genjs.dest";
   public static final String SUPPRESS_CONST_CLASSES = "-genjs.suppress-const-classes";
+  public static final String SUPPRESS_INIT_CONSTRUCTORS = "-genjs.suppress-init-constructors"; 
 
 	public PropertiesJS(GeneratorProperties defaultProps) {
 		super(defaultProps);
@@ -17,6 +18,10 @@ public class PropertiesJS extends GeneratorProperties {
   public int addArgs(String[] args, int idx) throws GeneratorException {
     String key = args[idx];
     if (key.equals(SUPPRESS_CONST_CLASSES)) {
+      put(key, "true");
+      idx++;
+    }
+    else if (key.equals(SUPPRESS_INIT_CONSTRUCTORS)) {
       put(key, "true");
       idx++;
     }

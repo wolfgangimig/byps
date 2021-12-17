@@ -21,6 +21,7 @@ public class DebugArgs {
   "-gencs.dir-ser", "../../csharp/bypstest-ser/src-ser", "-gencs.upfirst", "true",
 
   "-genjs.dest", "../bypstest-srv/WebContent/testser.js",
+  //"-genjs.suppress-init-constructors",
 
   "-gencpp.dir-api", "../../cpp/common/bypstest/bypstest-gen/api", "-gencpp.dir-impl", "../../cpp/common/bypstest/bypstest-gen/impl",
   "-gencs.dot-net-version", "4.5",

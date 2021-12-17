@@ -720,13 +720,13 @@ byps.test.api.srvr.BSkeleton_ClientIF.prototype.toJSON = function (key) {
 	return { _typeId : 2049072174, targetId : this.transport.targetId.toString() };
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BSkeleton_ClientIF.prototype.incrementInt = function(a) /* returns int , throws BException, InterruptedException*/  {
 	byps.throwUNSUPPORTED("");
 };
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_incrementInt = function(a, __byps__asyncResult){
@@ -738,13 +738,13 @@ byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_incrementInt = function(a,
 	};
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BSkeleton_ClientIF.prototype.getStreams = function(ctrl) /* returns java.util.List<java.io.InputStream> , throws BException, InterruptedException*/  {
 	byps.throwUNSUPPORTED("");
 };
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_getStreams = function(ctrl, __byps__asyncResult){
@@ -756,13 +756,13 @@ byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_getStreams = function(ctrl
 	};
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BSkeleton_ClientIF.prototype.putStreams = function(strm, ctrl) /* returns void , throws BException, InterruptedException*/  {
 	byps.throwUNSUPPORTED("");
 };
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_putStreams = function(strm, ctrl, __byps__asyncResult){
@@ -774,13 +774,13 @@ byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_putStreams = function(strm
 	};
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BSkeleton_ClientIF.prototype.sendChat = function(cs) /* returns byps.test.api.srvr.ChatStructure , throws BException, InterruptedException*/  {
 	byps.throwUNSUPPORTED("");
 };
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BSkeleton_ClientIF.prototype.async_sendChat = function(cs, __byps__asyncResult){
@@ -810,7 +810,7 @@ byps.test.api.inherit.BStub_BioFruitService = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.inherit.BStub_BioFruitService.prototype.squeeze = function(__byps__asyncResult) {
@@ -820,7 +820,7 @@ byps.test.api.inherit.BStub_BioFruitService.prototype.squeeze = function(__byps_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.inherit.BStub_BioFruitService.prototype.grow = function(__byps__asyncResult) {
@@ -830,7 +830,7 @@ byps.test.api.inherit.BStub_BioFruitService.prototype.grow = function(__byps__as
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * @since 1
 */
@@ -852,7 +852,7 @@ byps.test.api.inherit.BStub_BioLemonService = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.inherit.BStub_BioLemonService.prototype.squeeze = function(__byps__asyncResult) {
@@ -862,7 +862,7 @@ byps.test.api.inherit.BStub_BioLemonService.prototype.squeeze = function(__byps_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.inherit.BStub_BioLemonService.prototype.grow = function(__byps__asyncResult) {
@@ -872,7 +872,7 @@ byps.test.api.inherit.BStub_BioLemonService.prototype.grow = function(__byps__as
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.inherit.BStub_BioLemonService.prototype.pick = function(sess, fromTree, __byps__asyncResult) {
@@ -882,7 +882,7 @@ byps.test.api.inherit.BStub_BioLemonService.prototype.pick = function(sess, from
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * @since 1
 */
@@ -893,7 +893,7 @@ byps.test.api.inherit.BStub_BioLemonService.prototype.certify = function(param, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.inherit.BStub_BioLemonService.prototype.useParing = function(__byps__asyncResult) {
@@ -914,7 +914,7 @@ byps.test.api.inherit.BStub_FruitService = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.inherit.BStub_FruitService.prototype.squeeze = function(__byps__asyncResult) {
@@ -924,7 +924,7 @@ byps.test.api.inherit.BStub_FruitService.prototype.squeeze = function(__byps__as
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.inherit.BStub_FruitService.prototype.grow = function(__byps__asyncResult) {
@@ -945,7 +945,7 @@ byps.test.api.inherit.BStub_LemonService = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.inherit.BStub_LemonService.prototype.squeeze = function(__byps__asyncResult) {
@@ -955,7 +955,7 @@ byps.test.api.inherit.BStub_LemonService.prototype.squeeze = function(__byps__as
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.inherit.BStub_LemonService.prototype.grow = function(__byps__asyncResult) {
@@ -965,7 +965,7 @@ byps.test.api.inherit.BStub_LemonService.prototype.grow = function(__byps__async
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.inherit.BStub_LemonService.prototype.pick = function(sess, fromTree, __byps__asyncResult) {
@@ -986,7 +986,7 @@ byps.test.api.inherit.BStub_PlantService = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.inherit.BStub_PlantService.prototype.grow = function(__byps__asyncResult) {
@@ -1007,7 +1007,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * @consumes multipart/form-data
  * @param ci ClientInfo object with language, country and ticket
@@ -1054,7 +1054,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setBool = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setByte = function(v, __byps__asyncResult) {
@@ -1064,7 +1064,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setByte = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setChar = function(v, __byps__asyncResult) {
@@ -1074,7 +1074,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setChar = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setShort = function(v, __byps__asyncResult) {
@@ -1084,7 +1084,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setShort = function(v,
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setInt = function(v, __byps__asyncResult) {
@@ -1094,7 +1094,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setInt = function(v, _
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setLong = function(v, __byps__asyncResult) {
@@ -1104,7 +1104,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setLong = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setFloat = function(v, __byps__asyncResult) {
@@ -1114,7 +1114,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setFloat = function(v,
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setDouble = function(v, __byps__asyncResult) {
@@ -1124,7 +1124,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setDouble = function(v
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setString = function(v, __byps__asyncResult) {
@@ -1134,7 +1134,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setString = function(v
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setPrimitiveTypes = function(v, __byps__asyncResult) {
@@ -1144,7 +1144,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setPrimitiveTypes = fu
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setObject = function(v, __byps__asyncResult) {
@@ -1154,7 +1154,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setObject = function(v
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setDate = function(v, __byps__asyncResult) {
@@ -1164,7 +1164,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.setDate = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getBool = function(__byps__asyncResult) {
@@ -1174,7 +1174,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getBool = function(__b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getByte = function(__byps__asyncResult) {
@@ -1184,7 +1184,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getByte = function(__b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getChar = function(__byps__asyncResult) {
@@ -1194,7 +1194,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getChar = function(__b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getShort = function(__byps__asyncResult) {
@@ -1204,7 +1204,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getShort = function(__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getInt = function(__byps__asyncResult) {
@@ -1214,7 +1214,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getInt = function(__by
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getLong = function(__byps__asyncResult) {
@@ -1224,7 +1224,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getLong = function(__b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getFloat = function(__byps__asyncResult) {
@@ -1234,7 +1234,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getFloat = function(__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getDouble = function(__byps__asyncResult) {
@@ -1244,7 +1244,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getDouble = function(_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getString = function(__byps__asyncResult) {
@@ -1254,7 +1254,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getString = function(_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getPrimitiveTypes = function(__byps__asyncResult) {
@@ -1264,7 +1264,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getPrimitiveTypes = fu
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getObject = function(__byps__asyncResult) {
@@ -1274,7 +1274,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getObject = function(_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes1dim.prototype.getDate = function(__byps__asyncResult) {
@@ -1294,7 +1294,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes23 = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysInt = function(arr2, arr3, arr4, __byps__asyncResult) {
@@ -1304,7 +1304,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysInt = function
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysString = function(arr2, arr3, arr4, __byps__asyncResult) {
@@ -1314,7 +1314,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysString = funct
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysClass = function(arr2, arr3, arr4, __byps__asyncResult) {
@@ -1324,7 +1324,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysClass = functi
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysObject = function(arr2, arr3, arr4, __byps__asyncResult) {
@@ -1334,7 +1334,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysObject = funct
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes23.prototype.sendArraysInline = function(arr2, arr3, arr4, __byps__asyncResult) {
@@ -1355,7 +1355,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setBool = function(v, __byps__asyncResult) {
@@ -1365,7 +1365,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setBool = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setByte = function(v, __byps__asyncResult) {
@@ -1375,7 +1375,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setByte = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setChar = function(v, __byps__asyncResult) {
@@ -1385,7 +1385,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setChar = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setShort = function(v, __byps__asyncResult) {
@@ -1395,7 +1395,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setShort = function(v,
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setInt = function(v, __byps__asyncResult) {
@@ -1405,7 +1405,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setInt = function(v, _
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setLong = function(v, __byps__asyncResult) {
@@ -1415,7 +1415,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setLong = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setFloat = function(v, __byps__asyncResult) {
@@ -1425,7 +1425,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setFloat = function(v,
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setDouble = function(v, __byps__asyncResult) {
@@ -1435,7 +1435,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setDouble = function(v
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setString = function(v, __byps__asyncResult) {
@@ -1445,7 +1445,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setString = function(v
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setPrimitiveTypes = function(v, __byps__asyncResult) {
@@ -1455,7 +1455,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setPrimitiveTypes = fu
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setObject = function(v, __byps__asyncResult) {
@@ -1465,7 +1465,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setObject = function(v
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setDate = function(v, __byps__asyncResult) {
@@ -1475,7 +1475,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.setDate = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getBool = function(__byps__asyncResult) {
@@ -1485,7 +1485,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getBool = function(__b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getByte = function(__byps__asyncResult) {
@@ -1495,7 +1495,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getByte = function(__b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getChar = function(__byps__asyncResult) {
@@ -1505,7 +1505,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getChar = function(__b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getShort = function(__byps__asyncResult) {
@@ -1515,7 +1515,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getShort = function(__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getInt = function(__byps__asyncResult) {
@@ -1525,7 +1525,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getInt = function(__by
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getLong = function(__byps__asyncResult) {
@@ -1535,7 +1535,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getLong = function(__b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getFloat = function(__byps__asyncResult) {
@@ -1545,7 +1545,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getFloat = function(__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getDouble = function(__byps__asyncResult) {
@@ -1555,7 +1555,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getDouble = function(_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getString = function(__byps__asyncResult) {
@@ -1565,7 +1565,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getString = function(_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getPrimitiveTypes = function(__byps__asyncResult) {
@@ -1575,7 +1575,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getPrimitiveTypes = fu
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getObject = function(__byps__asyncResult) {
@@ -1585,7 +1585,7 @@ byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getObject = function(_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteArrayTypes4dim.prototype.getDate = function(__byps__asyncResult) {
@@ -1606,7 +1606,7 @@ byps.test.api.remote.BStub_RemoteConstants = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteConstants.prototype.compare_HebrewC = function(ALEPH, BETH, __byps__asyncResult) {
@@ -1616,7 +1616,7 @@ byps.test.api.remote.BStub_RemoteConstants.prototype.compare_HebrewC = function(
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteConstants.prototype.compare_AllTypesC = function(bool1s, bool2s, char1s, stringNull, char2s, short1s, int1s, long1s, float1s, double1s, string1s, ALL, arrInt, arrInt4, arrStrings, arrStrings4, arrAll, __byps__asyncResult) {
@@ -1636,7 +1636,7 @@ byps.test.api.remote.BStub_RemoteEnums = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteEnums.prototype.getPlanet = function(__byps__asyncResult) {
@@ -1646,7 +1646,7 @@ byps.test.api.remote.BStub_RemoteEnums.prototype.getPlanet = function(__byps__as
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteEnums.prototype.setPlanet = function(planet, __byps__asyncResult) {
@@ -1666,7 +1666,7 @@ byps.test.api.remote.BStub_RemoteInlineInstance = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setActor = function(act, __byps__asyncResult) {
@@ -1676,7 +1676,7 @@ byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setActor = function(ac
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getActor = function(__byps__asyncResult) {
@@ -1686,7 +1686,7 @@ byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getActor = function(__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DArray1dim = function(pointArray, __byps__asyncResult) {
@@ -1696,7 +1696,7 @@ byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DArray1dim = 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DArray1dim = function(__byps__asyncResult) {
@@ -1706,7 +1706,7 @@ byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DArray1dim = 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DArray4dim = function(pointArray, __byps__asyncResult) {
@@ -1716,7 +1716,7 @@ byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DArray4dim = 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DArray4dim = function(__byps__asyncResult) {
@@ -1726,7 +1726,7 @@ byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DArray4dim = 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DList = function(pointList, __byps__asyncResult) {
@@ -1736,7 +1736,7 @@ byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DList = funct
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DList = function(__byps__asyncResult) {
@@ -1746,7 +1746,7 @@ byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DList = funct
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DListList = function(pointListList, __byps__asyncResult) {
@@ -1756,7 +1756,7 @@ byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DListList = f
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DListList = function(__byps__asyncResult) {
@@ -1766,7 +1766,7 @@ byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DListList = f
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DMap = function(pointMap, __byps__asyncResult) {
@@ -1776,7 +1776,7 @@ byps.test.api.remote.BStub_RemoteInlineInstance.prototype.setPoint2DMap = functi
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteInlineInstance.prototype.getPoint2DMap = function(__byps__asyncResult) {
@@ -1796,7 +1796,7 @@ byps.test.api.remote.BStub_RemoteListTypes = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getBoolean1 = function(__byps__asyncResult) {
@@ -1806,7 +1806,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getBoolean1 = function(__by
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setBoolean1 = function(boolean1, __byps__asyncResult) {
@@ -1816,7 +1816,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setBoolean1 = function(bool
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getByte1 = function(__byps__asyncResult) {
@@ -1826,7 +1826,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getByte1 = function(__byps_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setByte1 = function(byte1, __byps__asyncResult) {
@@ -1836,7 +1836,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setByte1 = function(byte1, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getChar1 = function(__byps__asyncResult) {
@@ -1846,7 +1846,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getChar1 = function(__byps_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setChar1 = function(char1, __byps__asyncResult) {
@@ -1856,7 +1856,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setChar1 = function(char1, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getShort1 = function(__byps__asyncResult) {
@@ -1866,7 +1866,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getShort1 = function(__byps
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setShort1 = function(short1, __byps__asyncResult) {
@@ -1876,7 +1876,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setShort1 = function(short1
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt1 = function(__byps__asyncResult) {
@@ -1886,7 +1886,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt1 = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt1 = function(int1, __byps__asyncResult) {
@@ -1896,7 +1896,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt1 = function(int1, __
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getLong1 = function(__byps__asyncResult) {
@@ -1906,7 +1906,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getLong1 = function(__byps_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setLong1 = function(long1, __byps__asyncResult) {
@@ -1916,7 +1916,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setLong1 = function(long1, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getFloat1 = function(__byps__asyncResult) {
@@ -1926,7 +1926,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getFloat1 = function(__byps
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setFloat1 = function(float1, __byps__asyncResult) {
@@ -1936,7 +1936,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setFloat1 = function(float1
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getDouble1 = function(__byps__asyncResult) {
@@ -1946,7 +1946,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getDouble1 = function(__byp
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setDouble1 = function(double1, __byps__asyncResult) {
@@ -1956,7 +1956,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setDouble1 = function(doubl
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getString1 = function(__byps__asyncResult) {
@@ -1966,7 +1966,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getString1 = function(__byp
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setString1 = function(string1, __byps__asyncResult) {
@@ -1976,7 +1976,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setString1 = function(strin
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getPrimitiveTypes1 = function(__byps__asyncResult) {
@@ -1986,7 +1986,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getPrimitiveTypes1 = functi
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
@@ -1996,7 +1996,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setPrimitiveTypes1 = functi
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getByte2 = function(__byps__asyncResult) {
@@ -2006,7 +2006,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getByte2 = function(__byps_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setByte2 = function(byte2, __byps__asyncResult) {
@@ -2016,7 +2016,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setByte2 = function(byte2, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt2 = function(__byps__asyncResult) {
@@ -2026,7 +2026,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt2 = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt2 = function(int2, __byps__asyncResult) {
@@ -2036,7 +2036,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt2 = function(int2, __
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getObj1 = function(__byps__asyncResult) {
@@ -2046,7 +2046,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getObj1 = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setObj1 = function(obj1, __byps__asyncResult) {
@@ -2056,7 +2056,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setObj1 = function(obj1, __
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setDate1 = function(obj1, __byps__asyncResult) {
@@ -2066,7 +2066,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setDate1 = function(obj1, _
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getDate1 = function(__byps__asyncResult) {
@@ -2076,7 +2076,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getDate1 = function(__byps_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt3 = function(__byps__asyncResult) {
@@ -2086,7 +2086,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt3 = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt3 = function(int3, __byps__asyncResult) {
@@ -2096,7 +2096,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt3 = function(int3, __
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt4 = function(__byps__asyncResult) {
@@ -2106,7 +2106,7 @@ byps.test.api.remote.BStub_RemoteListTypes.prototype.getInt4 = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteListTypes.prototype.setInt4 = function(int4, __byps__asyncResult) {
@@ -2126,7 +2126,7 @@ byps.test.api.remote.BStub_RemoteMapTypes = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.getBoolean1 = function(__byps__asyncResult) {
@@ -2136,7 +2136,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.getBoolean1 = function(__byp
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.setBoolean1 = function(boolean1, __byps__asyncResult) {
@@ -2146,7 +2146,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setBoolean1 = function(boole
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.getByte1 = function(__byps__asyncResult) {
@@ -2156,7 +2156,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.getByte1 = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.setByte1 = function(byte1, __byps__asyncResult) {
@@ -2166,7 +2166,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setByte1 = function(byte1, _
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.getChar1 = function(__byps__asyncResult) {
@@ -2176,7 +2176,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.getChar1 = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.setChar1 = function(char1, __byps__asyncResult) {
@@ -2186,7 +2186,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setChar1 = function(char1, _
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.getShort1 = function(__byps__asyncResult) {
@@ -2196,7 +2196,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.getShort1 = function(__byps_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.setShort1 = function(short1, __byps__asyncResult) {
@@ -2206,7 +2206,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setShort1 = function(short1,
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.getInt1 = function(__byps__asyncResult) {
@@ -2216,7 +2216,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.getInt1 = function(__byps__a
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.setInt1 = function(int1, __byps__asyncResult) {
@@ -2226,7 +2226,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setInt1 = function(int1, __b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.getLong1 = function(__byps__asyncResult) {
@@ -2236,7 +2236,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.getLong1 = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.setLong1 = function(long1, __byps__asyncResult) {
@@ -2246,7 +2246,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setLong1 = function(long1, _
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.getFloat1 = function(__byps__asyncResult) {
@@ -2256,7 +2256,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.getFloat1 = function(__byps_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.setFloat1 = function(float1, __byps__asyncResult) {
@@ -2266,7 +2266,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setFloat1 = function(float1,
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.getDouble1 = function(__byps__asyncResult) {
@@ -2276,7 +2276,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.getDouble1 = function(__byps
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.setDouble1 = function(double1, __byps__asyncResult) {
@@ -2286,7 +2286,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setDouble1 = function(double
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.getString1 = function(__byps__asyncResult) {
@@ -2296,7 +2296,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.getString1 = function(__byps
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.setString1 = function(string1, __byps__asyncResult) {
@@ -2306,7 +2306,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setString1 = function(string
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.getPrimitiveTypes1 = function(__byps__asyncResult) {
@@ -2316,7 +2316,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.getPrimitiveTypes1 = functio
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
@@ -2326,7 +2326,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setPrimitiveTypes1 = functio
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.getByte2 = function(__byps__asyncResult) {
@@ -2336,7 +2336,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.getByte2 = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.setByte2 = function(byte2, __byps__asyncResult) {
@@ -2346,7 +2346,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setByte2 = function(byte2, _
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.getInt2 = function(__byps__asyncResult) {
@@ -2356,7 +2356,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.getInt2 = function(__byps__a
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.setInt2 = function(int2, __byps__asyncResult) {
@@ -2366,7 +2366,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setInt2 = function(int2, __b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.getObj1 = function(__byps__asyncResult) {
@@ -2376,7 +2376,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.getObj1 = function(__byps__a
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.setObj1 = function(obj1, __byps__asyncResult) {
@@ -2386,7 +2386,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.setObj1 = function(obj1, __b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.getDate1 = function(__byps__asyncResult) {
@@ -2396,7 +2396,7 @@ byps.test.api.remote.BStub_RemoteMapTypes.prototype.getDate1 = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteMapTypes.prototype.setDate1 = function(obj1, __byps__asyncResult) {
@@ -2416,7 +2416,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.voidFunctionVoid = function(__byps__asyncResult) {
@@ -2426,7 +2426,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.voidFunctionVoid = fun
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setBool = function(v, __byps__asyncResult) {
@@ -2436,7 +2436,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setBool = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setByte = function(v, __byps__asyncResult) {
@@ -2446,7 +2446,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setByte = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setChar = function(v, __byps__asyncResult) {
@@ -2456,7 +2456,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setChar = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setShort = function(v, __byps__asyncResult) {
@@ -2466,7 +2466,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setShort = function(v,
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setInt = function(v, __byps__asyncResult) {
@@ -2476,7 +2476,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setInt = function(v, _
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setLong = function(v, __byps__asyncResult) {
@@ -2486,7 +2486,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setLong = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setFloat = function(v, __byps__asyncResult) {
@@ -2496,7 +2496,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setFloat = function(v,
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setDouble = function(v, __byps__asyncResult) {
@@ -2506,7 +2506,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setDouble = function(v
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setString = function(v, __byps__asyncResult) {
@@ -2516,7 +2516,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setString = function(v
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setPrimitiveTypes = function(v, __byps__asyncResult) {
@@ -2526,7 +2526,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setPrimitiveTypes = fu
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setObject = function(v, __byps__asyncResult) {
@@ -2536,7 +2536,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setObject = function(v
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setDate = function(v, __byps__asyncResult) {
@@ -2546,7 +2546,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.setDate = function(v, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getBool = function(__byps__asyncResult) {
@@ -2556,7 +2556,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getBool = function(__b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getByte = function(__byps__asyncResult) {
@@ -2566,7 +2566,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getByte = function(__b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getChar = function(__byps__asyncResult) {
@@ -2576,7 +2576,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getChar = function(__b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getShort = function(__byps__asyncResult) {
@@ -2586,7 +2586,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getShort = function(__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getInt = function(__byps__asyncResult) {
@@ -2596,7 +2596,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getInt = function(__by
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getLong = function(__byps__asyncResult) {
@@ -2606,7 +2606,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getLong = function(__b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getFloat = function(__byps__asyncResult) {
@@ -2616,7 +2616,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getFloat = function(__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getDouble = function(__byps__asyncResult) {
@@ -2626,7 +2626,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getDouble = function(_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getString = function(__byps__asyncResult) {
@@ -2636,7 +2636,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getString = function(_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getPrimitiveTypes = function(__byps__asyncResult) {
@@ -2646,7 +2646,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getPrimitiveTypes = fu
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getObject = function(__byps__asyncResult) {
@@ -2656,7 +2656,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getObject = function(_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getDate = function(__byps__asyncResult) {
@@ -2666,7 +2666,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getDate = function(__b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.sendAllTypes = function(b, c, s, i, l, f, d, str, pt, o, __byps__asyncResult) {
@@ -2676,7 +2676,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.sendAllTypes = functio
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.add = function(a, b, __byps__asyncResult) {
@@ -2686,7 +2686,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.add = function(a, b, _
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.makeDate = function(year, month, day, hour, minute, second, millisecond, __byps__asyncResult) {
@@ -2696,7 +2696,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.makeDate = function(ye
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.parseDate = function(date, __byps__asyncResult) {
@@ -2706,7 +2706,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.parseDate = function(d
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.throwException = function(__byps__asyncResult) {
@@ -2716,7 +2716,7 @@ byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.throwException = funct
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemotePrimitiveTypes.prototype.getDeferredValueFromServer = function(param1, param2, __byps__asyncResult) {
@@ -2737,7 +2737,7 @@ byps.test.api.remote.BStub_RemoteProcessingEx = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * @param sleepSeconds Time in seconds to sleep.
  * @return true
@@ -2761,7 +2761,7 @@ byps.test.api.remote.BStub_RemoteReferences = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteReferences.prototype.getNode = function(__byps__asyncResult) {
@@ -2771,7 +2771,7 @@ byps.test.api.remote.BStub_RemoteReferences.prototype.getNode = function(__byps_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteReferences.prototype.setNode = function(v, __byps__asyncResult) {
@@ -2791,7 +2791,7 @@ byps.test.api.remote.BStub_RemoteServerCtrl = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteServerCtrl.prototype.publishRemote = function(name, remote, fowardToOtherServers, __byps__asyncResult) {
@@ -2801,7 +2801,7 @@ byps.test.api.remote.BStub_RemoteServerCtrl.prototype.publishRemote = function(n
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteServerCtrl.prototype.getPublishedRemote = function(name, __byps__asyncResult) {
@@ -2811,7 +2811,7 @@ byps.test.api.remote.BStub_RemoteServerCtrl.prototype.getPublishedRemote = funct
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteServerCtrl.prototype.removePublishedRemote = function(name, __byps__asyncResult) {
@@ -2831,7 +2831,7 @@ byps.test.api.remote.BStub_RemoteSetTypes = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.getBoolean1 = function(__byps__asyncResult) {
@@ -2841,7 +2841,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getBoolean1 = function(__byp
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setBoolean1 = function(boolean1, __byps__asyncResult) {
@@ -2851,7 +2851,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.setBoolean1 = function(boole
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.getByte1 = function(__byps__asyncResult) {
@@ -2861,7 +2861,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getByte1 = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setByte1 = function(byte1, __byps__asyncResult) {
@@ -2871,7 +2871,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.setByte1 = function(byte1, _
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.getChar1 = function(__byps__asyncResult) {
@@ -2881,7 +2881,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getChar1 = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setChar1 = function(char1, __byps__asyncResult) {
@@ -2891,7 +2891,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.setChar1 = function(char1, _
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.getShort1 = function(__byps__asyncResult) {
@@ -2901,7 +2901,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getShort1 = function(__byps_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setShort1 = function(short1, __byps__asyncResult) {
@@ -2911,7 +2911,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.setShort1 = function(short1,
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.getInt1 = function(__byps__asyncResult) {
@@ -2921,7 +2921,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getInt1 = function(__byps__a
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setInt1 = function(int1, __byps__asyncResult) {
@@ -2931,7 +2931,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.setInt1 = function(int1, __b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.getLong1 = function(__byps__asyncResult) {
@@ -2941,7 +2941,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getLong1 = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setLong1 = function(long1, __byps__asyncResult) {
@@ -2951,7 +2951,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.setLong1 = function(long1, _
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.getFloat1 = function(__byps__asyncResult) {
@@ -2961,7 +2961,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getFloat1 = function(__byps_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setFloat1 = function(float1, __byps__asyncResult) {
@@ -2971,7 +2971,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.setFloat1 = function(float1,
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.getDouble1 = function(__byps__asyncResult) {
@@ -2981,7 +2981,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getDouble1 = function(__byps
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setDouble1 = function(double1, __byps__asyncResult) {
@@ -2991,7 +2991,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.setDouble1 = function(double
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.getString1 = function(__byps__asyncResult) {
@@ -3001,7 +3001,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getString1 = function(__byps
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setString1 = function(string1, __byps__asyncResult) {
@@ -3011,7 +3011,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.setString1 = function(string
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.getPrimitiveTypes1 = function(__byps__asyncResult) {
@@ -3021,7 +3021,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getPrimitiveTypes1 = functio
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setPrimitiveTypes1 = function(primitiveTypes1, __byps__asyncResult) {
@@ -3031,7 +3031,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.setPrimitiveTypes1 = functio
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.getByte2 = function(__byps__asyncResult) {
@@ -3041,7 +3041,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getByte2 = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setByte2 = function(byte2, __byps__asyncResult) {
@@ -3051,7 +3051,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.setByte2 = function(byte2, _
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.getInt2 = function(__byps__asyncResult) {
@@ -3061,7 +3061,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getInt2 = function(__byps__a
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setInt2 = function(int2, __byps__asyncResult) {
@@ -3071,7 +3071,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.setInt2 = function(int2, __b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.getObj1 = function(__byps__asyncResult) {
@@ -3081,7 +3081,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.getObj1 = function(__byps__a
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setObj1 = function(obj1, __byps__asyncResult) {
@@ -3091,7 +3091,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.setObj1 = function(obj1, __b
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.setDate1 = function(obj1, __byps__asyncResult) {
@@ -3101,7 +3101,7 @@ byps.test.api.remote.BStub_RemoteSetTypes.prototype.setDate1 = function(obj1, __
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteSetTypes.prototype.getDate1 = function(__byps__asyncResult) {
@@ -3121,7 +3121,7 @@ byps.test.api.remote.BStub_RemoteStreams = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteStreams.prototype.getImage = function(__byps__asyncResult) {
@@ -3131,7 +3131,7 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getImage = function(__byps__a
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * @param istrm
  * @throws RemoteException
@@ -3143,7 +3143,7 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.setImage = function(istrm, __
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteStreams.prototype.getImages = function(__byps__asyncResult) {
@@ -3153,7 +3153,7 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getImages = function(__byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteStreams.prototype.setImages = function(istrms, doNotReadStreamAtKey, __byps__asyncResult) {
@@ -3163,7 +3163,7 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.setImages = function(istrms, 
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteStreams.prototype.throwLastException = function(__byps__asyncResult) {
@@ -3173,7 +3173,7 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.throwLastException = function
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.remote.BStub_RemoteStreams.prototype.getTextStream = function(__byps__asyncResult) {
@@ -3183,7 +3183,7 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getTextStream = function(__by
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * This functionality is currently only tested in the JSON API by TestVideoCheckSupportByteRange.html.
  * @return InputStream
@@ -3197,7 +3197,7 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getVideoCheckSupportByteRange
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * The properties must be made explicitly available on the client-side by calling
  * BContentStream.ensureProperties()
@@ -3212,7 +3212,7 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getStreamDeferedProperies = f
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * @param stream
  * Stores a stream reference but does not create an internal copy (does not materialize)
@@ -3225,7 +3225,7 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.setStreamDoNotMaterialize = f
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * Return stream, do not call BContentStream.cloneStream().
  * @throws RemoteException
@@ -3237,7 +3237,7 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.getStreamDoNotClone = functio
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * @consumes multipart/form-data
  * @consumes application/json
@@ -3262,7 +3262,7 @@ byps.test.api.remote.BStub_RemoteStreams.prototype.putSharedStream = function(id
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * @param id Stream ID
  * BYPS-48
@@ -3302,7 +3302,7 @@ byps.test.api.remote.BStub_RemoteWithAuthentication = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * @param useAuth
  * Set authentication flag in MySession.
@@ -3315,7 +3315,7 @@ byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.setUseAuthenticati
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * @param sess Session information, always null in this scenario.
  * @param userName
@@ -3332,7 +3332,7 @@ byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.login = function(u
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * @param sess Session information. Must not be null, if user was logged in.
  * @param value
@@ -3347,7 +3347,7 @@ byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.doit = function(va
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * @param sess
  * Logout
@@ -3360,7 +3360,7 @@ byps.test.api.remote.BStub_RemoteWithAuthentication.prototype.expire = function(
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
  * @param count
  * This function is used to check that parameter reloginCount in BAuthentication.isReloginException is supplied correctly.
@@ -3385,7 +3385,7 @@ byps.test.api.srvr.BStub_ClientIF = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BStub_ClientIF.prototype.incrementInt = function(a, __byps__asyncResult) {
@@ -3395,7 +3395,7 @@ byps.test.api.srvr.BStub_ClientIF.prototype.incrementInt = function(a, __byps__a
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BStub_ClientIF.prototype.getStreams = function(ctrl, __byps__asyncResult) {
@@ -3405,7 +3405,7 @@ byps.test.api.srvr.BStub_ClientIF.prototype.getStreams = function(ctrl, __byps__
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BStub_ClientIF.prototype.putStreams = function(strm, ctrl, __byps__asyncResult) {
@@ -3415,7 +3415,7 @@ byps.test.api.srvr.BStub_ClientIF.prototype.putStreams = function(strm, ctrl, __
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BStub_ClientIF.prototype.sendChat = function(cs, __byps__asyncResult) {
@@ -3435,7 +3435,7 @@ byps.test.api.srvr.BStub_ServerIF = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BStub_ServerIF.prototype.callClientIncrementInt = function(v, __byps__asyncResult) {
@@ -3445,7 +3445,7 @@ byps.test.api.srvr.BStub_ServerIF.prototype.callClientIncrementInt = function(v,
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BStub_ServerIF.prototype.setPartner = function(client, __byps__asyncResult) {
@@ -3455,7 +3455,7 @@ byps.test.api.srvr.BStub_ServerIF.prototype.setPartner = function(client, __byps
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BStub_ServerIF.prototype.getPartner = function(__byps__asyncResult) {
@@ -3465,7 +3465,7 @@ byps.test.api.srvr.BStub_ServerIF.prototype.getPartner = function(__byps__asyncR
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BStub_ServerIF.prototype.getStreamsFromClient = function(materializeOnServer, __byps__asyncResult) {
@@ -3475,7 +3475,7 @@ byps.test.api.srvr.BStub_ServerIF.prototype.getStreamsFromClient = function(mate
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BStub_ServerIF.prototype.putStreamsOnClient = function(streams, __byps__asyncResult) {
@@ -3485,7 +3485,7 @@ byps.test.api.srvr.BStub_ServerIF.prototype.putStreamsOnClient = function(stream
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BStub_ServerIF.prototype.registerWithClientMap = function(id, __byps__asyncResult) {
@@ -3495,7 +3495,7 @@ byps.test.api.srvr.BStub_ServerIF.prototype.registerWithClientMap = function(id,
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BStub_ServerIF.prototype.getClient = function(id, __byps__asyncResult) {
@@ -3505,7 +3505,7 @@ byps.test.api.srvr.BStub_ServerIF.prototype.getClient = function(id, __byps__asy
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BStub_ServerIF.prototype.getClientIds = function(__byps__asyncResult) {
@@ -3515,7 +3515,7 @@ byps.test.api.srvr.BStub_ServerIF.prototype.getClientIds = function(__byps__asyn
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.srvr.BStub_ServerIF.prototype.callClientParallel = function(v, __byps__asyncResult) {
@@ -3535,7 +3535,7 @@ byps.test.api.ver.BStub_EvolveIF = function(transport) {
 	
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.ver.BStub_EvolveIF.prototype.setEvolve = function(obj, __byps__asyncResult) {
@@ -3545,7 +3545,7 @@ byps.test.api.ver.BStub_EvolveIF.prototype.setEvolve = function(obj, __byps__asy
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.ver.BStub_EvolveIF.prototype.getEvolve = function(__byps__asyncResult) {
@@ -3555,7 +3555,7 @@ byps.test.api.ver.BStub_EvolveIF.prototype.getEvolve = function(__byps__asyncRes
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.ver.BStub_EvolveIF.prototype.setClient = function(partner, __byps__asyncResult) {
@@ -3565,7 +3565,7 @@ byps.test.api.ver.BStub_EvolveIF.prototype.setClient = function(partner, __byps_
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.ver.BStub_EvolveIF.prototype.getClient = function(__byps__asyncResult) {
@@ -3575,7 +3575,7 @@ byps.test.api.ver.BStub_EvolveIF.prototype.getClient = function(__byps__asyncRes
 	return ret;
 };
 
-// checkpoint byps.gen.js.PrintContext:133
+// checkpoint byps.gen.js.PrintContext:143
 /**
 */
 byps.test.api.ver.BStub_EvolveIF.prototype.sendEvolveToClient = function(__byps__asyncResult) {

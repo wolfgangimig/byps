@@ -54,11 +54,13 @@ class GenApiClass {
 
 		CodePrinter mpr = pr.print(serInfo.pack).print(".").print(serInfo.name).print(" = function(");
 
-		boolean first = true;
-		for (MemberInfo minfo : members) {
-      if (PrintHelper.isIgnoreMember(minfo)) continue;
-			if (!first) mpr.print(", "); else first = false; 
-		  mpr.print(minfo.name);
+		if (!this.pctxt.isSuppressInitConstructors()) {
+  		boolean first = true;
+  		for (MemberInfo minfo : members) {
+        if (PrintHelper.isIgnoreMember(minfo)) continue;
+  			if (!first) mpr.print(", "); else first = false; 
+  		  mpr.print(minfo.name);
+  		}
 		}
 		mpr.println(") {");
 
@@ -66,12 +68,14 @@ class GenApiClass {
 		
 		pr.print(serInfo.isInline ? "// " : "").print("this._typeId = ").print(serInfo.typeId).println(";");
 		
-		for (MemberInfo minfo : members) {
-      if (PrintHelper.isIgnoreMember(minfo)) continue;
-			pr.print("this.").print(minfo.name).print(" = ")
-			  .print(minfo.name).print(" || ").print(getDefaultValueForType(minfo.type.typeId)).println(";");
+		if (!this.pctxt.isSuppressInitConstructors()) {
+  		for (MemberInfo minfo : members) {
+        if (PrintHelper.isIgnoreMember(minfo)) continue;
+  			pr.print("this.").print(minfo.name).print(" = ")
+  			  .print(minfo.name).print(" || ").print(getDefaultValueForType(minfo.type.typeId)).println(";");
+  		}
 		}
-
+		
 		pr.endBlock();
 		
 		pr.println("};");
