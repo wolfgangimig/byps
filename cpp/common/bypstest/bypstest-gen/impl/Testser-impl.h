@@ -5405,7 +5405,7 @@ namespace byps { namespace test { namespace api { namespace remote {
 using namespace ::byps;
 
 class BRequest_RemotePrimitiveTypes_makeDate : public BMethodRequest {
-	public: int32_t year;
+	public: int32_t year = 1;
 	public: int32_t month;
 	public: int32_t day;
 	public: int32_t hour;

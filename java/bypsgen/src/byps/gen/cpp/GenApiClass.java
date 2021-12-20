@@ -264,9 +264,9 @@ class GenApiClass {
         // BYPS-57: Behandlung von Enum-Werten in Konstantenobjekten. 
         mpr = mpr.print(path).print((String)value);
       }
-      else if (value instanceof String) {
-				BJsonObject js = BJsonObject.fromString((String)value);
-				mpr = makeNewInstance(mpr, path, tinfo, js);
+      else if (value instanceof String && ((String)value).trim().startsWith("{")) {
+        BJsonObject js = BJsonObject.fromString((String)value);
+        mpr = makeNewInstance(mpr, path, tinfo, js);
 			}
 		}
 		

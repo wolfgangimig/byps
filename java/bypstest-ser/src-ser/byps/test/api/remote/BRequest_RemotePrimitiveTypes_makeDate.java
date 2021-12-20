@@ -13,7 +13,7 @@ import java.io.Serializable;
 @SuppressWarnings("all")
 public final class BRequest_RemotePrimitiveTypes_makeDate extends BMethodRequest implements Serializable {
 
-	public int year;
+	public int year = 1;
 	public int month;
 	public int day;
 	public int hour;

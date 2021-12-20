@@ -37,6 +37,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
+import byps.BDefaultValue;
 import byps.BVersioning;
 import byps.gen.BIgnore;
 import byps.gen.api.CommentInfo;
@@ -48,7 +49,6 @@ import byps.gen.api.RemoteInfo;
 import byps.gen.api.SerialInfo;
 import byps.gen.api.TypeInfo;
 import byps.gen.api.rest.RestInfo;
-import byps.gen.api.rest.RestMethod;
 import byps.gen.db.ClassDB;
 import byps.gen.db.ConstFieldReader;
 
@@ -248,6 +248,17 @@ public class XmlGenerator extends XmlGeneratorBase {
     }
     return Optional.ofNullable(ret);
   }
+
+  /**
+   * Get default value for method param.
+   * @param element Element
+   * @return default value or null
+   */
+  private String getDefaultValue(Element element) {
+    BDefaultValue defaultValue = element.getAnnotation(BDefaultValue.class);
+    return defaultValue != null ? defaultValue.value() : null;
+  }
+  
 
   private BApiDescriptor makeBApiDescriptor(Element apiDescElement) {
     
@@ -651,10 +662,10 @@ public class XmlGenerator extends XmlGeneratorBase {
     return p >= 0 ? qname.substring(p+1) : qname;
   }
 
-  private MemberInfo makeMethodParamInfo(ErrorInfo errorInfo1, TypeMirror parameterType, String parameterName) {
+  private MemberInfo makeMethodParamInfo(ErrorInfo errorInfo1, VariableElement param, String parameterName) {
     ErrorInfo errorInfo = errorInfo1.copy();
     errorInfo.paramName = parameterName;
-    TypeInfo typeInfo = makeTypeInfo(errorInfo, parameterType);
+    TypeInfo typeInfo = makeTypeInfo(errorInfo, param.asType());
     
     if (typeInfo.isInline && !typeInfo.isArrayType()) {
       // Das geht nicht in C++
@@ -664,7 +675,10 @@ public class XmlGenerator extends XmlGeneratorBase {
     
     checkSupportedFieldType(errorInfo, typeInfo);
 
-    return new MemberInfo(parameterName, typeInfo);
+    // BYPS-60: Optionaler Parameter
+    String defaultValue = getDefaultValue(param);
+    
+    return new MemberInfo(parameterName, typeInfo, defaultValue);
   }
 
   private SerialInfo makeMethodRequest(ErrorInfo errorInfo1, String remoteName, String remoteQName, Element methodElement) {
@@ -674,8 +688,7 @@ public class XmlGenerator extends XmlGeneratorBase {
     ArrayList<MemberInfo> parameterInfos = new ArrayList<>();
     for (VariableElement param : executableElmenent.getParameters()) {
       String parameterName = param.getSimpleName().toString();
-      TypeMirror parameterType = param.asType();
-      MemberInfo pinfo = makeMethodParamInfo(errorInfo, parameterType, parameterName);
+      MemberInfo pinfo = makeMethodParamInfo(errorInfo, param, parameterName);
       parameterInfos.add(pinfo);
     }
     

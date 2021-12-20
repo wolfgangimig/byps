@@ -32,7 +32,7 @@ namespace byps.test.api.remote
 		
 		#region Fields
 		
-		internal byps.test.api.prim.PrimitiveTypes vValue;
+		internal byps.test.api.prim.PrimitiveTypes vValue = ;
 
 		#endregion
 		

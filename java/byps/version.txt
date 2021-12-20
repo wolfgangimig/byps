@@ -1,5 +1,10 @@
 BYPS Version History
 
+9.06
+
+- BYPS-60: Annotation javax.ws.rs.DefaultValue can assign a default value to method parameters.
+  Those method parameters can be omitted in REST calls.
+
 9.05
 
 - BYPS-58: Avoid multiple declarations of mbAllMembers in constant classes.

@@ -4,6 +4,42 @@ using namespace ::byps;
 
 // checkpoint byps.gen.cpp.GenApiClass:949
 namespace byps { namespace test { namespace api { 
+void BSerializer_1710660846(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_Obj_Template<::std::map< ::std::wstring , ::std::wstring >>(bio, pObj, pObjS, pBase);	
+}
+}}}
+// checkpoint byps.gen.cpp.GenApiClass:949
+namespace byps { namespace test { namespace api { 
+void BSerializer_1366799209(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_Obj_Template<::std::map< ::std::wstring , BDateTime >>(bio, pObj, pObjS, pBase);	
+}
+}}}
+// checkpoint byps.gen.cpp.GenApiClass:949
+namespace byps { namespace test { namespace api { 
+void BSerializer_484881308(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_Obj_Template<::std::set< byps::test::api::inherit::PClass1 >>(bio, pObj, pObjS, pBase);	
+}
+}}}
+// checkpoint byps.gen.cpp.GenApiClass:949
+namespace byps { namespace test { namespace api { 
+void BSerializer_673917574(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_Obj_Template<::std::set< byps::test::api::prim::PPrimitiveTypes >>(bio, pObj, pObjS, pBase);	
+}
+}}}
+// checkpoint byps.gen.cpp.GenApiClass:949
+namespace byps { namespace test { namespace api { 
+void BSerializer_2052431866(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_Obj_Template<::std::set< PBytes >>(bio, pObj, pObjS, pBase);	
+}
+}}}
+// checkpoint byps.gen.cpp.GenApiClass:949
+namespace byps { namespace test { namespace api { 
+void BSerializer_1406124761(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_Obj_Template<::std::set< PArrayInt >>(bio, pObj, pObjS, pBase);	
+}
+}}}
+// checkpoint byps.gen.cpp.GenApiClass:949
+namespace byps { namespace test { namespace api { 
 void BSerializer_1365696060(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_Obj_Template<::std::set< bool >>(bio, pObj, pObjS, pBase);	
 }
@@ -1086,51 +1122,6 @@ PArray4Byte BStub_RemoteArrayTypes4dim::getByte()  {
 void BStub_RemoteArrayTypes4dim::getByte(::std::function< void (PArray4Byte, BException ex) > asyncResult)  {
 	PMethodRequest req(new BRequest_RemoteArrayTypes4dim_getByte());
 	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PArray4Byte, byps::test::api::BResult_1201775504 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace remote { 
-PArray4Char BStub_RemoteArrayTypes4dim::getChar()  {
-	BSyncResultT< PArray4Char > syncResult;	
-	getChar([&syncResult](PArray4Char v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteArrayTypes4dim::getChar(::std::function< void (PArray4Char, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_RemoteArrayTypes4dim_getChar());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PArray4Char, byps::test::api::BResult_769021986 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace remote { 
-PArray4Short BStub_RemoteArrayTypes4dim::getShort()  {
-	BSyncResultT< PArray4Short > syncResult;	
-	getShort([&syncResult](PArray4Short v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteArrayTypes4dim::getShort(::std::function< void (PArray4Short, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_RemoteArrayTypes4dim_getShort());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PArray4Short, byps::test::api::BResult_1859644668 >(asyncResult) );
-	transport->sendMethod(req, outerResult);
-}
-}}}}
-
-namespace byps { namespace test { namespace api { namespace remote { 
-PArray4Int BStub_RemoteArrayTypes4dim::getInt()  {
-	BSyncResultT< PArray4Int > syncResult;	
-	getInt([&syncResult](PArray4Int v, BException ex) {
-		syncResult.setAsyncResult(v, ex);
-	});
-	return syncResult.getResult();
-}
-void BStub_RemoteArrayTypes4dim::getInt(::std::function< void (PArray4Int, BException ex) > asyncResult)  {
-	PMethodRequest req(new BRequest_RemoteArrayTypes4dim_getInt());
-	PAsyncResult outerResult( new BAsyncResultReceiveMethodL< PArray4Int, byps::test::api::BResult_39910537 >(asyncResult) );
 	transport->sendMethod(req, outerResult);
 }
 }}}}

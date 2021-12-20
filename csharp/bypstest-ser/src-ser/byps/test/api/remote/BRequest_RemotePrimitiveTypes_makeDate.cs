@@ -32,7 +32,7 @@ namespace byps.test.api.remote
 		
 		#region Fields
 		
-		internal int yearValue;
+		internal int yearValue = 1;
 
 		internal int monthValue;
 

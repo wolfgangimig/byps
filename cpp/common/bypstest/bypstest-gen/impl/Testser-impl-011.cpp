@@ -5,6 +5,49 @@ using namespace ::byps;
 namespace byps { namespace test { namespace api { namespace srvr { 
 
 //-------------------------------------------------
+// Implementation of class BRequest_ServerIF_callClientIncrementInt
+// Generated from class byps.gen.cpp.GenApiClass
+
+// checkpoint byps.gen.cpp.GenApiClass:505
+BRequest_ServerIF_callClientIncrementInt::BRequest_ServerIF_callClientIncrementInt() : BMethodRequest(1775199834) {
+	v = 0;
+}
+// checkpoint byps.gen.cpp.GenApiClass:552
+byps::test::api::srvr::BRequest_ServerIF_callClientIncrementInt::BRequest_ServerIF_callClientIncrementInt(int32_t v)
+	: BMethodRequest(1775199834) 
+	, v(v)
+	{}
+// checkpoint byps.gen.cpp.PrintContext:496
+BTYPEID byps::test::api::srvr::BRequest_ServerIF_callClientIncrementInt::BSerializable_getTypeId() {
+	return 389860173; 
+}
+// checkpoint byps.gen.cpp.GenApiClass:892
+void BRequest_ServerIF_callClientIncrementInt::serialize(BIO& ar, const BVERSION version) {
+	ar & this->v;
+}
+void byps::test::api::srvr::BRequest_ServerIF_callClientIncrementInt::execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult) {
+	PServerIF __byps__remoteT = byps_ptr_cast<ServerIF>(__byps__remote);
+	__byps__remoteT->callClientIncrementInt(v, [__byps__asyncResult](int32_t __byps__result, const BException& __byps__ex) {
+		if (__byps__ex) {
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__ex));
+		}
+		else {
+			PSerializable __byps__methodResult(new BResult_5(__byps__result));
+			__byps__asyncResult->setAsyncResult(BVariant(__byps__methodResult));
+		}
+	});
+}
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:949
+namespace byps { namespace test { namespace api { 
+void BSerializer_389860173(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
+	BSerializer_ObjS_Template<byps::test::api::srvr::BRequest_ServerIF_callClientIncrementInt>(bio, pObj, pObjS, pBase);	
+}
+}}}
+namespace byps { namespace test { namespace api { namespace srvr { 
+
+//-------------------------------------------------
 // Implementation of class BRequest_ServerIF_callClientParallel
 // Generated from class byps.gen.cpp.GenApiClass
 
@@ -1210,41 +1253,5 @@ void BSerializer_1279823631(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void*
 namespace byps { namespace test { namespace api { 
 void BSerializer_1488550492(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
 	BSerializer_Obj_Template<::std::map< ::std::wstring , PSerializable >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:949
-namespace byps { namespace test { namespace api { 
-void BSerializer_1710660846(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::map< ::std::wstring , ::std::wstring >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:949
-namespace byps { namespace test { namespace api { 
-void BSerializer_1366799209(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::map< ::std::wstring , BDateTime >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:949
-namespace byps { namespace test { namespace api { 
-void BSerializer_484881308(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::set< byps::test::api::inherit::PClass1 >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:949
-namespace byps { namespace test { namespace api { 
-void BSerializer_673917574(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::set< byps::test::api::prim::PPrimitiveTypes >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:949
-namespace byps { namespace test { namespace api { 
-void BSerializer_2052431866(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::set< PBytes >>(bio, pObj, pObjS, pBase);	
-}
-}}}
-// checkpoint byps.gen.cpp.GenApiClass:949
-namespace byps { namespace test { namespace api { 
-void BSerializer_1406124761(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase) {
-	BSerializer_Obj_Template<::std::set< PArrayInt >>(bio, pObj, pObjS, pBase);	
 }
 }}}

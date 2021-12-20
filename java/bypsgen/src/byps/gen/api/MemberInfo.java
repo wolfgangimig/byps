@@ -29,10 +29,14 @@ public class MemberInfo extends ItemInfo implements Comparable<MemberInfo> {
 		this.value = value;
 	}
 
-	public MemberInfo(String name, TypeInfo type) {
-		this(name, null, type, true, false, false, false, false, false, false, 0, null);
-	}
-	
+  public MemberInfo(String name, TypeInfo type) {
+    this(name, type, null);
+  }
+  
+  public MemberInfo(String name, TypeInfo type, String value) {
+    this(name, null, type, true, false, false, false, false, false, false, 0, value);
+  }
+  
 	public MemberInfo() {
 		this(null, null, null, false, false, false, false, false, false, false, 0, null);
 	}
