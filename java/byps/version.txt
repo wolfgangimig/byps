@@ -1,5 +1,9 @@
 BYPS Version History
 
+9.07
+
+- BYPS-61: Classes or methods wit default values for REST calls could not be compiled in C#. 
+
 9.06
 
 - BYPS-60: Annotation javax.ws.rs.DefaultValue can assign a default value to method parameters.
