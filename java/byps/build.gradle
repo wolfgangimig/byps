@@ -45,7 +45,7 @@ dependencies {
 	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
 	// BYPS-16: Support basic configuration of logback and log4j. Byps requires one of 
 	// these frameworks only if you explicitly instruct it to do logging of its own.
-	compileOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+	compileOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.10'
 	compileOnly group: 'log4j', name: 'log4j', version: '1.2.17'
 	
 	// https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
