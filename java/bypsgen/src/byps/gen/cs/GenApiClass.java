@@ -9,6 +9,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import byps.BDefaultValue;
 import byps.BException;
 import byps.BJsonObject;
 import byps.BRegistry;
@@ -114,9 +115,17 @@ class GenApiClass {
 			
 			String value = minfo.value;
 			if (value != null) {
-				mpr.print(" = ");
-				if (value.startsWith("\"")) value = value.substring(1, value.length()-1);
-				mpr.print(printConstValue(minfo.type, value));
+        
+			  // Anführungszeichen entfernen - long-Werte werden hier als Strings geliefert.
+			  if (value.startsWith("\"")) value = value.substring(1, value.length()-1);
+			  
+			  // BYPS-61: Konstantenwert ermitteln. Wenn es ein @BDefaultValue ist, kommt ein Leerstring zurück.
+			  String constValue =  printConstValue(minfo.type, value);
+			  			  
+			  if (constValue != null && !constValue.isEmpty()) {
+  				mpr.print(" = ");
+  				mpr.print(constValue);
+			  }
 			}
 			
 			mpr.print(";");
