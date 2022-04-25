@@ -1843,17 +1843,18 @@ byps.BServerR = function(transport, server) {
 		if (this._isDone) return;
 
 		var asyncResult = function(message, exception) {
+			var messageR = message;
 			if (exception) {
 				var bout = me.transport.getOutput();
 				bout.header.flags |= byps.BMessageHeaderC.FLAG_LONGPOLL_TIMEOUT;
 				bout.header.timeout = byps.LONGPOLL_TIMEOUT_SECONDS;
 				bout.setException(exception);
-				message = bout.toMessage();
+				messageR = bout.toMessage();
 			}
 			else if (!message) {
-				message = me._makeInitMessage();
+				messageR = me._makeInitMessage();
 			}
-			me._run(message);
+			me._run(messageR);
 		};
 
 		var nextAsyncMethod = function(message, ex) {
