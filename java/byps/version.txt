@@ -1,5 +1,9 @@
 BYPS Version History
 
+9.09
+
+- BYPS-64: JS compressor closure-compiler (google) generated defect minimized JS.
+
 9.08
 
 - BYPS-62: BSerializer classes could not be loaded in an OSGi bundle. 
