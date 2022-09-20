@@ -187,16 +187,6 @@ public class BypsServlet extends HHttpServlet {
   }
   
   @Override
-  protected HSession getSessionFromMessageHeaderOrHttpRequest(BMessageHeader header, HttpServletRequest request) {
-    if (log.isDebugEnabled()) log.debug("getSessionFromMessageHeaderOrHttpRequest(");
-    HSession sess = super.getSessionFromMessageHeaderOrHttpRequest(header, request);
-    if (sess == null) {
-      sess = createSession(request.getSession(), "Unauthorized");
-    }
-    return sess;
-  }
-  
-  @Override
   protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     setAccessControlHeaders(response);
