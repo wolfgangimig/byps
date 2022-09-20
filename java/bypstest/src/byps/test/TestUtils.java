@@ -38,6 +38,7 @@ import byps.BProtocolJson;
 import byps.BProtocolS;
 import byps.BTargetId;
 import byps.BTransport;
+import byps.BVersioning;
 import byps.BWire;
 import byps.RemoteException;
 import byps.test.api.BApiDescriptor_Testser;
@@ -68,7 +69,7 @@ public class TestUtils {
 	public static boolean TEST_ONE_SHORT_STREAM = false;
 	
 	public static BTransport createTransport() {
-		return createTransport(BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_CURRENT, 0);
+		return createTransport(BWire.FLAG_DEFAULT, BMessageHeader.BYPS_VERSION_CURRENT, BVersioning.stringToLong("794"));
 	}
 	
 	public static BTransport createTransport(int flags, int bypsVersion, long version) {
