@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,6 +13,7 @@ import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
 import byps.BTargetId;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class HIncomingStreamAsync extends BContentStream  {
 

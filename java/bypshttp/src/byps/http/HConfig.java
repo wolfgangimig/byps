@@ -3,8 +3,8 @@ package byps.http;
 import java.io.File;
 import java.util.Collection;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
 
 public interface HConfig {
 

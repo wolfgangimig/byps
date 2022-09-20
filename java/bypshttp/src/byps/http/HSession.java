@@ -1,9 +1,6 @@
 package byps.http;
 import java.util.Optional;
 
-/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +10,7 @@ import byps.BHashMap;
 import byps.BServer;
 import byps.BTargetId;
 import byps.BTransportFactory;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * This class represents a session.

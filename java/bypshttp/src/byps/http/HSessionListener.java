@@ -1,9 +1,8 @@
 package byps.http;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
-
 import byps.BHashMap;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSessionEvent;
+import jakarta.servlet.http.HttpSessionListener;
 
 // @WebListener
 // BYPS-27: This class is no more annotated with @WebListener.

@@ -5,13 +5,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,6 +20,13 @@ import byps.http.HTestAdapter;
 import byps.rest.RestOperations;
 import byps.test.api.BApiDescriptor_Testser;
 import byps.test.api.RestOperations_Testser;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebInitParam;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class BypsServlet
@@ -51,6 +51,7 @@ urlPatterns = { "/bypsservlet", "/bypsservletauth/auth", "/bypsservlet/rest/*" }
 initParams = { @WebInitParam(name = "testAdapterEnabled", value = "true") 
 
 })
+@MultipartConfig
 public class BypsServlet extends HHttpServlet {
   private static final long serialVersionUID = 1L;
 

@@ -25,7 +25,6 @@ import byps.http.HWireClient;
 	TestRemoteProcessingEx.class,
   TestSerializeInlineInstances.class,
 	TestSerializeDifferentVersions.class,
-	TestCompatibleApi.class,
 	TestRemotePrimitiveTypes.class,
 	TestRemoteArrays.class,
 	TestRemoteMapTypes.class,

@@ -1,7 +1,4 @@
 package byps.test.servlet;
-/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +11,7 @@ import byps.test.api.BApiDescriptor_Testser;
 import byps.test.api.BRegistry_Testser;
 import byps.test.api.BServer_Testser;
 import byps.test.api.JRegistry_Testser;
+import jakarta.servlet.http.HttpSession;
 
 public class MySession extends HSession {
 	

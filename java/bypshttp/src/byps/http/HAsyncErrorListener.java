@@ -2,11 +2,11 @@ package byps.http;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.IOException;
 
-import javax.servlet.AsyncEvent;
-import javax.servlet.AsyncListener;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.servlet.AsyncEvent;
+import jakarta.servlet.AsyncListener;
 
 abstract class HAsyncErrorListener implements AsyncListener {
 

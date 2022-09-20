@@ -7,10 +7,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.servlet.AsyncEvent;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,6 +17,9 @@ import byps.BExceptionC;
 import byps.BHashMap;
 import byps.BMessageHeader;
 import byps.BTargetId;
+import jakarta.servlet.AsyncEvent;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class HActiveMessages {
 	

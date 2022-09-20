@@ -10,10 +10,10 @@ import javax.naming.InitialContext;
 import javax.naming.NameClassPair;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
 
 import byps.log.LogConfigurator;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
 
 public class HConfigImpl implements HConfig {
 

@@ -6,9 +6,6 @@ import java.io.PrintWriter;
 import java.nio.ByteBuffer;
 import java.util.zip.GZIPOutputStream;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +14,8 @@ import byps.BException;
 import byps.BExceptionC;
 import byps.BMessageHeader;
 import byps.io.BOutputStreamByteCount;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class HWriteResponseHelper {
 

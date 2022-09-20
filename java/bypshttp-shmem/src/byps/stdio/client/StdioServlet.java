@@ -2,15 +2,14 @@ package byps.stdio.client;
 
 import java.util.Map;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import byps.http.HConfig;
 import byps.http.HConfigImpl;
 import byps.http.HHttpServlet;
 import byps.http.HRequestContext;
 import byps.http.HSyncContext;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * A base servlet class for STDIO communication. 

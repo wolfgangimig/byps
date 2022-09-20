@@ -8,11 +8,11 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.UncheckedIOException;
-import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -22,14 +22,8 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.MediaType;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,8 +44,13 @@ import byps.http.HFileUploadIncomingStream;
 import byps.http.HIncomingStreamSync;
 import byps.http.HServerContext;
 import byps.http.HSession;
+import byps.io.ByteArrayOutputStream;
 import byps.rest.BStreamReference;
 import byps.rest.RestOperations;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 
 /**
  * Execute REST call.
@@ -167,7 +166,8 @@ public class HRestExecutor {
     BMethodRequest method = null;
     try {
       if (request.getMethod().equalsIgnoreCase("post")) {
-        boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+        String contentType = request.getContentType();
+        boolean isMultipart = contentType != null && contentType.toLowerCase().startsWith("multipart/");
         if (log.isDebugEnabled()) log.debug("contentType={}, isMultipart={}", request.getContentType(), isMultipart);
         if (isMultipart) {
           method = buildMethodFromMultiPart(requestClass);
@@ -257,8 +257,8 @@ public class HRestExecutor {
    * @param item Upload item
    * @return BYPS stream
    */
-  protected BContentStream toBypsStream(HSession sess, FileItem item) {
-    if (log.isDebugEnabled()) log.debug("toBypsStream(fieldName={}, fileName={}", item.getFieldName(), item.getName());
+  protected BContentStream toBypsStream(HSession sess, Part item) {
+    if (log.isDebugEnabled()) log.debug("toBypsStream(fieldName={}, fileName={}", item.getName(), item.getSubmittedFileName());
     long streamId = sess.getServer().getTransport().getWire().makeMessageId();
     final BTargetId targetId = new BTargetId(config.getMyServerId(), 0, streamId);
     BContentStream stream = new HFileUploadIncomingStream(item, targetId, config.getTempDir());
@@ -461,23 +461,15 @@ public class HRestExecutor {
    * @throws SecurityException
    * @throws FileUploadException
    * @throws NoSuchFieldException
-   * @throws UnsupportedEncodingException 
+   * @throws ServletException 
+   * @throws IOException 
    */
-  protected BMethodRequest buildMethodFromMultiPart(Class<?> requestClass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, FileUploadException, NoSuchFieldException, UnsupportedEncodingException {
+  protected BMethodRequest buildMethodFromMultiPart(Class<?> requestClass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, NoSuchFieldException, IOException, ServletException {
     if (log.isDebugEnabled()) log.debug("buildMethodForMultiPart(");
     
-    // Create a factory for disk-based file items
-    DiskFileItemFactory factory = new DiskFileItemFactory(HConstants.INCOMING_STREAM_BUFFER, config.getTempDir());
-
-    // Create a new file upload handler
-    ServletFileUpload upload = new ServletFileUpload(factory);
-
-    // Set overall request size constraint
-    upload.setSizeMax(maxUploadFileSize);
-
     // Parse the request
-    List<FileItem> items = upload.parseRequest(request);
-    if (log.isDebugEnabled()) log.debug("received items={}", items.stream().map(FileItem::getFieldName).collect(Collectors.toList()));
+    Collection<Part> items = request.getParts();
+    if (log.isDebugEnabled()) log.debug("received items={}", items.stream().map(Part::getName).collect(Collectors.toList()));
     
     // Collect the streams provided in the request and map them to "file==file[0], file[1], ...".
     // This map is used during deserialization to assign the stream objects referenced in the method parameters.
@@ -488,18 +480,20 @@ public class HRestExecutor {
     // Initialize deserialization
     GsonBuilder builder = createDeserializationBuilder(getStream);
     
-    List<FileItem> formFields = items.stream().filter(item -> item.isFormField()).collect(Collectors.toList());
+    List<Part> formFields = items.stream().filter(item -> item.getSubmittedFileName() == null).collect(Collectors.toList());
     String jsonData = "";
     
     // Field "data" contains the parameters as JSON object.
     // If using the browser's FormData.append("data", blob), it is recognized as stream field 
     // not as form field.
-    Optional<FileItem> dataField = items.stream().filter(item -> item.getFieldName().equals(RestConstants.MULTIPART_DATA_PARAM_NAME)).findAny();
+    Optional<Part> dataField = items.stream().filter(item -> item.getName().equals(RestConstants.MULTIPART_DATA_PARAM_NAME)).findAny();
     
     if (dataField.isPresent()) {
+      
       // Only one form field with BRequest_ object
       // See GeneratorOpenAPI.toRequestMediaTypeMultipartFormData
-      jsonData = dataField.get().getString(StandardCharsets.UTF_8.name());
+      jsonData = fieldContentToString(dataField.get());
+      
       if (log.isDebugEnabled()) log.debug("jsonData={}", jsonData);
     }
     else if (formFields.isEmpty()) {
@@ -518,8 +512,8 @@ public class HRestExecutor {
       StringBuilder sbuf = new StringBuilder();
       sbuf.append("{");
       boolean addComma = false;
-      for (FileItem item : items) {
-        if (item.isFormField()) {
+      for (Part item : items) {
+        if (item.getSubmittedFileName() == null) {
           // Print the field and its value into the buffer
           addComma = appendFieldToJsonString(requestClass, item, addComma, sbuf);
         }
@@ -535,6 +529,25 @@ public class HRestExecutor {
 
     if (log.isDebugEnabled()) log.debug(")buildMethodForMultiPart={}", brequest);
     return brequest;
+  }
+
+  /**
+   * Read multipart/form-data field into String.
+   * @param dataField Field
+   * @return String
+   * @throws IOException
+   */
+  private String fieldContentToString(Part dataField) throws IOException {
+    String jsonData = null;
+    try (InputStream istream = dataField.getInputStream();
+        ByteArrayOutputStream ostream = new ByteArrayOutputStream()) {
+      if (istream != null) {
+        istream.transferTo(ostream);
+        byte[] bytes = ostream.toByteArray();
+        jsonData = new String(bytes, StandardCharsets.UTF_8);
+      }
+    }
+    return jsonData;
   }
   
   /**
@@ -575,18 +588,18 @@ public class HRestExecutor {
    * @param sbuf
    * @return
    * @throws NoSuchFieldException
-   * @throws UnsupportedEncodingException 
+   * @throws IOException 
    */
-  private boolean appendFieldToJsonString(Class<?> requestClass, FileItem item, boolean addComma,
-      StringBuilder sbuf) throws NoSuchFieldException, UnsupportedEncodingException {
-    if (log.isDebugEnabled()) log.debug("appendFieldToJsonString(requestClass={}, field.name={}", requestClass, item.getFieldName());
+  private boolean appendFieldToJsonString(Class<?> requestClass, Part item, boolean addComma,
+      StringBuilder sbuf) throws NoSuchFieldException, IOException {
+    if (log.isDebugEnabled()) log.debug("appendFieldToJsonString(requestClass={}, field.name={}", requestClass, item.getName());
 
-    String fieldName = item.getFieldName();
+    String fieldName = item.getName();
     
     // An unassigned stream item (upload item with no file) is interpreted by 
     // Apache FileUpload as FileItem.isFormField()=true. This item must be skipped
     // here because there is no corresponding field in the request class.
-    String itemString = item.getString(StandardCharsets.UTF_8.name());
+    String itemString = fieldContentToString(item);
     if (log.isDebugEnabled()) log.debug("fieldAsString={}", itemString);
     if (itemString == null || itemString.isEmpty()) return addComma;
     
@@ -632,17 +645,17 @@ public class HRestExecutor {
    * @param items
    * @return
    */
-  private Map<String, BContentStream> mapFieldNamesToStreams(List<FileItem> items) {
+  private Map<String, BContentStream> mapFieldNamesToStreams(Collection<Part> items) {
     Map<String, BContentStream> streams = new HashMap<>();
     
     // Map for field names and how often they are repeated.
     Map<String, Integer> nameAndCount = new HashMap<>();
     
     // Loop over stream items (non-form-field items)
-    items.stream().filter(item -> !item.isFormField()).forEach(item -> {
+    items.stream().filter(item -> item.getSubmittedFileName() != null).forEach(item -> {
       
       // Field name is usually 'file'
-      String name = item.getFieldName();
+      String name = item.getName();
       Integer count = nameAndCount.get(name);
       
       if (count == null) {

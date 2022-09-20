@@ -7,8 +7,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,6 +14,7 @@ import byps.BContentStream;
 import byps.BException;
 import byps.BExceptionC;
 import byps.BHashMap;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class HActiveMessage {
   private static final Logger log = LoggerFactory.getLogger(HActiveMessage.class);

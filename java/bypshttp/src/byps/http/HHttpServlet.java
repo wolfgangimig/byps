@@ -19,16 +19,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,6 +47,13 @@ import byps.rest.RestOperations;
 import byps.ureq.BRegistry_BUtilityRequests;
 import byps.ureq.BSkeleton_BUtilityRequests;
 import byps.ureq.JRegistry_BUtilityRequests;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
 
 public abstract class HHttpServlet extends HttpServlet implements
     HServerContext {
@@ -1162,37 +1159,30 @@ public abstract class HHttpServlet extends HttpServlet implements
     try {
       // NDC.push(hsess.getId());
 
-      boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+      String contentType = request.getContentType();
+      boolean isMultipart = contentType != null && contentType.toLowerCase().startsWith("multipart/");
       if (!isMultipart) {
         throw new IllegalStateException(
             "File upload must be sent as multipart/form-data.");
       }
 
-      // Create a factory for disk-based file items
-      DiskFileItemFactory factory = new DiskFileItemFactory(
-          HConstants.INCOMING_STREAM_BUFFER, getConfig().getTempDir());
-
-      // Create a new file upload handler
-      ServletFileUpload upload = new ServletFileUpload(factory);
-
       // Set overall request size constraint
       long maxSize = getHtmlUploadMaxSize();
       if (log.isDebugEnabled()) log
           .debug("set max upload file size=" + maxSize);
-      upload.setSizeMax(maxSize);
 
       // Parse the request
-      List<FileItem> items = upload.parseRequest(request);
+      Collection<Part> items = request.getParts();
       if (log.isDebugEnabled()) log.debug("received #items=" + items.size());
 
       ArrayList<HFileUploadItem> uploadItems = new ArrayList<HFileUploadItem>();
-      for (FileItem item : items) {
+      for (Part item : items) {
 
-        String fieldName = item.getFieldName();
+        String fieldName = item.getName();
         if (log.isDebugEnabled()) log.debug("fieldName=" + fieldName);
-        String fileName = item.getName();
+        String fileName = item.getSubmittedFileName();
         if (log.isDebugEnabled()) log.debug("fileName=" + fileName);
-        boolean formField = item.isFormField();
+        boolean formField = fileName == null;
         if (log.isDebugEnabled()) log.debug("formField=" + formField);
         if (!formField && fileName.length() == 0) continue;
         long streamId = formField ? 0L
@@ -1205,7 +1195,7 @@ public abstract class HHttpServlet extends HttpServlet implements
         uploadItems.add(uploadItem);
         if (log.isDebugEnabled()) log.debug("uploadItem=" + uploadItem);
 
-        if (item.isFormField()) continue;
+        if (formField) continue;
 
         final BTargetId targetId = new BTargetId(getConfig().getMyServerId(),
             0, streamId);

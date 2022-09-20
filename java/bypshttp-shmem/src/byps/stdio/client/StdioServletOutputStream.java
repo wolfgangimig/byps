@@ -4,10 +4,9 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.WriteListener;
-
 import byps.io.ByteArrayOutputStream;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.WriteListener;
 
 public class StdioServletOutputStream extends ServletOutputStream {
   

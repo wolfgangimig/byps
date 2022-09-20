@@ -3,7 +3,7 @@ package byps.http;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * This interface listens on several events triggered in the HHttpServlet.
