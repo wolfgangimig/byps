@@ -12,11 +12,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import byps.BAsyncResult;
 import byps.BAsyncResultIgnored;
@@ -43,6 +44,9 @@ import junit.framework.Assert;
  * Streams can be sent from the server back to the client and between clients.
  * Communication between clients work even if one client uses JSON serialization 
  * and the other one uses binary serialization.
+ * 
+ * This test requires two servers. 
+ * See bypstest-srv/res/tomcat/config/server* for configuration examples.
  */
 public class TestRemoteServerR {
 	
@@ -547,6 +551,7 @@ public class TestRemoteServerR {
 	 * @throws InterruptedException
 	 */
 	@Test
+	@Ignore
 	public void testCallKilledClientFromClient() throws RemoteException {
 		log.info("testCallKilledClientFromClient(");
 		
@@ -778,6 +783,7 @@ public class TestRemoteServerR {
 	 * @throws IOException
 	 */
 	@Test
+	@Ignore
 	public void testPutStreamFromClientToClientOnOtherServer() throws InterruptedException, IOException {
 		log.info("testPutStreamFromClientToClientOnOtherServer(");
 		
@@ -882,6 +888,7 @@ public class TestRemoteServerR {
    * @throws IOException 
    */
   @Test
+  @Ignore
   public void testHandoverStreamFromClientToClientOtherServer() throws InterruptedException, IOException {
     handoverStreamFromClientToClient(true);
   } 
@@ -955,6 +962,7 @@ public class TestRemoteServerR {
    * @throws InterruptedException
    */
   @Test
+  @Ignore
   public void testServerCallsClientNoActiveLongPoll() throws RemoteException, InterruptedException{
     log.info("testServerCallsClientNoActiveLongPoll(");
         
