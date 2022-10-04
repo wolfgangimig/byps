@@ -47,9 +47,9 @@ dependencies {
 	compile group: 'junit', name: 'junit', version: '4.12'
 	
 	// https://mvnrepository.com/artifact/io.undertow/undertow-core
-	compile group: 'io.undertow', name: 'undertow-core', version: '2.3.+'
+	compile group: 'io.undertow', name: 'undertow-core', version: '2.2.19.Final'
 	// https://mvnrepository.com/artifact/io.undertow/undertow-servlet
-	compile group: 'io.undertow', name: 'undertow-servlet', version: '2.3.+'
+	compile group: 'io.undertow', name: 'undertow-servlet', version: '2.2.19.Final'
 	
 }
 

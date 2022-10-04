@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
-import byps.BMessageHeader;
 import byps.http.HConfig;
 import byps.http.HConfigImpl;
 import byps.http.HConstants;
