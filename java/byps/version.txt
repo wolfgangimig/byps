@@ -1,5 +1,9 @@
 BYPS Version History
 
+10.0
+
+- BYPS-65: Support Tomcat 10, Servlet API 5.0.
+
 9.09
 
 - BYPS-64: JS compressor closure-compiler (google) generated defect minimized JS.
