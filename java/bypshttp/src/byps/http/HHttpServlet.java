@@ -49,12 +49,15 @@ import byps.ureq.BSkeleton_BUtilityRequests;
 import byps.ureq.JRegistry_BUtilityRequests;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
+// BYPS-70: Fix multipart/form-data, annotation must be added to subclass too.
+@MultipartConfig
 public abstract class HHttpServlet extends HttpServlet implements
     HServerContext {
   private static final long serialVersionUID = 1L;
@@ -1197,11 +1200,8 @@ public abstract class HHttpServlet extends HttpServlet implements
 
         if (formField) continue;
 
-        final BTargetId targetId = new BTargetId(getConfig().getMyServerId(),
-            0, streamId);
-        getActiveMessages().addIncomingUploadStream(
-            new HFileUploadIncomingStream(item, targetId, getConfig()
-                .getTempDir()));
+        final BTargetId targetId = new BTargetId(getConfig().getMyServerId(), 0, streamId);
+        getActiveMessages().addIncomingUploadStream(HFileUploadIncomingStream.create(item, targetId, getConfig().getTempDir()));
 
       }
 

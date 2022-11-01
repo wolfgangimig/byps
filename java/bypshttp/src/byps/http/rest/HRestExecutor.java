@@ -261,7 +261,7 @@ public class HRestExecutor {
     if (log.isDebugEnabled()) log.debug("toBypsStream(fieldName={}, fileName={}", item.getName(), item.getSubmittedFileName());
     long streamId = sess.getServer().getTransport().getWire().makeMessageId();
     final BTargetId targetId = new BTargetId(config.getMyServerId(), 0, streamId);
-    BContentStream stream = new HFileUploadIncomingStream(item, targetId, config.getTempDir());
+    BContentStream stream = HFileUploadIncomingStream.create(item, targetId, config.getTempDir());
     if (log.isDebugEnabled()) log.debug(")toBypsStream={}", stream);
     return stream;
   }
