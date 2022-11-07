@@ -1,5 +1,9 @@
 BYPS Version History
 
+10.2
+
+- BYPS-71: More logging output on debug level for file upload.
+
 10.1
 
 - BYPS-70: Fix mulitpart/file-data after BYPS-65.
