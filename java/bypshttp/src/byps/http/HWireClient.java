@@ -18,10 +18,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import byps.BApiDescriptor;
 import byps.BAsyncResult;
 import byps.BBufferJson;
@@ -1093,6 +1091,24 @@ public class HWireClient extends BWire {
    */
   public HttpCookie getHttpCookie(String name) {
     return getHttpClient().getHttpCookie(name);
+  }
+
+  /**
+   * Get HTTP cookies.
+   * BYPS-72
+   * @return Cookies
+   */
+  public List<java.net.HttpCookie> getHttpCookies() {
+    return getHttpClient().getHttpCookies();
+  }
+  
+  /**
+   * Set (replace) all HTTP cookies.
+   * BYPS-72
+   * @param cookies cookies
+   */
+  public void setHttpCookies(List<java.net.HttpCookie> cookies) {
+    getHttpClient().setHttpCookies(cookies);
   }
 
   private volatile BClient_BUtilityRequests clientUtilityRequests;
