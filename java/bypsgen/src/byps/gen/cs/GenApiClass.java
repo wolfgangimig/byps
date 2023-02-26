@@ -9,6 +9,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import byps.BDefaultValue;
 import byps.BException;
 import byps.BJsonObject;
 import byps.BRegistry;
@@ -114,9 +115,17 @@ class GenApiClass {
 			
 			String value = minfo.value;
 			if (value != null) {
-				mpr.print(" = ");
-				if (value.startsWith("\"")) value = value.substring(1, value.length()-1);
-				mpr.print(printConstValue(minfo.type, value));
+        
+			  // Anführungszeichen entfernen - long-Werte werden hier als Strings geliefert.
+			  if (value.startsWith("\"")) value = value.substring(1, value.length()-1);
+			  
+			  // BYPS-61: Konstantenwert ermitteln. Wenn es ein @BDefaultValue ist, kommt ein Leerstring zurück.
+			  String constValue =  printConstValue(minfo.type, value);
+			  			  
+			  if (constValue != null && !constValue.isEmpty()) {
+  				mpr.print(" = ");
+  				mpr.print(constValue);
+			  }
 			}
 			
 			mpr.print(";");
@@ -180,13 +189,17 @@ class GenApiClass {
 		else if (tinfo.qname.equals("double")) {
 			sbuf.append(value);
 		}
-		else if (tinfo.qname.equals("float")) {
-			sbuf.append(value).append("f");
-		}
+    else if (tinfo.qname.equals("float")) {
+      sbuf.append(value).append("f");
+    }
+    else if (tinfo.isEnum) {
+      // BYPS-57: Behandlung von Enum-Werten in Konstantenobjekten. 
+      sbuf.append(tinfo.name).append(".").append(value);
+    }
 		else if (tinfo.isPointerType() && (value instanceof BJsonObject)) {
 			sbuf.append(makeNewInstance(tinfo, (BJsonObject)value));
 		}
-		else if (value != null) {
+		else if (value instanceof String && ((String)value).trim().startsWith("{")) {
 			BJsonObject js = BJsonObject.fromString((String)value);
 			sbuf.append(makeNewInstance(tinfo, js));
 		}
@@ -244,15 +257,18 @@ class GenApiClass {
 		boolean first = true;
 		sbuf.append("new ").append(sinfo.toString(serInfo.pack)).append("(");
 		for (MemberInfo minfo : sinfo.members) {
+		  Object value = params.get(minfo.name);
 			if (minfo.isStatic) continue;
 			if (!first) sbuf.append(", "); else first = false; 
 			if (minfo.type.dims.length() != 0) {
-				sbuf.append(makeNewArrayInstance(minfo.type, (BJsonObject)params.get(minfo.name)));
-			} else if (minfo.type.isPointerType()) {
-				sbuf.append(makeNewInstance(minfo.type, (BJsonObject)params.get(minfo.name)));
+				sbuf.append(makeNewArrayInstance(minfo.type, (BJsonObject)value));
+			} else if (value instanceof BJsonObject) {
+				sbuf.append(makeNewInstance(minfo.type, (BJsonObject)value));
+      } else if (value == null) {
+        sbuf.append("null");
 			}
 			else {
-				sbuf.append(printConstValue(minfo.type, params.get(minfo.name)));
+				sbuf.append(printConstValue(minfo.type, value));
 			}
 		}
 		sbuf.append(")");

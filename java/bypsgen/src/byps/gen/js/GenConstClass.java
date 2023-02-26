@@ -143,9 +143,13 @@ class GenConstClass {
 		else if (tinfo.qname.equals("float")) {
 			sbuf.append(value);
 		}
-		else if (tinfo.isPointerType() && (value instanceof BJsonObject)) {
-			sbuf.append(makeNewInstance(tinfo, (BJsonObject)value));
-		}
+    else if (value instanceof BJsonObject) {
+      sbuf.append(makeNewInstance(tinfo, (BJsonObject)value));
+    }
+    else if (tinfo.isEnum) {
+      // BYPS-57: Behandlung von Enum-Werten in Konstantenobjekten. 
+      sbuf.append(tinfo.qname).append(".").append(value);
+    }
 		else {
 			BJsonObject js = BJsonObject.fromString((String)value);
 			sbuf.append(makeNewInstance(tinfo, js));

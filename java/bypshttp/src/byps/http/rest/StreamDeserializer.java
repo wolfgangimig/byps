@@ -14,7 +14,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
 import byps.BContentStream;
-import byps.gen.RestConstants;
 
 /**
  * Gson deserializer class for InputStream.
@@ -28,7 +27,7 @@ import byps.gen.RestConstants;
  * Hence, if the deserialization expects an InputStream, it reads the 'name' member of the object and 
  * replaces it by the stream found in the provided map.
  */
-class StreamDeserializer implements JsonDeserializer<InputStream> {  
+public class StreamDeserializer implements JsonDeserializer<InputStream> {  
   
   private static final Logger log = LoggerFactory.getLogger(StreamDeserializer.class);
   
@@ -41,7 +40,7 @@ class StreamDeserializer implements JsonDeserializer<InputStream> {
    * Constructor.
    * @param getStream Function that returns the stream for a given field name.
    */
-  StreamDeserializer(Function<String, BContentStream> getStream) {
+  public StreamDeserializer(Function<String, BContentStream> getStream) {
     this.getStream = getStream;
   }
   

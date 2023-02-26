@@ -27,7 +27,7 @@ namespace byps.test.api.ver
 			BRequest_EvolveIF_setEvolve obj = (BRequest_EvolveIF_setEvolve)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bout.writeObj(obj.objValue, false, null);
 		}
 		
@@ -37,7 +37,7 @@ namespace byps.test.api.ver
 			BRequest_EvolveIF_setEvolve obj = (BRequest_EvolveIF_setEvolve)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_EvolveIF_setEvolve()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.objValue = (byps.test.api.ver.Evolve)bin.readObj(false, null);
 			
 			return obj;

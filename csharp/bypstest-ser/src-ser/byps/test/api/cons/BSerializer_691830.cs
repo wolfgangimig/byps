@@ -28,7 +28,7 @@ namespace byps.test.api.cons
 			SordZ obj = (SordZ)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bbuf.putLong(obj.Bset);
 		}
 		
@@ -39,7 +39,7 @@ namespace byps.test.api.cons
 			
 			base.read(obj, bin1, version);			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.Bset = bbuf.getLong();
 			
 			return obj;

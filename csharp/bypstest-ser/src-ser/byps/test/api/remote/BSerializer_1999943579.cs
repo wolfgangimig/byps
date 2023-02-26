@@ -27,7 +27,7 @@ namespace byps.test.api.remote
 			BRequest_RemoteSetTypes_setFloat1 obj = (BRequest_RemoteSetTypes_setFloat1)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bout.writeObj(obj.float1Value, false, byps.test.api.BSerializer_1898022288.instance);
 		}
 		
@@ -37,7 +37,7 @@ namespace byps.test.api.remote
 			BRequest_RemoteSetTypes_setFloat1 obj = (BRequest_RemoteSetTypes_setFloat1)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemoteSetTypes_setFloat1()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.float1Value = (ISet<float>)bin.readObj(false, null);
 			
 			return obj;

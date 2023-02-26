@@ -7,6 +7,8 @@ package byps.test.api.remote;
 
 import byps.*;
 import java.io.Serializable;
+import byps.test.api.prim.PrimitiveTypes;
+import java.lang.Object;
 
 /**
 */

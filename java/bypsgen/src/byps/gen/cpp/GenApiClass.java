@@ -135,7 +135,7 @@ class GenApiClass {
 							  			.print(cppInfo.getClassName(serInfo.pack)).print("::")
 							  			.print(minfo.name)
 							  			.print(" = ");
-				
+
 					printConstValue(mprC, "", minfo.type, value);
 					
 					mprC.println(";");
@@ -207,8 +207,20 @@ class GenApiClass {
 			}
 		}
 		else if (tinfo.qname.equals("long")) {
-			if (value instanceof Number) value = ((Number)value).longValue();
-			mpr = mpr.print(value + "LL");
+
+		  // BYPS-57: Suffix für Long-Werte korrigiert (war .LL statt LL) 
+
+		  long lvalue = 0;
+			if (value instanceof Number) {
+			  lvalue = ((Number)value).longValue();
+			}
+			else {
+		     String svalue = value.toString();
+		     if (svalue.endsWith(".")) svalue = svalue.substring(0, svalue.length()-1);
+		     lvalue = Long.parseLong(svalue);
+			}
+			
+			mpr = mpr.print(lvalue + "LL");
 		}
 	
 		return mpr;
@@ -245,12 +257,16 @@ class GenApiClass {
 			else if (tinfo.qname.equals("float")) {
 				mpr = mpr.print(path).print(value + "f");
 			}
-			else if (tinfo.isPointerType() && (value instanceof BJsonObject)) {
+			else if (value instanceof BJsonObject) {
 				mpr = makeNewInstance(mpr, path, tinfo, (BJsonObject)value);
 			}
-			else if (value != null) {
-				BJsonObject js = BJsonObject.fromString((String)value);
-				mpr = makeNewInstance(mpr, path, tinfo, js);
+      else if (tinfo.isEnum) {
+        // BYPS-57: Behandlung von Enum-Werten in Konstantenobjekten. 
+        mpr = mpr.print(path).print((String)value);
+      }
+      else if (value instanceof String && ((String)value).trim().startsWith("{")) {
+        BJsonObject js = BJsonObject.fromString((String)value);
+        mpr = makeNewInstance(mpr, path, tinfo, js);
 			}
 		}
 		

@@ -325,6 +325,17 @@ namespace byps {
 				class AllTypesZ; 
 				typedef byps_ptr< AllTypesZ > PAllTypesZ; 
 				
+				// byps.test.api.cons.ConfigResultOption
+				class ConfigResultOption; 
+				typedef byps_ptr< ConfigResultOption > PConfigResultOption; 
+				
+				// byps.test.api.cons.ConfigResultOptionC
+				class ConfigResultOptionC; 
+				typedef byps_ptr< ConfigResultOptionC > PConfigResultOptionC; 
+				
+				// byps.test.api.cons.GroupingType
+				enum GroupingType : int32_t; 
+				
 				// byps.test.api.cons.HebrewC
 				class HebrewC; 
 				typedef byps_ptr< HebrewC > PHebrewC; 
@@ -822,7 +833,7 @@ namespace byps {
 	} // byps::test
 } // byps
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // Matrix2D
 // typeId=135329019
@@ -845,18 +856,18 @@ class Matrix2D : public BSerializable {
 	public: float _32;
 	public: float _33;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: Matrix2D();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: Matrix2D(float _11, float _12, float _13, float _21, float _22, float _23, float _31, float _32, float _33);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // Point2D
 // typeId=1835035436
@@ -879,18 +890,18 @@ class Point2D : public BSerializable {
 	public: int16_t x;
 	public: int16_t y;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: Point2D();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: Point2D(int16_t x, int16_t y);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // MyEncoding
 // typeId=1249996125
@@ -911,7 +922,7 @@ void operator & (BIO& ar, MyEncoding& e);
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // EnumPlanets
 // typeId=1375035164
@@ -938,7 +949,31 @@ void operator & (BIO& ar, EnumPlanets& e);
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
+//-------------------------------------------------
+// GroupingType
+// typeId=1697186498
+
+namespace byps { namespace test { namespace api { namespace cons { 
+
+
+using namespace ::byps;
+
+/// <summary>
+/// Zum Testen von BYPS-57.
+/// </summary>
+enum GroupingType : int32_t  {
+	LEGACY = 0,
+	BY_KEY = 1,
+	BY_GROUP = 2,
+	
+};
+
+void operator & (BIO& ar, GroupingType& e);
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // ArrayTypes1dim
 // typeId=2001
@@ -960,18 +995,18 @@ class ArrayTypes1dim : public BSerializable {
 	public: PArrayDate date1;
 	public: byps::test::api::prim::PArrayPrimitiveTypes primitiveTypes1;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: ArrayTypes1dim();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: ArrayTypes1dim(const PArrayBoolean& boolean1, const PBytes& byte1, const PArrayChar& char1, const PArrayShort& short1, const PArrayInt& int1, const PArrayLong& long1, const PArrayFloat& float1, const PArrayDouble& double1, const PArrayString& string1, const PArrayDate& date1, const byps::test::api::prim::PArrayPrimitiveTypes& primitiveTypes1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // ArrayTypes4dim
 // typeId=2004
@@ -992,18 +1027,18 @@ class ArrayTypes4dim : public BSerializable {
 	public: PArray4String string4;
 	public: byps::test::api::prim::PArray4PrimitiveTypes primitiveTypes4;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: ArrayTypes4dim();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: ArrayTypes4dim(const PArray4Boolean& boolean4, const PArray4Byte& byte4, const PArray4Char& char4, const PArray4Short& short4, const PArray4Int& int4, const PArray4Long& long4, const PArray4Float& float4, const PArray4Double& double4, const PArray4String& string4, const byps::test::api::prim::PArray4PrimitiveTypes& primitiveTypes4);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // SessionInfo
 // typeId=65775978
@@ -1018,18 +1053,18 @@ using namespace ::byps;
 class SessionInfo : public BSerializable {
 	public: ::std::wstring sessionID;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: SessionInfo();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: SessionInfo(const ::std::wstring& sessionID);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // AllTypesC
 // typeId=930294276
@@ -1053,7 +1088,7 @@ class AllTypesC : public BSerializable {
 	public: const static wchar_t char2s = L'\u20ac';
 	public: const static int16_t short1s = (int16_t)3;
 	public: const static int32_t int1s = 4;
-	public: const static int64_t long1s = 6148914691236517205.LL;
+	public: const static int64_t long1s = 6148914691236517205LL;
 	public: const static float float1s;
 	public: const static double double1s;
 	public: const static ::std::wstring string1s;
@@ -1071,17 +1106,17 @@ class AllTypesC : public BSerializable {
 	public: const static PArray4String arrStrings4;
 	public: const static PArray2AllTypesZ arrALL;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: AllTypesC();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // AllTypesZ
 // typeId=142458
@@ -1106,9 +1141,9 @@ class AllTypesZ : public BSerializable {
 	private: PArrayString string2;
 	private: PArrayHebrewZ hebrew2;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: AllTypesZ();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: AllTypesZ(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, const ::std::wstring& string1, const PHebrewZ& hebrew1, const PBytes& byte2, const PArrayInt& int2, const PArrayString& string2, const PArrayHebrewZ& hebrew2);	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	public: bool getBool1() { return bool1; }
@@ -1139,13 +1174,71 @@ class AllTypesZ : public BSerializable {
 	public: void setString2(PArrayString v);
 	public: PArrayHebrewZ getHebrew2() { return hebrew2; }
 	public: void setHebrew2(PArrayHebrewZ v);
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
+//-------------------------------------------------
+// ConfigResultOption
+// typeId=1292137034
+
+namespace byps { namespace test { namespace api { namespace cons { 
+
+using namespace ::byps;
+
+/// <summary>
+/// Zum Prüfen von BYPS-57.
+/// </summary>
+class ConfigResultOption : public BValueClass {
+	protected: GroupingType groupingType;
+	protected: ::std::wstring string1;
+	
+	// checkpoint byps.gen.cpp.GenApiClass:504
+	public: ConfigResultOption();
+	// checkpoint byps.gen.cpp.GenApiClass:551
+	public: ConfigResultOption(GroupingType groupingType, const ::std::wstring& string1);	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	public: GroupingType getGroupingType() { return groupingType; }
+	public: void setGroupingType(GroupingType v);
+	public: ::std::wstring getString1() { return string1; }
+	public: void setString1(::std::wstring v);
+	// checkpoint byps.gen.cpp.GenApiClass:886
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:668
+//-------------------------------------------------
+// ConfigResultOptionC
+// typeId=114832566
+
+namespace byps { namespace test { namespace api { namespace cons { 
+
+using namespace ::byps;
+
+/// <summary>
+/// Zum Prüfen von BYPS-57.
+/// </summary>
+class ConfigResultOptionC : public BValueClass {
+	public: const static PConfigResultOption DEFAULT_1;
+	public: const static PConfigResultOption DEFAULT_2;
+	public: const static PConfigResultOption DEFAULT_3;
+	
+	// checkpoint byps.gen.cpp.GenApiClass:504
+	public: ConfigResultOptionC();
+	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	// checkpoint byps.gen.cpp.GenApiClass:886
+	public: void serialize(BIO& ar, const BVERSION version);
+};
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // HebrewC
 // typeId=1770673942
@@ -1160,19 +1253,19 @@ class HebrewC : public BSerializable {
 	public: const static PHebrewZ ALEPH;
 	public: const static PHebrewZ BETH;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: HebrewC();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	public: static ::std::wstring getAleph() { return aleph; }
 	public: static ::std::wstring getBeth() { return beth; }
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // HebrewZ
 // typeId=1518668429
@@ -1184,20 +1277,20 @@ using namespace ::byps;
 class HebrewZ : public BSerializable {
 	private: ::std::wstring core;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: HebrewZ();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: HebrewZ(const ::std::wstring& core);	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	public: ::std::wstring getCore() { return core; }
 	public: void setCore(::std::wstring v);
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // SordC
 // typeId=632707056
@@ -1207,22 +1300,21 @@ namespace byps { namespace test { namespace api { namespace cons {
 using namespace ::byps;
 
 class SordC : public BSerializable {
-	private: static int64_t mbAllMembers;
+	private: const static int64_t mbAllMembers = 2196631268005773311LL;
 	public: const static PSordZ mbAll;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: SordC();
 	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	public: static int64_t getMbAllMembers() { return mbAllMembers; }
-	public: void setMbAllMembers(int64_t v);
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // SordZ
 // typeId=691830
@@ -1234,20 +1326,20 @@ using namespace ::byps;
 class SordZ : public BValueClass {
 	protected: int64_t bset;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: SordZ();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: SordZ(int64_t bset);	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	public: int64_t getBset() { return bset; }
 	public: void setBset(int64_t v);
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // UsePlanets
 // typeId=10000
@@ -1264,20 +1356,20 @@ class UsePlanets : public BSerializable {
 	public: PMapStringEnumPlanets mapOfPlanets;
 	public: MyEncoding encoding;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: UsePlanets();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: UsePlanets(EnumPlanets planet, EnumPlanets planet2, const PArrayEnumPlanets& arrayOfPlanets, const PVectorEnumPlanets& listOfPlanets, const PMapStringEnumPlanets& mapOfPlanets, MyEncoding encoding);	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	public: EnumPlanets getPlanet2() { return planet2; }
 	public: void setPlanet2(EnumPlanets v);
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // Class1
 // typeId=6001
@@ -1293,18 +1385,18 @@ class Class1 : public BSerializable {
 	public: int32_t int1;
 	public: PClass1 nextClass1;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: Class1();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: Class1(int32_t int1, const PClass1& nextClass1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // Class1Collections
 // typeId=6004
@@ -1318,18 +1410,18 @@ class Class1Collections : public BSerializable {
 	public: PMapStringClass1 map1;
 	public: byps_ptr< ::std::set< PClass1 > > set1;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: Class1Collections();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: Class1Collections(const PVectorClass1& list1, const PMapStringClass1& map1, const byps_ptr< ::std::set< PClass1 > >& set1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // Class2
 // typeId=6002
@@ -1341,18 +1433,18 @@ using namespace ::byps;
 class Class2 : public Class1 {
 	public: int32_t int2;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: Class2();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: Class2(int32_t int2);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // Class3
 // typeId=6003
@@ -1364,18 +1456,18 @@ using namespace ::byps;
 class Class3 : public Class2 {
 	public: int32_t int3;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: Class3();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: Class3(int32_t int3);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // Actor
 // typeId=171948703
@@ -1388,18 +1480,18 @@ class Actor : public BSerializable {
 	public: PArrayPoint2D shape;
 	public: Matrix2D position;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: Actor();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: Actor(const PArrayPoint2D& shape, const Matrix2D& position);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // ListListTypes
 // typeId=3002
@@ -1413,18 +1505,18 @@ class ListListTypes : public BSerializable {
 	public: byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > > int3;
 	public: byps_ptr< ::std::vector< byps_ptr< ::std::vector< PArray4Int > > > > int24;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: ListListTypes();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: ListListTypes(const byps_ptr< ::std::vector< byps::PVectorInteger > >& int2, const byps_ptr< ::std::vector< byps_ptr< ::std::map< int32_t , byps_ptr< ::std::vector< byps::PSetInteger > > > > > >& int3, const byps_ptr< ::std::vector< byps_ptr< ::std::vector< PArray4Int > > > >& int24);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // ListTypes
 // typeId=3001
@@ -1450,18 +1542,18 @@ class ListTypes : public BSerializable {
 	public: byps_ptr< ::std::vector< PArray4Int > > int4;
 	public: byps::PVectorObject obj1;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: ListTypes();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: ListTypes(const byps::PVectorBoolean& boolean1, const byps::PVectorByte& byte1, const byps::PVectorCharacter& char1, const byps::PVectorShort& short1, const byps::PVectorInteger& int1, const byps::PVectorLong& long1, const byps::PVectorFloat& float1, const byps::PVectorDouble& double1, const byps::PVectorString& string1, const byps::PVectorDate& date1, const byps::test::api::prim::PVectorPrimitiveTypes& primitiveTypes1, const byps_ptr< ::std::vector< PBytes > >& byte2, const byps_ptr< ::std::vector< PArrayInt > >& int2, const byps_ptr< ::std::vector< PArray4Int > >& int4, const byps::PVectorObject& obj1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // MapTypes
 // typeId=4001
@@ -1486,18 +1578,18 @@ class MapTypes : public BSerializable {
 	public: byps::PMapStringObject obj1;
 	public: byps::PMapStringDate date1;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: MapTypes();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: MapTypes(const byps::PMapStringBoolean& boolean1, const byps::PMapDoubleByte& byte1, const byps::PMapFloatCharacter& char1, const byps::PMapLongShort& short1, const byps::PMapIntegerInteger& int1, const byps::PMapShortLong& long1, const byps::PMapCharacterFloat& float1, const byps::PMapByteDouble& double1, const byps::PMapStringString& string1, const byps::test::api::prim::PMapIntegerPrimitiveTypes& primitiveTypes1, const byps_ptr< ::std::map< int32_t , PBytes > >& byte2, const byps_ptr< ::std::map< int32_t , PArrayInt > >& int2, const byps::PMapStringObject& obj1, const byps::PMapStringDate& date1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // PrimitiveTypes
 // typeId=1000
@@ -1556,20 +1648,20 @@ class PrimitiveTypes : public BValueClass {
 	/// </summary>
 	protected: int32_t deferredValue;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: PrimitiveTypes();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: PrimitiveTypes(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, const ::std::wstring& stringVal, const BDateTime& dateVal, const PSerializable& objVal, const PSerializable& objVal2, bool value, const PSerializable& temp, int32_t deferredValue);	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	public: int32_t getDeferredValue() { return deferredValue; }
 	public: void setDeferredValue(int32_t v);
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // PrivateMembers
 // typeId=8001
@@ -1604,9 +1696,9 @@ class PrivateMembers : public BSerializable {
 	protected: int32_t protInt;
 	protected: int32_t pprotInt;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: PrivateMembers();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: PrivateMembers(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, const ::std::wstring& stringVal, const byps::test::api::prim::PPrimitiveTypes& primitiveTypes, const PArrayBoolean& arrBool, const PArrayInt& arrInt, const PArrayString& arrString, const byps::test::api::prim::PArrayPrimitiveTypes& arrPrimitiveTypes, const byps::PVectorBoolean& listBool, const byps::PVectorInteger& listInt, const byps::PVectorString& listString, const byps::test::api::prim::PVectorPrimitiveTypes& listPrimitiveTypes, const byps_ptr< ::std::map< int32_t , byps::PVectorString > >& mapIntListString, int32_t protInt, int32_t pprotInt);	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	public: bool getBoolVal() { return boolVal; }
@@ -1651,13 +1743,13 @@ class PrivateMembers : public BSerializable {
 	public: void setProtInt(int32_t v);
 	public: int32_t getPprotInt() { return pprotInt; }
 	public: void setPprotInt(int32_t v);
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // Node
 // typeId=9001
@@ -1672,18 +1764,18 @@ class Node : public BSerializable {
 	public: PMapStringNode mapOfNodes;
 	public: PVectorNode listOfNodes;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: Node();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: Node(const PNode& next, const PNode& me, const PMapStringNode& mapOfNodes, const PVectorNode& listOfNodes);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // SetTypes
 // typeId=5001
@@ -1708,18 +1800,18 @@ class SetTypes : public BSerializable {
 	public: byps_ptr< ::std::set< PSerializable > > obj1;
 	public: byps::PSetDate date1;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: SetTypes();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: SetTypes(const byps::PSetBoolean& boolean1, const byps::PSetByte& byte1, const byps::PSetCharacter& char1, const byps::PSetShort& short1, const byps::PSetInteger& int1, const byps::PSetLong& long1, const byps::PSetFloat& float1, const byps::PSetDouble& double1, const byps::PSetString& string1, const byps_ptr< ::std::set< byps::test::api::prim::PPrimitiveTypes > >& primitiveTypes1, const byps_ptr< ::std::set< PBytes > >& byte2, const byps_ptr< ::std::set< PArrayInt > >& int2, const byps_ptr< ::std::set< PSerializable > >& obj1, const byps::PSetDate& date1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // ChatStructure
 // typeId=7007
@@ -1733,18 +1825,18 @@ class ChatStructure : public BSerializable {
 	public: double sentAt;
 	public: double receivedAt;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: ChatStructure();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: ChatStructure(const ::std::wstring& msg, double sentAt, double receivedAt);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // Stream1
 // typeId=1541129345
@@ -1760,9 +1852,9 @@ class Stream1 : public BSerializable {
 	private: byps::PVectorInputStream listStream;
 	public: byps::PMapIntegerInputStream mapStream;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: Stream1();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: Stream1(const PContentStream& is1, const ::std::wstring& contentType, const byps::PArrayInputStream& arrStream, const byps::PVectorInputStream& listStream, const byps::PMapIntegerInputStream& mapStream);	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	public: ::std::wstring getContentType() { return contentType; }
@@ -1771,13 +1863,13 @@ class Stream1 : public BSerializable {
 	public: void setArrStream(byps::PArrayInputStream v);
 	public: byps::PVectorInputStream getListStream() { return listStream; }
 	public: void setListStream(byps::PVectorInputStream v);
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // Evolve
 // typeId=1391985860
@@ -1858,18 +1950,18 @@ class Evolve : public BSerializable {
 	public: byps::PMapIntegerInteger map3;
 	public: int32_t since793;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: Evolve();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: Evolve(bool bool1, int8_t byte1, wchar_t char1, int16_t short1, int32_t int1, int64_t long1, float float1, double double1, const PArrayBoolean& bools1, const PBytes& bytes1, const PArrayChar& chars1, const PArrayShort& shorts1, const PArrayInt& ints1, const PArrayLong& longs1, const PArrayFloat& floats1, const PArrayDouble& doubles1, const ::std::wstring& str1, const PSerializable& obj1, const PEvolve2& evo1, const byps::PVectorInteger& list1, const byps::PSetInteger& set1, const byps::PMapIntegerInteger& map1, bool bool2, int8_t byte2, wchar_t char2, int16_t short2, int32_t int2, int64_t long2, float float2, double double2, const PArrayBoolean& bools2, const PBytes& bytes2, const PArrayChar& chars2, const PArrayShort& shorts2, const PArrayInt& ints2, const PArrayLong& longs2, const PArrayFloat& floats2, const PArrayDouble& doubles2, const ::std::wstring& str2, const PSerializable& obj2, const PEvolve2& evo2, const byps::PVectorInteger& list2, const byps::PSetInteger& set2, const byps::PMapIntegerInteger& map2, bool bool3, int8_t byte3, wchar_t char3, int16_t short3, int32_t int3, int64_t long3, float float3, double double3, const PArrayBoolean& bools3, const PBytes& bytes3, const PArrayChar& chars3, const PArrayShort& shorts3, const PArrayInt& ints3, const PArrayLong& longs3, const PArrayFloat& floats3, const PArrayDouble& doubles3, const ::std::wstring& str3, const PSerializable& obj3, const PEvolve2& evo3, const byps::PVectorInteger& list3, const byps::PSetInteger& set3, const byps::PMapIntegerInteger& map3, int32_t since793);	
 	public: virtual BTYPEID BSerializable_getTypeId();
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
 }}}}
 
-// checkpoint byps.gen.cpp.GenApiClass:652
+// checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
 // Evolve2
 // typeId=573592593
@@ -1881,14 +1973,14 @@ using namespace ::byps;
 class Evolve2 : public BSerializable {
 	protected: int32_t n1;
 	
-	// checkpoint byps.gen.cpp.GenApiClass:488
+	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: Evolve2();
-	// checkpoint byps.gen.cpp.GenApiClass:535
+	// checkpoint byps.gen.cpp.GenApiClass:551
 	public: Evolve2(int32_t n1);	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	public: int32_t getN1() { return n1; }
 	public: void setN1(int32_t v);
-	// checkpoint byps.gen.cpp.GenApiClass:870
+	// checkpoint byps.gen.cpp.GenApiClass:886
 	public: void serialize(BIO& ar, const BVERSION version);
 };
 
@@ -4157,9 +4249,9 @@ using namespace ::byps;
 
 class BApiDescriptor_Testser { 
 	/**
-	 * API serialisation version: 795.0.0.0
+	 * API serialisation version: 796.0.0.0
 	 */
-	public: const static int64_t VERSION = 79500000000000000LL;
+	public: const static int64_t VERSION = 79600000000000000LL;
 	public: static PApiDescriptor instance();
 };
 

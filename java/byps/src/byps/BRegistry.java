@@ -6,8 +6,9 @@ import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class BRegistry {
 
@@ -43,10 +44,19 @@ public abstract class BRegistry {
 
   public final BBinaryModel bmodel;
   
-  private Map<Class<?>, BSerializer> classToSerializer = new ConcurrentHashMap<Class<?>, BSerializer>();
+  private Map<Class<?>, BSerializer> classToSerializer = Collections.synchronizedMap(new HashMap<Class<?>, BSerializer>());
+  
+  /**
+   * Use this class loader to lookup serializer classes.
+   * BYPS-62
+   */
+  private ClassLoader classLoader;
   
   public BRegistry(BBinaryModel bmodel) {
     this.bmodel = bmodel;
+    
+    Class<?> thisClass = this.getClass();
+    this.classLoader = thisClass.getClassLoader();
   }
 
   public int getMinTypeIdUser() {
@@ -80,7 +90,7 @@ public abstract class BRegistry {
         if (rser.instance == null) {
           Class<BSerializer> c;
           try {
-            c = (Class<BSerializer>)Class.forName(rser.name);
+            c = (Class<BSerializer>)loadClass(rser.name);
             Constructor<BSerializer> constr = c.getConstructor();
             rser.instance = constr.newInstance();
           } catch (Exception e) {
@@ -94,6 +104,18 @@ public abstract class BRegistry {
       ser = getBuiltInSerializer(typeId);
     }
     return ser;
+  }
+  
+  /**
+   * Load class by {@link #classLoader}.
+   * @param className
+   * @return class object
+   * @throws ClassNotFoundException
+   * 
+   * BYPS-62
+   */
+  protected Class<?> loadClass(String className) throws ClassNotFoundException {
+    return classLoader.loadClass(className);
   }
 
   public BSerializer getSerializer(int typeId) throws BException {
@@ -237,6 +259,14 @@ public abstract class BRegistry {
       }
     }
     return false;
+  }
+
+  public ClassLoader getClassLoader() {
+    return classLoader;
+  }
+
+  public void setClassLoader(ClassLoader classLoader) {
+    this.classLoader = classLoader;
   }
   
 }

@@ -7,6 +7,7 @@ package byps.test.api.remote;
 
 import byps.*;
 import java.io.Serializable;
+import byps.test.api.auth.SessionInfo;
 
 /**
 */
@@ -21,7 +22,7 @@ public final class BRequest_RemoteWithAuthentication_login extends BMethodReques
 	
 	public int getRemoteId() { return 1983670399; }
 	
-	// checkpoint byps.gen.j.GenApiClass:627
+	// checkpoint byps.gen.j.GenApiClass:633
 	public void setSession(Object __byps__sess) {
 		sess = (byps.test.api.auth.SessionInfo)__byps__sess;
 	}

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -171,10 +173,14 @@ class GenApiClass {
 		else if (tinfo.isPointerType() && (value instanceof BJsonObject)) {
 			sbuf.append(makeNewInstance(tinfo, (BJsonObject)value));
 		}
-		else {
+		else if (value instanceof String && ((String)value).trim().startsWith("{")) {
 			BJsonObject js = BJsonObject.fromString((String)value);
 			sbuf.append(makeNewInstance(tinfo, js));
 		}
+		else {
+		  // BYPS-60: Default-Wert für Methodenaufruf wird in die BRequest_remote_method-Klasse eingefügt.
+      sbuf.append(value);
+    }
 		
 		return sbuf.toString();
 	}
@@ -651,8 +657,21 @@ class GenApiClass {
 //		if (serInfo.isRequestClass() || serInfo.isResultClass()) {
 //			pr.println("import byps.*;");
 //		}
+		
 		pr.println("import byps.*;");
 		pr.println("import java.io.Serializable;");
+		
+		serInfo.members.stream()
+		    .filter(m -> !m.type.isPrimitiveType())
+		    .map(m -> m.type.qname)
+		    .distinct()
+  		  .filter(qname -> !qname.startsWith(serInfo.pack + "."))
+  		  .forEach(qname -> pr.println("import " + qname + ";"));
+		
+//		  .filter(pack -> !pack.equals("java.lang"))
+//		  .filter(pack -> !pack.equals(serInfo.pack))
+//		  .forEach(pack -> pr.println("import " + pack + ";"));
+		
 		pr.println();
 		
 		pctxt.printComments(pr, serInfo.comments);

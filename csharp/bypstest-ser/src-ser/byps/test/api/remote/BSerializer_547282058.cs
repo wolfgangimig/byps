@@ -27,9 +27,9 @@ namespace byps.test.api.remote
 			BRequest_RemotePrimitiveTypes_getDeferredValueFromServer obj = (BRequest_RemotePrimitiveTypes_getDeferredValueFromServer)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bbuf.putInt(obj.param1Value);
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bbuf.putString(obj.param2Value);
 		}
 		
@@ -39,9 +39,9 @@ namespace byps.test.api.remote
 			BRequest_RemotePrimitiveTypes_getDeferredValueFromServer obj = (BRequest_RemotePrimitiveTypes_getDeferredValueFromServer)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemotePrimitiveTypes_getDeferredValueFromServer()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.param1Value = bbuf.getInt();
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.param2Value = bbuf.getString();
 			
 			return obj;

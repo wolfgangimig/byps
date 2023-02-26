@@ -27,7 +27,7 @@ namespace byps.test.api.ver
 			Evolve2 obj = (Evolve2)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bbuf.putInt(obj.N1);
 		}
 		
@@ -37,7 +37,7 @@ namespace byps.test.api.ver
 			Evolve2 obj = (Evolve2)(obj1 != null ? obj1 : bin.onObjectCreated(new Evolve2()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.N1 = bbuf.getInt();
 			
 			return obj;

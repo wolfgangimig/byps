@@ -27,7 +27,7 @@ namespace byps.test.api.remote
 			BRequest_RemotePrimitiveTypes_setString obj = (BRequest_RemotePrimitiveTypes_setString)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bbuf.putString(obj.vValue);
 		}
 		
@@ -37,7 +37,7 @@ namespace byps.test.api.remote
 			BRequest_RemotePrimitiveTypes_setString obj = (BRequest_RemotePrimitiveTypes_setString)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_RemotePrimitiveTypes_setString()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.vValue = bbuf.getString();
 			
 			return obj;

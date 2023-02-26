@@ -27,9 +27,9 @@ namespace byps.test.api.inherit
 			BRequest_LemonService_pick obj = (BRequest_LemonService_pick)obj1;			
 			BOutputBin bout = (BOutputBin)bout1;
 			BBufferBin bbuf = bout.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bbuf.putString(obj.fromTreeValue);
-			// checkpoint byps.gen.cs.PrintContext:494
+			// checkpoint byps.gen.cs.PrintContext:498
 			bout.writeObj(obj.sessValue, false, null);
 		}
 		
@@ -39,9 +39,9 @@ namespace byps.test.api.inherit
 			BRequest_LemonService_pick obj = (BRequest_LemonService_pick)(obj1 != null ? obj1 : bin.onObjectCreated(new BRequest_LemonService_pick()));
 			
 			BBufferBin bbuf = bin.bbuf;
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.fromTreeValue = bbuf.getString();
-			// checkpoint byps.gen.cs.PrintContext:449
+			// checkpoint byps.gen.cs.PrintContext:453
 			obj.sessValue = (byps.test.api.auth.SessionInfo)bin.readObj(false, null);
 			
 			return obj;

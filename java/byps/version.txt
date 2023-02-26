@@ -1,5 +1,37 @@
 BYPS Version History
 
+9.09
+
+- BYPS-64: JS compressor closure-compiler (google) generated defect minimized JS.
+
+9.08
+
+- BYPS-62: BSerializer classes could not be loaded in an OSGi bundle. 
+  A custom class loader can be assigned to BRegistry. Example:
+  client.getTransport().getProtocol().getRegistry().setClassLoader(TestRemoteEnums.class.getClassLoader());
+
+9.07
+
+- BYPS-61: Classes or methods wit default values for REST calls could not be compiled in C#. 
+
+9.06
+
+- BYPS-60: Annotation javax.ws.rs.DefaultValue can assign a default value to method parameters.
+  Those method parameters can be omitted in REST calls.
+
+9.05
+
+- BYPS-58: Avoid multiple declarations of mbAllMembers in constant classes.
+
+9.04
+
+- BYPS-57: Enum member used in a class that itself is used as a constant object caused NPE in generator.
+  C++ generator printed long values with invalid suffix. 
+
+9.03
+
+- BYPS-56: Escape C# member variable if it is named by a keyword (e.g. "namespace").  
+
 9.00
 
 - BYPS-50: Provide REST calls for BYPS APIs and generate OpenAPI documentation. 

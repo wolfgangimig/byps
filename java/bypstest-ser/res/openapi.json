@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Testser",
-    "version": "795.0.0.0"
+    "version": "796.0.0.0"
   },
   "servers": [
     {
@@ -9276,6 +9276,21 @@
           "$ref": "#/components/schemas/Array3OfString"
         }
       },
+      "ConfigResultOptionC": {
+        "type": "object",
+        "properties": {
+          "DEFAULT_1": {
+            "$ref": "#/components/schemas/ConfigResultOption"
+          },
+          "DEFAULT_2": {
+            "$ref": "#/components/schemas/ConfigResultOption"
+          },
+          "DEFAULT_3": {
+            "$ref": "#/components/schemas/ConfigResultOption"
+          }
+        },
+        "description": "Zum Prüfen von BYPS-57."
+      },
       "ArrayOfPoint2D": {
         "type": "array",
         "items": {
@@ -9940,6 +9955,18 @@
             "description": "Error message"
           }
         }
+      },
+      "ConfigResultOption": {
+        "type": "object",
+        "properties": {
+          "groupingType": {
+            "$ref": "#/components/schemas/GroupingType"
+          },
+          "string1": {
+            "type": "string"
+          }
+        },
+        "description": "Zum Prüfen von BYPS-57."
       },
       "ArrayTypes1dim": {
         "type": "object",
@@ -11551,6 +11578,21 @@
             "$ref": "#/components/schemas/HashSetOfByte"
           }
         }
+      },
+      "GroupingType": {
+        "type": "object",
+        "properties": {
+          "LEGACY": {
+            "$ref": "#/components/schemas/GroupingType"
+          },
+          "BY_KEY": {
+            "$ref": "#/components/schemas/GroupingType"
+          },
+          "BY_GROUP": {
+            "$ref": "#/components/schemas/GroupingType"
+          }
+        },
+        "description": "Zum Testen von BYPS-57."
       },
       "BRequest_RemoteSetTypes_setByte2": {
         "type": "object",

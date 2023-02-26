@@ -7,13 +7,14 @@ package byps.test.api.remote;
 
 import byps.*;
 import java.io.Serializable;
+import byps.test.api.prim.PrimitiveTypes;
 
 /**
 */
 @SuppressWarnings("all")
 public final class BRequest_RemotePrimitiveTypes_setPrimitiveTypes extends BMethodRequest implements Serializable {
 
-	public byps.test.api.prim.PrimitiveTypes v;
+	public byps.test.api.prim.PrimitiveTypes v = new PrimitiveTypes();
 	
 	public final static long serialVersionUID = 225526541L;
 	

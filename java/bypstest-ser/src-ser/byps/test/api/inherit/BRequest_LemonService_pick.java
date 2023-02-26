@@ -7,6 +7,7 @@ package byps.test.api.inherit;
 
 import byps.*;
 import java.io.Serializable;
+import byps.test.api.auth.SessionInfo;
 
 /**
 */

@@ -30,7 +30,7 @@ namespace byps.test.api.cons
 		
 		#region Fields
 		
-		public long MbAllMembers;
+		public const long MbAllMembers = 2196631268005773311L;
 
 		public readonly static SordZ MbAll = new SordZ(2196631268005773311L);
 
