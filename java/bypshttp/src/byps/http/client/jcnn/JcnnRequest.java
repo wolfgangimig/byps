@@ -139,7 +139,10 @@ public abstract class JcnnRequest implements HHttpRequest {
       List<HttpCookie> httpCookies = new ArrayList<HttpCookie>(cookies.getCookies());
       
       for (HttpCookie cookie : httpCookies) {
-        c.setRequestProperty("Cookie", cookie.toString());
+        
+        // BYPS-72: use addRequestProperty to send all cookies to the server
+        
+        c.addRequestProperty("Cookie", cookie.toString());
         if (log.isDebugEnabled()) log.debug("request cookie=" + cookie.toString());
       }
     }
