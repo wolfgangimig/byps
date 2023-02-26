@@ -8,6 +8,7 @@ import java.util.Collection;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,7 +17,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import byps.BApiDescriptor;
-import byps.BMessageHeader;
 import byps.http.HConfig;
 import byps.http.HConfigImpl;
 import byps.http.HConstants;
@@ -190,6 +190,14 @@ public class BypsServlet extends HHttpServlet {
       throws ServletException, IOException {
     setAccessControlHeaders(response);
     super.service(request, response);
+    
+    String path = request.getContextPath();
+    Cookie cookie = new Cookie("cookieeins", "123");
+    cookie.setPath(path);
+    response.addCookie(cookie);
+    Cookie cookie2 = new Cookie("cookiezwei", "456");
+    cookie2.setPath(path);
+    response.addCookie(cookie2);
   }
   
   @Override
