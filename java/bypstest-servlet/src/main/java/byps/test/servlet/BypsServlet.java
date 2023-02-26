@@ -190,14 +190,15 @@ public class BypsServlet extends HHttpServlet {
       throws ServletException, IOException {
     setAccessControlHeaders(response);
     super.service(request, response);
-    
-    String path = request.getContextPath();
-    Cookie cookie = new Cookie("cookieeins", "123");
-    cookie.setPath(path);
-    response.addCookie(cookie);
-    Cookie cookie2 = new Cookie("cookiezwei", "456");
-    cookie2.setPath(path);
-    response.addCookie(cookie2);
+
+    // BYPS-72: manuelle Prüfung dafür, dass alle Cookies vom Client zurückgesendet werden.
+//    String path = request.getContextPath();
+//    Cookie cookie = new Cookie("cookieeins", "123");
+//    cookie.setPath(path);
+//    response.addCookie(cookie);
+//    Cookie cookie2 = new Cookie("cookiezwei", "456");
+//    cookie2.setPath(path);
+//    response.addCookie(cookie2);
   }
   
   @Override

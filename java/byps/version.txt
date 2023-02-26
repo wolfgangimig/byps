@@ -1,5 +1,11 @@
 BYPS Version History
 
+9.10
+
+- BYPS-72: Could not connect to AWS load balancer via JcnnClientFactory because additional AWS cookies were
+  ignored. Still fails to connect via AsfClientFactory because Apache HTTP Client cannot parse AWS cookies:
+  ...MalformedCookieException: Invalid 'expires' attribute...
+
 9.09
 
 - BYPS-64: JS compressor closure-compiler (google) generated defect minimized JS.
