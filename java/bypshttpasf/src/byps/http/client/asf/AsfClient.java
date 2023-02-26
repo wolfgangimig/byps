@@ -5,8 +5,9 @@ import java.io.InputStream;
 import java.net.HttpCookie;
 import java.nio.ByteBuffer;
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
-
+import java.util.stream.Collectors;
 import org.apache.http.auth.AuthSchemeProvider;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.Credentials;
@@ -26,7 +27,6 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import byps.BAsyncResult;
 import byps.BContentStream;
 import byps.BSyncResult;
@@ -282,6 +282,23 @@ public class AsfClient implements HHttpClient {
     catch (Throwable e) {
       e.printStackTrace();
     }
+  }
+
+  @Override
+  public List<HttpCookie> getHttpCookies() {
+    return context.getCookieStore().getCookies().stream()
+      .map(this::toHttpCookie).collect(Collectors.toList());
+  }
+
+  @Override
+  public void setHttpCookies(List<HttpCookie> cookies) {
+    BasicCookieStore cookieStoreNew = new BasicCookieStore();
+    
+    cookies.stream()
+      .map(this::fromHttpCookie)
+      .forEach(cookieStoreNew::addCookie);
+      
+    context.setCookieStore(cookieStoreNew);
   }
 
 }
