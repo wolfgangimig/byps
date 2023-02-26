@@ -5,8 +5,8 @@ import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.net.HttpCookie;
 import java.nio.ByteBuffer;
+import java.util.List;
 import java.util.Optional;
-
 import byps.BAsyncResult;
 import byps.BContentStream;
 import byps.http.HConstants;
@@ -86,6 +86,17 @@ public class JcnnClient implements HHttpClient {
   private Optional<HttpCookie> internalFindCookie(String name) {
     return cookieManager.getCookieStore().getCookies().stream()
       .filter(c -> c.getName().equalsIgnoreCase(name)).findFirst();
+  }
+
+  @Override
+  public List<HttpCookie> getHttpCookies() {
+  	return cookieManager.getCookieStore().getCookies();
+  }
+  
+  @Override
+  public void setHttpCookies(List<HttpCookie> cookies) {
+    cookieManager.getCookieStore().removeAll();
+    cookies.forEach(cookie -> cookieManager.getCookieStore().add(null, cookie));
   }
   
 }

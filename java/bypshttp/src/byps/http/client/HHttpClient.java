@@ -2,6 +2,7 @@ package byps.http.client;
 
 import java.io.InputStream;
 import java.nio.ByteBuffer;
+import java.util.List;
 
 import byps.BAsyncResult;
 import byps.BContentStream;
@@ -99,5 +100,19 @@ public interface HHttpClient {
    */
   public void setHttpCookie(java.net.HttpCookie cookie);
     // BYPS-18: Allow to set HTTP session to support OAuth/SAML
+  
+  /**
+   * Get HTTP cookies.
+   * BYPS-72
+   * @return Cookies
+   */
+  public List<java.net.HttpCookie> getHttpCookies();
+  
+  /**
+   * Set (replace) all HTTP cookies.
+   * BYPS-72
+   * @param cookies cookies
+   */
+  public void setHttpCookies(List<java.net.HttpCookie> cookies);
   
 }

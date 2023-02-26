@@ -5,8 +5,9 @@ import java.io.OutputStream;
 import java.net.HttpCookie;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
-
+import java.util.List;
 import byps.BAsyncResult;
 import byps.BContentStream;
 import byps.BTransport;
@@ -136,4 +137,12 @@ public class StdioClient extends StdioCommunication implements HHttpClient {
     throw new UnsupportedOperationException("HttpClient.setHttpSession is not supported for stdio communication.");
   }
   
+  @Override
+  public List<HttpCookie> getHttpCookies() {
+    return Collections.emptyList();
+  }
+  
+  @Override
+  public void setHttpCookies(List<HttpCookie> cookies) {
+  }
 }
