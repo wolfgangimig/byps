@@ -5,6 +5,7 @@ BYPS Version History
 - BYPS-72: Could not connect to AWS load balancer via JcnnClientFactory because additional AWS cookies were
   ignored. Still fails to connect via AsfClientFactory because Apache HTTP Client cannot parse AWS cookies:
   ...MalformedCookieException: Invalid 'expires' attribute...
+  Use default cookie manager if registered at CookieHandler.getDefault().
 
 9.09
 

@@ -2,6 +2,7 @@ package byps.http.client.jcnn;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.CookieStore;
 import java.net.HttpCookie;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -132,19 +134,25 @@ public abstract class JcnnRequest implements HHttpRequest {
     if (log.isDebugEnabled()) log.debug("applySession(");
     JcnnRequest req = (JcnnRequest)req1;
     HttpURLConnection c = req.conn.get();
-    if (c != null) {
-      CookieStore cookies = cookieManager.getCookieStore();
+    
+    // BYPS-72: explicitly send cookie header only for non-default cookie handler.
+    
+    if (c != null && !isDefaultCookieManagerActive()) {
       
-      // BYPS-2: copy cookies to circumvent ConcurrentModificationException
-      List<HttpCookie> httpCookies = new ArrayList<HttpCookie>(cookies.getCookies());
-      
-      for (HttpCookie cookie : httpCookies) {
+      List<HttpCookie> httpCookies;
+      synchronized(cookieManager) {
+        CookieStore cookies = cookieManager.getCookieStore();
         
-        // BYPS-72: use addRequestProperty to send all cookies to the server
-        
-        c.addRequestProperty("Cookie", cookie.toString());
-        if (log.isDebugEnabled()) log.debug("request cookie=" + cookie.toString());
+        // BYPS-2: copy cookies to circumvent ConcurrentModificationException
+        httpCookies = new ArrayList<>(cookies.getCookies());
       }
+
+      if (!httpCookies.isEmpty()) {
+        String cookiesAsString = httpCookies.stream().map(HttpCookie::toString).distinct().collect(Collectors.joining(";"));
+        c.setRequestProperty("Cookie", cookiesAsString);
+        if (log.isDebugEnabled()) log.debug("request cookies={}", cookiesAsString);
+      }
+      
     }
     if (log.isDebugEnabled()) log.debug(")applySession");
   }
@@ -152,15 +160,23 @@ public abstract class JcnnRequest implements HHttpRequest {
   public void saveSession(HHttpRequest req1) {
     JcnnRequest req = (JcnnRequest)req1;
     HttpURLConnection c = req.conn.get();
-    if (c != null) {
+    
+    // BYPS-72: save cookies only for non-default cookie handler.
+
+    if (c != null && !isDefaultCookieManagerActive()) {
       try {
         URI uri = new URI(req.url);
         
         // CookieManager.put writes a SEVERE log output if server sends an empty cookie.
         // To circumvent this log entry, skip all empty cookies.
         Map<String, List<String>> responseCookies = extractCookieHeaders(c);
-        if (log.isDebugEnabled()) log.debug("responseCookies=" + responseCookies);
-        cookieManager.put(uri, responseCookies);
+        if (log.isDebugEnabled()) log.debug("responseCookies={}", responseCookies);
+
+        if (!responseCookies.isEmpty()) {
+          synchronized(cookieManager) {
+            cookieManager.put(uri, responseCookies);
+          }
+        }
       }
       catch (Exception e) {
         req.ex = new BException(BExceptionC.IOERROR, "Cannot set session cookie.", e);
@@ -262,5 +278,14 @@ public abstract class JcnnRequest implements HHttpRequest {
     catch (Exception e) {
       // Ignore exception to continue with cleanup.
     }
+  }
+  
+  /**
+   * Check for default cookie manager.
+   * BYPS-72
+   * @return true, if {@link CookieHandler#getDefault()} does not return null.
+   */
+  protected static boolean isDefaultCookieManagerActive() {
+    return CookieHandler.getDefault() != null;
   }
 }
