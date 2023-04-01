@@ -1,10 +1,15 @@
 BYPS Version History
 
+10.4
+
+- BYPS-73: OpenAPI schemas for API classes could be generated as "String" with description "Unsupported schema". 
+
 10.3 
 
 - BYPS-72: Could not connect to AWS load balancer via JcnnClientFactory because additional AWS cookies were
   ignored. Still fails to connect via AsfClientFactory because Apache HTTP Client cannot parse AWS cookies:
   ...MalformedCookieException: Invalid 'expires' attribute...
+  Use default cookie manager if registered at CookieHandler.getDefault().
 
 10.2
 

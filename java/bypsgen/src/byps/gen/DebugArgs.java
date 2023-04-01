@@ -52,6 +52,85 @@ public class DebugArgs {
 
   // "-gen.changedmembers",
   };
+  
+  /**
+   * EloixClient directory of IX-API.
+   * BYPS-73
+   */
+  private static String IX_PROJECT_ROOT = "/home/wolfgang/git/ix-release20/ELOserver/EloixClient";
+  
+  /**
+   * Debugging of IX-API generation.
+   * BYPS-73
+   */
+  public static String[] byps_ix = new String[] {
+      
+      "--encoding", "UTF-8", 
+      "--packages", ""
+        + "de.elo.ix.client" 
+        + ":de.elo.ix.client.feed" 
+        + ":de.elo.ix.client.myelo" 
+        + ":de.elo.ix.client.compatibility" 
+        + ":de.elo.ix.client.notify" 
+        + ":de.elo.ix.client.search" 
+        + ":de.elo.ix.client.health" 
+        + ":de.elo.ix.client.ldap" 
+        + ":de.elo.ix.client.system" 
+        + ":de.elo.ix.client.plugin" 
+        + ":de.elo.ix.client.esearch" 
+        + ":de.elo.ix.client.esearch.configpage" 
+        + ":de.elo.ix.client.esearch.query" 
+        + ":de.elo.ix.client.esearch.query.data" 
+        + ":de.elo.ix.client.subs" 
+        + ":de.elo.ix.client.fio" 
+        + ":de.elo.ix.client.devents",
+    
+         "--sourcepath", 
+           IX_PROJECT_ROOT + "/src-api" + ":" + IX_PROJECT_ROOT + "/src-api-gen",            
+         "-allserials",
+         "-onlyBRemotes",
+         "-gen.changedmembers",
+         "-ensureUIDs",
+
+         "-genj.dir-ser",      IX_PROJECT_ROOT + "/src-byps",
+         "-genj.dir-ser-json", IX_PROJECT_ROOT + "/src-byps",
+         "-genj.dir-test",     IX_PROJECT_ROOT + "/src-byps",
+         "-genjs.dest",        IX_PROJECT_ROOT + "/../EloixWar/json-api/ixbyps.js",
+         "-genjs.suppress-const-classes",
+
+         "-gencs.dir-ser",     IX_PROJECT_ROOT + "/../ELOixclientcs/EloixClientCS/src-ser",
+         "-gencs.upfirst",     "false",
+
+         "-gencs.rename-packages", "" 
+            + "EloixClient.IndexServer=de.elo.ix.client" 
+            + ";EloixClient.IndexServer.feed=de.elo.ix.client.feed" 
+            + ";EloixClient.IndexServer.myelo=de.elo.ix.client.myelo" 
+            + ";EloixClient.IndexServer.compatibility=de.elo.ix.client.compatibility" 
+            + ";EloixClient.IndexServer.notify=de.elo.ix.client.notify" 
+            + ";EloixClient.IndexServer.replication=de.elo.ix.client.fio" 
+            + ";EloixClient.IndexServer.health=de.elo.ix.client.health" 
+            + ";EloixClient.IndexServer.system=de.elo.ix.client.system" 
+            + ";EloixClient.IndexServer.plugin=de.elo.ix.client.plugin" 
+            + ";EloixClient.IndexServer.esearch=de.elo.ix.client.esearch" 
+            + ";EloixClient.IndexServer.esearch.query=de.elo.ix.client.esearch.query" 
+            + ";EloixClient.IndexServer.esearch.query.data=de.elo.ix.client.esearch.query.data",
+
+         "-gencpp.dir-api",    IX_PROJECT_ROOT + "/../ELOixclientcpp/src-ser/api",
+         "-gencpp.dir-impl",   IX_PROJECT_ROOT + "/../ELOixclientcpp/src-ser/impl",
+        
+         //"--classpath", getRTClassPath(),
+         
+         // EIX-2198: generate REST API
+         "-genrest.openapi-file", IX_PROJECT_ROOT + "/../EloixWar/templates/openapi.json",
+         "-genrest.src-dir", IX_PROJECT_ROOT + "/src-byps",
+         "-genrest.server-url", "http://servername:port/ix-repository/rest",
+         "-genrest.auth-apikey", "cookie:JSESSIONID",
+         
+         // EIX-2239: allow Basic-Authentication
+         "-genrest.auth-basic",
+         "-genrest.auth-bearer"
+
+  };
 
   public static String[] byps_ix_serAll = new String[] {
 
