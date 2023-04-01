@@ -3,7 +3,6 @@ package byps.gen.rest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
@@ -17,13 +16,10 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import byps.BVersioning;
 import byps.gen.RestConstants;
 import byps.gen.api.CommentInfo;
@@ -64,7 +60,6 @@ import io.swagger.v3.oas.models.responses.ApiResponse;
 import io.swagger.v3.oas.models.responses.ApiResponses;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
-import io.swagger.v3.oas.models.security.SecurityScheme.In;
 import io.swagger.v3.oas.models.security.SecurityScheme.Type;
 import io.swagger.v3.oas.models.servers.Server;
 
@@ -511,13 +506,11 @@ public class GeneratorOpenAPI implements Generator {
   
   private SchemaN toComponentsSchemaRef(TypeInfo typeInfo) {
     
-    // Make sure that the referenced schema exists.
-    SchemaN schema = getSchema(typeInfo);
-    if (schema == null) {
-      schema = toSchema(typeInfo);
-    }
+    // Only the type name is required to build a reference schema.
+    // BYPS-73
+    String schemaName = toSchemaName(typeInfo);
     
-    return new SchemaN(schema.getName(), new Schema().$ref("#/components/schemas/" + schema.getName()));
+    return new SchemaN(schemaName, new Schema().$ref("#/components/schemas/" + schemaName));
   }
   
   private SchemaN toSchema(TypeInfo typeInfo) {
@@ -572,9 +565,8 @@ public class GeneratorOpenAPI implements Generator {
       
     }
     else {
-      // typeInfo is BRemote
-      schema = new SchemaN(typeInfo.name, new StringSchema().description("Unsupported schema"));
-      putSchema(schema);
+      // Called from toComponentsSchemaRef, do not insert schema into map.
+      // BYPS-73
     }
     
     return schema;
