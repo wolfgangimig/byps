@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -44,6 +45,7 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.media.ArraySchema;
 import io.swagger.v3.oas.models.media.BinarySchema;
 import io.swagger.v3.oas.models.media.BooleanSchema;
+import io.swagger.v3.oas.models.media.ByteArraySchema;
 import io.swagger.v3.oas.models.media.Content;
 import io.swagger.v3.oas.models.media.DateTimeSchema;
 import io.swagger.v3.oas.models.media.FileSchema;
@@ -84,6 +86,13 @@ public class GeneratorOpenAPI implements Generator {
   
   private Map<String, SecurityScheme> securitySchemes = new TreeMap<>();
   
+  /**
+   * Map full type name to SerialInfo.
+   * This map is used to provide SerialInfo objects which are referenced in schema objects.
+   * BYPS-73
+   */
+  private Map<String, SerialInfo> serials = new HashMap<>();
+   
   @Override
   public void build(ClassDB classDB, GeneratorProperties props) throws IOException {
     
@@ -93,7 +102,14 @@ public class GeneratorOpenAPI implements Generator {
     openApi.info(createInfo(classDB));
     openApi.servers(createServers());
     
+    // Map full type name to SerialInfo.
+    // BYPS_73
+    for (SerialInfo serInfo : classDB.getSerials()) {
+      String fullName = serInfo.toString();
+      serials.put(fullName, serInfo);
+    }
     
+    // Create OpenAPI schema definition.
     for (SerialInfo serInfo : classDB.getSerials()) {
       toSchema(serInfo);
     }
@@ -484,6 +500,7 @@ public class GeneratorOpenAPI implements Generator {
   
   private SchemaN toSchemaRef(TypeInfo typeInfo) {
     SchemaN ref = null;
+    
     if (typeInfo.isArrayType()) {
       if (typeInfo.dims.length() > 2) {
         ref = toComponentsSchemaRef(typeInfo);
@@ -506,11 +523,13 @@ public class GeneratorOpenAPI implements Generator {
   
   private SchemaN toComponentsSchemaRef(TypeInfo typeInfo) {
     
-    // Only the type name is required to build a reference schema.
-    // BYPS-73
-    String schemaName = toSchemaName(typeInfo);
+    // Make sure that the referenced schema exists.
+    SchemaN schema = getSchema(typeInfo);
+    if (schema == null) {
+      schema = toSchema(typeInfo);
+    }
     
-    return new SchemaN(schemaName, new Schema().$ref("#/components/schemas/" + schemaName));
+    return new SchemaN(schema.getName(), new Schema().$ref("#/components/schemas/" + schema.getName()));
   }
   
   private SchemaN toSchema(TypeInfo typeInfo) {
@@ -527,14 +546,14 @@ public class GeneratorOpenAPI implements Generator {
     else if (typeInfo.isMapType()) {
       schema = toMapSchema(typeInfo);
     }
-    else if (typeInfo.isPrimitiveType()) {
-      schema = toSchemaForPrimitiveType(typeInfo);    
-    }
     else if (typeInfo.isAnyType()) {
       schema = toSchemaForPrimitiveType(typeInfo);    
     }
     else if (typeInfo.isStreamType()) {
       schema = toSchemaForStream(typeInfo);    
+    }
+    else if (typeInfo.isPrimitiveType()) {
+      schema = toSchemaForPrimitiveType(typeInfo);    
     }
     else if (typeInfo instanceof RemoteInfo) {
       RemoteInfo remoteInfo = (RemoteInfo)typeInfo;
@@ -565,8 +584,9 @@ public class GeneratorOpenAPI implements Generator {
       
     }
     else {
-      // Called from toComponentsSchemaRef, do not insert schema into map.
-      // BYPS-73
+      // typeInfo is BRemote
+      schema = new SchemaN(typeInfo.name, new StringSchema().description("Unsupported schema"));
+      putSchema(schema);
     }
     
     return schema;
@@ -631,10 +651,7 @@ public class GeneratorOpenAPI implements Generator {
   
   private SchemaN toSchemaForPrimitiveType(TypeInfo typeInfo) {
     Schema schema = null;
-    if (typeInfo.isByteArray1dim()) {
-      schema = new BinarySchema();
-    }
-    else if (equalsOneOf(typeInfo.name, "boolean", "Boolean")) {
+    if (equalsOneOf(typeInfo.name, "boolean", "Boolean")) {
       schema = new BooleanSchema();
     }
     else if (equalsOneOf(typeInfo.name, "byte", "Byte")) {
@@ -676,11 +693,28 @@ public class GeneratorOpenAPI implements Generator {
   }
   
   private SchemaN toArraySchema(TypeInfo typeInfo) {
-    String schemaName = toSchemaName(typeInfo);
     
+    String schemaName = toSchemaName(typeInfo);
+
+    // BYPS-73: byte[] is type=string, format=byte
+    if (typeInfo.isByteArray1dim()) {
+      return new SchemaN(schemaName, new ByteArraySchema());
+    }
+
+    // Provisional item type to build the full SerialInfo name which is used in the map 'serials'.
     TypeInfo itemType = new TypeInfo(typeInfo.name, typeInfo.qname, 
-        typeInfo.dims.substring(2), 
-        null, typeInfo.isEnum, typeInfo.isFinal, typeInfo.isInline);
+      typeInfo.dims.substring(2), typeInfo.typeArgs,
+      typeInfo.isEnum, typeInfo.isFinal, typeInfo.isInline);
+      
+    // If itemType is not a primitive type, a SerialInfo object must be found in the map 'serials'.
+    // The SerialInfo object has the full type information and must be used here to be able to create a Schema object
+    // in toSchemaRef if necessary.
+    // BYPS-73
+    if (!typeInfo.isPrimitiveType()) {
+      String itemTypeName = itemType.toString();
+      itemType = serials.get(itemTypeName);
+      if (itemType == null) throw new IllegalStateException("Missing " + itemTypeName + " as item type of " + typeInfo);
+    }
     
     SchemaN itemSchema = toSchemaRef(itemType); 
     SchemaN arraySchema = new SchemaN(schemaName, new ArraySchema().items(itemSchema.getSchema()));
