@@ -115,8 +115,8 @@ public class DebugArgs {
             + ";EloixClient.IndexServer.esearch.query=de.elo.ix.client.esearch.query" 
             + ";EloixClient.IndexServer.esearch.query.data=de.elo.ix.client.esearch.query.data",
 
-         "-gencpp.dir-api",    IX_PROJECT_ROOT + "/../ELOixclientcpp/src-ser/api",
-         "-gencpp.dir-impl",   IX_PROJECT_ROOT + "/../ELOixclientcpp/src-ser/impl",
+//         "-gencpp.dir-api",    IX_PROJECT_ROOT + "/../ELOixclientcpp/src-ser/api",
+//         "-gencpp.dir-impl",   IX_PROJECT_ROOT + "/../ELOixclientcpp/src-ser/impl",
         
          //"--classpath", getRTClassPath(),
          
