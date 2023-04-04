@@ -3,7 +3,6 @@ BYPS Version History
 10.4
 
 - BYPS-73: OpenAPI schemas for API classes could be generated as "String" with description "Unsupported schema". 
-  Updated to commons-fileupload-1.5, gson-2.10
 
 10.3 
 
