@@ -18,20 +18,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
-
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import byps.BApiDescriptor;
 import byps.BAsyncResult;
 import byps.BBuffer;
@@ -1180,6 +1177,9 @@ public abstract class HHttpServlet extends HttpServlet implements
       if (log.isDebugEnabled()) log
           .debug("set max upload file size=" + maxSize);
       upload.setSizeMax(maxSize);
+      
+      // BYPS-73, limit number of files to upload to avoid DoS, see CVE-2023-24998 
+      upload.setFileCountMax(getHtmlUploadMaxFiles());
 
       // Parse the request
       List<FileItem> items = upload.parseRequest(request);
@@ -1262,6 +1262,15 @@ public abstract class HHttpServlet extends HttpServlet implements
 
   protected long getHtmlUploadMaxSize() {
     return -1L;
+  }
+  
+  /**
+   * Maximum number of files to upload.
+   * BYPS-73, CVE-2023-24998
+   * @return 10
+   */
+  protected int getHtmlUploadMaxFiles() {
+    return 10;
   }
 
   protected BClient createForwardClientToOtherServer(BTransport transport)
