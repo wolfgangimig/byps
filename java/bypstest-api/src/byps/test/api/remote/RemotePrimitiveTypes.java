@@ -8,6 +8,7 @@ import javax.ws.rs.Path;
 import byps.BDefaultValue;
 import byps.BRemote;
 import byps.RemoteException;
+import byps.gen.BSecret;
 import byps.test.api.prim.PrimitiveTypes;
 
 
@@ -27,7 +28,9 @@ public interface RemotePrimitiveTypes extends BRemote {
 	public void setLong(long v) throws RemoteException;
 	public void setFloat(float v) throws RemoteException;
 	public void setDouble(double v) throws RemoteException;
-	public void setString(String v) throws RemoteException;
+	
+	public void setString(@BSecret String v) throws RemoteException;
+	
 	public void setPrimitiveTypes(@BDefaultValue("new PrimitiveTypes()") PrimitiveTypes v) throws RemoteException;
 	public void setObject(Object v) throws RemoteException;
 	public void setDate(Date v) throws RemoteException;
@@ -40,7 +43,10 @@ public interface RemotePrimitiveTypes extends BRemote {
 	public long getLong() throws RemoteException;
 	public float getFloat() throws RemoteException;
 	public double getDouble() throws RemoteException;
+	
+	@BSecret
 	public String getString() throws RemoteException;
+	
 	public PrimitiveTypes getPrimitiveTypes() throws RemoteException;
 	public Object getObject() throws RemoteException;
 	public Date getDate() throws RemoteException;

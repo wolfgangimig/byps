@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -737,6 +735,10 @@ class GenApiClass {
 			printToString();
 			pr.println();
 		}
+		else if (serInfo.isResultClass()) {
+		  // BYPS-63: Print empty toString for secret result
+		  printToStringForResult();
+		}
 		
 		// Generate hashCode() and equals() 
 		if (pctxt.isGenerateHashCodeAndEquals() && methodInfo == null) {
@@ -754,6 +756,17 @@ class GenApiClass {
 		log.debug(")generate");
 	}
 
+	// BYPS-63: Print empty toString for secret result
+  private void printToStringForResult() {
+    SerialInfo resultInfo = serInfo.methodInfo.resultInfo;
+    if (resultInfo != null) {
+      MemberInfo resultMember = resultInfo.members != null && !resultInfo.members.isEmpty() ? resultInfo.members.get(0) : null;
+      if (resultMember != null && resultMember.isSecret) {
+        pr.println("public String toString() { return [\"secret\"]; }");
+      }
+    }
+  }
+
   private void printToString() throws GeneratorException {
     pr.println("public String toString() {");
     pr.beginBlock();
@@ -765,9 +778,18 @@ class GenApiClass {
     boolean first = true;
     for (MemberInfo pinfo : methodInfo.requestInfo.members) {
       if (first)  mpr = pr.print("s."); else mpr = pr.print("s.append(\",\").");
-      mpr.print("append(BBuffer.paramToString(");
-      mpr.print(pinfo.name);
-      mpr.print("));").println();
+      
+      if (pinfo.isSecret) {
+        // BYPS-63: skip secret values to prevent from logging
+        mpr.print("append(\"[secret]\");");
+      }
+      else {
+        mpr.print("append(BBuffer.paramToString(");
+        mpr.print(pinfo.name);
+        mpr.print("));");
+      }
+
+      mpr.println();
       first = false;
     }
     

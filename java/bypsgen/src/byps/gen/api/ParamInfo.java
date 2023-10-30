@@ -7,18 +7,21 @@ public class ParamInfo {
 	public final String name;
 
 	public final TypeInfo type;
+	
+	public final boolean isSecret;
 
-	public ParamInfo(String name, TypeInfo type) {
+	public ParamInfo(String name, TypeInfo type, boolean isSecret) {
 		this.name = name;
 		this.type = type;
+		this.isSecret = isSecret;
 	}
 	
 	public ParamInfo() {
-		this(null,null);
+		this(null,null, false);
 	}
 
 	public MemberInfo toMemberInfo() {
-		MemberInfo minfo = new MemberInfo(name, null, type, true, false, false, false, false, false, false, 0, null);
+		MemberInfo minfo = new MemberInfo(name, null, type, true, false, false, false, false, false, false, isSecret, 0, null);
 		return minfo;
 	}
 

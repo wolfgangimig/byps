@@ -32,7 +32,7 @@ public final class BRequest_RemotePrimitiveTypes_setString extends BMethodReques
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("[RemotePrimitiveTypes.setString(");
-		s.append(BBuffer.paramToString(v));
+		s.append("[secret]");
 		s.append(")]");
 		return s.toString();
 	}

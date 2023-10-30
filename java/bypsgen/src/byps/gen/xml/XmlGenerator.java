@@ -40,6 +40,7 @@ import byps.BApiDescriptor;
 import byps.BDefaultValue;
 import byps.BVersioning;
 import byps.gen.BIgnore;
+import byps.gen.BSecret;
 import byps.gen.api.CommentInfo;
 import byps.gen.api.ErrorInfo;
 import byps.gen.api.GeneratorException;
@@ -394,10 +395,12 @@ public class XmlGenerator extends XmlGeneratorBase {
     boolean isFinal = fieldElement.getModifiers().contains(Modifier.FINAL);
     boolean isTransient = fieldElement.getModifiers().contains(Modifier.TRANSIENT);
     boolean isPackage = !(isPublic || isProtected || isPrivate);
+    
+    boolean isSecret = fieldElement.getAnnotation(BSecret.class) != null;
         
     return new MemberInfo(name, commentInfos, typeInfo, 
         isPublic, isProtected, isPackage, isPrivate,
-        isFinal, isStatic, isTransient,
+        isFinal, isStatic, isTransient, isSecret,
         since, value);
   }
 
@@ -529,6 +532,11 @@ public class XmlGenerator extends XmlGeneratorBase {
     errorInfo.methodName = remoteQName + "." + methodElement.getSimpleName().toString();
     errorInfo.fieldName = "return";
     
+    boolean isSecret = methodElement.getAnnotation(BSecret.class) != null; 
+    if (isSecret) {
+      System.out.println("");
+    }
+
     ArrayList<MemberInfo> rinfos = new ArrayList<>(2);
     
     TypeInfo resultType = makeTypeInfo(errorInfo, returnType);
@@ -541,8 +549,8 @@ public class XmlGenerator extends XmlGeneratorBase {
       errorInfo.msg = "Inline classes cannot be used as return values.";
       throw new GeneratorException(errorInfo);
     }
-
-    rinfos.add( new MemberInfo("result", null, resultType, true, false, false, false, false, false, false, 0, null) );
+    
+    rinfos.add( new MemberInfo("result", null, resultType, true, false, false, false, false, false, false, isSecret, 0, null) );
     
     String remotePack = classDB.getApiDescriptor().basePackage + ".";
     String methodName = MethodInfo.METHOD_RESULT_NAME_PREFIX + resultType.typeId;
@@ -678,7 +686,9 @@ public class XmlGenerator extends XmlGeneratorBase {
     // BYPS-60: Optionaler Parameter
     String defaultValue = getDefaultValue(param);
     
-    return new MemberInfo(parameterName, typeInfo, defaultValue);
+    boolean isSecret = param.getAnnotation(BSecret.class) != null; 
+    
+    return new MemberInfo(parameterName, typeInfo, defaultValue, isSecret);
   }
 
   private SerialInfo makeMethodRequest(ErrorInfo errorInfo1, String remoteName, String remoteQName, Element methodElement) {

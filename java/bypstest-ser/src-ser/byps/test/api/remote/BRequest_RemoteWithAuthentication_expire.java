@@ -20,7 +20,7 @@ public final class BRequest_RemoteWithAuthentication_expire extends BMethodReque
 	
 	public int getRemoteId() { return 1983670399; }
 	
-	// checkpoint byps.gen.j.GenApiClass:633
+	// checkpoint byps.gen.j.GenApiClass:631
 	public void setSession(Object __byps__sess) {
 		sess = (byps.test.api.auth.SessionInfo)__byps__sess;
 	}

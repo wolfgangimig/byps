@@ -22,6 +22,7 @@ public class XmlMemberInfo {
 	public boolean isTransient;
 	public boolean isStatic;
 	public boolean isFinal;
+	public boolean isSecret;
 	public MemberAccess access;
 	public String since;
 	public String value;
@@ -37,6 +38,7 @@ public class XmlMemberInfo {
 		x.isTransient = v.isTransient;
 		x.isStatic = v.isStatic;
 		x.isFinal = v.isFinal;
+		x.isSecret = v.isSecret;
 		x.access = v.access;
 		x.since = BVersioning.longToString(v.since);
 		
@@ -67,7 +69,7 @@ public class XmlMemberInfo {
 				access == MemberAccess.PROTECTED,
 				access == MemberAccess.PACKAGE,
 				access == MemberAccess.PRIVATE,
-				isFinal, isStatic, isTransient,
+				isFinal, isStatic, isTransient, isSecret,
 				BVersioning.stringToLong(since), 
 				value);
 		

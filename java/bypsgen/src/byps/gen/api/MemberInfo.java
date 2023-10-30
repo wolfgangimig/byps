@@ -7,6 +7,7 @@ public class MemberInfo extends ItemInfo implements Comparable<MemberInfo> {
 	public final boolean isTransient;
 	public final boolean isStatic;
 	public final boolean isFinal;
+	public final boolean isSecret;
 	public final MemberAccess access;
 	public final long since;
 	
@@ -18,7 +19,7 @@ public class MemberInfo extends ItemInfo implements Comparable<MemberInfo> {
 
 	public MemberInfo(String name, Collection<CommentInfo> comments, TypeInfo type, 
 			boolean isPublic, boolean isProtected, boolean isPackage, boolean isPrivate, 
-			boolean isFinal, boolean isStatic, boolean isTransient, long since, String value) {
+			boolean isFinal, boolean isStatic, boolean isTransient, boolean isSecret, long since, String value) {
 		super(name, comments);
 		this.type = type;
 		this.access = makeAccess(isPublic, isProtected, isPackage, isPrivate);
@@ -27,18 +28,19 @@ public class MemberInfo extends ItemInfo implements Comparable<MemberInfo> {
 		this.isTransient = isTransient;
 		this.since = since;
 		this.value = value;
+		this.isSecret = isSecret;
 	}
 
   public MemberInfo(String name, TypeInfo type) {
-    this(name, type, null);
+    this(name, type, null, false);
   }
   
-  public MemberInfo(String name, TypeInfo type, String value) {
-    this(name, null, type, true, false, false, false, false, false, false, 0, value);
+  public MemberInfo(String name, TypeInfo type, String value, boolean isSecret) {
+    this(name, null, type, true, false, false, false, false, false, false, isSecret, 0, value);
   }
   
 	public MemberInfo() {
-		this(null, null, null, false, false, false, false, false, false, false, 0, null);
+		this(null, null, null, false, false, false, false, false, false, false, false, 0, null);
 	}
 	
   private static MemberAccess makeAccess(boolean isPublic, boolean isProtected, boolean isPackage, boolean isPrivate) {
