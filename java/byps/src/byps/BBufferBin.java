@@ -5,6 +5,7 @@ package byps;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -133,38 +134,81 @@ public abstract class BBufferBin extends BBuffer {
   }
 
   public void putString(String str) {
+    
     // Always write a 0-termination.
     // This enables us to access the String in C programs directly inside the
     // buffer.
     
+    // BYPS-74: support 4-byte UTF-8 characters.
+    
     if (str != null && str.length() != 0) {
       
-      int len = 3 * str.length();
-      if (helpBufferStr.length < len) helpBufferStr = new byte[len];
+      int maxByteLength = 4 * str.length();
+      if (helpBufferStr.length < maxByteLength) helpBufferStr = new byte[maxByteLength];
+      ByteBuffer hbuf = ByteBuffer.wrap(helpBufferStr);
       
-      int j = 0;
-      for (int i = 0; i < str.length(); i++) {
-        
-        char c = str.charAt(i);
+//      Also possible ... but allocates an IntStream for codePoints() and is most likely slower than the while-loop below.
+//      str.codePoints().forEach(c -> {
+//
+//        if (c <= 0x7F) {
+//          hbuf.put((byte)c);
+//        }
+//        else if (c >= 0x80 && c <= 0x07FF) {
+//          hbuf.put((byte)(((c >> 6) & 0x1F) | 0xC0));
+//          hbuf.put((byte)((c & 0x3F) | 0x80));
+//        }
+//        else if (c >= 0x800 && c <= 0xFFFF) {
+//          hbuf.put((byte)(((c >> 12) & 0xF) | 0xE0));
+//          hbuf.put((byte)(((c >> 6) & 0x3F) | 0x80));
+//          hbuf.put((byte)((c & 0x3F) | 0x80));
+//        }
+//        else { 
+//          hbuf.put((byte)(((c >> 18) & 0xF) | 0xF0));
+//          hbuf.put((byte)(((c >> 12) & 0x3F) | 0x80));
+//          hbuf.put((byte)(((c >> 6) & 0x3F) | 0x80));
+//          hbuf.put((byte)((c & 0x3F) | 0x80));
+//        }
+//
+//      });
+      
 
+      int i = 0;
+      while (i < str.length()) {
+        char c = str.charAt(i++);
+        
         if (c <= 0x7F) {
-          helpBufferStr[j++] = ((byte)c);
+          hbuf.put((byte)c);
         }
         else if (c >= 0x80 && c <= 0x07FF) {
-          helpBufferStr[j++] = ((byte)(((c >> 6) & 0x1F) | 0xC0));
-          helpBufferStr[j++] = ((byte)((c & 0x3F) | 0x80));
+          hbuf.put((byte)(((c >> 6) & 0x1F) | 0xC0));
+          hbuf.put((byte)((c & 0x3F) | 0x80));
         }
-        else { // if (c >= 0x800 && c <= 0xFFFF) {
-          helpBufferStr[j++] = ((byte)(((c >> 12) & 0xF) | 0xE0));
-          helpBufferStr[j++] = ((byte)(((c >> 6) & 0x3F) | 0x80));
-          helpBufferStr[j++] = ((byte)((c & 0x3F) | 0x80));
+        else if (Character.isHighSurrogate(c) && i < str.length()) {
+          char cL = str.charAt(i);
+          if (Character.isLowSurrogate(cL)) {
+            int cp = Character.toCodePoint(c, cL);
+            hbuf.put((byte)(((cp >> 18) & 0xF) | 0xF0));
+            hbuf.put((byte)(((cp >> 12) & 0x3F) | 0x80));
+            hbuf.put((byte)(((cp >> 6) & 0x3F) | 0x80));
+            hbuf.put((byte)((cp & 0x3F) | 0x80));
+            i++;
+            continue;
+          }
         }
-
+        
+        if (c >= 0x800 && c <= 0xFFFF) {
+          hbuf.put((byte)(((c >> 12) & 0xF) | 0xE0));
+          hbuf.put((byte)(((c >> 6) & 0x3F) | 0x80));
+          hbuf.put((byte)((c & 0x3F) | 0x80));
+        }
       }
- 
-      ensureRemaining(4 + j + 1);
-      putInt(j);
-      buf.put(helpBufferStr, 0, j);
+
+
+      hbuf.flip();
+      int byteLength = hbuf.limit();
+      ensureRemaining(4 + byteLength + 1);
+      putInt(byteLength);
+      buf.put(hbuf);
       buf.put((byte) 0);
    }
     else {
@@ -177,15 +221,11 @@ public abstract class BBufferBin extends BBuffer {
 
   public String getString() {
     String s = "";
-    int len = getInt();
-    if (len != 0) {
-      if (helpBufferStr.length < len) helpBufferStr = new byte[len];
-      buf.get(helpBufferStr, 0, len);
-      try {
-        s = new String(helpBufferStr, 0, len, "UTF-8");
-      } catch (UnsupportedEncodingException e) {
-        throw new IllegalStateException("Corrupt string.");
-      }
+    int byteLength = getInt();
+    if (byteLength != 0) {
+      if (helpBufferStr.length < byteLength) helpBufferStr = new byte[byteLength];
+      buf.get(helpBufferStr, 0, byteLength);
+      s = new String(helpBufferStr, 0, byteLength, StandardCharsets.UTF_8);
     }
     buf.get(); // 0-terminated
     return s;

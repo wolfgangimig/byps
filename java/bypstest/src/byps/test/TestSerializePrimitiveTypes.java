@@ -131,6 +131,9 @@ public class TestSerializePrimitiveTypes {
 		internalTestSerializeStringUTF8("€a");
 		internalTestSerializeStringUTF8("a€a");
 		internalTestSerializeStringUTF8("");
+
+		internalTestSerializeStringUTF8("♫"); // 4 bytes
+	
 		
 		internalTestSerializeStringUTF8(null); // null-strings are serialized as empty strings
 
@@ -140,6 +143,19 @@ public class TestSerializePrimitiveTypes {
 
 		log.info(")testSerializeStringUTF8");
 	}
+	
+	/**
+	 * Serialisiere Unicode-Zeichen, die mit bis zu 4 UTF-8-Bytes dargestellt werden.
+	 * BYPS-74
+	 */
+  @Test
+  public void testSerializeSting4ByteUTF8() {
+    internalTestSerializeStringUTF8(">"); // 1 byte
+    internalTestSerializeStringUTF8("¶"); // 2 bytes
+    internalTestSerializeStringUTF8("€"); // 3 bytes
+    internalTestSerializeStringUTF8("😫"); // 4 bytes
+  }
+
 	
 	public void internalTestSerializeStringUTF8(String text) {
 		log.info("internalTestSerializeStringUTF8(" + ((text != null) ? text.substring(0, Math.min(100, text.length())) : text));

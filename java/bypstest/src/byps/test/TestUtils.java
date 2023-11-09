@@ -53,7 +53,7 @@ import junit.framework.Assert;
 public class TestUtils {
 
 	private static Logger log = LoggerFactory.getLogger(TestUtils.class);
-	//public static BBinaryModel protocol = BProtocolS.BINARY_MODEL;
+	//public static BBinaryModel protocol = BProtocolS.BINARY_MODEL
 	public static BBinaryModel protocol = BProtocolJson.BINARY_MODEL;
 	
 	/**
