@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 compileJava.options.encoding = 'UTF-8'
 version = versionFromProperties
 
@@ -51,10 +51,4 @@ dependencies {
 	// https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
  	compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
 
-}
-
-// BYPS-40: Separate versions for Java 8 and 11+.
-if(JavaVersion.current() != JavaVersion.VERSION_1_8){
-	print("Java=" + JavaVersion.current());
-    throw new GradleException("This build must be run with JDK 8")
 }

@@ -13,7 +13,7 @@ apply plugin: 'eclipse-wtp'
 
 compileJava.options.encoding = 'UTF-8'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 // In this section you declare where to find the dependencies of your project
 repositories {
