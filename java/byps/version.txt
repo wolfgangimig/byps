@@ -2,7 +2,9 @@ BYPS Version History
 
 10.5
 
-- BYPS-74: Support serialization of 4-byte UTF-8 characters. 
+- BYPS-74: Support serialization of 4-byte UTF-8 characters.
+
+- BYPS-75: Define enum constants in OpenAPI definition. 
 
 10.4
 
