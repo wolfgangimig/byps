@@ -49,6 +49,12 @@ public class PropertiesRest extends GeneratorProperties {
    * The following parameter must define the header name.
    */
   public final static String AUTHENTICATION_SCHEME_API_KEY = OPT_PREFIX + "auth-apikey";
+  
+  /**
+   * Base classes to be ignored.
+   * BYPS-76
+   */
+  public static final String IGNORE_BASE_CLASS = OPT_PREFIX + "ignore-base-classes";
 
   @Override
   public int addArgs(String[] args, int idx) throws GeneratorException {

@@ -6,6 +6,8 @@ BYPS Version History
 
 - BYPS-75: Define enum constants in OpenAPI definition. 
 
+- BYPS-76: Support inheritance by "allOf" property.
+
 9.11
 
 - BYPS-73: OpenAPI schemas for API classes could be generated as "String" with description "Unsupported schema". 
