@@ -425,6 +425,7 @@ public class GeneratorOpenAPI implements Generator {
     builder.registerTypeAdapter(SecurityScheme.Type.class, new SecuritySchemeTypeSerializer());
     builder.registerTypeAdapter(SecurityScheme.In.class, new SecuritySchemeInSerializer());
     builder.setFieldNamingStrategy(new SchemaFieldNamingStrategy());
+    builder.setExclusionStrategies(new ExcludeOpenApi31()); // BYPS-76
     builder.setPrettyPrinting();
     Gson gson = builder.create();
     try (Writer writer = new OutputStreamWriter(new FileOutputStream(openapiFile), StandardCharsets.UTF_8)) {
