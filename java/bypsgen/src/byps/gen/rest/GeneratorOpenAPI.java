@@ -12,11 +12,14 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +27,7 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import byps.BValueClass;
 import byps.BVersioning;
 import byps.gen.RestConstants;
 import byps.gen.api.CommentInfo;
@@ -96,6 +100,12 @@ public class GeneratorOpenAPI implements Generator {
    */
   private Map<String, SerialInfo> serials = new HashMap<>();
    
+  /**
+   * This base classes must not be added as "allOf" property to a component schema.
+   * BYPS-76
+   */
+  private Set<String> ignoreBaseClasses = new HashSet<>();
+
   @Override
   public void build(ClassDB classDB, GeneratorProperties props) throws IOException {
     
@@ -104,6 +114,12 @@ public class GeneratorOpenAPI implements Generator {
     openApi = new OpenAPI();
     openApi.info(createInfo(classDB));
     openApi.servers(createServers());
+    
+    // This base classes must not be added as "allOf" property to a component schema.
+    // BYPS-76
+    String ignoreBaseClassesStr = props.getOptionalPropertyString(PropertiesRest.IGNORE_BASE_CLASS, "");
+    Stream.of(ignoreBaseClassesStr.split(",")).map(String::trim).forEach(ignoreBaseClasses::add);
+    ignoreBaseClasses.add(BValueClass.class.getName());
     
     // Map full type name to SerialInfo.
     // BYPS_73
@@ -345,12 +361,12 @@ public class GeneratorOpenAPI implements Generator {
     Schema requestSchema = new ObjectSchema();
     if (requestClassAsSchema) {
       SchemaN paramsSchema = toSchemaRef(methodInfo.requestInfo);
-      requestSchema.addProperties(RestConstants.MULTIPART_DATA_PARAM_NAME, paramsSchema.getSchema());
+      requestSchema.addProperty(RestConstants.MULTIPART_DATA_PARAM_NAME, paramsSchema.getSchema());
     }
     else {
       for (MemberInfo param : methodInfo.requestInfo.members) {
         SchemaN paramSchema = toSchemaRef(param.type);
-        requestSchema.addProperties(param.name, paramSchema.getSchema());
+        requestSchema.addProperty(param.name, paramSchema.getSchema());
       }
     }
     return requestSchema;
@@ -372,10 +388,10 @@ public class GeneratorOpenAPI implements Generator {
     Schema requestSchema = new ObjectSchema();
     
     SchemaN paramsSchema = toSchemaRef(methodInfo.requestInfo);
-    requestSchema.addProperties(RestConstants.MULTIPART_DATA_PARAM_NAME, paramsSchema.getSchema());
+    requestSchema.addProperty(RestConstants.MULTIPART_DATA_PARAM_NAME, paramsSchema.getSchema());
 
     ArraySchema streams = new ArraySchema().items(new FileSchema());
-    requestSchema.addProperties(RestConstants.UPLOAD_ITEM_NAME, streams);
+    requestSchema.addProperty(RestConstants.UPLOAD_ITEM_NAME, streams);
     
     mediaType.schema(requestSchema);
     return mediaType;
@@ -409,6 +425,7 @@ public class GeneratorOpenAPI implements Generator {
     builder.registerTypeAdapter(SecurityScheme.Type.class, new SecuritySchemeTypeSerializer());
     builder.registerTypeAdapter(SecurityScheme.In.class, new SecuritySchemeInSerializer());
     builder.setFieldNamingStrategy(new SchemaFieldNamingStrategy());
+    builder.setExclusionStrategies(new ExcludeOpenApi31()); // BYPS-76
     builder.setPrettyPrinting();
     Gson gson = builder.create();
     try (Writer writer = new OutputStreamWriter(new FileOutputStream(openapiFile), StandardCharsets.UTF_8)) {
@@ -584,11 +601,17 @@ public class GeneratorOpenAPI implements Generator {
         .forEach(member -> {
           Schema memberSchema = toSchemaRef(member.type).getSchema();
           String memberDescription = getDescription(member.comments);
-          schemaO.addProperties(member.name, memberSchema.description(memberDescription));
+          schemaO.addProperty(member.name, memberSchema.description(memberDescription));
         });
       
+      // BYPS-76: handle inheritance
+      if (serInfo.baseInfo != null && !ignoreBaseClasses .contains(serInfo.baseInfo.qname)) {
+        Schema baseSchema = toSchema(serInfo.baseInfo).getSchema();
+        schemaO.addAllOfItem(baseSchema);
+      }
+      
       if (serInfo.name.startsWith("BResult_")) {
-        schemaO.addProperties("exception", new StringSchema().description("Error message"));
+        schemaO.addProperty("exception", new StringSchema().description("Error message"));
       }
       
     }
@@ -661,8 +684,8 @@ public class GeneratorOpenAPI implements Generator {
 
   private SchemaN toSchemaForStream(TypeInfo typeInfo) {
     Schema schema = new ObjectSchema();
-    schema.addProperties("streamId", new StringSchema());
-    schema.addProperties("url", new StringSchema());
+    schema.addProperty("streamId", new StringSchema());
+    schema.addProperty("url", new StringSchema());
     String name = toSchemaName(typeInfo);
     SchemaN schemaN = new SchemaN(name, schema);
     putSchema(schemaN);
@@ -777,4 +800,5 @@ public class GeneratorOpenAPI implements Generator {
     }
     return sbuf.toString();
   }
+  
 }

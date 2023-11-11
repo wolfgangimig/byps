@@ -128,7 +128,10 @@ public class DebugArgs {
          
          // EIX-2239: allow Basic-Authentication
          "-genrest.auth-basic",
-         "-genrest.auth-bearer"
+         "-genrest.auth-bearer",
+         
+         // BYPS-76: Ignore ValueClass
+         "-genrest.ignore-base-classes", "de.elo.ix.client.ValueClass"
 
   };
 
