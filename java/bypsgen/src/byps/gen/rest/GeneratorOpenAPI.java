@@ -17,10 +17,13 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import byps.BVersioning;
 import byps.gen.RestConstants;
 import byps.gen.api.CommentInfo;
@@ -117,7 +120,7 @@ public class GeneratorOpenAPI implements Generator {
     toSchema(createSerialInfoForUploadResult());
     
     openApi.components(new Components().securitySchemes(createSecuritySchemes()).schemas(SchemaN.toComponentSchemas(schemas)));
-    
+
     for (RemoteInfo remoteInfo : classDB.getRemotes()) {
       remoteInfo.methods.forEach(m -> toPath(m));
     }
@@ -405,6 +408,7 @@ public class GeneratorOpenAPI implements Generator {
     builder.registerTypeAdapter(ArraySchema.class, new ArraySchemaSerializer());
     builder.registerTypeAdapter(SecurityScheme.Type.class, new SecuritySchemeTypeSerializer());
     builder.registerTypeAdapter(SecurityScheme.In.class, new SecuritySchemeInSerializer());
+    builder.setFieldNamingStrategy(new SchemaFieldNamingStrategy());
     builder.setPrettyPrinting();
     Gson gson = builder.create();
     try (Writer writer = new OutputStreamWriter(new FileOutputStream(openapiFile), StandardCharsets.UTF_8)) {
@@ -560,6 +564,11 @@ public class GeneratorOpenAPI implements Generator {
       String description = getDescription(remoteInfo.comments);
       schema = new SchemaN(typeInfo.name, new StringSchema().description(description));
     }
+    else if (typeInfo.isEnum) {
+      // BYPS-75: support enum constants
+      schema = toEnumSchema(typeInfo);
+      putSchema(schema);
+    }
     else if (typeInfo instanceof SerialInfo) {
       
       SerialInfo serInfo = (SerialInfo)typeInfo;
@@ -590,6 +599,25 @@ public class GeneratorOpenAPI implements Generator {
     }
     
     return schema;
+  }
+  
+  /**
+   * Generate SchemaN object for Java enumeration class.
+   * BYPS-75
+   * @param typeInfo type information
+   * @return schema object 
+   */ 
+  private SchemaN toEnumSchema(TypeInfo typeInfo) {
+    StringSchema sschema = new StringSchema();
+    if (typeInfo instanceof SerialInfo) {
+      SerialInfo serInfo = (SerialInfo)typeInfo;
+      if (serInfo.members != null) {
+        serInfo.members.forEach(minfo -> sschema.addEnumItem(minfo.name));
+      }
+      String description = getDescription(serInfo.comments);
+      sschema.setDescription(description);
+    }
+    return new SchemaN(toSchemaName(typeInfo), sschema);
   }
   
   private SchemaN toListSchema(TypeInfo typeInfo) {

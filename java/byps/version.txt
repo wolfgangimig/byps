@@ -4,6 +4,8 @@ BYPS Version History
 
 - BYPS-74: Support serialization of 4-byte UTF-8 characters. 
 
+- BYPS-75: Define enum constants in OpenAPI definition. 
+
 9.11
 
 - BYPS-73: OpenAPI schemas for API classes could be generated as "String" with description "Unsupported schema". 

@@ -57,7 +57,7 @@ public class DebugArgs {
    * EloixClient directory of IX-API.
    * BYPS-73
    */
-  private static String IX_PROJECT_ROOT = "/home/wolfgang/git/ix-release20/ELOserver/EloixClient";
+  private static String IX_PROJECT_ROOT = "/home/wolfgang/git/ix-21.4/ELOserver/EloixClient";
   
   /**
    * Debugging of IX-API generation.
