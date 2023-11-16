@@ -606,7 +606,7 @@ public class GeneratorOpenAPI implements Generator {
       
       // BYPS-76: handle inheritance
       if (serInfo.baseInfo != null && !ignoreBaseClasses .contains(serInfo.baseInfo.qname)) {
-        Schema baseSchema = toSchema(serInfo.baseInfo).getSchema();
+        Schema baseSchema = toSchemaRef(serInfo.baseInfo).getSchema();
         schemaO.addAllOfItem(baseSchema);
       }
       
