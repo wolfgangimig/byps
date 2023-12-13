@@ -162,6 +162,8 @@ class GenRemoteStub {
     if (baseRemote == null) baseRemote = rinfo.getRemoteAsync();
 
     pr.checkpoint();
+    
+    pr.println("@SuppressWarnings({\"all\", \"deprecation\"})");
     pr.print("public class ").print(className);
     pr.print(" extends BStub implements ").print(baseRemote.name).print(", java.io.Serializable {");
     pr.println();

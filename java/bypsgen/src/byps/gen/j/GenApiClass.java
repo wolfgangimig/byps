@@ -676,7 +676,7 @@ class GenApiClass {
 		
 		pctxt.printComments(pr, serInfo.comments);
 		
-		pr.println("@SuppressWarnings(\"all\")");
+		pr.println("@SuppressWarnings({\"all\", \"deprecation\"})");
 
 		{
 			String sfinal = serInfo.isFinal ? "final " : "";

@@ -67,6 +67,8 @@ class GenRemoteClassAsync {
 
     pr.checkpoint();
     
+    pr.println("@SuppressWarnings({\"all\", \"deprecation\"})");
+    
     pr.print("public interface ").print(rinfoAsync.name);
 
     CodePrinter mpr = pr.print(" extends BRemote");

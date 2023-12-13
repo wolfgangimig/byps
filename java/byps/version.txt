@@ -1,5 +1,9 @@
 BYPS Version History
 
+10.6
+
+- BYPS-77: Suppress also "deprecation" warnings in generated files.
+
 10.5
 
 - BYPS-74: Support serialization of 4-byte UTF-8 characters.

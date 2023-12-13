@@ -330,7 +330,7 @@ public class GenSerArray {
 
 		pr.println("import byps.*;");
 
-		pr.println("@SuppressWarnings(\"all\")");
+		pr.println("@SuppressWarnings({\"all\", \"deprecation\"})");
 		
 		String baseName = bmodel == BBinaryModel.JSON ? "JSerializer_Array" : "BSerializer";
 		pr.print("public class ").print(serializerName).print(" extends ").print(baseName).println(" {");

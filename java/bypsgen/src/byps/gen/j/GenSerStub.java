@@ -66,7 +66,7 @@ public class GenSerStub {
 
 		pr.println("import byps.*;");
 
-		pr.println("@SuppressWarnings(\"all\")");
+		pr.println("@SuppressWarnings({\"all\", \"deprecation\"})");
 		
 		String baseName = bmodel == BBinaryModel.JSON ? "JSerializer_16" : "BSerializer_16";
 		pr.print("public class ").print(serializerName)

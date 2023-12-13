@@ -153,7 +153,7 @@ public class GenSerList {
 
 		pr.println();
 		
-		pr.println("@SuppressWarnings(\"all\")");
+		pr.println("@SuppressWarnings({\"all\", \"deprecation\"})");
 		
 		pr.print("public class ").print(serializerName)
 		  .print(" extends BSerializer").println(" {");
