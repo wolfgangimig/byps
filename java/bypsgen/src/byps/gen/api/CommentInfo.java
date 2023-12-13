@@ -4,6 +4,7 @@ public class CommentInfo {
 	
 	public final static String KIND_SUMMARY = "@summary";
 	public final static String KIND_REMARKS = "@remarks";
+	public final static String KIND_DEPRECATED = "@deprecated";
 
 	public final String kind;
 	public final String text;

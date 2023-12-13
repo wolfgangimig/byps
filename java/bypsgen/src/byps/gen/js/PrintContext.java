@@ -116,7 +116,8 @@ class PrintContext extends PrintContextBase {
 				String t = cmt.text.trim().replace("\r", "\n"); 
 				for (String line : t.split("\n")) {
 					CodePrinter mpr = pr.print(" * ");
-					if (cmt.kind != null && !cmt.kind.equals(CommentInfo.KIND_REMARKS) && !cmt.kind.equals(CommentInfo.KIND_SUMMARY)) {
+					if (cmt.kind != null && !cmt.kind.equals(CommentInfo.KIND_REMARKS) && !cmt.kind.equals(CommentInfo.KIND_SUMMARY) & 
+					    !cmt.kind.equals(CommentInfo.KIND_DEPRECATED)) { // BYPS-77: @deprecated verursacht eine Warnung beim Minimieren.
 						mpr.print(cmt.kind).print(" ");
 					}
 					mpr.println(line.trim());
