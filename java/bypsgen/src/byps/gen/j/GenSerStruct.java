@@ -303,7 +303,7 @@ public class GenSerStruct {
 		
 		pr.checkpoint();
 		
-		pr.println("@SuppressWarnings({\"all\", \"deprecation\"})");
+		pr.println("@SuppressWarnings({\"all\", \"deprecation\", \"unchecked\"})");
 		{ 
 			CodePrinter mpr = pr.print("public class ").print(serializerName).print(" extends ");
 			if (serInfo.baseInfo != null && !serInfo.baseInfo.isExceptionType()) {

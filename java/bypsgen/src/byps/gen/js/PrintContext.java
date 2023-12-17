@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -109,22 +110,9 @@ class PrintContext extends PrintContextBase {
 		
 	}
 	
-	public void printComments(CodePrinter pr, Iterable<CommentInfo> comments) throws IOException {
-		if (comments != null) {
-			pr.println("/**");
-			for (CommentInfo cmt : comments) {
-				String t = cmt.text.trim().replace("\r", "\n"); 
-				for (String line : t.split("\n")) {
-					CodePrinter mpr = pr.print(" * ");
-					if (cmt.kind != null && !cmt.kind.equals(CommentInfo.KIND_REMARKS) && !cmt.kind.equals(CommentInfo.KIND_SUMMARY) & 
-					    !cmt.kind.equals(CommentInfo.KIND_DEPRECATED)) { // BYPS-77: @deprecated verursacht eine Warnung beim Minimieren.
-						mpr.print(cmt.kind).print(" ");
-					}
-					mpr.println(line.trim());
-				}
-			}
-			pr.println("*/");
-		}
+	public void printComments(CodePrinter pr, Collection<CommentInfo> comments) throws IOException {
+	  // BYPS-77: @deprecated verursacht Warnung beim Minimieren.
+	  // Ausgabe der Kommentare lohnt sich nicht (mehr). 
 	}
 
 	public final File destFile;

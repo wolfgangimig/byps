@@ -152,7 +152,7 @@ public class GenSerMap {
 
 		pr.println();
 		
-		pr.println("@SuppressWarnings({\"all\", \"deprecation\"})");
+		pr.println("@SuppressWarnings({\"all\", \"deprecation\", \"unchecked\"})");
 		
 		String baseClass = bmodel == BBinaryModel.JSON ? "JSerializer" : "BSerializer";
 		pr.print("public class ").print(serializerName)

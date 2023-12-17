@@ -67,7 +67,7 @@ class GenRemoteClassAsync {
 
     pr.checkpoint();
     
-    pr.println("@SuppressWarnings({\"all\", \"deprecation\"})");
+    pr.println("@SuppressWarnings({\"all\", \"deprecation\", \"unchecked\"})");
     
     pr.print("public interface ").print(rinfoAsync.name);
 

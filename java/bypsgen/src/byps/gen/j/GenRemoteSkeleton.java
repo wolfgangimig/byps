@@ -127,7 +127,7 @@ class GenRemoteSkeleton {
 		pr.println(" * The framework calls only the asynchronous function.");
 		pr.println(" */");
 
-		pr.println("@SuppressWarnings({\"all\", \"deprecation\"})");
+		pr.println("@SuppressWarnings({\"all\", \"deprecation\", \"unchecked\"})");
 		pr.print("public class ").print(className)
 			.print(" extends BSkeleton")
 			.print(" implements ").print(rinfo.name)

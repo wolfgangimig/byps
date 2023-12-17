@@ -163,7 +163,7 @@ class GenRemoteStub {
 
     pr.checkpoint();
     
-    pr.println("@SuppressWarnings({\"all\", \"deprecation\"})");
+    pr.println("@SuppressWarnings({\"all\", \"deprecation\", \"unchecked\"})");
     pr.print("public class ").print(className);
     pr.print(" extends BStub implements ").print(baseRemote.name).print(", java.io.Serializable {");
     pr.println();
