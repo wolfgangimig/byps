@@ -71,6 +71,7 @@ publishing {
       def mavenUrl = version.endsWith("SNAPSHOT") ? mavenUploadUrlSnapshots : mavenUploadUrl
   
     maven {
+      allowInsecureProtocol = true
       url mavenUrl
       credentials { 
         username mavenUser 

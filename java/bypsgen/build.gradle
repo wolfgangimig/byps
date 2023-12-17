@@ -34,17 +34,19 @@ sourceSets {
 
 
 jar {
+
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
     archiveFileName = "bypsgen.jar"
 
     manifest {
-        attributes 'Implementation-Title': 'BYPS generatore',
+        attributes 'Implementation-Title': 'BYPS generator',
                    'Implementation-Version': version,
                    'Main-Class': 'byps.gen.Main'
     }
  
     from {
-//        configurations.compileOnly.collect { it.isDirectory() ? it : zipTree(it) }
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 
@@ -60,8 +62,8 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime
 	implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: jaxbRuntimeVersion
 	
-  implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
-  implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: slf4jVersion
+ 	implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+  	implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: slf4jVersion
   
 	implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 
@@ -70,6 +72,8 @@ dependencies {
 	implementation group: 'io.swagger.core.v3', name: 'swagger-models', version: swaggerVersion
 
 	implementation group: 'com.google.code.gson', name: 'gson', version:  gsonVersion
+
+	implementation group: 'jakarta.ws.rs', name: 'jakarta.ws.rs-api', version: jakartaWsRsVersion
 }
 
 publishing {
@@ -85,6 +89,7 @@ publishing {
       def mavenUrl = version.endsWith("SNAPSHOT") ? mavenUploadUrlSnapshots : mavenUploadUrl
   
     maven {
+      allowInsecureProtocol = true
       url mavenUrl
       credentials { 
         username mavenUser 
