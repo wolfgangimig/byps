@@ -1,5 +1,9 @@
 BYPS Version History
 
+10.7
+
+- BYPS-78: Update third party library versions.
+
 10.6
 
 - BYPS-77: Suppress also "deprecation" warnings in generated files.
