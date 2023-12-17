@@ -333,7 +333,7 @@ public class GeneratorOpenAPI implements Generator {
     Content content = new Content();
     
     String contentType = RestInfo.getConsumesOrDefault(methodInfo.restInfo);
-    if (contentType.equalsIgnoreCase(javax.ws.rs.core.MediaType.MULTIPART_FORM_DATA)) {
+    if (contentType.equalsIgnoreCase(jakarta.ws.rs.core.MediaType.MULTIPART_FORM_DATA)) {
       addRequestBodyMultipartFormData(content, methodInfo);
       op.requestBody(new RequestBody().content(content));
     }

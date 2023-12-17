@@ -2,8 +2,8 @@ package byps.test.api.remote;
 
 import java.util.Date;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 import byps.BDefaultValue;
 import byps.BRemote;

@@ -6,6 +6,8 @@ sourceCompatibility = 11
 compileJava.options.encoding = 'UTF-8'
 version = versionFromProperties
 
+apply from: file("${rootDir}/dependencies.gradle")
+
 sourceSets {
     main {
         java {
@@ -48,8 +50,10 @@ dependencies {
 	compileOnly project(":byps")
 	compileOnly project(':bypshttp')
 	
-	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4+'
-	compile group: 'org.apache.httpcomponents', name: 'httpclient-win', version: '4+'
+	implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+	
+	implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: httpComponentsVersion
+	implementation group: 'org.apache.httpcomponents', name: 'httpclient-win', version: httpComponentsVersion
 	
 }
 

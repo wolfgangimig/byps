@@ -15,6 +15,8 @@ compileJava.options.encoding = 'UTF-8'
 
 sourceCompatibility = 11
 
+apply from: file("${rootDir}/dependencies.gradle")
+
 // In this section you declare where to find the dependencies of your project
 repositories {
     // Use jcenter for resolving your dependencies.
@@ -24,20 +26,20 @@ repositories {
 
 dependencies {
 
-	compile project(":bypshttp")
-	compile project(":bypstest-api")
-	compile project(":bypstest-ser")
-	compile project(":bypstest-ser-json")
+	implementation project(":bypshttp")
+	implementation project(":bypstest-api")
+	implementation project(":bypstest-ser")
+	implementation project(":bypstest-ser-json")
 	
 	//compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '8.+'
-	compile group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '5.0.0'
+	implementation group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: servletApiVersion
 	
 
 
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
+    // This dependency is exported to consumers, that is to say found on their implementation classpath.
     //api 'org.apache.commons:commons-math3:3.6.1'
 
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
+    // This dependency is used internally, and not exposed to consumers on their own implementation classpath.
     //implementation 'com.google.guava:guava:21.0'
 
     // Use JUnit test framework

@@ -3,7 +3,6 @@ package byps.stdio.client;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -163,17 +162,7 @@ public class StdioServletResponse implements HttpServletResponse {
   }
 
   @Override
-  public String encodeRedirectUrl(String arg0) {
-    return arg0;
-  }
-
-  @Override
   public String encodeURL(String arg0) {
-    return arg0;
-  }
-
-  @Override
-  public String encodeUrl(String arg0) {
     return arg0;
   }
 
@@ -204,7 +193,7 @@ public class StdioServletResponse implements HttpServletResponse {
 
   @Override
   public void sendError(int arg0, String arg1) throws IOException {
-    setStatus(arg0, arg1);
+    setStatus(arg0);
   }
 
   @Override
@@ -228,17 +217,7 @@ public class StdioServletResponse implements HttpServletResponse {
 
   @Override
   public void setStatus(int arg0) {
-    setStatus(arg0, null);
-  }
-
-  @Override
-  public void setStatus(int arg0, String arg1) {
     setHeader("", Integer.toString(arg0));
-    if (arg1 != null) {
-      ByteBuffer bbuf = ByteBuffer.wrap(arg1.getBytes(StandardCharsets.UTF_8));
-      response.setBody(bbuf);
-    }
   }
-
 
 }

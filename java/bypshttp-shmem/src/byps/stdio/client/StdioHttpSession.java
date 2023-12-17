@@ -8,9 +8,7 @@ import java.util.Map;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpSession;
-import jakarta.servlet.http.HttpSessionContext;
 
-@SuppressWarnings("deprecation")
 public class StdioHttpSession implements HttpSession {
   
   private Map<String, Object> attributes = new HashMap<String, Object>();
@@ -62,21 +60,6 @@ public class StdioHttpSession implements HttpSession {
   }
 
   @Override
-  public HttpSessionContext getSessionContext() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public Object getValue(String arg0) {
-    return getAttribute(arg0);
-  }
-
-  @Override
-  public String[] getValueNames() {
-    return attributes.keySet().toArray(new String[0]);
-  }
-
-  @Override
   public void invalidate() {
     createTime = 0;
   }
@@ -87,18 +70,8 @@ public class StdioHttpSession implements HttpSession {
   }
 
   @Override
-  public void putValue(String arg0, Object arg1) {
-    setAttribute(arg0, arg1);
-  }
-
-  @Override
   public void removeAttribute(String arg0) {
     attributes.remove(arg0);
-  }
-
-  @Override
-  public void removeValue(String arg0) {
-    removeAttribute(arg0);
   }
 
   @Override

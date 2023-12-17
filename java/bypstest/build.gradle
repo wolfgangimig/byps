@@ -5,6 +5,8 @@ sourceCompatibility = 11
 compileJava.options.encoding = 'UTF-8'
 version = versionFromProperties
 
+apply from: file("${rootDir}/dependencies.gradle")
+
 sourceSets {
     main {
         java {
@@ -33,29 +35,29 @@ repositories {
 }
 
 dependencies {
-  compile project(":byps")
-  compile project(":byps-override")
-  compile project(":bypsgen")
-	compile project(":bypshttp")
-	compile project(":bypshttp-shmem")
-	compile project(":bypshttpasf")
-	compile project(":bypstest-api")
-	compile project(":bypstest-ser")
-	compile project(":bypstest-ser-json")
-	compile project(":bypstest-servlet")
+	implementation project(":byps")
+ 	implementation project(":byps-override")
+	implementation project(":bypsgen")
+	implementation project(":bypshttp")
+	implementation project(":bypshttp-shmem")
+	implementation project(":bypshttpasf")
+	implementation project(":bypstest-api")
+	implementation project(":bypstest-ser")
+	implementation project(":bypstest-ser-json")
+	implementation project(":bypstest-servlet")
 	
-	compile group: 'junit', name: 'junit', version: '4.12'
+	implementation group: 'junit', name: 'junit', version: junitVersion
 	
 	// https://mvnrepository.com/artifact/io.undertow/undertow-core
-	compile group: 'io.undertow', name: 'undertow-core', version: '2.2.19.Final'
+	implementation group: 'io.undertow', name: 'undertow-core', version: undertowVersion
 	// https://mvnrepository.com/artifact/io.undertow/undertow-servlet
-	compile group: 'io.undertow', name: 'undertow-servlet', version: '2.2.19.Final'
+	implementation group: 'io.undertow', name: 'undertow-servlet', version: undertowVersion
 	
 }
 
 task buildJarForCompatibilityTest(type: Jar) {
   group = 'build'
-  archiveName = 'bypstest_793.jar'
+  archiveFileName = 'bypstest_793.jar'
   from { configurations.compile.collect { it.isDirectory() ? it : (it.name.startsWith("byps") ? zipTree(it) : []) } }
   with jar
 }

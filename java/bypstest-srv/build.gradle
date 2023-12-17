@@ -19,6 +19,8 @@ ext.versionFromProperties = readVersion()
 
 version = versionFromProperties
 
+apply from: file("${rootDir}/dependencies.gradle")
+
 eclipse {
 
   wtp {
@@ -65,7 +67,7 @@ dependencies {
 	
 	compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '8.0.+'
 	
-	implementation("ch.qos.logback:logback-classic:1.2.3")
+	implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 	
 }
 

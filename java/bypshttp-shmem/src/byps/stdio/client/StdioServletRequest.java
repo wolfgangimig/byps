@@ -20,6 +20,7 @@ import byps.stdio.common.StdioChannel;
 import jakarta.servlet.AsyncContext;
 import jakarta.servlet.DispatcherType;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletConnection;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletInputStream;
@@ -212,11 +213,6 @@ public class StdioServletRequest implements HttpServletRequest {
 
   @Override
   public BufferedReader getReader() throws IOException {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public String getRealPath(String arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -441,11 +437,6 @@ public class StdioServletRequest implements HttpServletRequest {
   }
 
   @Override
-  public boolean isRequestedSessionIdFromUrl() {
-    return false;
-  }
-
-  @Override
   public boolean isRequestedSessionIdValid() {
     return false;
   }
@@ -475,4 +466,19 @@ public class StdioServletRequest implements HttpServletRequest {
   }
   
   private final static Map<String,String> EMPTY_HEADERS = new HashMap<String,String>(0);
+
+  @Override
+  public String getRequestId() {
+    return null;
+  }
+
+  @Override
+  public String getProtocolRequestId() {
+    return null;
+  }
+
+  @Override
+  public ServletConnection getServletConnection() {
+    return null;
+  }
 }

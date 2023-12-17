@@ -8,6 +8,8 @@ sourceCompatibility = 11
 compileJava.options.encoding = 'UTF-8'
 version = versionFromProperties
 
+apply from: file("${rootDir}/dependencies.gradle")
+
 eclipse {
   classpath {
     file {
@@ -32,7 +34,7 @@ sourceSets {
 
 
 jar {
-    archiveName = "bypsgen.jar"
+    archiveFileName = "bypsgen.jar"
 
     manifest {
         attributes 'Implementation-Title': 'BYPS generatore',
@@ -51,23 +53,23 @@ repositories {
 }
 
 dependencies {
-	compile project(":byps-api")
-	compile project(":byps-override")
-	compile project(":byps")
+	implementation project(":byps-api")
+	implementation project(":byps-override")
+	implementation project(":byps")
 	
 	// https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime
-	compile group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.1'
+	implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: jaxbRuntimeVersion
 	
-  compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
-  compile group: 'org.slf4j', name: 'jcl-over-slf4j', version: '1.7.30'
+  implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+  implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: slf4jVersion
   
-	compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.10'
+	implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 
 	// https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-models
 	// BYPS-76: Version 2.2.18
-	compile group: 'io.swagger.core.v3', name: 'swagger-models', version: '2.2.18'
+	implementation group: 'io.swagger.core.v3', name: 'swagger-models', version: swaggerVersion
 
-	compile group: 'com.google.code.gson', name: 'gson', version: '2.9.1'
+	implementation group: 'com.google.code.gson', name: 'gson', version:  gsonVersion
 }
 
 publishing {

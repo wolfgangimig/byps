@@ -6,6 +6,8 @@ sourceCompatibility = 11
 compileJava.options.encoding = 'UTF-8'
 version = versionFromProperties
 
+apply from: file("${rootDir}/dependencies.gradle")
+
 sourceSets {
     main {
         java {
@@ -38,22 +40,17 @@ repositories {
 }
 
 dependencies {
-	compile project(":byps-api")
-	compile project(":byps-override")
+	implementation project(":byps-api")
+	implementation project(":byps-override")
 
 	// BYPS-16: use slf4j instead of commons-logging
-	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+	implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
 	// BYPS-16: Support basic configuration of logback and log4j. Byps requires one of 
 	// these frameworks only if you explicitly instruct it to do logging of its own.
-	compileOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.10'
-	compileOnly group: 'log4j', name: 'log4j', version: '1.2.17'
+	compileOnly group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
 	
-	// https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
- 	compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
+	// https://mvnrepository.com/artifact/jakarta.ws.rs/jakarta.ws.rs-api
+	implementation group: 'jakarta.ws.rs', name: 'jakarta.ws.rs-api', version: jakartaWsRsVersion
 
 }
 
-if(JavaVersion.current() != JavaVersion.VERSION_11){
-	print("Java=" + JavaVersion.current());
-    throw new GradleException("This build must be run with JDK 11")
-}

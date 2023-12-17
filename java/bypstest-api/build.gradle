@@ -6,6 +6,8 @@ sourceCompatibility = 11
 compileJava.options.encoding = 'UTF-8'
 version = versionFromProperties
 
+apply from: file("${rootDir}/dependencies.gradle")
+
 sourceSets {
     main {
         java {
@@ -33,9 +35,9 @@ repositories {
 }
 
 dependencies {
-  compile project(':bypshttp')
-  compile project(':byps-override')
-  compile project(':byps')
+  implementation project(':bypshttp')
+  implementation project(':byps-override')
+  implementation project(':byps')
 	
 	
 }
