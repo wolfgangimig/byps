@@ -487,8 +487,9 @@ class PrintContext extends PrintContextBase {
 		
 	}
 	
-	public void printComments(CodePrinter pr, Iterable<CommentInfo> comments) throws IOException {
+	public void printComments(CodePrinter pr, Iterable<CommentInfo> comments) {
 		if (comments != null) {
+		  boolean hasDeprecated = false;
 			pr.println("/**");
 			for (CommentInfo cmt : comments) {
 				String t = cmt.text.trim().replace("\r", "\n"); 
@@ -498,9 +499,16 @@ class PrintContext extends PrintContextBase {
 						mpr.print(cmt.kind).print(" ");
 					}
 					mpr.println(line.trim());
+					
+					hasDeprecated |= cmt.kind.contentEquals("@deprecated");
 				}
 			}
 			pr.println("*/");
+			
+			// BYPS-80: Annotation @Deprecated ergänzen wegen WARN in Java 21
+			if (hasDeprecated) {
+			  pr.println("@Deprecated");
+			}
 		}
 	}
 

@@ -1,5 +1,9 @@
 BYPS Version History
 
+10.8
+
+- BYPS-80: Add annotation @Deprecated if javadoc comment contains @deprecated.
+
 10.7
 
 - BYPS-78: Update third party library versions.
