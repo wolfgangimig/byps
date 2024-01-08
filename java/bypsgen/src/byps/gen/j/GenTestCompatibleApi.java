@@ -51,7 +51,7 @@ public class GenTestCompatibleApi {
 
     String className = pctxt.getTestClassName();
 
-    pr.println("@SuppressWarnings({\"all\", \"deprecation\", \"unchecked\"})");
+    pr.println(PrintContext.SUPPRESS_JAVA_WARNINGS);
     pr.print("public class ").print(className).println(" {");
     pr.println();
     

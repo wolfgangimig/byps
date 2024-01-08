@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import byps.BApiDescriptor;
 import byps.BBinaryModel;
@@ -18,6 +20,22 @@ import byps.gen.db.BRegistryForClassDB;
 import byps.gen.db.ClassDB;
 
 public class PrintContextBase {
+  
+  /**
+   * Java compiler warnings.
+   * https://docs.oracle.com/en/java/javase/17/docs/specs/man/javac.html#examples-of-using--xlint-keys
+   * BYPS-81
+   */
+  private static final String JAVA_WARNINGS = "all, deprecation, unchecked, rawtypes, cast, static, try, serial, this-escape";
+  
+  /**
+   * Code line to suppress all Java compiler warnings.
+   * BYPS-81
+   */
+  public static final String SUPPRESS_JAVA_WARNINGS = "@SuppressWarnings({"
+      + Stream.of(JAVA_WARNINGS.split(",")).map(s -> "\"" + s.trim() + "\"").collect(Collectors.joining(","))
+      + "})";
+
 
   public PrintContextBase(ClassDB classDB, GeneratorProperties props) {
     this.classDB = classDB;

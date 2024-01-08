@@ -42,7 +42,7 @@ public class GenServer {
     pr.println("import java.util.List;");
 		pr.println();
 
-		pr.println("@SuppressWarnings({\"all\", \"deprecation\", \"unchecked\"})");
+		pr.println(PrintContext.SUPPRESS_JAVA_WARNINGS);
 		
 		pr.print("public class ").print(serverClassName).println(" extends BServer { ");
 		pr.println();

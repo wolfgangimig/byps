@@ -449,7 +449,7 @@ public class GeneratorOpenAPI implements Generator {
       pr.println("import byps.rest.*;");
       pr.println();
       
-      pr.println("@SuppressWarnings({\"all\", \"deprecation\", \"unchecked\"})");
+      pr.println(PrintContext.SUPPRESS_JAVA_WARNINGS);
 
       pr.print("public class ").print(simpleClassName).println(" extends RestOperations {");
       pr.beginBlock();

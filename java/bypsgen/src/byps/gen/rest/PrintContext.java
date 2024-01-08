@@ -12,7 +12,7 @@ import byps.gen.utils.PrintContextBase;
  *
  */
 class PrintContext extends PrintContextBase {
-
+  
   public PrintContext(ClassDB classDB, GeneratorProperties props) {
     super(classDB, props);
   }
