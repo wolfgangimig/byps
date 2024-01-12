@@ -1,5 +1,9 @@
 BYPS Version History
 
+10.11
+
+- BYPS-82: Updated dependencies.
+
 10.10
 
 - BYPS-81: Suppress all warnings in generated Java code.
