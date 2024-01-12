@@ -1,5 +1,17 @@
-apply plugin: 'eclipse-wtp'
+plugins {
+  id 'org.owasp.dependencycheck' version '8.2.1'
+  id 'org.cyclonedx.bom' version '1.7.4'
+}
+
+
 apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.owasp.dependencycheck'
+
+dependencyCheck {
+    failBuildOnCVSS=7
+    suppressionFile = new File("$projectDir/odc-suppressions.xml")
+}
 
 sourceCompatibility = 11
 
@@ -63,9 +75,9 @@ dependencies {
 	compile project(":bypstest-ser")
 	compile project(":bypstest-ser-json")
 	
-	compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '8.0.+'
+	compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '9.+'
 	
-	compile("ch.qos.logback:logback-classic:1.2.3")
+	compile("ch.qos.logback:logback-classic:1.3.14")
 	
 }
 

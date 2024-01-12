@@ -16,8 +16,6 @@ public class LogConfigurator {
     String loggerName = root.getClass().getName();
     if (loggerName.equals("ch.qos.logback.classic.Logger"))
       log = new Logback(root);
-    else if (loggerName.equals("org.slf4j.impl.Log4jLoggerAdapter"))
-      log = new Log4J(root);
     else
       log = new NOPLogger();
   }

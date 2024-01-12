@@ -2,6 +2,10 @@ BYPS Version History
 
 9.12
 
+- BYPS-82: Updated dependencies. Removed log4j support. Removed TestCompatibleApi features.
+
+9.12
+
 - BYPS-74: Support serialization of 4-byte UTF-8 characters. 
 
 - BYPS-75: Define enum constants in OpenAPI definition. 
