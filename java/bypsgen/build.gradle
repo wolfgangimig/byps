@@ -71,10 +71,21 @@ dependencies {
 }
 
 publishing {
+
   publications {
-     maven(MavenPublication) {
-       groupId 'byps'
-       artifact jar
+    maven(MavenPublication) {
+      groupId 'byps'
+      artifact jar
+      pom {
+        name = 'BYPS'
+        description = 'BYPS code generator'
+        licenses {
+          license {
+            name = 'MIT'
+            url = 'https://opensource.org/license/mit/'
+          }
+        }
+      }
     }
   }
 
@@ -83,6 +94,7 @@ publishing {
       def mavenUrl = version.endsWith("SNAPSHOT") ? mavenUploadUrlSnapshots : mavenUploadUrl
   
     maven {
+      allowInsecureProtocol = true
       url mavenUrl
       credentials { 
         username mavenUser 
