@@ -3,9 +3,13 @@ package byps.http;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +22,10 @@ import byps.BHashMap;
 import byps.BMessageHeader;
 import byps.BTargetId;
 import jakarta.servlet.AsyncEvent;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 
 public class HActiveMessages {
 	
@@ -371,18 +377,18 @@ public class HActiveMessages {
     if (log.isDebugEnabled()) log.debug("addIncomingStreamAsync(targetId={}, rctxt={}", targetId, rctxt);
 
     try {
-      final HttpServletRequest request = (HttpServletRequest) (rctxt.getRequest());
-      final String contentType = request.getContentType();
-      final String contentDisposition = request.getHeader("Content-Disposition");
-      final String contentLengthStr = request.getHeader("Content-Length");
-      final long contentLength = contentLengthStr != null && contentLengthStr.length() != 0 ? Long.parseLong(contentLengthStr) : -1L;
-      final String partIdStr = request.getParameter("partid");
+      // BYPS-83: POST request as multipart/form-data
+      
+      final BContentStream preStream = getStreamFromRequestOrMultipartPart(rctxt);
+      final String contentType = preStream.getContentType();
+      final String contentDisposition = preStream.getContentDisposition();
+      final String partIdStr = rctxt.getRequest().getParameter("partid");
       final long partId = partIdStr != null && partIdStr.length() != 0 ? Long.parseLong(partIdStr) : -1L;
-      final String lastPartStr = request.getParameter("last");
+      final String lastPartStr = rctxt.getRequest().getParameter("last");
       final boolean isLastPart = lastPartStr != null && lastPartStr.length() != 0 ? (Integer.valueOf(lastPartStr) != 0) : true;
       
       // BYPS-47: A value of Long.MAX for totalLength also means that the stream size is unknown.
-      final String totalLengthStr = request.getParameter("total");
+      final String totalLengthStr = rctxt.getRequest().getParameter("total");
       long totalLength = -1L;
       if (totalLengthStr != null && !totalLengthStr.isEmpty()) {
         totalLength = Long.parseLong(totalLengthStr);
@@ -429,12 +435,12 @@ public class HActiveMessages {
           msg.addIncomingStream(targetId.getStreamId(), istrm, incomingStreams);
         }
 
-        ((HIncomingSplittedStreamAsync) istrm).addStream(partId, contentLength, isLastPart, rctxt);
+        ((HIncomingSplittedStreamAsync) istrm).addStream(partId, preStream, isLastPart);
 
       }
       else {
 
-        istrm = new HIncomingStreamAsync(targetId, contentType, contentLength, contentDisposition, HConstants.REQUEST_TIMEOUT_MILLIS, tempDir, rctxt) {
+        istrm = new HIncomingStreamAsync(targetId, preStream, tempDir) {
           public void close() throws IOException {
             if (log.isDebugEnabled()) log.debug("close incoming stream={} (", targetId.getStreamId());
             Long streamId = getTargetId().getStreamId();
@@ -480,6 +486,74 @@ public class HActiveMessages {
     
     if (log.isDebugEnabled()) log.debug(")addIncomingStreamSync");
   }
+
+  /**
+   * Wrap the stream data of the request body into a BContentStream.
+   * If the request is of type multipart/form-data get the InputStream from request part "file". 
+   * Otherwise wrap the InputStream of the request object. 
+   * If a multipart/form-data request contains  a part "originalContentDisposition" take it as 
+   * {@link BContentStream#setContentDisposition(String)}. 
+   * BYPS-83 
+   * @param rctxt Request context (request and response objects)
+   * @return BContentStream 
+   * @throws IOException
+   * @throws ServletException
+   */
+  private BContentStream getStreamFromRequestOrMultipartPart(HRequestContext rctxt) throws IOException, ServletException {
+    HttpServletRequest request = (HttpServletRequest)rctxt.getRequest();
+    
+    // Is request of type multipart/form-data?
+    String requestContentType = request.getContentType();
+    boolean isMultipart = requestContentType != null && requestContentType.toLowerCase().startsWith("multipart/form-data");
+    
+    // If it is a multipart request provide stream part.
+    Optional<Part> filePart = isMultipart ? Optional.of(request.getPart("file")) : Optional.empty();
+    
+    // InputStream, content-type and content-length is either from the "file" part or from the entire request.
+    String contentType = filePart.map(Part::getContentType).orElse(requestContentType);
+    long contentLength = filePart.map(Part::getSize).orElse(request.getContentLengthLong());
+    InputStream istream = filePart.isPresent() ? filePart.get().getInputStream() : request.getInputStream();
+    
+    // Wrap the InputStream and the headers.
+    BContentStream ret = new BContentStreamWrapper(istream, contentType, contentLength, HConstants.REQUEST_TIMEOUT_MILLIS) {
+      public void close() throws IOException {
+        if (rctxt.isAsync() && !rctxt.isCompleted()) {
+          try {
+            HttpServletResponse response = (HttpServletResponse)rctxt.getResponse();
+            response.getOutputStream().close();
+            response.setStatus(HttpServletResponse.SC_OK);
+          } finally {
+            rctxt.complete();
+          }
+        }
+      }
+    };
+    
+    // Optionally assign the content-disposition value from the dedicated multipart part.
+    Optional<Part> cdispPart = isMultipart ? Optional.ofNullable(request.getPart("originalContentDisposition")) : Optional.empty();
+    ret.setContentDisposition(cdispPart.map(this::getStringValueFromPart).orElse(request.getHeader("Content-Disposition")));
+    
+    return ret;
+  }
+  
+  /**
+   * Read the multipart part content into a String.  
+   * BYPS-83 
+   * @param part {@link Part}
+   * @return String
+   */
+  private String getStringValueFromPart(Part part) {
+    String ret = "";
+    char[] cbuf = new char[1000];
+    try (Reader rd = new InputStreamReader(part.getInputStream(), StandardCharsets.UTF_8)) {
+      int len = rd.read(cbuf);
+      ret = new String(cbuf, 0, len);
+    }
+    catch (IOException e) {
+      // ignored;
+    }
+    return ret;
+  }
   
   private HIncomingStreamSync addIncomingStreamSync2(final HActiveMessage msg, final BTargetId targetId, HttpServletRequest request) throws BException {
     if (log.isDebugEnabled()) log.debug("addIncomingStreamSync2({}", targetId);
@@ -487,15 +561,16 @@ public class HActiveMessages {
     HIncomingStreamSync istrm = null;
     
     try {
-      final String contentType = request.getContentType();
-      final String contentDisposition = request.getHeader("Content-Disposition");
-      final String contentLengthStr = request.getHeader("Content-Length");
-      final long contentLength = contentLengthStr != null && contentLengthStr.length() != 0 ? Long.parseLong(contentLengthStr) : -1L;
+      HSyncContext rctxt = new HSyncContext(request, null);
+      final BContentStream preStream = getStreamFromRequestOrMultipartPart(rctxt);
+      final String contentType = preStream.getContentType();
+      final String contentDisposition = preStream.getContentDisposition();
+      final long contentLength = preStream.getContentLength();
       final String totalLengthStr = request.getParameter("total");
       final long totalLength = totalLengthStr != null && totalLengthStr.length() != 0 ? Long.parseLong(totalLengthStr) : -1L;
 
       if (log.isDebugEnabled()) {
-        log.debug("contentType=" + contentType + ", contentLength=" + contentLengthStr + ", totalLength=" + totalLength);
+        log.debug("contentType=" + contentType + ", contentLength=" + contentLength + ", totalLength=" + totalLength);
       }
       
       istrm = incomingStreams != null ? (HIncomingStreamSync) incomingStreams.get(targetId.getStreamId()) : null;

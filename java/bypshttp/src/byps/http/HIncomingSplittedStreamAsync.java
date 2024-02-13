@@ -30,10 +30,9 @@ public class HIncomingSplittedStreamAsync extends BContentStream {
 		setContentDisposition(contentDisposition);
 	}
 	
-	public synchronized void addStream(long partId, long contentLength, boolean isLastPart, HRequestContext rctxt) throws IOException {
-		if (log.isDebugEnabled()) log.debug("addStream(" + targetId + ", partId=" + partId + ", contentLength=" + contentLength + ", isLastPart=" + isLastPart);
-		String contentType = getContentType();
-		HIncomingStreamAsync streamPart = new HIncomingStreamAsync(targetId, contentType, contentLength, "", lifetimeMillis, tempDir, rctxt);
+	public synchronized void addStream(long partId, BContentStream preStream, boolean isLastPart) throws IOException {
+		if (log.isDebugEnabled()) log.debug("addStream(" + targetId + ", partId=" + partId + ", preStream=" + preStream + ", isLastPart=" + isLastPart);
+		HIncomingStreamAsync streamPart = new HIncomingStreamAsync(targetId, preStream, tempDir);
 		streamParts.put(partId, streamPart);
 		
 		if (isLastPart) {

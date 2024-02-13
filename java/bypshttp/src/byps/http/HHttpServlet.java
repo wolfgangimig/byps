@@ -661,20 +661,29 @@ public abstract class HHttpServlet extends HttpServlet implements
       HttpServletResponse response) throws ServletException, IOException {
     if (log.isDebugEnabled()) log.debug("doPostMessage(");
 
-    if (log.isDebugEnabled()) {
-      String contentType = request.getContentType();
-      String contentLength = request.getHeader("Content-Length");
-      log.debug("contentType=" + contentType + ", contentLength=" + contentLength);
+    // Is request of type multipart/form-data?
+    // BYPS-83
+    String requestContentType = request.getContentType();
+    boolean isMultipart = requestContentType != null && requestContentType.toLowerCase().startsWith("multipart/form-data");
+    
+    // If it is a multipart request provide stream part.
+    Optional<Part> filePart = isMultipart ? Optional.of(request.getPart("file")) : Optional.empty();
+
+    // InputStream, content-type and content-length is either from the "file" part or from the entire request.
+    String contentType = filePart.map(Part::getContentType).orElse(requestContentType);
+    long contentLength = filePart.map(Part::getSize).orElse(request.getContentLengthLong());
+    try (InputStream istream = filePart.isPresent() ? filePart.get().getInputStream() : request.getInputStream()) {
+      
+      if (log.isDebugEnabled()) log.debug("requestContentType={}, contentType={}, contentLength={}", requestContentType, contentType, contentLength);
+
+      // Read stream into buffer.
+      ByteBuffer ibuf = BWire.bufferFromStream(istream);
+
+      if (log.isDebugEnabled()) log.debug(BBuffer.toDetailString(ibuf));
+
+      // Process message.
+      doMessage(request, response, ibuf);
     }
-
-    InputStream is = request.getInputStream();
-    ByteBuffer ibuf = BWire.bufferFromStream(is);
-
-    if (log.isDebugEnabled()) {
-      log.debug(BBuffer.toDetailString(ibuf));
-    }
-
-    doMessage(request, response, ibuf);
 
     if (log.isDebugEnabled()) log.debug(")doPostMessage");
   }

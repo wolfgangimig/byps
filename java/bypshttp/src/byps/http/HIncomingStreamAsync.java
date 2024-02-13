@@ -1,5 +1,4 @@
 package byps.http;
-import java.io.BufferedInputStream;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.io.File;
 import java.io.IOException;
@@ -10,27 +9,26 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import byps.BContentStream;
+import byps.BContentStreamWrapper;
 import byps.BException;
 import byps.BExceptionC;
 import byps.BTargetId;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class HIncomingStreamAsync extends BContentStream  {
+public class HIncomingStreamAsync extends BContentStreamWrapper  {
 
 	private static Logger log = LoggerFactory.getLogger(HIncomingStreamAsync.class);
 	protected InputStream is;
-	protected HRequestContext rctxt;
 	protected final File tempDir;
 	
 	private AtomicBoolean closed = new AtomicBoolean();
 
-	HIncomingStreamAsync(BTargetId targetId, String contentType, long contentLength, String contentDisposition, long lifetimeMillis, File tempDir, HRequestContext rctxt) throws IOException {
-		super(contentType, contentLength, lifetimeMillis);
+	HIncomingStreamAsync(BTargetId targetId, BContentStream preStream, File tempDir) throws IOException {
+		super(preStream, HConstants.REQUEST_TIMEOUT_MILLIS);
 		this.setTargetId(targetId);
-		this.rctxt = rctxt;
-		this.is = new BufferedInputStream(rctxt.getRequest().getInputStream());
+		this.is = preStream;
 		this.tempDir = tempDir;
-		setContentDisposition(contentDisposition);
+		setContentDisposition(preStream.getContentDisposition());
 	}
 	
 	private final InputStream strm() throws IOException {
@@ -82,15 +80,6 @@ public class HIncomingStreamAsync extends BContentStream  {
 			  try { is.close(); } catch (Throwable ignored) {}
 	      is = null;
 			}
-			
-			try {
-	      HttpServletResponse response = (HttpServletResponse)rctxt.getResponse();
-			  response.getOutputStream().close();
-	      response.setStatus(HttpServletResponse.SC_OK);
-			} catch (Throwable ignored) {}
-			
-			rctxt.complete();
-			rctxt = null;
 			
 			super.close();
 		}

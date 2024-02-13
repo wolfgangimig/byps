@@ -63,6 +63,18 @@ publishing {
        groupId 'byps'
        artifactId = "bypshttp"
        artifact jar
+       
+       // BYPS-83: POM with license info
+	    pom {
+	      name = 'BYPS HTTP communication library'
+	      licenses {
+	        license {
+	          name = 'MIT'
+	          url = 'https://opensource.org/license/mit/'
+	        }
+	      }
+	    }
+       
     }
   }
 

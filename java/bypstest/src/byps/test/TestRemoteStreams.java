@@ -102,10 +102,10 @@ public class TestRemoteStreams {
   @Test
   public void testRemoteStreamsFileStream() throws InterruptedException, IOException {
     log.info("testRemoteStreamsFileStream(");
-    
+
     File file = File.createTempFile("byps ä € ß", ".txt");
     String str = "hello";
-    
+
     FileOutputStream fos = null;
     try {
       fos = new FileOutputStream(file);

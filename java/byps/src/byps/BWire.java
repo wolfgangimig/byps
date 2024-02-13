@@ -218,12 +218,16 @@ public class BWire {
 	}
 
 	public static class OutputStreamByteCount extends OutputStream {
-		public long sum;
+		private long sum;
 		protected final OutputStream os;
 		
 		public OutputStreamByteCount(OutputStream arg0) throws IOException {
 			this.os = arg0;
 		}
+		
+		public long getContentLength() {
+      return sum;
+    }
 		
 		@Override
 		public void write(int arg0) throws IOException {

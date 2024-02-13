@@ -54,12 +54,14 @@ public class JcnnClient implements HHttpClient {
 
   @Override
   public HHttpRequest post(long trackingId, String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult) {
-    return new JcnnPost(trackingId, url, buf, asyncResult, cookieManager);
+    // BYPS-83: send buffer as multipart/form-data
+    return new JcnnPostAsMultipartFormdata(trackingId, url, buf, asyncResult, cookieManager);
   }
 
   @Override
   public HHttpRequest putStream(long trackingId, String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult) {
-    return new JcnnPutStream(trackingId, url, stream, asyncResult, cookieManager);
+    // BYPS-83: send stream as multipart/form-data
+    return new JcnnPutStreamAsMultipartFormData(trackingId, url, stream, asyncResult, cookieManager);
   }
 
   /**

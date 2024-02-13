@@ -17,13 +17,17 @@ import byps.BMessageHeader;
 import byps.BWire;
 import byps.BWire.OutputStreamByteCount;
 
-public class JcnnPost extends JcnnRequest {
+/**
+ * This class sends a ByteBuffer in a POST request with content type multipart/form-data.
+ * BYPS-83: Solve Azure file upload problem with large POST request.
+ */
+public class JcnnPostAsMultipartFormdata extends JcnnRequest {
 
-  private static Logger log = LoggerFactory.getLogger(JcnnPost.class);
+  private static Logger log = LoggerFactory.getLogger(JcnnPostAsMultipartFormdata.class);
   private final BAsyncResult<ByteBuffer> asyncResult;
   private ByteBuffer buf;
   
-  protected JcnnPost(long trackingId, String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult, CookieManager cookieManager) {
+  protected JcnnPostAsMultipartFormdata(long trackingId, String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult, CookieManager cookieManager) {
     super(trackingId, url, cookieManager);
     this.buf = buf;
     this.asyncResult = asyncResult;
@@ -32,44 +36,47 @@ public class JcnnPost extends JcnnRequest {
   @Override
   public void run() {
     MDC.put("NDC", "jcnnpost-" + trackingId);
-    HttpURLConnection c = null;
+    HttpURLConnection conn = null;
     ByteBuffer returnBuffer = null;
     BException returnException = null;
     int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;
-    final boolean isJson = BMessageHeader.detectProtocol(buf) == BMessageHeader.MAGIC_JSON;
+    boolean isJson = BMessageHeader.detectProtocol(buf) == BMessageHeader.MAGIC_JSON;
     final String contentType = isJson ? "application/json;charset=UTF-8" : "application/byps";
     int retry = 0; 
     
     do {
       try {
-        c = createConnection(url);
+        conn = createConnection(url);
         
-        c.setDoInput(true);
-        c.setDoOutput(true);
-  
-        c.setRequestMethod("POST");
-        c.setRequestProperty("Accept", "application/json, application/byps");
-        c.setRequestProperty("Accept-Encoding", "gzip");
-        c.setRequestProperty("Content-Type", contentType);
-        if (isJson) {
-          c.setRequestProperty("Content-Encoding", "gzip");
-        }
+        // Tell the client application that we accept BYPS formats.
+        conn.setRequestProperty("Accept", "application/json, application/byps");
+        conn.setRequestProperty("Accept-Encoding", "gzip");
 
-        if (log.isDebugEnabled()) log.debug("write to output stream");
-        OutputStreamByteCount osbc = new OutputStreamByteCount(c.getOutputStream());
-        BWire.bufferToStream(buf, isJson, osbc);
-        if (log.isDebugEnabled()) log.debug("written #bytes=" + osbc.getContentLength() + ", wait for response");
+        // Provide header values.
+        long contentLength = buf.remaining();
+        String contentDisposition = "";
+        String contentEncoding = isJson ? "gzip" : "";
         
-        statusCode = getResponseCode(c);
-  
+        // This callback function writes the buffer into the POST request stream.
+        PostMultipartFormdata.WriteFunction writeFnct = os-> {
+          if (log.isDebugEnabled()) log.debug("write to output stream");
+          OutputStreamByteCount osbc = new OutputStreamByteCount(os);
+          BWire.bufferToStream(buf, isJson, osbc);
+          if (log.isDebugEnabled()) log.debug("written #bytes=" + osbc.getContentLength() + ", wait for response");
+        };
+
+        // Send the POST request as multipart/form-data.
+        PostMultipartFormdata.send(conn, contentLength, contentType, contentDisposition, contentEncoding, writeFnct);
+         
+        statusCode = getResponseCode(conn);
         if (statusCode != HttpURLConnection.HTTP_OK) {
           returnException = new BException(statusCode, "Send message failed.");
-          cleanupInputStream(c);
+          cleanupInputStream(conn);
         }
         else {
           buf = null; // Speicher freigeben
           saveSession(this);
-          returnBuffer = readResponse(c);
+          returnBuffer = readResponse(conn);
         }
         
       }
@@ -86,7 +93,7 @@ public class JcnnPost extends JcnnRequest {
         returnException = new BException(statusCode, "Send message failed", e);
       }
       finally {
-        cleanupErrorStream(c);
+        cleanupErrorStream(conn);
         done();
       }
 
