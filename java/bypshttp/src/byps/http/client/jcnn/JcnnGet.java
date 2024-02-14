@@ -1,6 +1,5 @@
 package byps.http.client.jcnn;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.CookieManager;
 import java.net.HttpURLConnection;
@@ -13,10 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
 import byps.BAsyncResult;
-import byps.BBufferJson;
 import byps.BException;
 import byps.BExceptionC;
-import byps.BWire;
 
 public class JcnnGet extends JcnnRequest {
 

@@ -11,6 +11,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import byps.BAsyncResult;
 import byps.BContentStream;
 import byps.http.HConstants;
@@ -18,6 +21,8 @@ import byps.http.client.HHttpClient;
 import byps.http.client.HHttpRequest;
 
 public class JcnnClient implements HHttpClient {
+  
+  private static Logger log = LoggerFactory.getLogger(JcnnClient.class);
   
   private final CookieManager cookieManager;
   
@@ -121,8 +126,16 @@ public class JcnnClient implements HHttpClient {
    */
   private Optional<HttpCookie> internalFindCookie(String name) {
     synchronized(cookieManager) {
-      return cookieManager.getCookieStore().getCookies().stream()
+      if (log.isDebugEnabled()) {
+        log.debug("internalFindCookie({}", name);
+        log.debug("cookies={}", cookieManager.getCookieStore().getCookies());
+      }
+      
+      Optional<HttpCookie> cookieOpt = cookieManager.getCookieStore().getCookies().stream()
           .filter(c -> c.getName().equalsIgnoreCase(name)).findFirst();
+      
+      if (log.isDebugEnabled()) log.debug(")internalFindCookie={}", cookieOpt);
+      return cookieOpt;
     }
   }
 
@@ -135,6 +148,9 @@ public class JcnnClient implements HHttpClient {
     synchronized(cookieManager) {
       cookieManager.getCookieStore().getCookies().forEach(ret::add);
     }
+    
+    log.debug("getHttpCookies()={}", ret);
+
     return Collections.unmodifiableList(ret);
   }
   
@@ -155,9 +171,11 @@ public class JcnnClient implements HHttpClient {
    * @return
    */
   private boolean isMultipartRequestEnabled() {
-    return internalFindCookie(HConstants.HTTP_COOKIE_BYPS_MULTIPART)
+    boolean ret = internalFindCookie(HConstants.HTTP_COOKIE_BYPS_MULTIPART)
         .map(HttpCookie::getValue)
         .filter(v -> v.contentEquals("true"))
         .isPresent();
+    if (log.isDebugEnabled()) log.debug("isMultipartRequestEnabled()={}", ret);
+    return ret;
   }
 }
