@@ -54,14 +54,32 @@ public class JcnnClient implements HHttpClient {
 
   @Override
   public HHttpRequest post(long trackingId, String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult) {
+    HHttpRequest request;
+    
     // BYPS-83: send buffer as multipart/form-data
-    return new JcnnPostAsMultipartFormdata(trackingId, url, buf, asyncResult, cookieManager);
+    
+    if (isMultipartRequestEnabled()) {
+      request = new JcnnPostAsMultipartFormdata(trackingId, url, buf, asyncResult, cookieManager);
+    } else {
+      request = new JcnnPost(trackingId, url, buf, asyncResult, cookieManager);
+    }
+    
+    return request;
   }
 
   @Override
   public HHttpRequest putStream(long trackingId, String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult) {
-    // BYPS-83: send stream as multipart/form-data
-    return new JcnnPutStreamAsMultipartFormData(trackingId, url, stream, asyncResult, cookieManager);
+    HHttpRequest request;
+    
+    // BYPS-83: send buffer as multipart/form-data
+    
+    if (isMultipartRequestEnabled()) {
+      request = new JcnnPutStreamAsMultipartFormData(trackingId, url, stream, asyncResult, cookieManager);
+    } else {
+      request = new JcnnPutStream(trackingId, url, stream, asyncResult, cookieManager);
+    }
+
+    return request;
   }
 
   /**
@@ -131,4 +149,15 @@ public class JcnnClient implements HHttpClient {
     }
   }
   
+  /**
+   * Return true if the server accepts multipart/form-data requests.
+   * BYPS-83
+   * @return
+   */
+  private boolean isMultipartRequestEnabled() {
+    return internalFindCookie(HConstants.HTTP_COOKIE_BYPS_MULTIPART)
+        .map(HttpCookie::getValue)
+        .filter(v -> v.contentEquals("true"))
+        .isPresent();
+  }
 }

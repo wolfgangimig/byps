@@ -50,6 +50,7 @@ import byps.ureq.JRegistry_BUtilityRequests;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -937,6 +938,10 @@ public abstract class HHttpServlet extends HttpServlet implements
         final HttpServletResponse resp = (HttpServletResponse) rctxt
             .getResponse();
         try {
+          
+          // BYPS-83: Allow multipart/form-data requests.
+          resp.addCookie(new Cookie(HConstants.HTTP_COOKIE_BYPS_MULTIPART, "true"));
+
           if (e != null) {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             e.printStackTrace(resp.getWriter());

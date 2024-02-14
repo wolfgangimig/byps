@@ -143,6 +143,15 @@ public class HConstants {
    */
   public static boolean HTTP_SESSION_COOKIE_REQUIRED = true;
   
+  /**
+   * This cookie tells the client side, that requests can be sent as multipart/form-data.
+   * If this cookie is sent with value "true", the client can send multipart/form-data requests.
+   * Otherwise, if the cookie is missing or its value is not "true", the client has to sent plain GET/POST requests.
+   * Requests of content type multipart/form-data help to communicate through Azure WAF.
+   * BYPS-83
+   */
+  public static String HTTP_COOKIE_BYPS_MULTIPART = "BYPSMULTIPART";
+  
   static
   {
     INCOMING_STREAM_TIMEOUT_MILLIS = getSystemPropertyLong("byps.http.incomingStreamTimeoutSeconds", INCOMING_STREAM_TIMEOUT_MILLIS / 1000) * 1000;

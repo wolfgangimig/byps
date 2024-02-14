@@ -15,7 +15,6 @@ import byps.BContentStream;
 import byps.BContentStreamWrapper;
 import byps.BException;
 import byps.BExceptionC;
-import byps.BWire;
 
 public class JcnnGetStream extends JcnnRequest {
 
