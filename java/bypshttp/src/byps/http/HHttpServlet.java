@@ -939,7 +939,8 @@ public abstract class HHttpServlet extends HttpServlet implements
             .getResponse();
         try {
           
-          // BYPS-83: Allow multipart/form-data requests.
+          // BYPS-83: Notify client side that multipart/form-data requests are enabled.
+          // see JcnnClient.isMultipartRequestEnabled()
           resp.addCookie(new Cookie(HConstants.HTTP_COOKIE_BYPS_MULTIPART, "true"));
 
           if (e != null) {

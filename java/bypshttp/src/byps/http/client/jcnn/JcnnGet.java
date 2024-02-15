@@ -1,6 +1,5 @@
 package byps.http.client.jcnn;
 
-import java.io.InputStream;
 import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
@@ -30,7 +29,6 @@ public class JcnnGet extends JcnnRequest {
     MDC.put("NDC", "jcnnget-" + trackingId);
     
     HttpURLConnection c = null;
-    InputStream is = null;
     ByteBuffer returnBuffer = null;
     BException returnException = null;
     int statusCode = BExceptionC.CONNECTION_TO_SERVER_FAILED;

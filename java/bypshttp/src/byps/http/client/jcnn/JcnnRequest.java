@@ -2,7 +2,6 @@ package byps.http.client.jcnn;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.CookieStore;
 import java.net.HttpCookie;
@@ -35,7 +34,7 @@ public abstract class JcnnRequest implements HHttpRequest {
   protected AtomicReference<HttpURLConnection> conn = new AtomicReference<HttpURLConnection>();
   protected String url;
   protected BException ex;
-  protected CookieManager cookieManager;
+  protected final CookieManager cookieManager;
   protected int connectTimeoutSeconds;
   protected int sendRecvTimeoutSeconds;
   protected AtomicBoolean cancelled = new AtomicBoolean();
@@ -137,7 +136,7 @@ public abstract class JcnnRequest implements HHttpRequest {
     
     // BYPS-72: explicitly send cookie header only for non-default cookie handler.
     
-    if (c != null && !isDefaultCookieManagerActive()) {
+    if (c != null && cookieManager != null) {
       
       List<HttpCookie> httpCookies;
       synchronized(cookieManager) {
@@ -163,7 +162,7 @@ public abstract class JcnnRequest implements HHttpRequest {
     
     // BYPS-72: save cookies only for non-default cookie handler.
 
-    if (c != null && !isDefaultCookieManagerActive()) {
+    if (c != null && cookieManager != null) {
       try {
         URI uri = new URI(req.url);
         
@@ -278,14 +277,5 @@ public abstract class JcnnRequest implements HHttpRequest {
     catch (Exception e) {
       // Ignore exception to continue with cleanup.
     }
-  }
-  
-  /**
-   * Check for default cookie manager.
-   * BYPS-72
-   * @return true, if {@link CookieHandler#getDefault()} does not return null.
-   */
-  protected static boolean isDefaultCookieManagerActive() {
-    return CookieHandler.getDefault() != null;
   }
 }
