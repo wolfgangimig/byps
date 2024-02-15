@@ -34,17 +34,17 @@ repositories {
 }
 
 dependencies {
-	compile project(":bypshttp")
-	compile project(":bypstest-api")
-	compile project(":bypstest-ser")
-	compile project(":bypstest-ser-json")
+	implementation project(":bypshttp")
+	implementation project(":bypstest-api")
+	implementation project(":bypstest-ser")
+	implementation project(":bypstest-ser-json")
 	
 //	compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '8.0.+'
 
 	// https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
-	compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+	implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
 	
-	testCompile group: 'junit', name: 'junit', version: '4.13.2'
+	testImplementation group: 'junit', name: 'junit', version: '4.13.2'
 	
 }
 
@@ -62,7 +62,7 @@ task fatJar(type: Jar) {
  				   'Main-Class': 'byps.stdio.common.EchoProgram'
     }
     baseName = project.name + '-all'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    from { configurations.implementation.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
 jar.dependsOn fatJar

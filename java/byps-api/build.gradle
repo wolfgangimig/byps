@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-	compile project(':byps-override')
+	implementation project(':byps-override')
 }
 
 

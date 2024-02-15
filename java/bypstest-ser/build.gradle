@@ -36,9 +36,9 @@ repositories {
 }
 
 dependencies {
-  compile project(":byps")
-  compile project(":bypshttp")
-	compile project(":bypstest-api")
+  implementation project(":byps")
+  implementation project(":bypshttp")
+	implementation project(":bypstest-api")
 }
 
 
