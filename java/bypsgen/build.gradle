@@ -77,22 +77,21 @@ dependencies {
 }
 
 publishing {
+
   publications {
-     maven(MavenPublication) {
-       groupId 'byps'
-       artifact jar
-       
-       // BYPS-83: POM with license info
-	    pom {
-	      name = 'BYPS Generator'
-	      licenses {
-	        license {
-	          name = 'MIT'
-	          url = 'https://opensource.org/license/mit/'
-	        }
-	      }
-	    }
-       
+    maven(MavenPublication) {
+      groupId 'byps'
+      artifact jar
+      pom {
+        name = 'BYPS'
+        description = 'BYPS code generator'
+        licenses {
+          license {
+            name = 'MIT'
+            url = 'https://opensource.org/license/mit/'
+          }
+        }
+      }
     }
   }
 

@@ -59,21 +59,21 @@ dependencies {
 
 publishing {
   publications {
-     maven(MavenPublication) {
-       groupId 'byps'
-       artifactId = "bypshttp"
-       artifact jar
+    maven(MavenPublication) {
+      groupId 'byps'
+      artifactId = "bypshttp"
+      artifact jar
        
-       // BYPS-83: POM with license info
-	    pom {
-	      name = 'BYPS HTTP communication library'
-	      licenses {
-	        license {
-	          name = 'MIT'
-	          url = 'https://opensource.org/license/mit/'
-	        }
-	      }
-	    }
+      pom {
+        name = 'BYPS'
+        description = 'Platform indipendent binary serialization for HTTP library'
+        licenses {
+          license {
+            name = 'MIT'
+            url = 'https://opensource.org/license/mit/'
+          }
+        }
+      }
        
     }
   }

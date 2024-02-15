@@ -4,6 +4,8 @@ BYPS Version History
 
 - BYPS-83: Send POST requests as multipart/form-data to support Azure WAF.
 
+- BYPS-82: Updated dependencies.
+
 10.10
 
 - BYPS-81: Suppress all warnings in generated Java code.
