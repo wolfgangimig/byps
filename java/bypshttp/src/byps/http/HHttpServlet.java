@@ -941,7 +941,10 @@ public abstract class HHttpServlet extends HttpServlet implements
           
           // BYPS-83: Notify client side that multipart/form-data requests are enabled.
           // see JcnnClient.isMultipartRequestEnabled()
-          resp.addCookie(new Cookie(HConstants.HTTP_COOKIE_BYPS_MULTIPART, "true"));
+          // BYPS-84: Secure-Flag ergänzt
+          Cookie cookie = new Cookie(HConstants.HTTP_COOKIE_BYPS_MULTIPART, "true");
+          cookie.setSecure(request.isSecure());
+          resp.addCookie(cookie);
 
           if (e != null) {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

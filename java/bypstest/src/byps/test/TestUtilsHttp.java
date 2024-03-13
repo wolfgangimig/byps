@@ -37,7 +37,7 @@ public class TestUtilsHttp {
   private static Logger log = LoggerFactory.getLogger(TestUtilsHttp.class);
 	
 	//public static String url = "http://www.wilutions.com:7010/bypstest-srv-5.28/bypsservlet";
-	public static String url = "http://localhost:6080/bypstest-srv/bypsservlet";
+	public static String url = "http://localhost:9300/bypstest-srv/bypsservlet";
 	public static String url2 = "http://localhost:5080/bypstest-srv/bypsservlet";
 	//public static String url = "http://srvtdev02:8020/bypstest-srv/bypsservlet";
 	

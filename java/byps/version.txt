@@ -1,5 +1,9 @@
 BYPS Version History
 
+10.12
+
+- BYPS-84: Cookie BYPSMULTIPART is sent with flag SECURE in response to HTTPS requests.
+
 10.11
 
 - BYPS-83: Send POST requests as multipart/form-data to support Azure WAF.

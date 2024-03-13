@@ -1,7 +1,6 @@
 package byps.http.client.jcnn;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -31,10 +30,9 @@ public class PostMultipartFormdata {
    * @param contentDisposition Content disposition information related to the "file" data 
    * @param contentEncoding "gzip" is passed for compressed JSON data
    * @param writeFnct This function writes the data of the "file" part
-   * @return Response stream
    * @throws IOException
    */
-  public static InputStream send(HttpURLConnection conn, 
+  public static void send(HttpURLConnection conn, 
       long contentLength, 
       String contentType, 
       String contentDisposition,
@@ -80,8 +78,6 @@ public class PostMultipartFormdata {
       pr.write("\r\n");
       pr.write("--" + boundary + "--\r\n");
     }
-    
-    return conn.getInputStream();
   }
   
   /**
