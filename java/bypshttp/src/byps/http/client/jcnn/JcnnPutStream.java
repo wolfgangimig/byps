@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,8 +35,9 @@ public class JcnnPutStream extends JcnnRequest implements HHttpPutStreamHelper.P
     if (s != null && !s.isEmpty()) sendAsPost = Boolean.parseBoolean(s);
   }
 
-  protected JcnnPutStream(long trackingId, String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult, CookieManager cookieManager) {
-    super(trackingId, url, cookieManager);
+  protected JcnnPutStream(long trackingId, String url, InputStream stream, BAsyncResult<ByteBuffer> asyncResult, 
+      CookieManager cookieManager, AtomicBoolean multipartEnabeld) {
+    super(trackingId, url, cookieManager, multipartEnabeld);
     this.stream = stream;
     this.asyncResult = asyncResult;
   }

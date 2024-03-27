@@ -1,5 +1,9 @@
 BYPS Version History
 
+10.13
+
+- BYPS-85: Send BYPSMULTIPART as response header not as cookie.
+
 10.12
 
 - BYPS-84: Cookie BYPSMULTIPART is sent with flag SECURE in response to HTTPS requests.

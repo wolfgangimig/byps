@@ -50,7 +50,6 @@ import byps.ureq.JRegistry_BUtilityRequests;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -941,10 +940,8 @@ public abstract class HHttpServlet extends HttpServlet implements
           
           // BYPS-83: Notify client side that multipart/form-data requests are enabled.
           // see JcnnClient.isMultipartRequestEnabled()
-          // BYPS-84: Secure-Flag ergänzt
-          Cookie cookie = new Cookie(HConstants.HTTP_COOKIE_BYPS_MULTIPART, "true");
-          cookie.setSecure(request.isSecure());
-          resp.addCookie(cookie);
+          // BYPS-85: Send this flag as header not as cookie.
+          resp.addHeader(HConstants.HTTP_HEADER_BYPS_MULTIPART, "true");
 
           if (e != null) {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

@@ -5,6 +5,7 @@ import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,8 +20,8 @@ public class JcnnGet extends JcnnRequest {
   private static Logger log = LoggerFactory.getLogger(JcnnGet.class);
   private final BAsyncResult<ByteBuffer> asyncResult;
 
-  protected JcnnGet(long trackingId, String url, BAsyncResult<ByteBuffer> asyncResult, CookieManager cookieManager) {
-    super(trackingId, url, cookieManager);
+  protected JcnnGet(long trackingId, String url, BAsyncResult<ByteBuffer> asyncResult, CookieManager cookieManager, AtomicBoolean multipartEnabled) {
+    super(trackingId, url, cookieManager, multipartEnabled);
     this.asyncResult = asyncResult;
   }
 

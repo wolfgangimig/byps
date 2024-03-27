@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -52,7 +53,16 @@ public class JcnnClient implements HHttpClient {
    * BYPS-83
    * @see #getHttpCookies()
    */
-  private final URI uri; 
+  private final URI uri;
+  
+  /**
+   * This value specifies if POST requests should send data with content type multipart/form-data.
+   * It is set as true, if the response header {@link HConstants#HTTP_HEADER_BYPS_MULTIPART} is received.
+   * BYPS-85
+   * @see JcnnRequest#saveSession(HHttpRequest)
+   * @see #isMultipartRequestEnabled()
+   */
+  private final AtomicBoolean multipartEnabled = new AtomicBoolean();
   
   public final static int MAX_RETRIES = 1;
   
@@ -101,12 +111,12 @@ public class JcnnClient implements HHttpClient {
 
   @Override
   public HHttpRequest get(long trackingId, String url, BAsyncResult<ByteBuffer> asyncResult) {
-    return new JcnnGet(trackingId, url, asyncResult, getMyCookieManagerOrNull());
+    return new JcnnGet(trackingId, url, asyncResult, getMyCookieManagerOrNull(), multipartEnabled);
   }
 
   @Override
   public HHttpRequest getStream(long trackingId, String url, BAsyncResult<BContentStream> asyncResult) {
-    return new JcnnGetStream(trackingId, url, asyncResult, getMyCookieManagerOrNull());
+    return new JcnnGetStream(trackingId, url, asyncResult, getMyCookieManagerOrNull(), multipartEnabled);
   }
 
   @Override
@@ -116,9 +126,9 @@ public class JcnnClient implements HHttpClient {
     // BYPS-83: send buffer as multipart/form-data 
     
     if (isMultipartRequestEnabled()) {
-      request = new JcnnPostAsMultipartFormdata(trackingId, url, buf, asyncResult, getMyCookieManagerOrNull());
+      request = new JcnnPostAsMultipartFormdata(trackingId, url, buf, asyncResult, getMyCookieManagerOrNull(), multipartEnabled);
     } else {
-      request = new JcnnPost(trackingId, url, buf, asyncResult, getMyCookieManagerOrNull());
+      request = new JcnnPost(trackingId, url, buf, asyncResult, getMyCookieManagerOrNull(), multipartEnabled);
     }
     
     return request;
@@ -131,9 +141,9 @@ public class JcnnClient implements HHttpClient {
     // BYPS-83: send buffer as multipart/form-data
     
     if (isMultipartRequestEnabled()) {
-      request = new JcnnPutStreamAsMultipartFormData(trackingId, url, stream, asyncResult, getMyCookieManagerOrNull());
+      request = new JcnnPutStreamAsMultipartFormData(trackingId, url, stream, asyncResult, getMyCookieManagerOrNull(), multipartEnabled);
     } else {
-      request = new JcnnPutStream(trackingId, url, stream, asyncResult, getMyCookieManagerOrNull());
+      request = new JcnnPutStream(trackingId, url, stream, asyncResult, getMyCookieManagerOrNull(), multipartEnabled);
     }
 
     return request;
@@ -239,16 +249,13 @@ public class JcnnClient implements HHttpClient {
   
   /**
    * Return true if the server accepts multipart/form-data requests.
-   * This function checks whether the cookie {@link HConstants#HTTP_COOKIE_BYPS_MULTIPART} is available. 
-   * New versions of BYPS servers return this cookie in a negotiate request, see {@link HHttpServlet}.
+   * This function checks whether the header {@link HConstants#HTTP_HEADER_BYPS_MULTIPART} has been received before. 
+   * New versions of BYPS servers return this header in a negotiate request, see {@link HHttpServlet}.
    * BYPS-83
    * @return true, if multipart/form-data requests are enabled.
    */
   private boolean isMultipartRequestEnabled() {
-    boolean ret = internalFindCookie(HConstants.HTTP_COOKIE_BYPS_MULTIPART)
-        .map(HttpCookie::getValue)
-        .filter(v -> v.contentEquals("true"))
-        .isPresent();
+    boolean ret = multipartEnabled.get();
     if (log.isDebugEnabled()) log.debug("isMultipartRequestEnabled()={}", ret);
     return ret;
   }

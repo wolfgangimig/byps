@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.net.CookieManager;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,8 +23,8 @@ public class JcnnGetStream extends JcnnRequest {
   private final BAsyncResult<BContentStream> asyncResult;
 
   protected JcnnGetStream(long trackingId, String url, BAsyncResult<BContentStream> asyncResult,
-      CookieManager cookieManager) {
-    super(trackingId, url, cookieManager);
+      CookieManager cookieManager, AtomicBoolean multipartEnabeld) {
+    super(trackingId, url, cookieManager, multipartEnabeld);
     this.asyncResult = asyncResult;
   }
 

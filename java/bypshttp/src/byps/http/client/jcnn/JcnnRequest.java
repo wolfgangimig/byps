@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
@@ -26,6 +27,7 @@ import byps.BBufferJson;
 import byps.BException;
 import byps.BExceptionC;
 import byps.BWire;
+import byps.http.HConstants;
 import byps.http.client.HHttpRequest;
 import byps.io.BInputStreamByteCount;
 
@@ -40,6 +42,7 @@ public abstract class JcnnRequest implements HHttpRequest {
   protected AtomicBoolean cancelled = new AtomicBoolean();
   protected Map<String,String> requestProperties = new HashMap<String,String>();
   protected final long trackingId;
+  private final AtomicBoolean multipartEnabled;
   private static Logger log = LoggerFactory.getLogger(JcnnRequest.class);
   
   /**
@@ -47,10 +50,11 @@ public abstract class JcnnRequest implements HHttpRequest {
    */
   private int responseCode = -1;
 
-  protected JcnnRequest(long trackingId, String url, CookieManager cookieManager) {
+  protected JcnnRequest(long trackingId, String url, CookieManager cookieManager, AtomicBoolean multipartEnabled) {
     this.trackingId = trackingId;
     this.url = url;
     this.cookieManager = cookieManager;
+    this.multipartEnabled = multipartEnabled;
   }
 
   protected HttpURLConnection createConnection(String destUrl) throws IOException {
@@ -180,6 +184,13 @@ public abstract class JcnnRequest implements HHttpRequest {
       catch (Exception e) {
         req.ex = new BException(BExceptionC.IOERROR, "Cannot set session cookie.", e);
       }
+    }
+    
+    // BYPS-85: Check if multipart/form-data should be used in POST requests.
+    if (c != null) {
+      Optional.ofNullable(c.getHeaderField(HConstants.HTTP_HEADER_BYPS_MULTIPART))
+            .filter(h -> h.contentEquals("true"))
+            .ifPresent(h -> multipartEnabled.set(true));
     }
   }
 

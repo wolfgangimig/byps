@@ -5,6 +5,7 @@ import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,8 +28,9 @@ public class JcnnPostAsMultipartFormdata extends JcnnRequest {
   private final BAsyncResult<ByteBuffer> asyncResult;
   private ByteBuffer buf;
   
-  protected JcnnPostAsMultipartFormdata(long trackingId, String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult, CookieManager cookieManager) {
-    super(trackingId, url, cookieManager);
+  protected JcnnPostAsMultipartFormdata(long trackingId, String url, ByteBuffer buf, BAsyncResult<ByteBuffer> asyncResult
+      , CookieManager cookieManager, AtomicBoolean multipartEnabeld) {
+    super(trackingId, url, cookieManager, multipartEnabeld);
     this.buf = buf;
     this.asyncResult = asyncResult;
   }
