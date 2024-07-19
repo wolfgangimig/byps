@@ -1,5 +1,9 @@
 BYPS Version History
 
+9.14
+
+- BYPS-88: Protect HTML file upload against CSRF attacks. 
+
 9.12
 
 - BYPS-82: Updated dependencies. Removed log4j support. Removed TestCompatibleApi features.

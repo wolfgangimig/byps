@@ -1164,7 +1164,7 @@ public abstract class HHttpServlet extends HttpServlet implements
         throw new IllegalStateException(
             "File upload must be sent as multipart/form-data.");
       }
-
+      
       // Create a factory for disk-based file items
       DiskFileItemFactory factory = new DiskFileItemFactory(
           HConstants.INCOMING_STREAM_BUFFER, getConfig().getTempDir());
@@ -1184,6 +1184,9 @@ public abstract class HHttpServlet extends HttpServlet implements
       // Parse the request
       List<FileItem> items = upload.parseRequest(request);
       if (log.isDebugEnabled()) log.debug("received #items=" + items.size());
+
+      // BYPS-88: CSRF protection
+      verifyBypsSessionId(request, response, items);
 
       ArrayList<HFileUploadItem> uploadItems = new ArrayList<HFileUploadItem>();
       for (FileItem item : items) {
@@ -1231,6 +1234,68 @@ public abstract class HHttpServlet extends HttpServlet implements
     }
 
     if (log.isDebugEnabled()) log.debug(")doHtmlUpload");
+  }
+
+  /**
+   * Check HTTP session and BYPS session to prevent from CSRF attacks.
+   * 
+   * BYPS-88
+   * @param request HTTP request
+   * @param response HTTP response
+   * @param items Fields of HTML form upload
+   * @throws IOException
+   */
+  private void verifyBypsSessionId(HttpServletRequest request, HttpServletResponse response, List<FileItem> items)
+      throws IOException {
+    if (log.isDebugEnabled()) log.debug("verifyBypsSessionId(");
+    
+    // Skip CSRF check?
+    if (!HConstants.HTTP_UPLOAD_CSRF_PROTECTION) return;
+    
+    // Provide HTTP session object.
+    HttpSession httpSession = request.getSession(false);
+    if (httpSession == null) {
+      log.warn("Attempt to upload data without HTTP session, requestUri={}", request.getRequestURI());
+      response.sendError(HttpServletResponse.SC_FORBIDDEN);
+      return;
+    }
+
+    // Get BYPS session object (list of BYPS sessions) from session attribute.
+    HHttpSessionObject sessObj = (HHttpSessionObject) httpSession.getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
+    if (sessObj == null) {
+      log.warn("Attempt to upload data without BYPS session, requestUri={}", request.getRequestURI());
+      response.sendError(HttpServletResponse.SC_FORBIDDEN);
+      return;
+    }
+
+    // BYPS session ID.
+    Optional<String> sessionId = Optional.empty();
+    
+    // Search BYPS session ID in HTML form fields.
+    if (items != null) {
+      sessionId = items.stream()
+        .filter(item -> item.isFormField() && item.getFieldName().equals(HConstants.BYPS_SESSION_ID_PARAMETER_NAME))
+        .map(FileItem::getString)
+        .filter(s -> !s.isEmpty())
+        .findAny();
+      if (log.isDebugEnabled()) log.debug("sessionId found in from field: {}", sessionId.isPresent());
+    }
+    
+    // Get BYPS session ID from URL parameter list.
+    if (sessionId.isEmpty()) {
+      sessionId = Optional.ofNullable(request.getParameter(HConstants.BYPS_SESSION_ID_PARAMETER_NAME)).filter(s -> !s.isEmpty());
+      if (log.isDebugEnabled()) log.debug("sessionId found in URL: {}", sessionId.isPresent());
+    }
+    
+    // Get BYPS session object for session ID.
+    Optional<HSession> hsess = sessionId.flatMap(s -> sessObj.getSession(s));
+    if (hsess.isEmpty()) {
+      log.warn("Attempt to upload data with invalid session ID, sessionId={}, requestUri={}", sessionId, request.getRequestURI());
+      response.sendError(HttpServletResponse.SC_FORBIDDEN);
+      return;
+    }
+    
+    if (log.isDebugEnabled()) log.debug(")verifyBypsSessionId");
   }
 
   protected void makeHtmlUploadResult(HttpServletRequest request,

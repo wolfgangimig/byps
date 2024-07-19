@@ -143,6 +143,28 @@ public class HConstants {
    */
   public static boolean HTTP_SESSION_COOKIE_REQUIRED = true;
   
+  /**
+   * Protect Browser uploads against CSRF attacks.
+   * Requests uploaded via "/bypsservlet?uploadHandler=..." shall send the 
+   * BYPS session ID as request parameter or form field. This helps to
+   * reject requests which come only with a (valid) HTTP session (cookie).
+   * Such requests could be CSRF attacks.
+   * The HTML page can find the BYPS session ID in client.transport.sessionId. 
+   * See example /jasmine/TestFileUpload.html.
+   * This option can be configured by system property byps.http.uploadCsrfProtection
+   * BYPS-88
+   */
+  public static boolean HTTP_UPLOAD_CSRF_PROTECTION = true;
+  
+  /**
+   * Use this parameter or field name to pass the BYPS session ID for CSRF protection.
+   * The BYPS session ID should be passed in pure HTTP requests (such as /bypsservlet?uploadHandler=...)
+   * as URL parameter or form field to prevent from CSRF attacks.
+   * BYPS-88
+   * @see #HTTP_UPLOAD_CSRF_PROTECTION
+   */
+  public static String BYPS_SESSION_ID_PARAMETER_NAME = "bypsSessionId";
+  
   static
   {
     INCOMING_STREAM_TIMEOUT_MILLIS = getSystemPropertyLong("byps.http.incomingStreamTimeoutSeconds", INCOMING_STREAM_TIMEOUT_MILLIS / 1000) * 1000;
@@ -154,6 +176,8 @@ public class HConstants {
     REQUEST_TIMEOUT_MILLIS = getSystemPropertyLong("byps.http.requestTimeoutSeconds", REQUEST_TIMEOUT_MILLIS / 1000) * 1000;    
     
     HTTP_SESSION_COOKIE_REQUIRED = Boolean.parseBoolean(System.getProperty("byps.http.sessionCookieRequired", "true"));
+    
+    HTTP_UPLOAD_CSRF_PROTECTION = Boolean.parseBoolean(System.getProperty("byps.http.uploadCsrfProtection", "true"));
   }
 
   private static long getSystemPropertyLong(String prop, long defaultValue) {
