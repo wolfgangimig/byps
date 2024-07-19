@@ -33,9 +33,9 @@ repositories {
 }
 
 dependencies {
-  compile project(':bypshttp')
-  compile project(':byps-override')
-  compile project(':byps')
+  implementation project(':bypshttp')
+  implementation project(':byps-override')
+  implementation project(':byps')
 	
 	
 }

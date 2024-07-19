@@ -69,15 +69,15 @@ repositories {
 }
 
 dependencies {
-	compile project(":bypstest-servlet")
-	compile project(":bypshttp")
-	compile project(":bypstest-api")
-	compile project(":bypstest-ser")
-	compile project(":bypstest-ser-json")
+	implementation project(":bypstest-servlet")
+	implementation project(":bypshttp")
+	implementation project(":bypstest-api")
+	implementation project(":bypstest-ser")
+	implementation project(":bypstest-ser-json")
 	
 	compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '9.+'
 	
-	compile("ch.qos.logback:logback-classic:1.3.14")
+	implementation("ch.qos.logback:logback-classic:1.3.14")
 	
 }
 
