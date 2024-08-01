@@ -42,18 +42,18 @@ dependencies {
 	compileOnly project(":byps-override")
 	compileOnly project(":byps")
 	
-	implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.5'
+	compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.5'
 	
 	// BYPS-82: undertow mit javax.servlet hat zu viele CVEs.
 	//compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '9.+'
 	//compileOnly group: 'io.undertow', name: 'undertow-servlet', version: '1.4.28.Final'
 	compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
 	
- 	implementation group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
+ 	compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
 	
-	implementation group: 'com.google.code.gson', name: 'gson', version: '2.10'
+	compile group: 'com.google.code.gson', name: 'gson', version: '2.10'
 	
-	implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.9'
+	compile group: 'org.slf4j', name: 'slf4j-api', version: '2.0.9'
 	
 }
 

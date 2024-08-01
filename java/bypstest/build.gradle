@@ -33,30 +33,29 @@ repositories {
 }
 
 dependencies {
-  implementation project(":byps")
-  implementation project(":byps-override")
-  implementation project(":bypsgen")
-	implementation project(":bypshttp")
-	implementation project(":bypshttp-shmem")
-	implementation project(":bypshttpasf")
-	implementation project(":bypstest-api")
-	implementation project(":bypstest-ser")
-	implementation project(":bypstest-ser-json")
-	implementation project(":bypstest-servlet")
+  compile project(":byps")
+  compile project(":byps-override")
+  compile project(":bypsgen")
+	compile project(":bypshttp")
+	compile project(":bypshttpasf")
+	compile project(":bypstest-api")
+	compile project(":bypstest-ser")
+	compile project(":bypstest-ser-json")
+	compile project(":bypstest-servlet")
 	
-	implementation group: 'junit', name: 'junit', version: '4.13.2'
+	compile group: 'junit', name: 'junit', version: '4.13.2'
 	
 	 // BYPS-82: undertow mit javax.servlet hat zu viele CVEs.
 	// https://mvnrepository.com/artifact/io.undertow/undertow-core
-	//implementation group: 'io.undertow', name: 'undertow-core', version: '1.4.28.Final'
+	//compile group: 'io.undertow', name: 'undertow-core', version: '1.4.28.Final'
 	// https://mvnrepository.com/artifact/io.undertow/undertow-servlet
-	//implementation group: 'io.undertow', name: 'undertow-servlet', version: '1.4.28.Final'
+	//compile group: 'io.undertow', name: 'undertow-servlet', version: '1.4.28.Final'
 	
 }
 
 task buildJarForCompatibilityTest(type: Jar) {
   group = 'build'
   archiveName = 'bypstest_793.jar'
-  from { configurations.implementation.collect { it.isDirectory() ? it : (it.name.startsWith("byps") ? zipTree(it) : []) } }
+  from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : (it.name.startsWith("byps") ? zipTree(it) : []) } }
   with jar
 }

@@ -20,8 +20,8 @@ sourceSets {
 
 jar {
     manifest {
-        attributes 'Implementation-Title': 'BYPS-httpasf',
-                   'Implementation-Version': version
+        attributes 'compile-Title': 'BYPS-httpasf',
+                   'compile-Version': version
     }
     from (project(":bypshttp").sourceSets.main.output)
     from (project(":byps").sourceSets.main.output)
@@ -48,9 +48,9 @@ dependencies {
 	compileOnly project(":byps")
 	compileOnly project(':bypshttp')
 	
-	implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4+'
-	implementation group: 'org.apache.httpcomponents', name: 'httpclient-win', version: '4+'
-	implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.9'
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4+'
+	compile group: 'org.apache.httpcomponents', name: 'httpclient-win', version: '4+'
+	compile group: 'org.slf4j', name: 'slf4j-api', version: '2.0.9'
 }
 
 publishing {

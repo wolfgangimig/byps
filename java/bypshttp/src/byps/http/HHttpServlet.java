@@ -1186,7 +1186,7 @@ public abstract class HHttpServlet extends HttpServlet implements
       if (log.isDebugEnabled()) log.debug("received #items=" + items.size());
 
       // BYPS-88: CSRF protection
-      verifyBypsSessionId(request, response, items);
+      if (!verifyBypsSessionId(request, response, items)) return;
 
       ArrayList<HFileUploadItem> uploadItems = new ArrayList<HFileUploadItem>();
       for (FileItem item : items) {
@@ -1245,19 +1245,19 @@ public abstract class HHttpServlet extends HttpServlet implements
    * @param items Fields of HTML form upload
    * @throws IOException
    */
-  private void verifyBypsSessionId(HttpServletRequest request, HttpServletResponse response, List<FileItem> items)
+  private boolean verifyBypsSessionId(HttpServletRequest request, HttpServletResponse response, List<FileItem> items)
       throws IOException {
     if (log.isDebugEnabled()) log.debug("verifyBypsSessionId(");
     
     // Skip CSRF check?
-    if (!HConstants.HTTP_UPLOAD_CSRF_PROTECTION) return;
+    if (!HConstants.HTTP_UPLOAD_CSRF_PROTECTION) return true;
     
     // Provide HTTP session object.
     HttpSession httpSession = request.getSession(false);
     if (httpSession == null) {
       log.warn("Attempt to upload data without HTTP session, requestUri={}", request.getRequestURI());
       response.sendError(HttpServletResponse.SC_FORBIDDEN);
-      return;
+      return false;
     }
 
     // Get BYPS session object (list of BYPS sessions) from session attribute.
@@ -1265,7 +1265,7 @@ public abstract class HHttpServlet extends HttpServlet implements
     if (sessObj == null) {
       log.warn("Attempt to upload data without BYPS session, requestUri={}", request.getRequestURI());
       response.sendError(HttpServletResponse.SC_FORBIDDEN);
-      return;
+      return false;
     }
 
     // BYPS session ID.
@@ -1292,10 +1292,11 @@ public abstract class HHttpServlet extends HttpServlet implements
     if (hsess.isEmpty()) {
       log.warn("Attempt to upload data with invalid session ID, sessionId={}, requestUri={}", sessionId, request.getRequestURI());
       response.sendError(HttpServletResponse.SC_FORBIDDEN);
-      return;
+      return false;
     }
     
     if (log.isDebugEnabled()) log.debug(")verifyBypsSessionId");
+    return true;
   }
 
   protected void makeHtmlUploadResult(HttpServletRequest request,
