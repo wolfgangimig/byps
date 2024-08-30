@@ -1186,7 +1186,7 @@ public abstract class HHttpServlet extends HttpServlet implements
       if (log.isDebugEnabled()) log.debug("received #items=" + items.size());
 
       // BYPS-88: CSRF protection
-      if (!verifyBypsSessionId(request, response, items)) return;
+      if (!verifyBypsSessionIdOnUpload(request, response, items)) return;
 
       ArrayList<HFileUploadItem> uploadItems = new ArrayList<HFileUploadItem>();
       for (FileItem item : items) {
@@ -1245,7 +1245,7 @@ public abstract class HHttpServlet extends HttpServlet implements
    * @param items Fields of HTML form upload
    * @throws IOException
    */
-  private boolean verifyBypsSessionId(HttpServletRequest request, HttpServletResponse response, List<FileItem> items)
+  protected boolean verifyBypsSessionIdOnUpload(HttpServletRequest request, HttpServletResponse response, List<FileItem> items)
       throws IOException {
     if (log.isDebugEnabled()) log.debug("verifyBypsSessionId(");
     
