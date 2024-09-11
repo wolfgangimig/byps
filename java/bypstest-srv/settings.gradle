@@ -16,8 +16,8 @@ project(":bypshttpasf").projectDir = new File("$settingsDir/../bypshttpasf")
 include ("bypshttp") 
 project(":bypshttp").projectDir = new File("$settingsDir/../bypshttp")
 
-include ("bypshttp-shmem") 
-project(":bypshttp-shmem").projectDir = new File("$settingsDir/../bypshttp-shmem")
+//include ("bypshttp-shmem") 
+//project(":bypshttp-shmem").projectDir = new File("$settingsDir/../bypshttp-shmem")
 
 include ("bypstest-api") 
 project(":bypstest-api").projectDir = new File("$settingsDir/../bypstest-api")
