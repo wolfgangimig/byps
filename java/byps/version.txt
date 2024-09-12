@@ -1,6 +1,6 @@
 BYPS Version History
 
-10.14
+10.15
 
 - BYPS-88: Protect HTML file upload against CSRF attacks. Uploads to "/byps?uploadHandler=html5&bypsSessionId=" must 
   send the BYPS session ID either as URL parameter or as form field. 
