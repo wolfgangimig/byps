@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.UncheckedIOException;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -1281,7 +1282,12 @@ public abstract class HHttpServlet extends HttpServlet implements
       sessionId = items.stream()
         .filter(item -> item.getSubmittedFileName() == null)
         .filter(item -> item.getName().equals(HConstants.BYPS_SESSION_ID_PARAMETER_NAME))
-        .map(Part::toString)
+        .map(item -> { 
+          try(InputStream istream = item.getInputStream()) {
+            return new String(istream.readAllBytes());
+          } catch (IOException e) { 
+            throw new UncheckedIOException(e); 
+          }})
         .filter(s -> !s.isEmpty())
         .findAny();
       if (log.isDebugEnabled()) log.debug("sessionId found in from field: {}", sessionId.isPresent());
