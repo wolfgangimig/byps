@@ -1,5 +1,7 @@
 BYPS Version History
 
+- BYPS-89: Send BYPS session ID from C++ client to enable authentication with CSRF protection.
+
 10.13
 
 - BYPS-85: Send BYPSMULTIPART as response header not as cookie.
