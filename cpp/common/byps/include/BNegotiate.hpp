@@ -19,11 +19,13 @@ namespace byps {
     version = 0;
     protocols = apiDesc->getProtocolIds();
     bversion = BHEADER_BYPS_VERSION_CURRENT;
+    sessionId = BTargetId(0, 0, 0).toSessionId(); // BYPS-89
   }
 
   BINLINE BNegotiate::BNegotiate() {
     version = 0;
     bversion = BHEADER_BYPS_VERSION_CURRENT;
+    sessionId = BTargetId(0, 0, 0).toSessionId(); // BYPS-89
   }
 
   BINLINE void BNegotiate::write(const PBytes& bytes) {
@@ -34,7 +36,7 @@ namespace byps {
       << ((BByteOrder::getMyEndian() == BLITTLE_ENDIAN) ? "L" : "B")
       << "\",\"\"";
     if (bversion) ss << "," << bversion;
-    if (sessionId.size()) ss << "," << sessionId;
+    if (sessionId.size()) ss << ",\"" << sessionId << "\""; // BYPS-89: Session-ID korrekt senden.
     ss << "]";
 
     string str = ss.str();

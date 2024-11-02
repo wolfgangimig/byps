@@ -50,8 +50,6 @@ namespace byps { namespace test { namespace api { namespace remote {
 // Implementation of class BRequest_RemotePrimitiveTypes_setPrimitiveTypes
 // Generated from class byps.gen.cpp.GenApiClass
 
-byps::test::api::prim::PPrimitiveTypes BRequest_RemotePrimitiveTypes_setPrimitiveTypes::v = ;
-
 // checkpoint byps.gen.cpp.GenApiClass:505
 BRequest_RemotePrimitiveTypes_setPrimitiveTypes::BRequest_RemotePrimitiveTypes_setPrimitiveTypes() : BMethodRequest(456456) {
 }

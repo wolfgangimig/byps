@@ -41,6 +41,8 @@ dependencies {
   implementation project(":byps")
   implementation project(":bypshttp")
 	implementation project(":bypstest-api")
+	implementation project(":byps-override")
+	implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
 }
 
 

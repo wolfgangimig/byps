@@ -40,6 +40,8 @@ dependencies {
 	implementation project(":bypstest-api")
 	implementation project(":bypstest-ser")
 	implementation project(":bypstest-ser-json")
+	implementation project(":byps-override")
+  implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
 	
 //	compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '8.0.+'
 
@@ -57,14 +59,4 @@ jar {
      }
 }
 
-//create a single Jar with all dependencies
-task fatJar(type: Jar) {
-	manifest {
-        attributes 'Implementation-Title': 'BYPS-STDIO-Echo',
- 				   'Main-Class': 'byps.stdio.common.EchoProgram'
-    }
-    archiveBaseName = project.name + '-all'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
-}
-jar.dependsOn fatJar
+

@@ -39,7 +39,7 @@ dependencies {
   implementation project(':byps-override')
   implementation project(':byps')
 	
-	
+	implementation group: 'jakarta.ws.rs', name: 'jakarta.ws.rs-api', version: jakartaWsRsVersion
 }
 
 

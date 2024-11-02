@@ -30,6 +30,8 @@ dependencies {
 	implementation project(":bypstest-api")
 	implementation project(":bypstest-ser")
 	implementation project(":bypstest-ser-json")
+  implementation project(":byps-override")
+  implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
 	
 	//compileOnly group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '8.+'
 	implementation group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: servletApiVersion
