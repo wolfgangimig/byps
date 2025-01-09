@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.UncheckedIOException;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -1183,7 +1184,7 @@ public abstract class HHttpServlet extends HttpServlet implements
         throw new IllegalStateException(
             "File upload must be sent as multipart/form-data.");
       }
-
+      
       // Set overall request size constraint
       long maxSize = getHtmlUploadMaxSize();
       if (log.isDebugEnabled()) log
@@ -1192,6 +1193,9 @@ public abstract class HHttpServlet extends HttpServlet implements
       // Parse the request
       Collection<Part> items = request.getParts();
       if (log.isDebugEnabled()) log.debug("received #items=" + items.size());
+
+      // BYPS-88: CSRF protection
+      if (!verifyBypsSessionIdOnUpload(request, response, items)) return;
 
       ArrayList<HFileUploadItem> uploadItems = new ArrayList<HFileUploadItem>();
       for (Part item : items) {
@@ -1236,6 +1240,75 @@ public abstract class HHttpServlet extends HttpServlet implements
     }
 
     if (log.isDebugEnabled()) log.debug(")doHtmlUpload");
+  }
+
+  /**
+   * Check HTTP session and BYPS session to prevent from CSRF attacks.
+   * 
+   * BYPS-88
+   * @param request HTTP request
+   * @param response HTTP response
+   * @param items Fields of HTML form upload
+   * @throws IOException
+   */
+  protected boolean verifyBypsSessionIdOnUpload(HttpServletRequest request, HttpServletResponse response, Collection<Part> items)
+      throws IOException {
+    if (log.isDebugEnabled()) log.debug("verifyBypsSessionId(");
+    
+    // Skip CSRF check?
+    if (!HConstants.HTTP_UPLOAD_CSRF_PROTECTION) return true;
+    
+    // Provide HTTP session object.
+    HttpSession httpSession = request.getSession(false);
+    if (httpSession == null) {
+      log.warn("Attempt to upload data without HTTP session, requestUri={}", request.getRequestURI());
+      response.sendError(HttpServletResponse.SC_FORBIDDEN);
+      return false;
+    }
+
+    // Get BYPS session object (list of BYPS sessions) from session attribute.
+    HHttpSessionObject sessObj = (HHttpSessionObject) httpSession.getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
+    if (sessObj == null) {
+      log.warn("Attempt to upload data without BYPS session, requestUri={}", request.getRequestURI());
+      response.sendError(HttpServletResponse.SC_FORBIDDEN);
+      return false;
+    }
+
+    // BYPS session ID.
+    Optional<String> sessionId = Optional.empty();
+    
+    // Search BYPS session ID in HTML form fields.
+    if (items != null) {
+      sessionId = items.stream()
+        .filter(item -> item.getSubmittedFileName() == null)
+        .filter(item -> item.getName().equals(HConstants.BYPS_SESSION_ID_PARAMETER_NAME))
+        .map(item -> { 
+          try(InputStream istream = item.getInputStream()) {
+            return new String(istream.readAllBytes());
+          } catch (IOException e) { 
+            throw new UncheckedIOException(e); 
+          }})
+        .filter(s -> !s.isEmpty())
+        .findAny();
+      if (log.isDebugEnabled()) log.debug("sessionId found in from field: {}", sessionId.isPresent());
+    }
+    
+    // Get BYPS session ID from URL parameter list.
+    if (sessionId.isEmpty()) {
+      sessionId = Optional.ofNullable(request.getParameter(HConstants.BYPS_SESSION_ID_PARAMETER_NAME)).filter(s -> !s.isEmpty());
+      if (log.isDebugEnabled()) log.debug("sessionId found in URL: {}", sessionId.isPresent());
+    }
+    
+    // Get BYPS session object for session ID.
+    Optional<HSession> hsess = sessionId.flatMap(s -> sessObj.getSession(s));
+    if (hsess.isEmpty()) {
+      log.warn("Attempt to upload data with invalid session ID, sessionId={}, requestUri={}", sessionId, request.getRequestURI());
+      response.sendError(HttpServletResponse.SC_FORBIDDEN);
+      return false;
+    }
+    
+    if (log.isDebugEnabled()) log.debug(")verifyBypsSessionId");
+    return true;
   }
 
   protected void makeHtmlUploadResult(HttpServletRequest request,

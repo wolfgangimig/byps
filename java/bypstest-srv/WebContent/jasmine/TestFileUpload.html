@@ -41,11 +41,28 @@ This test uploads a file to the server. After the upload is completed the file i
 			
 				action="/bypstest-srv/bypsservlet?uploadHandler=htmlform"       
 			    
-			    target="uploadResultFrame"  									  
+	      target="uploadResultFrame"
+	      
+	      onsubmit="onSubmit()" 				  
 			    
 			    >
 			    
 				<script type="text/javascript">
+				
+				  // BYPS-88: Protect against CSRF, send the BYPS session ID as request parameter or form field. 
+				  function onSubmit() {
+					  
+					  const BYPS_SESSION_ID_PARAMETER_NAME = "bypsSessionId";
+					  
+					  // Set hidden form field
+	          var inputBypsSession = document.getElementById(BYPS_SESSION_ID_PARAMETER_NAME);
+	          inputBypsSession.value = client.transport.sessionId;
+	          
+	          // ... or Add to request URL
+	          //var uploadForm = document.getElementById("uploadFormId");
+	          //uploadForm.action = uploadForm.action + "&" + BYPS_SESSION_ID_PARAMETER_NAME + "=" + client.transport.sessionId;
+				  }
+				
 					function onUploadResult() {
 						
 						var iFrame = document.getElementById('uploadResultFrame');
@@ -89,6 +106,9 @@ This test uploads a file to the server. After the upload is completed the file i
 					<tr><td><iframe id="uploadResultFrame" name="uploadResultFrame" onload="onUploadResult()" style="visibility:hidden;display:none"></iframe></td></tr>
 					<tr><td><input type="submit" ></td></tr>
 				</table>
+
+        <!-- BYPS-88: hidden form field to pass BYPS session ID -->
+        <input type="hidden" id="bypsSessionId" name="bypsSessionId" value="" />
 				
 			</form>
 		</td></tr>
