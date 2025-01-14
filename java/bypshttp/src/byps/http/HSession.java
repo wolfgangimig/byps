@@ -1,5 +1,5 @@
 package byps.http;
-import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@ public abstract class HSession
 //implements Serializable, don't know how to serialize this class. Don't know how to resolve the dependencies to other objects.
 {
 
-  protected final Optional<HttpSession> httpSess;
+  protected final AtomicReference<HttpSession> httpSessRef = new AtomicReference<>();
   protected final HServerContext serverContext;
   protected final HWriteResponseHelper writeHelper;
   protected final HWireServer wireServer;
@@ -48,7 +48,7 @@ public abstract class HSession
   public HSession(HttpSession httpSessionOrNull, String remoteUser, HServerContext serverContext) {
     if (log.isDebugEnabled())
       log.debug("HSession(");
-    this.httpSess = Optional.ofNullable(httpSessionOrNull);
+    this.httpSessRef.set(httpSessionOrNull);
     this.serverContext = serverContext;
     this.remoteUser = remoteUser;
 
@@ -58,17 +58,16 @@ public abstract class HSession
 
     wireClientR = new HWireClientR(wireServer);
     
-    
-
     // Add this session object to the HttpSession object of the application server.
     // Set the inactive time to the maximum of all attached sessions.
-    httpSess.ifPresent(hsess -> {
+    var hsess = httpSessRef.get();
+    if (hsess != null) {
       HHttpSessionObject sessObj = (HHttpSessionObject)hsess.getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
       if (sessObj == null) {
         sessObj = HSessionListener.initHttpSession(hsess); 
       }
       sessObj.addSession(this);
-    });
+    }
     
     // Shorten the lifetime of the HTTP session, 
     // if there is no authenticated user.
@@ -82,6 +81,33 @@ public abstract class HSession
   }
   
   /**
+   * Replace the current HTTP session by the given one.
+   * BYPS-90 
+   * @param newHttpSession New HTTP session object.
+   */
+  public void replaceHttpSession(HttpSession newHttpSession) {
+    
+    // Take over new HTTP session.
+    httpSessRef.set(newHttpSession);
+    
+    // Add this session object to the HttpSession object of the application server.
+    // Set the inactive time to the maximum of all attached sessions.
+    var hsess = httpSessRef.get();
+    if (hsess != null) {
+      HHttpSessionObject sessObj = (HHttpSessionObject)hsess.getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
+      if (sessObj == null) {
+        sessObj = HSessionListener.initHttpSession(hsess); 
+      }
+      sessObj.addSession(this);
+    }
+    
+    // Set lifetime of the new HTTP session. 
+    setMaxInactiveSeconds(getMaxInactiveSeconds());
+    
+    touch();
+  }
+  
+  /**
    * Set maximum inactive seconds.
    * The inactive interval of the application server's session is extended to 
    * the maximum of all sessions. 
@@ -92,12 +118,13 @@ public abstract class HSession
     
     // The HttpSession inactive time must be the maximum 
     // of all attached sessions.
-    httpSess.ifPresent(hsess -> {
+    var hsess = httpSessRef.get();
+    if (hsess != null) {
       int inactiveSeconds = hsess.getMaxInactiveInterval();
       if (inactiveSeconds < v) {
         hsess.setMaxInactiveInterval(v);
       }
-    });
+    }
   }
   
   /**
@@ -128,7 +155,8 @@ public abstract class HSession
 
       // Remove the BYPS session from the application server's session object.
       // If no other BYPS session is attached, invalidate the server's session.
-      httpSess.ifPresent(hsess -> {
+      var hsess = httpSessRef.get();
+      if (hsess != null) {
         try {
           HHttpSessionObject sessObj = (HHttpSessionObject)hsess.getAttribute(HConstants.HTTP_SESSION_BYPS_SESSIONS);
           sessObj.removeSession(this);
@@ -139,7 +167,7 @@ public abstract class HSession
         catch (Throwable e) {
           // assume HttpSession already invalidated.
         }
-      });
+      }
       
       // HWireServer.done() could interrupt the current thread.
       // Delete the interrupt signal that might be set in this function.

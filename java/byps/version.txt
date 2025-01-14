@@ -1,5 +1,10 @@
 BYPS Version History
 
+10.16
+
+- BYPS-90: Allow to replace the session cookie for a BYPS session. This helps to avoid a session fixation 
+  vulnerability by replacing the session cookie after authentication. 
+
 10.15
 
 - BYPS-88: Protect HTML file upload against CSRF attacks. Uploads to "/byps?uploadHandler=html5&bypsSessionId=" must 

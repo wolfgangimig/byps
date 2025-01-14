@@ -896,7 +896,7 @@ public abstract class HHttpServlet extends HttpServlet implements
    */
   protected void executeMessageInRequestContext(final BMessage msg, final HRequestContext requestContext, final BAsyncResult<BMessage> asyncResponse,
       final BServer server, final BTransport transport) {
-    HThreadRequestContext.set(requestContext);
+    HThreadRequestContext.set(requestContext, transport);
     try {
       transport.recv(server, msg, asyncResponse);
     }
@@ -922,7 +922,7 @@ public abstract class HHttpServlet extends HttpServlet implements
       response.setStatus(httpStatus);
       return;
     }
-
+    
     final HSession sess = doCreateSession(request);
 
     // Process Negotiate message
