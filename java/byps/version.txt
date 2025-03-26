@@ -1,5 +1,10 @@
 BYPS Version History
 
+10.17
+
+- BYPS-91: Updated dependency logback-1.5.18 due to CVE-2024-12801, CVE-2024-12798.
+  Updated dependencies slf4j-2.0.17, undertow-core-2.3.18.Final, gson-2.12.1, swagger-model-2.2.28. 
+
 10.16
 
 - BYPS-90: Allow to replace the session cookie for a BYPS session. This helps to avoid a session fixation 
