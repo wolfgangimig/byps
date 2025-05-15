@@ -20,6 +20,7 @@ import byps.gen.doclet.CompileSource;
 import byps.gen.j.GeneratorJ;
 import byps.gen.js.GeneratorJS;
 import byps.gen.rest.GeneratorOpenAPI;
+import byps.gen.ts.GeneratorTS;
 import byps.gen.utils.AssignUniqueSerialVersionUID;
 import byps.gen.utils.CodePrinter;
 import byps.log.LogConfigurator;
@@ -80,6 +81,7 @@ public class Main {
       
     }
     catch (Exception ex) {
+      ex.printStackTrace();
       log.error("Code generation failed", ex);
       if (context.getExitCode() == 0) {
         context.setExitCode(1);
@@ -209,6 +211,14 @@ public class Main {
       log.info("Generate JavaScript code ==============");
       GeneratorJS gen = new GeneratorJS();
       gen.build(jdocClassDB, context.getPropsJS());
+      log.info("");
+    }
+
+    // generate Types
+    if (context.getPropsTS() != null) {
+      log.info("Generate Typescript Types ==============");
+      GeneratorTS gen = new GeneratorTS();
+      gen.build(jdocClassDB, context.getPropsTS());
       log.info("");
     }
     

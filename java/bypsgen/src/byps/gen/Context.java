@@ -21,6 +21,7 @@ import byps.gen.doclet.CompileSource;
 import byps.gen.j.PropertiesJ;
 import byps.gen.js.PropertiesJS;
 import byps.gen.rest.PropertiesRest;
+import byps.gen.ts.PropertiesTS;
 import byps.gen.utils.AssignUniqueSerialVersionUID;
 import byps.gen.utils.Utils;
 import byps.gen.xml.XmlGeneratorBase;
@@ -60,6 +61,11 @@ public class Context {
    * Generator properties for JavaScript code generator.
    */
   private PropertiesJS propsJS;
+
+  /**
+   * Generator properties for TypeScript types generator.
+   */
+  private PropertiesTS propsTS;
 
   /**
    * Generator properties for OpenAPI/REST generator.
@@ -158,6 +164,12 @@ public class Context {
       else if (arg.startsWith(PropertiesJS.OPT_PREFIX)) {
         if (propsJS == null) propsJS = new PropertiesJS(defaultProps);
         argIdx = propsJS.addArgs(args, argIdx);
+      }
+
+      // TypeScript generator option?
+      else if (arg.startsWith(PropertiesTS.OPT_PREFIX)) {
+        if (propsTS == null) propsTS = new PropertiesTS(defaultProps);
+        argIdx = propsTS.addArgs(args, argIdx);
       }
 
       // REST generator option?
@@ -340,6 +352,10 @@ public class Context {
 
   public PropertiesJS getPropsJS() {
     return propsJS;
+  }
+
+  public PropertiesTS getPropsTS() {
+    return propsTS;
   }
 
   public String[] getSourceDirs() {
