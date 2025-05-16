@@ -210,6 +210,26 @@ public class PrintContext extends PrintContextBase {
 			this.generatedNames.getClientClassName()
 		));
 		codePrinter.beginBlock();
+		ArrayList<MemberInfo> infos = new ArrayList<>();
+		for (RemoteInfo remoteInfo : classDB.getRemotes()) {
+			String varName = generatedNames.getRemoteVariableName(remoteInfo);
+			MemberInfo memberInfo = new MemberInfo(
+				varName,
+				remoteInfo.comments,
+				remoteInfo,
+				false,
+				false,
+				false,
+				false,
+				false,
+				false,
+				false,
+				remoteInfo.since,
+				""
+			);
+			infos.add(memberInfo);
+		}
+		printClassMembers(codePrinter, infos);
 		codePrinter.println();
 		codePrinter.println("constructor(");
 		codePrinter.beginBlock();

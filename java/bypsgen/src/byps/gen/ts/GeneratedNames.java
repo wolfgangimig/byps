@@ -49,6 +49,14 @@ public class GeneratedNames {
 		return name;
 	}
 
+	public String getRemoteVariableName(TypeInfo typeInfo) {
+		return getRemoteVariableName(typeInfo.name);
+	}
+
+	public String getRemoteVariableName(String name) {
+		return Character.toLowerCase(name.charAt(0)) + name.substring(1);
+	}
+
 	public String getStubName(TypeInfo typeInfo) {
 		return getStubName(typeInfo.pack, typeInfo.name);
 	}

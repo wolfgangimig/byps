@@ -74,6 +74,7 @@ public class CommentPrinter {
 
 	private void printCommentText(CodePrinter currentLine, CommentInfo commentInfo) {
 		if (commentInfo.text.trim().isEmpty()) {
+			currentLine.println();
 			return;
 		}
 
