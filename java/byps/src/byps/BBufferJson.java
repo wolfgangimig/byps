@@ -1,11 +1,17 @@
 package byps;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.UncheckedIOException;
+import java.io.Writer;
+
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 
 
 import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,6 +22,8 @@ import java.util.TimeZone;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import byps.io.ByteArrayOutputStream;
 
 public class BBufferJson extends BBuffer {
 	
@@ -396,70 +404,51 @@ public class BBufferJson extends BBuffer {
 	}
 	
 	protected void internalPutString(String s, boolean quote) {
-		if (s != null && s.length() != 0) {
-			if (quote) buf.put((byte)'\"');
-			StringTokenizer stok = new StringTokenizer(s, "\t\r\n\"\'\\", true);
-			while (stok.hasMoreTokens()) {
-				String t = stok.nextToken();
-				char c = t.charAt(0);
-				if (c == '\t') buf.putShort((short)(('\\' << 8) | 't'));
-				else if (c == '\r') buf.putShort((short)(('\\' << 8) | 'r'));
-				else if (c == '\n') buf.putShort((short)(('\\' << 8) | 'n'));
-				else if (c == '\"') buf.putShort((short)(('\\' << 8) | '\"'));
-				else if (c == '\\') buf.putShort((short)(('\\' << 8) | '\\'));
-				else {
-					for (int i = 0; i < t.length(); i++) {
-						internalPutCharUtf8(t.charAt(i));
-					}
-				}
-			}
-			if (quote) buf.put((byte)'\"');
-		}
-		else {
-			// put empty string, null values are not supported
-			buf.putShort((short)((('\"') << 8) | ('\"')));
-		}
-	}
+		  
+      try (ByteArrayOutputStream os = new ByteArrayOutputStream(buf); Writer wr = new OutputStreamWriter(os, StandardCharsets.UTF_8)) {
 
-	// Crockford
-//	private final void internalPutCharUtf8(char z) {
-//        if (z < ' ' || (z >= '\u0080' && z < '\u00a0') ||
-//                (z >= '\u2000' && z < '\u2100')) {
-//			String s = Integer.toHexString((int)z);
-//			buf.putShort((short)(('\\' << 8) | 'u'));
-//			for (int i = 4; i > s.length(); i--) buf.put((byte)'0');
-//			for (int i = 0; i < s.length(); i++) buf.put((byte)s.charAt(i));
-//		}
-//		else {
-//			buf.put((byte)z);
-//		}
-//	}
-	
-	private final void internalPutCharUtf8(char z) {
-		if (z > 0x800) {
-			int a = (z & 0x3F) | 0x80;
-			int b = ((z >> 6) & 0x3F) | 0x80;
-			int c = ((z >> 12) & 0xF) | 0xE0;
-			buf.putShort((short)((c << 8) | b));
-			buf.put((byte)a);
+        if (s != null && !s.isEmpty()) {
+
+          if (quote) wr.append('\"');
+  
+    			StringTokenizer stok = new StringTokenizer(s, "\t\r\n\"\'\\", true);
+    			while (stok.hasMoreTokens()) {
+    				String t = stok.nextToken();
+    				char c = t.charAt(0);
+    				switch (c) {
+              case '\t': 
+                wr.append("\\t");
+                break;
+              case '\r': 
+                wr.append("\\r");
+                break;
+              case '\n': 
+                wr.append("\\n");
+                break;
+              case '\"': 
+                wr.append("\\\"");
+                break;
+              case '\\': 
+                wr.append("\\\\");
+                break;
+              default:
+    				    wr.write(t);
+    				    break;
+    				}
+  				}
+  			
+    			if (quote) wr.append('\"');
+    			
+        }
+        else {
+          wr.append("\"\"");
+        }
 		}
-		else if (z >= 0x80) {
-			int a = (z & 0x3F) | 0x80;
-			int b = ((z >> 6) & 0x3F) | 0xC0;
-			buf.putShort((short)((b << 8) | a));
-		}
-		else if (z < 0x20) {
-			buf.putInt(('\\' << 24) | ('u' << 16) | ('0' << 8) | '0');
-      buf.put(hexCharBytes[(z & 0xF0) >> 4]);
-      buf.put(hexCharBytes[z & 0x0F]);
-		}
-		else {
-			buf.put((byte)z);
-		}
-	}
-	
-	private final static byte hexCharBytes[] = "0123456789ABCDEF".getBytes(); 
-	
+    catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
+  }
+
 	/**
 	 * Write a null value.
 	 * Used to write the first element of the object table.
@@ -590,62 +579,52 @@ public class BBufferJson extends BBuffer {
 		char quote = nextJsonChar(true);
 		if (quote == '\"' || quote == '\'') {
 			boolean esc = false;
-			for (;;) {
-				int c = buf.get() & 0xFF;
-				if ((c & 0xE0) == 0xE0) {
-					int v = (c & 0xF) << 12;
-					c = buf.get() & 0xFF;
-					v |= (c & 0x3F) << 6;
-					c = buf.get() & 0xFF;
-					v |= (c & 0x3F);
-					sbuf.append((char)v);
-				}
-				else if ((c & 0xC0) == 0xC0) {
-					int v = (c & 0x1F) << 6;
-					c = buf.get() & 0xFF;
-					v |= (c & 0x3F);
-					sbuf.append((char)v);
-				}
-				else {
-					if (!esc && c == '\\') {
-						esc = true;
-					}
-					else {
-						if (esc && c == 't') {
-							sbuf.append('\t');
-						}
-						else if (esc && c == 'r') {
-							sbuf.append('\r');
-						}
-						else if (esc && c == 'n') {
-							sbuf.append('\n');
-						}
-						else if (esc && c == '\\') {
-							sbuf.append('\\');
-						}
-						else if (esc && c == 'u') {
-							// \u0001
-							int n = buf.getInt();
-							StringBuilder sn = new StringBuilder(4);
-							sn.append((char)((n >> 24) & 0xFF));
-							sn.append((char)((n >> 16) & 0xFF));
-							sn.append((char)((n >> 8) & 0xFF));
-							sn.append((char)((n >> 0) & 0xFF));
-							sbuf.append((char)Integer.parseInt(sn.toString(), 16));
-						}
-						else if (c == '\"' || c == '\'') {
-							if (!esc && c == quote) {
-								break;
-							}
-							sbuf.append((char)c);
-						}
-						else {
-							sbuf.append((char)c);
-						}
-						esc = false;
-					}
-				}
+
+      int p = buf.position();
+      int pmax = buf.limit();
+			int plen;
+			for (plen = 0; plen < pmax; plen++) {
+			  int c = buf.get(p + plen);
+			  if (c == (int)quote) break;
 			}
+			buf.position(p + plen + 1);
+			
+			String s =  new String(buf.array(), p, plen, StandardCharsets.UTF_8);
+			
+			for (int i = 0; i < s.length(); i++) {
+			  
+			  char c = s.charAt(i);
+        if (!esc && c == '\\') {
+          esc = true;
+        }
+        else if (esc) {
+          switch (c) {
+            case 't':
+              sbuf.append("\t");
+              break;
+            case 'r':
+              sbuf.append("\r");
+              break;
+            case 'n':
+              sbuf.append("\n");
+              break;
+            case '\\':
+              sbuf.append("\\");
+              break;
+            case 'u':
+              i++;
+              sbuf.append((char)Integer.parseInt(s.substring(i, i+4), 16));
+              i+=4;
+              break;
+          }
+          esc = false;
+        }
+        else {
+          sbuf.append(c);
+        }
+			  
+			}
+			
 		}
 		else {
 			// null
@@ -933,6 +912,18 @@ public class BBufferJson extends BBuffer {
     }
   }
 
+  public static void main(String[] args) {
+    //String str = "\uD83D\uDC4D";
+    String str = "\tabc";
+    ByteBuffer bbuf = ByteBuffer.allocate(1000);
+    BBufferJson bufj = new BBufferJson(bbuf);
+    bufj.putString(str);
+    
+    bufj.getBuffer().flip();
+    
+    String rstr = bufj.getString();
+    System.out.println(rstr);
+  }
 	
 	private static Logger log = LoggerFactory.getLogger(BBufferJson.class);
 }

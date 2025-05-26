@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Test Unicode Chars</title>
+
+<script type="text/javascript" src="../json2.js"></script>
+<script type="text/javascript" src="../byps.js"></script>
+<script type="text/javascript" src="../testser.js"></script>
+
+<script type="text/javascript">
+	var url = "/bypstest-srv/bypsservlet";
+	var wire = new byps.BWireClient(url, 0, 60);
+	var transportFactory = new byps.BTransportFactory(
+			byps.test.api.BApiDescriptor_Testser.instance(), wire);
+	var client = byps.test.api.createClient_Testser(transportFactory);
+	client.start();
+	
+	function onSubmit() {
+		var str = document.getElementById("strIn").value;
+		client.remotePrimitiveTypes.setString(str);
+		var strR = client.remotePrimitiveTypes.getString();
+		document.getElementById("strOut").value = strR;
+	}
+	
+</script>
+
+</head>
+<body>
+
+	<table>
+		<tr>
+			<td><h1>Test transfer Unicode Strings</h1></td>
+		</tr>
+
+		<tr>
+			<td>
+
+				<table border="2">
+
+					<tr>
+						<td>Input</td>
+						<td><input id="strIn" name="strIn" /></td>
+					</tr>
+
+					<tr>
+						<td>&nbsp;</td>
+						<td><input type="button" value="Submit" onclick="onSubmit()" /></td>
+					</tr>
+
+					<tr>
+						<td>Output</td>
+						<td><input id="strOut" name="strOut" /></td>
+					</tr>
+
+					
+				</table>
+			</td>
+		</tr>
+
+	</table>
+</body>
+</html>

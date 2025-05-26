@@ -21,6 +21,10 @@ public class ByteArrayOutputStream extends OutputStream {
     bbuf = ByteBuffer.allocate(size);
   }
 
+  public ByteArrayOutputStream(ByteBuffer bbuf) {
+    this.bbuf = bbuf;
+  }
+
   private final ByteBuffer ensureAdd(int v) {
     if (v < 0) throw new IllegalArgumentException();
     if (bbuf.remaining() < v) {
