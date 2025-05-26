@@ -1,5 +1,9 @@
 BYPS Version History
 
+10.18
+
+- BYPS-92: Support 4byte UTF-8 chars.
+
 10.17
 
 - BYPS-91: Updated dependency logback-1.5.18 due to CVE-2024-12801, CVE-2024-12798.

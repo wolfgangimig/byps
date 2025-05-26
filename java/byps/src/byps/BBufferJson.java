@@ -404,45 +404,48 @@ public class BBufferJson extends BBuffer {
 	}
 	
 	protected void internalPutString(String s, boolean quote) {
+	  
+	  // BYPS-92: Refactoring to support 4byte UTF-8 chars.
 		  
-      try (ByteArrayOutputStream os = new ByteArrayOutputStream(buf); Writer wr = new OutputStreamWriter(os, StandardCharsets.UTF_8)) {
+    try (ByteArrayOutputStream os = new ByteArrayOutputStream(buf); 
+        Writer wr = new OutputStreamWriter(os, StandardCharsets.UTF_8)) {
 
-        if (s != null && !s.isEmpty()) {
+      if (s != null && !s.isEmpty()) {
 
-          if (quote) wr.append('\"');
-  
-    			StringTokenizer stok = new StringTokenizer(s, "\t\r\n\"\'\\", true);
-    			while (stok.hasMoreTokens()) {
-    				String t = stok.nextToken();
-    				char c = t.charAt(0);
-    				switch (c) {
-              case '\t': 
-                wr.append("\\t");
-                break;
-              case '\r': 
-                wr.append("\\r");
-                break;
-              case '\n': 
-                wr.append("\\n");
-                break;
-              case '\"': 
-                wr.append("\\\"");
-                break;
-              case '\\': 
-                wr.append("\\\\");
-                break;
-              default:
-    				    wr.write(t);
-    				    break;
-    				}
+        if (quote) wr.append('\"');
+
+  			StringTokenizer stok = new StringTokenizer(s, "\t\r\n\"\'\\", true);
+  			while (stok.hasMoreTokens()) {
+  				String t = stok.nextToken();
+  				char c = t.charAt(0);
+  				switch (c) {
+            case '\t': 
+              wr.append("\\t");
+              break;
+            case '\r': 
+              wr.append("\\r");
+              break;
+            case '\n': 
+              wr.append("\\n");
+              break;
+            case '\"': 
+              wr.append("\\\"");
+              break;
+            case '\\': 
+              wr.append("\\\\");
+              break;
+            default:
+  				    wr.write(t);
+  				    break;
   				}
+				}
+			
+  			if (quote) wr.append('\"');
   			
-    			if (quote) wr.append('\"');
-    			
-        }
-        else {
-          wr.append("\"\"");
-        }
+      }
+      else {
+        wr.append("\"\"");
+      }
 		}
     catch (IOException e) {
       throw new UncheckedIOException(e);
@@ -573,58 +576,63 @@ public class BBufferJson extends BBuffer {
 		return Double.parseDouble(sbuf.toString());
 	}
 	
-	public String getString() {
-		StringBuilder sbuf = new StringBuilder();
+	/**
+	 * Find the end of the string.
+	 * BYPS-92
+	 * @param p First character of the string (after the quote)
+	 * @param quote Quote character, usually "
+	 * @return String length, without the closing quote character at the end of the string.
+	 */
+	private int getStringLength(int p, char quote) {
 
+    int pmax = buf.limit();
+    int plen;
+    boolean esc = false; // true if following character should not be interpreted (as end-quote)
+    
+    // Linear search for end-quote
+    
+    for (plen = 0; plen < pmax; plen++) {
+      int c = buf.get(p + plen);
+      if (!esc && c == '\\') {
+        esc = true;
+      }
+      else if (!esc && c == (int)quote) {
+        break;
+      }
+      else {
+        esc = false;
+      }
+    }
+    
+    return plen;
+	}
+	
+	public String getString() {
+		
+		// BYPS-92: Refactoring to support 4byte UTF-8 chars.
+
+		// String starts with a quote character, usually "
 		char quote = nextJsonChar(true);
 		if (quote == '\"' || quote == '\'') {
-			boolean esc = false;
-
-      int p = buf.position();
-      int pmax = buf.limit();
-			int plen;
-			for (plen = 0; plen < pmax; plen++) {
-			  int c = buf.get(p + plen);
-			  if (c == (int)quote) break;
-			}
+		  
+		  // Find the end of the string in the buffer.
+		  int p = buf.position();
+		  int plen = getStringLength(p, quote);
+		  
+		  // Move buffer position to the char after the end-quote.
 			buf.position(p + plen + 1);
 			
+			// Extract the string from UTF-8 bytes in the buffer.
 			String s =  new String(buf.array(), p, plen, StandardCharsets.UTF_8);
 			
-			for (int i = 0; i < s.length(); i++) {
-			  
-			  char c = s.charAt(i);
-        if (!esc && c == '\\') {
-          esc = true;
-        }
-        else if (esc) {
-          switch (c) {
-            case 't':
-              sbuf.append("\t");
-              break;
-            case 'r':
-              sbuf.append("\r");
-              break;
-            case 'n':
-              sbuf.append("\n");
-              break;
-            case '\\':
-              sbuf.append("\\");
-              break;
-            case 'u':
-              i++;
-              sbuf.append((char)Integer.parseInt(s.substring(i, i+4), 16));
-              i+=4;
-              break;
-          }
-          esc = false;
-        }
-        else {
-          sbuf.append(c);
-        }
-			  
+			// Optimization: return string if there is no escaped character in it.
+			boolean hasBackslash = s.chars().anyMatch(c -> c == '\\');
+			if (!hasBackslash) {
+			  return s;
 			}
 			
+			// Process \t, \r, \u1234 etc.
+			return processStringEscapeSequences(s);
 		}
 		else {
 			// null
@@ -632,8 +640,56 @@ public class BBufferJson extends BBuffer {
 			return ""; // null-values for Strings are not supported
 		}
 		
-		return sbuf.toString();
 	}
+
+	/**
+	 * Replace JavaScript escape sequences by their appropriate chars.
+	 * BYPS-92
+	 * Example: "\\t" is replaced by "\t"
+	 * @param s String
+	 * @return String with replaced escape sequences
+	 */
+  private String processStringEscapeSequences(String s) {
+    StringBuilder sbuf = new StringBuilder();
+    boolean esc = false;
+    for (int i = 0; i < s.length(); i++) {
+      
+      char c = s.charAt(i);
+      if (!esc && c == '\\') {
+        esc = true;
+      }
+      else if (esc) {
+        switch (c) {
+          case 't':
+            sbuf.append("\t");
+            break;
+          case 'r':
+            sbuf.append("\r");
+            break;
+          case 'n':
+            sbuf.append("\n");
+            break;
+          case '\\':
+            sbuf.append("\\");
+            break;
+          case 'u':
+            i++;
+            sbuf.append((char)Integer.parseInt(s.substring(i, i+4), 16));
+            i+=4;
+            break;
+          default: // e.g. \"
+            sbuf.append(c);
+            break;
+        }
+        esc = false;
+      }
+      else {
+        sbuf.append(c);
+      }
+    }
+    
+    return sbuf.toString();
+  }
 	
 	private void internalPutDate(String name, Date date) {
 	  if (date != null) {
