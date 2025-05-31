@@ -524,11 +524,11 @@ public class PrintContext extends PrintContextBase {
 
 		while (iterator.hasNext()) {
 			MemberInfo memberInfo = iterator.next();
-			// TODO: Make parameters optional
 			CodePrinter printer = codePrinter.print(String.format(
-				"%s: %s",
+				"%s: %s = %s",
 				memberInfo.name,
-				JSType.build(memberInfo.type)
+				JSType.build(memberInfo.type),
+				memberInfo.value
 			));
 			if (iterator.hasNext()) {
 				printer.print(",");
