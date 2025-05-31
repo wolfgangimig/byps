@@ -12,12 +12,24 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+/**
+ * Utility class to print comments for any type info.
+ */
 public class CommentPrinter {
 
 	private final PrintContext printContext;
 	private final CodePrinter codePrinter;
 	private final List<CommentInfo> comments;
-
+	
+	/**
+	 * Creates a {@link CommentPrinter} to print comments for a method that also checks the remote info for any missing,
+	 * or nonexistent parameters.
+	 *
+	 * @param codePrinter - The {@link CodePrinter} to use for printing the comment.
+	 * @param methodInfo - Method to print the comments of and compare parameters against.
+	 * @param remoteInfo - Remote info to check for session parameters.
+	 * @return A function taking a boolean argument which, if true adds the async byps parameter as documentation.
+	 */
 	public static Consumer<Boolean> printMethod(
 		CodePrinter codePrinter,
 		MethodInfo methodInfo,
@@ -27,12 +39,24 @@ public class CommentPrinter {
 
 		return (async) -> printer.printMethod(methodInfo, remoteInfo, async);
 	}
-
+	
+	/**
+	 * Creates a simple {@link CommentPrinter} printer that prints a collection of comment infos
+	 *
+	 * @param codePrinter - The {@link CodePrinter} to use for printing the comment.
+	 * @param commentInfos - List of {@link CommentInfo} objects to print.
+	 */
 	public static void print(CodePrinter codePrinter, Collection<CommentInfo> commentInfos) {
 		new CommentPrinter(codePrinter, commentInfos).print();
 	}
-
-	public CommentPrinter(CodePrinter codePrinter, Collection<CommentInfo> commentInfos) {
+	
+	/**
+	 * Constructor used by the static methods to instantiate an object of the comment printer.
+	 *
+	 * @param codePrinter
+	 * @param commentInfos
+	 */
+	private CommentPrinter(CodePrinter codePrinter, Collection<CommentInfo> commentInfos) {
 		this.printContext = DependencyContainer.get(PrintContext.class);
 		this.codePrinter = codePrinter;
 		if (commentInfos == null) {
@@ -41,7 +65,15 @@ public class CommentPrinter {
 			this.comments = new ArrayList<>(commentInfos);
 		}
 	}
-
+	
+	/**
+	 * Prints the comments of the given method optionally adding the async parameter.
+	 * Also adds all missing parameters as comments.
+	 *
+	 * @param methodInfo - Method info to derive missing parameters from.
+	 * @param remoteInfo - Remote info to check for session parameters.
+	 * @param async - Whether to add the async parameter.
+	 */
 	public void printMethod(MethodInfo methodInfo, RemoteInfo remoteInfo, boolean async) {
 		if (async) {
 			this.comments.add(new CommentInfo(
@@ -67,11 +99,22 @@ public class CommentPrinter {
 
 		this.internalPrint(methodInfo, remoteInfo);
 	}
-
+	
+	/**
+	 * Prints the comments of this comment printer.
+	 * Use {@link CommentPrinter#printMethod(MethodInfo, RemoteInfo, boolean) to print method infos.
+	 * This will error for methods.
+	 */
 	public void print() {
 		this.internalPrint(null, null);
 	}
-
+	
+	/**
+	 * Wrapper to print multiline comments.
+	 *
+	 * @param currentLine - Code printer of the line with all prefixes already filled.
+	 * @param commentInfo - Comment into to print the text of
+	 */
 	private void printCommentText(CodePrinter currentLine, CommentInfo commentInfo) {
 		if (commentInfo.text.trim().isEmpty()) {
 			currentLine.println();
@@ -88,17 +131,34 @@ public class CommentPrinter {
 			printer.println(part);
 		}
 	}
-
+	
+	/**
+	 * Print any non-special comment.
+	 *
+	 * @param commentInfo - Comment to print.
+	 */
 	private void printComment(CommentInfo commentInfo) {
 		CodePrinter printer = this.codePrinter.print(" * ").print(commentInfo.kind).print(" ");
 		this.printCommentText(printer, commentInfo);
 	}
-
+	
+	/**
+	 * Print the remark of a comment which does not need the comment kind prefix.
+	 *
+	 * @param commentInfo - Comment to print
+	 */
 	private void printRemark(CommentInfo commentInfo) {
 		CodePrinter printer = this.codePrinter.print(" * ");
 		this.printCommentText(printer, commentInfo);
 	}
-
+	
+	/**
+	 * Print the parameter comment if it exists on the method info and is not a session parameter.
+	 *
+	 * @param commentInfo - Comment to print
+	 * @param methodInfo - Methodinfo to check parameters against.
+	 * @param remoteInfo - Remote info the check if a parameter is a session parameter.
+	 */
 	private void printParameter(
 		CommentInfo commentInfo,
 		MethodInfo methodInfo,
@@ -134,7 +194,13 @@ public class CommentPrinter {
 		CodePrinter printer = this.codePrinter.print(" * ").print(commentInfo.kind).print(" ");
 		this.printCommentText(printer, commentInfo);
 	}
-
+	
+	/**
+	 * Wrapper around the different printers for comments and also inserts blank lines where necessary.
+	 *
+	 * @param methodInfo - Method info to check parameters of
+	 * @param remoteInfo - Remote info to check for session parameters.
+	 */
 	private void internalPrint(MethodInfo methodInfo, RemoteInfo remoteInfo) {
 		var comments = this.comments;
 

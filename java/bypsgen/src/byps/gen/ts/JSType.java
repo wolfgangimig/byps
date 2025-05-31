@@ -6,12 +6,21 @@ import byps.gen.db.ClassDB;
 
 import java.util.Optional;
 
+/**
+ * Utility class to convert type infos into their respective typescript type.
+ */
 public class JSType {
 
 	private final TypeInfo typeInfo;
 	private final Cache cache;
 	private final GeneratedNames generatedNames;
-
+	
+	/**
+	 * Wrapper function to build the typescript type
+	 *
+	 * @param typeInfo - Type to convert into a typescript type
+	 * @return
+	 */
 	public static String build(TypeInfo typeInfo) {
 		return new JSType(typeInfo).buildType();
 	}
@@ -21,7 +30,12 @@ public class JSType {
 		this.generatedNames = DependencyContainer.get(GeneratedNames.class);
 		this.typeInfo = typeInfo;
 	}
-
+	
+	/**
+	 * Returns the typescript type of all primitives
+	 *
+	 * @return Optional of the value if it's matched, empty optional if it isn't
+	 */
 	private Optional<String> buildPrimitiveType() {
 		if (!typeInfo.isPrimitiveType()) {
 			return Optional.empty();
@@ -52,7 +66,12 @@ public class JSType {
 
 		return Optional.ofNullable(stringType);
 	}
-
+	
+	/**
+	 * Returns the typescript type for any array type.
+	 *
+	 * @return Optional of the value if it's matched, empty optional if it isn't
+	 */
 	private Optional<String> buildArrayType() {
 		if (!typeInfo.isArrayType()) {
 			return Optional.empty();
@@ -71,7 +90,12 @@ public class JSType {
 			));
 		}
 	}
-
+	
+	/**
+	 * Returns the typescript type for any non-array type that converts to arrays
+	 *
+	 * @return Optional of the value if it's matched, empty optional if it isn't
+	 */
 	private Optional<String> buildListType() {
 		if (!typeInfo.isListType() && !typeInfo.isSetType()) {
 			return Optional.empty();
@@ -85,7 +109,12 @@ public class JSType {
 
 		return Optional.of(String.format("Array<%s>", baseType));
 	}
-
+	
+	/**
+	 * Returns the typescript type for any map type
+	 *
+	 * @return Optional of the value if it's matched, empty optional if it isn't
+	 */
 	private Optional<String> buildMapType() {
 		if (!typeInfo.isMapType()) {
 			return Optional.empty();
@@ -108,7 +137,12 @@ public class JSType {
 
 		return Optional.of(String.format(format, keyType, valueType));
 	}
-
+	
+	/**
+	 * Returns the void type if this is a void type
+	 *
+	 * @return Optional of the value if it's matched, empty optional if it isn't
+	 */
 	private Optional<String> buildVoidType() {
 		if (!typeInfo.isVoidType()) {
 			return Optional.empty();
@@ -116,7 +150,12 @@ public class JSType {
 
 		return Optional.of("void");
 	}
-
+	
+	/**
+	 * Returns the date type if this is a date type
+	 *
+	 * @return Optional of the value if it's matched, empty optional if it isn't
+	 */
 	private Optional<String> buildDateType() {
 
 		if (!this.typeInfo.isDateType()) {
@@ -125,10 +164,15 @@ public class JSType {
 
 		return Optional.of("Date");
 	}
-
+	
+	/**
+	 * Returns the typescript type for any object type
+	 *
+	 * @return Optional of the value if it's matched, empty optional if it isn't
+	 */
 	private Optional<String> buildObjectType() {
 		if (this.typeInfo.isAnyType()) {
-			return Optional.of("any");
+			return Optional.of("unknown");
 		}
 
 		if (this.typeInfo.isExceptionType()) {
@@ -151,11 +195,21 @@ public class JSType {
 
 		return Optional.of(name);
 	}
-
+	
+	/**
+	 * Returns whether a type is not supported
+	 *
+	 * @return
+	 */
 	private boolean isUnsupportedType() {
 		return this.typeInfo.isStreamType();
 	}
-
+	
+	/**
+	 * Matches the type to the typescript type.
+	 *
+	 * @return
+	 */
 	public String buildType() {
 		if (this.isUnsupportedType()) {
 			return "unknown";

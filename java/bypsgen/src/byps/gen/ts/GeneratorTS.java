@@ -14,6 +14,9 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Main class of the typescript type definition generation.
+ */
 public class GeneratorTS implements Generator {
 
 	private final Logger log = LoggerFactory.getLogger(GeneratorTS.class);
@@ -29,8 +32,8 @@ public class GeneratorTS implements Generator {
 		DependencyContainer.registerClass(Cache.class);
 		DependencyContainer.registerClass(GeneratedNames.class);
 		DependencyContainer.registerClass(GenerationFilters.class);
-		DependencyContainer.addInstance(GeneratorProperties.class, props);
-		DependencyContainer.addInstance(ClassDB.class, classDB);
+		DependencyContainer.addInstance(props);
+		DependencyContainer.addInstance(classDB);
 
 		PrintContext printContext = DependencyContainer.get(PrintContext.class);
 		GenerationFilters generationFilters = DependencyContainer.get(GenerationFilters.class);

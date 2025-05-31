@@ -30,6 +30,9 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Main printing class for typescript types.
+ */
 public class PrintContext extends PrintContextBase {
 
 	private final Logger log = LoggerFactory.getLogger(PrintContext.class);
@@ -40,7 +43,7 @@ public class PrintContext extends PrintContextBase {
 
 	public PrintContext(
 		ClassDB classDB,
-		GeneratorProperties props,
+		PropertiesTS props,
 		Cache cache,
 		GeneratedNames generatedNames,
 		GenerationFilters generationFilters
@@ -61,7 +64,10 @@ public class PrintContext extends PrintContextBase {
 
 		prepareCache();
 	}
-
+	
+	/**
+	 * Writes all required data to the cache for later processing.
+	 */
 	private void prepareCache() {
 		for (SerialInfo serialInfo : classDB.getSerials()) {
 			ArrayList<MemberInfo> valueMembers = new ArrayList<>();
@@ -107,12 +113,23 @@ public class PrintContext extends PrintContextBase {
 	public boolean isSuppressConstantClassesAndObjects() throws GeneratorException {
 		return props.getOptionalPropertyBoolean(PropertiesTS.SUPPRESS_CONST_CLASSES, false);
 	}
-
+	
+	/**
+	 * Returns a new code printer for the destination file.
+	 *
+	 * @return
+	 * @throws IOException
+	 */
 	CodePrinter getPrinter() throws IOException {
 		FileOutputStream fos = new FileOutputStream(destFile, true);
 		return new CodePrinter(fos, false);
 	}
-
+	
+	/**
+	 * Prints the do not modify header for the file.
+	 *
+	 * @param pr
+	 */
 	public void printDoNotModify(CodePrinter pr) {
 		// JSDoc will reference non-existing variables. I.e. IXServicePortIF instead of BStub_IXServicePortIF.
 		pr.println("// noinspection JSValidateJSDoc");
@@ -122,7 +139,12 @@ public class PrintContext extends PrintContextBase {
 		pr.println();
 
 	}
-
+	
+	/**
+	 * Print utility types used later in the generation.
+	 *
+	 * @param pr
+	 */
 	public void printBasics(CodePrinter pr) {
 
 		pr.println(
@@ -132,7 +154,14 @@ public class PrintContext extends PrintContextBase {
 		pr.println();
 
 	}
-
+	
+	/**
+	 * Print an entire namespace with all it's serial infos
+	 *
+	 * @param codePrinter - Printer to print to
+	 * @param namespace - The namespace to print
+	 * @param serialInfos - The serial infos of the namespace
+	 */
 	public void printNamespace(
 		CodePrinter codePrinter,
 		String namespace,
@@ -164,7 +193,12 @@ public class PrintContext extends PrintContextBase {
 		codePrinter.println();
 
 	}
-
+	
+	/**
+	 * Print the API descriptor constant.
+	 *
+	 * @param codePrinter - Code printer to print to
+	 */
 	private void printAPIDescriptor(CodePrinter codePrinter) {
 
 		BApiDescriptor descriptor = this.classDB.getApiDescriptor();
@@ -195,7 +229,12 @@ public class PrintContext extends PrintContextBase {
 		codePrinter.println("}");
 
 	}
-
+	
+	/**
+	 * Print the byps client class.
+	 *
+	 * @param codePrinter - Code printer to print to
+	 */
 	private void printClient(CodePrinter codePrinter) {
 		codePrinter.println(String.format(
 			"export function createClient_%s(transportFactory: byps.BTransportFactory): %s",
@@ -239,7 +278,13 @@ public class PrintContext extends PrintContextBase {
 		codePrinter.endBlock();
 		codePrinter.println("}");
 	}
-
+	
+	/**
+	 * Print the value and constant members of a class type
+	 *
+	 * @param codePrinter - Code printer to print to
+	 * @param serialInfo - Class type to print
+	 */
 	private void printClassAndOrConstant(CodePrinter codePrinter, SerialInfo serialInfo) {
 
 		Collection<MemberInfo> constantMembers = this.cache.getConstantMembers(serialInfo);
@@ -259,7 +304,15 @@ public class PrintContext extends PrintContextBase {
 
 		this.printConstant(codePrinter, serialInfo, valueMembers, constantMembers);
 	}
-
+	
+	/**
+	 * Print the constant members of a class type
+	 *
+	 * @param codePrinter - Code printer to print to
+	 * @param serialInfo - Class type to print constants of
+	 * @param valueMembers - Value members to check for the suffix
+	 * @param constantMembers - Constant members to print
+	 */
 	private void printConstant(
 		CodePrinter codePrinter,
 		SerialInfo serialInfo,
@@ -322,7 +375,13 @@ public class PrintContext extends PrintContextBase {
 		codePrinter.endBlock();
 		codePrinter.println("}");
 	}
-
+	
+	/**
+	 * Print constant as enum
+	 *
+	 * @param codePrinter - Code printer to print to
+	 * @param serialInfo - Class type to print
+	 */
 	private void printConstantEnum(CodePrinter codePrinter, SerialInfo serialInfo) {
 		codePrinter.println(String.format("export enum %s {", serialInfo.name));
 		codePrinter.beginBlock();
@@ -351,7 +410,15 @@ public class PrintContext extends PrintContextBase {
 		codePrinter.println("}");
 		codePrinter.println();
 	}
-
+	
+	/**
+	 * Print an entire class with all members
+	 *
+	 * @param codePrinter - Code printer to print to
+	 * @param serialInfo - Class type to print
+	 * @param valueMembers - Value members to print
+	 * @param constantMembers - Constant members to print
+	 */
 	private void printClass(
 		CodePrinter codePrinter,
 		SerialInfo serialInfo,
@@ -383,7 +450,13 @@ public class PrintContext extends PrintContextBase {
 		codePrinter.println("}");
 
 	}
-
+	
+	/**
+	 * Print all members of a class type
+	 *
+	 * @param codePrinter - Code printer to print to
+	 * @param members - The members to print
+	 */
 	private void printClassMembers(CodePrinter codePrinter, Collection<MemberInfo> members) {
 		boolean first = true;
 		for (MemberInfo member : members) {
@@ -400,7 +473,15 @@ public class PrintContext extends PrintContextBase {
 			));
 		}
 	}
-
+	
+	/**
+	 * Wrapper for all the printing of the api for an API class
+	 *
+	 * @param codePrinter - Code printer to print to
+	 * @param serialInfo - Class type to print
+	 * @param valueMembers - Value members of the class
+	 * @param constantMembers - Constant members of the class
+	 */
 	private void printClassAPI(
 		CodePrinter codePrinter,
 		SerialInfo serialInfo,
@@ -443,6 +524,7 @@ public class PrintContext extends PrintContextBase {
 
 		while (iterator.hasNext()) {
 			MemberInfo memberInfo = iterator.next();
+			// TODO: Make parameters optional
 			CodePrinter printer = codePrinter.print(String.format(
 				"%s: %s",
 				memberInfo.name,
@@ -457,7 +539,13 @@ public class PrintContext extends PrintContextBase {
 		codePrinter.endBlock();
 		codePrinter.println(")");
 	}
-
+	
+	/**
+	 * Returns the remote info of a given serial info
+	 *
+	 * @param info - The serial info to look up
+	 * @return
+	 */
 	private RemoteInfo findRemoteOf(SerialInfo info) {
 
 		String compareAgainst = info.name;
@@ -477,7 +565,13 @@ public class PrintContext extends PrintContextBase {
 
 		return null;
 	}
-
+	
+	/**
+	 * Wrapper function for all that is inside stub classes.
+	 *
+	 * @param codePrinter - Code printer to print to
+	 * @param serialInfo - Class type of the stub class
+	 */
 	private void printStubClass(CodePrinter codePrinter, SerialInfo serialInfo) {
 		codePrinter.println(String.format("export class %s {", serialInfo.name));
 		codePrinter.beginBlock();
@@ -504,7 +598,14 @@ public class PrintContext extends PrintContextBase {
 		codePrinter.endBlock();
 		codePrinter.println("}");
 	}
-
+	
+	/**
+	 * Print parameters and documentation for a method
+	 *
+	 * @param codePrinter - Code printer to print to
+	 * @param remoteInfo - Remote info of the method to remove session parameters
+	 * @param methodInfo - Method info to acquire parameters.
+	 */
 	private void printDeclaredMethod(
 		CodePrinter codePrinter,
 		RemoteInfo remoteInfo,
@@ -548,8 +649,5 @@ public class PrintContext extends PrintContextBase {
 			methodInfo.name,
 			String.join(", ", parameters)
 		));
-
-
 	}
-
 }
