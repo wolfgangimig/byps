@@ -81,7 +81,6 @@ public class Main {
       
     }
     catch (Exception ex) {
-      ex.printStackTrace();
       log.error("Code generation failed", ex);
       if (context.getExitCode() == 0) {
         context.setExitCode(1);
@@ -214,7 +213,7 @@ public class Main {
       log.info("");
     }
 
-    // generate Types
+    // BYPS-93: generate Types
     if (context.getPropsTS() != null) {
       log.info("Generate Typescript Types ==============");
       GeneratorTS gen = new GeneratorTS();

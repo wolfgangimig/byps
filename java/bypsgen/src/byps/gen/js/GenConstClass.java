@@ -64,6 +64,7 @@ class GenConstClass {
 		
 		pctxt.printComments(pr, minfo.comments);
 
+		// BYPS-93: Use shared value printer for javascript and typescript
 		JSConstValuePrinter printer = new JSConstValuePrinter(pctxt);
 
 		String value = minfo.value;

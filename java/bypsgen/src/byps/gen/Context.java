@@ -63,7 +63,7 @@ public class Context {
   private PropertiesJS propsJS;
 
   /**
-   * Generator properties for TypeScript types generator.
+   * BYPS-93: Generator properties for TypeScript types generator.
    */
   private PropertiesTS propsTS;
 
@@ -166,7 +166,7 @@ public class Context {
         argIdx = propsJS.addArgs(args, argIdx);
       }
 
-      // TypeScript generator option?
+      // BYPS-93: TypeScript generator option?
       else if (arg.startsWith(PropertiesTS.OPT_PREFIX)) {
         if (propsTS == null) propsTS = new PropertiesTS(defaultProps);
         argIdx = propsTS.addArgs(args, argIdx);
@@ -353,7 +353,12 @@ public class Context {
   public PropertiesJS getPropsJS() {
     return propsJS;
   }
-
+  
+  /**
+   * BYPS-93: Add typescript declaration props.
+   *
+   * @return
+   */
   public PropertiesTS getPropsTS() {
     return propsTS;
   }
