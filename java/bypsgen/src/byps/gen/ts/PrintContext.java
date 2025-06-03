@@ -3,7 +3,6 @@ package byps.gen.ts;
 import byps.BApiDescriptor;
 import byps.BVersioning;
 import byps.gen.api.GeneratorException;
-import byps.gen.api.GeneratorProperties;
 import byps.gen.api.MemberInfo;
 import byps.gen.api.MethodInfo;
 import byps.gen.api.RemoteInfo;
@@ -14,14 +13,16 @@ import byps.gen.js.PrintHelper;
 import byps.gen.utils.CodePrinter;
 import byps.gen.utils.PrintContextBase;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -139,20 +140,20 @@ public class PrintContext extends PrintContextBase {
 		pr.println();
 
 	}
-	
-	/**
-	 * Print utility types used later in the generation.
-	 *
-	 * @param pr
-	 */
-	public void printBasics(CodePrinter pr) {
 
-		pr.println(
-			"export type BypsAsyncResult<T> = (result: T | null, error: Error | null | undefined) => void");
-		pr.println("export type BSet = `${number}.` | number");
+	public void printByps(
+		CodePrinter codePrinter
+	) throws IOException {
+		//noinspection DataFlowIssue
+		try (BufferedReader bypsDefinitions = new BufferedReader(new InputStreamReader(PrintContext.class.getResourceAsStream("/byps.d.ts")))) {
+			String line;
+			while ((line = bypsDefinitions.readLine()) != null) {
+				codePrinter.println(line);
+			}
+		}
 
-		pr.println();
-
+		codePrinter.println();
+		codePrinter.println();
 	}
 	
 	/**
@@ -298,7 +299,8 @@ public class PrintContext extends PrintContextBase {
 
 		// When no value members exist the class is shadowed by the constant object.
 		// In that case the class needs not be printed.
-		if (!valueMembers.isEmpty()) {
+		// If it is an enum, it would be printed twice.
+		if (!valueMembers.isEmpty() && !serialInfo.isEnum) {
 			this.printClass(codePrinter, serialInfo, valueMembers, constantMembers);
 		}
 
@@ -319,8 +321,9 @@ public class PrintContext extends PrintContextBase {
 		Collection<MemberInfo> valueMembers,
 		Collection<MemberInfo> constantMembers
 	) {
+		CommentPrinter.print(codePrinter, serialInfo.comments);
 		if (serialInfo.isEnum) {
-			this.printConstantEnum(codePrinter, serialInfo);
+			this.printEnum(codePrinter, serialInfo);
 			return;
 		}
 
@@ -331,7 +334,6 @@ public class PrintContext extends PrintContextBase {
 
 		String constantFullQualifiedName = serialInfo.pack + "." + constantName;
 
-		CommentPrinter.print(codePrinter, serialInfo.comments);
 		codePrinter.println(String.format(
 			"export const %s: %s_Type;",
 			constantName,
@@ -382,7 +384,7 @@ public class PrintContext extends PrintContextBase {
 	 * @param codePrinter - Code printer to print to
 	 * @param serialInfo - Class type to print
 	 */
-	private void printConstantEnum(CodePrinter codePrinter, SerialInfo serialInfo) {
+	private void printEnum(CodePrinter codePrinter, SerialInfo serialInfo) {
 		codePrinter.println(String.format("export enum %s {", serialInfo.name));
 		codePrinter.beginBlock();
 
@@ -428,6 +430,11 @@ public class PrintContext extends PrintContextBase {
 		CommentPrinter.print(codePrinter, serialInfo.comments);
 		if (serialInfo.isStubType()) {
 			printStubClass(codePrinter, serialInfo);
+			return;
+		}
+
+		if (serialInfo.isEnum) {
+			this.printEnum(codePrinter, serialInfo);
 			return;
 		}
 
@@ -525,10 +532,9 @@ public class PrintContext extends PrintContextBase {
 		while (iterator.hasNext()) {
 			MemberInfo memberInfo = iterator.next();
 			CodePrinter printer = codePrinter.print(String.format(
-				"%s: %s = %s",
+				"%s?: %s",
 				memberInfo.name,
-				JSType.build(memberInfo.type),
-				memberInfo.value
+				JSType.build(memberInfo.type)
 			));
 			if (iterator.hasNext()) {
 				printer.print(",");
@@ -642,7 +648,7 @@ public class PrintContext extends PrintContextBase {
 		));
 
 		printer.accept(true);
-		parameters.add(String.format("__byps__asyncResult: BypsAsyncResult<%s>", returnType));
+		parameters.add(String.format("__byps__asyncResult: byps.BAsyncResult<%s>", returnType));
 
 		codePrinter.println(String.format(
 			"%s(%s): void",

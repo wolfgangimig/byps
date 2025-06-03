@@ -58,7 +58,7 @@ public class JSType {
 				stringType = "number";
 				break;
 			case BRegistry.TYPEID_INT64:
-				stringType = "BSet";
+				stringType = "byps.long";
 				break;
 			default:
 				stringType = null;
@@ -164,7 +164,20 @@ public class JSType {
 
 		return Optional.of("Date");
 	}
-	
+
+	/**
+	 * Returns the typescript type for byps BValueClass because it does not have a matching js type
+	 *
+	 * @return Optional of the value if it's matched, empty optional if it isn't
+	 */
+	private Optional<String> buildValueClassType() {
+		if (!this.typeInfo.qname.equals("byps.BValueClass")) {
+			return Optional.empty();
+		}
+
+		return Optional.of("unknown");
+	}
+
 	/**
 	 * Returns the typescript type for any object type
 	 *
@@ -223,6 +236,7 @@ public class JSType {
 			.or(this :: buildListType)
 			.or(this :: buildVoidType)
 			.or(this :: buildDateType)
+			.or(this :: buildValueClassType)
 			.or(this :: buildObjectType)
 			.orElse("unknown");
 	}

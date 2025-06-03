@@ -45,7 +45,7 @@ public class GeneratorTS implements Generator {
 		CodePrinter codePrinter = printContext.getPrinter();
 
 		printContext.printDoNotModify(codePrinter);
-		printContext.printBasics(codePrinter);
+		printContext.printByps(codePrinter);
 
 		HashMap<String, ArrayList<SerialInfo>> map = new HashMap<>();
 
