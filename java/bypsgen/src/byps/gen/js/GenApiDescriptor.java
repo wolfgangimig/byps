@@ -147,7 +147,7 @@ public class GenApiDescriptor {
 		log.debug("printInstance");
 		
 		pr.println("/**");
-		pr.println(" * Internal used API Desciptor.");
+		pr.println(" * Internal used API Descriptor.");
 		pr.println("*/");
 		
 		pr.print("instance : function() {").println();

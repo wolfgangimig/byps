@@ -1,5 +1,7 @@
 BYPS Version History
 
+- BYPS-93: Generate Typescript declarations
+
 10.18
 
 - BYPS-92: Support 4byte UTF-8 chars.
