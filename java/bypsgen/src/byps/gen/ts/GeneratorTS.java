@@ -38,7 +38,7 @@ public class GeneratorTS implements Generator {
 		PrintContext printContext = DependencyContainer.get(PrintContext.class);
 		GenerationFilters generationFilters = DependencyContainer.get(GenerationFilters.class);
 
-		if (!printContext.destFile.delete()) {
+		if (printContext.destFile.exists() && !printContext.destFile.delete()) {
 			throw new IOException("Couldn't delete destFile");
 		}
 
