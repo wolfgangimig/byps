@@ -8,20 +8,21 @@ package byps.test.api.remote;
 import byps.*;
 
 // checkpoint byps.gen.j.GenRemoteClassAsync:68
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public interface RemoteReferencesAsync extends BRemote, 
 	RemoteReferences {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public byps.test.api.refs.Node getNode() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getNode(final BAsyncResult<byps.test.api.refs.Node> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public void setNode(byps.test.api.refs.Node v) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setNode(byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) ;
 	
 	

@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class BServer_Testser extends BServer { 
 
 	public static BServer_Testser createServer(BTransportFactory transportFactory) {

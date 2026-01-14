@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
 */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public final class BResult_1746702954 extends BMethodResult<java.util.List<java.util.List<java.lang.Integer>>> implements Serializable {
 
 	

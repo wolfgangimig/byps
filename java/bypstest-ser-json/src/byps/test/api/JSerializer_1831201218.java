@@ -9,7 +9,7 @@ package byps.test.api;
 import byps.*;
 import java.util.*;
 
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class JSerializer_1831201218 extends JSerializer_13 {
 	
 	public final static BSerializer instance = new JSerializer_1831201218();
@@ -36,7 +36,7 @@ public class JSerializer_1831201218 extends JSerializer_13 {
 	@Override
 	protected void internalWriteKeyValue(final BOutputJson bout, final BBufferJson bbuf, final Object key, final Object value) throws BException {
 		final String keyName = key != null ? key.toString() : "";
-		// checkpoint byps.gen.j.PrintContext:340
+		// checkpoint byps.gen.j.PrintContext:342
 		bout.writeObj(keyName, value, false, null);
 	}
 	

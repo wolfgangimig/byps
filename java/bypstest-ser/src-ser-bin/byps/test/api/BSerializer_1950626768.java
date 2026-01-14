@@ -7,7 +7,7 @@ package byps.test.api;
  */
 
 import byps.*;
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class BSerializer_1950626768 extends BSerializer {
 	
 	public final static BSerializer instance = new BSerializer_1950626768();
@@ -51,7 +51,7 @@ public class BSerializer_1950626768 extends BSerializer {
 		
 		final java.io.InputStream[] a0 = arr;
 		for (int i0 = 0; i0 < n0; i0++) {
-			// checkpoint byps.gen.j.PrintContext:340
+			// checkpoint byps.gen.j.PrintContext:342
 			bout.writeObj(a0[i0], false, null);
 		}
 	}

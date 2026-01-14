@@ -12,10 +12,10 @@ import byps.*;
 // isEnum=false
 // isFinal=false
 // isInline=false
-// #members=15
+// #members=16
 
 // checkpoint byps.gen.j.GenSerStruct:304
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class BSerializer_1000 extends byps.BSerializer_22 {
 	
 	public final static BSerializer instance = new BSerializer_1000();

@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
 */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public final class BResult_94341197 extends BMethodResult<java.util.Map<java.lang.Character,java.lang.Float>> implements Serializable {
 
 	

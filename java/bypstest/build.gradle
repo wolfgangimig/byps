@@ -37,7 +37,6 @@ repositories {
 dependencies {
 	implementation project(":byps")
  	implementation project(":byps-override")
-	implementation project(":bypsgen")
 	implementation project(":bypshttp")
 	implementation project(":bypshttp-shmem")
 	implementation project(":bypshttpasf")
@@ -53,6 +52,10 @@ dependencies {
 	// https://mvnrepository.com/artifact/io.undertow/undertow-servlet
 	implementation group: 'io.undertow', name: 'undertow-servlet', version: undertowVersion
 	
+  implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+  implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
+	
+	implementation group: 'com.google.code.gson', name: 'gson', version: gsonVersion;
 }
 
 task buildJarForCompatibilityTest(type: Jar) {

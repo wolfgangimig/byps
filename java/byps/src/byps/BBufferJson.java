@@ -1,7 +1,7 @@
 package byps;
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.io.UncheckedIOException;
 import java.io.Writer;
 
@@ -17,13 +17,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.StringTokenizer;
 import java.util.TimeZone;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import byps.io.ByteArrayOutputStream;
 
 public class BBufferJson extends BBuffer {
 	
@@ -273,7 +269,7 @@ public class BBufferJson extends BBuffer {
 
 		if (name != null) {
 			if (addComma) buf.put((byte)',');
-			internalPutString(name, true);
+			internalPutString(name);
 			buf.put((byte)':');
 			addComma = false;
 		}
@@ -354,8 +350,8 @@ public class BBufferJson extends BBuffer {
 	private int internalUtf8Length(String s) {
 		int n = 2; // quotes
 		if (s != null && s.length() != 0) {
-			// s could be \u0000\u0000...
-			n += (s.length() * 6);
+			// s could be \\u0000\\u0000...
+			n += (s.length() * 7);
 		}
 		return n;
 	}
@@ -365,7 +361,7 @@ public class BBufferJson extends BBuffer {
 
 		if (addComma) buf.put((byte)','); 
 		if (name != null) {
-			internalPutString(name, true);
+			internalPutString(name);
 			buf.put((byte)':');
 		}
 		addComma = false;
@@ -378,7 +374,7 @@ public class BBufferJson extends BBuffer {
 		
 		if (addComma) buf.put((byte)',');
 		if (name != null) {
-			internalPutString(name, true);
+			internalPutString(name);
 			buf.put((byte)':');
 		}
 		internalPutSimpleAsciiString(value, flags);
@@ -388,7 +384,7 @@ public class BBufferJson extends BBuffer {
 	public void beginElement(String s) {
 		ensureRemaining(internalUtf8Length(s) + 2);
 		if (addComma) buf.put((byte)',');
-		internalPutString(s, true);
+		internalPutString(s);
 		buf.put((byte)':');
 		addComma = false;
 	}
@@ -400,68 +396,118 @@ public class BBufferJson extends BBuffer {
 	public void putString(String s) {
 		ensureRemaining(internalUtf8Length(s) + 1);
 		if (addComma) buf.put((byte)','); else addComma = true;
-		internalPutString(s, true);
+		internalPutString(s);
 	}
-	
-	protected void internalPutString(String s, boolean quote) {
+
+	protected void internalPutString(String s) {
 	  
 	  // BYPS-92: Refactoring to support 4byte UTF-8 chars.
-		  
-    try (ByteArrayOutputStream os = new ByteArrayOutputStream(buf); 
-        Writer wr = new OutputStreamWriter(os, StandardCharsets.UTF_8)) {
+	  // BYPS-95: Correct serializing of 0-bytes.
+	  try (Writer wr = new StringWriter()) {
+        wr.write('\"');
 
-      if (s != null && !s.isEmpty()) {
-
-        if (quote) wr.append('\"');
-
-  			StringTokenizer stok = new StringTokenizer(s, "\t\r\n\"\'\\", true);
-  			while (stok.hasMoreTokens()) {
-  				String t = stok.nextToken();
-  				char c = t.charAt(0);
-  				switch (c) {
-            case '\t': 
-              wr.append("\\t");
+        if (s != null && !s.isEmpty()) {
+          
+          int length = s.length();
+          char prevChar = '\0';
+          char thisChar = '\0';
+          
+          for (int i = 0; i < length; i += 1) {
+            prevChar = thisChar;
+            thisChar = s.charAt(i);
+            
+            switch (thisChar) {
+            case '\\':
+            case '"':
+              wr.write('\\');
+              wr.write(thisChar);
               break;
-            case '\r': 
-              wr.append("\\r");
+            case '/':
+              // Prevent from closing a </script> tag. 
+              if (prevChar == '<') {
+                wr.write('\\');
+              }
+              wr.write(thisChar);
               break;
-            case '\n': 
-              wr.append("\\n");
+            case '\b':
+              wr.write('\\');
+              wr.write('b');
               break;
-            case '\"': 
-              wr.append("\\\"");
+            case '\t':
+              wr.write('\\');
+              wr.write('t');
               break;
-            case '\\': 
-              wr.append("\\\\");
+            case '\n':
+              wr.write('\\');
+              wr.write('n');
+              break;
+            case '\f':
+              wr.write('\\');
+              wr.write('f');
+              break;
+            case '\r':
+              wr.write('\\');
+              wr.write('r');
               break;
             default:
-  				    wr.write(t);
-  				    break;
-  				}
-				}
-			
-  			if (quote) wr.append('\"');
-  			
+              if (!maybeWriteAsUxxxxChar(thisChar, wr)) {
+                wr.write(thisChar);
+              }
+              break;
+            }
+          }
+        }
+        
+        wr.write('"');
+        
+        wr.flush();
+        
+        String str = wr.toString();
+        byte[] bytes = str.getBytes(StandardCharsets.UTF_8);
+        buf.put(bytes);
       }
-      else {
-        wr.append("\"\"");
+      catch (IOException e) {
+        throw new UncheckedIOException(e);
       }
-		}
-    catch (IOException e) {
-      throw new UncheckedIOException(e);
     }
-  }
 
 	/**
-	 * Write a null value.
-	 * Used to write the first element of the object table.
+	 * Write character if it needs to be serialized as "\\uxxxx".
+	 * @param c Character
+	 * @param wr Writer
+	 * @return true, if char has been written
+	 * @throws IOException
 	 */
-	public final void putNull() {
-		ensureRemaining(5);
-		if (addComma) buf.put((byte)','); else addComma = true;
-		final int n = ('n' << 24) | ('u' << 16) | ('l' << 8) | ('l');
-		buf.putInt(n);
+	private boolean maybeWriteAsUxxxxChar(char c, Writer wr) throws IOException {
+      boolean uxxxx = c < ' ' 
+          || (c >= '\u0080' && c < '\u00a0')
+          || (c >= '\u2000' && c < '\u2100');
+      
+      if (uxxxx) {
+        wr.write('\\');
+        wr.write('u');
+        String xxxx = Integer.toHexString(c);
+        int len = xxxx.length();
+        for (int i = 0; i < 4 - len; i++) {
+          wr.write('0');
+        }
+        wr.write(xxxx);
+      }
+      
+      return uxxxx;
 	}
+	
+
+  /**
+   * Write a null value.
+   * Used to write the first element of the object table.
+   */
+  public final void putNull() {
+	ensureRemaining(5);
+	if (addComma) buf.put((byte)','); else addComma = true;
+	final int n = ('n' << 24) | ('u' << 16) | ('l' << 8) | ('l');
+	buf.putInt(n);
+  }
 	
   private final int STRING_WITHOUT_QUOTE = 0;
 	private final int STRING_WITH_QUOTE = 1;
@@ -675,7 +721,11 @@ public class BBufferJson extends BBuffer {
           case 'u':
             i++;
             sbuf.append((char)Integer.parseInt(s.substring(i, i+4), 16));
-            i+=4;
+            i += 3; // +1 in for-loop
+            // BYPS-95: Last string character was lost if previous was a \\uxxxx
+            // This was only a problem for Strings sent from Java with JSON-serialization.
+            // Strings sent from a Browser contain UTF-8 bytes and do not send multi-byte 
+            // characters as \\uxxxx.
             break;
           default: // e.g. \"
             sbuf.append(c);
@@ -776,7 +826,8 @@ public class BBufferJson extends BBuffer {
 				case ' ':
 				case '\n':
 				case '\r':
-				case '\t':
+                case '\t':
+                case '\f':
 				  if (!eat) {
 				    buf.position(buf.position()+1);
 				  }

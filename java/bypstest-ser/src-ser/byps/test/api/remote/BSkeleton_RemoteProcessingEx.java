@@ -13,16 +13,16 @@ import byps.*;
  * Either provide an asynchronous or a synchronous function in your subclass.
  * The framework calls only the asynchronous function.
  */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class BSkeleton_RemoteProcessingEx extends BSkeleton implements RemoteProcessingExAsync {
 	
 	public final static long serialVersionUID = 790485113L;
 	
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public boolean getValueAfterProcessingExceptions(int sleepSeconds) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getValueAfterProcessingExceptions(int sleepSeconds, final BAsyncResult<Boolean> asyncResult) {
 		try {
 			boolean ret = getValueAfterProcessingExceptions(sleepSeconds);

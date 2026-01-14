@@ -57,6 +57,8 @@ public class AllTypesC implements Serializable {
 	
 	public final static String[] arrStrings = new String[] {"s1", "s2"};
 	public final static String[][][][] arrStrings4 = new String[][][][] {{{{"s1", "s2"}}}};
-	
-	public final static AllTypesZ[][] arrALL = new AllTypesZ[][] { { new AllTypesZ() }, { ALL } };
+
+	public final static AllTypesZ[] arrAll1dim = new AllTypesZ[] { new AllTypesZ(), ALL };
+
+	public final static AllTypesZ[][] arrALL2dim = new AllTypesZ[][] { { new AllTypesZ() }, { ALL } };
 }

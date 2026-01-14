@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
 */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public final class BRequest_RemoteListTypes_setInt1 extends BMethodRequest implements Serializable {
 
 	public java.util.List<java.lang.Integer> int1;

@@ -9,7 +9,7 @@ package byps.test.api;
 import byps.*;
 import java.util.*;
 
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class BSerializer_1347703734 extends BSerializer_13 {
 	
 	public final static BSerializer instance = new BSerializer_1347703734();
@@ -39,9 +39,9 @@ public class BSerializer_1347703734 extends BSerializer_13 {
 		int n = map.size();
 		bbuf.putLength(n);
 		for (Map.Entry<java.lang.Integer,java.lang.Integer> obj : map.entrySet()) {
-			// checkpoint byps.gen.j.PrintContext:359
+			// checkpoint byps.gen.j.PrintContext:361
 			bbuf.putInt(obj.getKey() != null ? (Integer)obj.getKey() : 0);
-			// checkpoint byps.gen.j.PrintContext:359
+			// checkpoint byps.gen.j.PrintContext:361
 			bbuf.putInt(obj.getValue() != null ? (Integer)obj.getValue() : 0);
 		}
 	}

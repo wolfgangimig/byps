@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
 */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public final class BRequest_RemoteMapTypes_setLong1 extends BMethodRequest implements Serializable {
 
 	public java.util.Map<java.lang.Short,java.lang.Long> long1;

@@ -11,7 +11,7 @@ import byps.BRemote;
 
 /**
 */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public final class BResult_16 extends BMethodResult<BRemote> implements Serializable {
 
 	

@@ -12,10 +12,10 @@ import byps.*;
 // isEnum=false
 // isFinal=false
 // isInline=false
-// #members=18
+// #members=19
 
 // checkpoint byps.gen.j.GenSerStruct:304
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class JSerializer_930294276 extends JSerializer_Object {
 	
 	public final static BSerializer instance = new JSerializer_930294276();
@@ -45,7 +45,8 @@ public class JSerializer_930294276 extends JSerializer_Object {
 		bbuf.putString("string1s", obj.string1s);
 		bbuf.putString("stringNull", obj.stringNull);
 		bout.writeObj("ALL",obj.ALL, false, null);
-		bout.writeObj("arrALL",obj.arrALL, false, byps.test.api.JSerializer_81775365.instance);
+		bout.writeObj("arrALL2dim",obj.arrALL2dim, false, byps.test.api.JSerializer_81775365.instance);
+		bout.writeObj("arrAll1dim",obj.arrAll1dim, false, byps.test.api.JSerializer_85091.instance);
 		bout.writeObj("arrInt",obj.arrInt, false, byps.test.api.JSerializer_100361105.instance);
 		bout.writeObj("arrInt4",obj.arrInt4, false, byps.test.api.JSerializer_39910537.instance);
 		bout.writeObj("arrStrings",obj.arrStrings, true, byps.test.api.JSerializer_1888107655.instance);

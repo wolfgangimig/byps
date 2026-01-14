@@ -8,27 +8,28 @@ package byps.test.api.remote;
 import byps.*;
 
 // checkpoint byps.gen.j.GenRemoteClassAsync:68
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public interface RemoteServerCtrlAsync extends BRemote, 
 	RemoteServerCtrl {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers, final BAsyncResult<Object> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public BRemote getPublishedRemote(java.lang.String name) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getPublishedRemote(java.lang.String name, final BAsyncResult<BRemote> asyncResult) ;
 	
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public void removePublishedRemote(java.lang.String name) throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void removePublishedRemote(java.lang.String name, final BAsyncResult<Object> asyncResult) ;
 	
 	

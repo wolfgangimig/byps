@@ -11,7 +11,7 @@ import byps.test.api.refs.Node;
 
 /**
 */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public final class BRequest_RemoteReferences_setNode extends BMethodRequest implements Serializable {
 
 	public byps.test.api.refs.Node v;

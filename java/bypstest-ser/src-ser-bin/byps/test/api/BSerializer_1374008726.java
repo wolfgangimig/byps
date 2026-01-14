@@ -7,7 +7,7 @@ package byps.test.api;
  */
 
 import byps.*;
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class BSerializer_1374008726 extends BSerializer {
 	
 	public final static BSerializer instance = new BSerializer_1374008726();

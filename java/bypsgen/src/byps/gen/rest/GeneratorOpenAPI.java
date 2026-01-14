@@ -20,13 +20,10 @@ import java.util.TreeMap;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import byps.BValueClass;
 import byps.BVersioning;
 import byps.gen.RestConstants;
@@ -765,8 +762,18 @@ public class GeneratorOpenAPI implements Generator {
     // BYPS-73
     if (!typeInfo.isPrimitiveType()) {
       String itemTypeName = itemType.toString();
-      itemType = serials.get(itemTypeName);
-      if (itemType == null) throw new IllegalStateException("Missing " + itemTypeName + " as item type of " + typeInfo);
+
+      // BYPS-95: ignore missing item type in serials.  
+      // Got this situation with 
+      //   - java.io.InputStream
+      //   - AllTypesZ[][] in AllTypesC before declaring an additional member AllTypesZ[] (1-dim array)
+      TypeInfo itemTypeFromSerials = serials.get(itemTypeName);
+      if (itemTypeFromSerials != null) {
+        itemType = itemTypeFromSerials;
+      }
+      else {
+        log.warn("Maybe missing " + itemTypeName + " as item type of " + typeInfo);
+      }
     }
     
     SchemaN itemSchema = toSchemaRef(itemType); 

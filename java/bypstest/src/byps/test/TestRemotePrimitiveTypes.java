@@ -2,14 +2,14 @@ package byps.test;
 
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.Date;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import byps.BAsyncResult;
+import byps.BBinaryModel;
 import byps.BClient;
 import byps.BException;
 import byps.BLazyLoad;
@@ -121,6 +121,49 @@ public class TestRemotePrimitiveTypes {
 		
 		log.info(")testRemotePrimitiveTypes");
 	}
+	
+    /**
+     * Check serialization of special chars especially 0-Byte character, JSON serialized.
+     * BYPS-95
+     * @throws RemoteException
+     */
+    @Test
+    public void testReadStringWithSpecialCharsJSON() throws RemoteException {
+      log.info("testReadStringWithSpecialCharsJSON(");
+      internalReadStringWithSpecialChars(BBinaryModel.JSON);
+      log.info(")testReadStringWithSpecialCharsJSON");
+    }
+
+    /**
+     * Check serialization of special chars especially 0-Byte character, binary serialized.
+     * BYPS-95
+     * @throws RemoteException
+     */
+    @Test
+    public void testReadStringWithSpecialCharsBinary() throws RemoteException {
+      log.info("testReadStringWithSpecialCharsBinary(");
+      internalReadStringWithSpecialChars(BBinaryModel.MEDIUM);
+      log.info(")testReadStringWithSpecialCharsBinary");
+    }
+
+    private void internalReadStringWithSpecialChars(BBinaryModel protocol) throws RemoteException {
+      var previousProtocol = TestUtils.protocol;
+      TestUtils.protocol = protocol;
+      BClient_Testser myClient = TestUtilsHttp.createClient(0);
+      try {
+        String[] strs = myClient.getRemotePrimitiveTypes().getStringsWithSpecialChars().toArray(String[]::new);
+        String[] strsE = PrimitiveTypes.STRING_WITH_SPECIAL_CHARS.split("-");
+        
+        for (int i = 0; i < strsE.length; i++) {
+          TestUtils.assertEquals(log, "Special chars", strsE[i], strs[i]);
+        }
+      }
+      finally {
+        myClient.done();
+        TestUtils.protocol = previousProtocol;
+      }
+    }
+
 	
 	/**
 	 * Send/receive an object of class PrimitiveTypes as Java type Object.

@@ -11,7 +11,7 @@ import java.util.HashSet;
 
 /**
 */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public final class BResult_31512998 extends BMethodResult<java.util.HashSet<java.lang.Byte>> implements Serializable {
 
 	

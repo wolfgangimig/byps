@@ -13,6 +13,13 @@ public class PrimitiveTypes extends BValueClass implements InterfaceToIgnore {
 	private static final long serialVersionUID = 1000L;
 	
 	/**
+	 * Serialize String with 0-Byte.
+	 * BYPS-95
+	 */
+    public static final String STRING_WITH_SPECIAL_CHARS = "\uD83D\uDC4D - 0000:\u0000 - pilcrow:¶ - Euro:€ - Emoji:😫";
+    //public static final String STRING_WITH_SPECIAL_CHARS = "pilcrow:¶ - Euro:€ - Emoji:😫";
+	
+	/**
 	 * Boolean value. 
 	 * Serialized as one byte with value 1 for true and value 0 for false.
 	 */

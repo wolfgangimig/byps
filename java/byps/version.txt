@@ -1,5 +1,9 @@
 BYPS Version History
 
+10.20
+
+- BYPS-95: Serialize 0-byte characters from a Java string correctly into a JSON string.
+
 10.19
 
 - BYPS-93: Generate Typescript declarations

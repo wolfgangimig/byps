@@ -4971,6 +4971,33 @@
         ]
       }
     },
+    "/RemotePrimitiveTypes/getStringsWithSpecialChars": {
+      "description": "Interface byps.test.api.remote.RemotePrimitiveTypes, method getStringsWithSpecialChars",
+      "post": {
+        "tags": [
+          "RemotePrimitiveTypes"
+        ],
+        "operationId": "RemotePrimitiveTypes_getStringsWithSpecialChars",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BResult_2123584667"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": [],
+            "basic": []
+          }
+        ]
+      }
+    },
     "/RemotePrimitiveTypes/makeDate": {
       "description": "Interface byps.test.api.remote.RemotePrimitiveTypes, method makeDate",
       "post": {
@@ -7604,13 +7631,6 @@
           "$ref": "#/components/schemas/PrimitiveTypes"
         }
       },
-      "ArrayOfbyte": {
-        "type": "array",
-        "items": {
-          "type": "integer",
-          "format": "int32"
-        }
-      },
       "BRequest_RemoteArrayTypes1dim_getPrimitiveTypes": {
         "type": "object"
       },
@@ -8009,11 +8029,8 @@
             "$ref": "#/components/schemas/HebrewZ"
           },
           "byte2": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "type": "string",
+            "format": "byte"
           },
           "int2": {
             "type": "array",
@@ -8052,20 +8069,13 @@
         "type": "object"
       },
       "EnumPlanets": {
-        "type": "object",
-        "properties": {
-          "Mercury": {
-            "description": "... is the closest planet to the Sun ...",
-            "$ref": "#/components/schemas/EnumPlanets"
-          },
-          "Venus": {
-            "$ref": "#/components/schemas/EnumPlanets"
-          },
-          "Earth": {
-            "$ref": "#/components/schemas/EnumPlanets"
-          }
-        },
-        "description": "Sample enum."
+        "type": "string",
+        "description": "Sample enum.",
+        "enum": [
+          "Mercury",
+          "Venus",
+          "Earth"
+        ]
       },
       "MapToInteger": {
         "type": "object",
@@ -8272,7 +8282,13 @@
           "arrStrings4": {
             "$ref": "#/components/schemas/Array4OfString"
           },
-          "arrALL": {
+          "arrAll1dim": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AllTypesZ"
+            }
+          },
+          "arrALL2dim": {
             "$ref": "#/components/schemas/Array2OfAllTypesZ"
           }
         }
@@ -8319,6 +8335,9 @@
         }
       },
       "BRequest_RemoteMapTypes_getDate1": {
+        "type": "object"
+      },
+      "BRequest_RemotePrimitiveTypes_getStringsWithSpecialChars": {
         "type": "object"
       },
       "BRequest_ServerIF_registerWithClientMap": {
@@ -8946,11 +8965,8 @@
         "type": "object",
         "properties": {
           "v": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "type": "string",
+            "format": "byte"
           }
         }
       },
@@ -9358,11 +9374,8 @@
         "type": "object",
         "properties": {
           "result": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "type": "string",
+            "format": "byte"
           },
           "exception": {
             "type": "string",
@@ -9411,7 +9424,12 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Class1"
+          }
+        ]
       },
       "Class3": {
         "type": "object",
@@ -9420,7 +9438,12 @@
             "type": "integer",
             "format": "int32"
           }
-        }
+        },
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Class2"
+          }
+        ]
       },
       "FruitService": {
         "type": "object"
@@ -9646,11 +9669,8 @@
             }
           },
           "bytes1": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "type": "string",
+            "format": "byte"
           },
           "chars1": {
             "type": "array",
@@ -9746,11 +9766,8 @@
             }
           },
           "bytes2": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "type": "string",
+            "format": "byte"
           },
           "chars2": {
             "type": "array",
@@ -9846,11 +9863,8 @@
             }
           },
           "bytes3": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "type": "string",
+            "format": "byte"
           },
           "chars3": {
             "type": "array",
@@ -9978,11 +9992,8 @@
             }
           },
           "byte1": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "type": "string",
+            "format": "byte"
           },
           "char1": {
             "type": "array",
@@ -10479,11 +10490,8 @@
       "Array2Ofbyte": {
         "type": "array",
         "items": {
-          "type": "array",
-          "items": {
-            "type": "integer",
-            "format": "int32"
-          }
+          "type": "string",
+          "format": "byte"
         }
       },
       "HashSetOfByte": {
@@ -11280,11 +11288,8 @@
       "SetOfArrayOfbyte": {
         "type": "array",
         "items": {
-          "type": "array",
-          "items": {
-            "type": "integer",
-            "format": "int32"
-          }
+          "type": "string",
+          "format": "byte"
         }
       },
       "BRequest_ServerIF_getStreamsFromClient": {
@@ -11369,11 +11374,8 @@
       "ListOfArrayOfbyte": {
         "type": "array",
         "items": {
-          "type": "array",
-          "items": {
-            "type": "integer",
-            "format": "int32"
-          }
+          "type": "string",
+          "format": "byte"
         }
       },
       "BRequest_RemoteArrayTypes23_sendArraysInt": {
@@ -11491,6 +11493,10 @@
       "PrimitiveTypes": {
         "type": "object",
         "properties": {
+          "STRING_WITH_SPECIAL_CHARS": {
+            "type": "string",
+            "description": "Serialize String with 0-Byte.\nBYPS-95"
+          },
           "boolVal": {
             "type": "boolean",
             "description": "Boolean value.\nSerialized as one byte with value 1 for true and value 0 for false."
@@ -11580,19 +11586,13 @@
         }
       },
       "GroupingType": {
-        "type": "object",
-        "properties": {
-          "LEGACY": {
-            "$ref": "#/components/schemas/GroupingType"
-          },
-          "BY_KEY": {
-            "$ref": "#/components/schemas/GroupingType"
-          },
-          "BY_GROUP": {
-            "$ref": "#/components/schemas/GroupingType"
-          }
-        },
-        "description": "Zum Testen von BYPS-57."
+        "type": "string",
+        "description": "Zum Testen von BYPS-57.",
+        "enum": [
+          "LEGACY",
+          "BY_KEY",
+          "BY_GROUP"
+        ]
       },
       "BRequest_RemoteSetTypes_setByte2": {
         "type": "object",
@@ -11756,18 +11756,12 @@
         "type": "object"
       },
       "MyEncoding": {
-        "type": "object",
-        "properties": {
-          "UTF8": {
-            "$ref": "#/components/schemas/MyEncoding"
-          },
-          "UTF16": {
-            "$ref": "#/components/schemas/MyEncoding"
-          },
-          "UTF16LE": {
-            "$ref": "#/components/schemas/MyEncoding"
-          }
-        }
+        "type": "string",
+        "enum": [
+          "UTF8",
+          "UTF16",
+          "UTF16LE"
+        ]
       },
       "BRequest_RemoteArrayTypes1dim_getDate": {
         "type": "object"
@@ -12257,11 +12251,8 @@
       "MapToArrayOfbyte": {
         "type": "object",
         "additionalProperties": {
-          "type": "array",
-          "items": {
-            "type": "integer",
-            "format": "int32"
-          }
+          "type": "string",
+          "format": "byte"
         }
       },
       "RemoteSetTypes": {

@@ -27,6 +27,11 @@ Simple test for BYPS-92: suppport 4byte UTF-8 chars.
 		document.getElementById("strOut").value = strR;
 	}
 	
+	function onGetSpecialChars() {
+		var strR = client.remotePrimitiveTypes.getStringsWithSpecialChars();
+		document.getElementById("strSpecialChars").value = strR.join("-,-");
+	}
+	
 </script>
 
 </head>
@@ -44,7 +49,7 @@ Simple test for BYPS-92: suppport 4byte UTF-8 chars.
 
 					<tr>
 						<td>Input</td>
-						<td><input id="strIn" name="strIn" /></td>
+						<td><input id="strIn" name="strIn" size="100" /></td>
 					</tr>
 
 					<tr>
@@ -54,13 +59,32 @@ Simple test for BYPS-92: suppport 4byte UTF-8 chars.
 
 					<tr>
 						<td>Output</td>
-						<td><input id="strOut" name="strOut" /></td>
+						<td><input id="strOut" name="strOut" size="100" /></td>
 					</tr>
 
-					
 				</table>
 			</td>
 		</tr>
+
+    <!--  BYPS-95: send "\u0000" from Java server-side to JS client -->
+    <tr>
+      <td>
+
+        <table border="2">
+
+          <tr>
+            <td>&nbsp;</td>
+            <td><input type="button" value="Submit" onclick="onGetSpecialChars()" /></td>
+          </tr>
+
+          <tr>
+            <td>Output</td>
+            <td><input id="strSpecialChars" name="strSpecialChars" size="100" /></td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
 
 	</table>
 </body>

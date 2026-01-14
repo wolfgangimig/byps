@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
 */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public final class BResult_588723219 extends BMethodResult<java.lang.String[][][][]> implements Serializable {
 
 	

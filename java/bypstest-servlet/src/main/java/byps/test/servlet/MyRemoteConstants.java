@@ -103,7 +103,7 @@ public class MyRemoteConstants extends BSkeleton_RemoteConstants {
 		compareArray4(AllTypesC.arrInt4, arrInt4);
 		compareArray(AllTypesC.arrStrings, arrStrings);
 		compareArray4(AllTypesC.arrStrings4, arrStrings4);
-		compareArray2(AllTypesC.arrALL, arrAll);
+		compareArray2(AllTypesC.arrALL2dim, arrAll);
 
 		return true;
 	}

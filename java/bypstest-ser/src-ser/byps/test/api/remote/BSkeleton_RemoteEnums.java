@@ -13,16 +13,16 @@ import byps.*;
  * Either provide an asynchronous or a synchronous function in your subclass.
  * The framework calls only the asynchronous function.
  */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class BSkeleton_RemoteEnums extends BSkeleton implements RemoteEnumsAsync {
 	
 	public final static long serialVersionUID = 485761455L;
 	
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public byps.test.api.enu.EnumPlanets getPlanet() throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getPlanet(final BAsyncResult<byps.test.api.enu.EnumPlanets> asyncResult) {
 		try {
 			byps.test.api.enu.EnumPlanets ret = getPlanet();
@@ -32,11 +32,11 @@ public class BSkeleton_RemoteEnums extends BSkeleton implements RemoteEnumsAsync
 		}
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public void setPlanet(byps.test.api.enu.EnumPlanets planet) throws RemoteException {
 		throw new BException(BExceptionC.UNSUPPORTED_METHOD, "");
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setPlanet(byps.test.api.enu.EnumPlanets planet, final BAsyncResult<Object> asyncResult) {
 		try {
 			setPlanet(planet);

@@ -8,6 +8,7 @@ package byps.test.api.remote;
 import byps.*;
 
 // checkpoint byps.gen.j.GenRemoteStub:164
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class BStub_RemoteProcessingEx extends BStub implements RemoteProcessingExAsync, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
@@ -17,14 +18,14 @@ public class BStub_RemoteProcessingEx extends BStub implements RemoteProcessingE
 		super(transport);		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public boolean getValueAfterProcessingExceptions(int sleepSeconds) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Boolean> asyncResult = new BSyncResult<Boolean>();		
 		getValueAfterProcessingExceptions(sleepSeconds, asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getValueAfterProcessingExceptions(int sleepSeconds, final BAsyncResult<Boolean> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions req = new BRequest_RemoteProcessingEx_getValueAfterProcessingExceptions();		

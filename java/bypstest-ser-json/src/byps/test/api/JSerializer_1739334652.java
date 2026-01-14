@@ -7,7 +7,7 @@ package byps.test.api;
  */
 
 import byps.*;
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class JSerializer_1739334652 extends JSerializer_Array {
 	
 	public final static BSerializer instance = new JSerializer_1739334652();
@@ -70,7 +70,7 @@ public class JSerializer_1739334652 extends JSerializer_Array {
 				final byps.test.api.prim.PrimitiveTypes[] a0 = a1[i1];
 				bbuf.beginArray();
 				for (int i0 = 0; i0 < n0; i0++) {
-					// checkpoint byps.gen.j.PrintContext:340
+					// checkpoint byps.gen.j.PrintContext:342
 					bout.writeObj(null, a0[i0], false, null);
 				}
 				bbuf.endArray();

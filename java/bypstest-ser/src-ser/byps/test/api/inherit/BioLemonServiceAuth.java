@@ -8,14 +8,15 @@ package byps.test.api.inherit;
 import byps.*;
 
 // checkpoint byps.gen.j.GenRemoteClassAsync:68
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public interface BioLemonServiceAuth extends BRemote, 
 	byps.test.api.inherit.BioFruitServiceAuth, 
 	byps.test.api.inherit.LemonServiceAuth {
 	/**
 	*/
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public int useParing() throws RemoteException;
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void useParing(final BAsyncResult<Integer> asyncResult) ;
 	
 	

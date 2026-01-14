@@ -1,10 +1,12 @@
 package byps.test.servlet;
+import java.util.ArrayList;
+import java.util.Arrays;
 /* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.TimeZone;
-
 import byps.BAsyncResult;
 import byps.BException;
 import byps.BExceptionC;
@@ -214,5 +216,19 @@ public class MyRemotePrimitiveTypes extends BSkeleton_RemotePrimitiveTypes {
 	@Override
 	  public int add(int a, int b) throws RemoteException {
 	    return a + b;
+	  }
+	
+	
+	  /**
+	   * Return a string with special chars, esp. 0-byte.
+	   * BYPS-95
+	   */
+	  @Override
+	  public List<String> getStringsWithSpecialChars() throws RemoteException {
+	    String[] strs1 = PrimitiveTypes.STRING_WITH_SPECIAL_CHARS.split("-");
+	    List<String> strs = new ArrayList<String>();
+	    strs.addAll(Arrays.asList(strs1));
+	   
+	    return strs;
 	  }
 }

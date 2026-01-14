@@ -8,6 +8,7 @@ package byps.test.api.remote;
 import byps.*;
 
 // checkpoint byps.gen.j.GenRemoteStub:164
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class BStub_RemoteReferences extends BStub implements RemoteReferencesAsync, java.io.Serializable {
 	
 	// checkpoint byps.gen.j.GenRemoteStub:145
@@ -17,28 +18,28 @@ public class BStub_RemoteReferences extends BStub implements RemoteReferencesAsy
 		super(transport);		
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public byps.test.api.refs.Node getNode() throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<byps.test.api.refs.Node> asyncResult = new BSyncResult<byps.test.api.refs.Node>();		
 		getNode(asyncResult);
 		return asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void getNode(final BAsyncResult<byps.test.api.refs.Node> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteReferences_getNode req = new BRequest_RemoteReferences_getNode();		
 		transport.sendMethod(req, asyncResult);
 	}
 	
-	// checkpoint byps.gen.j.PrintContext:396
+	// checkpoint byps.gen.j.PrintContext:398
 	public void setNode(byps.test.api.refs.Node v) throws RemoteException {
 		// checkpoint byps.gen.j.GenRemoteStub:46
 		final BSyncResult<Object> asyncResult = new BSyncResult<Object>();		
 		setNode(v, asyncResult);
 		asyncResult.getResult();		
 	}
-	// checkpoint byps.gen.j.PrintContext:440
+	// checkpoint byps.gen.j.PrintContext:442
 	public void setNode(byps.test.api.refs.Node v, final BAsyncResult<Object> asyncResult) {
 		// checkpoint byps.gen.j.GenRemoteStub:113
 		BRequest_RemoteReferences_setNode req = new BRequest_RemoteReferences_setNode();		

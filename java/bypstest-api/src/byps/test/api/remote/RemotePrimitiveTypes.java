@@ -1,14 +1,13 @@
 package byps.test.api.remote;
 
 import java.util.Date;
-
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-
+import java.util.List;
 import byps.BDefaultValue;
 import byps.BRemote;
 import byps.RemoteException;
 import byps.test.api.prim.PrimitiveTypes;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 
 /**
@@ -58,4 +57,6 @@ public interface RemotePrimitiveTypes extends BRemote {
 	public void throwException() throws RemoteException;
 	
 	public int getDeferredValueFromServer(int param1, String param2) throws RemoteException;
+	
+	public List<String> getStringsWithSpecialChars() throws RemoteException;
 }

@@ -41,7 +41,7 @@ public class Main {
     
     // DEBUG
     if (args == null || args.length == 0) {
-      args = DebugArgs.byps_ix; // BYPS-73
+      args = DebugArgs.bypstest_ser; 
     }
     
     // BYPS-14: suppress generator warning "Illegal reflective access..."

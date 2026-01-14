@@ -11,7 +11,7 @@ import java.util.TreeSet;
 
 /**
 */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public final class BResult_936607009 extends BMethodResult<java.util.TreeSet<java.lang.Character>> implements Serializable {
 
 	

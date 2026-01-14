@@ -4,6 +4,7 @@ import java.util.*;
 import byps.*;
 import byps.rest.*;
 
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class RestOperations_Testser extends RestOperations {
 	public static RestOperations instance() {
 		return instance;
@@ -167,6 +168,7 @@ public class RestOperations_Testser extends RestOperations {
 		add("post", "/RemotePrimitiveTypes/getPrimitiveTypes", new Operation("RemotePrimitiveTypes_getPrimitiveTypes"));
 		add("post", "/RemotePrimitiveTypes/getShort", new Operation("RemotePrimitiveTypes_getShort"));
 		add("post", "/RemotePrimitiveTypes/getString", new Operation("RemotePrimitiveTypes_getString"));
+		add("post", "/RemotePrimitiveTypes/getStringsWithSpecialChars", new Operation("RemotePrimitiveTypes_getStringsWithSpecialChars"));
 		add("post", "/RemotePrimitiveTypes/makeDate", new Operation("RemotePrimitiveTypes_makeDate"));
 		add("post", "/RemotePrimitiveTypes/parseDate", new Operation("RemotePrimitiveTypes_parseDate"));
 		add("get", "/RemotePrimitiveTypes/primitiveadd", new Operation("RemotePrimitiveTypes_add"));

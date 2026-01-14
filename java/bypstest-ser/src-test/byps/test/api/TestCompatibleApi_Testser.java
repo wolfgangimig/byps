@@ -9,7 +9,7 @@ import byps.*;
 import java.util.*;
 import org.slf4j.*;
 
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class TestCompatibleApi_Testser {
 
 	private final static Logger log = LoggerFactory.getLogger("TestCompatibleApi_Testser.class");
@@ -580,6 +580,9 @@ public class TestCompatibleApi_Testser {
 			}
 			if (negotiatedVersion >= 0L) {
 				internalTest_byps_test_api_remote_RemotePrimitiveTypes_getDeferredValueFromServer(remote);
+			}
+			if (negotiatedVersion >= 0L) {
+				internalTest_byps_test_api_remote_RemotePrimitiveTypes_getStringsWithSpecialChars(remote);
 			}
 		}
 		
@@ -1867,6 +1870,11 @@ public class TestCompatibleApi_Testser {
 		remote.getDeferredValueFromServer(obj140, obj141);
 	}
 	
+	public static void internalTest_byps_test_api_remote_RemotePrimitiveTypes_getStringsWithSpecialChars(byps.test.api.remote.BStub_RemotePrimitiveTypes remote) throws RemoteException {
+		log.info("internalTest_byps_test_api_remote_RemotePrimitiveTypes_getStringsWithSpecialChars()");
+		remote.getStringsWithSpecialChars();
+	}
+	
 	
 	public static void internalTest_byps_test_api_remote_RemoteProcessingEx_getValueAfterProcessingExceptions(byps.test.api.remote.BStub_RemoteProcessingEx remote) throws RemoteException {
 		log.info("internalTest_byps_test_api_remote_RemoteProcessingEx_getValueAfterProcessingExceptions()");
@@ -2365,7 +2373,7 @@ public class TestCompatibleApi_Testser {
 	public static void addRemotes(BServer server) {
 		server.addRemote(363642571, new byps.test.api.inherit.BSkeleton_BioFruitService() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public boolean certify(java.lang.String param) throws RemoteException {
 				log.info("BioFruitService.certify()");
 				boolean				obj197 = true;
@@ -2375,7 +2383,7 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(474058508, new byps.test.api.inherit.BSkeleton_BioLemonService() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public int useParing() throws RemoteException {
 				log.info("BioLemonService.useParing()");
 				int				obj198 = 9876543;
@@ -2385,7 +2393,7 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(715959905, new byps.test.api.inherit.BSkeleton_FruitService() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.lang.String squeeze() throws RemoteException {
 				log.info("FruitService.squeeze()");
 				java.lang.String				obj199 = "STRING";
@@ -2395,7 +2403,7 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(605543968, new byps.test.api.inherit.BSkeleton_LemonService() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.lang.String pick(byps.test.api.auth.SessionInfo sess, java.lang.String fromTree) throws RemoteException {
 				log.info("LemonService.pick()");
 				java.lang.String				obj200 = "STRING";
@@ -2405,7 +2413,7 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(1954605928, new byps.test.api.inherit.BSkeleton_PlantService() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.lang.String grow() throws RemoteException {
 				log.info("PlantService.grow()");
 				java.lang.String				obj201 = "STRING";
@@ -2415,144 +2423,144 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(123123, new byps.test.api.remote.BSkeleton_RemoteArrayTypes1dim() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setBool(boolean[] v) throws RemoteException {
 				log.info("RemoteArrayTypes1dim.setBool()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setByte(byte[] v) throws RemoteException {
 				log.info("RemoteArrayTypes1dim.setByte()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setChar(char[] v) throws RemoteException {
 				log.info("RemoteArrayTypes1dim.setChar()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setShort(short[] v) throws RemoteException {
 				log.info("RemoteArrayTypes1dim.setShort()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setInt(int[] v) throws RemoteException {
 				log.info("RemoteArrayTypes1dim.setInt()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setLong(long[] v) throws RemoteException {
 				log.info("RemoteArrayTypes1dim.setLong()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setFloat(float[] v) throws RemoteException {
 				log.info("RemoteArrayTypes1dim.setFloat()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setDouble(double[] v) throws RemoteException {
 				log.info("RemoteArrayTypes1dim.setDouble()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setString(java.lang.String[] v) throws RemoteException {
 				log.info("RemoteArrayTypes1dim.setString()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setPrimitiveTypes(byps.test.api.prim.PrimitiveTypes[] v) throws RemoteException {
 				log.info("RemoteArrayTypes1dim.setPrimitiveTypes()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setObject(java.lang.Object[] v) throws RemoteException {
 				log.info("RemoteArrayTypes1dim.setObject()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setDate(java.util.Date[] v) throws RemoteException {
 				log.info("RemoteArrayTypes1dim.setDate()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public boolean[] getBool() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getBool()");
 				boolean[]				obj202 = new boolean[0];
 				return obj202;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byte[] getByte() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getByte()");
 				byte[]				obj203 = new byte[0];
 				return obj203;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public char[] getChar() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getChar()");
 				char[]				obj204 = new char[0];
 				return obj204;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public short[] getShort() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getShort()");
 				short[]				obj205 = new short[0];
 				return obj205;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public int[] getInt() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getInt()");
 				int[]				obj206 = new int[0];
 				return obj206;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public long[] getLong() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getLong()");
 				long[]				obj207 = new long[0];
 				return obj207;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public float[] getFloat() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getFloat()");
 				float[]				obj208 = new float[0];
 				return obj208;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public double[] getDouble() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getDouble()");
 				double[]				obj209 = new double[0];
 				return obj209;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.lang.String[] getString() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getString()");
 				java.lang.String[]				obj210 = new java.lang.String[0];
 				return obj210;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.prim.PrimitiveTypes[] getPrimitiveTypes() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getPrimitiveTypes()");
 				byps.test.api.prim.PrimitiveTypes[]				obj211 = new byps.test.api.prim.PrimitiveTypes[0];
 				return obj211;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.lang.Object[] getObject() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getObject()");
 				java.lang.Object[] obj212 = null;
 				return obj212;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Date[] getDate() throws RemoteException {
 				log.info("RemoteArrayTypes1dim.getDate()");
 				java.util.Date[]				obj213 = new java.util.Date[0];
@@ -2562,35 +2570,35 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(769717182, new byps.test.api.remote.BSkeleton_RemoteArrayTypes23() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public int[] sendArraysInt(int[][] arr2, int[][][] arr3, int[][][][] arr4) throws RemoteException {
 				log.info("RemoteArrayTypes23.sendArraysInt()");
 				int[]				obj214 = new int[0];
 				return obj214;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.lang.String[] sendArraysString(java.lang.String[][] arr2, java.lang.String[][][] arr3, java.lang.String[][][][] arr4) throws RemoteException {
 				log.info("RemoteArrayTypes23.sendArraysString()");
 				java.lang.String[]				obj215 = new java.lang.String[0];
 				return obj215;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.prim.PrimitiveTypes[] sendArraysClass(byps.test.api.prim.PrimitiveTypes[][] arr2, byps.test.api.prim.PrimitiveTypes[][][] arr3, byps.test.api.prim.PrimitiveTypes[][][][] arr4) throws RemoteException {
 				log.info("RemoteArrayTypes23.sendArraysClass()");
 				byps.test.api.prim.PrimitiveTypes[]				obj216 = new byps.test.api.prim.PrimitiveTypes[0];
 				return obj216;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.lang.Object[] sendArraysObject(java.lang.Object[][] arr2, java.lang.Object[][][] arr3, java.lang.Object[][][][] arr4) throws RemoteException {
 				log.info("RemoteArrayTypes23.sendArraysObject()");
 				java.lang.Object[] obj217 = null;
 				return obj217;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.inl.Point2D[] sendArraysInline(byps.test.api.inl.Point2D[][] arr2, byps.test.api.inl.Point2D[][][] arr3, byps.test.api.inl.Point2D[][][][] arr4) throws RemoteException {
 				log.info("RemoteArrayTypes23.sendArraysInline()");
 				byps.test.api.inl.Point2D[]				obj218 = new byps.test.api.inl.Point2D[0];
@@ -2600,144 +2608,144 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(963726955, new byps.test.api.remote.BSkeleton_RemoteArrayTypes4dim() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setBool(boolean[][][][] v) throws RemoteException {
 				log.info("RemoteArrayTypes4dim.setBool()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setByte(byte[][][][] v) throws RemoteException {
 				log.info("RemoteArrayTypes4dim.setByte()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setChar(char[][][][] v) throws RemoteException {
 				log.info("RemoteArrayTypes4dim.setChar()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setShort(short[][][][] v) throws RemoteException {
 				log.info("RemoteArrayTypes4dim.setShort()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setInt(int[][][][] v) throws RemoteException {
 				log.info("RemoteArrayTypes4dim.setInt()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setLong(long[][][][] v) throws RemoteException {
 				log.info("RemoteArrayTypes4dim.setLong()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setFloat(float[][][][] v) throws RemoteException {
 				log.info("RemoteArrayTypes4dim.setFloat()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setDouble(double[][][][] v) throws RemoteException {
 				log.info("RemoteArrayTypes4dim.setDouble()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setString(java.lang.String[][][][] v) throws RemoteException {
 				log.info("RemoteArrayTypes4dim.setString()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setPrimitiveTypes(byps.test.api.prim.PrimitiveTypes[][][][] v) throws RemoteException {
 				log.info("RemoteArrayTypes4dim.setPrimitiveTypes()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setObject(java.lang.Object[][][][] v) throws RemoteException {
 				log.info("RemoteArrayTypes4dim.setObject()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setDate(java.util.Date[][][][] v) throws RemoteException {
 				log.info("RemoteArrayTypes4dim.setDate()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public boolean[][][][] getBool() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getBool()");
 				boolean[][][][]				obj219 = new boolean[0][0][0][0];
 				return obj219;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byte[][][][] getByte() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getByte()");
 				byte[][][][]				obj220 = new byte[0][0][0][0];
 				return obj220;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public char[][][][] getChar() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getChar()");
 				char[][][][]				obj221 = new char[0][0][0][0];
 				return obj221;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public short[][][][] getShort() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getShort()");
 				short[][][][]				obj222 = new short[0][0][0][0];
 				return obj222;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public int[][][][] getInt() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getInt()");
 				int[][][][]				obj223 = new int[0][0][0][0];
 				return obj223;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public long[][][][] getLong() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getLong()");
 				long[][][][]				obj224 = new long[0][0][0][0];
 				return obj224;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public float[][][][] getFloat() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getFloat()");
 				float[][][][]				obj225 = new float[0][0][0][0];
 				return obj225;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public double[][][][] getDouble() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getDouble()");
 				double[][][][]				obj226 = new double[0][0][0][0];
 				return obj226;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.lang.String[][][][] getString() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getString()");
 				java.lang.String[][][][]				obj227 = new java.lang.String[0][0][0][0];
 				return obj227;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.prim.PrimitiveTypes[][][][] getPrimitiveTypes() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getPrimitiveTypes()");
 				byps.test.api.prim.PrimitiveTypes[][][][]				obj228 = new byps.test.api.prim.PrimitiveTypes[0][0][0][0];
 				return obj228;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.lang.Object[][][][] getObject() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getObject()");
 				java.lang.Object[][][][] obj229 = null;
 				return obj229;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Date[][][][] getDate() throws RemoteException {
 				log.info("RemoteArrayTypes4dim.getDate()");
 				java.util.Date[][][][]				obj230 = new java.util.Date[0][0][0][0];
@@ -2747,12 +2755,12 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(2045242510, new byps.test.api.remote.BSkeleton_RemoteConstants() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void compare_HebrewC(byps.test.api.cons.HebrewZ ALEPH, byps.test.api.cons.HebrewZ BETH) throws RemoteException {
 				log.info("RemoteConstants.compare_HebrewC()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public boolean compare_AllTypesC(boolean bool1s, boolean bool2s, char char1s, java.lang.String stringNull, char char2s, short short1s, int int1s, long long1s, float float1s, double double1s, java.lang.String string1s, byps.test.api.cons.AllTypesZ ALL, int[] arrInt, int[][][][] arrInt4, java.lang.String[] arrStrings, java.lang.String[][][][] arrStrings4, byps.test.api.cons.AllTypesZ[][] arrAll) throws RemoteException {
 				log.info("RemoteConstants.compare_AllTypesC()");
 				boolean				obj231 = true;
@@ -2762,14 +2770,14 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(485761455, new byps.test.api.remote.BSkeleton_RemoteEnums() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.enu.EnumPlanets getPlanet() throws RemoteException {
 				log.info("RemoteEnums.getPlanet()");
 				byps.test.api.enu.EnumPlanets				obj232 = byps.test.api.enu.EnumPlanets.values()[0];
 				return obj232;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setPlanet(byps.test.api.enu.EnumPlanets planet) throws RemoteException {
 				log.info("RemoteEnums.setPlanet()");
 			}
@@ -2777,12 +2785,12 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(567395951, new byps.test.api.remote.BSkeleton_RemoteInlineInstance() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setActor(byps.test.api.inl.Actor act) throws RemoteException {
 				log.info("RemoteInlineInstance.setActor()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.inl.Actor getActor() throws RemoteException {
 				log.info("RemoteInlineInstance.getActor()");
 				byps.test.api.inl.Actor obj234 = new byps.test.api.inl.Actor();
@@ -2803,60 +2811,60 @@ public class TestCompatibleApi_Testser {
 				return obj234;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setPoint2DArray1dim(byps.test.api.inl.Point2D[] pointArray) throws RemoteException {
 				log.info("RemoteInlineInstance.setPoint2DArray1dim()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.inl.Point2D[] getPoint2DArray1dim() throws RemoteException {
 				log.info("RemoteInlineInstance.getPoint2DArray1dim()");
 				byps.test.api.inl.Point2D[]				obj236 = new byps.test.api.inl.Point2D[0];
 				return obj236;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setPoint2DArray4dim(byps.test.api.inl.Point2D[][][][] pointArray) throws RemoteException {
 				log.info("RemoteInlineInstance.setPoint2DArray4dim()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.inl.Point2D[][][][] getPoint2DArray4dim() throws RemoteException {
 				log.info("RemoteInlineInstance.getPoint2DArray4dim()");
 				byps.test.api.inl.Point2D[][][][]				obj237 = new byps.test.api.inl.Point2D[0][0][0][0];
 				return obj237;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setPoint2DList(java.util.List<byps.test.api.inl.Point2D> pointList) throws RemoteException {
 				log.info("RemoteInlineInstance.setPoint2DList()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<byps.test.api.inl.Point2D> getPoint2DList() throws RemoteException {
 				log.info("RemoteInlineInstance.getPoint2DList()");
 				java.util.List<byps.test.api.inl.Point2D>				obj238 = new ArrayList<byps.test.api.inl.Point2D>();
 				return obj238;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setPoint2DListList(java.util.List<java.util.List<byps.test.api.inl.Point2D>> pointListList) throws RemoteException {
 				log.info("RemoteInlineInstance.setPoint2DListList()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<java.util.List<byps.test.api.inl.Point2D>> getPoint2DListList() throws RemoteException {
 				log.info("RemoteInlineInstance.getPoint2DListList()");
 				java.util.List<java.util.List<byps.test.api.inl.Point2D>>				obj239 = new ArrayList<java.util.List<byps.test.api.inl.Point2D>>();
 				return obj239;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setPoint2DMap(java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D> pointMap) throws RemoteException {
 				log.info("RemoteInlineInstance.setPoint2DMap()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D> getPoint2DMap() throws RemoteException {
 				log.info("RemoteInlineInstance.getPoint2DMap()");
 				java.util.Map<java.lang.Integer,byps.test.api.inl.Point2D>				obj240 = new HashMap<java.lang.Integer,byps.test.api.inl.Point2D>();
@@ -2866,194 +2874,194 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(1233438138, new byps.test.api.remote.BSkeleton_RemoteListTypes() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<java.lang.Boolean> getBoolean1() throws RemoteException {
 				log.info("RemoteListTypes.getBoolean1()");
 				java.util.List<java.lang.Boolean>				obj241 = new ArrayList<java.lang.Boolean>();
 				return obj241;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setBoolean1(java.util.List<java.lang.Boolean> boolean1) throws RemoteException {
 				log.info("RemoteListTypes.setBoolean1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<java.lang.Byte> getByte1() throws RemoteException {
 				log.info("RemoteListTypes.getByte1()");
 				java.util.List<java.lang.Byte>				obj242 = new ArrayList<java.lang.Byte>();
 				return obj242;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setByte1(java.util.List<java.lang.Byte> byte1) throws RemoteException {
 				log.info("RemoteListTypes.setByte1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<java.lang.Character> getChar1() throws RemoteException {
 				log.info("RemoteListTypes.getChar1()");
 				java.util.List<java.lang.Character>				obj243 = new ArrayList<java.lang.Character>();
 				return obj243;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setChar1(java.util.List<java.lang.Character> char1) throws RemoteException {
 				log.info("RemoteListTypes.setChar1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<java.lang.Short> getShort1() throws RemoteException {
 				log.info("RemoteListTypes.getShort1()");
 				java.util.List<java.lang.Short>				obj244 = new ArrayList<java.lang.Short>();
 				return obj244;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setShort1(java.util.List<java.lang.Short> short1) throws RemoteException {
 				log.info("RemoteListTypes.setShort1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<java.lang.Integer> getInt1() throws RemoteException {
 				log.info("RemoteListTypes.getInt1()");
 				java.util.List<java.lang.Integer>				obj245 = new ArrayList<java.lang.Integer>();
 				return obj245;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setInt1(java.util.List<java.lang.Integer> int1) throws RemoteException {
 				log.info("RemoteListTypes.setInt1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<java.lang.Long> getLong1() throws RemoteException {
 				log.info("RemoteListTypes.getLong1()");
 				java.util.List<java.lang.Long>				obj246 = new ArrayList<java.lang.Long>();
 				return obj246;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setLong1(java.util.List<java.lang.Long> long1) throws RemoteException {
 				log.info("RemoteListTypes.setLong1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<java.lang.Float> getFloat1() throws RemoteException {
 				log.info("RemoteListTypes.getFloat1()");
 				java.util.List<java.lang.Float>				obj247 = new ArrayList<java.lang.Float>();
 				return obj247;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setFloat1(java.util.List<java.lang.Float> float1) throws RemoteException {
 				log.info("RemoteListTypes.setFloat1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<java.lang.Double> getDouble1() throws RemoteException {
 				log.info("RemoteListTypes.getDouble1()");
 				java.util.List<java.lang.Double>				obj248 = new ArrayList<java.lang.Double>();
 				return obj248;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setDouble1(java.util.List<java.lang.Double> double1) throws RemoteException {
 				log.info("RemoteListTypes.setDouble1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<java.lang.String> getString1() throws RemoteException {
 				log.info("RemoteListTypes.getString1()");
 				java.util.List<java.lang.String>				obj249 = new ArrayList<java.lang.String>();
 				return obj249;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setString1(java.util.List<java.lang.String> string1) throws RemoteException {
 				log.info("RemoteListTypes.setString1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<byps.test.api.prim.PrimitiveTypes> getPrimitiveTypes1() throws RemoteException {
 				log.info("RemoteListTypes.getPrimitiveTypes1()");
 				java.util.List<byps.test.api.prim.PrimitiveTypes>				obj250 = new ArrayList<byps.test.api.prim.PrimitiveTypes>();
 				return obj250;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setPrimitiveTypes1(java.util.List<byps.test.api.prim.PrimitiveTypes> primitiveTypes1) throws RemoteException {
 				log.info("RemoteListTypes.setPrimitiveTypes1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<byte[]> getByte2() throws RemoteException {
 				log.info("RemoteListTypes.getByte2()");
 				java.util.List<byte[]>				obj251 = new ArrayList<byte[]>();
 				return obj251;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setByte2(java.util.List<byte[]> byte2) throws RemoteException {
 				log.info("RemoteListTypes.setByte2()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<int[]> getInt2() throws RemoteException {
 				log.info("RemoteListTypes.getInt2()");
 				java.util.List<int[]>				obj252 = new ArrayList<int[]>();
 				return obj252;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setInt2(java.util.List<int[]> int2) throws RemoteException {
 				log.info("RemoteListTypes.setInt2()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<java.lang.Object> getObj1() throws RemoteException {
 				log.info("RemoteListTypes.getObj1()");
 				java.util.List<java.lang.Object>				obj253 = new ArrayList<java.lang.Object>();
 				return obj253;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setObj1(java.util.List<java.lang.Object> obj1) throws RemoteException {
 				log.info("RemoteListTypes.setObj1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setDate1(java.util.List<java.util.Date> obj1) throws RemoteException {
 				log.info("RemoteListTypes.setDate1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<java.util.Date> getDate1() throws RemoteException {
 				log.info("RemoteListTypes.getDate1()");
 				java.util.List<java.util.Date>				obj254 = new ArrayList<java.util.Date>();
 				return obj254;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<java.util.List<java.lang.Integer>> getInt3() throws RemoteException {
 				log.info("RemoteListTypes.getInt3()");
 				java.util.List<java.util.List<java.lang.Integer>>				obj255 = new ArrayList<java.util.List<java.lang.Integer>>();
 				return obj255;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setInt3(java.util.List<java.util.List<java.lang.Integer>> int3) throws RemoteException {
 				log.info("RemoteListTypes.setInt3()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>> getInt4() throws RemoteException {
 				log.info("RemoteListTypes.getInt4()");
 				java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>				obj256 = new ArrayList<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>>();
 				return obj256;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setInt4(java.util.List<java.util.Map<java.lang.Integer,java.util.List<java.util.TreeSet<java.lang.Integer>>>> int4) throws RemoteException {
 				log.info("RemoteListTypes.setInt4()");
 			}
@@ -3061,170 +3069,170 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(664304990, new byps.test.api.remote.BSkeleton_RemoteMapTypes() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Map<java.lang.String,java.lang.Boolean> getBoolean1() throws RemoteException {
 				log.info("RemoteMapTypes.getBoolean1()");
 				java.util.Map<java.lang.String,java.lang.Boolean>				obj257 = new HashMap<java.lang.String,java.lang.Boolean>();
 				return obj257;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setBoolean1(java.util.Map<java.lang.String,java.lang.Boolean> boolean1) throws RemoteException {
 				log.info("RemoteMapTypes.setBoolean1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.HashMap<java.lang.Double,java.lang.Byte> getByte1() throws RemoteException {
 				log.info("RemoteMapTypes.getByte1()");
 				java.util.HashMap<java.lang.Double,java.lang.Byte>				obj258 = new java.util.HashMap<java.lang.Double,java.lang.Byte>();
 				return obj258;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setByte1(java.util.HashMap<java.lang.Double,java.lang.Byte> byte1) throws RemoteException {
 				log.info("RemoteMapTypes.setByte1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.TreeMap<java.lang.Float,java.lang.Character> getChar1() throws RemoteException {
 				log.info("RemoteMapTypes.getChar1()");
 				java.util.TreeMap<java.lang.Float,java.lang.Character>				obj259 = new java.util.TreeMap<java.lang.Float,java.lang.Character>();
 				return obj259;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setChar1(java.util.TreeMap<java.lang.Float,java.lang.Character> char1) throws RemoteException {
 				log.info("RemoteMapTypes.setChar1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Map<java.lang.Long,java.lang.Short> getShort1() throws RemoteException {
 				log.info("RemoteMapTypes.getShort1()");
 				java.util.Map<java.lang.Long,java.lang.Short>				obj260 = new HashMap<java.lang.Long,java.lang.Short>();
 				return obj260;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setShort1(java.util.Map<java.lang.Long,java.lang.Short> short1) throws RemoteException {
 				log.info("RemoteMapTypes.setShort1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Map<java.lang.Integer,java.lang.Integer> getInt1() throws RemoteException {
 				log.info("RemoteMapTypes.getInt1()");
 				java.util.Map<java.lang.Integer,java.lang.Integer>				obj261 = new HashMap<java.lang.Integer,java.lang.Integer>();
 				return obj261;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setInt1(java.util.Map<java.lang.Integer,java.lang.Integer> int1) throws RemoteException {
 				log.info("RemoteMapTypes.setInt1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Map<java.lang.Short,java.lang.Long> getLong1() throws RemoteException {
 				log.info("RemoteMapTypes.getLong1()");
 				java.util.Map<java.lang.Short,java.lang.Long>				obj262 = new HashMap<java.lang.Short,java.lang.Long>();
 				return obj262;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setLong1(java.util.Map<java.lang.Short,java.lang.Long> long1) throws RemoteException {
 				log.info("RemoteMapTypes.setLong1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Map<java.lang.Character,java.lang.Float> getFloat1() throws RemoteException {
 				log.info("RemoteMapTypes.getFloat1()");
 				java.util.Map<java.lang.Character,java.lang.Float>				obj263 = new HashMap<java.lang.Character,java.lang.Float>();
 				return obj263;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setFloat1(java.util.Map<java.lang.Character,java.lang.Float> float1) throws RemoteException {
 				log.info("RemoteMapTypes.setFloat1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Map<java.lang.Byte,java.lang.Double> getDouble1() throws RemoteException {
 				log.info("RemoteMapTypes.getDouble1()");
 				java.util.Map<java.lang.Byte,java.lang.Double>				obj264 = new HashMap<java.lang.Byte,java.lang.Double>();
 				return obj264;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setDouble1(java.util.Map<java.lang.Byte,java.lang.Double> double1) throws RemoteException {
 				log.info("RemoteMapTypes.setDouble1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Map<java.lang.String,java.lang.String> getString1() throws RemoteException {
 				log.info("RemoteMapTypes.getString1()");
 				java.util.Map<java.lang.String,java.lang.String>				obj265 = new HashMap<java.lang.String,java.lang.String>();
 				return obj265;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setString1(java.util.Map<java.lang.String,java.lang.String> string1) throws RemoteException {
 				log.info("RemoteMapTypes.setString1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes> getPrimitiveTypes1() throws RemoteException {
 				log.info("RemoteMapTypes.getPrimitiveTypes1()");
 				java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>				obj266 = new HashMap<java.lang.Integer,byps.test.api.prim.PrimitiveTypes>();
 				return obj266;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setPrimitiveTypes1(java.util.Map<java.lang.Integer,byps.test.api.prim.PrimitiveTypes> primitiveTypes1) throws RemoteException {
 				log.info("RemoteMapTypes.setPrimitiveTypes1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Map<java.lang.Integer,byte[]> getByte2() throws RemoteException {
 				log.info("RemoteMapTypes.getByte2()");
 				java.util.Map<java.lang.Integer,byte[]>				obj267 = new HashMap<java.lang.Integer,byte[]>();
 				return obj267;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setByte2(java.util.Map<java.lang.Integer,byte[]> byte2) throws RemoteException {
 				log.info("RemoteMapTypes.setByte2()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Map<java.lang.Integer,int[]> getInt2() throws RemoteException {
 				log.info("RemoteMapTypes.getInt2()");
 				java.util.Map<java.lang.Integer,int[]>				obj268 = new HashMap<java.lang.Integer,int[]>();
 				return obj268;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setInt2(java.util.Map<java.lang.Integer,int[]> int2) throws RemoteException {
 				log.info("RemoteMapTypes.setInt2()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Map<java.lang.String,java.lang.Object> getObj1() throws RemoteException {
 				log.info("RemoteMapTypes.getObj1()");
 				java.util.Map<java.lang.String,java.lang.Object>				obj269 = new HashMap<java.lang.String,java.lang.Object>();
 				return obj269;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setObj1(java.util.Map<java.lang.String,java.lang.Object> obj1) throws RemoteException {
 				log.info("RemoteMapTypes.setObj1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Map<java.lang.String,java.util.Date> getDate1() throws RemoteException {
 				log.info("RemoteMapTypes.getDate1()");
 				java.util.Map<java.lang.String,java.util.Date>				obj270 = new HashMap<java.lang.String,java.util.Date>();
 				return obj270;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setDate1(java.util.Map<java.lang.String,java.util.Date> obj1) throws RemoteException {
 				log.info("RemoteMapTypes.setDate1()");
 			}
@@ -3232,135 +3240,135 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(456456, new byps.test.api.remote.BSkeleton_RemotePrimitiveTypes() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void voidFunctionVoid() throws RemoteException {
 				log.info("RemotePrimitiveTypes.voidFunctionVoid()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setBool(boolean v) throws RemoteException {
 				log.info("RemotePrimitiveTypes.setBool()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setByte(byte v) throws RemoteException {
 				log.info("RemotePrimitiveTypes.setByte()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setChar(char v) throws RemoteException {
 				log.info("RemotePrimitiveTypes.setChar()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setShort(short v) throws RemoteException {
 				log.info("RemotePrimitiveTypes.setShort()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setInt(int v) throws RemoteException {
 				log.info("RemotePrimitiveTypes.setInt()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setLong(long v) throws RemoteException {
 				log.info("RemotePrimitiveTypes.setLong()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setFloat(float v) throws RemoteException {
 				log.info("RemotePrimitiveTypes.setFloat()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setDouble(double v) throws RemoteException {
 				log.info("RemotePrimitiveTypes.setDouble()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setString(java.lang.String v) throws RemoteException {
 				log.info("RemotePrimitiveTypes.setString()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setPrimitiveTypes(byps.test.api.prim.PrimitiveTypes v) throws RemoteException {
 				log.info("RemotePrimitiveTypes.setPrimitiveTypes()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setObject(java.lang.Object v) throws RemoteException {
 				log.info("RemotePrimitiveTypes.setObject()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setDate(java.util.Date v) throws RemoteException {
 				log.info("RemotePrimitiveTypes.setDate()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public boolean getBool() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getBool()");
 				boolean				obj271 = true;
 				return obj271;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byte getByte() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getByte()");
 				byte				obj272 = (byte)1;
 				return obj272;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public char getChar() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getChar()");
 				char				obj273 = 'a';
 				return obj273;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public short getShort() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getShort()");
 				short				obj274 = (short)123;
 				return obj274;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public int getInt() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getInt()");
 				int				obj275 = 9876543;
 				return obj275;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public long getLong() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getLong()");
 				long				obj276 = 987654321012345L;
 				return obj276;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public float getFloat() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getFloat()");
 				float				obj277 = 1.23f;
 				return obj277;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public double getDouble() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getDouble()");
 				double				obj278 = 9.876;
 				return obj278;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.lang.String getString() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getString()");
 				java.lang.String				obj279 = "STRING";
 				return obj279;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.prim.PrimitiveTypes getPrimitiveTypes() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getPrimitiveTypes()");
 				byps.test.api.prim.PrimitiveTypes obj281 = new byps.test.api.prim.PrimitiveTypes();
@@ -3379,93 +3387,100 @@ public class TestCompatibleApi_Testser {
 				return obj281;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.lang.Object getObject() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getObject()");
 				java.lang.Object obj282 = null;
 				return obj282;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Date getDate() throws RemoteException {
 				log.info("RemotePrimitiveTypes.getDate()");
 				java.util.Date				obj283 = new Date(System.currentTimeMillis());
 				return obj283;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void sendAllTypes(boolean b, char c, short s, int i, long l, float f, double d, java.lang.String str, byps.test.api.prim.PrimitiveTypes pt, java.lang.Object o) throws RemoteException {
 				log.info("RemotePrimitiveTypes.sendAllTypes()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public int add(int a, int b) throws RemoteException {
 				log.info("RemotePrimitiveTypes.add()");
 				int				obj284 = 9876543;
 				return obj284;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Date makeDate(int year, int month, int day, int hour, int minute, int second, int millisecond) throws RemoteException {
 				log.info("RemotePrimitiveTypes.makeDate()");
 				java.util.Date				obj285 = new Date(System.currentTimeMillis());
 				return obj285;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public int[] parseDate(java.util.Date date) throws RemoteException {
 				log.info("RemotePrimitiveTypes.parseDate()");
 				int[]				obj286 = new int[0];
 				return obj286;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void throwException() throws RemoteException {
 				log.info("RemotePrimitiveTypes.throwException()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public int getDeferredValueFromServer(int param1, java.lang.String param2) throws RemoteException {
 				log.info("RemotePrimitiveTypes.getDeferredValueFromServer()");
 				int				obj287 = 9876543;
 				return obj287;
 			}
+			@Override
+			// checkpoint byps.gen.j.PrintContext:398
+			public java.util.List<java.lang.String> getStringsWithSpecialChars() throws RemoteException {
+				log.info("RemotePrimitiveTypes.getStringsWithSpecialChars()");
+				java.util.List<java.lang.String>				obj288 = new ArrayList<java.lang.String>();
+				return obj288;
+			}
 		});
 		
 		server.addRemote(790485113, new byps.test.api.remote.BSkeleton_RemoteProcessingEx() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public boolean getValueAfterProcessingExceptions(int sleepSeconds) throws RemoteException {
 				log.info("RemoteProcessingEx.getValueAfterProcessingExceptions()");
-				boolean				obj288 = true;
-				return obj288;
+				boolean				obj289 = true;
+				return obj289;
 			}
 		});
 		
 		server.addRemote(568637225, new byps.test.api.remote.BSkeleton_RemoteReferences() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.refs.Node getNode() throws RemoteException {
 				log.info("RemoteReferences.getNode()");
-				byps.test.api.refs.Node obj290 = new byps.test.api.refs.Node();
-				{
-					byps.test.api.refs.Node obj291 = new byps.test.api.refs.Node();
-					obj291.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
-					obj291.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
-					obj290.next = obj291;
-				}
+				byps.test.api.refs.Node obj291 = new byps.test.api.refs.Node();
 				{
 					byps.test.api.refs.Node obj292 = new byps.test.api.refs.Node();
 					obj292.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
 					obj292.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
-					obj290.me = obj292;
+					obj291.next = obj292;
 				}
-				obj290.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
-				obj290.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
-				return obj290;
+				{
+					byps.test.api.refs.Node obj293 = new byps.test.api.refs.Node();
+					obj293.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
+					obj293.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
+					obj291.me = obj293;
+				}
+				obj291.mapOfNodes = new HashMap<java.lang.String,byps.test.api.refs.Node>();
+				obj291.listOfNodes = new ArrayList<byps.test.api.refs.Node>();
+				return obj291;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setNode(byps.test.api.refs.Node v) throws RemoteException {
 				log.info("RemoteReferences.setNode()");
 			}
@@ -3473,19 +3488,19 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(1652234479, new byps.test.api.remote.BSkeleton_RemoteServerCtrl() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void publishRemote(java.lang.String name, BRemote remote, boolean fowardToOtherServers) throws RemoteException {
 				log.info("RemoteServerCtrl.publishRemote()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public BRemote getPublishedRemote(java.lang.String name) throws RemoteException {
 				log.info("RemoteServerCtrl.getPublishedRemote()");
-				BRemote obj293 = null;
-				return obj293;
+				BRemote obj294 = null;
+				return obj294;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void removePublishedRemote(java.lang.String name) throws RemoteException {
 				log.info("RemoteServerCtrl.removePublishedRemote()");
 			}
@@ -3493,280 +3508,280 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(1900796440, new byps.test.api.remote.BSkeleton_RemoteSetTypes() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Set<java.lang.Boolean> getBoolean1() throws RemoteException {
 				log.info("RemoteSetTypes.getBoolean1()");
-				java.util.Set<java.lang.Boolean>				obj294 = new HashSet<java.lang.Boolean>();
-				return obj294;
+				java.util.Set<java.lang.Boolean>				obj295 = new HashSet<java.lang.Boolean>();
+				return obj295;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setBoolean1(java.util.Set<java.lang.Boolean> boolean1) throws RemoteException {
 				log.info("RemoteSetTypes.setBoolean1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.HashSet<java.lang.Byte> getByte1() throws RemoteException {
 				log.info("RemoteSetTypes.getByte1()");
-				java.util.HashSet<java.lang.Byte>				obj295 = new java.util.HashSet<java.lang.Byte>();
-				return obj295;
+				java.util.HashSet<java.lang.Byte>				obj296 = new java.util.HashSet<java.lang.Byte>();
+				return obj296;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setByte1(java.util.HashSet<java.lang.Byte> byte1) throws RemoteException {
 				log.info("RemoteSetTypes.setByte1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.TreeSet<java.lang.Character> getChar1() throws RemoteException {
 				log.info("RemoteSetTypes.getChar1()");
-				java.util.TreeSet<java.lang.Character>				obj296 = new java.util.TreeSet<java.lang.Character>();
-				return obj296;
+				java.util.TreeSet<java.lang.Character>				obj297 = new java.util.TreeSet<java.lang.Character>();
+				return obj297;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setChar1(java.util.TreeSet<java.lang.Character> char1) throws RemoteException {
 				log.info("RemoteSetTypes.setChar1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Set<java.lang.Short> getShort1() throws RemoteException {
 				log.info("RemoteSetTypes.getShort1()");
-				java.util.Set<java.lang.Short>				obj297 = new HashSet<java.lang.Short>();
-				return obj297;
+				java.util.Set<java.lang.Short>				obj298 = new HashSet<java.lang.Short>();
+				return obj298;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setShort1(java.util.Set<java.lang.Short> short1) throws RemoteException {
 				log.info("RemoteSetTypes.setShort1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Set<java.lang.Integer> getInt1() throws RemoteException {
 				log.info("RemoteSetTypes.getInt1()");
-				java.util.Set<java.lang.Integer>				obj298 = new HashSet<java.lang.Integer>();
-				return obj298;
+				java.util.Set<java.lang.Integer>				obj299 = new HashSet<java.lang.Integer>();
+				return obj299;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setInt1(java.util.Set<java.lang.Integer> int1) throws RemoteException {
 				log.info("RemoteSetTypes.setInt1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Set<java.lang.Long> getLong1() throws RemoteException {
 				log.info("RemoteSetTypes.getLong1()");
-				java.util.Set<java.lang.Long>				obj299 = new HashSet<java.lang.Long>();
-				return obj299;
+				java.util.Set<java.lang.Long>				obj300 = new HashSet<java.lang.Long>();
+				return obj300;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setLong1(java.util.Set<java.lang.Long> long1) throws RemoteException {
 				log.info("RemoteSetTypes.setLong1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Set<java.lang.Float> getFloat1() throws RemoteException {
 				log.info("RemoteSetTypes.getFloat1()");
-				java.util.Set<java.lang.Float>				obj300 = new HashSet<java.lang.Float>();
-				return obj300;
+				java.util.Set<java.lang.Float>				obj301 = new HashSet<java.lang.Float>();
+				return obj301;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setFloat1(java.util.Set<java.lang.Float> float1) throws RemoteException {
 				log.info("RemoteSetTypes.setFloat1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Set<java.lang.Double> getDouble1() throws RemoteException {
 				log.info("RemoteSetTypes.getDouble1()");
-				java.util.Set<java.lang.Double>				obj301 = new HashSet<java.lang.Double>();
-				return obj301;
+				java.util.Set<java.lang.Double>				obj302 = new HashSet<java.lang.Double>();
+				return obj302;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setDouble1(java.util.Set<java.lang.Double> double1) throws RemoteException {
 				log.info("RemoteSetTypes.setDouble1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Set<java.lang.String> getString1() throws RemoteException {
 				log.info("RemoteSetTypes.getString1()");
-				java.util.Set<java.lang.String>				obj302 = new HashSet<java.lang.String>();
-				return obj302;
+				java.util.Set<java.lang.String>				obj303 = new HashSet<java.lang.String>();
+				return obj303;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setString1(java.util.Set<java.lang.String> string1) throws RemoteException {
 				log.info("RemoteSetTypes.setString1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Set<byps.test.api.prim.PrimitiveTypes> getPrimitiveTypes1() throws RemoteException {
 				log.info("RemoteSetTypes.getPrimitiveTypes1()");
-				java.util.Set<byps.test.api.prim.PrimitiveTypes>				obj303 = new HashSet<byps.test.api.prim.PrimitiveTypes>();
-				return obj303;
+				java.util.Set<byps.test.api.prim.PrimitiveTypes>				obj304 = new HashSet<byps.test.api.prim.PrimitiveTypes>();
+				return obj304;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setPrimitiveTypes1(java.util.Set<byps.test.api.prim.PrimitiveTypes> primitiveTypes1) throws RemoteException {
 				log.info("RemoteSetTypes.setPrimitiveTypes1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Set<byte[]> getByte2() throws RemoteException {
 				log.info("RemoteSetTypes.getByte2()");
-				java.util.Set<byte[]>				obj304 = new HashSet<byte[]>();
-				return obj304;
+				java.util.Set<byte[]>				obj305 = new HashSet<byte[]>();
+				return obj305;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setByte2(java.util.Set<byte[]> byte2) throws RemoteException {
 				log.info("RemoteSetTypes.setByte2()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Set<int[]> getInt2() throws RemoteException {
 				log.info("RemoteSetTypes.getInt2()");
-				java.util.Set<int[]>				obj305 = new HashSet<int[]>();
-				return obj305;
+				java.util.Set<int[]>				obj306 = new HashSet<int[]>();
+				return obj306;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setInt2(java.util.Set<int[]> int2) throws RemoteException {
 				log.info("RemoteSetTypes.setInt2()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Set<java.lang.Object> getObj1() throws RemoteException {
 				log.info("RemoteSetTypes.getObj1()");
-				java.util.Set<java.lang.Object>				obj306 = new HashSet<java.lang.Object>();
-				return obj306;
+				java.util.Set<java.lang.Object>				obj307 = new HashSet<java.lang.Object>();
+				return obj307;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setObj1(java.util.Set<java.lang.Object> obj1) throws RemoteException {
 				log.info("RemoteSetTypes.setObj1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setDate1(java.util.Set<java.util.Date> obj1) throws RemoteException {
 				log.info("RemoteSetTypes.setDate1()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.Set<java.util.Date> getDate1() throws RemoteException {
 				log.info("RemoteSetTypes.getDate1()");
-				java.util.Set<java.util.Date>				obj307 = new HashSet<java.util.Date>();
-				return obj307;
+				java.util.Set<java.util.Date>				obj308 = new HashSet<java.util.Date>();
+				return obj308;
 			}
 		});
 		
 		server.addRemote(1043578866, new byps.test.api.remote.BSkeleton_RemoteStreams() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.io.InputStream getImage() throws RemoteException {
 				log.info("RemoteStreams.getImage()");
-				java.io.InputStream obj308 = null;
-				return obj308;
+				java.io.InputStream obj309 = null;
+				return obj309;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setImage(java.io.InputStream istrm) throws RemoteException {
 				log.info("RemoteStreams.setImage()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.util.TreeMap<java.lang.Integer,java.io.InputStream> getImages() throws RemoteException {
 				log.info("RemoteStreams.getImages()");
-				java.util.TreeMap<java.lang.Integer,java.io.InputStream>				obj309 = new java.util.TreeMap<java.lang.Integer,java.io.InputStream>();
-				return obj309;
+				java.util.TreeMap<java.lang.Integer,java.io.InputStream>				obj310 = new java.util.TreeMap<java.lang.Integer,java.io.InputStream>();
+				return obj310;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setImages(java.util.Map<java.lang.Integer,java.io.InputStream> istrms, int doNotReadStreamAtKey) throws RemoteException {
 				log.info("RemoteStreams.setImages()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void throwLastException() throws RemoteException {
 				log.info("RemoteStreams.throwLastException()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.io.InputStream getTextStream() throws RemoteException {
 				log.info("RemoteStreams.getTextStream()");
-				java.io.InputStream obj310 = null;
-				return obj310;
-			}
-			@Override
-			// checkpoint byps.gen.j.PrintContext:396
-			public java.io.InputStream getVideoCheckSupportByteRange() throws RemoteException {
-				log.info("RemoteStreams.getVideoCheckSupportByteRange()");
 				java.io.InputStream obj311 = null;
 				return obj311;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
-			public java.io.InputStream getStreamDeferedProperies() throws RemoteException {
-				log.info("RemoteStreams.getStreamDeferedProperies()");
+			// checkpoint byps.gen.j.PrintContext:398
+			public java.io.InputStream getVideoCheckSupportByteRange() throws RemoteException {
+				log.info("RemoteStreams.getVideoCheckSupportByteRange()");
 				java.io.InputStream obj312 = null;
 				return obj312;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
-			public void setStreamDoNotMaterialize(java.io.InputStream stream) throws RemoteException {
-				log.info("RemoteStreams.setStreamDoNotMaterialize()");
-			}
-			@Override
-			// checkpoint byps.gen.j.PrintContext:396
-			public java.io.InputStream getStreamDoNotClone() throws RemoteException {
-				log.info("RemoteStreams.getStreamDoNotClone()");
+			// checkpoint byps.gen.j.PrintContext:398
+			public java.io.InputStream getStreamDeferedProperies() throws RemoteException {
+				log.info("RemoteStreams.getStreamDeferedProperies()");
 				java.io.InputStream obj313 = null;
 				return obj313;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
+			public void setStreamDoNotMaterialize(java.io.InputStream stream) throws RemoteException {
+				log.info("RemoteStreams.setStreamDoNotMaterialize()");
+			}
+			@Override
+			// checkpoint byps.gen.j.PrintContext:398
+			public java.io.InputStream getStreamDoNotClone() throws RemoteException {
+				log.info("RemoteStreams.getStreamDoNotClone()");
+				java.io.InputStream obj314 = null;
+				return obj314;
+			}
+			@Override
+			// checkpoint byps.gen.j.PrintContext:398
 			public void putSharedStream(long id, java.io.InputStream stream) throws RemoteException {
 				log.info("RemoteStreams.putSharedStream()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public java.io.InputStream getSharedStream(long id) throws RemoteException {
 				log.info("RemoteStreams.getSharedStream()");
-				java.io.InputStream obj314 = null;
-				return obj314;
+				java.io.InputStream obj315 = null;
+				return obj315;
 			}
 		});
 		
 		server.addRemote(1983670399, new byps.test.api.remote.BSkeleton_RemoteWithAuthentication() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setUseAuthentication(boolean useAuth) throws RemoteException {
 				log.info("RemoteWithAuthentication.setUseAuthentication()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.auth.SessionInfo login(byps.test.api.auth.SessionInfo sess, java.lang.String userName, java.lang.String userPwd) throws RemoteException {
 				log.info("RemoteWithAuthentication.login()");
-				byps.test.api.auth.SessionInfo obj316 = new byps.test.api.auth.SessionInfo();
-				obj316.sessionID = "STRING";
-				return obj316;
-			}
-			@Override
-			// checkpoint byps.gen.j.PrintContext:396
-			public int doit(byps.test.api.auth.SessionInfo sess, int value) throws RemoteException {
-				log.info("RemoteWithAuthentication.doit()");
-				int				obj317 = 9876543;
+				byps.test.api.auth.SessionInfo obj317 = new byps.test.api.auth.SessionInfo();
+				obj317.sessionID = "STRING";
 				return obj317;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
+			public int doit(byps.test.api.auth.SessionInfo sess, int value) throws RemoteException {
+				log.info("RemoteWithAuthentication.doit()");
+				int				obj318 = 9876543;
+				return obj318;
+			}
+			@Override
+			// checkpoint byps.gen.j.PrintContext:398
 			public void expire(byps.test.api.auth.SessionInfo sess) throws RemoteException {
 				log.info("RemoteWithAuthentication.expire()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setReloginCount(int count) throws RemoteException {
 				log.info("RemoteWithAuthentication.setReloginCount()");
 			}
@@ -3774,199 +3789,199 @@ public class TestCompatibleApi_Testser {
 		
 		server.addRemote(2049072174, new byps.test.api.srvr.BSkeleton_ClientIF() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public int incrementInt(int a) throws RemoteException {
 				log.info("ClientIF.incrementInt()");
-				int				obj318 = 9876543;
-				return obj318;
-			}
-			@Override
-			// checkpoint byps.gen.j.PrintContext:396
-			public java.util.List<java.io.InputStream> getStreams(int ctrl) throws RemoteException {
-				log.info("ClientIF.getStreams()");
-				java.util.List<java.io.InputStream>				obj319 = new ArrayList<java.io.InputStream>();
+				int				obj319 = 9876543;
 				return obj319;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
+			public java.util.List<java.io.InputStream> getStreams(int ctrl) throws RemoteException {
+				log.info("ClientIF.getStreams()");
+				java.util.List<java.io.InputStream>				obj320 = new ArrayList<java.io.InputStream>();
+				return obj320;
+			}
+			@Override
+			// checkpoint byps.gen.j.PrintContext:398
 			public void putStreams(java.util.List<java.io.InputStream> strm, int ctrl) throws RemoteException {
 				log.info("ClientIF.putStreams()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.srvr.ChatStructure sendChat(byps.test.api.srvr.ChatStructure cs) throws RemoteException {
 				log.info("ClientIF.sendChat()");
-				byps.test.api.srvr.ChatStructure obj321 = new byps.test.api.srvr.ChatStructure();
-				obj321.msg = "STRING";
-				obj321.sentAt = 9.876;
-				obj321.receivedAt = 9.876;
-				return obj321;
+				byps.test.api.srvr.ChatStructure obj322 = new byps.test.api.srvr.ChatStructure();
+				obj322.msg = "STRING";
+				obj322.sentAt = 9.876;
+				obj322.receivedAt = 9.876;
+				return obj322;
 			}
 		});
 		
 		server.addRemote(1775199834, new byps.test.api.srvr.BSkeleton_ServerIF() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public int callClientIncrementInt(int v) throws RemoteException {
 				log.info("ServerIF.callClientIncrementInt()");
-				int				obj322 = 9876543;
-				return obj322;
+				int				obj323 = 9876543;
+				return obj323;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setPartner(byps.test.api.srvr.ClientIF client) throws RemoteException {
 				log.info("ServerIF.setPartner()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.srvr.ClientIF getPartner() throws RemoteException {
 				log.info("ServerIF.getPartner()");
-				byps.test.api.srvr.ClientIF obj323 = null;
-				return obj323;
-			}
-			@Override
-			// checkpoint byps.gen.j.PrintContext:396
-			public java.util.List<java.io.InputStream> getStreamsFromClient(boolean materializeOnServer) throws RemoteException {
-				log.info("ServerIF.getStreamsFromClient()");
-				java.util.List<java.io.InputStream>				obj324 = new ArrayList<java.io.InputStream>();
+				byps.test.api.srvr.ClientIF obj324 = null;
 				return obj324;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
+			public java.util.List<java.io.InputStream> getStreamsFromClient(boolean materializeOnServer) throws RemoteException {
+				log.info("ServerIF.getStreamsFromClient()");
+				java.util.List<java.io.InputStream>				obj325 = new ArrayList<java.io.InputStream>();
+				return obj325;
+			}
+			@Override
+			// checkpoint byps.gen.j.PrintContext:398
 			public void putStreamsOnClient(java.util.List<java.io.InputStream> streams) throws RemoteException {
 				log.info("ServerIF.putStreamsOnClient()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void registerWithClientMap(int id) throws RemoteException {
 				log.info("ServerIF.registerWithClientMap()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.srvr.ClientIF getClient(int id) throws RemoteException {
 				log.info("ServerIF.getClient()");
-				byps.test.api.srvr.ClientIF obj325 = null;
-				return obj325;
-			}
-			@Override
-			// checkpoint byps.gen.j.PrintContext:396
-			public java.util.Set<java.lang.Integer> getClientIds() throws RemoteException {
-				log.info("ServerIF.getClientIds()");
-				java.util.Set<java.lang.Integer>				obj326 = new HashSet<java.lang.Integer>();
+				byps.test.api.srvr.ClientIF obj326 = null;
 				return obj326;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
+			public java.util.Set<java.lang.Integer> getClientIds() throws RemoteException {
+				log.info("ServerIF.getClientIds()");
+				java.util.Set<java.lang.Integer>				obj327 = new HashSet<java.lang.Integer>();
+				return obj327;
+			}
+			@Override
+			// checkpoint byps.gen.j.PrintContext:398
 			public int callClientParallel(int v) throws RemoteException {
 				log.info("ServerIF.callClientParallel()");
-				int				obj327 = 9876543;
-				return obj327;
+				int				obj328 = 9876543;
+				return obj328;
 			}
 		});
 		
 		server.addRemote(15377840, new byps.test.api.ver.BSkeleton_EvolveIF() {
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setEvolve(byps.test.api.ver.Evolve obj) throws RemoteException {
 				log.info("EvolveIF.setEvolve()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.ver.Evolve getEvolve() throws RemoteException {
 				log.info("EvolveIF.getEvolve()");
-				byps.test.api.ver.Evolve obj329 = new byps.test.api.ver.Evolve();
-				obj329.bool1 = true;
-				obj329.byte1 = (byte)1;
-				obj329.char1 = 'a';
-				obj329.short1 = (short)123;
-				obj329.int1 = 9876543;
-				obj329.long1 = 987654321012345L;
-				obj329.float1 = 1.23f;
-				obj329.double1 = 9.876;
-				obj329.bools1 = new boolean[0];
-				obj329.bytes1 = new byte[0];
-				obj329.chars1 = new char[0];
-				obj329.shorts1 = new short[0];
-				obj329.ints1 = new int[0];
-				obj329.longs1 = new long[0];
-				obj329.floats1 = new float[0];
-				obj329.doubles1 = new double[0];
-				obj329.str1 = "STRING";
-				{
-					byps.test.api.ver.Evolve2 obj330 = new byps.test.api.ver.Evolve2();
-					obj330.setN1(9876543);
-					obj329.evo1 = obj330;
-				}
-				obj329.list1 = new ArrayList<java.lang.Integer>();
-				obj329.set1 = new HashSet<java.lang.Integer>();
-				obj329.map1 = new HashMap<java.lang.Integer,java.lang.Integer>();
-				obj329.bool2 = true;
-				obj329.byte2 = (byte)1;
-				obj329.char2 = 'a';
-				obj329.short2 = (short)123;
-				obj329.int2 = 9876543;
-				obj329.long2 = 987654321012345L;
-				obj329.float2 = 1.23f;
-				obj329.double2 = 9.876;
-				obj329.bools2 = new boolean[0];
-				obj329.bytes2 = new byte[0];
-				obj329.chars2 = new char[0];
-				obj329.shorts2 = new short[0];
-				obj329.ints2 = new int[0];
-				obj329.longs2 = new long[0];
-				obj329.floats2 = new float[0];
-				obj329.doubles2 = new double[0];
-				obj329.str2 = "STRING";
+				byps.test.api.ver.Evolve obj330 = new byps.test.api.ver.Evolve();
+				obj330.bool1 = true;
+				obj330.byte1 = (byte)1;
+				obj330.char1 = 'a';
+				obj330.short1 = (short)123;
+				obj330.int1 = 9876543;
+				obj330.long1 = 987654321012345L;
+				obj330.float1 = 1.23f;
+				obj330.double1 = 9.876;
+				obj330.bools1 = new boolean[0];
+				obj330.bytes1 = new byte[0];
+				obj330.chars1 = new char[0];
+				obj330.shorts1 = new short[0];
+				obj330.ints1 = new int[0];
+				obj330.longs1 = new long[0];
+				obj330.floats1 = new float[0];
+				obj330.doubles1 = new double[0];
+				obj330.str1 = "STRING";
 				{
 					byps.test.api.ver.Evolve2 obj331 = new byps.test.api.ver.Evolve2();
 					obj331.setN1(9876543);
-					obj329.evo2 = obj331;
+					obj330.evo1 = obj331;
 				}
-				obj329.list2 = new ArrayList<java.lang.Integer>();
-				obj329.set2 = new HashSet<java.lang.Integer>();
-				obj329.map2 = new HashMap<java.lang.Integer,java.lang.Integer>();
-				obj329.bool3 = true;
-				obj329.byte3 = (byte)1;
-				obj329.char3 = 'a';
-				obj329.short3 = (short)123;
-				obj329.int3 = 9876543;
-				obj329.long3 = 987654321012345L;
-				obj329.float3 = 1.23f;
-				obj329.double3 = 9.876;
-				obj329.bools3 = new boolean[0];
-				obj329.bytes3 = new byte[0];
-				obj329.chars3 = new char[0];
-				obj329.shorts3 = new short[0];
-				obj329.ints3 = new int[0];
-				obj329.longs3 = new long[0];
-				obj329.floats3 = new float[0];
-				obj329.doubles3 = new double[0];
-				obj329.str3 = "STRING";
+				obj330.list1 = new ArrayList<java.lang.Integer>();
+				obj330.set1 = new HashSet<java.lang.Integer>();
+				obj330.map1 = new HashMap<java.lang.Integer,java.lang.Integer>();
+				obj330.bool2 = true;
+				obj330.byte2 = (byte)1;
+				obj330.char2 = 'a';
+				obj330.short2 = (short)123;
+				obj330.int2 = 9876543;
+				obj330.long2 = 987654321012345L;
+				obj330.float2 = 1.23f;
+				obj330.double2 = 9.876;
+				obj330.bools2 = new boolean[0];
+				obj330.bytes2 = new byte[0];
+				obj330.chars2 = new char[0];
+				obj330.shorts2 = new short[0];
+				obj330.ints2 = new int[0];
+				obj330.longs2 = new long[0];
+				obj330.floats2 = new float[0];
+				obj330.doubles2 = new double[0];
+				obj330.str2 = "STRING";
 				{
 					byps.test.api.ver.Evolve2 obj332 = new byps.test.api.ver.Evolve2();
 					obj332.setN1(9876543);
-					obj329.evo3 = obj332;
+					obj330.evo2 = obj332;
 				}
-				obj329.list3 = new ArrayList<java.lang.Integer>();
-				obj329.set3 = new HashSet<java.lang.Integer>();
-				obj329.map3 = new HashMap<java.lang.Integer,java.lang.Integer>();
-				obj329.since793 = 9876543;
-				return obj329;
+				obj330.list2 = new ArrayList<java.lang.Integer>();
+				obj330.set2 = new HashSet<java.lang.Integer>();
+				obj330.map2 = new HashMap<java.lang.Integer,java.lang.Integer>();
+				obj330.bool3 = true;
+				obj330.byte3 = (byte)1;
+				obj330.char3 = 'a';
+				obj330.short3 = (short)123;
+				obj330.int3 = 9876543;
+				obj330.long3 = 987654321012345L;
+				obj330.float3 = 1.23f;
+				obj330.double3 = 9.876;
+				obj330.bools3 = new boolean[0];
+				obj330.bytes3 = new byte[0];
+				obj330.chars3 = new char[0];
+				obj330.shorts3 = new short[0];
+				obj330.ints3 = new int[0];
+				obj330.longs3 = new long[0];
+				obj330.floats3 = new float[0];
+				obj330.doubles3 = new double[0];
+				obj330.str3 = "STRING";
+				{
+					byps.test.api.ver.Evolve2 obj333 = new byps.test.api.ver.Evolve2();
+					obj333.setN1(9876543);
+					obj330.evo3 = obj333;
+				}
+				obj330.list3 = new ArrayList<java.lang.Integer>();
+				obj330.set3 = new HashSet<java.lang.Integer>();
+				obj330.map3 = new HashMap<java.lang.Integer,java.lang.Integer>();
+				obj330.since793 = 9876543;
+				return obj330;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void setClient(byps.test.api.ver.EvolveIF partner) throws RemoteException {
 				log.info("EvolveIF.setClient()");
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public byps.test.api.ver.EvolveIF getClient() throws RemoteException {
 				log.info("EvolveIF.getClient()");
-				byps.test.api.ver.EvolveIF obj333 = null;
-				return obj333;
+				byps.test.api.ver.EvolveIF obj334 = null;
+				return obj334;
 			}
 			@Override
-			// checkpoint byps.gen.j.PrintContext:396
+			// checkpoint byps.gen.j.PrintContext:398
 			public void sendEvolveToClient() throws RemoteException {
 				log.info("EvolveIF.sendEvolveToClient()");
 			}

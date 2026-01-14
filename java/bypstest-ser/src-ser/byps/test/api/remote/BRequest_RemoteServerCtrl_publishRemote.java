@@ -11,7 +11,7 @@ import byps.BRemote;
 
 /**
 */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public final class BRequest_RemoteServerCtrl_publishRemote extends BMethodRequest implements Serializable {
 
 	public java.lang.String name;

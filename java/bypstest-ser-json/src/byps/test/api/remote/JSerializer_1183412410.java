@@ -15,7 +15,7 @@ import byps.*;
 // #members=0
 
 // checkpoint byps.gen.j.GenSerStruct:304
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class JSerializer_1183412410 extends JSerializer_Object {
 	
 	public final static BSerializer instance = new JSerializer_1183412410();

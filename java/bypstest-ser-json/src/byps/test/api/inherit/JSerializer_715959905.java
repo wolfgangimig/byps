@@ -7,7 +7,7 @@ package byps.test.api.inherit;
  */
 
 import byps.*;
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class JSerializer_715959905 extends JSerializer_16 {
 	
 	public final static BSerializer instance = new JSerializer_715959905();

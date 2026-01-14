@@ -11,7 +11,7 @@ import java.util.TreeMap;
 
 /**
 */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public final class BRequest_RemoteMapTypes_setChar1 extends BMethodRequest implements Serializable {
 
 	public java.util.TreeMap<java.lang.Float,java.lang.Character> char1;

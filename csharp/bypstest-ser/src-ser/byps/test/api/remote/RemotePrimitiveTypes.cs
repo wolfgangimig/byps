@@ -133,6 +133,10 @@ namespace byps.test.api.remote
 		void GetDeferredValueFromServer(int param1, String param2, BAsyncResult<int> asyncResult) ;
 		Task<int> GetDeferredValueFromServerAsync(int param1, String param2);
 		
+		IList<String> GetStringsWithSpecialChars();
+		void GetStringsWithSpecialChars(BAsyncResult<IList<String>> asyncResult) ;
+		Task<IList<String>> GetStringsWithSpecialCharsAsync();
+		
 		
 	}
 }  // end namespace

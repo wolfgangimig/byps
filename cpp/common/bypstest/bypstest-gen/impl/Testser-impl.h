@@ -5397,6 +5397,28 @@ class BRequest_RemotePrimitiveTypes_getString : public BMethodRequest {
 
 // checkpoint byps.gen.cpp.GenApiClass:668
 //-------------------------------------------------
+// BRequest_RemotePrimitiveTypes_getStringsWithSpecialChars
+// typeId=361187255
+
+namespace byps { namespace test { namespace api { namespace remote { 
+
+using namespace ::byps;
+
+class BRequest_RemotePrimitiveTypes_getStringsWithSpecialChars : public BMethodRequest {
+	
+	// checkpoint byps.gen.cpp.GenApiClass:504
+	public: BRequest_RemotePrimitiveTypes_getStringsWithSpecialChars();
+	
+	public: virtual BTYPEID BSerializable_getTypeId();
+	// checkpoint byps.gen.cpp.GenApiClass:886
+	public: void serialize(BIO& ar, const BVERSION version);
+	public: virtual void execute(const PRemote& __byps__remote, PAsyncResult __byps__asyncResult);
+};
+
+}}}}
+
+// checkpoint byps.gen.cpp.GenApiClass:668
+//-------------------------------------------------
 // BRequest_RemotePrimitiveTypes_makeDate
 // typeId=1918934973
 
@@ -7641,6 +7663,8 @@ void BSerializer_65775978(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* p
 void BSerializer_930294276(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.cons.AllTypesZ
 void BSerializer_142458(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.cons.AllTypesZ[]
+void BSerializer_85091(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.cons.AllTypesZ[][]
 void BSerializer_81775365(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.cons.ConfigResultOption
@@ -8009,6 +8033,8 @@ void BSerializer_714626279(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* 
 void BSerializer_450820153(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_getString
 void BSerializer_1079359962(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
+// Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_getStringsWithSpecialChars
+void BSerializer_361187255(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_makeDate
 void BSerializer_1918934973(BIO& bio, POBJECT& pObj, PSerializable& pObjS, void* pBase);
 // Serializer for byps.test.api.remote.BRequest_RemotePrimitiveTypes_parseDate

@@ -577,6 +577,22 @@ namespace byps.test.api.remote
 			return await task;
 		}
 		
+		public virtual IList<String> GetStringsWithSpecialChars() {
+			BSyncResult<IList<String>> asyncResult = new BSyncResult<IList<String>>();			
+			GetStringsWithSpecialChars(BAsyncResultHelper.ToDelegate<IList<String>>(asyncResult));
+			return asyncResult.GetResult();			
+		}
+		public virtual void GetStringsWithSpecialChars(BAsyncResult<IList<String>> asyncResult) {
+			BRequest_RemotePrimitiveTypes_getStringsWithSpecialChars req = new BRequest_RemotePrimitiveTypes_getStringsWithSpecialChars();			
+			transport.sendMethod(req, asyncResult);
+		}
+		// checkpoint byps.gen.cs.GenRemoteStub:133
+		public async Task<IList<String>> GetStringsWithSpecialCharsAsync(){
+			BRequest_RemotePrimitiveTypes_getStringsWithSpecialChars req = new BRequest_RemotePrimitiveTypes_getStringsWithSpecialChars();			
+			Task<IList<String>> task = Task<IList<String>>.Factory.FromAsync(transport.BeginSend<IList<String>>, transport.EndSend<IList<String>>, req, null);
+			return await task;
+		}
+		
 		
 	}
 }

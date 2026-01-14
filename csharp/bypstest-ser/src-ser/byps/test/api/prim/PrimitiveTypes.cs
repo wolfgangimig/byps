@@ -291,6 +291,14 @@ namespace byps.test.api.prim
 		
 		#region Fields
 		
+		/// <summary>
+		/// Serialize String with 0-Byte.
+		/// </summary>
+		/// <remarks>
+		/// BYPS-95
+		/// </remarks>
+		public const String STRING_WITH_SPECIAL_CHARS = "pilcrow:\u00b6 - Euro:\u20ac - Emoji:\ud83d\ude2b";
+
 		protected bool boolValValue;
 
 		protected byte byteValValue;

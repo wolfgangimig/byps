@@ -352,6 +352,10 @@ namespace byps {
 				class SordZ; 
 				typedef byps_ptr< SordZ > PSordZ; 
 				
+				// byps.test.api.cons.AllTypesZ[]
+				typedef ::byps::BArray1< byps::test::api::cons::PAllTypesZ >  BArrayAllTypesZ;
+				typedef byps_ptr< BArrayAllTypesZ > PArrayAllTypesZ;
+				
 				// byps.test.api.cons.AllTypesZ[][]
 				typedef ::byps::BArray2< byps::test::api::cons::PAllTypesZ >  BArray2AllTypesZ;
 				typedef byps_ptr< BArray2AllTypesZ > PArray2AllTypesZ;
@@ -1104,7 +1108,8 @@ class AllTypesC : public BSerializable {
 	public: const static PArray4Int arrInt4;
 	public: const static PArrayString arrStrings;
 	public: const static PArray4String arrStrings4;
-	public: const static PArray2AllTypesZ arrALL;
+	public: const static PArrayAllTypesZ arrAll1dim;
+	public: const static PArray2AllTypesZ arrALL2dim;
 	
 	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: AllTypesC();
@@ -1603,6 +1608,13 @@ using namespace ::byps;
 /// </summary>
 class PrimitiveTypes : public BValueClass {
 	/// <summary>
+	/// Serialize String with 0-Byte.
+	/// </summary>
+	/// <remarks>
+	/// BYPS-95
+	/// </remarks>
+	public: const static ::std::wstring STRING_WITH_SPECIAL_CHARS;
+	/// <summary>
 	/// Boolean value.
 	/// </summary>
 	/// <remarks>
@@ -1651,7 +1663,7 @@ class PrimitiveTypes : public BValueClass {
 	// checkpoint byps.gen.cpp.GenApiClass:504
 	public: PrimitiveTypes();
 	// checkpoint byps.gen.cpp.GenApiClass:551
-	public: PrimitiveTypes(bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, const ::std::wstring& stringVal, const BDateTime& dateVal, const PSerializable& objVal, const PSerializable& objVal2, bool value, const PSerializable& temp, int32_t deferredValue);	
+	public: PrimitiveTypes(const ::std::wstring& STRING_WITH_SPECIAL_CHARS, bool boolVal, int8_t byteVal, wchar_t charVal, int16_t shortVal, int32_t intVal, int64_t longVal, float floatVal, double doubleVal, const ::std::wstring& stringVal, const BDateTime& dateVal, const PSerializable& objVal, const PSerializable& objVal2, bool value, const PSerializable& temp, int32_t deferredValue);	
 	public: virtual BTYPEID BSerializable_getTypeId();
 	public: int32_t getDeferredValue() { return deferredValue; }
 	public: void setDeferredValue(int32_t v);
@@ -3339,6 +3351,9 @@ class RemotePrimitiveTypes : public virtual BRemote {
 	public: virtual int32_t getDeferredValueFromServer(int32_t param1, const ::std::wstring& param2)  = 0;
 	public: virtual void getDeferredValueFromServer(int32_t param1, const ::std::wstring& param2, ::std::function< void (int32_t, BException ex) > asyncResult)  = 0;
 	
+	public: virtual byps::PVectorString getStringsWithSpecialChars()  = 0;
+	public: virtual void getStringsWithSpecialChars(::std::function< void (byps::PVectorString, BException ex) > asyncResult)  = 0;
+	
 	
 };
 
@@ -3420,6 +3435,8 @@ class BStub_RemotePrimitiveTypes : public BStub, public virtual RemotePrimitiveT
 	public: virtual void throwException(::std::function< void (bool, BException ex) > asyncResult) ;
 	public: virtual int32_t getDeferredValueFromServer(int32_t param1, const ::std::wstring& param2) ;
 	public: virtual void getDeferredValueFromServer(int32_t param1, const ::std::wstring& param2, ::std::function< void (int32_t, BException ex) > asyncResult) ;
+	public: virtual byps::PVectorString getStringsWithSpecialChars() ;
+	public: virtual void getStringsWithSpecialChars(::std::function< void (byps::PVectorString, BException ex) > asyncResult) ;
 	
 };
 }}}}

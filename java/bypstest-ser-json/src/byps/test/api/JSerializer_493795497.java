@@ -9,7 +9,7 @@ package byps.test.api;
 import byps.*;
 import java.util.*;
 
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class JSerializer_493795497 extends JSerializer_13 {
 	
 	public final static BSerializer instance = new JSerializer_493795497();
@@ -36,7 +36,7 @@ public class JSerializer_493795497 extends JSerializer_13 {
 	@Override
 	protected void internalWriteKeyValue(final BOutputJson bout, final BBufferJson bbuf, final Object key, final Object value) throws BException {
 		final String keyName = key != null ? (String)key : "";
-		// checkpoint byps.gen.j.PrintContext:370
+		// checkpoint byps.gen.j.PrintContext:372
 		bbuf.putInt(keyName, value != null ? ((byps.test.api.enu.EnumPlanets)value).ordinal() : 0);
 	}
 	

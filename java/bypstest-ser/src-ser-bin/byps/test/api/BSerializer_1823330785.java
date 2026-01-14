@@ -9,7 +9,7 @@ package byps.test.api;
 import byps.*;
 import java.util.*;
 
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public class BSerializer_1823330785 extends BSerializer {
 	
 	public final static BSerializer instance = new BSerializer_1823330785();
@@ -38,7 +38,7 @@ public class BSerializer_1823330785 extends BSerializer {
 		int n = arr.size();
 		bbuf.putLength(n);
 		for (java.util.List<byps.test.api.inl.Point2D> obj : arr) {
-			// checkpoint byps.gen.j.PrintContext:340
+			// checkpoint byps.gen.j.PrintContext:342
 			bout.writeObj(obj, false, byps.test.api.BSerializer_2064980445.instance);
 		}
 	}

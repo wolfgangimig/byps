@@ -11,7 +11,7 @@ import java.util.Set;
 
 /**
 */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public final class BResult_2028443792 extends BMethodResult<java.util.Set<java.lang.Short>> implements Serializable {
 
 	

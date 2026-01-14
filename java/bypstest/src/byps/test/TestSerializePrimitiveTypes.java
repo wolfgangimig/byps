@@ -1,27 +1,24 @@
 package byps.test;
 
-/* USE THIS FILE ACCORDING TO THE COPYRIGHT RULES IN LICENSE.TXT WHICH IS PART OF THE SOURCE CODE PACKAGE */
-
-import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.file.Files;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.TimeZone;
-
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.junit.Test;
-
+import com.google.gson.Gson;
 import byps.BBinaryModel;
 import byps.BBuffer;
 import byps.BBufferBin;
 import byps.BBufferJson;
 import byps.BException;
 import byps.BInput;
+import byps.BJsonObject;
 import byps.BMessageHeader;
 import byps.BOutput;
 import byps.BProtocolJson;
@@ -32,7 +29,6 @@ import byps.io.ByteArrayInputStream;
 import byps.io.ByteArrayOutputStream;
 import byps.test.api.list.ListTypes;
 import byps.test.api.prim.PrimitiveTypes;
-import junit.framework.Assert;
 
 /**
  * This class provides tests to check the 
@@ -97,70 +93,176 @@ public class TestSerializePrimitiveTypes {
 	@Test
 	public void testSerializeStingUTF8() {
 		log.info("testSerializeStringUTF8(");
-
-		internalTestSerializeStringUTF8("¶"); // 2 bytes
-		
-		internalTestSerializeStringUTF8(createLargeString());
-
-		
-		internalTestSerializeStringUTF8("\" double quote");
-		internalTestSerializeStringUTF8("' single quote");
-		internalTestSerializeStringUTF8("abc");
-		internalTestSerializeStringUTF8("a");
-		internalTestSerializeStringUTF8("\tabc");
-		internalTestSerializeStringUTF8("abc\tabc");
-		internalTestSerializeStringUTF8("abc\t");
-		internalTestSerializeStringUTF8("\"");
-		internalTestSerializeStringUTF8("\'");
-		internalTestSerializeStringUTF8("\t");
-		internalTestSerializeStringUTF8("\r");
-		internalTestSerializeStringUTF8("\n");
-		internalTestSerializeStringUTF8("\\");
-		internalTestSerializeStringUTF8("\t\r\n");
-		internalTestSerializeStringUTF8(new String(new byte[]{0,1,15,16,17,31}));
-		
-		internalTestSerializeStringUTF8("c:\\Program Files\\WILUTIONS\\");
-		internalTestSerializeStringUTF8("c:\\Program Files\\\\WILUTIONS\\");
-		internalTestSerializeStringUTF8("c:\tProgram Files\\WILUTIONS\n");
-		internalTestSerializeStringUTF8("c:'Program Files'WILUTIONS\"\"");
-		
-		internalTestSerializeStringUTF8("¶"); // 2 bytes
-		internalTestSerializeStringUTF8("€"); // 3 bytes
-		internalTestSerializeStringUTF8("€€");
-		internalTestSerializeStringUTF8("a€");
-		internalTestSerializeStringUTF8("€a");
-		internalTestSerializeStringUTF8("a€a");
-		internalTestSerializeStringUTF8("");
-
-		internalTestSerializeStringUTF8("♫"); // 4 bytes
-	
-		
-		internalTestSerializeStringUTF8(null); // null-strings are serialized as empty strings
-
-		internalTestSerializeStringUTF8("\u20ac\u05D0\u05D1");
-		internalTestSerializeStringUTF8("\u0000");
-
-
+        internalTestSerializeStingUTF8(BBinaryModel.JSON);
+        internalTestSerializeStingUTF8(BBinaryModel.MEDIUM);
 		log.info(")testSerializeStringUTF8");
 	}
+	
+
+    public void internalTestSerializeStingUTF8(BBinaryModel protocol) {
+
+      internalTestSerializeStringUTF8(protocol, "¶"); // 2 bytes
+      
+      internalTestSerializeStringUTF8(protocol, createLargeString());
+
+      
+      internalTestSerializeStringUTF8(protocol, "\" double quote");
+      internalTestSerializeStringUTF8(protocol, "' single quote");
+      internalTestSerializeStringUTF8(protocol, "abc");
+      internalTestSerializeStringUTF8(protocol, "a");
+      internalTestSerializeStringUTF8(protocol, "\tabc");
+      internalTestSerializeStringUTF8(protocol, "abc\tabc");
+      internalTestSerializeStringUTF8(protocol, "abc\t");
+      internalTestSerializeStringUTF8(protocol, "\"");
+      internalTestSerializeStringUTF8(protocol, "\'");
+      internalTestSerializeStringUTF8(protocol, "\t");
+      internalTestSerializeStringUTF8(protocol, "\r");
+      internalTestSerializeStringUTF8(protocol, "\n");
+      internalTestSerializeStringUTF8(protocol, "\\");
+      internalTestSerializeStringUTF8(protocol, "\t\r\n");
+      internalTestSerializeStringUTF8(protocol, new String(new byte[]{0,1,15,16,17,31}));
+      
+      internalTestSerializeStringUTF8(protocol, "c:\\Program Files\\WILUTIONS\\");
+      internalTestSerializeStringUTF8(protocol, "c:\\Program Files\\\\WILUTIONS\\");
+      internalTestSerializeStringUTF8(protocol, "c:\tProgram Files\\WILUTIONS\n");
+      internalTestSerializeStringUTF8(protocol, "c:'Program Files'WILUTIONS\"\"");
+      
+      internalTestSerializeStringUTF8(protocol, "¶"); // 2 bytes
+      internalTestSerializeStringUTF8(protocol, "€"); // 3 bytes
+      internalTestSerializeStringUTF8(protocol, "€€");
+      internalTestSerializeStringUTF8(protocol, "a€");
+      internalTestSerializeStringUTF8(protocol, "€a");
+      internalTestSerializeStringUTF8(protocol, "a€a");
+      internalTestSerializeStringUTF8(protocol, "");
+
+      internalTestSerializeStringUTF8(protocol, "♫"); // 4 bytes
+  
+      
+      internalTestSerializeStringUTF8(protocol, null); // null-strings are serialized as empty strings
+
+      internalTestSerializeStringUTF8(protocol, "\u20ac\u05D0\u05D1");
+      internalTestSerializeStringUTF8(protocol, "\u0000");
+
+  }
 	
 	/**
 	 * Serialisiere Unicode-Zeichen, die mit bis zu 4 UTF-8-Bytes dargestellt werden.
 	 * BYPS-74
+	 * BYPS-95: serialize 0-bytes from Java to JS must generate valid JSON.
 	 */
   @Test
   public void testSerializeSting4ByteUTF8() {
-    internalTestSerializeStringUTF8(">"); // 1 byte
-    internalTestSerializeStringUTF8("¶"); // 2 bytes
-    internalTestSerializeStringUTF8("€"); // 3 bytes
-    internalTestSerializeStringUTF8("😫"); // 4 bytes
-  }
+    internalTestSerializeStringUTF8(BBinaryModel.JSON, "\u0000"); // 1 byte
+    internalTestSerializeStringUTF8(BBinaryModel.JSON, PrimitiveTypes.STRING_WITH_SPECIAL_CHARS);
+    internalTestSerializeStringUTF8(BBinaryModel.JSON, ">"); // 1 byte
+    internalTestSerializeStringUTF8(BBinaryModel.JSON, "¶"); // 2 bytes
+    internalTestSerializeStringUTF8(BBinaryModel.JSON, "€"); // 3 bytes
+    internalTestSerializeStringUTF8(BBinaryModel.JSON, "😫"); // 4 bytes
+    internalTestSerializeStringUTF8(BBinaryModel.JSON, "\uD83D\uDC4D"); // = Daumen hoch
 
-	
-	public void internalTestSerializeStringUTF8(String text) {
+    internalTestSerializeStringUTF8(BBinaryModel.MEDIUM, ">"); // 1 byte
+    internalTestSerializeStringUTF8(BBinaryModel.MEDIUM, "¶"); // 2 bytes
+    internalTestSerializeStringUTF8(BBinaryModel.MEDIUM, "€"); // 3 bytes
+    internalTestSerializeStringUTF8(BBinaryModel.MEDIUM, "😫"); // 4 bytes
+    internalTestSerializeStringUTF8(BBinaryModel.MEDIUM, "\uD83D\uDC4D"); // = Daumen hoch
+    internalTestSerializeStringUTF8(BBinaryModel.MEDIUM, "\u0000"); // 1 byte
+    internalTestSerializeStringUTF8(BBinaryModel.MEDIUM, PrimitiveTypes.STRING_WITH_SPECIAL_CHARS);
+  }
+  
+  /**
+   * JSON serialization must produce valid JSON.
+   * Check that the serialization ist compatible to google.gson.
+   * BYPS-95
+   * @throws BException
+   */
+  @Test
+  public void testSerializeStringCompatibleToGoogleGson() throws BException {
+    internalSerializeStringCompatibleToGoogleGson("\u0000"); // 1 byte
+    internalSerializeStringCompatibleToGoogleGson(PrimitiveTypes.STRING_WITH_SPECIAL_CHARS);
+    internalSerializeStringCompatibleToGoogleGson(">"); // 1 byte
+    internalSerializeStringCompatibleToGoogleGson("¶"); // 2 bytes
+    internalSerializeStringCompatibleToGoogleGson("€"); // 3 bytes
+    internalSerializeStringCompatibleToGoogleGson("😫"); // 4 bytes
+    internalSerializeStringCompatibleToGoogleGson("\uD83D\uDC4D"); // = Daumen hoch
+  }
+  
+  /**
+   * Structure used for Gson serialization.
+   * BYPS-95
+   */
+  private static class SimpleNameValue {
+    String text;
+  }
+  
+  /**
+   * Write/read a String with BYPS and Gson.
+   * @param text String
+   * @throws BException
+   */
+  private void internalSerializeStringCompatibleToGoogleGson(String text) throws BException {
+    writeBypsReadGson(text);
+    writeGsonReadByps(text);
+  }
+  
+  /**
+   * Write the given String with BYPS and read with Gson.
+   * BYPS-95
+   * @param text
+   */
+  private void writeBypsReadGson(String text) {
+    ByteBuffer buf = ByteBuffer.allocate(1000);
+    BBufferJson jsonBuffer = new BBufferJson(buf);
+    
+    // Write BYPS object
+    jsonBuffer.beginObject();
+    jsonBuffer.putString("text", text);
+    jsonBuffer.endObject();
+    
+    // Interpret buffer as UTF-8 string.
+    jsonBuffer.flip();
+    String utf8 = new String(buf.array(), buf.position(), buf.limit(), StandardCharsets.UTF_8);
+    
+    // Read UTF-8 with Gson
+    Gson gson = new Gson();
+    SimpleNameValue obj = gson.fromJson(utf8, SimpleNameValue.class);
+
+    TestUtils.assertEquals(log, "gson string", text, obj.text);
+  }
+  
+  /**
+   * Write the given String with Gson and read with BYPS.
+   * BYPS-95
+   * @param text 
+   * @throws BException
+   */
+  private void writeGsonReadByps(String text) throws BException {
+    
+    // Serialize by the help of a SimpleNameValue object
+    Gson gson = new Gson();
+    SimpleNameValue obj = new SimpleNameValue();
+    obj.text = text;
+    String json = gson.toJson(obj);
+
+    // Write String into a buffer with UTF-8 bytes.  
+    ByteBuffer buf = ByteBuffer.wrap(json.getBytes(StandardCharsets.UTF_8));
+    
+    // Read with BYPS.
+    BBufferJson jsonBuffer = new BBufferJson(buf);
+    BJsonObject map = (BJsonObject)jsonBuffer.parseJsonValue();
+    String textR = map.getString("text");
+    
+    TestUtils.assertEquals(log, "byps string", textR, text);
+  }
+  
+  /**
+   * Serialize the given String with binary or JSON protocol.
+   * @param protocol Binary or JSON protocol
+   * @param text String
+   */
+	private void internalTestSerializeStringUTF8(BBinaryModel protocol, String text) {
 		log.info("internalTestSerializeStringUTF8(" + ((text != null) ? text.substring(0, Math.min(100, text.length())) : text));
 		ByteBuffer buf = ByteBuffer.allocate(1);
-		BBuffer bbuf = BBuffer.create(TestUtils.protocol, buf);
+		BBuffer bbuf = BBuffer.create(protocol, buf);
 		bbuf.putString(text);
 		bbuf.flip();
 		if (text == null || text.length() <= 100) {
@@ -169,7 +271,6 @@ public class TestSerializePrimitiveTypes {
 		String textE = text != null ? text : ""; // strings must not be null
 		String textR = bbuf.getString();
 		TestUtils.assertEquals(log, "UTF-8 string", textE,textR);
-		
 		
 		log.info(")internalTestSerializeStringUTF8");
 	}
@@ -295,7 +396,7 @@ public class TestSerializePrimitiveTypes {
 		bbuf.putChar(v);
 		bbuf.flip();
 		char vR = bbuf.getChar();
-		Assert.assertEquals(v, vR);
+		TestUtils.assertEquals(log, "char", v, vR);
 		log.info(")internalTestChar");
 	}
 
@@ -614,7 +715,6 @@ public class TestSerializePrimitiveTypes {
 				for (int objCount = 1; objCount <= 100; objCount *= 10) {
 					for (int mod = 0; mod < 2; mod++) {
 						for (int gzip = 0; gzip < 2; gzip++) {
-							BBinaryModel bmodel = mod == 0 ? BBinaryModel.MEDIUM : BBinaryModel.JSON;
 							int loopCount = 100 * 1000;
 							int flags = gzip != 0 ? BWire.FLAG_GZIP : BWire.FLAG_DEFAULT;
 							internaltestPerformancePrimitiveTypes(protocol, objCount, loopCount, flags);

@@ -11,7 +11,7 @@ import java.util.Set;
 
 /**
 */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public final class BRequest_RemoteSetTypes_setDate1 extends BMethodRequest implements Serializable {
 
 	public java.util.Set<java.util.Date> obj1;

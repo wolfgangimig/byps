@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
 */
-@SuppressWarnings("all")
+@SuppressWarnings({"all","deprecation","unchecked","rawtypes","cast","static","try","serial","this-escape"})
 public final class BRequest_RemotePrimitiveTypes_getInt extends BMethodRequest implements Serializable {
 
 	
