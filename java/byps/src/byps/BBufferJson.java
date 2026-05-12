@@ -715,6 +715,9 @@ public class BBufferJson extends BBuffer {
           case 'n':
             sbuf.append("\n");
             break;
+          case 'b':
+            sbuf.append("\b");
+            break;
           case '\\':
             sbuf.append("\\");
             break;
@@ -824,6 +827,7 @@ public class BBufferJson extends BBuffer {
 				c = (char)(v & 0xFF);
 				switch (c) {
 				case ' ':
+				case '\b': // BYPS-96
 				case '\n':
 				case '\r':
                 case '\t':

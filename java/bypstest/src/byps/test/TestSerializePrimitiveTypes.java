@@ -119,6 +119,7 @@ public class TestSerializePrimitiveTypes {
       internalTestSerializeStringUTF8(protocol, "\r");
       internalTestSerializeStringUTF8(protocol, "\n");
       internalTestSerializeStringUTF8(protocol, "\\");
+      internalTestSerializeStringUTF8(protocol, "\b"); // BYPS-96
       internalTestSerializeStringUTF8(protocol, "\t\r\n");
       internalTestSerializeStringUTF8(protocol, new String(new byte[]{0,1,15,16,17,31}));
       
@@ -363,7 +364,7 @@ public class TestSerializePrimitiveTypes {
 	@Test
 	public void testPrimitiveTypesChar() throws BException {	
 		log.info("testPrimitiveTypesChar(");
-		String chars = "a\t\r\n¶€";
+		String chars = "a\t\r\n\b¶€";
 		for (int i = 0; i < chars.length(); i++) {
 			char ch = chars.charAt(i);
 			internalTestChar2(ch);
